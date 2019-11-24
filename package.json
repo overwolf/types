@@ -1,1 +1,15 @@
+{
+    "name": "@overwolf/types",
+    "version": "2.1.0",
+    "description": "Type definition file for autocompletion and documentation purposes",
+    "license": "MIT",
+    "repository": "overwolf/definitelyTyped",
+    "main": "overwolf.d.ts",
+    "keywords": [
+        "types",
+        "npm",
+        "package",
+        "overwolf"
+    ]
+}
 
