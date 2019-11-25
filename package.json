@@ -4,7 +4,7 @@
     "description": "Type definition file for autocompletion and documentation purposes",
     "license": "MIT",
     "repository": "overwolf/definitelyTyped",
-    "main": "overwolf.d.ts",
+    "types": "overwolf.d.ts",
     "keywords": [
         "types",
         "npm",
