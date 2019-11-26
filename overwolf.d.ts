@@ -848,12 +848,39 @@ declare namespace overwolf.profile {
 }
 
 declare namespace overwolf.profile.subscriptions {
+
+  const enum eState {
+    Active = 0,
+    Cancelled = 1,
+    Revoked = 2
+  }
+
+  interface Info {
+    title: string;
+    description: string;
+    periodMonths: number;
+    price: number;
+  }
+
+  interface Subscription {
+    id: number;
+    pid: number;
+    uid: string;
+    extid: string;
+    muid: string;
+    exp: number;
+    grc: number;
+    state: eState;
+    planInfo: Info;
+    expired: boolean;
+  }
+
   interface GetActivePlansResult extends Result {
     plans?: number[];
   }
 
   interface SubscriptionChangedEvent {
-    plans: number[];
+    plans?: number[];
   }
 
   /**
