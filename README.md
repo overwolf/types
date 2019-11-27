@@ -1,6 +1,7 @@
 # @overwolf/types
 
-Overwolf type definition files for autocompletion and documentation purposes.
+Overwolf type definition files for autocompletion and documentation purposes.  
+https://www.npmjs.com/package/@overwolf/types
 
 ## Install
 
