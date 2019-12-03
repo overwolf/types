@@ -10,3 +10,13 @@ This is the preferred method. Getting type declarations in TypeScript 2.0 and ab
 ```
 $ npm i @overwolf/types
 ```
+
+## Update
+
+```
+$ npm login
+
+$npm version minor/major
+
+$npm publish
+```
