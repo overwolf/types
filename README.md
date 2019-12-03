@@ -8,15 +8,13 @@ https://www.npmjs.com/package/@overwolf/types
 This is the preferred method. Getting type declarations in TypeScript 2.0 and above requires no tools apart from npm.
 
 ```
-$ npm i @overwolf/types
+$ npm i --save-dev @overwolf/types
 ```
 
-## Update
+## Usage
+
+To use it in your Typescript project, you should include this line on the top of each file that use the types.
 
 ```
-$ npm login
-
-$npm version minor/major
-
-$npm publish
+import "@overwolf/types";
 ```
