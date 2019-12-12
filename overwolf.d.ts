@@ -4210,6 +4210,19 @@ declare namespace overwolf.extensions {
     version: string;
     state: ExtensionUpdateState
   }
+  
+  /**
+   * The following types are related to the |onUncaughtException| event - which
+   * is a different than the usual events.
+   */
+  type UncaughtExceptionCallback = (message: string, 
+                                    functionName: string, 
+                                    scriptName: string) => void;
+
+  interface UncaughtExceptionEvent {
+    addListener(callback: UncaughtExceptionCallback): void;
+    removeListener(callback: UncaughtExceptionCallback): void;
+  }
 
   /**
    * Launch an extension by its unique id.
@@ -4324,7 +4337,7 @@ declare namespace overwolf.extensions {
   /**
    * Called for global uncaught exceptions in a frame.
    */
-  const onUncaughtException: Event<any>;
+  const onUncaughtException: UncaughtExceptionEvent;
 }
 
 declare namespace overwolf.extensions.current {
