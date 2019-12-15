@@ -1000,7 +1000,7 @@ declare namespace overwolf.windows {
   }
 
   interface IsWindowVisibleToUserResult extends Result {
-    visible: "hidden" | "fully" | "partial";
+    visible: "hidden" | "full" | "partial";
   }
 
   interface IsAccelreatedOSRResult extends WindowIdResult {
@@ -1431,7 +1431,7 @@ declare namespace overwolf.windows {
   /**
    * Is window fully visible to user (has overlap windows)
    * @param callback Called with the result of the request:{"status": "error"
-   * "reason": thereson} or{"status": "success" "visible": "hidden" | "fully" |
+   * "reason": thereson} or{"status": "success" "visible": "hidden" | "full" |
    * "partial"}
    */
   function isWindowVisibleToUser(
