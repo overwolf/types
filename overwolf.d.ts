@@ -621,6 +621,29 @@ declare namespace overwolf.media.replays {
     extensions: string[];
   }
 
+  interface onHighlightsCapturedEvent {
+    game_id: number;
+    match_id: string;
+    match_internal_id: string;
+    session_id: string;
+    session_start_time: string;
+    match_start_time: string;
+    start_time: string;
+    duration: string;
+    events: string[];
+    raw_events: raw_events[];
+    media_url: string;
+    media_path_encoded: string;
+    thumbnail_url: string;
+    thumbnail_encoded_path: string;
+    replay_video_start_time: number;
+  }
+
+  interface raw_events {
+    type:string;
+    time:number;
+  }
+
   /**
    * Turns off background replay capturing. Call this as soon as you no longer
    * interesting in capturing, in order to free up resources.
@@ -800,6 +823,12 @@ declare namespace overwolf.media.replays {
    * Fired when an replay serive is on (any other app);
    */
   const onReplayServicesStarted: Event<ReplayServicesStartedEvent>;
+
+  /**
+   * Fired when a new Replay highlight recorded (when highlightsSetting is enabled).
+   */
+  const onHighlightsCapturedEvent: Event<onHighlightsCapturedEvent>;
+  
 }
 
 declare namespace overwolf.profile {
@@ -3666,7 +3695,7 @@ declare namespace overwolf.os.tray {
   function setMenu(menu: ExtensionTrayMenu, callback: CallbackFunction<Result>): void;
 
   interface ExtensionTrayMenu {
-    menu_items: menu_item[];
+    menu_items: { menu_items: menu_item[] };
   }
 
   interface menu_item {
@@ -5092,9 +5121,7 @@ declare namespace overwolf.social.discord {
    * @param callback Will contain user information or error if the request has
    * failed.
    */
-  function getUserInfo(
-    callback: CallbackFunction<GetUserInfoResult<User>>
-  ): void;
+  function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
 
   /**
    * If the user is currently logged into Discord, this will return the guilds
