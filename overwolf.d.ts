@@ -51,6 +51,16 @@ declare namespace overwolf.io {
     }
   }
 
+  interface ReadFileOptions {
+    encoding: enums.eEncoding;
+    maxBytesToRead: number;
+    offset: number;
+  }
+
+  interface ListenFileOptions {
+    skipToEnd: boolean;
+  }
+
   interface FileExistsResult extends Result {
     found?: boolean;
   }
@@ -118,6 +128,77 @@ declare namespace overwolf.io {
     reserved: boolean,
     callback: CallbackFunction<Result>
   ): void;
+
+  /**
+   * Lists all files and folder in the target path.
+   * @param path The target path
+   * @param callback result callback.
+   */
+  function dir(
+    path: string,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Reads a file's contents and returns an array of byte values.
+   * This function is extremly slow! Use it only for small files.
+   * @param path The target path.
+   * @param options Describes the different options to read a file.
+   * @param callback result callback.
+   */
+  function readBinaryFile(
+    path: string,
+    options: ReadFileOptions,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Reads a file's contents and returns it as text.
+   * @param path The target path.
+   * @param options Describes the different options to read a file.
+   * @param callback result callback.
+   */
+  function readTextFile(
+    path: string,
+    options: ReadFileOptions,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Is path exist.
+   * @param path The target path.
+   * @param callback result callback.
+   */
+  function exist(
+    path: string,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Start listening on file.
+   * Stream a file (text files only), line-by-line, from the local filesystem.
+   * @param id listen Id.
+   * @param path The target path.
+   * @param options Describes the different options to listen to a file.
+   * @param callback result callback.
+   */
+  function listenOnFile(
+    id: string,
+    path: string,
+    options: ListenFileOptions,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Stop listening on file.
+   * Stop streaming a file that you previously passed when calling listenOnFile().
+   * There are no callbacks - as this will never fail (even if the stream doesn't exist).
+   * @param id listen Id.
+   */
+  function stopFileListener(
+    id: string
+  ): void;
+
 }
 
 declare namespace overwolf.media {
@@ -3064,6 +3145,13 @@ declare namespace overwolf.streaming {
   /**
    * Stream settings container.
    */
+  interface GetWindowStreamingModeResult extends Result {
+    streaming_mode?: string;
+  }
+
+  /**
+   * Stream settings container.
+   */
   interface StreamSettings {
     /**
      * The stream provider name.
@@ -3421,6 +3509,9 @@ declare namespace overwolf.streaming {
     default_playback_device_id?: string;
   }
 
+  interface SplitResult extends Result { }
+  
+
   interface StreamingSourceImageChangedEvent {
     stream_id: number;
     old_source: string;
@@ -3467,6 +3558,17 @@ declare namespace overwolf.streaming {
   function stop(
     streamId: number,
     callback?: (result: StreamResult | StopStreamingEvent) => void
+  ): void;
+
+  /**
+   * Request to split video now.
+   * @param streamId The id of the stream to split.
+   * @param callback A callback function which will be called with the status of
+   * the request.
+   */
+  function split(
+    streamId: number,
+    callback: CallbackFunction<SplitResult>
   ): void;
 
   /**
