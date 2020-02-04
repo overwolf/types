@@ -2316,6 +2316,10 @@ declare namespace overwolf.games.events {
     data: string;
   }
 
+  interface NewGameEvents {
+    events: GameEvent[];
+  }
+
   interface ErrorEvent {
     reason: string;
   }
@@ -2360,7 +2364,7 @@ declare namespace overwolf.games.events {
    * Fired when there are new game events with a JSON object of the events
    * information.
    */
-  const onNewEvents: Event<Array<GameEvent>>;
+  const onNewEvents: Event<NewGameEvents>;
 }
 
 declare namespace overwolf.games.events.provider {
