@@ -11,7 +11,7 @@
         "overwolf"
     ],
     "repository": {
-        "type": "git",
+        "type": "git", 
         "url": "git://https://github.com/overwolf/types.git"
     }
 }
