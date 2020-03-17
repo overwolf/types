@@ -5126,6 +5126,14 @@ declare namespace overwolf.settings.games {
     gameClassId: number;
   }
 
+  interface AutolaunchEnabledResult extends GameClassResult {
+    autoLaunchEnabled: boolean
+  }
+  
+  interface OverlayEnabledResult extends GameClassResult{
+    enabled: boolean
+  }
+  
   interface OverlayEnablementChangedEvent {
     gameId: number;
     enabled: boolean;
@@ -5144,7 +5152,7 @@ declare namespace overwolf.settings.games {
    */
   function getOverlayEnabled(
     gameClassId: number,
-    callback: CallbackFunction<GameClassResult>
+    callback: CallbackFunction<OverlayEnabledResult>
   ): void;
 
   /**
@@ -5155,7 +5163,7 @@ declare namespace overwolf.settings.games {
    */
   function getAutoLaunchEnabled(
     gameClassId: number,
-    callback: CallbackFunction<GameClassResult>
+    callback: CallbackFunction<AutolaunchEnabledResult>
   ): void;
 
   /**
