@@ -1049,6 +1049,10 @@ declare namespace overwolf.windows {
     enablePopupBlocker: boolean;
   }
 
+  interface DefaultSizeAndLocation {
+    useDefaultSizeAndLocation: boolean;
+  }
+
   interface ODKRect {
     top: number;
     left: number;
@@ -1143,6 +1147,12 @@ declare namespace overwolf.windows {
     id: string;
   }
 
+  interface onScreenPropertyChangedEvent {
+    id: string;
+    name: string;
+    monitor: utils.Display;
+  }
+
   /**
    * Calls the given callback function with the current window object as a
    * parameter.
@@ -1191,7 +1201,7 @@ declare namespace overwolf.windows {
    */
   function obtainDeclaredWindow(
     windowName: string,
-    useDefaultSizeAndLocation: boolean,
+    useDefaultSizeAndLocation: DefaultSizeAndLocation,
     callback: CallbackFunction<WindowResult>
   ): void;
 
@@ -1606,6 +1616,11 @@ declare namespace overwolf.windows {
    * Fired when the user was prevented from closing a window using Alt+F4
    */
   const onAltF4Blocked: Event<AltF4BlockedEvent>;
+
+  /**
+   * Fired when native window (or OSR on desktop) moved to other monitoror when current monitor resolution changed
+   */
+  const onScreenPropertyChanged: Event<onScreenPropertyChangedEvent>;
 }
 
 declare namespace overwolf.windows.mediaPlayerElement {
@@ -3144,6 +3159,21 @@ declare namespace overwolf.streaming {
       RC_VBR_MINQP = "RC_VBR_MINQP",
       RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
     }
+
+    const enum indication_position {
+      none = "none",
+      top_left = "top_left",
+      top_right = "top_right",
+      bottom_left = "bottom_left",
+      bottom_right = "bottom_right"
+    }
+
+    const enum indication_type {
+      off = "off",
+      dot = "dot",
+      dot_time = "dot_time"
+    }
+
   }
 
   /**
@@ -3314,6 +3344,14 @@ declare namespace overwolf.streaming {
      * supported.
      */
     disable_when_sht_not_supported: boolean;
+    /**
+     * Position of the recorder indicator. Available for video capture only.
+     */
+    indication_position: enums.indication_position;
+    /**
+     * Type of the recorder indicator. Available for video capture only.
+     */
+    indication_type: enums.indication_type;
   }
 
   /**
