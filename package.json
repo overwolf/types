@@ -1,6 +1,6 @@
 {
     "name": "@overwolf/types",
-    "version": "2.10.0",
+    "version": "2.11.0",
     "description": "Type definition file for autocompletion and documentation purposes",
     "license": "MIT",
     "types": "overwolf.d.ts",
@@ -11,7 +11,7 @@
         "overwolf"
     ],
     "repository": {
-        "type": "git", 
+        "type": "git",
         "url": "git://https://github.com/overwolf/types.git"
     }
 }
