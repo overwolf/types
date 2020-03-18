@@ -886,6 +886,17 @@ declare namespace overwolf.media.replays {
   ): void;
 
   /**
+   * Get supported auto highlights features for a game
+   * @param gameId The id of the game you want to capture it highlights.
+   * @param callback A callback function which will be called with the status of
+   * the request.
+   */
+  function getHighlightsFeatures(
+    gameId: number,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
    * Fired when an error has occurred with the capturing.
    */
   const onCaptureError: Event<CaptureErrorEvent>;
