@@ -1923,8 +1923,8 @@ declare namespace overwolf.benchmarking {
 
 declare namespace overwolf.games {
   const enum GameInfoType {
-    Game,
-    Launcher
+    Game = 0,
+    Launcher = 1
   }
 
   interface GameInfo {
@@ -2093,6 +2093,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
+    windowHandle: { value: number },
+    monitorHandle: { value: number }
   }
 
   interface GameInfoUpdate {
@@ -2128,6 +2130,30 @@ declare namespace overwolf.games {
     gameInfo?: InstalledGameInfo;
   }
 
+  interface GetRunningGameInfoResult extends Result {
+    isInFocus: boolean;
+    isRunning: boolean;
+    allowsVideoCapture: boolean;
+    title: string;
+    displayName: string;
+    shortTitle: string;
+    id: number;
+    classId: number;
+    width: number;
+    height: number;
+    logicalWidth: number;
+    logicalHeight: number;
+    renderers: string[];
+    detectedRenderer: string;
+    executionPath: string;
+    sessionId: string;
+    commandLine: string;
+    type: GameInfoType;
+    typeAsString: string;
+    windowHandle: { value: number },
+    monitorHandle: { value: number }
+  }
+
   interface GameInfoUpdatedEvent {
     gameInfo?: RunningGameInfo;
     resolutionChanged: boolean;
@@ -2150,7 +2176,9 @@ declare namespace overwolf.games {
    * active games, if more than one), or null if no game is running.
    * @param callback Called with the currently running or active game info. See
    */
-  function getRunningGameInfo(callback: (info: RunningGameInfo) => void): void;
+  function getRunningGameInfo(
+    callback: CallbackFunction<GetRunningGameInfoResult>
+    ): void;
 
   /**
    * Returns information about a game with a given game id.Will only return
@@ -2226,6 +2254,10 @@ declare namespace overwolf.games.launchers {
     path: string;
   }
 
+  interface GetRunningLaunchersInfoResult extends Result {
+    launchers: LauncherInfo[];
+  }
+
   interface UpdatedEvent {
     info: LauncherInfo;
     changeType: string[];
@@ -2236,7 +2268,7 @@ declare namespace overwolf.games.launchers {
    * @param callback Called with the currently running detected launchers.
    */
   function getRunningLaunchersInfo(
-    callback: (result: { launchers: LauncherInfo[] }) => void
+    callback: CallbackFunction<GetRunningLaunchersInfoResult>
   ): void;
 
   /**
@@ -2324,17 +2356,17 @@ declare namespace overwolf.games.launchers.events.provider {
     features: string[],
     callback?: CallbackFunction<Result>
   ): void;
+  
 }
 
 declare namespace overwolf.games.events {
-  type InfoUpdate = Dictionary<Dictionary<string>>;
 
   interface SetRequiredFeaturesResult extends Result {
     supportedFeatures?: string[];
   }
 
   interface GetInfoResult extends Result {
-    res: InfoUpdate;
+    res: any;
   }
 
   interface GameEvent {
@@ -2351,7 +2383,7 @@ declare namespace overwolf.games.events {
   }
 
   interface InfoUpdates2Event {
-    info: InfoUpdate;
+    info: any;
   }
 
   /**
@@ -2418,9 +2450,17 @@ declare namespace overwolf.games.inputTracking {
     onGame: boolean;
     handle: { value: number };
   }
+ 
+  interface InputActivity {
+    aTime: number;
+    iTime: number;
+    apm: boolean;
+    mouse: { total: number, dist: number, keys: any };
+    keyboard: { total: number, keys: any };
+  }
 
-  interface ActivityResult extends Result {
-    activity?: any;
+  interface GetActivityResult extends Result {
+    activity: InputActivity;
   }
 
   interface GetMousePositionResult extends Result {
@@ -2446,7 +2486,7 @@ declare namespace overwolf.games.inputTracking {
    * @param callback A callback with the activity information.
    */
   function getActivityInformation(
-    callback: CallbackFunction<ActivityResult>
+    callback: CallbackFunction<GetActivityResult>
   ): void;
 
   /**
@@ -2456,7 +2496,7 @@ declare namespace overwolf.games.inputTracking {
    * @param callback A callback with the activity information.
    */
   function getMatchActivityInformation(
-    callback: CallbackFunction<ActivityResult>
+    callback: CallbackFunction<GetActivityResult>
   ): void;
 
   /**
@@ -2466,7 +2506,7 @@ declare namespace overwolf.games.inputTracking {
    * @param callback A callback with the eye tracking information
    */
   function getEyeTrackingInformation(
-    callback: CallbackFunction<ActivityResult>
+    callback: CallbackFunction<GetActivityResult>
   ): void;
 
   /**
