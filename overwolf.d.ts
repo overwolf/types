@@ -5228,6 +5228,60 @@ declare namespace overwolf.settings.games {
   const onAutoLaunchEnablementChanged: Event<AutoLaunchEnablementChangedEvent>;
 }
 
+declare namespace overwolf.settings.hotkeys {
+  interface IHotkey {
+    name: string;
+    title: string;
+    virtualKeycode: number;
+    modifierKeys: number;
+    extensionuid: string;
+    isPassthrough: boolean;
+    hold: boolean;
+    IsUnassigned: boolean;
+  }
+
+  interface GetAssignedHotkeyResult extends Result {
+    globals: IHotkey[];
+    games?: Record<string, IHotkey[]>;
+  }
+
+  interface OnHoldEvent {
+    name: string;
+    state: 'up' | 'down';
+  }
+
+  interface OnPressedEvent {
+    name: string;
+  }
+
+  interface OnChangedEvent {
+    name: string;
+    gameId: number;
+    description: string;
+    binding: string;
+  }
+
+  /**
+   * Returns the hotkey assigned for the current extension in all the games.
+   */
+  function get(): CallbackFunction<GetAssignedHotkeyResult>;
+
+  /**
+   * Fired only for hotkeys that are set in the manifest as hold.
+   */
+  const onHold: Event<OnHoldEvent>;
+
+  /**
+   * Fired for hotkeys that are NOT set as hold hotkeys.
+   */
+  const onPressed: Event<OnPressedEvent>;
+
+  /**
+   * Fired on hotkey setting change.
+   */
+  const onChanged: Event<OnChangedEvent>;
+}
+
 declare namespace overwolf.social {
   interface GetUserInfoResult<T> extends Result {
     userInfo?: T;
