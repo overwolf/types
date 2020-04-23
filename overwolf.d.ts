@@ -3890,7 +3890,7 @@ declare namespace overwolf.os.tray {
   function setMenu(menu: ExtensionTrayMenu, callback: CallbackFunction<Result>): void;
 
   interface ExtensionTrayMenu {
-    menu_items: { menu_items: menu_item[] };
+    menu_items: menu_item[];
   }
 
   interface menu_item {
