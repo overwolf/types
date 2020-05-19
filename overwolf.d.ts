@@ -3211,18 +3211,18 @@ declare namespace overwolf.streaming {
       RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
     }
 
-    const enum indication_position {
-      none = "none",
-      top_left = "top_left",
-      top_right = "top_right",
-      bottom_left = "bottom_left",
-      bottom_right = "bottom_right"
+    const enum IndicationPosition {
+      None = "None",
+      TopLeftCorner = "TopLeftCorner",
+      TopRightCorner = "TopRightCorner",
+      BottomLeftCorner = "BottomLeftCorner",
+      BottomRightCorner = "BottomRightCorner"
     }
 
-    const enum indication_type {
-      off = "off",
-      dot = "dot",
-      dot_time = "dot_time"
+    const enum IndicationType {
+      NoIndication = "NoIndication",
+      Dot = "Dot",
+      DotAndTimer = "DotAndTimer"
     }
 
   }
