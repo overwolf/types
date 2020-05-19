@@ -3,7 +3,7 @@ declare namespace overwolf {
 
   enum ResultStatusTypes {
     Success = "success",
-    Error = "error"
+    Error = "error",
   }
 
   interface Result {
@@ -47,7 +47,7 @@ declare namespace overwolf.io {
       UTF8BOM = "UTF8DOM",
       Unicode = "UNICODE",
       UnicodeBOM = "UnicodeBOM",
-      ASCII = "ASCII"
+      ASCII = "ASCII",
     }
   }
 
@@ -74,10 +74,7 @@ declare namespace overwolf.io {
    * @param filePath The path to check for.
    * @param callback Returns with the result.
    */
-  function fileExists(
-    filePath: string,
-    callback: CallbackFunction<FileExistsResult>
-  ): void;
+  function fileExists(filePath: string, callback: CallbackFunction<FileExistsResult>): void;
 
   /**
    * Writes the content to the target file. If the file doesn't exist, it will
@@ -134,10 +131,7 @@ declare namespace overwolf.io {
    * @param path The target path
    * @param callback result callback.
    */
-  function dir(
-    path: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function dir(path: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Reads a file's contents and returns an array of byte values.
@@ -146,11 +140,7 @@ declare namespace overwolf.io {
    * @param options Describes the different options to read a file.
    * @param callback result callback.
    */
-  function readBinaryFile(
-    path: string,
-    options: ReadFileOptions,
-    callback: CallbackFunction<Result>
-  ): void;
+  function readBinaryFile(path: string, options: ReadFileOptions, callback: CallbackFunction<Result>): void;
 
   /**
    * Reads a file's contents and returns it as text.
@@ -158,21 +148,14 @@ declare namespace overwolf.io {
    * @param options Describes the different options to read a file.
    * @param callback result callback.
    */
-  function readTextFile(
-    path: string,
-    options: ReadFileOptions,
-    callback: CallbackFunction<Result>
-  ): void;
+  function readTextFile(path: string, options: ReadFileOptions, callback: CallbackFunction<Result>): void;
 
   /**
    * Is path exist.
    * @param path The target path.
    * @param callback result callback.
    */
-  function exist(
-    path: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function exist(path: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Start listening on file.
@@ -182,12 +165,7 @@ declare namespace overwolf.io {
    * @param options Describes the different options to listen to a file.
    * @param callback result callback.
    */
-  function listenOnFile(
-    id: string,
-    path: string,
-    options: ListenFileOptions,
-    callback: CallbackFunction<Result>
-  ): void;
+  function listenOnFile(id: string, path: string, options: ListenFileOptions, callback: CallbackFunction<Result>): void;
 
   /**
    * Stop listening on file.
@@ -195,10 +173,7 @@ declare namespace overwolf.io {
    * There are no callbacks - as this will never fail (even if the stream doesn't exist).
    * @param id listen Id.
    */
-  function stopFileListener(
-    id: string
-  ): void;
-
+  function stopFileListener(id: string): void;
 }
 
 declare namespace overwolf.media {
@@ -208,7 +183,7 @@ declare namespace overwolf.media {
      */
     const enum eMediaType {
       Video = "Video",
-      Image = "Image"
+      Image = "Image",
     }
   }
 
@@ -264,10 +239,7 @@ declare namespace overwolf.media {
    * @param targetFolder Target screen shot folder path.
    * @param callback A function called after the screenshot was taken.
    */
-  function takeScreenshot(
-    targetFolder: string,
-    callback: CallbackFunction<FileResult>
-  ): void;
+  function takeScreenshot(targetFolder: string, callback: CallbackFunction<FileResult>): void;
 
   /**
    * Takes a window screenshot and calls the callback with the success status
@@ -333,10 +305,7 @@ declare namespace overwolf.media {
    * @param screenshotParams A JSON containing the parameters of the screenshot.
    * @param callback A function called after the screenshot was taken.
    */
-  function getScreenshotUrl(
-    screenshotParams: MemoryScreenshotParams,
-    callback: CallbackFunction<FileResult>
-  ): void;
+  function getScreenshotUrl(screenshotParams: MemoryScreenshotParams, callback: CallbackFunction<FileResult>): void;
 
   /**
    * Opens the social network sharing console to allow the user to share a
@@ -346,11 +315,7 @@ declare namespace overwolf.media {
    * networks.
    * @param callback A function called after the image was shared.
    */
-  function shareImage(
-    image: any,
-    description: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function shareImage(image: any, description: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Posts a media event for other apps to receive. The time info should be
@@ -359,11 +324,7 @@ declare namespace overwolf.media {
    * @param jsonInfo A json with additional info about the event.
    * @param callback A callback with the status if the call.
    */
-  function postMediaEvent(
-    mediaType: enums.eMediaType,
-    jsonInfo: any,
-    callback: CallbackFunction<Result>
-  ): void;
+  function postMediaEvent(mediaType: enums.eMediaType, jsonInfo: any, callback: CallbackFunction<Result>): void;
 
   /**
    * Deletes all gifs created by this app with an option to keep the newest X
@@ -373,10 +334,7 @@ declare namespace overwolf.media {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function deleteOldGifs(
-    keepNewestXGbs: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function deleteOldGifs(keepNewestXGbs: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Returns the total size of the gif files created by this app in gigabytes.
@@ -393,18 +351,14 @@ declare namespace overwolf.media {
    * reduce the amount of times you call it.
    * @param callback A callback with the size in MB.
    */
-  function getAppVideoCaptureFolderSize(
-    callback: CallbackFunction<GetAppVideoCaptureFolderSizeResult>
-  ): void;
+  function getAppVideoCaptureFolderSize(callback: CallbackFunction<GetAppVideoCaptureFolderSizeResult>): void;
 
   /**
    * Similar to |getAppVideoCaptureFolderSize| but looks at the appsscreen
    * capture folder.
    * @param callback A callback with the size in MB.
    */
-  function getAppScreenCaptureFolderSize(
-    callback: CallbackFunction<GetAppScreenCaptureFolderSizeResult>
-  ): void;
+  function getAppScreenCaptureFolderSize(callback: CallbackFunction<GetAppScreenCaptureFolderSizeResult>): void;
 
   /**
    * Fired when a media event has been posted.
@@ -515,11 +469,7 @@ declare namespace overwolf.media.audio {
    * @param callback A callback function which will be called with the status of
    * the stop request.
    */
-  function setVolumeById(
-    id: string,
-    volume: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setVolumeById(id: string, volume: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when the state of the playback is changed.
@@ -599,10 +549,7 @@ declare namespace overwolf.media.videos {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function deleteOldVideos(
-    keepNewestXGbs: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function deleteOldVideos(keepNewestXGbs: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Deletes a specific video created by this app.
@@ -610,17 +557,14 @@ declare namespace overwolf.media.videos {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function deleteVideo(
-    videoUrl: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function deleteVideo(videoUrl: string, callback: CallbackFunction<Result>): void;
 }
 
 declare namespace overwolf.media.replays {
   namespace enums {
     const enum ReplayType {
       Video = "Video",
-      Gif = "Gif"
+      Gif = "Gif",
     }
   }
 
@@ -721,8 +665,8 @@ declare namespace overwolf.media.replays {
   }
 
   interface raw_events {
-    type:string;
-    time:number;
+    type: string;
+    time: number;
   }
 
   /**
@@ -743,10 +687,7 @@ declare namespace overwolf.media.replays {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function turnOn(
-    settings: ReplaysSettings,
-    callback: CallbackFunction<TurnOnResult>
-  ): void;
+  function turnOn(settings: ReplaysSettings, callback: CallbackFunction<TurnOnResult>): void;
 
   /**
    * Returns whether replay capturing is turned on or off.
@@ -761,10 +702,7 @@ declare namespace overwolf.media.replays {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function getState(
-    replayType: replays.enums.ReplayType,
-    callback: CallbackFunction<GetStateResult>
-  ): void;
+  function getState(replayType: replays.enums.ReplayType, callback: CallbackFunction<GetStateResult>): void;
 
   /**
    * Starts capturing a replay to a file. A replay id will be returned in the
@@ -822,10 +760,7 @@ declare namespace overwolf.media.replays {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function startCapture(
-    pastDuration: number,
-    callback: CallbackFunction<FileResult>
-  ): void;
+  function startCapture(pastDuration: number, callback: CallbackFunction<FileResult>): void;
 
   /**
    * Starts capturing a replay to a file. A replay id will be returned in the
@@ -852,10 +787,7 @@ declare namespace overwolf.media.replays {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function stopCapture(
-    replayId: string,
-    callback: CallbackFunction<ReplayResult>
-  ): void;
+  function stopCapture(replayId: string, callback: CallbackFunction<ReplayResult>): void;
 
   /**
    * Finishes capturing a replay and returns a url to the created video file.
@@ -891,10 +823,7 @@ declare namespace overwolf.media.replays {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function getHighlightsFeatures(
-    gameId: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function getHighlightsFeatures(gameId: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when an error has occurred with the capturing.
@@ -920,7 +849,6 @@ declare namespace overwolf.media.replays {
    * Fired when a new Replay highlight recorded (when highlightsSetting is enabled).
    */
   const onHighlightsCapturedEvent: Event<onHighlightsCapturedEvent>;
-  
 }
 
 declare namespace overwolf.profile {
@@ -929,7 +857,7 @@ declare namespace overwolf.profile {
     Offline = "Offline",
     Connecting = "Connecting",
     Online = "Online",
-    Disconnecting = "Disconnecting"
+    Disconnecting = "Disconnecting",
   }
 
   interface GetCurrentUserResult extends Result {
@@ -953,9 +881,7 @@ declare namespace overwolf.profile {
    * Calls the given callback with the currently logged-in Overwolf user.
    * @param callback A function called with the current user, or an error.
    */
-  function getCurrentUser(
-    callback: CallbackFunction<GetCurrentUserResult>
-  ): void;
+  function getCurrentUser(callback: CallbackFunction<GetCurrentUserResult>): void;
 
   /**
    * Opens the login dialog.
@@ -969,11 +895,10 @@ declare namespace overwolf.profile {
 }
 
 declare namespace overwolf.profile.subscriptions {
-
   const enum eState {
     Active = 0,
     Cancelled = 1,
-    Revoked = 2
+    Revoked = 2,
   }
 
   interface Info {
@@ -1008,9 +933,7 @@ declare namespace overwolf.profile.subscriptions {
    * Returns active subscriptions for the calling extension via callback.
    * @param callback Returns an array of plan IDs, or an error.
    */
-  function getActivePlans(
-    callback: CallbackFunction<GetActivePlansResult>
-  ): void;
+  function getActivePlans(callback: CallbackFunction<GetActivePlansResult>): void;
 
   /**
    * Fired when current extension subscription has changed.
@@ -1021,7 +944,7 @@ declare namespace overwolf.profile.subscriptions {
 declare namespace overwolf.windows {
   namespace enums {
     const enum WindowStyle {
-      InputPassThrough = "InputPassThrough"
+      InputPassThrough = "InputPassThrough",
     }
 
     const enum WindowDragEdge {
@@ -1033,13 +956,13 @@ declare namespace overwolf.windows {
       TopLeft = "TopLeft",
       TopRight = "TopRight",
       BottomLeft = "BottomLeft",
-      BottomRight = "BottomRight"
+      BottomRight = "BottomRight",
     }
 
     const enum MessagePromptIcon {
       None = "None",
       QuestionMark = "QuestionMark",
-      ExclamationMark = "ExclamationMark"
+      ExclamationMark = "ExclamationMark",
     }
   }
 
@@ -1101,23 +1024,12 @@ declare namespace overwolf.windows {
   interface GetWindowStateResult extends Result {
     window_id?: string;
     window_state?: string;
-    window_state_ex?:
-      | "closed"
-      | "minimized"
-      | "hidden"
-      | "normal"
-      | "maximized";
+    window_state_ex?: "closed" | "minimized" | "hidden" | "normal" | "maximized";
   }
 
   interface GetWindowsStatesResult extends Result {
     result: Dictionary<string>;
-    resultV2: Dictionary<
-      "closed" |
-      "minimized" |
-      "hidden" |
-      "normal" |
-      "maximized"
-    >;
+    resultV2: Dictionary<"closed" | "minimized" | "hidden" | "normal" | "maximized">;
   }
 
   interface IsMutedResult extends Result {
@@ -1195,10 +1107,7 @@ declare namespace overwolf.windows {
    * @param callback A callback function which will be called with the requested
    * window as a parameter.
    */
-  function obtainDeclaredWindow(
-    windowName: string,
-    callback: CallbackFunction<WindowResult>
-  ): void;
+  function obtainDeclaredWindow(windowName: string, callback: CallbackFunction<WindowResult>): void;
 
   /**
    * Creates an instance of your window (the window’s name has to be declared
@@ -1221,20 +1130,14 @@ declare namespace overwolf.windows {
    * @param windowId The id or name of the window to drag.
    * @param callback A callback which is called when the drag is completed.
    */
-  function dragMove(
-    windowId: string,
-    callback?: CallbackFunction<WindowIdResult>
-  ): void;
+  function dragMove(windowId: string, callback?: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Start resizing the window from a specific edge or corner.
    * @param windowId The id or name of the window to resize.
    * @param edge The edge or corner from which to resize the window.
    */
-  function dragResize(
-    windowId: string,
-    edge: windows.enums.WindowDragEdge
-  ): void;
+  function dragResize(windowId: string, edge: windows.enums.WindowDragEdge): void;
 
   /**
    * Start resizing the window from a specific edge or corner.
@@ -1243,11 +1146,7 @@ declare namespace overwolf.windows {
    * @param contentRect The real content of the window (for the ingame drwing
    * resizing white area)
    */
-  function dragResize(
-    windowId: string,
-    edge: windows.enums.WindowDragEdge,
-    contentRect: ODKRect
-  ): void;
+  function dragResize(windowId: string, edge: windows.enums.WindowDragEdge, contentRect: ODKRect): void;
 
   /**
    * Start resizing the window from a specific edge or corner.
@@ -1270,12 +1169,7 @@ declare namespace overwolf.windows {
    * @param callback A callback which is called when the size change is
    * completed.
    */
-  function changeSize(
-    windowId: string,
-    width: number,
-    height: number,
-    callback?: CallbackFunction<Result>
-  ): void;
+  function changeSize(windowId: string, width: number, height: number, callback?: CallbackFunction<Result>): void;
 
   /**
    * Changes the window position in pixels from the top left corner.
@@ -1298,69 +1192,49 @@ declare namespace overwolf.windows {
    * @param windowId The id or name of the window to close.
    * @param callback Called after the window is closed.
    */
-  function close(
-    windowId: string,
-    callback?: CallbackFunction<WindowIdResult>
-  ): void;
+  function close(windowId: string, callback?: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Minimizes the window.
    * @param windowId The id or name of the window to minimize.
    * @param callback Called after the window is minimized.
    */
-  function minimize(
-    windowId: string,
-    callback?: CallbackFunction<WindowIdResult>
-  ): void;
+  function minimize(windowId: string, callback?: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Hides the window.
    * @param windowId The id or name of the window to hide.
    * @param callback Called after the window is hidden.
    */
-  function hide(
-    windowId: string,
-    callback?: CallbackFunction<WindowIdResult>
-  ): void;
+  function hide(windowId: string, callback?: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Maximizes the window.
    * @param windowId The id or name of the window to maximize.
    * @param callback Called after the window is maximized.
    */
-  function maximize(
-    windowId: string,
-    callback?: CallbackFunction<WindowIdResult>
-  ): void;
+  function maximize(windowId: string, callback?: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Restores a minimized window.
    * @param windowId The id or name of the window to restore.
    * @param callback Called after the window is restored.
    */
-  function restore(
-    windowId: string,
-    callback?: CallbackFunction<WindowIdResult>
-  ): void;
+  function restore(windowId: string, callback?: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Returns the state of the window (normal/minimized/maximized/closed).
    * @param windowId The id or name of the window.
    * @param callback Called with the window state.
    */
-  function getWindowState(
-    windowId: string,
-    callback: CallbackFunction<GetWindowStateResult>
-  ): void;
+  function getWindowState(windowId: string, callback: CallbackFunction<GetWindowStateResult>): void;
 
   /**
    * Returns the state of all windows owned by the app
    * (normal/minimized/maximized/closed).
    * @param callback Called with an array containing the states of the windows.
    */
-  function getWindowsStates(
-    callback: CallbackFunction<GetWindowsStatesResult>
-  ): void;
+  function getWindowsStates(callback: CallbackFunction<GetWindowsStatesResult>): void;
 
   /**
    * Sends a message to an open window.
@@ -1382,9 +1256,7 @@ declare namespace overwolf.windows {
    * @param callback A callback function which will be called with a map object
    * of (window-name, Window Object) items
    */
-  function getOpenWindows(
-    callback: (windows: Dictionary<Window>) => void
-  ): void;
+  function getOpenWindows(callback: (windows: Dictionary<Window>) => void): void;
 
   /**
    * Returns a window object of the index page.
@@ -1454,31 +1326,21 @@ declare namespace overwolf.windows {
    * @param shouldBeTopmost
    * @param callback
    */
-  function setTopmost(
-    windowId: string,
-    shouldBeTopmost: boolean,
-    callback: CallbackFunction<WindowIdResult>
-  ): void;
+  function setTopmost(windowId: string, shouldBeTopmost: boolean, callback: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Sends the window to the back.
    * @param windowId The id or name of the window.
    * @param callback Called with the result of the request.
    */
-  function sendToBack(
-    windowId: string,
-    callback: CallbackFunction<WindowIdResult>
-  ): void;
+  function sendToBack(windowId: string, callback: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Brings the requested window to the front.
    * @param windowId The id or name of the window.
    * @param callback Called with the result of the request.
    */
-  function bringToFront(
-    windowId: string,
-    callback: CallbackFunction<WindowIdResult>
-  ): void;
+  function bringToFront(windowId: string, callback: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Brings this window to the front.
@@ -1491,10 +1353,7 @@ declare namespace overwolf.windows {
    * @param grabFocus Window will take system focus.
    * @param callback Called with the result of the request.
    */
-  function bringToFront(
-    grabFocus: boolean,
-    callback: CallbackFunction<WindowIdResult>
-  ): void;
+  function bringToFront(grabFocus: boolean, callback: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Brings the requested window to the front.
@@ -1502,11 +1361,7 @@ declare namespace overwolf.windows {
    * @param grabFocus Window will take system focus.
    * @param callback Called with the result of the request.
    */
-  function bringToFront(
-    windowId: string,
-    grabFocus: boolean,
-    callback: CallbackFunction<WindowIdResult>
-  ): void;
+  function bringToFront(windowId: string, grabFocus: boolean, callback: CallbackFunction<WindowIdResult>): void;
 
   /**
    * Change window position (see SetWindowPositionProperties))
@@ -1525,20 +1380,14 @@ declare namespace overwolf.windows {
    * @param properties where to place window
    * @param callback Called with the result of the request.
    */
-  function setPosition(
-    properties: SetWindowPositionProperties,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setPosition(properties: SetWindowPositionProperties, callback: CallbackFunction<Result>): void;
 
   /**
    * Displays a customized popup message prompt.
    * @param messageParams The type and texts that the message prompt will have.
    * @param callback The user action.
    */
-  function displayMessageBox(
-    messageParams: MessageBoxParams,
-    callback: (confirmed: boolean) => void
-  ): void;
+  function displayMessageBox(messageParams: MessageBoxParams, callback: (confirmed: boolean) => void): void;
 
   /**
    * Set current window Mute state.
@@ -1565,9 +1414,7 @@ declare namespace overwolf.windows {
    * "reason": thereson} or{"status": "success" "visible": "hidden" | "full" |
    * "partial"}
    */
-  function isWindowVisibleToUser(
-    callback: CallbackFunction<IsWindowVisibleToUserResult>
-  ): void;
+  function isWindowVisibleToUser(callback: CallbackFunction<IsWindowVisibleToUserResult>): void;
 
   /**
    * For OSR window only (for other window the callback return |error| status.
@@ -1579,27 +1426,20 @@ declare namespace overwolf.windows {
    * @param windowId The id or name of the window.
    * @param callback Called with the result of the request.
    */
-  function isAccelreatedOSR(
-    windowId: string,
-    callback: CallbackFunction<IsAccelreatedOSRResult>
-  ): void;
+  function isAccelreatedOSR(windowId: string, callback: CallbackFunction<IsAccelreatedOSRResult>): void;
 
   /**
    * Is current window accelerated
    * @param callback Called with the result of the request.
    */
-  function isAccelreatedOSR(
-    callback: CallbackFunction<IsAccelreatedOSRResult>
-  ): void;
+  function isAccelreatedOSR(callback: CallbackFunction<IsAccelreatedOSRResult>): void;
 
   /**
    * Get Window DPI.
    * @param callback Called with the result of the request (result e.g: {dpi:
    * 120, scale: 1.25}).
    */
-  function getWindowDPI(
-    callback: (result: { dpi: number; scale: number }) => void
-  ): void;
+  function getWindowDPI(callback: (result: { dpi: number; scale: number }) => void): void;
 
   /**
    * Fired when the main window is restored.
@@ -1619,9 +1459,7 @@ declare namespace overwolf.windows {
   /**
    * Fired when out of process iframe crashed.
    */
-  const onIsolatedIframeProcessCrashed: Event<
-    IsolatedIframeProcessCrashedEvent
-  >;
+  const onIsolatedIframeProcessCrashed: Event<IsolatedIframeProcessCrashedEvent>;
 
   /**
    * Fired when the user was prevented from closing a window using Alt+F4
@@ -1661,13 +1499,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function create(
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    callback: CallbackFunction<CreateResult>
-  ): void;
+  function create(x: number, y: number, width: number, height: number, callback: CallbackFunction<CreateResult>): void;
 
   /**
    * Remove all media players created for this window.
@@ -1701,11 +1533,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
    * the request. If successful, the callback will contain the total seconds in
    * the video.
    */
-  function setVideo(
-    id: number,
-    videoUrl: string,
-    callback: CallbackFunction<SetVideoResult>
-  ): void;
+  function setVideo(id: number, videoUrl: string, callback: CallbackFunction<SetVideoResult>): void;
 
   /**
    * Plays the current video.
@@ -1738,11 +1566,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function setVolume(
-    id: number,
-    volume: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setVolume(id: number, volume: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Stops the current video.
@@ -1759,11 +1583,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function seek(
-    id: number,
-    seconds: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function seek(id: number, seconds: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Gets the current progress, in seconds, of the playback.
@@ -1771,10 +1591,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function getProgress(
-    id: number,
-    callback: CallbackFunction<GetProgressResult>
-  ): void;
+  function getProgress(id: number, callback: CallbackFunction<GetProgressResult>): void;
 
   /**
    * Sets the speed ratio of the playback.
@@ -1784,11 +1601,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function setPlaybackSpeed(
-    id: number,
-    speedRatio: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setPlaybackSpeed(id: number, speedRatio: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Sends the media player to the front of the window.
@@ -1813,11 +1626,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function setStretchMode(
-    id: number,
-    stretchMode: any,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setStretchMode(id: number, stretchMode: any, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when playback is starting/resuming.
@@ -1858,10 +1667,7 @@ declare namespace overwolf.benchmarking {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function requestHardwareInfo(
-    interval: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function requestHardwareInfo(interval: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Requests process information within a given interval. See
@@ -1871,10 +1677,7 @@ declare namespace overwolf.benchmarking {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function requestProcessInfo(
-    interval: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function requestProcessInfo(interval: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Requests game fps information within a given interval.
@@ -1883,10 +1686,7 @@ declare namespace overwolf.benchmarking {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function requestFpsInfo(
-    interval: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function requestFpsInfo(interval: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Stops receiving hardware/process events. Use this when you no longer want
@@ -1924,7 +1724,7 @@ declare namespace overwolf.benchmarking {
 declare namespace overwolf.games {
   const enum GameInfoType {
     Game = 0,
-    Launcher = 1
+    Launcher = 1,
   }
 
   interface GameInfo {
@@ -2093,8 +1893,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number },
-    monitorHandle: { value: number }
+    windowHandle: { value: number };
+    monitorHandle: { value: number };
   }
 
   interface GameInfoUpdate {
@@ -2150,8 +1950,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number },
-    monitorHandle: { value: number }
+    windowHandle: { value: number };
+    monitorHandle: { value: number };
   }
 
   interface GameInfoUpdatedEvent {
@@ -2176,9 +1976,7 @@ declare namespace overwolf.games {
    * active games, if more than one), or null if no game is running.
    * @param callback Called with the currently running or active game info. See
    */
-  function getRunningGameInfo(
-    callback: CallbackFunction<GetRunningGameInfoResult>
-    ): void;
+  function getRunningGameInfo(callback: CallbackFunction<GetRunningGameInfoResult>): void;
 
   /**
    * Returns information about a game with a given game id.Will only return
@@ -2186,10 +1984,7 @@ declare namespace overwolf.games {
    * @param gameClassId The class id of the game.
    * @param callback Called with the info about the game.
    */
-  function getGameInfo(
-    gameClassId: number,
-    callback: CallbackFunction<GetGameInfoResult>
-  ): void;
+  function getGameInfo(gameClassId: number, callback: CallbackFunction<GetGameInfoResult>): void;
 
   /**
    * This is the same as `getGameDBInfo`, except that it can return two different
@@ -2202,10 +1997,7 @@ declare namespace overwolf.games {
    * @param classId The class id of the game.
    * @param callback Called with the info about the game.
    */
-  function getGameDBInfo(
-    classId: number,
-    callback: CallbackFunction<GetGameDBInfoResult>
-  ): void;
+  function getGameDBInfo(classId: number, callback: CallbackFunction<GetGameDBInfoResult>): void;
 
   /**
    * Returns an array of the maxNumOfGames most recently played game IDs.An
@@ -2213,10 +2005,7 @@ declare namespace overwolf.games {
    * @param maxNumOfGames The maximum number of games to recieve.
    * @param callback Called with the array of game IDs.
    */
-  function getRecentlyPlayedGames(
-    maxNumOfGames: number,
-    callback: CallbackFunction<GetRecentlyPlayedResult>
-  ): void;
+  function getRecentlyPlayedGames(maxNumOfGames: number, callback: CallbackFunction<GetRecentlyPlayedResult>): void;
 
   /**
    * Fired when the game info is updated, including game name, game running,
@@ -2267,9 +2056,7 @@ declare namespace overwolf.games.launchers {
    * Returns an object with information about the currently running launchers.
    * @param callback Called with the currently running detected launchers.
    */
-  function getRunningLaunchersInfo(
-    callback: CallbackFunction<GetRunningLaunchersInfoResult>
-  ): void;
+  function getRunningLaunchersInfo(callback: CallbackFunction<GetRunningLaunchersInfoResult>): void;
 
   /**
    * Fired when the launcher info is updated, including game name, game running,
@@ -2312,10 +2099,7 @@ declare namespace overwolf.games.launchers.events {
    * Gets the current game info.
    * @param callback
    */
-  function getInfo(
-    launcherClassId: number,
-    callback: CallbackFunction<GetInfoResult>
-  ): void;
+  function getInfo(launcherClassId: number, callback: CallbackFunction<GetInfoResult>): void;
 
   /**
    * Fired when there are game info updates with a JSON object of the updates.
@@ -2345,22 +2129,12 @@ declare namespace overwolf.games.launchers.events.provider {
     callback?: CallbackFunction<Result>
   ): void;
 
-  function updateInfo(
-    launcherClassId: number,
-    info: GameEventsInfo,
-    callback?: CallbackFunction<Result>
-  ): void;
+  function updateInfo(launcherClassId: number, info: GameEventsInfo, callback?: CallbackFunction<Result>): void;
 
-  function setSupportedFeatures(
-    launcherClassId: number,
-    features: string[],
-    callback?: CallbackFunction<Result>
-  ): void;
-  
+  function setSupportedFeatures(launcherClassId: number, features: string[], callback?: CallbackFunction<Result>): void;
 }
 
 declare namespace overwolf.games.events {
-
   interface SetRequiredFeaturesResult extends Result {
     supportedFeatures?: string[];
   }
@@ -2391,10 +2165,7 @@ declare namespace overwolf.games.events {
    * @param features A string array of features to utilize.
    * @param callback Called with success or failure state.
    */
-  function setRequiredFeatures(
-    features: string[],
-    callback: CallbackFunction<SetRequiredFeaturesResult>
-  ): void;
+  function setRequiredFeatures(features: string[], callback: CallbackFunction<SetRequiredFeaturesResult>): void;
 
   /**
    * Gets the current game info.
@@ -2437,10 +2208,7 @@ declare namespace overwolf.games.events.provider {
 
   function updateInfo(info: GameEventsInfo): void;
 
-  function setSupportedFeatures(
-    features: string[],
-    callback: CallbackFunction<Result>
-  ): void;
+  function setSupportedFeatures(features: string[], callback: CallbackFunction<Result>): void;
 }
 
 declare namespace overwolf.games.inputTracking {
@@ -2450,13 +2218,13 @@ declare namespace overwolf.games.inputTracking {
     onGame: boolean;
     handle: { value: number };
   }
- 
+
   interface InputActivity {
     aTime: number;
     iTime: number;
     apm: boolean;
-    mouse: { total: number, dist: number, keys: any };
-    keyboard: { total: number, keys: any };
+    mouse: { total: number; dist: number; keys: any };
+    keyboard: { total: number; keys: any };
   }
 
   interface GetActivityResult extends Result {
@@ -2485,9 +2253,7 @@ declare namespace overwolf.games.inputTracking {
    * This information resets between game executions.
    * @param callback A callback with the activity information.
    */
-  function getActivityInformation(
-    callback: CallbackFunction<GetActivityResult>
-  ): void;
+  function getActivityInformation(callback: CallbackFunction<GetActivityResult>): void;
 
   /**
    * Returns the input activity information (similar to
@@ -2495,9 +2261,7 @@ declare namespace overwolf.games.inputTracking {
    * data only for the latestmatch of the current game
    * @param callback A callback with the activity information.
    */
-  function getMatchActivityInformation(
-    callback: CallbackFunction<GetActivityResult>
-  ): void;
+  function getMatchActivityInformation(callback: CallbackFunction<GetActivityResult>): void;
 
   /**
    * Returns the eye tracking information. The information includes gaze points,
@@ -2505,9 +2269,7 @@ declare namespace overwolf.games.inputTracking {
    * information resets between game executions.
    * @param callback A callback with the eye tracking information
    */
-  function getEyeTrackingInformation(
-    callback: CallbackFunction<GetActivityResult>
-  ): void;
+  function getEyeTrackingInformation(callback: CallbackFunction<GetActivityResult>): void;
 
   /**
    * Returns the input last mouse position in game. the data includes the mouse
@@ -2515,9 +2277,7 @@ declare namespace overwolf.games.inputTracking {
    * Overwolf widget (onGame).
    * @param callback A callback with the mouse position information
    */
-  function getMousePosition(
-    callback: CallbackFunction<GetMousePositionResult>
-  ): void;
+  function getMousePosition(callback: CallbackFunction<GetMousePositionResult>): void;
 
   /**
    * Eye tracking data trakcing will pause, and stop collect Eye tracking data
@@ -2565,7 +2325,7 @@ declare namespace overwolf.web {
       HEAD = "HEAD",
       POST = "POST",
       PUT = "PUT",
-      DELETE = "DELETE"
+      DELETE = "DELETE",
     }
   }
 
@@ -2673,10 +2433,7 @@ declare namespace overwolf.web {
    * @param port The port to use.
    * @param callback
    */
-  function createServer(
-    port: number,
-    callback: CallbackFunction<CreateServerResult>
-  ): void;
+  function createServer(port: number, callback: CallbackFunction<CreateServerResult>): void;
 
   /**
    * Creates a WebSocket client to localhost/127.0.0.1 while by-passing a valid
@@ -2844,14 +2601,14 @@ declare namespace overwolf.logitech.led {
       ARROW_DOWN = "ARROW_DOWN",
       ARROW_RIGHT = "ARROW_RIGHT",
       NUM_ZERO = "NUM_ZERO",
-      NUM_PERIOD = "NUM_PERIOD"
+      NUM_PERIOD = "NUM_PERIOD",
     }
 
     const enum LogitechDeviceLightingType {
       Mono = "Mono",
       RGB = "RGB",
       PerkeyRGB = "PerkeyRGB",
-      All = "All"
+      All = "All",
     }
   }
 
@@ -2868,10 +2625,7 @@ declare namespace overwolf.logitech.led {
    * @param targetDevices An array of
    * @param callback A callback with the result of the request.
    */
-  function setTargetDevice(
-    targetDevices: enums.LogitechDeviceLightingType[],
-    callback: CallbackFunction<Result>
-  ): void;
+  function setTargetDevice(targetDevices: enums.LogitechDeviceLightingType[], callback: CallbackFunction<Result>): void;
 
   /**
    * Saves the current lighting.
@@ -2947,20 +2701,14 @@ declare namespace overwolf.logitech.led {
    * @param bitmapUrl The Overwolf url to add.
    * @param callback A callback with the result of the request.
    */
-  function setLightingFromBitmap(
-    bitmapUrl: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setLightingFromBitmap(bitmapUrl: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Sets the lighting from a bitmap byte array.
    * @param bitmap A byte array representing a 21x6 bitmap.
    * @param callback A callback with the result of the request.
    */
-  function setLightingFromBitmap(
-    bitmap: ByteArray,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setLightingFromBitmap(bitmap: ByteArray, callback: CallbackFunction<Result>): void;
 
   /**
    * Sets the lighting for a specific key by scan code.
@@ -3031,20 +2779,14 @@ declare namespace overwolf.logitech.led {
    * @param keyName The key name. For a list of key names see
    * @param callback A callback with the result of the request.
    */
-  function saveLightingForKey(
-    keyName: enums.KeyboardNames,
-    callback: CallbackFunction<Result>
-  ): void;
+  function saveLightingForKey(keyName: enums.KeyboardNames, callback: CallbackFunction<Result>): void;
 
   /**
    * Restores a previously saved lighting for a specific key.
    * @param keyName The key name. For a list of key names see
    * @param callback A callback with the result of the request.
    */
-  function restoreLightingForKey(
-    keyName: enums.KeyboardNames,
-    callback: CallbackFunction<Result>
-  ): void;
+  function restoreLightingForKey(keyName: enums.KeyboardNames, callback: CallbackFunction<Result>): void;
 
   /**
    * Flashes a single key.
@@ -3097,10 +2839,7 @@ declare namespace overwolf.logitech.led {
    * @param keyName The key name. For a list of key names see
    * @param callback A callback with the result of the request.
    */
-  function stopEffectsOnKey(
-    keyName: enums.KeyboardNames,
-    callback: CallbackFunction<Result>
-  ): void;
+  function stopEffectsOnKey(keyName: enums.KeyboardNames, callback: CallbackFunction<Result>): void;
 
   /**
    * Shuts down the API.
@@ -3118,39 +2857,39 @@ declare namespace overwolf.streaming {
     const enum StreamMouseCursor {
       both = "both",
       gameOnly = "gameOnly",
-      desktopOnly = "desktopOnly"
+      desktopOnly = "desktopOnly",
     }
 
     const enum ObsStreamingMode {
       OBSNoAwareness = "OBSNoAwareness",
       OBSAwareness = "OBSAwareness",
-      OBSAwarenessHideFromDeskTop = "OBSAwarenessHideFromDeskTop"
+      OBSAwarenessHideFromDeskTop = "OBSAwarenessHideFromDeskTop",
     }
 
     const enum StreamingProvider {
       Unknown = "Unknown",
       Twitch = "Twitch",
       VideoRecorder = "VideoRecorder",
-      RTMP = "RTMP"
+      RTMP = "RTMP",
     }
 
     const enum StreamingMode {
       WhenVisible = "WhenVisible",
       Always = "Always",
-      Never = "Never"
+      Never = "Never",
     }
 
     const enum StreamEncoder {
       INTEL = "INTEL",
       X264 = "X264",
       NVIDIA_NVENC = "NVIDIA_NVENC",
-      AMD_AMF = "AMD_AMF"
+      AMD_AMF = "AMD_AMF",
     }
 
     const enum StreamEncoderPreset_Intel {
       LOW = "LOW",
       MEDIUM = "MEDIUM",
-      HIGH = "HIGH"
+      HIGH = "HIGH",
     }
 
     const enum StreamEncoderPreset_x264 {
@@ -3163,7 +2902,7 @@ declare namespace overwolf.streaming {
       SLOW = "SLOW",
       SLOWER = "SLOWER",
       VERYSLOW = "VERYSLOW",
-      PLACEBO = "PLACEBO"
+      PLACEBO = "PLACEBO",
     }
 
     const enum StreamEncoderPreset_AMD_AMF {
@@ -3172,14 +2911,14 @@ declare namespace overwolf.streaming {
       SPEED = "SPEED",
       QUALITY = "QUALITY",
       ULTRA_LOW_LATENCY = "ULTRA_LOW_LATENCY",
-      LOW_LATENCY = "LOW_LATENCY"
+      LOW_LATENCY = "LOW_LATENCY",
     }
 
     const enum StreamEncoderRateControl_AMD_AMF {
       RC_CBR = "RC_CBR",
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
-      RC_VBR_MINQP = "RC_VBR_MINQP"
+      RC_VBR_MINQP = "RC_VBR_MINQP",
     }
 
     const enum StreamEncoderPreset_NVIDIA {
@@ -3192,7 +2931,7 @@ declare namespace overwolf.streaming {
       HIGH_PERFORMANCE_LOW_LATENCY = "HIGH_PERFORMANCE_LOW_LATENCY",
       HIGH_QUALITY_LOW_LATENCY = "HIGH_QUALITY_LOW_LATENCY",
       LOSSLESS = "LOSSLESS",
-      HIGH_PERFORMANCE_LOSSLESS = "HIGH_PERFORMANCE_LOSSLESS"
+      HIGH_PERFORMANCE_LOSSLESS = "HIGH_PERFORMANCE_LOSSLESS",
     }
 
     const enum StreamEncoderRateControl_NVIDIA {
@@ -3200,15 +2939,21 @@ declare namespace overwolf.streaming {
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
       RC_VBR_MINQP = "RC_VBR_MINQP",
-      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
+      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
+    const enum eTobiiEffectType {
+      Default = "Default",
+      Bubble = "Bubble",
+      Solid = "Solid",
+      Inverted = "Inverted",
+    }
     const enum StreamEncoderRateControl_x264 {
       RC_CBR = "RC_CBR",
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
       RC_VBR_MINQP = "RC_VBR_MINQP",
-      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
+      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
     const enum IndicationPosition {
@@ -3216,15 +2961,14 @@ declare namespace overwolf.streaming {
       TopLeftCorner = "TopLeftCorner",
       TopRightCorner = "TopRightCorner",
       BottomLeftCorner = "BottomLeftCorner",
-      BottomRightCorner = "BottomRightCorner"
+      BottomRightCorner = "BottomRightCorner",
     }
 
     const enum IndicationType {
       NoIndication = "NoIndication",
       Dot = "Dot",
-      DotAndTimer = "DotAndTimer"
+      DotAndTimer = "DotAndTimer",
     }
-
   }
 
   /**
@@ -3398,11 +3142,11 @@ declare namespace overwolf.streaming {
     /**
      * Position of the recorder indicator. Available for video capture only.
      */
-    indication_position: enums.indication_position;
+    indication_position: enums.IndicationPosition;
     /**
      * Type of the recorder indicator. Available for video capture only.
      */
-    indication_type: enums.indication_type;
+    indication_type: enums.IndicationType;
   }
 
   /**
@@ -3602,8 +3346,7 @@ declare namespace overwolf.streaming {
     default_playback_device_id?: string;
   }
 
-  interface SplitResult extends Result { }
-  
+  interface SplitResult extends Result {}
 
   interface StreamingSourceImageChangedEvent {
     stream_id: number;
@@ -3637,10 +3380,7 @@ declare namespace overwolf.streaming {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function start(
-    settings: StreamSettings,
-    callback: CallbackFunction<StreamResult>
-  ): void;
+  function start(settings: StreamSettings, callback: CallbackFunction<StreamResult>): void;
 
   /**
    * Stops the given stream.
@@ -3648,10 +3388,7 @@ declare namespace overwolf.streaming {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function stop(
-    streamId: number,
-    callback?: (result: StreamResult | StopStreamingEvent) => void
-  ): void;
+  function stop(streamId: number, callback?: (result: StreamResult | StopStreamingEvent) => void): void;
 
   /**
    * Request to split video now.
@@ -3659,10 +3396,7 @@ declare namespace overwolf.streaming {
    * @param callback A callback function which will be called with the status of
    * the request.
    */
-  function split(
-    streamId: number,
-    callback: CallbackFunction<SplitResult>
-  ): void;
+  function split(streamId: number, callback: CallbackFunction<SplitResult>): void;
 
   /**
    * Changes the volume of the stream.
@@ -3671,11 +3405,7 @@ declare namespace overwolf.streaming {
    * @param callback A function that will be called with success or error
    * status.
    */
-  function changeVolume(
-    streamId: number,
-    audioOptions: any,
-    callback: CallbackFunction<Result>
-  ): void;
+  function changeVolume(streamId: number, audioOptions: any, callback: CallbackFunction<Result>): void;
 
   /**
    * Sets the watermark settings.
@@ -3683,19 +3413,14 @@ declare namespace overwolf.streaming {
    * @param callback A callback to call when done setting the new watermark
    * settings.
    */
-  function setWatermarkSettings(
-    settings: WatermarkSettings,
-    callback?: CallbackFunction<Result>
-  ): void;
+  function setWatermarkSettings(settings: WatermarkSettings, callback?: CallbackFunction<Result>): void;
 
   /**
    * Gets the watermark settings.
    * @param callback A function that will be called with a JSON containing the
    * statusand the watermark settings if successful or an error message if not.
    */
-  function getWatermarkSettings(
-    callback: (result: WatermarkSettings) => void
-  ): void;
+  function getWatermarkSettings(callback: (result: WatermarkSettings) => void): void;
 
   /**
    * Call the given callback function with the window's streaming mode as a
@@ -3704,10 +3429,7 @@ declare namespace overwolf.streaming {
    * @param callback The callback function to call with the window's streaming
    * mode as a parameter.
    */
-  function getWindowStreamingMode(
-    windowId: string,
-    callback: CallbackFunction<GetWindowStreamingModeResult>
-  ): void;
+  function getWindowStreamingMode(windowId: string, callback: CallbackFunction<GetWindowStreamingModeResult>): void;
 
   /**
    * Set the window's stream mode.
@@ -3775,26 +3497,20 @@ declare namespace overwolf.streaming {
    * @param callback A callback function to call with the array of encoders and
    * their metadata.
    */
-  function getStreamEncoders(
-    callback: CallbackFunction<GetStreamEncodersResult>
-  ): void;
+  function getStreamEncoders(callback: CallbackFunction<GetStreamEncodersResult>): void;
 
   /**
    * Returns an array of all audio devices that can be used.
    * @param callback A callback function to call with the array of audio devices
    * and their metadata.
    */
-  function getAudioDevices(
-    callback: CallbackFunction<GetAudioDevicesResult>
-  ): void;
+  function getAudioDevices(callback: CallbackFunction<GetAudioDevicesResult>): void;
 
   /**
    * Return list of all running recores service (extensions ids).
    * @param callback
    */
-  function getRunningRecorders(
-    callback: (result: { extensions: string[] }) => void
-  ): void;
+  function getRunningRecorders(callback: (result: { extensions: string[] }) => void): void;
 
   /**
    * Fired when the stream started streaming a new image source (desktop, game).
@@ -3860,7 +3576,6 @@ declare namespace overwolf.log {
 }
 
 declare namespace overwolf.os {
-
   /**
    * Returns regional information about the user.
    * @param callback Called with the region info.
@@ -3871,7 +3586,7 @@ declare namespace overwolf.os {
     info: RegionInfo;
   }
 
-  interface RegionInfo{
+  interface RegionInfo {
     date_format?: string;
     time_format?: string;
     currency_symbol?: string;
@@ -3881,7 +3596,6 @@ declare namespace overwolf.os {
 }
 
 declare namespace overwolf.os.tray {
-
   /**
    * Create a tray icon for the calling extension with the supplied context menu object.
    * @param menu The menu object.
@@ -3900,11 +3614,11 @@ declare namespace overwolf.os.tray {
     sub_items?: menu_item[];
   }
 
-   /**
+  /**
    * Fired when an item from the tray icon’s context menu is selected.
    */
   const onMenuItemClicked: Event<onMenuItemClickedEvent>;
-  
+
   interface onMenuItemClickedEvent {
     item: string;
   }
@@ -3918,8 +3632,6 @@ declare namespace overwolf.os.tray {
    * Fired when the tray icon is double clicked.
    */
   const onTrayIconDoubleClicked: Event<any>;
-
-
 }
 
 declare namespace overwolf.extensions {
@@ -3951,13 +3663,13 @@ declare namespace overwolf.extensions {
     Skin = "Skin",
     TSSkin = "TSSkin",
     GameEventsProvider = "GameEventsProvider",
-    Unknown = "Unknown"
+    Unknown = "Unknown",
   }
 
   const enum ExtensionUpdateState {
     UpToDate = "UpToDate",
     UpdateAvailable = "UpdateAvailable",
-    PendingRestart = "PendingRestart"
+    PendingRestart = "PendingRestart",
   }
 
   /**
@@ -4495,16 +4207,14 @@ declare namespace overwolf.extensions {
 
   interface ExtensionUpdatedEvent {
     version: string;
-    state: ExtensionUpdateState
+    state: ExtensionUpdateState;
   }
-  
+
   /**
    * The following types are related to the |onUncaughtException| event - which
    * is a different than the usual events.
    */
-  type UncaughtExceptionCallback = (message: string, 
-                                    functionName: string, 
-                                    scriptName: string) => void;
+  type UncaughtExceptionCallback = (message: string, functionName: string, scriptName: string) => void;
 
   interface UncaughtExceptionEvent {
     addListener(callback: UncaughtExceptionCallback): void;
@@ -4541,12 +4251,7 @@ declare namespace overwolf.extensions {
    */
   function registerInfo(
     id: string,
-    eventsCallback: (info: {
-      status?: string;
-      id?: string;
-      info?: string;
-      isRunning?: boolean;
-    }) => void,
+    eventsCallback: (info: { status?: string; id?: string; info?: string; isRunning?: boolean }) => void,
     callback: CallbackFunction<Result>
   ): void;
 
@@ -4562,20 +4267,14 @@ declare namespace overwolf.extensions {
    * @param id The id of the extension to get updates for.
    * @param callback The result of the request.
    */
-  function getRunningState(
-    id: string,
-    callback: CallbackFunction<GetRunningStateResult>
-  ): void;
+  function getRunningState(id: string, callback: CallbackFunction<GetRunningStateResult>): void;
 
   /**
    * Returns the requested extension's manifest object.
    * @param id The id of the extension to get the manifest for.
    * @param callback A function called with the manifest data.
    */
-  function getManifest(
-    id: string,
-    callback: CallbackFunction<GetManifestResult>
-  ): void;
+  function getManifest(id: string, callback: CallbackFunction<GetManifestResult>): void;
 
   /**
    * The app will relaunch itself.
@@ -4586,25 +4285,19 @@ declare namespace overwolf.extensions {
    * This functions allows apps to check and perform an update without having to
    * wait for Overwolf to do so.
    */
-  function updateExtension(
-    callback: CallbackFunction<UpdateExtensionResult>
-  ): void;
+  function updateExtension(callback: CallbackFunction<UpdateExtensionResult>): void;
 
   /**
    * Checks if an update is available for the calling extension.
    * @param callback
    */
-  function checkForExtensionUpdate(
-    callback: CallbackFunction<CheckForUpdateResult>
-  ): void;
+  function checkForExtensionUpdate(callback: CallbackFunction<CheckForUpdateResult>): void;
 
   /**
    * Return service providers manifest data.
    * @param callback
    */
-  function getServiceConsumers(
-    callback: CallbackFunction<ServiceProvidersDataResult>
-  ): void;
+  function getServiceConsumers(callback: CallbackFunction<ServiceProvidersDataResult>): void;
 
   /**
    * Fires when the current app is launched while already running. This is
@@ -4639,10 +4332,7 @@ declare namespace overwolf.extensions.current {
    * @param callback A function called with the extra object, if found, and a
    * status indicating success or failure.
    */
-  function getExtraObject(
-    name: string,
-    callback: CallbackFunction<GetExtraObject>
-  ): void;
+  function getExtraObject(name: string, callback: CallbackFunction<GetExtraObject>): void;
 
   /**
    * Returns the current extension's manifest object.
@@ -4667,24 +4357,17 @@ declare namespace overwolf.extensions.sharedData {
   /**
    * Used by the owner app to set data for the consumer app, by appId.
    * @param appId The requested app id.
-   * @param value 
-   * @param callback 
+   * @param value
+   * @param callback
    */
-  function set(
-    appId: string,
-    value: any,
-    callback: CallbackFunction<Result>
-  ): void;
+  function set(appId: string, value: any, callback: CallbackFunction<Result>): void;
 
   /**
    * Used by the consumer app to get data set by the owner app.
-   * @param param 
-   * @param callback 
+   * @param param
+   * @param callback
    */
-  function get(
-    param: SharedDataParams,
-    callback: CallbackFunction<GetResult>
-  ): void;
+  function get(param: SharedDataParams, callback: CallbackFunction<GetResult>): void;
 
   interface onChangedEvent {
     origin: string;
@@ -4698,7 +4381,7 @@ declare namespace overwolf.utils {
     const enum eStorePage {
       LoginPage = "LoginPage",
       OneAppPage = "OneAppPage",
-      SubscriptionPage = "SubscriptionPage"
+      SubscriptionPage = "SubscriptionPage",
     }
   }
 
@@ -4814,9 +4497,7 @@ declare namespace overwolf.utils {
    * bounds, and names.
    * @param callback Called with the monitors array.
    */
-  function getMonitorsList(
-    callback: (result: { displays: Display[] }) => void
-  ): void;
+  function getMonitorsList(callback: (result: { displays: Display[] }) => void): void;
 
   /**
    * Sends a string representing a key stroke to the game, causing a simulated
@@ -4833,10 +4514,7 @@ declare namespace overwolf.utils {
    * commas (,). Ex. myFile*.*,*.txt
    * @param callback Called with a url to the selected file.
    */
-  function openFilePicker(
-    filter: string,
-    callback: CallbackFunction<OpenFilePickerResult>
-  ): void;
+  function openFilePicker(filter: string, callback: CallbackFunction<OpenFilePickerResult>): void;
 
   /**
    * Opens a Folder picker dialog to browse for a folder. A full path to the
@@ -4844,10 +4522,7 @@ declare namespace overwolf.utils {
    * @param initialPath The starting folder's path
    * @param callback Called with the selected folder.
    */
-  function openFolderPicker(
-    initialPath: string,
-    callback: CallbackFunction<OpenFolderPickerResult>
-  ): void;
+  function openFolderPicker(initialPath: string, callback: CallbackFunction<OpenFolderPickerResult>): void;
 
   /**
    * Opens Windows Explorer and selects a file received as an Overwolf media
@@ -4855,10 +4530,7 @@ declare namespace overwolf.utils {
    * @param url An overwolf media url (overwolf://media/*)
    * @param callback Called with the result of the request.
    */
-  function openWindowsExplorer(
-    url: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function openWindowsExplorer(url: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Returns whether the current device has touch capabilities.
@@ -4883,19 +4555,14 @@ declare namespace overwolf.utils {
    * GPU, HDD, RAM and more.
    * @param callback Called with the system information.
    */
-  function getSystemInformation(
-    callback: (result: GetSystemInformationResult) => void
-  ): void;
+  function getSystemInformation(callback: (result: GetSystemInformationResult) => void): void;
 
   /**
    * Sends Overwolf logs to Overwolf servers for debugging.
    * @param description The reason for sending the logs.
    * @param callback A callback with the status of the request.
    */
-  function sendLogs(
-    description: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function sendLogs(description: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Upload Overwolf client logs to Overwolf servers for current calling app.
@@ -4934,19 +4601,13 @@ declare namespace overwolf.utils {
    * @param y The Mouse Y position.
    * @param callback A callback with the status of the request.
    */
-  function simulateMouseClick(
-    x: number,
-    y: number,
-    callback: CallbackFunction<Result>
-  ): void;
+  function simulateMouseClick(x: number, y: number, callback: CallbackFunction<Result>): void;
 
   /**
    * Is mouse left button pressed.
    * @param callback A callback with the result.
    */
-  function isMouseLeftButtonPressed(
-    callback: CallbackFunction<IsMouseLeftButtonPressedResult>
-  ): void;
+  function isMouseLeftButtonPressed(callback: CallbackFunction<IsMouseLeftButtonPressedResult>): void;
 }
 
 declare namespace overwolf.settings {
@@ -4955,7 +4616,7 @@ declare namespace overwolf.settings {
       Original = "Original",
       R1080p = "R1080p",
       R720p = "R720p",
-      R480p = "R480p"
+      R480p = "R480p",
     }
 
     const enum eIndicationPosition {
@@ -4963,7 +4624,7 @@ declare namespace overwolf.settings {
       TopLeftCorner = 0,
       TopRightCorner = 1,
       BottomLeftCorner = 2,
-      BottomRightCorner = 3
+      BottomRightCorner = 3,
     }
   }
 
@@ -5020,10 +4681,7 @@ declare namespace overwolf.settings {
    * @param callback A function called with the result of the request which
      contains the hotkey if successful.
    */
-  function getHotKey(
-    featureId: string,
-    callback: CallbackFunction<GetHotKeyResult>
-  ): void;
+  function getHotKey(featureId: string, callback: CallbackFunction<GetHotKeyResult>): void;
 
   /**
    * Registers a callback for a given hotkey action. If the registration had
@@ -5035,67 +4693,47 @@ declare namespace overwolf.settings {
    * @param actionId The action id for which to register the callback.
    * @param callback The function to run when the hotkey is pressed.
    */
-  function registerHotKey(
-    actionId: string,
-    callback: CallbackFunction<HotKeyResult>
-  ): void;
+  function registerHotKey(actionId: string, callback: CallbackFunction<HotKeyResult>): void;
 
   /**
    * Returns the current language overwolf is set to in a two letter ISO name
    * format.
    * @param callback
    */
-  function getCurrentOverwolfLanguage(
-    callback: (result: { language: string }) => void
-  ): void;
+  function getCurrentOverwolfLanguage(callback: (result: { language: string }) => void): void;
 
   /**
    * Returns the current folder overwolf uses to store screenshots (and gifs).
    * @param callback
    */
-  function getOverwolfScreenshotsFolder(
-    callback: CallbackFunction<FolderResult>
-  ): void;
+  function getOverwolfScreenshotsFolder(callback: CallbackFunction<FolderResult>): void;
 
   /**
    * Sets the folder Overwolf uses to store screenshots.
    * @param path The folder to use
    * @param callback Whether the request was successful
    */
-  function setOverwolfScreenshotsFolder(
-    path: string,
-    callback: CallbackFunction<FolderResult>
-  ): void;
+  function setOverwolfScreenshotsFolder(path: string, callback: CallbackFunction<FolderResult>): void;
 
   /**
    * Returns the current folder overwolf uses to store videos.
    * @param callback
    */
-  function getOverwolfVideosFolder(
-    callback: CallbackFunction<FolderResult>
-  ): void;
+  function getOverwolfVideosFolder(callback: CallbackFunction<FolderResult>): void;
 
   /**
    * Sets the folder Overwolf uses to store videos.
    * @param path The folder to use
    * @param callback Whether the request was successful
    */
-  function setOverwolfVideosFolder(
-    path: string,
-    callback: CallbackFunction<FolderResult>
-  ): void;
+  function setOverwolfVideosFolder(path: string, callback: CallbackFunction<FolderResult>): void;
 
   /**
    * Returns the current video capture settings.
    * @param callback
    */
   function getVideoCaptureSettings(
-    callback: (result: {
-      enconder: string;
-      preset: string;
-      fps: number;
-      resolution: number;
-    }) => void
+    callback: (result: { enconder: string; preset: string; fps: number; resolution: number }) => void
   ): void;
 
   /**
@@ -5114,9 +4752,7 @@ declare namespace overwolf.settings {
    * Returns the current audio capture settings.
    * @param callback
    */
-  function getAudioCaptureSettings(
-    callback: CallbackFunction<GetAudioCaptureSettingsResult>
-  ): void;
+  function getAudioCaptureSettings(callback: CallbackFunction<GetAudioCaptureSettingsResult>): void;
 
   /**
    * Sets new audio capture settings.
@@ -5136,19 +4772,14 @@ declare namespace overwolf.settings {
    * @param settings
    * @param callback
    */
-  function setFpsSettings(
-    settings: FpsSettings,
-    callback: CallbackFunction<Result>
-  ): void;
+  function setFpsSettings(settings: FpsSettings, callback: CallbackFunction<Result>): void;
 
   /**
    * Gets the status of the FPS control (on/off), its position, its offset (in
    * pixels) and its scale [0, 1].
    * @param callback
    */
-  function getFpsSettings(
-    callback: CallbackFunction<GetFpsSettingsResult>
-  ): void;
+  function getFpsSettings(callback: CallbackFunction<GetFpsSettingsResult>): void;
 
   /**
    * Fired when fps settings are changed.
@@ -5178,13 +4809,13 @@ declare namespace overwolf.settings.games {
   }
 
   interface AutolaunchEnabledResult extends GameClassResult {
-    autoLaunchEnabled: boolean
+    autoLaunchEnabled: boolean;
   }
-  
-  interface OverlayEnabledResult extends GameClassResult{
-    enabled: boolean
+
+  interface OverlayEnabledResult extends GameClassResult {
+    enabled: boolean;
   }
-  
+
   interface OverlayEnablementChangedEvent {
     gameId: number;
     enabled: boolean;
@@ -5201,10 +4832,7 @@ declare namespace overwolf.settings.games {
    * @param gameClassId the game id for which the flag is retrieved for
    * @param callback
    */
-  function getOverlayEnabled(
-    gameClassId: number,
-    callback: CallbackFunction<OverlayEnabledResult>
-  ): void;
+  function getOverlayEnabled(gameClassId: number, callback: CallbackFunction<OverlayEnabledResult>): void;
 
   /**
    * Returns the current Auto-Launch enabled setting for the calling app ina
@@ -5212,10 +4840,7 @@ declare namespace overwolf.settings.games {
    * @param gameClassId the game id for which the flag is retrieved for
    * @param callback
    */
-  function getAutoLaunchEnabled(
-    gameClassId: number,
-    callback: CallbackFunction<AutolaunchEnabledResult>
-  ): void;
+  function getAutoLaunchEnabled(gameClassId: number, callback: CallbackFunction<AutolaunchEnabledResult>): void;
 
   /**
    * Fired when the overlay is enabled or disabled for a game.
@@ -5247,7 +4872,7 @@ declare namespace overwolf.settings.hotkeys {
 
   interface OnHoldEvent {
     name: string;
-    state: 'up' | 'down';
+    state: "up" | "down";
   }
 
   interface OnPressedEvent {
@@ -5296,7 +4921,7 @@ declare namespace overwolf.social.discord {
   const enum PostPermission {
     None = 0,
     Text,
-    File
+    File,
   }
 
   interface User {
@@ -5396,10 +5021,7 @@ declare namespace overwolf.social.discord {
    * @param callback Will contain guild (server) channels or error if the
    * request has failed.
    */
-  function getChannels(
-    guildId: string,
-    callback: CallbackFunction<GetChannelsResult>
-  ): void;
+  function getChannels(guildId: string, callback: CallbackFunction<GetChannelsResult>): void;
 
   /**
    * If the user is currently logged into Discord, this will perform the media
@@ -5410,10 +5032,7 @@ declare namespace overwolf.social.discord {
    * @param discordShareParams The share parameters. See DiscordShareParameters
    * @param callback Will contain the status of the request.
    */
-  function share(
-    discordShareParams: ShareParameters,
-    callback: CallbackFunction<Result>
-  ): void;
+  function share(discordShareParams: ShareParameters, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when the user's login state changes.
@@ -5469,9 +5088,7 @@ declare namespace overwolf.social.gfycat {
    * @param callback Will contain user information or error if the request has
    * failed.
    */
-  function getUserInfo(
-    callback: CallbackFunction<GetUserInfoResult<User>>
-  ): void;
+  function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
 
   /**
    * Possible errors that can occur:- Disconnected (user isn't signed in)-
@@ -5481,10 +5098,7 @@ declare namespace overwolf.social.gfycat {
    * @param gfycatShareParams The share parameters. See GfycatShareParameters
    * @param callback Will contain the status of the request.
    */
-  function share(
-    gfycatShareParams: ShareParamaeters,
-    callback: CallbackFunction<Result>
-  ): void;
+  function share(gfycatShareParams: ShareParamaeters, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when a media event has been posted.
@@ -5534,9 +5148,7 @@ declare namespace overwolf.social.twitter {
    * @param callback Will contain user information or error if the request has
    * failed.
    */
-  function getUserInfo(
-    callback: CallbackFunction<GetUserInfoResult<User>>
-  ): void;
+  function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
 
   /**
    * If the user is currently logged into Twitter, this will perform the media
@@ -5544,10 +5156,7 @@ declare namespace overwolf.social.twitter {
    * @param twitterShareParams The share parameters.
    * @param callback Will contain the status of the request.
    */
-  function share(
-    twitterShareParams: ShareParamaeters,
-    callback: CallbackFunction<Result>
-  ): void;
+  function share(twitterShareParams: ShareParamaeters, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when the user's login state changes.
@@ -5559,7 +5168,7 @@ declare namespace overwolf.social.youtube {
   const enum Privacy {
     Public = "Public",
     Unlisted = "Unlisted",
-    Private = "Private"
+    Private = "Private",
   }
 
   interface ShareParamaeters {
@@ -5605,9 +5214,7 @@ declare namespace overwolf.social.youtube {
    * @param callback Will contain user information or error if the request has
    * failed.
    */
-  function getUserInfo(
-    callback: CallbackFunction<GetUserInfoResult<User>>
-  ): void;
+  function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
 
   /**
    * If the user is currently logged into YouTube, this will perform the video
@@ -5620,10 +5227,7 @@ declare namespace overwolf.social.youtube {
    * @param youTubeShareParams The share parameters.
    * @param callback Will contain the status of the request.
    */
-  function share(
-    youTubeShareParams: ShareParamaeters,
-    callback: CallbackFunction<Result>
-  ): void;
+  function share(youTubeShareParams: ShareParamaeters, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when the user's login state changes.
@@ -5740,9 +5344,7 @@ declare namespace overwolf.social.reddit {
    * @param callback Will contain user information or error if the request has
    * failed.
    */
-  function getUserInfo(
-    callback: CallbackFunction<GetUserInfoResult<User>>
-  ): void;
+  function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
 
   /**
    * Search for subreddits whose names begin with a substring.
@@ -5750,10 +5352,7 @@ declare namespace overwolf.social.reddit {
    * @param callback Will contain an array of subreddits that match the search
    * string.
    */
-  function searchSubreddits(
-    query: string,
-    callback: CallbackFunction<SearchSubredditsResult>
-  ): void;
+  function searchSubreddits(query: string, callback: CallbackFunction<SearchSubredditsResult>): void;
 
   /**
    * If the user is currently logged into Reddit, this will perform the video
@@ -5766,10 +5365,7 @@ declare namespace overwolf.social.reddit {
    * @param youTubeShareParams The share parameters.
    * @param callback Will contain the status of the request.
    */
-  function share(
-    youTubeShareParams: ShareParamaeters,
-    callback: CallbackFunction<Result>
-  ): void;
+  function share(youTubeShareParams: ShareParamaeters, callback: CallbackFunction<Result>): void;
 
   /**
    * Fired when the user's login state changes.
