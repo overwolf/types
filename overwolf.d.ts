@@ -2384,6 +2384,7 @@ declare namespace overwolf.games.events {
 
   interface InfoUpdates2Event {
     info: any;
+    feature: string;
   }
 
   /**
