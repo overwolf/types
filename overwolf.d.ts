@@ -627,7 +627,7 @@ declare namespace overwolf.media.replays {
   /**
    * Replays settings container.
    */
-  interface ReplaysSettings extends streaming.StreamSettings {
+  interface ReplaySettings extends streaming.StreamSettings {
     /**
      * Auto highlights configuration.
      */
@@ -646,7 +646,7 @@ declare namespace overwolf.media.replays {
      * Array of requested highlights.
      * use ["*"] to register all features.
      */
-    requireHighlights: string;
+    requiredHighlights: string[];
   }
 
   interface TurnOffResult extends Result {
@@ -662,6 +662,10 @@ declare namespace overwolf.media.replays {
     mediaFolder?: string;
     osVersion?: string;
     osBuild?: string;
+  }
+
+  interface GetHighlightsFeaturesResult extends Result {
+    features?: string[];
   }
 
   interface GetStateResult extends Result {
@@ -702,7 +706,7 @@ declare namespace overwolf.media.replays {
     extensions: string[];
   }
 
-  interface onHighlightsCapturedEvent {
+  interface HighlightsCapturedEvent {
     game_id: number;
     match_id: string;
     match_internal_id: string;
@@ -744,7 +748,7 @@ declare namespace overwolf.media.replays {
    * the request.
    */
   function turnOn(
-    settings: ReplaysSettings,
+    settings: ReplaySettings,
     callback: CallbackFunction<TurnOnResult>
   ): void;
 
@@ -893,7 +897,7 @@ declare namespace overwolf.media.replays {
    */
   function getHighlightsFeatures(
     gameId: number,
-    callback: CallbackFunction<Result>
+    callback: CallbackFunction<GetHighlightsFeaturesResult>
   ): void;
 
   /**
@@ -919,7 +923,7 @@ declare namespace overwolf.media.replays {
   /**
    * Fired when a new Replay highlight recorded (when highlightsSetting is enabled).
    */
-  const onHighlightsCapturedEvent: Event<onHighlightsCapturedEvent>;
+  const onHighlightsCaptured: Event<HighlightsCapturedEvent>;
   
 }
 
