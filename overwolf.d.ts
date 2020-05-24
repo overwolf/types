@@ -665,7 +665,7 @@ declare namespace overwolf.media.replays {
   }
 
   interface GetHighlightsFeaturesResult extends Result {
-    features?: [];
+    features?: string[];
   }
 
   interface GetStateResult extends Result {
