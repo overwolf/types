@@ -1143,7 +1143,7 @@ declare namespace overwolf.windows {
     window_state: string;
     window_previous_state: string;
     window_state_ex: string;
-    wondow_previous_state_ex: string;
+    window_previous_state_ex: string;
     app_id: string;
     window_name: string;
   }
