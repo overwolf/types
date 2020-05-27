@@ -44,7 +44,7 @@ declare namespace overwolf.io {
   namespace enums {
     const enum eEncoding {
       UTF8 = "UTF8",
-      UTF8BOM = "UTF8DOM",
+      UTF8BOM = "UTF8BOM",
       Unicode = "UNICODE",
       UnicodeBOM = "UnicodeBOM",
       ASCII = "ASCII"
@@ -2560,12 +2560,13 @@ declare namespace overwolf.games.inputTracking {
 
 declare namespace overwolf.web {
   namespace enums {
-    enum HttpRequestMethods {
+   const enum HttpRequestMethods {
       GET = "GET",
       HEAD = "HEAD",
       POST = "POST",
       PUT = "PUT",
-      DELETE = "DELETE"
+      DELETE = "DELETE",
+      PATCH = "PATCH"
     }
   }
 
