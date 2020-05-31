@@ -4989,7 +4989,14 @@ declare namespace overwolf.settings {
   }
 
   interface FolderResult extends Result {
-    path: string;
+    path: {
+      /** "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" */
+      Type: string
+      /** the actual filepath */
+      Value: string
+      /** "Folders_VideoCapturesFolder" */
+      Name: string
+    };
   }
 
   interface GetAudioCaptureSettingsResult extends Result {
