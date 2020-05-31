@@ -3800,13 +3800,6 @@ declare namespace overwolf.streaming {
     callback: CallbackFunction<GetAudioDevicesResult>
   ): void;
 
-  /**
-   * Return list of all running recores service (extensions ids).
-   * @param callback
-   */
-  function getRunningRecorders(
-    callback: (result: { extensions: string[] }) => void
-  ): void;
 
   /**
    * Fired when the stream started streaming a new image source (desktop, game).
