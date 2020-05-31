@@ -5276,7 +5276,7 @@ declare namespace overwolf.settings.hotkeys {
   /**
    * Returns the hotkey assigned for the current extension in all the games.
    */
-  function get(): CallbackFunction<GetAssignedHotkeyResult>;
+  function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
 
   /**
    * Fired only for hotkeys that are set in the manifest as hold.
