@@ -3,7 +3,7 @@ declare namespace overwolf {
 
   enum ResultStatusTypes {
     Success = "success",
-    Error = "error"
+    Error = "error",
   }
 
   interface Result {
@@ -47,7 +47,7 @@ declare namespace overwolf.io {
       UTF8BOM = "UTF8BOM",
       Unicode = "Unicode",
       UnicodeBOM = "UnicodeBOM",
-      ASCII = "ASCII"
+      ASCII = "ASCII",
     }
   }
 
@@ -67,6 +67,15 @@ declare namespace overwolf.io {
 
   interface ReadFileContentsResult extends Result {
     content?: string;
+  }
+
+  interface DirResult extends Result {
+    data?: FileInDir[];
+  }
+
+  interface FileInDir {
+    name: string;
+    type: string;
   }
 
   /**
@@ -134,10 +143,7 @@ declare namespace overwolf.io {
    * @param path The target path
    * @param callback result callback.
    */
-  function dir(
-    path: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function dir(path: string, callback: CallbackFunction<DirResult>): void;
 
   /**
    * Reads a file's contents and returns an array of byte values.
@@ -161,7 +167,7 @@ declare namespace overwolf.io {
   function readTextFile(
     path: string,
     options: ReadFileOptions,
-    callback: CallbackFunction<Result>
+    callback: CallbackFunction<ReadFileContentsResult>
   ): void;
 
   /**
@@ -169,10 +175,7 @@ declare namespace overwolf.io {
    * @param path The target path.
    * @param callback result callback.
    */
-  function exist(
-    path: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function exist(path: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Start listening on file.
@@ -195,10 +198,7 @@ declare namespace overwolf.io {
    * There are no callbacks - as this will never fail (even if the stream doesn't exist).
    * @param id listen Id.
    */
-  function stopFileListener(
-    id: string
-  ): void;
-
+  function stopFileListener(id: string): void;
 }
 
 declare namespace overwolf.media {
@@ -208,7 +208,7 @@ declare namespace overwolf.media {
      */
     const enum eMediaType {
       Video = "Video",
-      Image = "Image"
+      Image = "Image",
     }
   }
 
@@ -620,7 +620,7 @@ declare namespace overwolf.media.replays {
   namespace enums {
     const enum ReplayType {
       Video = "Video",
-      Gif = "Gif"
+      Gif = "Gif",
     }
   }
 
@@ -725,8 +725,8 @@ declare namespace overwolf.media.replays {
   }
 
   interface raw_events {
-    type:string;
-    time:number;
+    type: string;
+    time: number;
   }
 
   /**
@@ -924,7 +924,6 @@ declare namespace overwolf.media.replays {
    * Fired when a new Replay highlight recorded (when highlightsSetting is enabled).
    */
   const onHighlightsCaptured: Event<HighlightsCapturedEvent>;
-  
 }
 
 declare namespace overwolf.profile {
@@ -933,7 +932,7 @@ declare namespace overwolf.profile {
     Offline = "Offline",
     Connecting = "Connecting",
     Online = "Online",
-    Disconnecting = "Disconnecting"
+    Disconnecting = "Disconnecting",
   }
 
   interface GetCurrentUserResult extends Result {
@@ -973,11 +972,10 @@ declare namespace overwolf.profile {
 }
 
 declare namespace overwolf.profile.subscriptions {
-
   const enum eState {
     Active = 0,
     Cancelled = 1,
-    Revoked = 2
+    Revoked = 2,
   }
 
   interface Info {
@@ -1025,7 +1023,7 @@ declare namespace overwolf.profile.subscriptions {
 declare namespace overwolf.windows {
   namespace enums {
     const enum WindowStyle {
-      InputPassThrough = "InputPassThrough"
+      InputPassThrough = "InputPassThrough",
     }
 
     const enum WindowDragEdge {
@@ -1037,13 +1035,13 @@ declare namespace overwolf.windows {
       TopLeft = "TopLeft",
       TopRight = "TopRight",
       BottomLeft = "BottomLeft",
-      BottomRight = "BottomRight"
+      BottomRight = "BottomRight",
     }
 
     const enum MessagePromptIcon {
       None = "None",
       QuestionMark = "QuestionMark",
-      ExclamationMark = "ExclamationMark"
+      ExclamationMark = "ExclamationMark",
     }
   }
 
@@ -1116,11 +1114,7 @@ declare namespace overwolf.windows {
   interface GetWindowsStatesResult extends Result {
     result: Dictionary<string>;
     resultV2: Dictionary<
-      "closed" |
-      "minimized" |
-      "hidden" |
-      "normal" |
-      "maximized"
+      "closed" | "minimized" | "hidden" | "normal" | "maximized"
     >;
   }
 
@@ -1642,9 +1636,7 @@ declare namespace overwolf.windows {
   /**
    * Fired when out of process iframe crashed.
    */
-  const onIsolatedIframeProcessCrashed: Event<
-    IsolatedIframeProcessCrashedEvent
-  >;
+  const onIsolatedIframeProcessCrashed: Event<IsolatedIframeProcessCrashedEvent>;
 
   /**
    * Fired when the user was prevented from closing a window using Alt+F4
@@ -1947,7 +1939,7 @@ declare namespace overwolf.benchmarking {
 declare namespace overwolf.games {
   const enum GameInfoType {
     Game = 0,
-    Launcher = 1
+    Launcher = 1,
   }
 
   interface GameInfo {
@@ -2116,8 +2108,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number },
-    monitorHandle: { value: number }
+    windowHandle: { value: number };
+    monitorHandle: { value: number };
   }
 
   interface GameInfoUpdate {
@@ -2173,8 +2165,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number },
-    monitorHandle: { value: number }
+    windowHandle: { value: number };
+    monitorHandle: { value: number };
   }
 
   interface GameInfoUpdatedEvent {
@@ -2201,7 +2193,7 @@ declare namespace overwolf.games {
    */
   function getRunningGameInfo(
     callback: CallbackFunction<GetRunningGameInfoResult>
-    ): void;
+  ): void;
 
   /**
    * Returns information about a game with a given game id.Will only return
@@ -2379,11 +2371,9 @@ declare namespace overwolf.games.launchers.events.provider {
     features: string[],
     callback?: CallbackFunction<Result>
   ): void;
-  
 }
 
 declare namespace overwolf.games.events {
-
   interface SetRequiredFeaturesResult extends Result {
     supportedFeatures?: string[];
   }
@@ -2474,13 +2464,13 @@ declare namespace overwolf.games.inputTracking {
     onGame: boolean;
     handle: { value: number };
   }
- 
+
   interface InputActivity {
     aTime: number;
     iTime: number;
     apm: boolean;
-    mouse: { total: number, dist: number, keys: any };
-    keyboard: { total: number, keys: any };
+    mouse: { total: number; dist: number; keys: any };
+    keyboard: { total: number; keys: any };
   }
 
   interface GetActivityResult extends Result {
@@ -2584,13 +2574,13 @@ declare namespace overwolf.games.inputTracking {
 
 declare namespace overwolf.web {
   namespace enums {
-   const enum HttpRequestMethods {
+    const enum HttpRequestMethods {
       GET = "GET",
       HEAD = "HEAD",
       POST = "POST",
       PUT = "PUT",
       DELETE = "DELETE",
-      PATCH = "PATCH"
+      PATCH = "PATCH",
     }
   }
 
@@ -2869,14 +2859,14 @@ declare namespace overwolf.logitech.led {
       ARROW_DOWN = "ARROW_DOWN",
       ARROW_RIGHT = "ARROW_RIGHT",
       NUM_ZERO = "NUM_ZERO",
-      NUM_PERIOD = "NUM_PERIOD"
+      NUM_PERIOD = "NUM_PERIOD",
     }
 
     const enum LogitechDeviceLightingType {
       Mono = "Mono",
       RGB = "RGB",
       PerkeyRGB = "PerkeyRGB",
-      All = "All"
+      All = "All",
     }
   }
 
@@ -3143,39 +3133,39 @@ declare namespace overwolf.streaming {
     const enum StreamMouseCursor {
       both = "both",
       gameOnly = "gameOnly",
-      desktopOnly = "desktopOnly"
+      desktopOnly = "desktopOnly",
     }
 
     const enum ObsStreamingMode {
       OBSNoAwareness = "OBSNoAwareness",
       OBSAwareness = "OBSAwareness",
-      OBSAwarenessHideFromDeskTop = "OBSAwarenessHideFromDeskTop"
+      OBSAwarenessHideFromDeskTop = "OBSAwarenessHideFromDeskTop",
     }
 
     const enum StreamingProvider {
       Unknown = "Unknown",
       Twitch = "Twitch",
       VideoRecorder = "VideoRecorder",
-      RTMP = "RTMP"
+      RTMP = "RTMP",
     }
 
     const enum StreamingMode {
       WhenVisible = "WhenVisible",
       Always = "Always",
-      Never = "Never"
+      Never = "Never",
     }
 
     const enum StreamEncoder {
       INTEL = "INTEL",
       X264 = "X264",
       NVIDIA_NVENC = "NVIDIA_NVENC",
-      AMD_AMF = "AMD_AMF"
+      AMD_AMF = "AMD_AMF",
     }
 
     const enum StreamEncoderPreset_Intel {
       LOW = "LOW",
       MEDIUM = "MEDIUM",
-      HIGH = "HIGH"
+      HIGH = "HIGH",
     }
 
     const enum StreamEncoderPreset_x264 {
@@ -3188,7 +3178,7 @@ declare namespace overwolf.streaming {
       SLOW = "SLOW",
       SLOWER = "SLOWER",
       VERYSLOW = "VERYSLOW",
-      PLACEBO = "PLACEBO"
+      PLACEBO = "PLACEBO",
     }
 
     const enum StreamEncoderPreset_AMD_AMF {
@@ -3197,14 +3187,14 @@ declare namespace overwolf.streaming {
       SPEED = "SPEED",
       QUALITY = "QUALITY",
       ULTRA_LOW_LATENCY = "ULTRA_LOW_LATENCY",
-      LOW_LATENCY = "LOW_LATENCY"
+      LOW_LATENCY = "LOW_LATENCY",
     }
 
     const enum StreamEncoderRateControl_AMD_AMF {
       RC_CBR = "RC_CBR",
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
-      RC_VBR_MINQP = "RC_VBR_MINQP"
+      RC_VBR_MINQP = "RC_VBR_MINQP",
     }
 
     const enum StreamEncoderPreset_NVIDIA {
@@ -3217,7 +3207,7 @@ declare namespace overwolf.streaming {
       HIGH_PERFORMANCE_LOW_LATENCY = "HIGH_PERFORMANCE_LOW_LATENCY",
       HIGH_QUALITY_LOW_LATENCY = "HIGH_QUALITY_LOW_LATENCY",
       LOSSLESS = "LOSSLESS",
-      HIGH_PERFORMANCE_LOSSLESS = "HIGH_PERFORMANCE_LOSSLESS"
+      HIGH_PERFORMANCE_LOSSLESS = "HIGH_PERFORMANCE_LOSSLESS",
     }
 
     const enum StreamEncoderRateControl_NVIDIA {
@@ -3225,21 +3215,21 @@ declare namespace overwolf.streaming {
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
       RC_VBR_MINQP = "RC_VBR_MINQP",
-      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
+      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
     const enum eTobiiEffectType {
       Default = "Default",
       Bubble = "Bubble",
       Solid = "Solid",
-      Inverted = "Inverted"
+      Inverted = "Inverted",
     }
     const enum StreamEncoderRateControl_x264 {
       RC_CBR = "RC_CBR",
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
       RC_VBR_MINQP = "RC_VBR_MINQP",
-      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
+      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
     const enum IndicationPosition {
@@ -3247,15 +3237,14 @@ declare namespace overwolf.streaming {
       TopLeftCorner = "TopLeftCorner",
       TopRightCorner = "TopRightCorner",
       BottomLeftCorner = "BottomLeftCorner",
-      BottomRightCorner = "BottomRightCorner"
+      BottomRightCorner = "BottomRightCorner",
     }
 
     const enum IndicationType {
       NoIndication = "NoIndication",
       Dot = "Dot",
-      DotAndTimer = "DotAndTimer"
+      DotAndTimer = "DotAndTimer",
     }
-
   }
 
   /**
@@ -3633,8 +3622,7 @@ declare namespace overwolf.streaming {
     default_playback_device_id?: string;
   }
 
-  interface SplitResult extends Result { }
-  
+  interface SplitResult extends Result {}
 
   interface StreamingSourceImageChangedEvent {
     stream_id: number;
@@ -3819,7 +3807,6 @@ declare namespace overwolf.streaming {
     callback: CallbackFunction<GetAudioDevicesResult>
   ): void;
 
-
   /**
    * Fired when the stream started streaming a new image source (desktop, game).
    */
@@ -3884,7 +3871,6 @@ declare namespace overwolf.log {
 }
 
 declare namespace overwolf.os {
-
   /**
    * Returns regional information about the user.
    * @param callback Called with the region info.
@@ -3895,7 +3881,7 @@ declare namespace overwolf.os {
     info: RegionInfo;
   }
 
-  interface RegionInfo{
+  interface RegionInfo {
     date_format?: string;
     time_format?: string;
     currency_symbol?: string;
@@ -3905,13 +3891,15 @@ declare namespace overwolf.os {
 }
 
 declare namespace overwolf.os.tray {
-
   /**
    * Create a tray icon for the calling extension with the supplied context menu object.
    * @param menu The menu object.
    * @param callback Called with the result.
    */
-  function setMenu(menu: ExtensionTrayMenu, callback: CallbackFunction<Result>): void;
+  function setMenu(
+    menu: ExtensionTrayMenu,
+    callback: CallbackFunction<Result>
+  ): void;
 
   interface ExtensionTrayMenu {
     menu_items: menu_item[];
@@ -3924,11 +3912,11 @@ declare namespace overwolf.os.tray {
     sub_items?: menu_item[];
   }
 
-   /**
+  /**
    * Fired when an item from the tray icon’s context menu is selected.
    */
   const onMenuItemClicked: Event<onMenuItemClickedEvent>;
-  
+
   interface onMenuItemClickedEvent {
     item: string;
   }
@@ -3942,8 +3930,6 @@ declare namespace overwolf.os.tray {
    * Fired when the tray icon is double clicked.
    */
   const onTrayIconDoubleClicked: Event<any>;
-
-
 }
 
 declare namespace overwolf.extensions {
@@ -3975,13 +3961,13 @@ declare namespace overwolf.extensions {
     Skin = "Skin",
     TSSkin = "TSSkin",
     GameEventsProvider = "GameEventsProvider",
-    Unknown = "Unknown"
+    Unknown = "Unknown",
   }
 
   const enum ExtensionUpdateState {
     UpToDate = "UpToDate",
     UpdateAvailable = "UpdateAvailable",
-    PendingRestart = "PendingRestart"
+    PendingRestart = "PendingRestart",
   }
 
   /**
@@ -4519,16 +4505,18 @@ declare namespace overwolf.extensions {
 
   interface ExtensionUpdatedEvent {
     version: string;
-    state: ExtensionUpdateState
+    state: ExtensionUpdateState;
   }
-  
+
   /**
    * The following types are related to the |onUncaughtException| event - which
    * is a different than the usual events.
    */
-  type UncaughtExceptionCallback = (message: string, 
-                                    functionName: string, 
-                                    scriptName: string) => void;
+  type UncaughtExceptionCallback = (
+    message: string,
+    functionName: string,
+    scriptName: string
+  ) => void;
 
   interface UncaughtExceptionEvent {
     addListener(callback: UncaughtExceptionCallback): void;
@@ -4651,6 +4639,35 @@ declare namespace overwolf.extensions {
   const onUncaughtException: UncaughtExceptionEvent;
 }
 
+declare namespace overwolf.extensions.io {
+  const enum StorageSpace {
+    pictures = "pictures",
+    videos = "videos",
+    appData = "appData",
+  }
+  interface GetStoragePathResult extends Result {
+    path: string;
+  }
+
+  function getStoragePath(
+    space: StorageSpace,
+    callback: CallbackFunction<GetStoragePathResult>
+  ): void;
+
+  function readTextFile(
+    space: StorageSpace,
+    filePath: string,
+    callback: CallbackFunction<overwolf.io.ReadFileContentsResult>
+  ): void;
+
+  function writeTextFile(
+    space: StorageSpace,
+    filePath: string,
+    content: string,
+    callback: CallbackFunction<Result>
+  ): void;
+}
+
 declare namespace overwolf.extensions.current {
   interface GetExtraObject extends Result {
     object?: any;
@@ -4691,8 +4708,8 @@ declare namespace overwolf.extensions.sharedData {
   /**
    * Used by the owner app to set data for the consumer app, by appId.
    * @param appId The requested app id.
-   * @param value 
-   * @param callback 
+   * @param value
+   * @param callback
    */
   function set(
     appId: string,
@@ -4702,8 +4719,8 @@ declare namespace overwolf.extensions.sharedData {
 
   /**
    * Used by the consumer app to get data set by the owner app.
-   * @param param 
-   * @param callback 
+   * @param param
+   * @param callback
    */
   function get(
     param: SharedDataParams,
@@ -4722,7 +4739,7 @@ declare namespace overwolf.utils {
     const enum eStorePage {
       LoginPage = "LoginPage",
       OneAppPage = "OneAppPage",
-      SubscriptionPage = "SubscriptionPage"
+      SubscriptionPage = "SubscriptionPage",
     }
   }
 
@@ -4979,7 +4996,7 @@ declare namespace overwolf.settings {
       Original = "Original",
       R1080p = "R1080p",
       R720p = "R720p",
-      R480p = "R480p"
+      R480p = "R480p",
     }
 
     const enum eIndicationPosition {
@@ -4987,7 +5004,7 @@ declare namespace overwolf.settings {
       TopLeftCorner = 0,
       TopRightCorner = 1,
       BottomLeftCorner = 2,
-      BottomRightCorner = 3
+      BottomRightCorner = 3,
     }
   }
 
@@ -5014,11 +5031,11 @@ declare namespace overwolf.settings {
   interface FolderResult extends Result {
     path: {
       /** "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" */
-      Type: string
+      Type: string;
       /** the actual filepath */
-      Value: string
+      Value: string;
       /** "Folders_VideoCapturesFolder" */
-      Name: string
+      Name: string;
     };
   }
 
@@ -5235,13 +5252,13 @@ declare namespace overwolf.settings.games {
   }
 
   interface AutolaunchEnabledResult extends GameClassResult {
-    autoLaunchEnabled: boolean
+    autoLaunchEnabled: boolean;
   }
-  
-  interface OverlayEnabledResult extends GameClassResult{
-    enabled: boolean
+
+  interface OverlayEnabledResult extends GameClassResult {
+    enabled: boolean;
   }
-  
+
   interface OverlayEnablementChangedEvent {
     gameId: number;
     enabled: boolean;
@@ -5304,7 +5321,7 @@ declare namespace overwolf.settings.hotkeys {
 
   interface OnHoldEvent {
     name: string;
-    state: 'up' | 'down';
+    state: "up" | "down";
   }
 
   interface OnPressedEvent {
@@ -5321,7 +5338,7 @@ declare namespace overwolf.settings.hotkeys {
   /**
    * Returns the hotkey assigned for the current extension in all the games.
    */
-  function get(): CallbackFunction<GetAssignedHotkeyResult>;
+  function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
 
   /**
    * Fired only for hotkeys that are set in the manifest as hold.
@@ -5353,7 +5370,7 @@ declare namespace overwolf.social.discord {
   const enum PostPermission {
     None = 0,
     Text,
-    File
+    File,
   }
 
   interface User {
@@ -5435,7 +5452,9 @@ declare namespace overwolf.social.discord {
    * @param callback Will contain user information or error if the request has
    * failed.
    */
-  function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
+  function getUserInfo(
+    callback: CallbackFunction<GetUserInfoResult<User>>
+  ): void;
 
   /**
    * If the user is currently logged into Discord, this will return the guilds
@@ -5616,7 +5635,7 @@ declare namespace overwolf.social.youtube {
   const enum Privacy {
     Public = "Public",
     Unlisted = "Unlisted",
-    Private = "Private"
+    Private = "Private",
   }
 
   interface ShareParamaeters {
