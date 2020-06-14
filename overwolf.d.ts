@@ -4177,7 +4177,7 @@ declare namespace overwolf.extensions {
       /**
        * The type name of the event.
        */
-      event: "GameLaunch" | "AllGamesLaunch";
+      event: "GameLaunch" | "AllGamesLaunch" | "LaunchWithOverwolf";
       /**
        * The list of game class IDs for which the app will launch.
        */
@@ -4979,6 +4979,10 @@ declare namespace overwolf.settings {
     position?: enums.eIndicationPosition;
   }
 
+  interface GeneralExtensionSettings {
+    auto_launch_with_overwolf: boolean;
+  }
+
   interface GetHotKeyResult extends Result {
     hotkey: string;
     isEnabled: boolean;
@@ -5006,6 +5010,10 @@ declare namespace overwolf.settings {
 
   interface GetFpsSettingsResult extends Result {
     settings: FpsSettings;
+  }
+
+  interface GetExtensionSettingsResult extends Result {
+    settings: GeneralExtensionSettings;
   }
 
   interface FpsSettingsChangedEvent {
@@ -5160,6 +5168,24 @@ declare namespace overwolf.settings {
    */
   function getFpsSettings(
     callback: CallbackFunction<GetFpsSettingsResult>
+  ): void;
+
+  /**
+   * Sets the extension settings.
+   * @param settings
+   * @param callback
+   */
+  function setExtensionSettings(
+    settings: GeneralExtensionSettings,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Gets the extension settings.
+   * @param callback
+   */
+  function getExtensionSettings(
+    callback: CallbackFunction<GetExtensionSettingsResult>
   ): void;
 
   /**
