@@ -1138,6 +1138,13 @@ declare namespace overwolf.windows {
     optimized?: boolean;
   }
 
+  interface ChangeWindowSizeParams {
+    window_id: string;
+    width: number;
+    height: number;
+    auto_dpi_resize: boolean;
+  }
+
   interface WindowStateChangedEvent {
     window_id: string;
     window_state: string;
@@ -1280,6 +1287,18 @@ declare namespace overwolf.windows {
     height: number,
     callback?: CallbackFunction<Result>
   ): void;
+
+  /**
+   * Changes the window size to the new width and height, in pixels, including DPI scale when resizing.
+   * @param changeSizeParams Container for the window settings.
+   * @param callback A callback which is called when the size change is
+   * completed.
+   */
+  function changeSize(
+    changeSizeParams: ChangeWindowSizeParams,
+    callback?: CallbackFunction<Result>
+  ): void;
+
 
   /**
    * Changes the window position in pixels from the top left corner.
