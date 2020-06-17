@@ -4862,6 +4862,20 @@ declare namespace overwolf.campaigns.crossapp {
      * Conversion data for the specified action.
      */
     data: any;
+
+    /**
+     * The UID of the app that performed the conversion (the promoted app).
+     *
+     * Set by the Overwolf client when calling |consumeConversions|.
+     */
+    readonly origin_app_uid?: string;
+
+    /**
+     * When the conversion took place.
+     *
+     * Set by the Overwolf client when calling |consumeConversions|.
+     */
+    readonly timestamp?: number;
   }
 
   /**
