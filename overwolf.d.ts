@@ -4473,7 +4473,9 @@ declare namespace overwolf.extensions {
     left: number;
   }
 
-  interface GetManifestResult extends Result, Manifest {}
+  interface GetManifestResult extends Result, Manifest {
+    reason?: string;
+  }
 
   interface GetInfoResult extends Result {
     info: string;
