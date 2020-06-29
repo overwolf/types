@@ -5527,6 +5527,7 @@ declare namespace overwolf.settings.hotkeys {
     isPassthrough: boolean;
     hold: boolean;
     IsUnassigned: boolean;
+    binding: string;
   }
 
   interface GetAssignedHotkeyResult extends Result {
