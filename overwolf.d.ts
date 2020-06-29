@@ -4507,6 +4507,10 @@ declare namespace overwolf.extensions {
     version: string;
     state: ExtensionUpdateState;
   }
+  
+  interface AppInstallationEvent {
+    UID: string;
+  }
 
   /**
    * The following types are related to the |onUncaughtException| event - which
@@ -4637,6 +4641,14 @@ declare namespace overwolf.extensions {
    * Called for global uncaught exceptions in a frame.
    */
   const onUncaughtException: UncaughtExceptionEvent;
+  
+  /*
+  * Called when an extension is installed
+  */
+  const onAppInstalled: Event<AppInstallationEvent>;
+  
+  const onAppUninstalled: Event<AppInstallationEvent>;
+
 }
 
 declare namespace overwolf.extensions.io {
