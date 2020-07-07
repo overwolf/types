@@ -4894,7 +4894,7 @@ declare namespace overwolf.campaigns.crossapp {
    * See |overwolf.campaigns.crossapp.getAvailableActions|
    */
   interface GetCrossAppAvailableActionsResult extends Result {
-    actions: CrossAppCampaign;
+    actions: CrossAppCampaign[];
   }
 
   /**
