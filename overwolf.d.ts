@@ -3996,6 +3996,10 @@ declare namespace overwolf.extensions {
      * A list of additional meta-data on the app
      */
     data: WebAppSettings;
+    /**
+     * Indicate whether the app is installed or not
+     */
+    is_installed: boolean;
   }
 
   interface Metadata {
