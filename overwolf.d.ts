@@ -3,7 +3,7 @@ declare namespace overwolf {
 
   enum ResultStatusTypes {
     Success = "success",
-    Error = "error"
+    Error = "error",
   }
 
   interface Result {
@@ -12,7 +12,7 @@ declare namespace overwolf {
      */
     success: boolean;
     /**
-     * Information regarding the error (if an error occured)
+     * Information regarding the error (if an error occurred)
      */
     error?: string;
   }
@@ -47,7 +47,7 @@ declare namespace overwolf.io {
       UTF8BOM = "UTF8BOM",
       Unicode = "Unicode",
       UnicodeBOM = "UnicodeBOM",
-      ASCII = "ASCII"
+      ASCII = "ASCII",
     }
   }
 
@@ -69,8 +69,17 @@ declare namespace overwolf.io {
     content?: string;
   }
 
+  interface DirResult extends Result {
+    data?: FileInDir[];
+  }
+
+  interface FileInDir {
+    name: string;
+    type: string;
+  }
+
   /**
-   * Checks for the existance of the file in the given path.
+   * Checks for the existence of the file in the given path.
    * @param filePath The path to check for.
    * @param callback Returns with the result.
    */
@@ -102,7 +111,7 @@ declare namespace overwolf.io {
    * Read the content to the target file.
    * @param filePath The full path of the file to write to.
    * @param encoding The encoding to use, see more at
-   * @param callback Called with the status of the request and the file contect.
+   * @param callback Called with the status of the request and the file content.
    */
   function readFileContents(
     filePath: string,
@@ -112,11 +121,11 @@ declare namespace overwolf.io {
 
   /**
    * Copy a file from the local extension directory to a destination on the
-   * localmachine.
+   * local machine.
    * @param src a relative (to the root of your extension's folder) file path or
    * a full overwolf-extension:// URI to the source file to be copied
    * @param dst The destination path (including filename) to copy to.
-   * @param overrideFile true if you want an existing file to be overriden,
+   * @param overrideFile true if you want an existing file to be overwritten,
    * false otherwise.
    * @param reserved for future use.
    * @param callback result callback.
@@ -134,14 +143,11 @@ declare namespace overwolf.io {
    * @param path The target path
    * @param callback result callback.
    */
-  function dir(
-    path: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function dir(path: string, callback: CallbackFunction<DirResult>): void;
 
   /**
    * Reads a file's contents and returns an array of byte values.
-   * This function is extremly slow! Use it only for small files.
+   * This function is extremely slow! Use it only for small files.
    * @param path The target path.
    * @param options Describes the different options to read a file.
    * @param callback result callback.
@@ -161,7 +167,7 @@ declare namespace overwolf.io {
   function readTextFile(
     path: string,
     options: ReadFileOptions,
-    callback: CallbackFunction<Result>
+    callback: CallbackFunction<ReadFileContentsResult>
   ): void;
 
   /**
@@ -169,10 +175,7 @@ declare namespace overwolf.io {
    * @param path The target path.
    * @param callback result callback.
    */
-  function exist(
-    path: string,
-    callback: CallbackFunction<Result>
-  ): void;
+  function exist(path: string, callback: CallbackFunction<Result>): void;
 
   /**
    * Start listening on file.
@@ -195,10 +198,7 @@ declare namespace overwolf.io {
    * There are no callbacks - as this will never fail (even if the stream doesn't exist).
    * @param id listen Id.
    */
-  function stopFileListener(
-    id: string
-  ): void;
-
+  function stopFileListener(id: string): void;
 }
 
 declare namespace overwolf.media {
@@ -208,7 +208,7 @@ declare namespace overwolf.media {
      */
     const enum eMediaType {
       Video = "Video",
-      Image = "Image"
+      Image = "Image",
     }
   }
 
@@ -273,7 +273,7 @@ declare namespace overwolf.media {
    * Takes a window screenshot and calls the callback with the success status
    * and the screenshot URL. The screenshot is saved to the screenshots folder.
    * @param windowHandle The window Name
-   * @param postMediaEvent set true to posr media event (onMediaEvent)
+   * @param postMediaEvent set true to post media event (onMediaEvent)
    * @param targetFolder set target folder path to screen shot
    * @param callback A function called after the screenshot was taken.
    */
@@ -288,7 +288,7 @@ declare namespace overwolf.media {
    * Takes a window screenshot and calls the callback with the success status
    * and the screenshot URL. The screenshot is saved to the screenshots folder.
    * @param windowHandle The window Name
-   * @param postMediaEvent set true to posr media event (onMediaEvent)
+   * @param postMediaEvent set true to post media event (onMediaEvent)
    * @param callback A function called after the screenshot was taken.
    */
   function takeWindowsScreenshotByHandle(
@@ -301,7 +301,7 @@ declare namespace overwolf.media {
    * Takes a window screenshot and calls the callback with the success status
    * and the screenshot URL. The screenshot is saved to the screenshots folder.
    * @param windowName The window Name
-   * @param postMediaEvent set true to posr media event (onMediaEvent)
+   * @param postMediaEvent set true to post media event (onMediaEvent)
    * @param targetFolder set target folder path to screen shot
    * @param callback A function called after the screenshot was taken.
    */
@@ -316,7 +316,7 @@ declare namespace overwolf.media {
    * Takes a window screenshot and calls the callback with the success status
    * and the screenshot URL. The screenshot is saved to the screenshots folder.
    * @param windowName The window Name
-   * @param postMediaEvent set true to posr media event (onMediaEvent)
+   * @param postMediaEvent set true to post media event (onMediaEvent)
    * @param callback A function called after the screenshot was taken.
    */
   function takeWindowsScreenshotByName(
@@ -386,8 +386,8 @@ declare namespace overwolf.media {
 
   /**
    * Returns the total size of the video capture folder created by the app. This
-   * includes all video/thumbnail and other filesthat are under the apps video
-   * folder - which is locatedinside the configured Overwolf video capture
+   * includes all video/thumbnail and other files that are under the apps video
+   * folder - which is located inside the configured Overwolf video capture
    * folder. NOTE: this function can take a long time to return if the folder
    * contains a large amount of files (on some computers) - therefore,try to
    * reduce the amount of times you call it.
@@ -398,7 +398,7 @@ declare namespace overwolf.media {
   ): void;
 
   /**
-   * Similar to |getAppVideoCaptureFolderSize| but looks at the appsscreen
+   * Similar to |getAppVideoCaptureFolderSize| but looks at the apps screen
    * capture folder.
    * @param callback A callback with the size in MB.
    */
@@ -547,7 +547,7 @@ declare namespace overwolf.media.videos {
    * form.
    * @param segments A JSON containing a list of segments, each segment has a
    * start time and an end time in milliseconds. The segments must be sorted in
-   * acsending order. Example:
+   * ascending order. Example:
    * {
    *   "segments": [
    *     { "startTime": 2000, "endTime": 4000 },
@@ -566,7 +566,7 @@ declare namespace overwolf.media.videos {
 
   /**
    * Creates a compilation video out of a source video and a list of segments.
-   * @param files list of files to ccomposit to output video file
+   * @param files list of files to composite to output video file
    * (overwolf://media form. or file:///)
    * @param outputFile the file output name
    * @param callback A callback function which will be called with the status of
@@ -620,14 +620,14 @@ declare namespace overwolf.media.replays {
   namespace enums {
     const enum ReplayType {
       Video = "Video",
-      Gif = "Gif"
+      Gif = "Gif",
     }
   }
 
   /**
    * Replays settings container.
    */
-  interface ReplaysSettings extends streaming.StreamSettings {
+  interface ReplaySettings extends streaming.StreamSettings {
     /**
      * Auto highlights configuration.
      */
@@ -646,7 +646,7 @@ declare namespace overwolf.media.replays {
      * Array of requested highlights.
      * use ["*"] to register all features.
      */
-    requireHighlights: string;
+    requiredHighlights: string[];
   }
 
   interface TurnOffResult extends Result {
@@ -662,6 +662,10 @@ declare namespace overwolf.media.replays {
     mediaFolder?: string;
     osVersion?: string;
     osBuild?: string;
+  }
+
+  interface GetHighlightsFeaturesResult extends Result {
+    features?: string[];
   }
 
   interface GetStateResult extends Result {
@@ -702,7 +706,7 @@ declare namespace overwolf.media.replays {
     extensions: string[];
   }
 
-  interface onHighlightsCapturedEvent {
+  interface HighlightsCapturedEvent {
     game_id: number;
     match_id: string;
     match_internal_id: string;
@@ -721,8 +725,8 @@ declare namespace overwolf.media.replays {
   }
 
   interface raw_events {
-    type:string;
-    time:number;
+    type: string;
+    time: number;
   }
 
   /**
@@ -744,7 +748,7 @@ declare namespace overwolf.media.replays {
    * the request.
    */
   function turnOn(
-    settings: ReplaysSettings,
+    settings: ReplaySettings,
     callback: CallbackFunction<TurnOnResult>
   ): void;
 
@@ -771,7 +775,7 @@ declare namespace overwolf.media.replays {
    * callback which is needed to finish capturing the replay. You can only call
    * this method if replay mode is on and no other replay is currently being
    * captured to a file.
-   * @param pastDuration The replay lengh, in milliseconds to include prior to
+   * @param pastDuration The replay length, in milliseconds to include prior to
    * the time of this call.
    * @param futureDuration The replay lengh, in milliseconds to include after
    * the time of this call. To ignore it, simply give it a non-positive value
@@ -794,9 +798,9 @@ declare namespace overwolf.media.replays {
    * this method if replay mode is on and no other replay is currently being
    * captured to a file.
    * @param replayType The type of replay to capture.
-   * @param pastDuration The replay lengh, in milliseconds to include prior to
+   * @param pastDuration The replay length, in milliseconds to include prior to
    * the time of this call.
-   * @param futureDuration The replay lengh, in milliseconds to include after
+   * @param futureDuration The replay length, in milliseconds to include after
    * the time of this call. To ignore it, simply give it a non-positive value
    * @param captureFinishedCallback A callback function which will be called
    * when capturing is finished, at the end of the future duration supplied to
@@ -817,7 +821,7 @@ declare namespace overwolf.media.replays {
    * callback which is needed to finish capturing the replay. You can only call
    * this method if replay mode is on and no other replay is currently being
    * captured to a file.
-   * @param pastDuration The video lengh, in milliseconds to include prior to
+   * @param pastDuration The video length, in milliseconds to include prior to
    * the time of this call.
    * @param callback A callback function which will be called with the status of
    * the request.
@@ -833,7 +837,7 @@ declare namespace overwolf.media.replays {
    * this method if replay mode is on and no other replay is currently being
    * captured to a file.
    * @param replayType The type of replay to capture.
-   * @param pastDuration The video lengh, in milliseconds to include prior to
+   * @param pastDuration The video length, in milliseconds to include prior to
    * the time of this call.
    * @param callback A callback function which will be called with the status of
    * the request.
@@ -893,7 +897,7 @@ declare namespace overwolf.media.replays {
    */
   function getHighlightsFeatures(
     gameId: number,
-    callback: CallbackFunction<Result>
+    callback: CallbackFunction<GetHighlightsFeaturesResult>
   ): void;
 
   /**
@@ -912,15 +916,14 @@ declare namespace overwolf.media.replays {
   const onCaptureWarning: Event<CaptureWarningEvent>;
 
   /**
-   * Fired when an replay serive is on (any other app);
+   * Fired when the replay service is on (any other app);
    */
   const onReplayServicesStarted: Event<ReplayServicesStartedEvent>;
 
   /**
    * Fired when a new Replay highlight recorded (when highlightsSetting is enabled).
    */
-  const onHighlightsCapturedEvent: Event<onHighlightsCapturedEvent>;
-  
+  const onHighlightsCaptured: Event<HighlightsCapturedEvent>;
 }
 
 declare namespace overwolf.profile {
@@ -929,7 +932,7 @@ declare namespace overwolf.profile {
     Offline = "Offline",
     Connecting = "Connecting",
     Online = "Online",
-    Disconnecting = "Disconnecting"
+    Disconnecting = "Disconnecting",
   }
 
   interface GetCurrentUserResult extends Result {
@@ -969,11 +972,10 @@ declare namespace overwolf.profile {
 }
 
 declare namespace overwolf.profile.subscriptions {
-
   const enum eState {
     Active = 0,
     Cancelled = 1,
-    Revoked = 2
+    Revoked = 2,
   }
 
   interface Info {
@@ -1021,7 +1023,7 @@ declare namespace overwolf.profile.subscriptions {
 declare namespace overwolf.windows {
   namespace enums {
     const enum WindowStyle {
-      InputPassThrough = "InputPassThrough"
+      InputPassThrough = "InputPassThrough",
     }
 
     const enum WindowDragEdge {
@@ -1033,13 +1035,13 @@ declare namespace overwolf.windows {
       TopLeft = "TopLeft",
       TopRight = "TopRight",
       BottomLeft = "BottomLeft",
-      BottomRight = "BottomRight"
+      BottomRight = "BottomRight",
     }
 
     const enum MessagePromptIcon {
       None = "None",
       QuestionMark = "QuestionMark",
-      ExclamationMark = "ExclamationMark"
+      ExclamationMark = "ExclamationMark",
     }
   }
 
@@ -1112,11 +1114,7 @@ declare namespace overwolf.windows {
   interface GetWindowsStatesResult extends Result {
     result: Dictionary<string>;
     resultV2: Dictionary<
-      "closed" |
-      "minimized" |
-      "hidden" |
-      "normal" |
-      "maximized"
+      "closed" | "minimized" | "hidden" | "normal" | "maximized"
     >;
   }
 
@@ -1134,12 +1132,19 @@ declare namespace overwolf.windows {
     optimized?: boolean;
   }
 
+  interface ChangeWindowSizeParams {
+    window_id: string;
+    width: number;
+    height: number;
+    auto_dpi_resize: boolean;
+  }
+
   interface WindowStateChangedEvent {
     window_id: string;
     window_state: string;
     window_previous_state: string;
     window_state_ex: string;
-    wondow_previous_state_ex: string;
+    window_previous_state_ex: string;
     app_id: string;
     window_name: string;
   }
@@ -1240,7 +1245,7 @@ declare namespace overwolf.windows {
    * Start resizing the window from a specific edge or corner.
    * @param windowId The id or name of the window to resize.
    * @param edge The edge or corner from which to resize the window.
-   * @param contentRect The real content of the window (for the ingame drwing
+   * @param contentRect The real content of the window (for the in-game drawing
    * resizing white area)
    */
   function dragResize(
@@ -1276,6 +1281,18 @@ declare namespace overwolf.windows {
     height: number,
     callback?: CallbackFunction<Result>
   ): void;
+
+  /**
+   * Changes the window size to the new width and height, in pixels, including DPI scale when resizing.
+   * @param changeSizeParams Container for the window settings.
+   * @param callback A callback which is called when the size change is
+   * completed.
+   */
+  function changeSize(
+    changeSizeParams: ChangeWindowSizeParams,
+    callback?: CallbackFunction<Result>
+  ): void;
+
 
   /**
    * Changes the window position in pixels from the top left corner.
@@ -1378,7 +1395,7 @@ declare namespace overwolf.windows {
 
   /**
    * Returns an array of all open windows as objects. The objects can be
-   * manipulated like anyother window.
+   * manipulated like any other window.
    * @param callback A callback function which will be called with a map object
    * of (window-name, Window Object) items
    */
@@ -1555,14 +1572,14 @@ declare namespace overwolf.windows {
 
   /**
    * Is window muted.
-   * @param callback Called with the result of the request ({"muted": nool}).
+   * @param callback Called with the result of the request ({"muted": null}).
    */
   function isMuted(callback: CallbackFunction<IsMutedResult>): void;
 
   /**
    * Is window fully visible to user (has overlap windows)
    * @param callback Called with the result of the request:{"status": "error"
-   * "reason": thereson} or{"status": "success" "visible": "hidden" | "full" |
+   * "reason": the reason} or{"status": "success" "visible": "hidden" | "full" |
    * "partial"}
    */
   function isWindowVisibleToUser(
@@ -1619,9 +1636,7 @@ declare namespace overwolf.windows {
   /**
    * Fired when out of process iframe crashed.
    */
-  const onIsolatedIframeProcessCrashed: Event<
-    IsolatedIframeProcessCrashedEvent
-  >;
+  const onIsolatedIframeProcessCrashed: Event<IsolatedIframeProcessCrashedEvent>;
 
   /**
    * Fired when the user was prevented from closing a window using Alt+F4
@@ -1924,7 +1939,7 @@ declare namespace overwolf.benchmarking {
 declare namespace overwolf.games {
   const enum GameInfoType {
     Game = 0,
-    Launcher = 1
+    Launcher = 1,
   }
 
   interface GameInfo {
@@ -2093,8 +2108,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number },
-    monitorHandle: { value: number }
+    windowHandle: { value: number };
+    monitorHandle: { value: number };
   }
 
   interface GameInfoUpdate {
@@ -2150,8 +2165,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number },
-    monitorHandle: { value: number }
+    windowHandle: { value: number };
+    monitorHandle: { value: number };
   }
 
   interface GameInfoUpdatedEvent {
@@ -2178,7 +2193,7 @@ declare namespace overwolf.games {
    */
   function getRunningGameInfo(
     callback: CallbackFunction<GetRunningGameInfoResult>
-    ): void;
+  ): void;
 
   /**
    * Returns information about a game with a given game id.Will only return
@@ -2210,7 +2225,7 @@ declare namespace overwolf.games {
   /**
    * Returns an array of the maxNumOfGames most recently played game IDs.An
    * empty array will be returned if none have been recorded.
-   * @param maxNumOfGames The maximum number of games to recieve.
+   * @param maxNumOfGames The maximum number of games to receive.
    * @param callback Called with the array of game IDs.
    */
   function getRecentlyPlayedGames(
@@ -2356,11 +2371,9 @@ declare namespace overwolf.games.launchers.events.provider {
     features: string[],
     callback?: CallbackFunction<Result>
   ): void;
-  
 }
 
 declare namespace overwolf.games.events {
-
   interface SetRequiredFeaturesResult extends Result {
     supportedFeatures?: string[];
   }
@@ -2384,6 +2397,7 @@ declare namespace overwolf.games.events {
 
   interface InfoUpdates2Event {
     info: any;
+    feature: string;
   }
 
   /**
@@ -2450,13 +2464,13 @@ declare namespace overwolf.games.inputTracking {
     onGame: boolean;
     handle: { value: number };
   }
- 
+
   interface InputActivity {
     aTime: number;
     iTime: number;
     apm: boolean;
-    mouse: { total: number, dist: number, keys: any };
-    keyboard: { total: number, keys: any };
+    mouse: { total: number; dist: number; keys: any };
+    keyboard: { total: number; keys: any };
   }
 
   interface GetActivityResult extends Result {
@@ -2560,13 +2574,13 @@ declare namespace overwolf.games.inputTracking {
 
 declare namespace overwolf.web {
   namespace enums {
-   const enum HttpRequestMethods {
+    const enum HttpRequestMethods {
       GET = "GET",
       HEAD = "HEAD",
       POST = "POST",
       PUT = "PUT",
       DELETE = "DELETE",
-      PATCH = "PATCH"
+      PATCH = "PATCH",
     }
   }
 
@@ -2845,14 +2859,14 @@ declare namespace overwolf.logitech.led {
       ARROW_DOWN = "ARROW_DOWN",
       ARROW_RIGHT = "ARROW_RIGHT",
       NUM_ZERO = "NUM_ZERO",
-      NUM_PERIOD = "NUM_PERIOD"
+      NUM_PERIOD = "NUM_PERIOD",
     }
 
     const enum LogitechDeviceLightingType {
       Mono = "Mono",
       RGB = "RGB",
       PerkeyRGB = "PerkeyRGB",
-      All = "All"
+      All = "All",
     }
   }
 
@@ -3119,39 +3133,39 @@ declare namespace overwolf.streaming {
     const enum StreamMouseCursor {
       both = "both",
       gameOnly = "gameOnly",
-      desktopOnly = "desktopOnly"
+      desktopOnly = "desktopOnly",
     }
 
     const enum ObsStreamingMode {
       OBSNoAwareness = "OBSNoAwareness",
       OBSAwareness = "OBSAwareness",
-      OBSAwarenessHideFromDeskTop = "OBSAwarenessHideFromDeskTop"
+      OBSAwarenessHideFromDeskTop = "OBSAwarenessHideFromDeskTop",
     }
 
     const enum StreamingProvider {
       Unknown = "Unknown",
       Twitch = "Twitch",
       VideoRecorder = "VideoRecorder",
-      RTMP = "RTMP"
+      RTMP = "RTMP",
     }
 
     const enum StreamingMode {
       WhenVisible = "WhenVisible",
       Always = "Always",
-      Never = "Never"
+      Never = "Never",
     }
 
     const enum StreamEncoder {
       INTEL = "INTEL",
       X264 = "X264",
       NVIDIA_NVENC = "NVIDIA_NVENC",
-      AMD_AMF = "AMD_AMF"
+      AMD_AMF = "AMD_AMF",
     }
 
     const enum StreamEncoderPreset_Intel {
       LOW = "LOW",
       MEDIUM = "MEDIUM",
-      HIGH = "HIGH"
+      HIGH = "HIGH",
     }
 
     const enum StreamEncoderPreset_x264 {
@@ -3164,7 +3178,7 @@ declare namespace overwolf.streaming {
       SLOW = "SLOW",
       SLOWER = "SLOWER",
       VERYSLOW = "VERYSLOW",
-      PLACEBO = "PLACEBO"
+      PLACEBO = "PLACEBO",
     }
 
     const enum StreamEncoderPreset_AMD_AMF {
@@ -3173,14 +3187,14 @@ declare namespace overwolf.streaming {
       SPEED = "SPEED",
       QUALITY = "QUALITY",
       ULTRA_LOW_LATENCY = "ULTRA_LOW_LATENCY",
-      LOW_LATENCY = "LOW_LATENCY"
+      LOW_LATENCY = "LOW_LATENCY",
     }
 
     const enum StreamEncoderRateControl_AMD_AMF {
       RC_CBR = "RC_CBR",
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
-      RC_VBR_MINQP = "RC_VBR_MINQP"
+      RC_VBR_MINQP = "RC_VBR_MINQP",
     }
 
     const enum StreamEncoderPreset_NVIDIA {
@@ -3193,7 +3207,7 @@ declare namespace overwolf.streaming {
       HIGH_PERFORMANCE_LOW_LATENCY = "HIGH_PERFORMANCE_LOW_LATENCY",
       HIGH_QUALITY_LOW_LATENCY = "HIGH_QUALITY_LOW_LATENCY",
       LOSSLESS = "LOSSLESS",
-      HIGH_PERFORMANCE_LOSSLESS = "HIGH_PERFORMANCE_LOSSLESS"
+      HIGH_PERFORMANCE_LOSSLESS = "HIGH_PERFORMANCE_LOSSLESS",
     }
 
     const enum StreamEncoderRateControl_NVIDIA {
@@ -3201,21 +3215,21 @@ declare namespace overwolf.streaming {
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
       RC_VBR_MINQP = "RC_VBR_MINQP",
-      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
+      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
     const enum eTobiiEffectType {
       Default = "Default",
       Bubble = "Bubble",
       Solid = "Solid",
-      Inverted = "Inverted"
+      Inverted = "Inverted",
     }
     const enum StreamEncoderRateControl_x264 {
       RC_CBR = "RC_CBR",
       RC_CQP = "RC_CQP",
       RC_VBR = "RC_VBR",
       RC_VBR_MINQP = "RC_VBR_MINQP",
-      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY"
+      RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
     const enum IndicationPosition {
@@ -3223,15 +3237,14 @@ declare namespace overwolf.streaming {
       TopLeftCorner = "TopLeftCorner",
       TopRightCorner = "TopRightCorner",
       BottomLeftCorner = "BottomLeftCorner",
-      BottomRightCorner = "BottomRightCorner"
+      BottomRightCorner = "BottomRightCorner",
     }
 
     const enum IndicationType {
       NoIndication = "NoIndication",
       Dot = "Dot",
-      DotAndTimer = "DotAndTimer"
+      DotAndTimer = "DotAndTimer",
     }
-
   }
 
   /**
@@ -3609,8 +3622,7 @@ declare namespace overwolf.streaming {
     default_playback_device_id?: string;
   }
 
-  interface SplitResult extends Result { }
-  
+  interface SplitResult extends Result {}
 
   interface StreamingSourceImageChangedEvent {
     stream_id: number;
@@ -3796,14 +3808,6 @@ declare namespace overwolf.streaming {
   ): void;
 
   /**
-   * Return list of all running recores service (extensions ids).
-   * @param callback
-   */
-  function getRunningRecorders(
-    callback: (result: { extensions: string[] }) => void
-  ): void;
-
-  /**
    * Fired when the stream started streaming a new image source (desktop, game).
    */
   const onStreamingSourceImageChanged: Event<StreamingSourceImageChangedEvent>;
@@ -3867,7 +3871,6 @@ declare namespace overwolf.log {
 }
 
 declare namespace overwolf.os {
-
   /**
    * Returns regional information about the user.
    * @param callback Called with the region info.
@@ -3878,7 +3881,7 @@ declare namespace overwolf.os {
     info: RegionInfo;
   }
 
-  interface RegionInfo{
+  interface RegionInfo {
     date_format?: string;
     time_format?: string;
     currency_symbol?: string;
@@ -3888,13 +3891,15 @@ declare namespace overwolf.os {
 }
 
 declare namespace overwolf.os.tray {
-
   /**
    * Create a tray icon for the calling extension with the supplied context menu object.
    * @param menu The menu object.
    * @param callback Called with the result.
    */
-  function setMenu(menu: ExtensionTrayMenu, callback: CallbackFunction<Result>): void;
+  function setMenu(
+    menu: ExtensionTrayMenu,
+    callback: CallbackFunction<Result>
+  ): void;
 
   interface ExtensionTrayMenu {
     menu_items: menu_item[];
@@ -3907,11 +3912,11 @@ declare namespace overwolf.os.tray {
     sub_items?: menu_item[];
   }
 
-   /**
+  /**
    * Fired when an item from the tray icon’s context menu is selected.
    */
   const onMenuItemClicked: Event<onMenuItemClickedEvent>;
-  
+
   interface onMenuItemClickedEvent {
     item: string;
   }
@@ -3925,8 +3930,6 @@ declare namespace overwolf.os.tray {
    * Fired when the tray icon is double clicked.
    */
   const onTrayIconDoubleClicked: Event<any>;
-
-
 }
 
 declare namespace overwolf.extensions {
@@ -3958,13 +3961,13 @@ declare namespace overwolf.extensions {
     Skin = "Skin",
     TSSkin = "TSSkin",
     GameEventsProvider = "GameEventsProvider",
-    Unknown = "Unknown"
+    Unknown = "Unknown",
   }
 
   const enum ExtensionUpdateState {
     UpToDate = "UpToDate",
     UpdateAvailable = "UpdateAvailable",
-    PendingRestart = "PendingRestart"
+    PendingRestart = "PendingRestart",
   }
 
   /**
@@ -3993,6 +3996,10 @@ declare namespace overwolf.extensions {
      * A list of additional meta-data on the app
      */
     data: WebAppSettings;
+    /**
+     * Indicate whether the app is installed or not
+     */
+    is_installed: boolean;
   }
 
   interface Metadata {
@@ -4179,7 +4186,7 @@ declare namespace overwolf.extensions {
       /**
        * The type name of the event.
        */
-      event: "GameLaunch" | "AllGamesLaunch";
+      event: "GameLaunch" | "AllGamesLaunch" | "LaunchWithOverwolf";
       /**
        * The list of game class IDs for which the app will launch.
        */
@@ -4502,16 +4509,22 @@ declare namespace overwolf.extensions {
 
   interface ExtensionUpdatedEvent {
     version: string;
-    state: ExtensionUpdateState
+    state: ExtensionUpdateState;
   }
   
+  interface AppInstallationEvent {
+    UID: string;
+  }
+
   /**
    * The following types are related to the |onUncaughtException| event - which
    * is a different than the usual events.
    */
-  type UncaughtExceptionCallback = (message: string, 
-                                    functionName: string, 
-                                    scriptName: string) => void;
+  type UncaughtExceptionCallback = (
+    message: string,
+    functionName: string,
+    scriptName: string
+  ) => void;
 
   interface UncaughtExceptionEvent {
     addListener(callback: UncaughtExceptionCallback): void;
@@ -4632,6 +4645,43 @@ declare namespace overwolf.extensions {
    * Called for global uncaught exceptions in a frame.
    */
   const onUncaughtException: UncaughtExceptionEvent;
+  
+  /*
+  * Called when an extension is installed
+  */
+  const onAppInstalled: Event<AppInstallationEvent>;
+  
+  const onAppUninstalled: Event<AppInstallationEvent>;
+
+}
+
+declare namespace overwolf.extensions.io {
+  const enum StorageSpace {
+    pictures = "pictures",
+    videos = "videos",
+    appData = "appData",
+  }
+  interface GetStoragePathResult extends Result {
+    path: string;
+  }
+
+  function getStoragePath(
+    space: StorageSpace,
+    callback: CallbackFunction<GetStoragePathResult>
+  ): void;
+
+  function readTextFile(
+    space: StorageSpace,
+    filePath: string,
+    callback: CallbackFunction<overwolf.io.ReadFileContentsResult>
+  ): void;
+
+  function writeTextFile(
+    space: StorageSpace,
+    filePath: string,
+    content: string,
+    callback: CallbackFunction<Result>
+  ): void;
 }
 
 declare namespace overwolf.extensions.current {
@@ -4674,8 +4724,8 @@ declare namespace overwolf.extensions.sharedData {
   /**
    * Used by the owner app to set data for the consumer app, by appId.
    * @param appId The requested app id.
-   * @param value 
-   * @param callback 
+   * @param value
+   * @param callback
    */
   function set(
     appId: string,
@@ -4685,8 +4735,8 @@ declare namespace overwolf.extensions.sharedData {
 
   /**
    * Used by the consumer app to get data set by the owner app.
-   * @param param 
-   * @param callback 
+   * @param param
+   * @param callback
    */
   function get(
     param: SharedDataParams,
@@ -4700,13 +4750,216 @@ declare namespace overwolf.extensions.sharedData {
   }
 }
 
+/**
+ * overwolf.campaigns.crossapp
+ * 
+ * *****************************************************************************
+ * NOTE: This namespace is still not available and is subject to change.
+ * *****************************************************************************
+ * 
+ * An API that allows crossapp-promotions: One app can promote another app and
+ * then get an indication for a successful conversion.
+ * 
+ * For example - an app can promote a video capture and sharing app and receive
+ * a notification as soon as the user shares a video from the promoted app.
+ * 
+ * 1. Promoting app calls: 
+ * 
+ *    overwolf.campaigns.crossapp.set({
+ *      id: 'lkjk23535', // An extension-specific unique campaign id
+ *      action: 'social-share', // The action for conversion
+ *      expiration: 1601510400000,
+ *      target_apps_uids: [ 'PROMOTED-EXTENSION-ID' ],
+ *      data: {
+ *        social_networks: [ 'twitter' ],
+ *        game_ids: [9196, 5426],
+ *        hashtags: [ 'got-here-from-XXX-app' ]
+ *      }
+ *    }, console.log);
+ * 
+ * 2. Promoting app then redirects the user to download the promoted extension
+ * 
+ *    e.g. overwolf.utils.openStore({ 
+ *          uid: 'PROMOTED-EXTENSION-ID',
+ *          page: overwolf.utils.enums.eStorePage.OneAppPage
+ *         });
+ * 
+ * 3. Promoted app, when an action of interest occurs, calls:
+ * 
+ *    const getAvailCampaigns = () => {
+ *      return new Promise((resolve, reject) => {
+ *        overwolf.campaigns.crossapp.getAvailableActions(result => {
+ *          if (!result.success) {
+  *            return reject(result);
+ *          }
+ * 
+ *          return resolve(result);
+ *        });
+ *      });
+ *    }
+ * 
+ *    ...
+ * 
+ *    // It is not recommended to call an Overwolf API from within a callback -
+ *    // so we use await/async.
+ *    const actions = await getAvailCampaigns();
+ *    actions.forEach(action => {
+ *      if (conversionComplete(action)) {
+ * 
+ *        overwolf.campaigns.crossapp.reportConversion({
+ *          id: action.id,
+ *          owner_app_uid: action.owner_app_uid,
+ *          data: {
+ *            game_id: 9196,
+ *            social_network: 'twitter',
+ *            share_url: '...'
+ *          }
+ *        });
+ * 
+ *      }
+ *    });
+ * 
+ * 4. Promoting app will then get launched with the 'campaign-event' source url
+ * parameter. It will then call: overwolf.campaigns.crossapp.consumeConversions
+ * to review the existing conversions (this will remove the conversions from
+ * consecutive calls to consumeConversions)
+ */
+declare namespace overwolf.campaigns.crossapp {
+  /**
+   * Container that represent a shared data parameters.
+   */
+  interface CrossAppCampaign {
+    /**
+     * An id to identify the campaign (action/conversion).
+     * |id| should be unique per an extension (two different extensions can use
+     * the same id).
+     */
+    id: string;
+
+    /**
+     * The type of action this cross-app campaign supports.
+     * This is a free-text string.
+     */
+    action: string;
+
+    /**
+     * Expiration date expressed in milliseconds since epoch (Unix Time, UTC).
+     * 
+     * e.g. Date.now() or (new Date()).getTime()
+     */
+    expiration: number;
+
+    /**
+     * An array of app UIDs this cross-app campaign targets.
+     */
+    target_apps_uids: string[];
+
+    /**
+     * Information about the cross-app campaign.
+     * 
+     * This is a free-form json object that gives more instructions on the
+     * required action.
+     */
+    data: any;
+  }
+
+  interface CrossAppCampaignConversion {
+    /**
+     * The ID of the cross-app campaign the conversion targets.
+     */
+    id: string;
+
+    /**
+     * The UID of the app that owns the targeted cross-app campaign.
+     */
+    owner_app_uid: string;
+
+    /**
+     * Conversion data for the specified action.
+     */
+    data: any;
+
+    /**
+     * The UID of the app that performed the conversion (the promoted app).
+     *
+     * Set by the Overwolf client when calling |consumeConversions|.
+     */
+    readonly origin_app_uid?: string;
+
+    /**
+     * When the conversion took place.
+     *
+     * Set by the Overwolf client when calling |consumeConversions|.
+     */
+    readonly timestamp?: number;
+  }
+
+  /**
+   * See |overwolf.campaigns.crossapp.getAvailableActions|
+   */
+  interface GetCrossAppAvailableActionsResult extends Result {
+    actions: CrossAppCampaign[];
+  }
+
+  /**
+   * See |overwolf.campaigns.crossapp.consumeConversions|
+   */
+  interface GetCrossAppConversionsResult extends Result {
+    conversions: CrossAppCampaignConversion[];
+  }
+
+  /**
+   * Receive all cross-app actions that target the currently running extension.
+   * @param callback 
+   */
+  function getAvailableActions(
+    callback: CallbackFunction<GetCrossAppAvailableActionsResult>
+  ): void;
+
+  /**
+   * Initiate or modify a cross-app campaign action for this extension.
+   * You may modify an existing action by using the same id parameter - see
+   * CrossAppCampaign.id
+   * 
+   * @param campaign
+   * @param callback 
+   */
+  function set(
+    campaign: CrossAppCampaign,
+    callback: CallbackFunction<Result>
+  );
+
+  /**
+   * Submit new conversion for a cross-app campaign.
+   * 
+   * @param conversionInfo 
+   * @param callback 
+   */
+  function reportConversion(
+    conversionInfo: CrossAppCampaignConversion,
+    callback: CallbackFunction<Result>
+  );
+
+  /**
+   * Consume all pending conversions for this extension. Consumed conversions
+   * are deleted.
+   * 
+   * @param callback 
+   */
+  function consumeConversions(
+    callback: CallbackFunction<GetCrossAppConversionsResult>
+  );
+}
+
+
+
 declare namespace overwolf.utils {
   namespace enums {
     const enum eStorePage {
       LoginPage = "LoginPage",
       OneAppPage = "OneAppPage",
       SubscriptionPage = "SubscriptionPage",
-	  ReviewsPage = "ReviewsPage"
+	    ReviewsPage = "ReviewsPage"
     }
   }
 
@@ -4963,7 +5216,7 @@ declare namespace overwolf.settings {
       Original = "Original",
       R1080p = "R1080p",
       R720p = "R720p",
-      R480p = "R480p"
+      R480p = "R480p",
     }
 
     const enum eIndicationPosition {
@@ -4971,7 +5224,7 @@ declare namespace overwolf.settings {
       TopLeftCorner = 0,
       TopRightCorner = 1,
       BottomLeftCorner = 2,
-      BottomRightCorner = 3
+      BottomRightCorner = 3,
     }
   }
 
@@ -4980,6 +5233,10 @@ declare namespace overwolf.settings {
     scale?: number;
     enabled?: boolean;
     position?: enums.eIndicationPosition;
+  }
+
+  interface GeneralExtensionSettings {
+    auto_launch_with_overwolf: boolean;
   }
 
   interface GetHotKeyResult extends Result {
@@ -4992,7 +5249,14 @@ declare namespace overwolf.settings {
   }
 
   interface FolderResult extends Result {
-    path: string;
+    path: {
+      /** "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" */
+      Type: string;
+      /** the actual filepath */
+      Value: string;
+      /** "Folders_VideoCapturesFolder" */
+      Name: string;
+    };
   }
 
   interface GetAudioCaptureSettingsResult extends Result {
@@ -5002,6 +5266,10 @@ declare namespace overwolf.settings {
 
   interface GetFpsSettingsResult extends Result {
     settings: FpsSettings;
+  }
+
+  interface GetExtensionSettingsResult extends Result {
+    settings: GeneralExtensionSettings;
   }
 
   interface FpsSettingsChangedEvent {
@@ -5159,6 +5427,24 @@ declare namespace overwolf.settings {
   ): void;
 
   /**
+   * Sets the extension settings.
+   * @param settings
+   * @param callback
+   */
+  function setExtensionSettings(
+    settings: GeneralExtensionSettings,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Gets the extension settings.
+   * @param callback
+   */
+  function getExtensionSettings(
+    callback: CallbackFunction<GetExtensionSettingsResult>
+  ): void;
+
+  /**
    * Fired when fps settings are changed.
    */
   const onFpsSettingsChanged: Event<FpsSettingsChangedEvent>;
@@ -5186,13 +5472,13 @@ declare namespace overwolf.settings.games {
   }
 
   interface AutolaunchEnabledResult extends GameClassResult {
-    autoLaunchEnabled: boolean
+    autoLaunchEnabled: boolean;
   }
-  
-  interface OverlayEnabledResult extends GameClassResult{
-    enabled: boolean
+
+  interface OverlayEnabledResult extends GameClassResult {
+    enabled: boolean;
   }
-  
+
   interface OverlayEnablementChangedEvent {
     gameId: number;
     enabled: boolean;
@@ -5246,6 +5532,7 @@ declare namespace overwolf.settings.hotkeys {
     isPassthrough: boolean;
     hold: boolean;
     IsUnassigned: boolean;
+    binding: string;
   }
 
   interface GetAssignedHotkeyResult extends Result {
@@ -5255,7 +5542,7 @@ declare namespace overwolf.settings.hotkeys {
 
   interface OnHoldEvent {
     name: string;
-    state: 'up' | 'down';
+    state: "up" | "down";
   }
 
   interface OnPressedEvent {
@@ -5272,7 +5559,7 @@ declare namespace overwolf.settings.hotkeys {
   /**
    * Returns the hotkey assigned for the current extension in all the games.
    */
-  function get(): CallbackFunction<GetAssignedHotkeyResult>;
+  function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
 
   /**
    * Fired only for hotkeys that are set in the manifest as hold.
@@ -5304,7 +5591,7 @@ declare namespace overwolf.social.discord {
   const enum PostPermission {
     None = 0,
     Text,
-    File
+    File,
   }
 
   interface User {
@@ -5386,7 +5673,9 @@ declare namespace overwolf.social.discord {
    * @param callback Will contain user information or error if the request has
    * failed.
    */
-  function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
+  function getUserInfo(
+    callback: CallbackFunction<GetUserInfoResult<User>>
+  ): void;
 
   /**
    * If the user is currently logged into Discord, this will return the guilds
@@ -5567,7 +5856,7 @@ declare namespace overwolf.social.youtube {
   const enum Privacy {
     Public = "Public",
     Unlisted = "Unlisted",
-    Private = "Private"
+    Private = "Private",
   }
 
   interface ShareParamaeters {
