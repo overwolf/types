@@ -4959,6 +4959,7 @@ declare namespace overwolf.utils {
       LoginPage = "LoginPage",
       OneAppPage = "OneAppPage",
       SubscriptionPage = "SubscriptionPage",
+	    ReviewsPage = "ReviewsPage"
     }
   }
 
