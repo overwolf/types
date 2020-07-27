@@ -4705,7 +4705,8 @@ declare namespace overwolf.utils {
     const enum eStorePage {
       LoginPage = "LoginPage",
       OneAppPage = "OneAppPage",
-      SubscriptionPage = "SubscriptionPage"
+      SubscriptionPage = "SubscriptionPage",
+	  ReviewsPage = "ReviewsPage"
     }
   }
 
