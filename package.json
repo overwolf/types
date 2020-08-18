@@ -1,6 +1,6 @@
 {
     "name": "@overwolf/types",
-    "version": "2.16.0",
+    "version": "2.17.0",
     "description": "Type definition file for autocompletion and documentation purposes",
     "license": "MIT",
     "types": "overwolf.d.ts",
