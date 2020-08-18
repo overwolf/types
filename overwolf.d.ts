@@ -1055,6 +1055,7 @@ declare namespace overwolf.windows {
     top: number;
     width: number;
     height: number;
+    monitorId: string;
   }
 
   interface WindowProperties {
@@ -1293,6 +1294,21 @@ declare namespace overwolf.windows {
     callback?: CallbackFunction<Result>
   ): void;
 
+  /**
+   * Changes the window minimum size to the new width and height, in pixels.
+   * @param windowId windowId The id or name of the window for which to change
+   * the minimum size.
+   * @param width The new window minimum width in pixels.
+   * @param height The new window minimum height in pixels.
+   * @param callback A callback which is called when the minimum size change is
+   * completed.
+   */
+  function setMinSize(
+    windowId: string,
+    width: number,
+    height: number,
+    callback?: CallbackFunction<Result>
+  ): void;
 
   /**
    * Changes the window position in pixels from the top left corner.
