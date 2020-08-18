@@ -4984,6 +4984,8 @@ declare namespace overwolf.utils {
     id: string;
     x: number;
     y: number;
+    dpiX: number;
+    dpiY: number;
     width: number;
     height: number;
     is_primary: boolean;
