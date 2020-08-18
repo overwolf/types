@@ -1055,6 +1055,7 @@ declare namespace overwolf.windows {
     top: number;
     width: number;
     height: number;
+    monitorId: string;
   }
 
   interface WindowProperties {
