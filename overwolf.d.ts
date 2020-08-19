@@ -1043,6 +1043,12 @@ declare namespace overwolf.windows {
       QuestionMark = "QuestionMark",
       ExclamationMark = "ExclamationMark",
     }
+
+    const enum FlashBehavior {
+      automatic = "automatic",
+      on = "on",
+      off = "off",
+    }
   }
 
   interface WindowInfo {
@@ -1308,6 +1314,29 @@ declare namespace overwolf.windows {
     width: number,
     height: number,
     callback?: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Flashes a window.
+   * @param windowId ID of the window to flash.
+   * @param behavior Defines window flashing behavior.
+   * @param callback A callback which is called when the minimum size change is
+   * completed.
+   */
+  function flash(
+    windowId: string,
+    behavior: windows.enums.FlashBehavior,
+    callback?: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Set window zoom level (0.0 for reset).
+   * @param winzoomFactorowId The zoome factor.
+   * @param windowId The window id, empty for current window.
+   */
+  function setZoom(
+    winzoomFactorowId: number,
+    windowId: string
   ): void;
 
   /**
@@ -3439,6 +3468,11 @@ declare namespace overwolf.streaming {
      * Type of the recorder indicator. Available for video capture only.
      */
     indication_type: enums.IndicationType;
+
+    /**
+     *  use the app "short name" as the folder name, instead of using the app name from the manifest.
+     */
+    use_app_display_name: boolean;
   }
 
   /**
