@@ -1050,12 +1050,15 @@ declare namespace overwolf.windows {
       off = "off",
     }
   }
-
+	 
+  type WindowStateEx =
+    "closed" | "minimized" | "hidden" | "normal" | "maximized";
+	  
   interface WindowInfo {
     name: string;
     id: string;
     state: string;
-    stateEx: "closed" | "minimized" | "hidden" | "normal" | "maximized";
+    stateEx: WindowStateEx;
     isVisible: boolean;
     left: number;
     top: number;
@@ -1110,19 +1113,12 @@ declare namespace overwolf.windows {
   interface GetWindowStateResult extends Result {
     window_id?: string;
     window_state?: string;
-    window_state_ex?:
-      | "closed"
-      | "minimized"
-      | "hidden"
-      | "normal"
-      | "maximized";
+    window_state_ex?: WindowStateEx;
   }
 
   interface GetWindowsStatesResult extends Result {
     result: Dictionary<string>;
-    resultV2: Dictionary<
-      "closed" | "minimized" | "hidden" | "normal" | "maximized"
-    >;
+    resultV2: Dictionary<WindowStateEx>;
   }
 
   interface IsMutedResult extends Result {
@@ -1150,8 +1146,8 @@ declare namespace overwolf.windows {
     window_id: string;
     window_state: string;
     window_previous_state: string;
-    window_state_ex: string;
-    window_previous_state_ex: string;
+    window_state_ex: WindowStateEx;
+    window_previous_state_ex: WindowStateEx;
     app_id: string;
     window_name: string;
   }
