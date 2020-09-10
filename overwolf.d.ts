@@ -4798,60 +4798,56 @@ declare namespace overwolf.extensions.sharedData {
 
 /**
  * overwolf.campaigns.crossapp
- * 
- * *****************************************************************************
- * NOTE: This namespace is still not available and is subject to change.
- * *****************************************************************************
- * 
+ *
  * An API that allows crossapp-promotions: One app can promote another app and
  * then get an indication for a successful conversion.
- * 
+ *
  * For example - an app can promote a video capture and sharing app and receive
  * a notification as soon as the user shares a video from the promoted app.
- * 
- * 1. Promoting app calls: 
- * 
+ *
+ * 1. Promoting app calls:
+ *
  *    overwolf.campaigns.crossapp.set({
  *      id: 'lkjk23535', // An extension-specific unique campaign id
  *      action: 'social-share', // The action for conversion
  *      expiration: 1601510400000,
- *      target_apps_uids: [ 'PROMOTED-EXTENSION-ID' ],
+ *      target_apps_uids: [ 'PROMOTED-EXTENSION-ID' ], // '*' for any app
  *      data: {
  *        social_networks: [ 'twitter' ],
  *        game_ids: [9196, 5426],
  *        hashtags: [ 'got-here-from-XXX-app' ]
  *      }
  *    }, console.log);
- * 
+ *
  * 2. Promoting app then redirects the user to download the promoted extension
- * 
- *    e.g. overwolf.utils.openStore({ 
+ *
+ *    e.g. overwolf.utils.openStore({
  *          uid: 'PROMOTED-EXTENSION-ID',
  *          page: overwolf.utils.enums.eStorePage.OneAppPage
  *         });
- * 
+ *
  * 3. Promoted app, when an action of interest occurs, calls:
- * 
+ *
  *    const getAvailCampaigns = () => {
  *      return new Promise((resolve, reject) => {
  *        overwolf.campaigns.crossapp.getAvailableActions(result => {
  *          if (!result.success) {
   *            return reject(result);
  *          }
- * 
+ *
  *          return resolve(result);
  *        });
  *      });
  *    }
- * 
+ *
  *    ...
- * 
+ *
  *    // It is not recommended to call an Overwolf API from within a callback -
  *    // so we use await/async.
  *    const actions = await getAvailCampaigns();
  *    actions.forEach(action => {
  *      if (conversionComplete(action)) {
- * 
+ *
  *        overwolf.campaigns.crossapp.reportConversion({
  *          id: action.id,
  *          owner_app_uid: action.owner_app_uid,
@@ -4861,10 +4857,10 @@ declare namespace overwolf.extensions.sharedData {
  *            share_url: '...'
  *          }
  *        });
- * 
+ *
  *      }
  *    });
- * 
+ *
  * 4. Promoting app will then get launched with the 'campaign-event' source url
  * parameter. It will then call: overwolf.campaigns.crossapp.consumeConversions
  * to review the existing conversions (this will remove the conversions from
@@ -4890,7 +4886,7 @@ declare namespace overwolf.campaigns.crossapp {
 
     /**
      * Expiration date expressed in milliseconds since epoch (Unix Time, UTC).
-     * 
+     *
      * e.g. Date.now() or (new Date()).getTime()
      */
     expiration: number;
@@ -4902,7 +4898,7 @@ declare namespace overwolf.campaigns.crossapp {
 
     /**
      * Information about the cross-app campaign.
-     * 
+     *
      * This is a free-form json object that gives more instructions on the
      * required action.
      */
@@ -4956,7 +4952,7 @@ declare namespace overwolf.campaigns.crossapp {
 
   /**
    * Receive all cross-app actions that target the currently running extension.
-   * @param callback 
+   * @param callback
    */
   function getAvailableActions(
     callback: CallbackFunction<GetCrossAppAvailableActionsResult>
@@ -4966,9 +4962,9 @@ declare namespace overwolf.campaigns.crossapp {
    * Initiate or modify a cross-app campaign action for this extension.
    * You may modify an existing action by using the same id parameter - see
    * CrossAppCampaign.id
-   * 
+   *
    * @param campaign
-   * @param callback 
+   * @param callback
    */
   function set(
     campaign: CrossAppCampaign,
@@ -4977,9 +4973,9 @@ declare namespace overwolf.campaigns.crossapp {
 
   /**
    * Submit new conversion for a cross-app campaign.
-   * 
-   * @param conversionInfo 
-   * @param callback 
+   *
+   * @param conversionInfo
+   * @param callback
    */
   function reportConversion(
     conversionInfo: CrossAppCampaignConversion,
@@ -4989,15 +4985,18 @@ declare namespace overwolf.campaigns.crossapp {
   /**
    * Consume all pending conversions for this extension. Consumed conversions
    * are deleted.
-   * 
-   * @param callback 
+   *
+   * @param callback
    */
   function consumeConversions(
     callback: CallbackFunction<GetCrossAppConversionsResult>
   );
+
+  /*
+   * Called when an available action has updated (or added)
+   */
+  const onAvailableActionUpdated: Event<CrossAppCampaign>;
 }
-
-
 
 declare namespace overwolf.utils {
   namespace enums {
