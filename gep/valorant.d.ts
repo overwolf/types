@@ -74,70 +74,87 @@ declare namespace overwolf.gep.Valorant {
 
   // --------------------------------------------------------------------------
   type ValorantRosterMember = {
-    name: string;
-    player_id: string;
-    character: eGepValorantAgents;
-    rank: number;
-    locked: boolean;
-    local: boolean;
-    teammate: boolean;
+    name?: string;
+    player_id?: string;
+    character?: ValorantAgents;
+    rank?: number;
+    locked?: boolean;
+    local?: boolean;
+    teammate?: boolean;
   }
 
   // --------------------------------------------------------------------------
-  type ValorantInfo = DeepPartial<{
-    me: {
-      player_name: string
-      player_id: string
-      region: string
-      agent: ValorantAgentsFullNames
-    }
+  interface IValorantFeature { }
 
-    match_info: {
-      round_number: number;
-      score: {
-        won: number;
-        lost: number;
-      }
-      round_phase: ValorantRoundPhases,
-      team: ValorantTeams;
-      match_outcome: ValorantMatchOutcomes;
-      round_report: {
-        damage: number;
-        hit: number;
-        headshot: number;
-        final_headshot: number;
-      }
-      game_mode: {
-        mode: eValorantGameModes;
-        custom: boolean;
-        ranked: number;
-      };
+  // --------------------------------------------------------------------------
+  interface ValorantMe extends IValorantFeature {
+    player_name?: string
+    player_id?: string
+    region?: string
+    agent?: ValorantAgentsFullNames
+  }
 
-      roster_0: ValorantRosterMember;
-      roster_1: ValorantRosterMember;
-      roster_2: ValorantRosterMember;
-      roster_3: ValorantRosterMember;
-      roster_4: ValorantRosterMember;
-      roster_5: ValorantRosterMember;
-      roster_6: ValorantRosterMember;
-      roster_7: ValorantRosterMember;
-      roster_8: ValorantRosterMember;
-      roster_9: ValorantRosterMember;
+  // --------------------------------------------------------------------------
+  interface ValorantMatchInfo extends IValorantFeature {
+    round_number?: number;
+    score?: {
+      won?: number;
+      lost?: number;
     }
+    round_phase?: ValorantRoundPhases,
+    team?: ValorantTeams;
+    match_outcome?: ValorantMatchOutcomes;
+    round_report?: {
+      damage?: number;
+      hit?: number;
+      headshot?: number;
+      final_headshot?: number;
+    }
+    game_mode?: {
+      mode?: ValorantGameModes;
+      custom?: boolean;
+      ranked?: number;
+    };
 
-    game_info: {
-      scene: ValorantScenes;
-      state: ValorantStates;
-    }
+    roster_0?: ValorantRosterMember;
+    roster_1?: ValorantRosterMember;
+    roster_2?: ValorantRosterMember;
+    roster_3?: ValorantRosterMember;
+    roster_4?: ValorantRosterMember;
+    roster_5?: ValorantRosterMember;
+    roster_6?: ValorantRosterMember;
+    roster_7?: ValorantRosterMember;
+    roster_8?: ValorantRosterMember;
+    roster_9?: ValorantRosterMember;
+  }
 
-    kill: {
-      kills: number;
-      assists: number;
-      headshots: number;
-    }
+  // --------------------------------------------------------------------------
+  interface ValorantGameInfo extends IValorantFeature {
+    scene?: ValorantScenes;
+    state?: ValorantStates;
+  }
 
-    death: {
-      deaths: number;
-    }
-  }>
+  // --------------------------------------------------------------------------
+  interface ValorantKill extends IValorantFeature {
+    kills?: number;
+    assists?: number;
+    headshots?: number;
+  }
+
+  // --------------------------------------------------------------------------
+  interface ValorantDeath extends IValorantFeature {
+    deaths?: number;
+  }
+
+  // --------------------------------------------------------------------------
+  type ValorantInfoUpdates = {
+    me?: ValorantMe
+    match_info?: ValorantMatchInfo
+    game_info?: ValorantGameInfo
+    kill?: ValorantKill
+    death?: ValorantDeath
+  }
+
+  // --------------------------------------------------------------------------
+  type ValorantFeatures = keyof ValorantInfoUpdates;
 }

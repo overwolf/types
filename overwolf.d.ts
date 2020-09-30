@@ -2421,8 +2421,8 @@ declare namespace overwolf.games.events {
     supportedFeatures?: string[];
   }
 
-  interface GetInfoResult extends Result {
-    res: any;
+  interface GetInfoResult<T = any> extends Result {
+    res: T;
   }
 
   interface GameEvent {
@@ -2438,9 +2438,9 @@ declare namespace overwolf.games.events {
     reason: string;
   }
 
-  interface InfoUpdates2Event {
-    info: any;
-    feature: string;
+  interface InfoUpdates2Event<T = any, F = string> {
+    info: T;
+    feature: F;
   }
 
   /**
