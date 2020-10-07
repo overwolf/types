@@ -1057,10 +1057,10 @@ declare namespace overwolf.windows {
       off = "off",
     }
   }
-	 
+
   type WindowStateEx =
     "closed" | "minimized" | "hidden" | "normal" | "maximized";
-	  
+
   interface WindowInfo {
     name: string;
     id: string;
@@ -1909,7 +1909,7 @@ declare namespace overwolf.windows.mediaPlayerElement {
 }
 
 /**
- * @deprecated Since version 0.155. 
+ * @deprecated Since version 0.155.
  */
 declare namespace overwolf.benchmarking {
   /**
@@ -3829,7 +3829,7 @@ declare namespace overwolf.streaming {
 
   /**
    * Update stream desktop capture options.
-   * @deprecated Since version 0.155. 
+   * @deprecated Since version 0.155.
    * @param streamId The id of the stream for which to set the Be Right Back
    * image.
    * @param newOptions The updated desktop capture streaming options.
@@ -4568,7 +4568,7 @@ declare namespace overwolf.extensions {
     version: string;
     state: ExtensionUpdateState;
   }
-  
+
   interface AppInstallationEvent {
     UID: string;
   }
@@ -4702,12 +4702,12 @@ declare namespace overwolf.extensions {
    * Called for global uncaught exceptions in a frame.
    */
   const onUncaughtException: UncaughtExceptionEvent;
-  
+
   /*
   * Called when an extension is installed
   */
   const onAppInstalled: Event<AppInstallationEvent>;
-  
+
   const onAppUninstalled: Event<AppInstallationEvent>;
 
 }
@@ -5643,6 +5643,28 @@ declare namespace overwolf.settings.hotkeys {
    * Fired on hotkey setting change.
    */
   const onChanged: Event<OnChangedEvent>;
+}
+
+declare namespace overwolf.settings.language {
+  interface GetLanguageResult extends Result {
+    language: string;
+  }
+
+  interface LanguageChangedEvent {
+    language: string;
+  }
+
+  /**
+   * Returns the current language overwolf is set to in a two letter ISO name format.
+   *
+   * @param callback
+   */
+  function get(callback: CallbackFunction<GetLanguageResult>): void;
+
+  /**
+   * Fired when user changes client language.
+   */
+  const onLanguageChanged: Event<LanguageChangedEvent>;
 }
 
 declare namespace overwolf.social {
