@@ -5300,7 +5300,7 @@ declare namespace overwolf.settings {
   }
 
   interface GeneralExtensionSettings {
-    auto_launch_with_overwolf: boolean;
+    auto_launch_with_overwolf?: boolean;
   }
 
   interface GetHotKeyResult extends Result {
