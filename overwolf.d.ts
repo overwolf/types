@@ -1117,6 +1117,11 @@ declare namespace overwolf.windows {
     window_id?: string;
   }
 
+  interface DragMovedResult extends Result {
+    horizontalChange: number;
+    verticalChange: number;
+  }
+
   interface GetWindowStateResult extends Result {
     window_id?: string;
     window_state?: string;
@@ -1238,7 +1243,7 @@ declare namespace overwolf.windows {
    */
   function dragMove(
     windowId: string,
-    callback?: CallbackFunction<WindowIdResult>
+    callback?: CallbackFunction<DragMovedResult>
   ): void;
 
   /**
