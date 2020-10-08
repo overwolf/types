@@ -84,18 +84,18 @@ declare namespace overwolf.gep.Valorant {
   }
 
   // --------------------------------------------------------------------------
-  interface IValorantFeature { }
+  interface ValorantFeature extends overwolf.games.events.InfoUpdate2 { }
 
   // --------------------------------------------------------------------------
-  interface ValorantMe extends IValorantFeature {
-    player_name?: string
-    player_id?: string
-    region?: string
-    agent?: ValorantAgentsFullNames
+  interface ValorantMe extends ValorantFeature {
+    player_name?: string;
+    player_id?: string;
+    region?: string;
+    agent?: ValorantAgentsFullNames;
   }
 
   // --------------------------------------------------------------------------
-  interface ValorantMatchInfo extends IValorantFeature {
+  interface ValorantMatchInfo extends ValorantFeature {
     round_number?: number;
     score?: {
       won?: number;
@@ -129,32 +129,36 @@ declare namespace overwolf.gep.Valorant {
   }
 
   // --------------------------------------------------------------------------
-  interface ValorantGameInfo extends IValorantFeature {
+  interface ValorantGameInfo extends ValorantFeature {
     scene?: ValorantScenes;
     state?: ValorantStates;
   }
 
   // --------------------------------------------------------------------------
-  interface ValorantKill extends IValorantFeature {
+  interface ValorantKill extends ValorantFeature {
     kills?: number;
     assists?: number;
     headshots?: number;
   }
 
   // --------------------------------------------------------------------------
-  interface ValorantDeath extends IValorantFeature {
+  interface ValorantDeath extends ValorantFeature {
     deaths?: number;
   }
 
   // --------------------------------------------------------------------------
   type ValorantInfoUpdates = {
-    me?: ValorantMe
-    match_info?: ValorantMatchInfo
-    game_info?: ValorantGameInfo
-    kill?: ValorantKill
-    death?: ValorantDeath
+    me?: ValorantMe;
+    match_info?: ValorantMatchInfo;
+    game_info?: ValorantGameInfo;
+    kill?: ValorantKill;
+    death?: ValorantDeath;
   }
 
   // --------------------------------------------------------------------------
   type ValorantFeatures = keyof ValorantInfoUpdates;
+
+  // --------------------------------------------------------------------------
+  type ValorantInfoUpdates2Event =
+    overwolf.games.events.InfoUpdates2Event<ValorantFeatures, ValorantFeature>;
 }

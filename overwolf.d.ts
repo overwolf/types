@@ -2438,9 +2438,12 @@ declare namespace overwolf.games.events {
     reason: string;
   }
 
-  interface InfoUpdates2Event<T = any, F = string> {
-    info: T;
-    feature: F;
+  interface InfoUpdate2 { }
+
+  interface InfoUpdates2Event
+    <Feature = string, Info extends InfoUpdate2 = InfoUpdate2> {
+    info: Info;
+    feature: Feature;
   }
 
   /**
