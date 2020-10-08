@@ -1,3 +1,20 @@
+/*
+type ValorantInfoUpdates2Event = overwolf.gep.Valorant.ValorantInfoUpdates2Event;
+type ValorantMatchInfo = overwolf.gep.Valorant.ValorantMatchInfo;
+
+overwolf.games.events.onInfoUpdates2.addListener(
+  (event: ValorantInfoUpdates2Event) => {
+    if (event.feature === 'match_info') {
+      const info = event.info as ValorantMatchInfo;
+
+      if (info.game_mode === overwolf.gep.Valorant.ValorantGameModes.SpikeRush) {
+        // do something special if we're palying spike rush
+      }
+    }
+  }
+)
+*/
+
 declare namespace overwolf.gep.Valorant {
   // --------------------------------------------------------------------------
   enum ValorantAgents {
@@ -155,10 +172,14 @@ declare namespace overwolf.gep.Valorant {
     death?: ValorantDeath;
   }
 
-  // --------------------------------------------------------------------------
+  /**
+   * The feature names available in Valorant's GEP
+   */
   type ValorantFeatures = keyof ValorantInfoUpdates;
 
-  // --------------------------------------------------------------------------
+  /**
+   * Intended to be used with overwolf.games.events.onInfoUpdates2.addListener
+   */
   type ValorantInfoUpdates2Event =
     overwolf.games.events.InfoUpdates2Event<ValorantFeatures, ValorantFeature>;
 }
