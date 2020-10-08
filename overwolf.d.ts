@@ -38,6 +38,8 @@ declare namespace overwolf {
   }
 
   type CallbackFunction<T extends Result> = (result: T) => void;
+
+  type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]>; }
 }
 
 declare namespace overwolf.io {
@@ -2434,8 +2436,8 @@ declare namespace overwolf.games.events {
     supportedFeatures?: string[];
   }
 
-  interface GetInfoResult extends Result {
-    res: any;
+  interface GetInfoResult<T = any> extends Result {
+    res: T;
   }
 
   interface GameEvent {
@@ -2451,9 +2453,12 @@ declare namespace overwolf.games.events {
     reason: string;
   }
 
-  interface InfoUpdates2Event {
-    info: any;
-    feature: string;
+  interface InfoUpdate2 { }
+
+  interface InfoUpdates2Event
+    <Feature = string, Info extends InfoUpdate2 = InfoUpdate2> {
+    info: Info;
+    feature: Feature;
   }
 
   /**
@@ -3498,10 +3503,10 @@ declare namespace overwolf.streaming {
      * Defines the settings of the specific encoder.
      */
     config?:
-      | StreamingVideoEncoderNVIDIA_NVENCSettings
-      | StreamingVideoEncoderIntelSettings
-      | StreamingVideoEncoderx264Settings
-      | StreamingVideoEncoderAMD_AMFSettings;
+    | StreamingVideoEncoderNVIDIA_NVENCSettings
+    | StreamingVideoEncoderIntelSettings
+    | StreamingVideoEncoderx264Settings
+    | StreamingVideoEncoderAMD_AMFSettings;
   }
 
   /**
@@ -3525,7 +3530,7 @@ declare namespace overwolf.streaming {
   /**
    * Defines the configuration for an Intel encoder.
    */
-  interface StreamingVideoEncoderIntelSettings {}
+  interface StreamingVideoEncoderIntelSettings { }
 
   /**
    * Defines the configuration for an x264 encoder.
@@ -3683,7 +3688,7 @@ declare namespace overwolf.streaming {
     default_playback_device_id?: string;
   }
 
-  interface SplitResult extends Result {}
+  interface SplitResult extends Result { }
 
   interface StreamingSourceImageChangedEvent {
     stream_id: number;
@@ -4539,7 +4544,7 @@ declare namespace overwolf.extensions {
     left: number;
   }
 
-  interface GetManifestResult extends Result, Manifest {}
+  interface GetManifestResult extends Result, Manifest { }
 
   interface GetInfoResult extends Result {
     info: string;
@@ -5025,7 +5030,7 @@ declare namespace overwolf.utils {
       LoginPage = "LoginPage",
       OneAppPage = "OneAppPage",
       SubscriptionPage = "SubscriptionPage",
-	    ReviewsPage = "ReviewsPage"
+      ReviewsPage = "ReviewsPage"
     }
   }
 
@@ -6172,4 +6177,10 @@ declare namespace overwolf.social.reddit {
    * Fired when an error is returned from Reddit.
    */
   const onShareFailed: Event<ShareFailedEvent>;
+}
+
+declare namespace overwolf.gep {
+  type GepInternal = {
+    version_info: string;
+  }
 }
