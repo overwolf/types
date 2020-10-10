@@ -1,5 +1,5 @@
-export declare type EventDispCallback = (data: any) => void;
-export declare class EventDispatcher {
+declare type EventDispCallback = (data: any) => void;
+declare class EventDispatcher {
     addEventListener(
       eventName: string,
       listener: EventDispCallback): boolean;
@@ -9,17 +9,17 @@ export declare class EventDispatcher {
     fireEvent(eventName: string, eventData: any): null | undefined;
 }
 
-export declare type OwAdOptionsSize = {
+declare type OwAdOptionsSize = {
   width: number;
   height: number;
 }
 
-export interface OwAdOptions {
+interface OwAdOptions {
   autoplay?: boolean;
   size?: OwAdOptionsSize | OwAdOptionsSize[];
 }
 
-export declare class OwAd {
+declare class OwAd {
   constructor(container: HTMLElement, options: OwAdOptions);
   get uid(): string | null;
   get version(): string;
