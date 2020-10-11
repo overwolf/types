@@ -86,7 +86,8 @@ declare namespace overwolf.gep.Valorant {
 
   enum ValorantMatchOutcomes {
     Victory = 'victory',
-    Defeat = 'defeat'
+    Defeat = 'defeat',
+    Draw = 'draw',
   }
 
   // --------------------------------------------------------------------------
