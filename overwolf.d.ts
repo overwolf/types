@@ -689,9 +689,9 @@ declare namespace overwolf.media.replays {
   }
 
   interface CaptureErrorEvent {
+    status: string;
+    stream_id: number;
     error: string;
-    reason: string;
-    additionalInfo: string;
   }
 
   interface CaptureStoppedEvent {
@@ -2320,11 +2320,18 @@ declare namespace overwolf.games.launchers {
     id: number;
     classId: number;
     isInFocus: boolean;
-    position: { height: number; left: number; top: number; width: number };
+    position: Position;
     handle: number;
     commandLine: string;
     processId: number;
     path: string;
+  }
+
+  interface Position {
+    height: number;
+    left: number; 
+    top: number; 
+    width: number
   }
 
   interface GetRunningLaunchersInfoResult extends Result {
