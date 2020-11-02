@@ -1060,8 +1060,14 @@ declare namespace overwolf.windows {
     }
   }
 
-  type WindowStateEx =
-    "closed" | "minimized" | "hidden" | "normal" | "maximized";
+   const enum WindowStateEx {
+    CLOSED = "closed",
+    MINIMIZED = "minimized",
+    HIDDEN = "hidden",
+    NORMAL = "normal",
+    MAXIMIZED = "maximized"
+  }
+
 
   interface WindowInfo {
     name: string;
@@ -2561,6 +2567,13 @@ declare namespace overwolf.games.inputTracking {
     onGame: boolean;
   }
 
+  interface WheelEvent {
+    delta: number;
+    x: number;
+    y: number;
+    onGame: boolean;
+  }
+
   /**
    * Returns the input activity information. The information includes presses
    * for keyboard/mouse, total session time, idle time and actions-per-minute.
@@ -2638,6 +2651,12 @@ declare namespace overwolf.games.inputTracking {
    * Event information is similar to `onMouseUp`.
    */
   const onMouseDown: Event<MouseEvent>;
+
+  /**
+   * Fired a mouse wheel has been used.
+   */
+  const onMouseWheel: Event<WheelEvent>;
+
 }
 
 declare namespace overwolf.web {
