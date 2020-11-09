@@ -15,6 +15,21 @@ overwolf.games.events.onInfoUpdates2.addListener(
 )
 */
 
+/*
+type ValorantGameEvent2Event = overwolf.gep.Valorant.ValorantGameEvent2Event;
+type ValorantGameEvents = overwolf.gep.Valorant.ValorantGameEvents;
+
+overwolf.games.events.onNewEvent2.addListener(
+  (ev: ValorantGameEvent2Event) => {
+    if (ev.name === 'kill') {
+      const castData = (ev.data as ValorantGameEvents["kill"]);
+
+      // do something with castData
+    }
+  }
+);
+*/
+
 declare namespace overwolf.gep.Valorant {
   // --------------------------------------------------------------------------
   enum ValorantAgents {
@@ -99,7 +114,7 @@ declare namespace overwolf.gep.Valorant {
     locked?: boolean;
     local?: boolean;
     teammate?: boolean;
-  }
+  };
 
   // --------------------------------------------------------------------------
   interface ValorantFeature extends overwolf.games.events.InfoUpdate2 { }
@@ -118,7 +133,7 @@ declare namespace overwolf.gep.Valorant {
     score?: {
       won?: number;
       lost?: number;
-    }
+    };
     round_phase?: ValorantRoundPhases,
     team?: ValorantTeams;
     match_outcome?: ValorantMatchOutcomes;
@@ -127,7 +142,7 @@ declare namespace overwolf.gep.Valorant {
       hit?: number;
       headshot?: number;
       final_headshot?: number;
-    }
+    };
     game_mode?: {
       mode?: ValorantGameModes;
       custom?: boolean;
@@ -171,6 +186,16 @@ declare namespace overwolf.gep.Valorant {
     game_info?: ValorantGameInfo;
     kill?: ValorantKill;
     death?: ValorantDeath;
+  };
+
+  /**
+   * All available game events. When a new event is triggered, it's on of these
+   * keys.
+   */
+  interface ValorantGameEvents extends overwolf.games.events.GameEventDictionary2 {
+    kill?: number;
+    death?: number;
+    assist?: number;
   }
 
   /**
@@ -183,4 +208,10 @@ declare namespace overwolf.gep.Valorant {
    */
   type ValorantInfoUpdates2Event =
     overwolf.games.events.InfoUpdates2Event<ValorantFeatures, ValorantFeature>;
+
+  /**
+   * Intended to be used with overwolf.games.events.onNewEvent2.addListener
+   */
+  type ValorantGameEvent2Event =
+    overwolf.games.events.GameEvent2<ValorantGameEvents>;
 }

@@ -2458,6 +2458,13 @@ declare namespace overwolf.games.events {
     data: string;
   }
 
+  type GameEventDictionary2 = {};
+
+  interface GameEvent2<T extends GameEventDictionary2 = any> {
+    name: keyof T;
+    data: any;
+  }
+
   interface NewGameEvents {
     events: GameEvent[];
   }
@@ -2511,6 +2518,8 @@ declare namespace overwolf.games.events {
    * information.
    */
   const onNewEvents: Event<NewGameEvents>;
+
+  const onNewEvent2: Event<GameEvent2>;
 }
 
 declare namespace overwolf.games.events.provider {
