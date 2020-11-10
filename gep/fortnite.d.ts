@@ -116,7 +116,7 @@ declare namespace overwolf.gep.Fortnite {
     /**
      * Intended to be used with overwolf.games.events.onInfoUpdates2.addListener
      */
-    type FortniteInfoUpdates2Event =
+    type FortniteGameEvent2info =
         overwolf.games.events.InfoUpdates2Event<FortniteInfoUpdates>;
 
     /**
