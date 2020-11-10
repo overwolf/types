@@ -189,7 +189,7 @@ declare namespace overwolf.gep.Valorant {
   };
 
   /**
-   * All available game events. When a new event is triggered, it's on of these
+   * All available game events. When a new event is triggered, it's one of these
    * keys.
    */
   interface ValorantGameEvents extends overwolf.games.events.GameEventDictionary2 {
