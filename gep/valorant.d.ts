@@ -196,6 +196,8 @@ declare namespace overwolf.gep.Valorant {
     kill?: number;
     death?: number;
     assist?: number;
+    match_start?: null;
+    match_end?: null;
   }
 
   /**
