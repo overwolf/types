@@ -1,33 +1,8 @@
 declare namespace overwolf.gep.R6 {
 
-    enum R6Generic  {
-        Knocked = 'knocked',
-        Kill = 'kill',
-        DoubleKill = '2kill',
-        TripleKill = '3kill',
-        MultiKill = 'mkill',
-        Won = 'won',
-        Death = 'death'
-    }
-
     enum R6PTeam  {
         Orange = "Orange",
         Blue = "Blue"
-    }
-
-    enum R6Mode  {
-        Solo = "solo",
-        Duo = "duo",
-        Squad = "squad",
-        TeamRumble = "Playlist_Respawn",
-        Creative = "Playlist_PlaygroundV2",
-        Playground = "Playlist_Creative_PlayOnly",
-        ArenaSquads = "Playlist_ShowdownAlt_Solo",
-        TheCombine = "Playlist_Crucible_Solo",
-        BattleLab = "Playlist_BattleLab",
-        Playlist_Creative_ZebraWallet_Random = "Playlist_Creative_ZebraWallet_Random",
-        Playlist_Creative_ZebraWallet_Random2 = "Playlist_Creative_ZebraWallet_Random2",
-
     }
 
     enum R6Outcome  {
@@ -68,10 +43,6 @@ declare namespace overwolf.gep.R6 {
         deaths?: number; 
         score?: number; 
         health?: number; 
-    }
-
-    interface R6QuickbarItem {
-        name?: string; 
     }
 
       // --------------------------------------------------------------------------
