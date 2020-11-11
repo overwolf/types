@@ -1,6 +1,6 @@
 declare namespace overwolf.gep.Fortnite {
 
-    enum FortniteGeneric  {
+    enum FortniteGeneric {
         Knocked = 'knocked',
         Kill = 'kill',
         DoubleKill = '2kill',
@@ -10,13 +10,13 @@ declare namespace overwolf.gep.Fortnite {
         Death = 'death'
     }
 
-    enum FortniteSelectedMterial  {
+    enum FortniteSelectedMaterial {
         Wood = 0,
         Stone = 1,
         Metal = 2
     }
 
-    enum FortniteMode  {
+    enum FortniteMode {
         Solo = "solo",
         Duo = "duo",
         Squad = "squad",
@@ -31,38 +31,38 @@ declare namespace overwolf.gep.Fortnite {
 
     }
 
-    enum FortnitePhase  {
+    enum FortnitePhase {
         Lobby = "lobby",
         LoadingScreen = "loading_screen",
         Airfield = "airfield",
-        Aircraft = "aircraft", 
-        Freefly = "freefly"         
+        Aircraft = "aircraft",
+        Freefly = "freefly"
     }
 
-    enum Fortniterarity  {
+    enum FortniteRarity {
         None = 0,
         Green = 1,
         Blue = 2,
         Purple = 3,
-        Gold = 4         
+        Gold = 4
     }
 
     interface FortniteTeamMember {
-        player?:string;
+        player?: string;
     }
 
     interface FortniteInventoryItem {
-        name?: string; 
-        count?: number; 
-        ammo?: number; 
-        rarity?: Fortniterarity 
+        name?: string;
+        count?: number;
+        ammo?: number;
+        rarity?: FortniteRarity;
     }
 
     interface FortniteQuickbarItem {
-        name?: string; 
+        name?: string;
     }
 
-      // --------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
 
     /**
      * All available game info updates. When a new info update is triggered, it's one of these keys.
@@ -86,11 +86,11 @@ declare namespace overwolf.gep.Fortnite {
         total_shots?: number;
         phase?: FortnitePhase;
         location?: { x?: number; y?: number; z?: number; };
-        nicknames?: { team_members: FortniteTeamMember[]};
-        inventory?: { roster_0?: FortniteInventoryItem; roster_1?: FortniteInventoryItem; roster_2?: FortniteInventoryItem; roster_3?: FortniteInventoryItem;  };
-        selected_slot?: { isPrimary?: true; slot: number  };
-        quickbar?: {  quickbar_0?: FortniteQuickbarItem; quickbar_1?: FortniteQuickbarItem; quickbar_2?: FortniteQuickbarItem; quickbar_3?: FortniteQuickbarItem; };
-        selected_material?: FortniteSelectedMterial;
+        nicknames?: { team_members: FortniteTeamMember[]; };
+        inventory?: { roster_0?: FortniteInventoryItem; roster_1?: FortniteInventoryItem; roster_2?: FortniteInventoryItem; roster_3?: FortniteInventoryItem; };
+        selected_slot?: { isPrimary?: true; slot: number; };
+        quickbar?: { quickbar_0?: FortniteQuickbarItem; quickbar_1?: FortniteQuickbarItem; quickbar_2?: FortniteQuickbarItem; quickbar_3?: FortniteQuickbarItem; };
+        selected_material?: FortniteSelectedMaterial;
         ping?: number;
     }
 
@@ -100,7 +100,7 @@ declare namespace overwolf.gep.Fortnite {
     interface FortniteGameEvents extends overwolf.games.events.GameEventDictionary2 {
         kill?: number;
         knockout?: null;
-        hit?: {isHeadshot?: true;};
+        hit?: { isHeadshot?: true; };
         killed?: string;
         killer?: string;
         revived?: null;
@@ -124,5 +124,5 @@ declare namespace overwolf.gep.Fortnite {
      */
     type FortniteGameEvent2Event =
         overwolf.games.events.GameEvent2<FortniteGameEvents>;
-    
+
 }

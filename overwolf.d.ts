@@ -39,7 +39,7 @@ declare namespace overwolf {
 
   type CallbackFunction<T extends Result> = (result: T) => void;
 
-  type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]>; }
+  type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]>; };
 }
 
 declare namespace overwolf.io {
@@ -565,7 +565,7 @@ declare namespace overwolf.media.videos {
    */
   function createVideoComposition(
     sourceVideoUrl: string,
-    segments: { segments: VideoCompositionSegment[] },
+    segments: { segments: VideoCompositionSegment[]; },
     callback: CallbackFunction<FileResult>
   ): void;
 
@@ -1060,7 +1060,7 @@ declare namespace overwolf.windows {
     }
   }
 
-   const enum WindowStateEx {
+  const enum WindowStateEx {
     CLOSED = "closed",
     MINIMIZED = "minimized",
     HIDDEN = "hidden",
@@ -1099,7 +1099,7 @@ declare namespace overwolf.windows {
   }
 
   interface SetWindowPositionProperties {
-    relativeTo: { processName: string; windowTitle: string };
+    relativeTo: { processName: string; windowTitle: string; };
     insertAbove: boolean;
   }
 
@@ -1676,7 +1676,7 @@ declare namespace overwolf.windows {
    * 120, scale: 1.25}).
    */
   function getWindowDPI(
-    callback: (result: { dpi: number; scale: number }) => void
+    callback: (result: { dpi: number; scale: number; }) => void
   ): void;
 
   /**
@@ -2172,8 +2172,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number };
-    monitorHandle: { value: number };
+    windowHandle: { value: number; };
+    monitorHandle: { value: number; };
   }
 
   interface GameInfoUpdate {
@@ -2229,8 +2229,8 @@ declare namespace overwolf.games {
     commandLine: string;
     type: GameInfoType;
     typeAsString: string;
-    windowHandle: { value: number };
-    monitorHandle: { value: number };
+    windowHandle: { value: number; };
+    monitorHandle: { value: number; };
   }
 
   interface GameInfoUpdatedEvent {
@@ -2335,9 +2335,9 @@ declare namespace overwolf.games.launchers {
 
   interface Position {
     height: number;
-    left: number; 
-    top: number; 
-    width: number
+    left: number;
+    top: number;
+    width: number;
   }
 
   interface GetRunningLaunchersInfoResult extends Result {
@@ -2545,15 +2545,15 @@ declare namespace overwolf.games.inputTracking {
     x: number;
     y: number;
     onGame: boolean;
-    handle: { value: number };
+    handle: { value: number; };
   }
 
   interface InputActivity {
     aTime: number;
     iTime: number;
     apm: boolean;
-    mouse: { total: number; dist: number; keys: any };
-    keyboard: { total: number; keys: any };
+    mouse: { total: number; dist: number; keys: any; };
+    keyboard: { total: number; keys: any; };
   }
 
   interface GetActivityResult extends Result {
@@ -2683,7 +2683,7 @@ declare namespace overwolf.web {
   interface WebSocketConnectionParams {
     secured: boolean;
     port: number;
-    credentials: { username: string; password: string };
+    credentials: { username: string; password: string; };
     protocols: string[];
   }
 
@@ -4208,7 +4208,7 @@ declare namespace overwolf.extensions {
     /**
      * A definition of external URLs the web app should be able to access.
      */
-    externally_connectable?: { matches: string[] };
+    externally_connectable?: { matches: string[]; };
     /**
      * Overrides the relative protocol with a preferred one.
      */
@@ -4235,7 +4235,7 @@ declare namespace overwolf.extensions {
     /**
      * Allows access to custom plugin dlls.
      */
-    "extra-objects"?: Dictionary<{ file: string; class: string }>;
+    "extra-objects"?: Dictionary<{ file: string; class: string; }>;
     /**
      * Shortcut keys that trigger an app action.
      */
@@ -5079,7 +5079,7 @@ declare namespace overwolf.utils {
     width: number;
     height: number;
     is_primary: boolean;
-    monitorHandle: { value: number };
+    monitorHandle: { value: number; };
   }
 
   interface GPUInfo {
@@ -5159,7 +5159,7 @@ declare namespace overwolf.utils {
   }
 
   interface GetPeripheralsResult extends Result {
-    peripherals?: { inputDevices: InputDeviceInfo[]; audioDevices: string[] };
+    peripherals?: { inputDevices: InputDeviceInfo[]; audioDevices: string[]; };
   }
 
   interface IsMouseLeftButtonPressedResult extends Result {
@@ -5185,7 +5185,7 @@ declare namespace overwolf.utils {
    * @param callback Called with the monitors array.
    */
   function getMonitorsList(
-    callback: (result: { displays: Display[] }) => void
+    callback: (result: { displays: Display[]; }) => void
   ): void;
 
   /**
@@ -5338,7 +5338,7 @@ declare namespace overwolf.settings {
   }
 
   interface FpsSettings {
-    offset?: { x: number; y: number };
+    offset?: { x: number; y: number; };
     scale?: number;
     enabled?: boolean;
     position?: enums.eIndicationPosition;
@@ -5433,7 +5433,7 @@ declare namespace overwolf.settings {
    * @param callback
    */
   function getCurrentOverwolfLanguage(
-    callback: (result: { language: string }) => void
+    callback: (result: { language: string; }) => void
   ): void;
 
   /**
@@ -6217,5 +6217,5 @@ declare namespace overwolf.social.reddit {
 declare namespace overwolf.gep {
   type GepInternal = {
     version_info: string;
-  }
+  };
 }
