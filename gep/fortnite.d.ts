@@ -13,7 +13,7 @@ declare namespace overwolf.gep.Fortnite {
     enum FortniteSelectedMterial  {
         Wood = 0,
         Stone = 1,
-        Metal = 2,
+        Metal = 2
     }
 
     enum FortniteMode  {
