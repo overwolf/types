@@ -2375,8 +2375,8 @@ declare namespace overwolf.games.launchers {
 }
 
 declare namespace overwolf.games.launchers.events {
-  interface GetInfoResult extends Result {
-    res: any;
+  interface GetInfoResult<T = any> extends Result {
+    res: T;
   }
 
   interface SetRequiredFeaturesResult extends Result {
@@ -4787,8 +4787,8 @@ declare namespace overwolf.extensions.io {
 }
 
 declare namespace overwolf.extensions.current {
-  interface GetExtraObject extends Result {
-    object?: any;
+  interface GetExtraObject<T = any> extends Result {
+    object?: T;
   }
 
   /**
