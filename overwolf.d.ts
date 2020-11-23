@@ -212,6 +212,14 @@ declare namespace overwolf.media {
       Video = "Video",
       Image = "Image",
     }
+
+    const enum eSourceType {
+      Webcam = "Webcam"
+    }
+
+    const enum eVideoSourceTransform {
+      Stretch = "Stretch"
+    }
   }
 
   interface RescaleParams {
@@ -253,12 +261,28 @@ declare namespace overwolf.media {
     reason: string;
   }
 
+  interface Webcam {
+    name: string;
+    path: string;
+    id: string;
+  }
+
+  interface GetWebcamsResult extends Result {
+    webCams?: Webcam[];
+  }
+
   /**
    * Takes a screenshot and calls the callback with the success status and the
    * screenshot URL. The screenshot is saved to the screenshots folder.
    * @param callback A function called after the screenshot was taken.
    */
   function takeScreenshot(callback: CallbackFunction<FileResult>): void;
+
+  /**
+   * Get all connected Webcams.
+   * @param callback A callback function which will be called with the status of the request.
+   */
+  function GetWebcams(callback: CallbackFunction<GetWebcamsResult>): void;
 
   /**
    * Takes a screenshot and calls the callback with the success status and the
@@ -3524,6 +3548,22 @@ declare namespace overwolf.streaming {
      *  use the app "short name" as the folder name, instead of using the app name from the manifest.
      */
     use_app_display_name: boolean;
+
+    /**
+     * Add sources to video (currently only webcam is supported)
+     */
+    sources: VideoSource[];
+
+  }
+
+  /**
+   * Defines the video source settings.
+   */
+  interface VideoSource {
+    source_type: overwolf.media.enums.eSourceType;
+    name: string;
+    secondary_file: boolean; //source will be create on secondry video file(i.e another ow-obs.exe process will be createdw ith the same setting as the original one
+    transform: overwolf.media.enums.eVideoSourceTransform;
   }
 
   /**
