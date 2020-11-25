@@ -1526,6 +1526,7 @@ declare namespace overwolf.windows {
 
   /**
    * Sets whether the window should be injected to games or not.
+   * @deprecated Since version 0.159.
    * @param windowId
    * @param shouldBeDesktopOnly
    * @param callback
