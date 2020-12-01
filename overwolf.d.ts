@@ -67,6 +67,10 @@ declare namespace overwolf.io {
     found?: boolean;
   }
 
+  interface ExistsResult extends Result {
+    exist?: boolean;
+  }
+
   interface ReadFileContentsResult extends Result {
     content?: string;
   }
@@ -79,6 +83,28 @@ declare namespace overwolf.io {
     name: string;
     type: string;
   }
+
+  interface ReadBinaryFileResult extends Result {
+    content?: string;
+    info?: FileInfo;
+  }
+
+  interface ReadTextFileResult extends Result {
+    content?: string;
+    info?: FileInfo;
+  }
+
+  interface ListenOnFileResult extends Result {
+    content?: string;
+  }
+
+  interface FileInfo {
+    eof: boolean;
+    totalRead: number;
+    position: number;
+    totalLines: number;
+  }
+  
 
   /**
    * Checks for the existence of the file in the given path.
@@ -157,7 +183,7 @@ declare namespace overwolf.io {
   function readBinaryFile(
     path: string,
     options: ReadFileOptions,
-    callback: CallbackFunction<Result>
+    callback: CallbackFunction<ReadBinaryFileResult>
   ): void;
 
   /**
@@ -169,7 +195,7 @@ declare namespace overwolf.io {
   function readTextFile(
     path: string,
     options: ReadFileOptions,
-    callback: CallbackFunction<ReadFileContentsResult>
+    callback: CallbackFunction<ReadTextFileResult>
   ): void;
 
   /**
@@ -177,7 +203,7 @@ declare namespace overwolf.io {
    * @param path The target path.
    * @param callback result callback.
    */
-  function exist(path: string, callback: CallbackFunction<Result>): void;
+  function exist(path: string, callback: CallbackFunction<ExistsResult>): void;
 
   /**
    * Start listening on file.
@@ -191,7 +217,7 @@ declare namespace overwolf.io {
     id: string,
     path: string,
     options: ListenFileOptions,
-    callback: CallbackFunction<Result>
+    callback: CallbackFunction<ListenOnFileResult>
   ): void;
 
   /**
@@ -4828,10 +4854,12 @@ declare namespace overwolf.extensions.io {
 }
 
 declare namespace overwolf.extensions.current {
-  interface GetExtraObject<T = any> extends Result {
-    object?: T;
+
+  interface GetExtraObjectResult extends Result {
+    object?: any;
   }
 
+  
   /**
    * Retrieves an extra object (providing external APIs) registered in the
    * extension's manifest.
@@ -4841,7 +4869,7 @@ declare namespace overwolf.extensions.current {
    */
   function getExtraObject(
     name: string,
-    callback: CallbackFunction<GetExtraObject>
+    callback: CallbackFunction<GetExtraObjectResult>
   ): void;
 
   /**
