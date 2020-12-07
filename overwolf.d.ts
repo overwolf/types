@@ -5213,6 +5213,7 @@ declare namespace overwolf.utils {
 
   interface OpenFilePickerResult extends Result {
     url?: string;
+    urls?: string[];
   }
 
   interface OpenFolderPickerResult extends Result {
@@ -5275,6 +5276,22 @@ declare namespace overwolf.utils {
   function openFilePicker(
     filter: string,
     callback: CallbackFunction<OpenFilePickerResult>
+  ): void;
+
+  /**
+   * Opens a file picker dialog to browse for a file. A url to the selected file
+   * will be returned.
+   * @param filter A file filter. Supports wild cards (*) and seperated by
+   * commas (,). Ex. myFile*.*,*.txt
+   * @param initialPath Path to start browsing from
+   * @param callback Called with a url(s) to the selected file(s).
+   * @param multiSelect Allow selection of multiple files
+   */
+  function openFilePicker(
+    filter: string,
+    initialPath: string,
+    callback: CallbackFunction<OpenFilePickerResult>,
+    multiSelect: boolean
   ): void;
 
   /**
