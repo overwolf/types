@@ -5437,6 +5437,13 @@ declare namespace overwolf.settings {
     };
   }
 
+  interface GetVideoCaptureSettingsResult extends Result {
+    enconder: string;
+    preset: string;
+    fps: number;
+    resolution: number;
+  }
+
   interface GetAudioCaptureSettingsResult extends Result {
     sound_enabled: boolean;
     microphone_enabled: boolean;
@@ -5546,12 +5553,7 @@ declare namespace overwolf.settings {
    * @param callback
    */
   function getVideoCaptureSettings(
-    callback: (result: {
-      enconder: string;
-      preset: string;
-      fps: number;
-      resolution: number;
-    }) => void
+    callback: CallbackFunction<GetVideoCaptureSettingsResult>
   ): void;
 
   /**
