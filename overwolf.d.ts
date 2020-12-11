@@ -583,9 +583,36 @@ declare namespace overwolf.media.audio {
 }
 
 declare namespace overwolf.media.videos {
+  namespace enums {
+    const enum WatermarkLocation {
+      TopLeft = "topLeft",
+      topCenter = "topCenter",
+      topRight = "topRight",
+      midLeft = "midLeft",
+      center = "center",
+      midRight = "midRight",
+      bottomLeft = "bottomLeft",
+      bottomCenter = "bottomCenter",
+      bottomRight = "bottomRight"
+    }
+  }
   interface VideoCompositionSegment {
     startTime: number;
     endTime: number;
+  }
+
+  /**
+   * A helper structure to describe watermark parameters.
+   * @param startTime Segment start time (in milliseconds)
+   * @param endTime Segment end time (in milliseconds)
+   * @param location The location of the watermark (in pixles)
+   * 
+   */
+  interface WatermarkParams {
+    startTime: number;
+    endTime: number;
+    location: enums.WatermarkLocation;
+    scaleHeight: number;
   }
 
   interface GetVideosResult extends Result {
@@ -669,6 +696,22 @@ declare namespace overwolf.media.videos {
     videoUrl: string,
     callback: CallbackFunction<Result>
   ): void;
+
+  /**
+   * Adds a video/image watermark to a video.
+   * @param sourceVideoUrl The url of the source video in an overwolf://media form.
+   * @param watermarkUrl The url of the watermark video/image in an overwolf://media form. 
+   * @param watermarkParams Use this object to mark the watermark   
+   * @param callback A callback function which will be called with the status of
+   * the request and the url to the output video.
+   */
+  function addWatermark(
+    sourceVideoUrl: string,
+    watermarkUrl: string,
+    watermarkParams: WatermarkParams,
+    callback: CallbackFunction<FileResult>
+  ): void;
+
 }
 
 declare namespace overwolf.media.replays {
@@ -2729,6 +2772,12 @@ declare namespace overwolf.web {
       DELETE = "DELETE",
       PATCH = "PATCH",
     }
+    const enum MessageType {
+      Ping = "ping",
+      Binary = "binary",
+      Text = "text"
+    }
+
   }
 
   interface WebSocketConnectionParams {
@@ -2816,7 +2865,7 @@ declare namespace overwolf.web {
 
   interface MessageEvent {
     message: string;
-    type: "ping" | "binary" | "text";
+    type: overwolf.web.enums.MessageType;
   }
 
   interface ErrorEvent {
