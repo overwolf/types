@@ -5857,6 +5857,18 @@ declare namespace overwolf.social {
   interface LoginStateChangedEvent {
     status: "connected" | "disconnected";
   }
+
+  interface GetDisabledServicesResult<T> extends Result {
+    disabled_services?: string[];   
+  }
+
+  /**
+   * Checks which of the supported sharing services are disabled or enabled.
+   * @param callback Returns a list of disabled services
+   */
+   function getDisabledServices(callback: CallbackFunction<GetDisabledServicesResult>): void;
+
+
 }
 
 declare namespace overwolf.social.discord {
