@@ -5850,12 +5850,18 @@ declare namespace overwolf.settings.language {
 }
 
 declare namespace overwolf.social {
+  
+  const enum LoginState {
+    Connected = "connected",
+    Disconnected = "disconnected"
+  }
+
   interface GetUserInfoResult<T> extends Result {
     userInfo?: T;
   }
 
   interface LoginStateChangedEvent {
-    status: "connected" | "disconnected";
+    status: LoginState;
   }
 
   interface GetDisabledServicesResult<T> extends Result {
