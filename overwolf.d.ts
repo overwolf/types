@@ -5805,11 +5805,43 @@ declare namespace overwolf.settings.hotkeys {
     description: string;
     binding: string;
   }
+  
+  interface HotkeyModifiers {
+    ctrl?: boolean;
+    alt?: boolean;
+    shift?: boolean;
+  }
+  
+  interface UnassignHotkeyObject {
+    name: string;
+    gameId?: number;
+  }
+
+  interface AssignHotkeyObject extends UnassignHotkeyObject {
+    modifiers: HotkeyModifiers;
+    virtualKey: number;
+  }
 
   /**
    * Returns the hotkey assigned for the current extension in all the games.
    */
   function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
+    
+   /**
+   * Set hotkey for current extension
+   */
+  function assign(
+    hotkey: AssignHotkeyObject,
+    callback: CallbackFunction<Result>
+  ): void;
+  
+   /**
+   * unassign hotkey for current extension
+   */
+   function unassign(
+      hotkey: UnassignHotkeyObject,
+      callback: CallbackFunction<Result>
+   ): void;
 
   /**
    * Fired only for hotkeys that are set in the manifest as hold.
@@ -5850,18 +5882,12 @@ declare namespace overwolf.settings.language {
 }
 
 declare namespace overwolf.social {
-  
-  const enum LoginState {
-    Connected = "connected",
-    Disconnected = "disconnected"
-  }
-
   interface GetUserInfoResult<T> extends Result {
     userInfo?: T;
   }
 
   interface LoginStateChangedEvent {
-    status: LoginState;
+    status: "connected" | "disconnected";
   }
 
   interface GetDisabledServicesResult<T> extends Result {
