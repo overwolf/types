@@ -3825,6 +3825,15 @@ declare namespace overwolf.streaming {
     SubErrorMessage?: string;
   }
 
+  interface StreamEvent {
+    stream_id?: number;
+    SubErrorMessage?: string;
+  }
+
+  interface GetWatermarkSettingsResult extends Result {
+    showWatermark: boolean;
+  }
+
   interface GetWindowStreamingModeResult extends Result {
     streaming_mode?: string;
   }
@@ -3848,6 +3857,18 @@ declare namespace overwolf.streaming {
   }
 
   interface StopStreamingEvent {
+    stream_id: number;
+    url: string;
+    file_path: string;
+    duration: number;
+    last_file_path: string;
+    split: boolean;
+    extra: string;
+    osVersion: string;
+    osBuild: string;
+  }
+
+  interface StopStreamingResult extends Result {
     stream_id: number;
     url: string;
     file_path: string;
@@ -3886,7 +3907,7 @@ declare namespace overwolf.streaming {
    */
   function stop(
     streamId: number,
-    callback?: (result: StreamResult | StopStreamingEvent) => void
+    callback?: (result: StreamResult | StopStreamingResult) => void
   ): void;
 
   /**
@@ -3927,10 +3948,10 @@ declare namespace overwolf.streaming {
   /**
    * Gets the watermark settings.
    * @param callback A function that will be called with a JSON containing the
-   * statusand the watermark settings if successful or an error message if not.
+   * status and the watermark settings if successful or an error message if not.
    */
   function getWatermarkSettings(
-    callback: (result: WatermarkSettings) => void
+    callback: CallbackFunction<GetWatermarkSettingsResult>
   ): void;
 
   /**
@@ -4033,22 +4054,22 @@ declare namespace overwolf.streaming {
   /**
    * Fired when the stream has stopped.
    */
-  const onStopStreaming: Event<StreamResult | StopStreamingEvent>;
+  const onStopStreaming: Event<StopStreamingEvent>;
 
   /**
    * Fired when the stream has stopped.
    */
-  const onStartStreaming: Event<StreamResult>;
+  const onStartStreaming: Event<StreamEvent>;
 
   /**
    * Fired upon an error with the stream.
    */
-  const onStreamingError: Event<StreamResult>;
+  const onStreamingError: Event<StreamEvent>;
 
   /**
    * Fired upon a warning with the stream.
    */
-  const onStreamingWarning: Event<StreamResult>;
+  const onStreamingWarning: Event<StreamEvent>;
 
   /**
    * Fired upon video file splited.
@@ -5285,6 +5306,10 @@ declare namespace overwolf.utils {
     pressed?: boolean;
   }
 
+  interface getMonitorsListResult extends Result {
+    displays: Display[];
+  }
+
   /**
    * Copies the given string to the clipboard.
    * @param data The string to be copied to the clipboard.
@@ -6245,6 +6270,14 @@ declare namespace overwolf.social.youtube {
 }
 
 declare namespace overwolf.social.reddit {
+  
+  interface Flair {
+    id: string;
+    text: string;
+    mod_only: boolean;
+    allowable_content: string;
+  }
+
   interface ShareParamaeters {
     /**
      * The file to share.
@@ -6288,6 +6321,8 @@ declare namespace overwolf.social.reddit {
      * Optional parameter.
      */
     metadata?: any;
+
+    flair_id?: Flair;
   }
 
   interface User {
@@ -6324,6 +6359,16 @@ declare namespace overwolf.social.reddit {
     error: string;
     details?: string;
   }
+
+  /**
+   * Returns a list of flairs supported by the given subreddit
+   * @param subredditName The given subreddit
+   * @param callback Will contain  a list of flairs supported by the given subreddit
+   */
+  function getSubredditFlairs(
+    subredditName: string,
+    callback: CallbackFunction<Result>
+  ): void;
 
   /**
    * Opens the login dialog. There is no callback for this method and the only
