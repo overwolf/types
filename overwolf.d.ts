@@ -2333,6 +2333,8 @@ declare namespace overwolf.games {
     runningChanged: boolean;
     focusChanged: boolean;
     gameChanged: boolean;
+    gameOverlayChanged: boolean;
+    overlayInputHookError?: boolean;
   }
 
   interface MajorFrameRateChangeEvent {
@@ -2685,6 +2687,10 @@ declare namespace overwolf.games.inputTracking {
    */
   function getActivityInformation(
     callback: CallbackFunction<GetActivityResult>
+  ): void;
+
+  function init(
+    callback: CallbackFunction<Result>
   ): void;
 
   /**
