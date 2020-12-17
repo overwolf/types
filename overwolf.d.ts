@@ -228,6 +228,36 @@ declare namespace overwolf.io {
    */
   function stopFileListener(id: string): void;
 }
+  
+declare namespace overwolf.cryptography {
+  interface EncryptedDataResult extends Result {
+    ciphertext: string;
+  }
+
+  interface DecryptedDataResult extends Result {
+    plaintext: string;
+  }
+
+  /**
+   * Encrypt provided plaintext for current system user
+   * @param plaintext Text to encrypt
+   * @param callback Will be called with encrypted ciphertext
+   */
+  function encryptForCurrentUser(
+    plaintext: string,
+    callback: CallbackFunction<EncryptedDataResult>
+  );
+
+  /**
+   * Decrypt provided ciphertext for current system user
+   * @param ciphertext Text to decrypt
+   * @param callback Will be called with decrypted plaintext
+   */
+  function decryptForCurrentUser(
+    ciphertext: string,
+    callback: CallbackFunction<DecryptedDataResult>
+  );
+}
 
 declare namespace overwolf.media {
   namespace enums {
