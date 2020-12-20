@@ -4262,7 +4262,6 @@ declare namespace overwolf.extensions {
      * Includes app metadata
      */
     meta: Metadata;
-    UID: string;
     /**
      * 	An array of permissions that the app requires.
      */
@@ -4272,9 +4271,9 @@ declare namespace overwolf.extensions {
      */
     data: WebAppSettings;
     /**
-     * Indicate whether the app is installed or not
+     * Increase the app's log file rotation (defaults to 10, max is 40).
      */
-    is_installed: boolean;
+    max_rotation_log_files: number;
   }
 
   interface Metadata {
@@ -4522,6 +4521,19 @@ declare namespace overwolf.extensions {
        */
       filter: string;
     };
+    /**
+     * If set to true, app local data will not be cleaned up after app uninstallation.
+     * Default value – “false”
+     */
+    disable_cleanup?: boolean;
+    /**
+     * Allow overriding the OverwolfBrowser.exe process name in task manager.
+     */
+    process_name?: string;
+    /**
+     * Ability to open an application from a browser using a link.
+     */
+    url_protocol?: Dictionary<string>;
   }
 
   interface ExtensionWindowData {
@@ -4740,6 +4752,19 @@ declare namespace overwolf.extensions {
      * is on.
      */
     optimize_accelerate_rendering: boolean;
+    /**
+     * Relevant only for native windows. Disable the DPI Aware behavior of native windows.
+     */
+    disable_auto_dpi_sizing: boolean;
+    /**
+     * A window will always stay inside the game window while dragging.
+     */
+    restrict_to_game_bounds: boolean;
+    /**
+     * Disable GPU hardware acceleration, per window. Relevant only to native windows.
+     * Notes: Use this flag mainly for native windows that run as a second-screen with fps intensive games. It improves the performance of the game by reducing usage of the GPU while you are playing.
+     */
+    disable_hardware_acceleration: boolean;
   }
 
   interface Size {
