@@ -4262,6 +4262,8 @@ declare namespace overwolf.extensions {
      * Includes app metadata
      */
     meta: Metadata;
+
+    UID: string;
     /**
      * 	An array of permissions that the app requires.
      */
