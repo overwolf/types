@@ -53,7 +53,7 @@ declare namespace overwolf.io {
     }
   }
 
-  interface paths {
+  const paths: {
     programFiles: string,
     programFilesX86: string,
     commonFiles: string,
