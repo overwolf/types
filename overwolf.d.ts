@@ -53,6 +53,27 @@ declare namespace overwolf.io {
     }
   }
 
+  const paths: {
+    programFiles: string,
+    programFilesX86: string,
+    commonFiles: string,
+    commonFilesX86: string,
+    commonAppData: string,
+    desktop: string,
+    windows: string,
+    system: string,
+    systemX86: string,
+    documents: string,
+    videos: string,
+    pictures: string,
+    music: string,
+    commonDocuments: string,
+    favorites: string,
+    fonts: string,
+    startMenu: string,
+    localAppData: string,
+  }
+
   interface ReadFileOptions {
     encoding: enums.eEncoding;
     maxBytesToRead: number;
