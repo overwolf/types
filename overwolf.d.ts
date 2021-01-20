@@ -53,25 +53,25 @@ declare namespace overwolf.io {
     }
   }
 
-  const paths: {
-    programFiles: string,
-    programFilesX86: string,
-    commonFiles: string,
-    commonFilesX86: string,
-    commonAppData: string,
-    desktop: string,
-    windows: string,
-    system: string,
-    systemX86: string,
-    documents: string,
-    videos: string,
-    pictures: string,
-    music: string,
-    commonDocuments: string,
-    favorites: string,
-    fonts: string,
-    startMenu: string,
-    localAppData: string,
+  namespace paths {
+    const programFiles: string,
+    const programFilesX86: string,
+    const commonFiles: string,
+    const commonFilesX86: string,
+    constcommonAppData: string,
+    constdesktop: string,
+    const windows: string,
+    const system: string,
+    const systemX86: string,
+    const documents: string,
+    const videos: string,
+    const pictures: string,
+    const music: string,
+    const commonDocuments: string,
+    const favorites: string,
+    const fonts: string,
+    const startMenu: string,
+    const localAppData: string,
   }
 
   interface ReadFileOptions {
