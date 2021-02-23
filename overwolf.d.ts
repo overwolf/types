@@ -54,24 +54,24 @@ declare namespace overwolf.io {
   }
 
   namespace paths {
-    const programFiles: string,
-    const programFilesX86: string,
-    const commonFiles: string,
-    const commonFilesX86: string,
-    constcommonAppData: string,
-    constdesktop: string,
-    const windows: string,
-    const system: string,
-    const systemX86: string,
-    const documents: string,
-    const videos: string,
-    const pictures: string,
-    const music: string,
-    const commonDocuments: string,
-    const favorites: string,
-    const fonts: string,
-    const startMenu: string,
-    const localAppData: string,
+    const programFiles: string;
+    const programFilesX86: string;
+    const commonFiles: string;
+    const commonFilesX86: string;
+    const commonAppData: string;
+    const desktop: string;
+    const windows: string;
+    const system: string;
+    const systemX86: string;
+    const documents: string;
+    const videos: string;
+    const pictures: string;
+    const music: string;
+    const commonDocuments: string;
+    const favorites: string;
+    const fonts: string;
+    const startMenu: string;
+    const localAppData: string;
   }
 
   interface ReadFileOptions {
@@ -267,7 +267,7 @@ declare namespace overwolf.cryptography {
   function encryptForCurrentUser(
     plaintext: string,
     callback: CallbackFunction<EncryptedDataResult>
-  );
+  ): void;
 
   /**
    * Decrypt provided ciphertext for current system user
@@ -277,7 +277,7 @@ declare namespace overwolf.cryptography {
   function decryptForCurrentUser(
     ciphertext: string,
     callback: CallbackFunction<DecryptedDataResult>
-  );
+  ): void;
 }
 
 declare namespace overwolf.media {
@@ -5253,7 +5253,7 @@ declare namespace overwolf.campaigns.crossapp {
   function set(
     campaign: CrossAppCampaign,
     callback: CallbackFunction<Result>
-  );
+  ): void;
 
   /**
    * Submit new conversion for a cross-app campaign.
@@ -5264,7 +5264,7 @@ declare namespace overwolf.campaigns.crossapp {
   function reportConversion(
     conversionInfo: CrossAppCampaignConversion,
     callback: CallbackFunction<Result>
-  );
+  ): void;
 
   /**
    * Consume all pending conversions for this extension. Consumed conversions
@@ -5274,7 +5274,7 @@ declare namespace overwolf.campaigns.crossapp {
    */
   function consumeConversions(
     callback: CallbackFunction<GetCrossAppConversionsResult>
-  );
+  ): void;
 
   /*
    * Called when an available action has updated (or added)
@@ -6007,7 +6007,7 @@ declare namespace overwolf.social {
    * Checks which of the supported sharing services are disabled or enabled.
    * @param callback Returns a list of disabled services
    */
-   function getDisabledServices(callback: CallbackFunction<GetDisabledServicesResult>): void;
+   function getDisabledServices(callback: CallbackFunction<GetDisabledServicesResult<void>>): void;
 
 
 }
