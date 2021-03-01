@@ -3923,6 +3923,7 @@ declare namespace overwolf.streaming {
     extra: string;
     osVersion: string;
     osBuild: string;
+    total_frames: number;
   }
 
   interface StopStreamingResult extends Result {
