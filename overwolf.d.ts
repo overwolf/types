@@ -5352,6 +5352,8 @@ declare namespace overwolf.utils {
     OSReleaseId?: string;
     PhysicalCPUCount?: number;
     VidEncSupport?: boolean;
+    /** indicates if the current OS enabled the [Windows 10 Hardware-Accelerated GPU Scheduling](../topics/video-capture#windows-10-hardware-accelerated-gpu-scheduling-notice) feature */
+    HAGSEnabled?: boolean
   }
 
   interface OpenStoreParams {
