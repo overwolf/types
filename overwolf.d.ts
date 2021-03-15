@@ -5370,6 +5370,7 @@ declare namespace overwolf.utils {
 
   interface OpenFilePickerResult extends Result {
     url?: string;
+    file?: string;
     urls?: string[];
   }
 
@@ -5593,6 +5594,7 @@ declare namespace overwolf.settings {
 
   interface GeneralExtensionSettings {
     auto_launch_with_overwolf?: boolean;
+    exit_overwolf_on_exit?: boolean;
   }
 
   interface GetHotKeyResult extends Result {
