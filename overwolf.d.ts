@@ -3498,6 +3498,17 @@ declare namespace overwolf.streaming {
       Dot = "Dot",
       DotAndTimer = "DotAndTimer",
     }
+
+    const enum eVideoBaseFrameSizeSource {
+      Auto = "Auto",
+      Setting = "Setting",
+    }
+
+    const enum eVideoFrameSizeCalcMethod {
+      Original = "Original",
+      ExactOrKeepRatio = "ExactOrKeepRatio",
+      ExactOrClosestResolution = "ExactOrClosestResolution",
+    }
   }
 
   /**
@@ -3866,6 +3877,11 @@ declare namespace overwolf.streaming {
   interface EncoderData {
     name: string;
     display_name: string;
+    enabled: boolean;
+    presets: string[];
+    valid: boolean;
+    vendor_error: string;
+    error_decsription: string; 
   }
 
   interface AudioDeviceData {
