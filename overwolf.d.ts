@@ -72,6 +72,9 @@ declare namespace overwolf.io {
     const fonts: string;
     const startMenu: string;
     const localAppData: string;
+    const overwolfInstallation: string; 
+    const overwolfInstallationWithVersion: string; 
+    const obsBin: string;
   }
 
   interface ReadFileOptions {
