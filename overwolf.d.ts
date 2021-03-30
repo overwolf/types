@@ -6183,7 +6183,7 @@ declare namespace overwolf.social.gfycat {
     url: string;
   }
 
-  interface ShareParamaeters {
+  interface ShareParameters {
     file: string;
     trimming: media.videos.VideoCompositionSegment;
     title: string;
@@ -6228,7 +6228,7 @@ declare namespace overwolf.social.gfycat {
    * @param callback Will contain the status of the request.
    */
   function share(
-    gfycatShareParams: ShareParamaeters,
+    gfycatShareParams: ShareParameters,
     callback: CallbackFunction<Result>
   ): void;
 
@@ -6239,7 +6239,7 @@ declare namespace overwolf.social.gfycat {
 }
 
 declare namespace overwolf.social.twitter {
-  interface ShareParamaeters {
+  interface ShareParameters {
     file: string;
     message: string;
     trimming: media.videos.VideoCompositionSegment;
@@ -6291,7 +6291,7 @@ declare namespace overwolf.social.twitter {
    * @param callback Will contain the status of the request.
    */
   function share(
-    twitterShareParams: ShareParamaeters,
+    twitterShareParams: ShareParameters,
     callback: CallbackFunction<Result>
   ): void;
 
@@ -6308,7 +6308,7 @@ declare namespace overwolf.social.youtube {
     Private = "Private",
   }
 
-  interface ShareParamaeters {
+  interface ShareParameters {
     file: string;
     title: string;
     description: string;
@@ -6367,7 +6367,7 @@ declare namespace overwolf.social.youtube {
    * @param callback Will contain the status of the request.
    */
   function share(
-    youTubeShareParams: ShareParamaeters,
+    youTubeShareParams: ShareParameters,
     callback: CallbackFunction<Result>
   ): void;
 
@@ -6386,7 +6386,7 @@ declare namespace overwolf.social.reddit {
     allowable_content: string;
   }
 
-  interface ShareParamaeters {
+  interface ShareParameters {
     /**
      * The file to share.
      */
@@ -6529,11 +6529,11 @@ declare namespace overwolf.social.reddit {
    * - Disconnected (user isn't signed in)
    * - MissingFile (trying to share a missing file)
    * - UnsupportedFile (trying to share an unsupported format)
-   * @param youTubeShareParams The share parameters.
+   * @param redditShareParams The share parameters.
    * @param callback Will contain the status of the request.
    */
   function share(
-    youTubeShareParams: ShareParamaeters,
+    redditShareParams: ShareParameters,
     callback: CallbackFunction<Result>
   ): void;
 
