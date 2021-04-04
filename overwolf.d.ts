@@ -3415,6 +3415,7 @@ declare namespace overwolf.streaming {
       INTEL = "INTEL",
       X264 = "X264",
       NVIDIA_NVENC = "NVIDIA_NVENC",
+      NVIDIA_NVENC_NEW = "NVIDIA_NVENC_NEW",
       AMD_AMF = "AMD_AMF",
     }
 
@@ -3570,11 +3571,16 @@ declare namespace overwolf.streaming {
     /**
      * Create gif as Video (Gif Replay Type only).
      */
-    gif_as_video: boolean;
+    gif_as_video?: boolean;
     /**
-     * Max media folder size in GB
+     * Max media folder size in GB. Deprecated
      */
-    max_quota_gb: number;
+    max_quota_gb?: number;
+
+    /**
+     * Quota information
+     */
+    quota?: StreamQuotaParams;
   }
 
   interface StreamInfo {
@@ -3612,52 +3618,52 @@ declare namespace overwolf.streaming {
      * Defines if to try to automatically calculate the kbps. If set to true,
      * then the max_kbps field is ignored.
      */
-    auto_calc_kbps: boolean;
+    auto_calc_kbps?: boolean;
     /**
      * Defines the Frames Per Second for the stream.
      */
-    fps: number;
+    fps?: number;
     /**
      * Defines the stream width in pixels.
      */
-    width: number;
+    width?: number;
     /**
      * Defines the stream height in pixels.
      */
-    height: number;
+    height?: number;
     /**
      * Defines the maximum KB per second of the stream.
      */
-    max_kbps: number;
+    max_kbps?: number;
     /**
      * Defines the length of the buffer to be recorded in millisenconds (max 40
      * seconds)
      */
-    buffer_length: number;
+    buffer_length?: number;
     /**
      * Interval between frames when creating gifs.
      */
-    frame_interval: number;
+    frame_interval?: number;
     /**
      * The interval, in milliseconds, in which to test for dropped frames.
      */
-    test_drop_frames_interval: number;
+    test_drop_frames_interval?: number;
     /**
      * The ratio of dropped to non-dropped frames for which to issue a
      * notification.
      */
-    notify_dropped_frames_ratio: number;
+    notify_dropped_frames_ratio?: number;
     /**
      * Defines file maximum size. when video reach `max_file_size_bytes`, the
      * recorder will flash the video file and stat a new video file.
      * `onFileSpilt` event will be fired.
      */
-    max_file_size_bytes: number;
+    max_file_size_bytes?: number;
     /**
      * In case `max_file_size_bytes` is on, full video will be recorded to disk,
      * parallel to splits videos.
      */
-    include_full_size_video: boolean;
+    include_full_size_video?: boolean;
     /**
      * Defines Sub folder for video file path destination (Optional).
      * OverwolfVideoFolder\AppName\|sub_folder_name\|file_name| In case
@@ -3676,31 +3682,45 @@ declare namespace overwolf.streaming {
      * Do not use Overwolf capture setting. In case True you must provider all
      * video setting (encoder..)
      */
-    override_overwolf_setting: boolean;
+    override_overwolf_setting?: boolean;
     /**
      * Do not start video replay service in case shared texture is not
      * supported.
      */
-    disable_when_sht_not_supported: boolean;
+    disable_when_sht_not_supported?: boolean;
     /**
      * Position of the recorder indicator. Available for video capture only.
      */
-    indication_position: enums.IndicationPosition;
+    indication_position?: enums.IndicationPosition;
     /**
      * Type of the recorder indicator. Available for video capture only.
      */
-    indication_type: enums.IndicationType;
+    indication_type?: enums.IndicationType;
 
     /**
      *  use the app "short name" as the folder name, instead of using the app name from the manifest.
      */
-    use_app_display_name: boolean;
+    use_app_display_name?: boolean;
 
     /**
      * Add sources to video (currently only webcam is supported)
      */
-    sources: VideoSource[];
+    sources?: VideoSource[];
 
+    /**
+     * 
+     */
+    frame_size_method?: enums.eVideoFrameSizeCalcMethod;
+
+    /**
+     * 
+     */
+    base_frame_size_source?: enums.eVideoBaseFrameSizeSource;
+
+    /**
+     * 
+     */
+    enable_on_demand_split?: boolean;
   }
 
   /**
@@ -3802,11 +3822,11 @@ declare namespace overwolf.streaming {
     /**
      * Defines which monitor to stream when streaming desktop.
      */
-    monitor_id: number;
+    monitor_id?: number;
     /**
      * Defines if to force desktop streaming even when a game is in foreground.
      */
-    force_capture: boolean;
+    force_capture?: boolean;
   }
 
   /**
@@ -3830,15 +3850,15 @@ declare namespace overwolf.streaming {
     /**
      * Defines if the device is enabled.
      */
-    enable: boolean;
+    enable?: boolean;
     /**
      * Defines the device volume in the range of 0 to 100.
      */
-    volume: number;
+    volume?: number;
     /**
      * Defines the device ID to use.
      */
-    device_id: string;
+    device_id?: string;
   }
 
   /**
@@ -3864,6 +3884,14 @@ declare namespace overwolf.streaming {
      * stream key in the url.
      */
     template_url: string;
+  }
+
+  /**
+   * Basic quota information
+   */
+  interface StreamQuotaParams {
+    max_quota_gb: number;
+    excluded_directories?: string[];
   }
 
   /**
