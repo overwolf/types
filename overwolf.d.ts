@@ -5664,6 +5664,10 @@ declare namespace overwolf.settings {
     };
   }
 
+  interface SetFolderResult extends Result {
+    path: string;
+  }
+
   interface GetVideoCaptureSettingsResult extends Result {
     enconder: string;
     preset: string;
