@@ -5463,9 +5463,7 @@ declare namespace overwolf.utils {
    * bounds, and names.
    * @param callback Called with the monitors array.
    */
-  function getMonitorsList(
-    callback: (result: { displays: Display[]; }) => void
-  ): void;
+  function getMonitorsList(callback: CallbackFunction<getMonitorsListResult>): void;
 
   /**
    * Sends a string representing a key stroke to the game, causing a simulated
