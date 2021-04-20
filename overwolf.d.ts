@@ -5350,7 +5350,7 @@ declare namespace overwolf.utils {
     width: number;
     height: number;
     is_primary: boolean;
-    monitorHandle: { value: number; };
+    handle: { value: number; };
   }
 
   interface GPUInfo {
