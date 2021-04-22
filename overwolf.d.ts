@@ -1100,6 +1100,8 @@ declare namespace overwolf.profile {
     username?: string;
     parameters?: Dictionary<string>;
     installParams?: any;
+    installerExtension?: any;
+    displayName?: string;
   }
 
   interface LoginStateChangedEvent {
@@ -1128,7 +1130,7 @@ declare namespace overwolf.profile {
 }
 
 declare namespace overwolf.profile.subscriptions {
-  const enum eState {
+  const enum SubscriptionState {
     Active = 0,
     Cancelled = 1,
     Revoked = 2,
@@ -1149,7 +1151,7 @@ declare namespace overwolf.profile.subscriptions {
     muid: string;
     exp: number;
     grc: number;
-    state: eState;
+    state: SubscriptionState;
     planInfo: Info;
     expired: boolean;
   }
@@ -1158,9 +1160,24 @@ declare namespace overwolf.profile.subscriptions {
     plans?: number[];
   }
 
+  interface GetDetailedActivePlansResult extends Result {
+    plans?: Plan[];
+  }
+
+  interface Plan {
+    planId: number;
+    state: overwolf.profile.subscriptions.SubscriptionState;
+    expiryDate: number;
+    title: string;
+    description: string;
+    price: number;
+    periodMonths: number;
+  }
+
   interface SubscriptionChangedEvent {
     plans?: number[];
   }
+
 
   /**
    * Returns active subscriptions for the calling extension via callback.
@@ -1168,6 +1185,14 @@ declare namespace overwolf.profile.subscriptions {
    */
   function getActivePlans(
     callback: CallbackFunction<GetActivePlansResult>
+  ): void;
+
+  /**
+   * Returns more details about all the active subscriptions for the calling extension via callback.
+   * @param callback Returns an array of active plans, or an error.
+   */
+   function getDetailedActivePlans(
+    callback: CallbackFunction<GetDetailedActivePlansResult>
   ): void;
 
   /**
