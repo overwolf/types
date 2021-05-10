@@ -5699,6 +5699,7 @@ declare namespace overwolf.settings {
   interface GeneralExtensionSettings {
     auto_launch_with_overwolf?: boolean;
     exit_overwolf_on_exit?: boolean;
+    channel?: string;
   }
 
   interface GetHotKeyResult extends Result {
