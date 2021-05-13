@@ -4052,6 +4052,10 @@ declare namespace overwolf.streaming {
     next_file: string;
   }
 
+  interface SupportedEncodersUpdatedEvent {
+    encoders?: EncoderData[];
+  }
+
   /**
    * Start a new stream.
    * @param settings The stream settings.
@@ -4239,7 +4243,13 @@ declare namespace overwolf.streaming {
    * Fired upon video file splited.
    */
   const onVideoFileSplited: Event<VideoFileSplitedEvent>;
+
+  /**
+   * Fired upon support encoder list updated.
+   */
+ const onSupportedEncodersUpdated: Event<SupportedEncodersUpdatedEvent>;
 }
+
 
 declare namespace overwolf.log {
   /**
