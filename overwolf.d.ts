@@ -3838,7 +3838,7 @@ declare namespace overwolf.streaming {
    */
   interface StreamingVideoEncoderx264Settings {
     /**
-     * Defines the number of frames after which to send a keyframe.
+     * Defines which preset the encoder should use.
      */
     preset?: enums.StreamEncoderPreset_x264;
     /**
@@ -3846,7 +3846,7 @@ declare namespace overwolf.streaming {
      */
     rate_control?: enums.StreamEncoderRateControl_x264;
     /**
-     * Defines which preset the encoder should use.
+     * Defines the number of frames after which to send a keyframe.
      */
     keyframe_interval: number;
   }
@@ -3858,7 +3858,7 @@ declare namespace overwolf.streaming {
     /**
      * Defines which preset the encoder should use.
      */
-    preset?: enums.StreamEncoderRateControl_AMD_AMF;
+    preset?: enums.StreamEncoderPreset_AMD_AMF;
     /**
      * Defines the rate control mode the encoder should use.
      */
