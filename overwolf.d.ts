@@ -2381,6 +2381,7 @@ declare namespace overwolf.games {
     typeAsString: string;
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
+    processId: number;
   }
 
   interface GameInfoUpdate {
@@ -2438,6 +2439,7 @@ declare namespace overwolf.games {
     typeAsString: string;
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
+    processId: number;
   }
 
   interface GameInfoUpdatedEvent {
