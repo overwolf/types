@@ -2213,6 +2213,33 @@ declare namespace overwolf.games {
     Launcher = 1,
   }
 
+  const enum GameInfoChangeReason {
+    Game = "game",
+    GameChanged = "gameChanged",
+    GameFocusChanged = "gameFocusChanged",
+    GameLaunched = "gameLaunched",
+    GameOverlayCoexistenceDetected = "gameOverlayCoexistenceDetected",
+    GameOverlayCursorVisibility = "gameOverlayCursorVisibility",
+    GameOverlayExlusiveModeChanged = "gameOverlayExlusiveModeChanged",
+    GameOverlayInputHookFailure = "gameOverlayInputHookFailure",
+    GameRendererDetected = "gameRendererDetected",
+    GameResolutionChanged = "gameResolutionChanged",
+    GameTerminated = "gameTerminated",
+    GameWindowDataChanged = "gameWindowDataChanged",
+  }
+
+  const enum KnownOverlayCoexistenceApps {
+    Asus = "asus",
+    Discord = "discord",
+    MSIAfterBurner = "MSIAfterBurner",
+    Nahimic = "nahimic",
+    Nahimic2 = "nahimic2",
+    None = "none",
+    ObsStudio = "obsStudio",
+    PlaysTV = "playsTV",
+    RazerSynapse = "razerSynapse",
+  }
+
   interface GameInfo {
     ActualDetectedRenderers: number;
     ActualGameRendererAllowsVideoCapture: boolean;
@@ -2440,6 +2467,16 @@ declare namespace overwolf.games {
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
     processId: number;
+    overlayInfo: OverlayInfo;
+  }
+
+  interface OverlayInfo {
+    coexistingApps?: KnownOverlayCoexistenceApps[];
+    inputFailure?: boolean;
+    hadInGameRender?: boolean;
+    isCursorVisible?: boolean;
+    exclusiveModeDisabled?: boolean;
+    oopOverlay?: boolean;
   }
 
   interface GameInfoUpdatedEvent {
@@ -2450,6 +2487,7 @@ declare namespace overwolf.games {
     gameChanged: boolean;
     gameOverlayChanged: boolean;
     overlayInputHookError?: boolean;
+    reason?: GameInfoChangeReason;
   }
 
   interface MajorFrameRateChangeEvent {
@@ -2506,6 +2544,14 @@ declare namespace overwolf.games {
   function getRecentlyPlayedGames(
     maxNumOfGames: number,
     callback: CallbackFunction<GetRecentlyPlayedResult>
+  ): void;
+
+  /**
+   * Returns the last played gameinfo (when no game is currently running).
+   * @param callback Called with the result.
+   */
+  function getLastRunningGameInfo(
+    callback: CallbackFunction<GetGameInfoResult>
   ): void;
 
   /**
@@ -4664,7 +4710,7 @@ declare namespace overwolf.extensions {
       filter: string;
     };
     /**
-     * If set to true, app local data will not be cleaned up after app uninstallation.
+     * If set to true, app localStorage data will not be cleaned up after app uninstallation.
      * Default value – “false”
      */
     disable_cleanup?: boolean;
