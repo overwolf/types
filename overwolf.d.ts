@@ -1130,7 +1130,10 @@ declare namespace overwolf.profile {
 }
 
 declare namespace overwolf.profile.subscriptions.inapp {
-
+  const enum Theme {
+    Light = "Light",
+    Dark = "Dark",
+  }
   /**
    * Shows the in-app subscription page as a modal window on top of the current window.
    * @param planId  The plan Id to display.
@@ -4765,6 +4768,11 @@ declare namespace overwolf.extensions {
      */
     clickthrough?: boolean;
     /**
+     * Indicates whether the   Mouse and keyboard input will pass to the window AND to the game (no input blocking). To change this property at
+     * runtime, use setWindowStyle().
+     */
+     style?: overwolf.windows.enums.WindowStyle;
+    /**
      * When set to true, disable right clicks entirely for this window.
      */
     disable_rightclick?: boolean;
@@ -6022,7 +6030,7 @@ declare namespace overwolf.settings.games {
   }
 
   /**
-   * Returns the current Overlay setting for the given game (if any exist)
+   * Returns the current Overlay setting for the given game (if any exist).
    * @param gameClassId the game id for which the flag is retrieved for
    * @param callback
    */
@@ -6032,13 +6040,24 @@ declare namespace overwolf.settings.games {
   ): void;
 
   /**
-   * Returns the current Auto-Launch enabled setting for the calling app ina
-   * given game (gameClassId)
+   * Returns the current Auto-Launch enabled setting for the calling app in a given game (gameClassId).
    * @param gameClassId the game id for which the flag is retrieved for
    * @param callback
    */
   function getAutoLaunchEnabled(
     gameClassId: number,
+    callback: CallbackFunction<AutolaunchEnabledResult>
+  ): void;
+
+  /**
+   * Sets the current Auto-Launch enabled setting for the calling app in a given game (gameClassId).
+   * @param gameClassId the game id for which the flag is retrieved for
+   * @param enabled whether auto-launch should be enabled
+   * @param callback
+   */
+   function setAutoLaunchEnabled(
+    gameClassId: number,
+    enabled: boolean,
     callback: CallbackFunction<AutolaunchEnabledResult>
   ): void;
 
