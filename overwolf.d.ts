@@ -864,7 +864,7 @@ declare namespace overwolf.media.replays {
     match_internal_id: string;
     session_id: string;
     session_start_time: number;
-    match_start_time: string;
+    match_start_time: number;
     start_time: number;
     duration: number;
     events: string[];
