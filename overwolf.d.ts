@@ -5534,7 +5534,7 @@ declare namespace overwolf.utils {
     /**
      * The target app id.
      */
-    uid: string;
+    uid?: string;
     /**
      * Store page to open.
      */
