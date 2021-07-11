@@ -863,13 +863,14 @@ declare namespace overwolf.media.replays {
     match_id: string;
     match_internal_id: string;
     session_id: string;
-    session_start_time: string;
+    session_start_time: number;
     match_start_time: string;
-    start_time: string;
-    duration: string;
+    start_time: number;
+    duration: number;
     events: string[];
     raw_events: raw_events[];
     media_url: string;
+    media_path: string;
     media_path_encoded: string;
     thumbnail_url: string;
     thumbnail_encoded_path: string;
@@ -1168,9 +1169,9 @@ declare namespace overwolf.profile.subscriptions.inapp {
 
 declare namespace overwolf.profile.subscriptions {
   const enum SubscriptionState {
-    Active = 0,
-    Cancelled = 1,
-    Revoked = 2,
+    Active = "active",
+    Cancelled = "cancelled",
+    Revoked = "revoked",
   }
 
   interface Info {
