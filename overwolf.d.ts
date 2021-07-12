@@ -5158,13 +5158,73 @@ declare namespace overwolf.extensions.io {
     videos = "videos",
     appData = "appData",
   }
+
+  const enum FileType {
+    file = "file",
+    directory = "directory"
+  }
+
   interface GetStoragePathResult extends Result {
     path: string;
   }
 
+  interface Content {
+    type: FileType;
+    path: string;
+  }
+
+  interface ReadTextFileResult extends Result {
+    content: string;
+  }
+
+  interface ExistResult extends Result {
+    type: FileType;
+  }
+
+  interface DirResult extends Result {
+    files: string[];
+    directories: string[];
+  }
+
+  interface DeleteResult extends Result {
+    undeleted_content: Content[];
+  }
+
+  function createDirectory(
+    space: StorageSpace,
+    path: string,
+    callback: CallbackFunction<Result>
+  ): void;
+
   function getStoragePath(
     space: StorageSpace,
     callback: CallbackFunction<GetStoragePathResult>
+  ): void;
+
+  function exist(
+    space: StorageSpace,
+    path: string,
+    callback: CallbackFunction<ExistResult>
+  ): void;
+
+  function move(
+    space: StorageSpace,
+    source: string,
+    destination: string,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  function copy(
+    space: StorageSpace,
+    source: string,
+    destination: string,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  function dir(
+    space: StorageSpace,
+    directoryPath: string,
+    callback: CallbackFunction<DirResult>
   ): void;
 
   function readTextFile(
