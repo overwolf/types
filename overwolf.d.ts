@@ -873,6 +873,7 @@ declare namespace overwolf.media.replays {
     media_path: string;
     media_path_encoded: string;
     thumbnail_url: string;
+    thumbnail_path: string;
     thumbnail_encoded_path: string;
     replay_video_start_time: number;
   }
