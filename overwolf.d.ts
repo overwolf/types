@@ -2637,8 +2637,10 @@ declare namespace overwolf.games.launchers {
 }
 
 declare namespace overwolf.games.launchers.events {
-  interface GetInfoResult<T = any> extends Result {
-    res: T;
+  interface GetInfoResult<T = any> {
+    status: 'error' | 'success';
+    res?: T;
+    reason?: string;
   }
 
   interface SetRequiredFeaturesResult extends Result {
