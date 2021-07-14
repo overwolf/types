@@ -2735,10 +2735,23 @@ declare namespace overwolf.games.events {
     reason: string;
   }
 
-  interface InfoUpdate2 { }
+  interface InfoUpdate2 {
+    live_client_data?: {
+      active_player?: string;
+      all_players?: string;
+      events?: string;
+      game_data?: string;
+      port?: number;
+    };
+    game_info?: {
+      matchStarted?: 'true' | 'false';
+      matchId?: string;
+    };
+    [key: string]: any;
+  }
 
   interface InfoUpdates2Event
-    <Feature = string, Info extends InfoUpdate2 = InfoUpdate2> {
+    <Feature = string, Info extends InfoUpdate2[Feature] = InfoUpdate2> {
     info: Info;
     feature: Feature;
   }
