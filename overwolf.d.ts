@@ -659,14 +659,15 @@ declare namespace overwolf.media.videos {
    * A helper structure to describe watermark parameters.
    * @param startTime Segment start time (in milliseconds)
    * @param endTime Segment end time (in milliseconds)
-   * @param location The location of the watermark (in pixles)
+   * @param location The location of the watermark
+   * @param scaleHeight The height of the watermark image (in pixel)
    * 
    */
   interface WatermarkParams {
-    startTime: number;
-    endTime: number;
-    location: enums.WatermarkLocation;
-    scaleHeight: number;
+    startTime?: number;
+    endTime?: number;
+    location?: enums.WatermarkLocation;
+    scaleHeight?: number;
   }
 
   interface GetVideosResult extends Result {
