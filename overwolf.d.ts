@@ -783,7 +783,7 @@ declare namespace overwolf.media.replays {
     /**
      * Auto highlights configuration.
      */
-    highlights: ReplayHighlightsSetting;
+    highlights?: ReplayHighlightsSetting;
   }
 
   /**
