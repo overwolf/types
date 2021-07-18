@@ -5154,15 +5154,17 @@ declare namespace overwolf.extensions {
 }
 
 declare namespace overwolf.extensions.io {
-  const enum StorageSpace {
-    pictures = "pictures",
-    videos = "videos",
-    appData = "appData",
-  }
+  namespace enums {
+    const enum StorageSpace {
+      pictures = "pictures",
+      videos = "videos",
+      appData = "appData",
+    }
 
-  const enum FileType {
-    file = "file",
-    directory = "directory"
+    const enum FileType {
+      file = "file",
+      directory = "directory"
+    }
   }
 
   interface GetStoragePathResult extends Result {
