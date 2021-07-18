@@ -105,7 +105,7 @@ declare namespace overwolf.io {
 
   interface FileInDir {
     name: string;
-    type: string;
+    type: 'dir' | 'file';
   }
 
   interface ReadBinaryFileResult extends Result {
