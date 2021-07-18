@@ -783,7 +783,7 @@ declare namespace overwolf.media.replays {
     /**
      * Auto highlights configuration.
      */
-    highlights: ReplayHighlightsSetting;
+    highlights?: ReplayHighlightsSetting;
   }
 
   /**
@@ -873,6 +873,7 @@ declare namespace overwolf.media.replays {
     media_path: string;
     media_path_encoded: string;
     thumbnail_url: string;
+    thumbnail_path: string;
     thumbnail_encoded_path: string;
     replay_video_start_time: number;
   }
@@ -5153,15 +5154,17 @@ declare namespace overwolf.extensions {
 }
 
 declare namespace overwolf.extensions.io {
-  const enum StorageSpace {
-    pictures = "pictures",
-    videos = "videos",
-    appData = "appData",
-  }
+  namespace enums {
+    const enum StorageSpace {
+      pictures = "pictures",
+      videos = "videos",
+      appData = "appData",
+    }
 
-  const enum FileType {
-    file = "file",
-    directory = "directory"
+    const enum FileType {
+      file = "file",
+      directory = "directory"
+    }
   }
 
   interface GetStoragePathResult extends Result {
