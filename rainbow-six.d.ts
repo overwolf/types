@@ -2,7 +2,8 @@ declare namespace overwolf.gep.R6 {
 
     enum R6PTeam  {
         Orange = "Orange",
-        Blue = "Blue"
+        Blue = "Blue",
+        Spectator = "Spectator"
     }
 
     enum R6Outcome  {
@@ -16,12 +17,14 @@ declare namespace overwolf.gep.R6 {
         MultiplayerQuickMatch  = "MATCHMAKING_PVP",
         MultiplayerSpecialEvent = "MATCHMAKING_PVP_EVENT",
         MultiplayerArcadePlaylist = "MATCHMAKING_PVP_EVENT",
-        MultiplayerRanked = "MATCHMAKING_PVP_UNRANKED",
+        MultiplayerRanked = "MATCHMAKING_PVP_RANKED",
+        MultiplayerUnranked = "MATCHMAKING_PVP_UNRANKED",
         MultiplayerCustomGameLocal = "CUSTOMGAME_PVP",
         MultiplayerCustomGameOnline  = "CUSTOMGAME_PVP_DEDICATED",
         PlayerVsAISituations = "OPERATIONS",
         PlayerVsAITrainingGroundsLonewolf = "MATCHMAKING_PVE_LONEWOLF",
-        PlayerVsAITrainingGroundsOnline = "MATCHMAKING_PVE_PARTY" 
+        PlayerVsAITrainingGroundsOnline = "MATCHMAKING_PVE_PARTY",
+        PlayerVsAITrainingGroundsSquadOnly = "MATCHMAKING_PVE_PARTY", 
     }
     
     enum R6Phase  {
@@ -32,6 +35,39 @@ declare namespace overwolf.gep.R6 {
         Loading = "loading",
         RoundResults = "round_results"     
     }
+
+    enum R6PMapId  {
+        Bank = "BANK",
+        BarlettUniversity = "BARLETT UNIVERSITY",
+        Border = "BORDER",
+        Coastline = "COASTLINE",
+        ClubHouse = "CLUB HOUSE",
+        Consulate = "CONSULATE",
+        Favela = "FAVELA",     
+        Fortress = "FORTRESS",     
+        HerefordBase = "HEREFORD BASE",     
+        House = "HOUSE",     
+        KafeDostoyevsky = "KAFE DOSTOYEVSKY",     
+        Kanal = "KANAL",     
+        Oregon = "OREGON",     
+        Outback = "OUTBACK",     
+        PresidentialPlane = "PRESIDENTIAL PLANE",     
+        Skyscraper = "SKYSCRAPER",     
+        ThemePark = "THEME PARK",     
+        Tower = "TOWER",     
+        Villa = "VILLA",     
+        Yacht = "YACHT",     
+    }
+
+    enum R6PRoundOutcomeType   {
+        TeamHasBeenEliminated = "team_has_been_eliminated",
+        BombDetonated = "bomb_detonated",
+        ObjectiveSecured = "objective_secured",
+        TimeHasExpired = "time_has_expired",
+        ExtractedTheHostages = "extracted_thehostages",
+        KilledHostages = "killed_hostages"     
+    }
+
 
 
     interface R6Player {
@@ -54,8 +90,12 @@ declare namespace overwolf.gep.R6 {
         phase?: R6Phase;
         pseudo_match_id?: string;
         game_mode?: R6PGameMode;
+        match_id?: string;
+        map_id?: R6PMapId;
+        round_outcome_type?: R6PRoundOutcomeType;
         number?: number;
         score?: {blue?:number; orange?: number;}; //match feature
+        
         players?: { roster_0?: R6Player; roster_1?: R6Player; roster_2?: R6Player; roster_3?: R6Player;  };
         team?: R6PTeam;
         health?: number;
