@@ -3951,9 +3951,21 @@ declare namespace overwolf.streaming {
      */
     mic?: StreamDeviceVolume;
     /**
+     * Defines the microphone volume as applied to the stream in a range of 0 to 100.
+     */
+     mic_volume?: number;
+    /**
      * Defines the game volume as applied to the stream.
      */
     game?: StreamDeviceVolume;
+    /**
+     * Defines the game volume as applied to the stream in a range of 0 to 100.
+     */
+     game_volume?: number;
+     /**
+     * Enable multiple audio tracks: Track 1: Microphone + Desktop, Track 2: Desktop output, Track 3: Microphone input.
+     */
+      separate_tracks?: boolean;
   }
 
   /**
