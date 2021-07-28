@@ -283,7 +283,7 @@ declare namespace overwolf.cryptography {
   ): void;
 }
 
-declare namespace  {
+declare namespace  overwolf.media {
   namespace enums {
     /**
      * Media type for the Media Event.
@@ -531,7 +531,7 @@ declare namespace  {
 /**
  * @deprecated Since version 0.155.
  */
-declare namespace .audio {
+declare namespace overwolf.media.audio {
   type PlayState = "playing" | "stopped" | "paused";
 
   interface CreateResult extends Result {
@@ -636,7 +636,7 @@ declare namespace .audio {
   const onPlayStateChanged: Event<PlayStateChangedEvent>;
 }
 
-declare namespace .videos {
+declare namespace overwolf.media.videos {
   namespace enums {
     const enum WatermarkLocation {
       TopLeft = "topLeft",
@@ -769,7 +769,7 @@ declare namespace .videos {
 
 }
 
-declare namespace .replays {
+declare namespace overwolf.media.replays {
   namespace enums {
     const enum ReplayType {
       Video = "Video",
