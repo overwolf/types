@@ -3929,10 +3929,10 @@ declare namespace overwolf.streaming {
    * Defines the video source settings.
    */
   interface VideoSource {
-    source_type: .enums.eSourceType;
+    source_type: overwolf.media.enums.eSourceType;
     name: string;
     secondary_file: boolean; //source will be create on secondry video file(i.e another ow-obs.exe process will be createdw ith the same setting as the original one
-    transform: .enums.eVideoSourceTransform;
+    transform: overwolf.media.enums.eVideoSourceTransform;
   }
 
   /**
