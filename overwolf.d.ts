@@ -3923,16 +3923,29 @@ declare namespace overwolf.streaming {
      * 
      */
     enable_on_demand_split?: boolean;
+
+    /**
+     * 
+     */
+    game_window_capture: GameWindowCapture;
   }
 
   /**
    * Defines the video source settings.
    */
-  interface VideoSource {
+   interface VideoSource {
     source_type: .enums.eSourceType;
     name: string;
     secondary_file: boolean; //source will be create on secondry video file(i.e another ow-obs.exe process will be createdw ith the same setting as the original one
     transform: .enums.eVideoSourceTransform;
+  }
+
+  /**
+   * Game window capture options.
+   */
+  interface GameWindowCapture {
+    enable_when_available: boolean; //Disabled by default
+    capture_overwolf_windows: boolean; //Default value is taken from the Overwolf Settings
   }
 
   /**
