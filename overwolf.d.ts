@@ -3933,11 +3933,11 @@ declare namespace overwolf.streaming {
   /**
    * Defines the video source settings.
    */
-   interface VideoSource {
-    source_type: .enums.eSourceType;
+  interface VideoSource {
+    source_type: overwolf.media.enums.eSourceType;
     name: string;
     secondary_file: boolean; //source will be create on secondry video file(i.e another ow-obs.exe process will be createdw ith the same setting as the original one
-    transform: .enums.eVideoSourceTransform;
+    transform: overwolf.media.enums.eVideoSourceTransform;
   }
 
   /**
@@ -5288,7 +5288,7 @@ declare namespace overwolf.extensions.io {
   }
 
   interface Content {
-    type: FileType;
+    type: enums.FileType;
     path: string;
   }
 
@@ -5297,7 +5297,7 @@ declare namespace overwolf.extensions.io {
   }
 
   interface ExistResult extends Result {
-    type: FileType;
+    type: enums.FileType;
   }
 
   interface DirResult extends Result {
@@ -5310,50 +5310,50 @@ declare namespace overwolf.extensions.io {
   }
 
   function createDirectory(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     path: string,
     callback: CallbackFunction<Result>
   ): void;
 
   function getStoragePath(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     callback: CallbackFunction<GetStoragePathResult>
   ): void;
 
   function exist(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     path: string,
     callback: CallbackFunction<ExistResult>
   ): void;
 
   function move(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     source: string,
     destination: string,
     callback: CallbackFunction<Result>
   ): void;
 
   function copy(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     source: string,
     destination: string,
     callback: CallbackFunction<Result>
   ): void;
 
   function dir(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     directoryPath: string,
     callback: CallbackFunction<DirResult>
   ): void;
 
   function readTextFile(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     filePath: string,
     callback: CallbackFunction<overwolf.io.ReadFileContentsResult>
   ): void;
 
   function writeTextFile(
-    space: StorageSpace,
+    space: enums.StorageSpace,
     filePath: string,
     content: string,
     callback: CallbackFunction<Result>
