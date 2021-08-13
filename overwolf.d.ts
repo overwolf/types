@@ -1216,6 +1216,14 @@ declare namespace overwolf.profile {
   function openLoginDialog(): void;
 
   /**
+   * Fetches user profile from server, then invokes the callback with the currently logged-in Overwolf user.
+   * @param callback A function called with the current user, or an error.
+   */
+  function refreshUserProfile(
+    callback: CallbackFunction<GetCurrentUserResult>
+  ): void;
+
+  /**
    * Fired when a user logged in or logged out.
    */
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
