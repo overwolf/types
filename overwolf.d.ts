@@ -1259,10 +1259,12 @@ declare namespace overwolf.profile.subscriptions.inapp {
 }
 
 declare namespace overwolf.profile.subscriptions {
-  const enum SubscriptionState {
+  namespace enums {
+    const enum SubscriptionState {
     Active = "active",
     Cancelled = "cancelled",
     Revoked = "revoked",
+    }
   }
 
   interface Info {
