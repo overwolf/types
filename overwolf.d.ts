@@ -1290,7 +1290,7 @@ declare namespace overwolf.profile.subscriptions {
     muid: string;
     exp: number;
     grc: number;
-    state: SubscriptionState;
+    state: overwolf.profile.subscriptions.enums.SubscriptionState;
     planInfo: Info;
     expired: boolean;
   }
@@ -1305,7 +1305,7 @@ declare namespace overwolf.profile.subscriptions {
 
   interface Plan {
     planId: number;
-    state: overwolf.profile.subscriptions.SubscriptionState;
+    state: overwolf.profile.subscriptions.enums.SubscriptionState;
     expiryDate: number;
     title: string;
     description: string;
