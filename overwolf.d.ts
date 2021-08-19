@@ -639,15 +639,15 @@ declare namespace overwolf.media.audio {
 declare namespace overwolf.media.videos {
   namespace enums {
     const enum WatermarkLocation {
-        BottomCenter = "BottomCenter"
-        BottomLeft = "BottomLeft"
-        BottomRight = "BottomRight"
-        Center = "Center"
-        MidLeft = "MidLeft"
-        MidRight = "MidRight"
-        TopCenter = "TopCenter"
-        TopLeft = "TopLeft"
-        TopRight = "TopRight"
+        BottomCenter = "BottomCenter",
+        BottomLeft = "BottomLeft",
+        BottomRight = "BottomRight",
+        Center = "Center",
+        MidLeft = "MidLeft",
+        MidRight = "MidRight",
+        TopCenter = "TopCenter",
+        TopLeft = "TopLeft",
+        TopRight = "TopRight",
     }
   }
   interface VideoCompositionSegment {
@@ -3047,7 +3047,7 @@ declare namespace overwolf.web {
     const enum MessageType {
       Ping = "ping",
       Binary = "binary",
-      Text = "text"
+      Text = "text",
     }
 
   }
@@ -5651,7 +5651,7 @@ declare namespace overwolf.utils {
       LoginPage = "LoginPage",
       OneAppPage = "OneAppPage",
       SubscriptionPage = "SubscriptionPage",
-      ReviewsPage = "ReviewsPage"
+      ReviewsPage = "ReviewsPage",
     }
   }
 
