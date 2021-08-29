@@ -3938,6 +3938,11 @@ declare namespace overwolf.streaming {
      * 
      */
     game_window_capture: GameWindowCapture;
+    /**
+     * Keep capturing the game when the game loses focus (i.e do not show "Be Right Back"). 
+     * Note: if game is minimized, BRB will be shown.
+     */
+     keep_game_capture_on_lost_focus: boolean;
   }
 
   /**
@@ -4561,7 +4566,7 @@ declare namespace overwolf.extensions {
     UpdateAvailable = "UpdateAvailable",
     PendingRestart = "PendingRestart",
   }
-
+  
   /**
    * Representation of manifest.json
    */
@@ -4574,7 +4579,7 @@ declare namespace overwolf.extensions {
     /**
      * Declares the type of application. Can only be "WebApp"
      */
-    type: ExtensionType;
+    type: "WebApp"; //should be changed in the future to the enum "ExtensionType"
     /**
      * Includes app metadata
      */
@@ -4969,10 +4974,14 @@ declare namespace overwolf.extensions {
     start_position?: Point;
     /**
      * Indicates whether the window will be on top of other Overwolf windows.
-     * Handle with care as topmost windows can negatively impact user
-     * experience.
+     * Handle with care as topmost windows can negatively impact user experience.
      */
     topmost?: boolean;
+     /**
+     * Indicates whether the window will be on bottom of other Overwolf windows.
+     * Handle with care as bottommost windows can negatively impact user experience.
+     */
+      bottommost?: boolean;
     /**
      * Refrain from non _blank elements from “taking-over” the entire app’s
      * window.
@@ -5118,7 +5127,7 @@ declare namespace overwolf.extensions {
   }
 
   interface CheckForUpdateResult extends Result {
-    state?: ExtensionUpdateState;
+    state?: "UpToDate" | "UpdateAvailable" | "PendingRestart"; //should be changed in the future to the enum "ExtensionUpdateState"
     updateVersion?: string;
   }
 
