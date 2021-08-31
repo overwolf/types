@@ -1344,6 +1344,7 @@ declare namespace overwolf.windows {
   namespace enums {
     const enum WindowStyle {
       InputPassThrough = "InputPassThrough",
+      BottomMost = "BottomMost"
     }
 
     const enum WindowDragEdge {
