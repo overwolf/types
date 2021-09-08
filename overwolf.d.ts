@@ -315,9 +315,9 @@ declare namespace  overwolf.media {
   }
 
   interface MemoryScreenshotParams {
-    roundAwayFromZero: boolean;
-    rescale: RescaleParams;
-    crop: CropParams;
+    roundAwayFromZero?: boolean;
+    rescale?: RescaleParams;
+    crop?: CropParams;
   }
 
   interface FileResult extends Result {
