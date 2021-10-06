@@ -1481,7 +1481,7 @@ declare namespace overwolf.windows {
     window_id: string;
     width: number;
     height: number;
-    auto_dpi_resize: boolean;
+    auto_dpi_resize?: boolean;
   }
 
   interface WindowStateChangedEvent {
