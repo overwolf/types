@@ -51,6 +51,15 @@ declare namespace overwolf.io {
       UnicodeBOM = "UnicodeBOM",
       ASCII = "ASCII",
     }
+    const enum encoding {
+      Default = "Default",
+      UTF8 = "UTF8",
+      UTF32 = "UTF32",
+      Unicode = "Unicode",
+      UTF7 = "UTF7",
+      ASCII = "ASCII",
+      BigEndianUnicode = "BigEndianUnicode",
+    }
   }
 
   namespace paths {
@@ -85,6 +94,7 @@ declare namespace overwolf.io {
 
   interface ListenFileOptions {
     skipToEnd: boolean;
+    encoding: enums.eEncoding;
   }
 
   interface FileExistsResult extends Result {
@@ -2583,6 +2593,7 @@ declare namespace overwolf.games {
     isCursorVisible?: boolean;
     exclusiveModeDisabled?: boolean;
     oopOverlay?: boolean;
+    isFullScreenOptimizationDisabled ?: boolean;
   }
 
   interface GameInfoUpdatedEvent {
