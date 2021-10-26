@@ -2604,7 +2604,7 @@ declare namespace overwolf.games {
     gameChanged: boolean;
     gameOverlayChanged: boolean;
     overlayInputHookError?: boolean;
-    reason?: GameInfoChangeReason;
+    reason: ReadonlyArray<GameInfoChangeReason>;
   }
 
   interface MajorFrameRateChangeEvent {
