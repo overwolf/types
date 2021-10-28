@@ -94,7 +94,7 @@ declare namespace overwolf.io {
 
   interface ListenFileOptions {
     skipToEnd: boolean;
-    encoding: enums.eEncoding;
+    encoding?: enums.eEncoding;
   }
 
   interface FileExistsResult extends Result {
