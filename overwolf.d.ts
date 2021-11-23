@@ -1170,7 +1170,7 @@ declare namespace overwolf.notifications  {
   /**
    * Fired when a user tapped on the body of a toast notification or performed an action inside a toast notification.
    */
-   const onToastNotification: Event<ToastNotificationEvent>;
+   const onToastInteraction: Event<ToastNotificationEvent>;
    
    /**
    * Show Windows toast notification.
