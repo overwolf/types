@@ -4097,6 +4097,7 @@ declare namespace overwolf.extensions {
 
   const enum ExtensionType {
     WebApp = "WebApp",
+    Recording = "Recording",
     BuiltIn = "BuiltIn",
     TCApp = "TCApp",
     Giveaway = "Giveaway",
