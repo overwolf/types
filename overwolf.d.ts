@@ -6462,14 +6462,18 @@ declare namespace overwolf.social.discord {
   }
 
   interface ShareParameters {
-    file: string;
+    /** The file to share.
+    * Note: Since version 0.153, the "file" param is optional when calling overwolf.social.discord.share(). Instead, you can use the "message" param to include a URL of a file that you want to share.*/
+    file?: string;
     channelId: string;
     message: string;
-    trimming: media.videos.VideoCompositionSegment;
-    events: string[];
-    gameClassId: number;
-    gameTitle: string;
-    metadata: any;
+    /** An object containing start time and end time for the desired VideoCompositionSegment */
+    trimming?: media.videos.VideoCompositionSegment;
+    events?: string[];
+    gameClassId?: number;
+    gameTitle?: string;
+    /** Extra information about the game session (How is this used?) */
+    metadata?: any;
   }
 
   interface GetGuildsResult extends Result {
@@ -6535,7 +6539,7 @@ declare namespace overwolf.social.discord {
    * @param callback Will contain the status of the request.
    */
   function share(
-    discordShareParams: ShareParameters,
+    discordShareParams: overwolf.social.discord.ShareParameters,
     callback: CallbackFunction<Result>
   ): void;
 
