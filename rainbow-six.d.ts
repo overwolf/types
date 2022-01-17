@@ -99,7 +99,7 @@ declare namespace overwolf.gep.R6 {
         players?: { roster_0?: R6Player; roster_1?: R6Player; roster_2?: R6Player; roster_3?: R6Player;  };
         team?: R6PTeam;
         health?: number;
-        score?: number; //roster feature
+        //score?: number; //roster feature
         kills?: number;
         deaths?: number;
         operator?: string;
