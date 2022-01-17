@@ -1324,6 +1324,11 @@ declare namespace overwolf.windows {
     }
   }
 
+  const enum WindowType {
+    Offscreen = "offscreen",
+    Desktop = "desktop",
+    Background = "background"
+   }
 
   interface WindowInfo {
     name: string;
@@ -1336,6 +1341,7 @@ declare namespace overwolf.windows {
     width: number;
     height: number;
     monitorId: string;
+    type: WindowType;
   }
 
   interface WindowProperties {
