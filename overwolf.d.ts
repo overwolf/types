@@ -1462,6 +1462,15 @@ declare namespace overwolf.windows {
    */
   function getCurrentWindow(callback: CallbackFunction<WindowResult>): void;
 
+  
+  /**
+   * Get Window information.
+   * @param id  The id or name of the window to retrieve information.
+   * @param callback A callback function which will be called with the current
+   * window object as a parameter. See
+   */
+   function getWindow(id: string, callback: CallbackFunction<WindowResult>): void;
+
   /**
    * Creates or returns a window by the window name that was declared in the
    * manifest.
@@ -1981,6 +1990,46 @@ declare namespace overwolf.windows {
    * Fired when native window (or OSR on desktop) moved to other monitoror when current monitor resolution changed
    */
   const onScreenPropertyChanged: Event<onScreenPropertyChangedEvent>;
+}
+
+declare namespace overwolf.windows2 {
+
+  interface CreateWindowResult extends Result {
+    window: windows.WindowInfo;
+  }
+
+  /**
+   * Creates window by the window id
+   * @param id the id of the new window   
+   * @param options Window setting 
+   * @param callback A callback function which will be called with the requested
+   * window as a parameter. See
+  */
+  function create(
+    id: string,
+    options: any,
+    callback: CallbackFunction<CreateWindowResult>
+  ): void;
+
+  /**
+   * Fired when resized
+   */  
+   const resized: Event<overwolf.windows.WindowInfo>;
+
+  /**
+   * Fired window moved
+   */
+   const moved: Event<overwolf.windows.WindowInfo>;
+
+   /**
+   * Fired when window content is ready.
+   */
+   const readyToShow: Event<overwolf.windows.WindowInfo>;
+
+  /**
+   * Fired when fails to navigate window 
+   */
+   const loadError: Event<overwolf.windows.WindowInfo>;
 }
 
 declare namespace overwolf.windows.mediaPlayerElement {
