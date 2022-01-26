@@ -2586,6 +2586,34 @@ declare namespace overwolf.games {
     overlayInfo: OverlayInfo;
   }
 
+  interface GetRunningGameInfoResult2 extends Result {
+    gameInfo?: {
+      isInFocus: boolean;
+      isRunning: boolean;
+      allowsVideoCapture: boolean;
+      title: string;
+      displayName: string;
+      shortTitle: string;
+      id: number;
+      classId: number;
+      width: number;
+      height: number;
+      logicalWidth: number;
+      logicalHeight: number;
+      renderers: string[];
+      detectedRenderer: string;
+      executionPath: string;
+      sessionId: string;
+      commandLine: string;
+      type: GameInfoType;
+      typeAsString: string;
+      windowHandle: { value: number; };
+      monitorHandle: { value: number; };
+      processId: number;
+      overlayInfo: OverlayInfo;
+    }
+  }
+
   interface OverlayInfo {
     coexistingApps?: KnownOverlayCoexistenceApps[];
     inputFailure?: boolean;
@@ -2623,6 +2651,15 @@ declare namespace overwolf.games {
    */
   function getRunningGameInfo(
     callback: CallbackFunction<GetRunningGameInfoResult>
+  ): void;
+
+  /**
+   * Returns an object with information about the currently running game (or
+   * active games, if more than one), or null if no game is running.
+   * @param callback Called with the currently running or active game info. See
+   */
+  function getRunningGameInfo2(
+    callback: CallbackFunction<GetRunningGameInfoResult2>
   ): void;
 
   /**
