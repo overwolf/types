@@ -45,6 +45,11 @@ declare namespace overwolf.gep.Valorant {
     Breach = 'Breach',
     Reyna = 'Vampire',
     Killjoy = 'Killjoy',
+    Skye = "Guide", 
+    Yoru = "Stealth",
+    Astra = "Rift",
+    KAYO = "Grenadier",
+    Chamber = "Deadeye",
   }
 
   enum ValorantAgentsFullNames {
@@ -60,6 +65,11 @@ declare namespace overwolf.gep.Valorant {
     Breach = 'Breach_PC_C',
     Reyna = 'Vampire_PC_C',
     Killjoy = 'Killjoy_PC_C',
+    Skye = "Guide_PC_C", 
+    Yoru = "Stealth_PC_C",
+    Astra = "Rift_PC_C",
+    KAYO = "Grenadier_PC_C",
+    Chamber = "Deadeye_PC_C",
   }
 
   enum ValorantRoundPhases {
@@ -75,6 +85,9 @@ declare namespace overwolf.gep.Valorant {
     Bind = 'Duality',
     Split = 'Bonsai',
     Ascent = 'Ascent',
+    Icebox = 'Port',
+    BreezeMap = 'Foxtrot',
+    FractureMap =  'Canyon',
     Range = 'Range',
     CharacterSelection = 'CharacterSelectPersistentLevel',
   }
