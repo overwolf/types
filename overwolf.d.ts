@@ -81,8 +81,8 @@ declare namespace overwolf.io {
     const fonts: string;
     const startMenu: string;
     const localAppData: string;
-    const overwolfInstallation: string; 
-    const overwolfInstallationWithVersion: string; 
+    const overwolfInstallation: string;
+    const overwolfInstallationWithVersion: string;
     const obsBin: string;
   }
 
@@ -138,7 +138,7 @@ declare namespace overwolf.io {
     position: number;
     totalLines: number;
   }
-  
+
 
   /**
    * Checks for the existence of the file in the given path.
@@ -262,7 +262,7 @@ declare namespace overwolf.io {
    */
   function stopFileListener(id: string): void;
 }
-  
+
 declare namespace overwolf.cryptography {
   interface EncryptedDataResult extends Result {
     ciphertext: string;
@@ -671,7 +671,7 @@ declare namespace overwolf.media.videos {
    * @param endTime Segment end time (in milliseconds)
    * @param location The location of the watermark
    * @param scaleHeight The height of the watermark image (in pixel)
-   * 
+   *
    */
   interface WatermarkParams {
     startTime?: number;
@@ -765,8 +765,8 @@ declare namespace overwolf.media.videos {
   /**
    * Adds a video/image watermark to a video.
    * @param sourceVideoUrl The url of the source video in an overwolf://media form.
-   * @param watermarkUrl The url of the watermark video/image in an overwolf://media form. 
-   * @param watermarkParams Use this object to mark the watermark   
+   * @param watermarkUrl The url of the watermark video/image in an overwolf://media form.
+   * @param watermarkParams Use this object to mark the watermark
    * @param callback A callback function which will be called with the status of
    * the request and the url to the output video.
    */
@@ -1117,7 +1117,7 @@ declare namespace overwolf.notifications  {
     }
   }
 
-  interface ToastNotificationParams { 
+  interface ToastNotificationParams {
     header: string;
     /**
      * Mandatory. Must include 1-3 texts (lines).
@@ -1171,7 +1171,7 @@ declare namespace overwolf.notifications  {
    * Fired when a user tapped on the body of a toast notification or performed an action inside a toast notification.
    */
    const onToastInteraction: Event<ToastNotificationEvent>;
-   
+
    /**
    * Show Windows toast notification.
    * @param args  Toast notification params
@@ -2586,7 +2586,7 @@ declare namespace overwolf.games {
     overlayInfo: OverlayInfo;
   }
 
-  interface GetRunningGameInfoResult2 {
+  interface GetRunningGameInfoResult2GameInfo {
     isInFocus: boolean;
     isRunning: boolean;
     allowsVideoCapture: boolean;
@@ -2613,7 +2613,7 @@ declare namespace overwolf.games {
   }
 
   interface GetRunningGameInfoResult2 extends Result {
-    gameInfo?: GetRunningGameInfoResult2
+    gameInfo: GetRunningGameInfoResult2GameInfo | null
   }
 
   interface OverlayInfo {
@@ -3971,26 +3971,26 @@ declare namespace overwolf.streaming {
     sources?: VideoSource[];
 
     /**
-     * 
+     *
      */
     frame_size_method?: enums.eVideoFrameSizeCalcMethod;
 
     /**
-     * 
+     *
      */
     base_frame_size_source?: enums.eVideoBaseFrameSizeSource;
 
     /**
-     * 
+     *
      */
     enable_on_demand_split?: boolean;
 
     /**
-     * 
+     *
      */
     game_window_capture: GameWindowCapture;
     /**
-     * Keep capturing the game when the game loses focus (i.e do not show "Be Right Back"). 
+     * Keep capturing the game when the game loses focus (i.e do not show "Be Right Back").
      * Note: if game is minimized, BRB will be shown.
      */
      keep_game_capture_on_lost_focus: boolean;
@@ -4205,7 +4205,7 @@ declare namespace overwolf.streaming {
     presets: string[];
     valid: boolean;
     vendor_error: string;
-    error_decsription: string; 
+    error_decsription: string;
   }
 
   interface AudioDeviceData {
@@ -4617,7 +4617,7 @@ declare namespace overwolf.extensions {
     UpdateAvailable = "UpdateAvailable",
     PendingRestart = "PendingRestart",
   }
-  
+
   /**
    * Representation of manifest.json
    */
@@ -5436,7 +5436,7 @@ declare namespace overwolf.extensions.current {
     object?: any;
   }
 
-  
+
   /**
    * Retrieves an extra object (providing external APIs) registered in the
    * extension's manifest.
@@ -6355,13 +6355,13 @@ declare namespace overwolf.settings.hotkeys {
     description: string;
     binding: string;
   }
-  
+
   interface HotkeyModifiers {
     ctrl?: boolean;
     alt?: boolean;
     shift?: boolean;
   }
-  
+
   interface UnassignHotkeyObject {
     name: string;
     gameId?: number;
@@ -6376,7 +6376,7 @@ declare namespace overwolf.settings.hotkeys {
    * Returns the hotkey assigned for the current extension in all the games.
    */
   function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
-    
+
    /**
    * Set hotkey for current extension
    */
@@ -6384,7 +6384,7 @@ declare namespace overwolf.settings.hotkeys {
     hotkey: AssignHotkeyObject,
     callback: CallbackFunction<Result>
   ): void;
-  
+
    /**
    * unassign hotkey for current extension
    */
@@ -6441,7 +6441,7 @@ declare namespace overwolf.social {
   }
 
   interface GetDisabledServicesResult<T> extends Result {
-    disabled_services?: string[];   
+    disabled_services?: string[];
   }
 
   /**
@@ -6799,7 +6799,7 @@ declare namespace overwolf.social.youtube {
 }
 
 declare namespace overwolf.social.reddit {
-  
+
   interface Flair {
     id: string;
     text: string;
