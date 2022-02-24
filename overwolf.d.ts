@@ -2616,6 +2616,8 @@ declare namespace overwolf.games {
     gameInfo: GetRunningGameInfoResult2GameInfo | null
   }
 
+  interface GetLastRunningGameInfoResult extends GetRunningGameInfoResult2 {}
+
   interface OverlayInfo {
     coexistingApps?: KnownOverlayCoexistenceApps[];
     inputFailure?: boolean;
@@ -2707,7 +2709,7 @@ declare namespace overwolf.games {
    * @param callback Called with the result.
    */
   function getLastRunningGameInfo(
-    callback: CallbackFunction<GetGameInfoResult>
+    callback: CallbackFunction<GetLastRunningGameInfoResult>
   ): void;
 
   /**
