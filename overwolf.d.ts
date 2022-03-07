@@ -5831,6 +5831,8 @@ declare namespace overwolf.utils {
     dpiY: number;
     width: number;
     height: number;
+    workingAreaWidth: number;
+    workingAreaHeight: number;
     is_primary: boolean;
     handle: { value: number; };
   }
