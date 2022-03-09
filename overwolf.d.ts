@@ -1424,6 +1424,12 @@ declare namespace overwolf.windows {
     auto_dpi_resize?: boolean;
   }
 
+  interface SetWindowBoundsParams {
+    window_id: string;
+    bounds: ODKRect;
+    auto_dpi_resize?: boolean;
+  }
+
   interface WindowStateChangedEvent {
     window_id: string;
     window_state: string;
@@ -1594,6 +1600,16 @@ declare namespace overwolf.windows {
    */
   function changeSize(
     changeSizeParams: ChangeWindowSizeParams,
+    callback?: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Set window position and window size.
+   * @param boundsParams 
+   * @param callback 
+   */
+  function setBounds(
+    boundsParams: SetWindowBoundsParams,
     callback?: CallbackFunction<Result>
   ): void;
 
