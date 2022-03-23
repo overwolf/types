@@ -2604,6 +2604,10 @@ declare namespace overwolf.games {
     gameInfo?: InstalledGameInfo;
   }
 
+  interface GetRunningGameInfoResult2 extends Result {
+    gameInfo: GetRunningGameInfoResult;
+  }
+
   interface GetRunningGameInfoResult extends Result {
     isInFocus: boolean;
     gameIsInFocus: boolean;
