@@ -1,5 +1,7 @@
 # @overwolf/types
 
+![npm](https://img.shields.io/npm/v/@overwolf/types)
+
 Overwolf type definition files for autocompletion and documentation purposes.  
 
 ## Install
