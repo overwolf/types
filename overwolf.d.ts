@@ -5820,6 +5820,12 @@ declare namespace overwolf.utils {
     displays: Display[];
   }
 
+  interface ClientInfoResult extends Result {
+    // timestamp
+    installTime: number;
+    uptimeSeconds: number;
+  }
+
   /**
    * Copies the given string to the clipboard.
    * @param data The string to be copied to the clipboard.
@@ -5984,6 +5990,15 @@ declare namespace overwolf.utils {
    */
   function isMouseLeftButtonPressed(
     callback: CallbackFunction<IsMouseLeftButtonPressedResult>
+  ): void;
+
+  /**
+   * Retrieve information about the client - such as when it was first installed
+   * and how long is it running.
+   * @param callback A callback with the result.
+   */
+   function getClientInfo(
+    callback: CallbackFunction<ClientInfoResult>
   ): void;
 }
 
