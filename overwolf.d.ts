@@ -1,4 +1,4 @@
-declare namespace overwolf {
+  declare namespace overwolf {
   const version: string;
 
   enum ResultStatusTypes {
@@ -5826,6 +5826,10 @@ declare namespace overwolf.utils {
     uptimeSeconds: number;
   }
 
+  interface UploadClientLogsOptions extends Result {
+    filePrefix: string;
+  }
+
   /**
    * Copies the given string to the clipboard.
    * @param data The string to be copied to the clipboard.
@@ -5941,11 +5945,21 @@ declare namespace overwolf.utils {
     callback: CallbackFunction<Result>
   ): void;
 
-  /**
+   /**
    * Upload Overwolf client logs to Overwolf servers for current calling app.
    * @param callback A callback with the status of the request.
    */
-  function uploadClientLogs(callback: CallbackFunction<Result>): void;
+    function uploadClientLogs(callback: CallbackFunction<Result>): void;
+
+   /**
+   * Upload Overwolf client logs to Overwolf servers for current calling app
+   * with options (such as file prefix)
+   * @param callback A callback with the status of the request.
+   */
+  function uploadClientLogs(
+    options: UploadClientLogsOptions,
+    callback: CallbackFunction<Result>
+  ): void;
 
   /**
    * Returns system Peripherals information.
