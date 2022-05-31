@@ -6619,7 +6619,7 @@ declare namespace overwolf.social.discord {
 
 declare namespace overwolf.social.gfycat {
   interface User {
-    userId: string;
+    userid: string;
     email: string;
     emailVerified: boolean;
     profileImageUrl: string;
