@@ -6884,13 +6884,9 @@ declare namespace overwolf.social.reddit {
   }
 
   interface User {
-    subreddit: UserSubreddit;
+    avatar: string;
+    displayName: string;
     name: string;
-  }
-
-  interface UserSubreddit {
-    icon_img: string;
-    display_name_prefixed: string;
   }
 
   interface Subreddit {
