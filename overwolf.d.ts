@@ -6534,6 +6534,8 @@ declare namespace overwolf.social.discord {
     * Note: Since version 0.153, the "file" param is optional when calling overwolf.social.discord.share(). Instead, you can use the "message" param to include a URL of a file that you want to share.*/
     file?: string;
     channelId: string;
+	id?: string;
+	useOverwolfNotifications: bool;
     message: string;
     /** An object containing start time and end time for the desired VideoCompositionSegment */
     trimming?: media.videos.VideoCompositionSegment;
@@ -6635,12 +6637,14 @@ declare namespace overwolf.social.gfycat {
 
   interface ShareParameters {
     file: string;
-    trimming: media.videos.VideoCompositionSegment;
+	id?: string;
+	useOverwolfNotifications: bool;
+    trimming?: media.videos.VideoCompositionSegment;
     title: string;
     privateMode: boolean;
-    tags: string[];
-    gameClassId: number;
-    metadata: any;
+    tags?: string[];
+    gameClassId?: number;
+    metadata?: any;
   }
 
   /**
@@ -6691,12 +6695,14 @@ declare namespace overwolf.social.gfycat {
 declare namespace overwolf.social.twitter {
   interface ShareParameters {
     file: string;
+	id?: string;
+	useOverwolfNotifications: bool;
     message: string;
-    trimming: media.videos.VideoCompositionSegment;
-    tags: string[];
-    gameClassId: number;
-    gameTitle: string;
-    metadata: any;
+    trimming?: media.videos.VideoCompositionSegment;
+    tags?: string[];
+    gameClassId?: number;
+    gameTitle?: string;
+    metadata?: any;
   }
 
   interface User {
@@ -6760,13 +6766,15 @@ declare namespace overwolf.social.youtube {
 
   interface ShareParameters {
     file: string;
+	id?: string;
+	useOverwolfNotifications: bool;
     title: string;
     description: string;
-    trimming: media.videos.VideoCompositionSegment;
+    trimming?: media.videos.VideoCompositionSegment;
     privacy: Privacy;
-    tags: string[];
-    gameClassId: number;
-    gameTitle: string;
+    tags?: string[];
+    gameClassId?: number;
+    gameTitle?: string;
     metadata: any;
   }
 
@@ -6844,6 +6852,8 @@ declare namespace overwolf.social.reddit {
     /**
      * The subreddit to which the file will be shared.
      */
+	id?: string;
+	useOverwolfNotifications: bool;
     subreddit: string;
     /**
      * The shared video's title.
