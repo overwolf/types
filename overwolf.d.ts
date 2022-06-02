@@ -6724,7 +6724,7 @@ declare namespace overwolf.social.twitter {
    * login via the Overwolf Settings / Accounts page, he will be considered
    * signed out.
    * @param callback
-   */
+   */ 
   function performLogout(callback: CallbackFunction<Result>): void;
 
   /**
