@@ -2733,6 +2733,10 @@ declare namespace overwolf.games {
   const onGameRendererDetected: Event<GameRendererDetectedEvent>;
 }
 
+declare namespace overwolf.games.tracked {
+  const onTerminated: Event<GameInfoUpdatedEvent>;
+}
+
 declare namespace overwolf.games.launchers {
   interface LauncherInfo {
     title: string;
