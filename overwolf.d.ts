@@ -5778,7 +5778,7 @@ declare namespace overwolf.utils {
     OSBuild?: string;
     OSReleaseId?: string;
     PhysicalCPUCount?: number;
-    VidEncSupport?: boolean;
+    VideoEncSupport?: boolean;
     /** indicates if the current OS enabled the [Windows 10 Hardware-Accelerated GPU Scheduling](../topics/video-capture#windows-10-hardware-accelerated-gpu-scheduling-notice) feature */
     HAGSEnabled?: boolean
   }
