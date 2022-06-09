@@ -6483,10 +6483,17 @@ declare namespace overwolf.social {
 }
 
 declare namespace overwolf.social.discord {
+
   const enum PostPermission {
     None = 0,
     Text,
     File,
+  }
+  
+  const enum ShareState {
+	Started,
+	Uploading,
+	Finished
   }
 
   interface User {
@@ -6546,6 +6553,16 @@ declare namespace overwolf.social.discord {
     metadata?: any;
   }
 
+  interface SocialShareProgress {
+	progress: int;
+	id: string;
+	state: overwolf.social.discord.ShareState;
+  }  
+  
+  interface SocialShareResult extends Result {
+	url: string;
+  }
+  
   interface GetGuildsResult extends Result {
     guilds?: Guild[];
   }
@@ -6612,6 +6629,12 @@ declare namespace overwolf.social.discord {
     discordShareParams: overwolf.social.discord.ShareParameters,
     callback: CallbackFunction<Result>
   ): void;
+  
+  function shareEx(
+    discordShareParams: overwolf.social.discord.ShareParameters,
+    resultCallback: CallbackFunction<overwolf.social.discord.SocialShareResult>,
+	progressCallback: CallbackFunction<overwolf.social.discord.SocialShareProgress>
+  ): void;
 
   /**
    * Fired when the user's login state changes.
@@ -6620,6 +6643,13 @@ declare namespace overwolf.social.discord {
 }
 
 declare namespace overwolf.social.gfycat {
+
+  const enum ShareState {
+	Started,
+	Uploading,
+	Finished
+  }
+
   interface User {
     userid: string;
     email: string;
@@ -6647,6 +6677,16 @@ declare namespace overwolf.social.gfycat {
     metadata?: any;
   }
 
+  interface SocialShareProgress {
+	progress: int;
+	id: string;
+	state: overwolf.share.gfycat.ShareState;
+  }
+
+  interface SocialShareResult extends Result {
+	url: string;
+  }
+  
   /**
    * Opens the login dialog. There is no callback for this method and theonly
    * way to know if the user signed in is via `onLoginStateChanged`.
@@ -6686,6 +6726,12 @@ declare namespace overwolf.social.gfycat {
     callback: CallbackFunction<Result>
   ): void;
 
+  function shareEx(
+    discordShareParams: overwolf.social.gfycat.ShareParameters,
+    resultCallback: CallbackFunction<overwolf.social.gfycat.SocialShareResult>,
+	progressCallback: CallbackFunction<overwolf.social.gfycat.SocialShareProgress>
+  ): void;
+  
   /**
    * Fired when a media event has been posted.
    */
@@ -6693,6 +6739,13 @@ declare namespace overwolf.social.gfycat {
 }
 
 declare namespace overwolf.social.twitter {
+
+  const enum ShareState {
+	Started,
+	Uploading,
+	Finished
+  }
+
   interface ShareParameters {
     file: string;
 	id?: string;
@@ -6711,6 +6764,16 @@ declare namespace overwolf.social.twitter {
     name: string;
     email: string;
     avatar: string;
+  }
+  
+  interface SocialShareProgress {
+	progress: int;
+	id: string;
+	state: overwolf.share.twitter.ShareState;
+  }
+
+  interface SocialShareResult extends Result {
+	url: string;
   }
 
   /**
@@ -6750,6 +6813,12 @@ declare namespace overwolf.social.twitter {
     twitterShareParams: ShareParameters,
     callback: CallbackFunction<Result>
   ): void;
+  
+  function shareEx(
+    discordShareParams: overwolf.social.twitter.ShareParameters,
+    resultCallback: CallbackFunction<overwolf.social.twitter.SocialShareResult>,
+	progressCallback: CallbackFunction<overwolf.social.twitter.SocialShareProgress>
+  ): void;
 
   /**
    * Fired when the user's login state changes.
@@ -6758,10 +6827,17 @@ declare namespace overwolf.social.twitter {
 }
 
 declare namespace overwolf.social.youtube {
+
   const enum Privacy {
     Public = "Public",
     Unlisted = "Unlisted",
     Private = "Private",
+  }
+  
+  const enum ShareState {
+	Started,
+	Uploading,
+	Finished
   }
 
   interface ShareParameters {
@@ -6782,6 +6858,16 @@ declare namespace overwolf.social.youtube {
     name: string;
     picture: string;
     id: string;
+  }
+  
+  interface SocialShareProgress {
+	progress: int;
+	id: string;
+	state: overwolf.share.youtube.ShareState;
+  }
+
+  interface SocialShareResult extends Result {
+	url: string;
   }
 
   /**
@@ -6829,6 +6915,12 @@ declare namespace overwolf.social.youtube {
     callback: CallbackFunction<Result>
   ): void;
 
+  function shareEx(
+    discordShareParams: overwolf.social.youtube.ShareParameters,
+    resultCallback: CallbackFunction<overwolf.social.youtube.SocialShareResult>,
+	progressCallback: CallbackFunction<overwolf.social.youtube.SocialShareProgress>
+  ): void;
+  
   /**
    * Fired when the user's login state changes.
    */
@@ -6837,6 +6929,18 @@ declare namespace overwolf.social.youtube {
 
 declare namespace overwolf.social.reddit {
 
+  const enum ShareState {
+	Started,
+	Uploading,
+	Finished
+  }
+  
+  const enum ShareState {
+	Started,
+	Uploading,
+	Finished
+  }
+  
   interface Flair {
     id: string;
     text: string;
@@ -6923,6 +7027,16 @@ declare namespace overwolf.social.reddit {
     error: string;
     details?: string;
   }
+  
+  interface SocialShareProgress {
+	progress: int;
+	id: string;
+	state: overwolf.share.reddit.ShareState;
+  }
+
+  interface SocialShareResult extends Result {
+	url: string;
+  }
 
   /**
    * Returns a list of flairs supported by the given subreddit
@@ -6991,6 +7105,12 @@ declare namespace overwolf.social.reddit {
   function share(
     redditShareParams: ShareParameters,
     callback: CallbackFunction<Result>
+  ): void;
+  
+  function shareEx(
+    discordShareParams: overwolf.social.reddit.ShareParameters,
+    resultCallback: CallbackFunction<overwolf.social.reddit.SocialShareResult>,
+	progressCallback: CallbackFunction<overwolf.social.reddit.SocialShareProgress>
   ): void;
 
   /**
