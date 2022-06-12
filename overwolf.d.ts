@@ -1380,14 +1380,14 @@ declare namespace overwolf.windows {
       on = "on",
       off = "off",
     }
-  }
-
-  const enum WindowStateEx {
-    CLOSED = "closed",
-    MINIMIZED = "minimized",
-    HIDDEN = "hidden",
-    NORMAL = "normal",
-    MAXIMIZED = "maximized"
+	
+	const enum WindowStateEx {
+      CLOSED = "closed",
+      MINIMIZED = "minimized",
+      HIDDEN = "hidden",
+      NORMAL = "normal",
+      MAXIMIZED = "maximized"
+    }
   }
 
 
@@ -2324,36 +2324,38 @@ declare namespace overwolf.benchmarking {
 }
 
 declare namespace overwolf.games {
-  const enum GameInfoType {
-    Game = 0,
-    Launcher = 1,
-  }
+  namespace enums {
+    const enum GameInfoType {
+      Game = 0,
+      Launcher = 1,
+    }
 
-  const enum GameInfoChangeReason {
-    Game = "game",
-    GameChanged = "gameChanged",
-    GameFocusChanged = "gameFocusChanged",
-    GameLaunched = "gameLaunched",
-    GameOverlayCoexistenceDetected = "gameOverlayCoexistenceDetected",
-    GameOverlayCursorVisibility = "gameOverlayCursorVisibility",
-    GameOverlayExlusiveModeChanged = "gameOverlayExlusiveModeChanged",
-    GameOverlayInputHookFailure = "gameOverlayInputHookFailure",
-    GameRendererDetected = "gameRendererDetected",
-    GameResolutionChanged = "gameResolutionChanged",
-    GameTerminated = "gameTerminated",
-    GameWindowDataChanged = "gameWindowDataChanged",
-  }
+    const enum GameInfoChangeReason {
+      Game = "game",
+      GameChanged = "gameChanged",
+      GameFocusChanged = "gameFocusChanged",
+      GameLaunched = "gameLaunched",
+      GameOverlayCoexistenceDetected = "gameOverlayCoexistenceDetected",
+      GameOverlayCursorVisibility = "gameOverlayCursorVisibility",
+      GameOverlayExlusiveModeChanged = "gameOverlayExlusiveModeChanged",
+      GameOverlayInputHookFailure = "gameOverlayInputHookFailure",
+      GameRendererDetected = "gameRendererDetected",
+      GameResolutionChanged = "gameResolutionChanged",
+      GameTerminated = "gameTerminated",
+      GameWindowDataChanged = "gameWindowDataChanged",
+    }
 
-  const enum KnownOverlayCoexistenceApps {
-    Asus = "asus",
-    Discord = "discord",
-    MSIAfterBurner = "MSIAfterBurner",
-    Nahimic = "nahimic",
-    Nahimic2 = "nahimic2",
-    None = "none",
-    ObsStudio = "obsStudio",
-    PlaysTV = "playsTV",
-    RazerSynapse = "razerSynapse",
+    const enum KnownOverlayCoexistenceApps {
+      Asus = "asus",
+      Discord = "discord",
+      MSIAfterBurner = "MSIAfterBurner",
+      Nahimic = "nahimic",
+      Nahimic2 = "nahimic2",
+      None = "none",
+      ObsStudio = "obsStudio",
+      PlaysTV = "playsTV",
+      RazerSynapse = "razerSynapse",
+    }
   }
 
   interface GameInfo {
@@ -4125,7 +4127,7 @@ declare namespace overwolf.streaming {
     /**
      * Defines the game volume as applied to the stream.
      */
-    game?: StreamDeviceVolume;
+    game?: GameAudioDevice;
     /**
      * Defines the game volume as applied to the stream in a range of 0 to 100.
      */
@@ -4152,6 +4154,18 @@ declare namespace overwolf.streaming {
      * Defines the device ID to use.
      */
     device_id?: string;
+  }
+  
+  /**
+   * Defines game volume and enablement settings.
+   */
+  interface GameAudioDevice extends StreamDeviceVolum {
+    filtered_capture: GameCaptureOptions;
+  }
+  
+  interface GameCaptureOptions {
+    enable: bool;
+	additional_process_names: string[];
   }
 
   /**
@@ -6483,17 +6497,18 @@ declare namespace overwolf.social {
 }
 
 declare namespace overwolf.social.discord {
-
-  const enum PostPermission {
-    None = 0,
-    Text,
-    File,
-  }
+  namespace enums {
+    const enum PostPermission {
+      None = 0,
+      Text,
+      File,
+    }
   
-  const enum ShareState {
-	Started,
-	Uploading,
-	Finished
+    const enum ShareState {
+	  Started,
+	  Uploading,
+	  Finished
+    }
   }
 
   interface User {
@@ -6643,11 +6658,12 @@ declare namespace overwolf.social.discord {
 }
 
 declare namespace overwolf.social.gfycat {
-
-  const enum ShareState {
-	Started,
-	Uploading,
-	Finished
+  namespace enums {
+    const enum ShareState {
+	  Started,
+	  Uploading,
+	  Finished
+    }
   }
 
   interface User {
@@ -6739,11 +6755,12 @@ declare namespace overwolf.social.gfycat {
 }
 
 declare namespace overwolf.social.twitter {
-
-  const enum ShareState {
-	Started,
-	Uploading,
-	Finished
+  namespace enums {
+    const enum ShareState {
+	  Started,
+	  Uploading,
+	  Finished
+    }
   }
 
   interface ShareParameters {
@@ -6827,18 +6844,21 @@ declare namespace overwolf.social.twitter {
 }
 
 declare namespace overwolf.social.youtube {
-
-  const enum Privacy {
-    Public = "Public",
-    Unlisted = "Unlisted",
-    Private = "Private",
-  }
-  
-  const enum ShareState {
+  namespace enums {
+    const enum YouTubePrivacy {
+      Public = "Public",
+      Unlisted = "Unlisted",
+	  Private = "Private",
+    }
+	
+	const enum ShareState {
 	Started,
 	Uploading,
 	Finished
+    }
   }
+  
+  
 
   interface ShareParameters {
     file: string;
@@ -6928,17 +6948,12 @@ declare namespace overwolf.social.youtube {
 }
 
 declare namespace overwolf.social.reddit {
-
-  const enum ShareState {
+  namespace enums {
+	const enum ShareState {
 	Started,
 	Uploading,
 	Finished
-  }
-  
-  const enum ShareState {
-	Started,
-	Uploading,
-	Finished
+    }
   }
   
   interface Flair {
