@@ -5416,6 +5416,12 @@ declare namespace overwolf.extensions.io {
     destination: string,
     callback: CallbackFunction<Result>
   ): void;
+	
+  function delete(
+    space: enums.StorageSpace,
+    path: string,
+    callback: CallbackFunction<DeleteResult>
+  ): void;
 
   function copy(
     space: enums.StorageSpace,
