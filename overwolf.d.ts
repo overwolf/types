@@ -4164,7 +4164,7 @@ declare namespace overwolf.streaming {
   }
   
   interface GameCaptureOptions {
-    enable: bool;
+    enable: boolean;
 	additional_process_names: string[];
   }
 
@@ -6563,7 +6563,7 @@ declare namespace overwolf.social.discord {
     file?: string;
     channelId: string;
 	id?: string;
-	useOverwolfNotifications: bool;
+	useOverwolfNotifications: boolean;
     message: string;
     /** An object containing start time and end time for the desired VideoCompositionSegment */
     trimming?: media.videos.VideoCompositionSegment;
@@ -6575,7 +6575,7 @@ declare namespace overwolf.social.discord {
   }
 
   interface SocialShareProgress {
-	progress: int;
+	progress: number;
 	id: string;
 	state: overwolf.social.discord.ShareState;
   }  
@@ -6690,7 +6690,7 @@ declare namespace overwolf.social.gfycat {
   interface ShareParameters {
     file: string;
 	id?: string;
-	useOverwolfNotifications: bool;
+	useOverwolfNotifications: boolean;
     trimming?: media.videos.VideoCompositionSegment;
     title: string;
     privateMode: boolean;
@@ -6700,7 +6700,7 @@ declare namespace overwolf.social.gfycat {
   }
 
   interface SocialShareProgress {
-	progress: int;
+	progress: number;
 	id: string;
 	state: overwolf.share.gfycat.ShareState;
   }
@@ -6772,7 +6772,7 @@ declare namespace overwolf.social.twitter {
   interface ShareParameters {
     file: string;
 	id?: string;
-	useOverwolfNotifications: bool;
+	useOverwolfNotifications: boolean;
     message: string;
     trimming?: media.videos.VideoCompositionSegment;
     tags?: string[];
@@ -6790,7 +6790,7 @@ declare namespace overwolf.social.twitter {
   }
   
   interface SocialShareProgress {
-	progress: int;
+	progress: number;
 	id: string;
 	state: overwolf.share.twitter.ShareState;
   }
@@ -6869,7 +6869,7 @@ declare namespace overwolf.social.youtube {
   interface ShareParameters {
     file: string;
 	id?: string;
-	useOverwolfNotifications: bool;
+	useOverwolfNotifications: boolean;
     title: string;
     description: string;
     trimming?: media.videos.VideoCompositionSegment;
@@ -6887,7 +6887,7 @@ declare namespace overwolf.social.youtube {
   }
   
   interface SocialShareProgress {
-	progress: int;
+	progress: number;
 	id: string;
 	state: overwolf.share.youtube.ShareState;
   }
@@ -6978,7 +6978,7 @@ declare namespace overwolf.social.reddit {
      * The subreddit to which the file will be shared.
      */
 	id?: string;
-	useOverwolfNotifications: bool;
+	useOverwolfNotifications: boolean;
     subreddit: string;
     /**
      * The shared video's title.
@@ -7050,7 +7050,7 @@ declare namespace overwolf.social.reddit {
   }
   
   interface SocialShareProgress {
-	progress: int;
+	progress: number;
 	id: string;
 	state: overwolf.share.reddit.ShareState;
   }
