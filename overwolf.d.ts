@@ -5178,7 +5178,7 @@ declare namespace overwolf.extensions {
   interface GetManifestResult extends Result, Manifest { }
 
   interface GetInfoResult extends Result {
-    info: string;
+    info: string|{[key:string]:any};
   }
 
   interface GetRunningStateResult extends Result {
@@ -5238,8 +5238,8 @@ declare namespace overwolf.extensions {
   function launch(uid: string, parameter?: any): void;
 
   /**
-   * Sets a string for other extensions to read.
-   * @param info A string to post.
+   * Sets a string or object for other extensions to read.
+   * @param info A string or object to post.
    */
   function setInfo(info: any): void;
 
