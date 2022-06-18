@@ -1,4 +1,4 @@
-  declare namespace overwolf {
+declare namespace overwolf {
   const version: string;
 
   enum ResultStatusTypes {
