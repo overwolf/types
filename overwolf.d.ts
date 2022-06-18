@@ -1395,7 +1395,7 @@ declare namespace overwolf.windows {
     name: string;
     id: string;
     state: string;
-    stateEx: WindowStateEx;
+    stateEx: enums.WindowStateEx;
     isVisible: boolean;
     left: number;
     top: number;
@@ -1455,12 +1455,12 @@ declare namespace overwolf.windows {
   interface GetWindowStateResult extends Result {
     window_id?: string;
     window_state?: string;
-    window_state_ex?: WindowStateEx;
+    window_state_ex?: enums.WindowStateEx;
   }
 
   interface GetWindowsStatesResult extends Result {
     result: Dictionary<string>;
-    resultV2: Dictionary<WindowStateEx>;
+    resultV2: Dictionary<enums.WindowStateEx>;
   }
 
   interface IsMutedResult extends Result {
@@ -1488,8 +1488,8 @@ declare namespace overwolf.windows {
     window_id: string;
     window_state: string;
     window_previous_state: string;
-    window_state_ex: WindowStateEx;
-    window_previous_state_ex: WindowStateEx;
+    window_state_ex: enums.WindowStateEx;
+    window_previous_state_ex: enums.WindowStateEx;
     app_id: string;
     window_name: string;
   }
@@ -2522,7 +2522,7 @@ declare namespace overwolf.games {
     executionPath: string;
     sessionId: string;
     commandLine: string;
-    type: GameInfoType;
+    type: enums.GameInfoType;
     typeAsString: string;
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
@@ -2580,7 +2580,7 @@ declare namespace overwolf.games {
     executionPath: string;
     sessionId: string;
     commandLine: string;
-    type: GameInfoType;
+    type: enums.GameInfoType;
     typeAsString: string;
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
@@ -2606,7 +2606,7 @@ declare namespace overwolf.games {
     executionPath: string;
     sessionId: string;
     commandLine: string;
-    type: GameInfoType;
+    type: enums.GameInfoType;
     typeAsString: string;
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
@@ -2619,7 +2619,7 @@ declare namespace overwolf.games {
   }
 
   interface OverlayInfo {
-    coexistingApps?: KnownOverlayCoexistenceApps[];
+    coexistingApps?: enums.KnownOverlayCoexistenceApps[];
     inputFailure?: boolean;
     hadInGameRender?: boolean;
     isCursorVisible?: boolean;
@@ -2636,7 +2636,7 @@ declare namespace overwolf.games {
     gameChanged: boolean;
     gameOverlayChanged: boolean;
     overlayInputHookError?: boolean;
-    reason: ReadonlyArray<GameInfoChangeReason>;
+    reason: ReadonlyArray<enums.GameInfoChangeReason>;
   }
 
   interface MajorFrameRateChangeEvent {
@@ -4159,7 +4159,7 @@ declare namespace overwolf.streaming {
   /**
    * Defines game volume and enablement settings.
    */
-  interface GameAudioDevice extends StreamDeviceVolum {
+  interface GameAudioDevice extends StreamDeviceVolume {
     filtered_capture: GameCaptureOptions;
   }
   
@@ -5417,11 +5417,13 @@ declare namespace overwolf.extensions.io {
     callback: CallbackFunction<Result>
   ): void;
 	
-  function delete(
+  function _delete(
     space: enums.StorageSpace,
     path: string,
     callback: CallbackFunction<DeleteResult>
   ): void;
+  
+  export { _delete as delete };
 
   function copy(
     space: enums.StorageSpace,
@@ -6547,7 +6549,7 @@ declare namespace overwolf.social.discord {
     parent_id?: string;
     permission_overwrites: PermissionOverwrite[];
     type: number;
-    user_post_permission: PostPermission;
+    user_post_permission: enums.PostPermission;
   }
 
   interface PermissionOverwrite {
@@ -6574,14 +6576,14 @@ declare namespace overwolf.social.discord {
     metadata?: any;
   }
 
-  interface SocialShareProgress {
-	progress: number;
-	id: string;
-	state: overwolf.social.discord.ShareState;
+  interface SocialShareProgress extends Result {
+	  progress: number;
+	  id: string;
+	  state: enums.ShareState;
   }  
   
   interface SocialShareResult extends Result {
-	url: string;
+	  url: string;
   }
   
   interface GetGuildsResult extends Result {
@@ -6653,8 +6655,8 @@ declare namespace overwolf.social.discord {
   
   function shareEx(
     discordShareParams: overwolf.social.discord.ShareParameters,
-    resultCallback: CallbackFunction<overwolf.social.discord.SocialShareResult>,
-	progressCallback: CallbackFunction<overwolf.social.discord.SocialShareProgress>
+    resultCallback: CallbackFunction<SocialShareResult>,
+	  progressCallback: CallbackFunction<SocialShareProgress>
   ): void;
 
   /**
@@ -6699,10 +6701,10 @@ declare namespace overwolf.social.gfycat {
     metadata?: any;
   }
 
-  interface SocialShareProgress {
+  interface SocialShareProgress extends Result {
 	progress: number;
 	id: string;
-	state: overwolf.share.gfycat.ShareState;
+	state: enums.ShareState;
   }
 
   interface SocialShareResult extends Result {
@@ -6751,7 +6753,7 @@ declare namespace overwolf.social.gfycat {
   function shareEx(
     discordShareParams: overwolf.social.gfycat.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.gfycat.SocialShareResult>,
-	progressCallback: CallbackFunction<overwolf.social.gfycat.SocialShareProgress>
+	progressCallback: CallbackFunction<SocialShareProgress>
   ): void;
   
   /**
@@ -6789,10 +6791,10 @@ declare namespace overwolf.social.twitter {
     avatar: string;
   }
   
-  interface SocialShareProgress {
+  interface SocialShareProgress extends Result {
 	progress: number;
 	id: string;
-	state: overwolf.share.twitter.ShareState;
+	state: enums.ShareState;
   }
 
   interface SocialShareResult extends Result {
@@ -6868,12 +6870,12 @@ declare namespace overwolf.social.youtube {
 
   interface ShareParameters {
     file: string;
-	id?: string;
-	useOverwolfNotifications: boolean;
+	  id?: string;
+	  useOverwolfNotifications: boolean;
     title: string;
     description: string;
     trimming?: media.videos.VideoCompositionSegment;
-    privacy: Privacy;
+    privacy: enums.YouTubePrivacy;
     tags?: string[];
     gameClassId?: number;
     gameTitle?: string;
@@ -6886,10 +6888,10 @@ declare namespace overwolf.social.youtube {
     id: string;
   }
   
-  interface SocialShareProgress {
+  interface SocialShareProgress extends Result {
 	progress: number;
 	id: string;
-	state: overwolf.share.youtube.ShareState;
+	state: enums.ShareState;
   }
 
   interface SocialShareResult extends Result {
@@ -7049,10 +7051,10 @@ declare namespace overwolf.social.reddit {
     details?: string;
   }
   
-  interface SocialShareProgress {
+  interface SocialShareProgress extends Result {
 	progress: number;
 	id: string;
-	state: overwolf.share.reddit.ShareState;
+	state: enums.ShareState;
   }
 
   interface SocialShareResult extends Result {
