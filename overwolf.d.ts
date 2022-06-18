@@ -5393,24 +5393,24 @@ declare namespace overwolf.extensions.io {
     undeleted_content: Content[];
   }
 
-  function createDirectory(
+  export function createDirectory(
     space: enums.StorageSpace,
     path: string,
     callback: CallbackFunction<Result>
   ): void;
 
-  function getStoragePath(
+  export function getStoragePath(
     space: enums.StorageSpace,
     callback: CallbackFunction<GetStoragePathResult>
   ): void;
 
-  function exist(
+  export function exist(
     space: enums.StorageSpace,
     path: string,
     callback: CallbackFunction<ExistResult>
   ): void;
 
-  function move(
+  export function move(
     space: enums.StorageSpace,
     source: string,
     destination: string,
@@ -5422,29 +5422,29 @@ declare namespace overwolf.extensions.io {
     path: string,
     callback: CallbackFunction<DeleteResult>
   ): void;
-  
-  export { _delete as delete };
 
-  function copy(
+  export { _delete as delete }
+
+  export function copy(
     space: enums.StorageSpace,
     source: string,
     destination: string,
     callback: CallbackFunction<Result>
   ): void;
 
-  function dir(
+  export function dir(
     space: enums.StorageSpace,
     directoryPath: string,
     callback: CallbackFunction<DirResult>
   ): void;
 
-  function readTextFile(
+  export function readTextFile(
     space: enums.StorageSpace,
     filePath: string,
-    callback: CallbackFunction<overwolf.io.ReadFileContentsResult>
+    callback: CallbackFunction<ReadTextFileResult>
   ): void;
 
-  function writeTextFile(
+  export function writeTextFile(
     space: enums.StorageSpace,
     filePath: string,
     content: string,
