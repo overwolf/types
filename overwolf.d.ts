@@ -3820,7 +3820,7 @@ declare namespace overwolf.streaming {
     /**
      * Stream video options.
      */
-    video?: StreamVideoOptions;
+    video: StreamVideoOptions;
     /**
      * Stream audio options.
      */
@@ -3990,12 +3990,12 @@ declare namespace overwolf.streaming {
     /**
      *
      */
-    game_window_capture: GameWindowCapture;
+    game_window_capture?: GameWindowCapture;
     /**
      * Keep capturing the game when the game loses focus (i.e do not show "Be Right Back").
      * Note: if game is minimized, BRB will be shown.
      */
-     keep_game_capture_on_lost_focus: boolean;
+     keep_game_capture_on_lost_focus?: boolean;
   }
 
   /**
