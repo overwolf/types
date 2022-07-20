@@ -6495,16 +6495,16 @@ declare namespace overwolf.social {
     userInfo?: T;
   }
 
-  interface UploadVideoParams {
+  interface VideoUploadParams {
     id: string;
     filePath: string;
   }
 
-  interface UploadVideoResult {
+  interface VideoUploadResult {
     url: string;
   }
 
-  interface UploadVideoProgress {
+  interface VideoUploadProgress {
     progress: number;
     id: string;
     state: enums.ShareState;
