@@ -3655,6 +3655,7 @@ declare namespace overwolf.streaming {
       both = "both",
       gameOnly = "gameOnly",
       desktopOnly = "desktopOnly",
+	  none = "none"
     }
 
     const enum ObsStreamingMode {
@@ -3820,7 +3821,7 @@ declare namespace overwolf.streaming {
     /**
      * Stream video options.
      */
-    video: StreamVideoOptions;
+    video?: StreamVideoOptions;
     /**
      * Stream audio options.
      */
@@ -6483,8 +6484,30 @@ declare namespace overwolf.settings.language {
 }
 
 declare namespace overwolf.social {
+  namespace enums {
+    const enum ShareState {
+      Started,
+      Uploading,
+      Finished
+      }
+  }
   interface GetUserInfoResult<T> extends Result {
     userInfo?: T;
+  }
+
+  interface UploadVideoParams {
+    id: string;
+    filePath: string;
+  }
+
+  interface UploadVideoResult {
+    url: string;
+  }
+
+  interface UploadVideoProgress {
+    progress: number;
+    id: string;
+    state: enums.ShareState;
   }
 
   interface LoginStateChangedEvent {
@@ -6500,8 +6523,10 @@ declare namespace overwolf.social {
    * @param callback Returns a list of disabled services
    */
    function getDisabledServices(callback: CallbackFunction<GetDisabledServicesResult<void>>): void;
-
-
+   
+   function uploadVideo(uploadParams: VideoUploadParams, resultCallback: CallbackFunction<VideoUploadResult<void>>, progressCallback: CallbackFunction<VideoUploadProgress<void>>)
+   
+   function cancelUpload(id: string, resultCallback: CallbackFunction<Result>)
 }
 
 declare namespace overwolf.social.discord {
@@ -6564,8 +6589,8 @@ declare namespace overwolf.social.discord {
     * Note: Since version 0.153, the "file" param is optional when calling overwolf.social.discord.share(). Instead, you can use the "message" param to include a URL of a file that you want to share.*/
     file?: string;
     channelId: string;
-	id?: string;
-	useOverwolfNotifications: boolean;
+	  id?: string;
+	  useOverwolfNotifications: boolean;
     message: string;
     /** An object containing start time and end time for the desired VideoCompositionSegment */
     trimming?: media.videos.VideoCompositionSegment;
@@ -6574,6 +6599,11 @@ declare namespace overwolf.social.discord {
     gameTitle?: string;
     /** Extra information about the game session (How is this used?) */
     metadata?: any;
+  }
+
+  interface PostParameters {
+    channelId: string;
+    message: string;
   }
 
   interface SocialShareProgress extends Result {
@@ -6657,6 +6687,10 @@ declare namespace overwolf.social.discord {
     discordShareParams: overwolf.social.discord.ShareParameters,
     resultCallback: CallbackFunction<SocialShareResult>,
 	  progressCallback: CallbackFunction<SocialShareProgress>
+  ): void;
+
+  function post(
+    discordPostParams: overwolf.social.discord.PostParameters
   ): void;
 
   /**
@@ -6979,8 +7013,8 @@ declare namespace overwolf.social.reddit {
     /**
      * The subreddit to which the file will be shared.
      */
-	id?: string;
-	useOverwolfNotifications: boolean;
+	  id?: string;
+	  useOverwolfNotifications: boolean;
     subreddit: string;
     /**
      * The shared video's title.
@@ -7019,6 +7053,23 @@ declare namespace overwolf.social.reddit {
 
     flair_id?: Flair;
   }
+  
+  interface PostParameters {
+    /**
+     * The subreddit to which the post will be shared.
+     */
+    subreddit: string;
+    /**
+     * The shared post's title.
+     */
+    title: string;
+    /**
+     * The shared post's content.
+     */
+    content: string;
+    flair_id?: Flair;
+  }
+
 
   interface User {
     avatar: string;
@@ -7133,7 +7184,11 @@ declare namespace overwolf.social.reddit {
   function shareEx(
     discordShareParams: overwolf.social.reddit.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.reddit.SocialShareResult>,
-	progressCallback: CallbackFunction<overwolf.social.reddit.SocialShareProgress>
+	  progressCallback: CallbackFunction<overwolf.social.reddit.SocialShareProgress>
+  ): void;
+
+  function post(
+    redditShareParams: overwolf.social.reddit.PostParameters
   ): void;
 
   /**
