@@ -106,6 +106,7 @@ declare namespace overwolf.io {
   }
 
   interface ReadFileContentsResult extends Result {
+    status: string;
     content?: string;
   }
 
@@ -4256,6 +4257,7 @@ declare namespace overwolf.streaming {
   }
 
   interface GetStreamEncodersResult extends Result {
+    status: string;
     encoders?: EncoderData[];
   }
 
@@ -6099,7 +6101,7 @@ declare namespace overwolf.settings {
   }
 
   interface GetVideoCaptureSettingsResult extends Result {
-    enconder: string;
+    encoder: string;
     preset: string;
     fps: number;
     resolution: number;
