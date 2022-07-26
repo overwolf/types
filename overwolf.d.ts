@@ -5359,7 +5359,7 @@ declare namespace overwolf.extensions {
 }
 
 declare namespace overwolf.extensions.io {
-  namespace enums {
+  export namespace enums {
     const enum StorageSpace {
       pictures = "pictures",
       videos = "videos",
