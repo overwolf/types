@@ -111,7 +111,7 @@ declare namespace overwolf.io {
   }
 
   interface DirResult extends Result {
-    data?: FileInDir[];
+    data: FileInDir[] | null;
   }
 
   interface FileInDir {
