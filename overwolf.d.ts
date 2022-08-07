@@ -6506,11 +6506,11 @@ declare namespace overwolf.social {
     filePath: string;
   }
 
-  interface VideoUploadResult {
+  interface VideoUploadResult extends Result{
     url: string;
   }
 
-  interface VideoUploadProgress {
+  interface VideoUploadProgress extends Result{
     progress: number;
     id: string;
     state: enums.ShareState;
@@ -6530,7 +6530,7 @@ declare namespace overwolf.social {
    */
    function getDisabledServices(callback: CallbackFunction<GetDisabledServicesResult<void>>): void;
    
-   function uploadVideo(uploadParams: VideoUploadParams, resultCallback: CallbackFunction<VideoUploadResult<void>>, progressCallback: CallbackFunction<VideoUploadProgress<void>>)
+   function uploadVideo(uploadParams: VideoUploadParams, resultCallback: CallbackFunction<VideoUploadResult>, progressCallback: CallbackFunction<VideoUploadProgress>)
    
    function cancelUpload(id: string, resultCallback: CallbackFunction<Result>)
 }
