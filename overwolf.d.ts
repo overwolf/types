@@ -3746,12 +3746,6 @@ declare namespace overwolf.streaming {
       RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
-    const enum eTobiiEffectType {
-      Default = "Default",
-      Bubble = "Bubble",
-      Solid = "Solid",
-      Inverted = "Inverted",
-    }
     const enum StreamEncoderRateControl_x264 {
       RC_CBR = "RC_CBR",
       RC_CQP = "RC_CQP",
