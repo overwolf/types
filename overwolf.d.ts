@@ -788,6 +788,23 @@ declare namespace overwolf.media.replays {
     }
   }
 
+  interface WebCamParam {
+    device_id: string;
+  }
+
+  /**
+   * Defines the video source settings.
+   */
+  interface VideoSource {
+    source_type: overwolf.media.enums.eSourceType;
+    name: string;
+    secondary_file: boolean; // Source will be saved to a secondary video file (i.e another ow-obs.exe process will be created with the same settings as the original one.
+    transform: overwolf.media.enums.eVideoSourceTransform;
+    parameters: overwolf.media.replays.WebCamParam;
+    position: { x: number, y: number }
+    size_scale: { x: number, y: number }
+  }
+
   /**
    * Replays settings container.
    */
@@ -3996,16 +4013,6 @@ declare namespace overwolf.streaming {
      * Note: if game is minimized, BRB will be shown.
      */
      keep_game_capture_on_lost_focus?: boolean;
-  }
-
-  /**
-   * Defines the video source settings.
-   */
-  interface VideoSource {
-    source_type: overwolf.media.enums.eSourceType;
-    name: string;
-    secondary_file: boolean; //source will be create on secondry video file(i.e another ow-obs.exe process will be createdw ith the same setting as the original one
-    transform: overwolf.media.enums.eVideoSourceTransform;
   }
 
   /**
