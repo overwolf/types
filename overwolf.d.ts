@@ -348,10 +348,6 @@ declare namespace  overwolf.media {
     url: string;
   }
 
-  interface GifGenerationErrorEvent {
-    reason: string;
-  }
-
   interface Webcam {
     name: string;
     path: string;
@@ -483,25 +479,6 @@ declare namespace  overwolf.media {
   ): void;
 
   /**
-   * Deletes all gifs created by this app with an option to keep the newest X
-   * GBs (use with care).
-   * @param keepNewestXGbs Keep the newest X GBs of gifs. Pass 0 to delete all
-   * gifs.
-   * @param callback A callback function which will be called with the status of
-   * the request.
-   */
-  function deleteOldGifs(
-    keepNewestXGbs: number,
-    callback: CallbackFunction<Result>
-  ): void;
-
-  /**
-   * Returns the total size of the gif files created by this app in gigabytes.
-   * @param callback A callback with the gifs size.
-   */
-  function getGifsSize(callback: CallbackFunction<Result>): void;
-
-  /**
    * Returns the total size of the video capture folder created by the app. This
    * includes all video/thumbnail and other files that are under the apps video
    * folder - which is located inside the configured Overwolf video capture
@@ -532,11 +509,6 @@ declare namespace  overwolf.media {
    * Fired when a screenshot was taken.
    */
   const onScreenshotTaken: Event<ScreenshotTakenEvent>;
-
-  /**
-   * Fired when there's an error with the gif generation buffer.
-   */
-  const onGifGenerationError: Event<GifGenerationErrorEvent>;
 }
 
 /**
@@ -783,8 +755,7 @@ declare namespace overwolf.media.videos {
 declare namespace overwolf.media.replays {
   namespace enums {
     const enum ReplayType {
-      Video = "Video",
-      Gif = "Gif",
+      Video = "Video"
     }
   }
 
@@ -3851,10 +3822,6 @@ declare namespace overwolf.streaming {
      */
     ingest_server?: StreamIngestServer;
     /**
-     * Create gif as Video (Gif Replay Type only).
-     */
-    gif_as_video?: boolean;
-    /**
      * Max media folder size in GB. Deprecated
      */
     max_quota_gb?: number;
@@ -3922,10 +3889,6 @@ declare namespace overwolf.streaming {
      * seconds)
      */
     buffer_length?: number;
-    /**
-     * Interval between frames when creating gifs.
-     */
-    frame_interval?: number;
     /**
      * The interval, in milliseconds, in which to test for dropped frames.
      */
@@ -6177,7 +6140,7 @@ declare namespace overwolf.settings {
   ): void;
 
   /**
-   * Returns the current folder overwolf uses to store screenshots (and gifs).
+   * Returns the current folder overwolf uses to store screenshots.
    * @param callback
    */
   function getOverwolfScreenshotsFolder(
