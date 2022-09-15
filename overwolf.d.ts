@@ -3842,7 +3842,7 @@ declare namespace overwolf.streaming {
     /**
      * Add sources to video (currently only webcam is supported)
      */
-    sources?: VideoSource[];
+    sources?: overwolf.media.replays.VideoSource[];
 
     /**
      *
