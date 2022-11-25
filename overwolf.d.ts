@@ -1308,6 +1308,7 @@ declare namespace overwolf.windows {
 
   interface WindowInfo {
     name: string;
+    dpiScale: number;
     id: string;
     state: string;
     stateEx: enums.WindowStateEx;
