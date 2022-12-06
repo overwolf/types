@@ -1,12 +1,12 @@
 export declare type EventDispCallback = (data: any) => void;
 export declare class EventDispatcher {
-    addEventListener(
-      eventName: string,
-      listener: EventDispCallback): boolean;
-    removeEventListener(
-      eventName: string,
-      listener: EventDispCallback): boolean;
-    fireEvent(eventName: string, eventData: any): null | undefined;
+  addEventListener(
+    eventName: string,
+    listener: EventDispCallback): boolean;
+  removeEventListener(
+    eventName: string,
+    listener: EventDispCallback): boolean;
+  fireEvent(eventName: string, eventData: any): null | undefined;
 }
 
 export declare type OwAdOptionsSize = {
@@ -37,4 +37,11 @@ export declare class OwAd {
   removeEventListener(
     eventName: string,
     listener: EventDispCallback): boolean;
+}
+
+// extends the global window object with OwAd
+declare global {
+  interface Window {
+    OwAd?: typeof OwAd;
+  }
 }
