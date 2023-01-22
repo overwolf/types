@@ -1363,8 +1363,8 @@ declare namespace overwolf.windows {
   }
 
   interface DragMovedResult extends Result {
-    horizontalChange: number;
-    verticalChange: number;
+    HorizontalChange: number;
+    VerticalChange: number;
   }
 
   interface GetWindowStateResult extends Result {
