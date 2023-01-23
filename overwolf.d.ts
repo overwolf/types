@@ -1363,8 +1363,8 @@ declare namespace overwolf.windows {
   }
 
   interface DragMovedResult extends Result {
-    horizontalChange: number;
-    verticalChange: number;
+    HorizontalChange: number;
+    VerticalChange: number;
   }
 
   interface GetWindowStateResult extends Result {
@@ -4169,6 +4169,12 @@ declare namespace overwolf.streaming {
     encoders?: EncoderData[];
   }
 
+  interface StreamingCapabilities extends Result {
+    video?: EncoderData[];
+    audio?: AudioDeviceData[];
+    audioProcessCaptureSupported?: boolean;
+  }
+
   interface GetAudioDevicesResult extends Result {
     devices?: AudioDeviceData[];
     default_recording_device_id?: string;
@@ -4376,6 +4382,10 @@ declare namespace overwolf.streaming {
    */
   function getAudioDevices(
     callback: CallbackFunction<GetAudioDevicesResult>
+  ): void;
+
+  function getCapabilities(
+    callback: CallbackFunction<StreamingCapabilities>
   ): void;
 
   /**
