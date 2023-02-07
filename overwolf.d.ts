@@ -1168,7 +1168,6 @@ declare namespace overwolf.profile.subscriptions.inapp {
   function show(
     planId: number,
     theme: string,
-    callback: CallbackFunction<Result>
   ): void;
 
   /**
