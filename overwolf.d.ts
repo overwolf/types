@@ -277,7 +277,7 @@ declare namespace overwolf.io {
    */
   function stopFileListener(id: string): void;
 
-  function WatchFile(
+  function watchFile(
     filePath: string,
     callback: CallbackFunction<WatchedFileChanged>
   ): void;
