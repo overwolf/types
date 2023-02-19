@@ -6367,6 +6367,11 @@ declare namespace overwolf.settings.hotkeys {
     virtualKey: number;
   }
 
+  interface UpdateHotkeyObject extends UnassignHotkeyObject {
+    customModifierKeyCode: number;
+    isPassThrough: boolean;
+  }
+
   /**
    * Returns the hotkey assigned for the current extension in all the games.
    */
@@ -6385,6 +6390,11 @@ declare namespace overwolf.settings.hotkeys {
   */
   function unassign(
     hotkey: UnassignHotkeyObject,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  function update(
+    hotkey: UpdateHotkeyObject,
     callback: CallbackFunction<Result>
   ): void;
 
