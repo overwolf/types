@@ -1127,6 +1127,10 @@ declare namespace overwolf.profile {
     username: string;
   }
 
+  interface GenerateUserSessionTokenResult extends Result {
+    token: string;
+  }
+
   /**
    * Calls the given callback with the currently logged-in Overwolf user.
    * @param callback A function called with the current user, or an error.
@@ -1146,6 +1150,10 @@ declare namespace overwolf.profile {
    */
   function refreshUserProfile(
     callback: CallbackFunction<GetCurrentUserResult>
+  ): void;
+
+  function generateUserSessionToken(
+    callback: CallbackFunction<GenerateUserSessionTokenResult>
   ): void;
 
   /**
