@@ -2420,6 +2420,7 @@ declare namespace overwolf.games {
 
   interface RunningGameInfo {
     isInFocus: boolean;
+    gameIsInFocus: boolean;
     isRunning: boolean;
     allowsVideoCapture: boolean;
     title: string;
@@ -2478,6 +2479,7 @@ declare namespace overwolf.games {
 
   interface GetRunningGameInfoResult extends Result {
     isInFocus: boolean;
+    gameIsInFocus: boolean;
     isRunning: boolean;
     allowsVideoCapture: boolean;
     title: string;
@@ -2504,6 +2506,7 @@ declare namespace overwolf.games {
 
   interface GetRunningGameInfoResult2GameInfo {
     isInFocus: boolean;
+    gameIsInFocus: boolean;
     isRunning: boolean;
     allowsVideoCapture: boolean;
     title: string;
