@@ -3582,9 +3582,9 @@ declare namespace overwolf.streaming {
   namespace enums {
     const enum CaptureErrorCode {
       Success = 0,
-      FolderCreation = 1, 
-      RansomwareProtection = 2 ,
-      AlreadyStreaming = 3 ,
+      FolderCreation = 1,
+      RansomwareProtection = 2,
+      AlreadyStreaming = 3,
       MissingSetting = 4,
       SettingError = 5,
       InternalOBSError = 6,
@@ -4508,7 +4508,7 @@ declare namespace overwolf.os.tray {
     path: string,
     callback: CallbackFunction<Result>
   ): void;
-  
+
   function restoreIcon(
     callback: CallbackFunction<Result>
   ): void;
@@ -6365,12 +6365,19 @@ declare namespace overwolf.settings.hotkeys {
     shift?: boolean;
   }
 
-  interface UnassignHotkeyObject {
+  interface HotkeyObject {
     name: string;
     gameId?: number;
   }
 
-  interface AssignHotkeyObject extends UnassignHotkeyObject {
+  interface UpdateHotkeyObject extends HotkeyObject {
+    customModifierKeyCode?: number;
+    isPassThrough?: boolean;
+  }
+
+  type UnassignHotkeyObject = HotkeyObject;
+
+  interface AssignHotkeyObject extends HotkeyObject {
     modifiers: HotkeyModifiers;
     virtualKey: number;
   }
@@ -6381,12 +6388,22 @@ declare namespace overwolf.settings.hotkeys {
   }
 
   /**
-   * Returns the hotkey assigned for the current extension in all the games.
+   * Update a hotkey for the current extension.
    */
-  function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
+  function update(
+    hotkey: UpdateHotkeyObject,
+    callback: CallbackFunction<Result>
+  ): void;
 
   /**
-  * Set hotkey for current extension
+   * Returns the hotkey assigned for the current extension in all the games.
+   */
+  function get(
+    callback: CallbackFunction<GetAssignedHotkeyResult>
+  ): void;
+
+  /**
+  * Assign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey.
   */
   function assign(
     hotkey: AssignHotkeyObject,
@@ -6394,7 +6411,7 @@ declare namespace overwolf.settings.hotkeys {
   ): void;
 
   /**
-  * unassign hotkey for current extension
+  * Unassign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey.
   */
   function unassign(
     hotkey: UnassignHotkeyObject,
