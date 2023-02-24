@@ -277,7 +277,7 @@ declare namespace overwolf.io {
    */
   function stopFileListener(id: string): void;
 
-  function WatchFile(
+  function watchFile(
     filePath: string,
     callback: CallbackFunction<WatchedFileChanged>
   ): void;
@@ -1127,6 +1127,10 @@ declare namespace overwolf.profile {
     username: string;
   }
 
+  interface GenerateUserSessionTokenResult extends Result {
+    token: string;
+  }
+
   /**
    * Calls the given callback with the currently logged-in Overwolf user.
    * @param callback A function called with the current user, or an error.
@@ -1146,6 +1150,10 @@ declare namespace overwolf.profile {
    */
   function refreshUserProfile(
     callback: CallbackFunction<GetCurrentUserResult>
+  ): void;
+
+  function generateUserSessionToken(
+    callback: CallbackFunction<GenerateUserSessionTokenResult>
   ): void;
 
   /**
@@ -1168,7 +1176,6 @@ declare namespace overwolf.profile.subscriptions.inapp {
   function show(
     planId: number,
     theme: string,
-    callback: CallbackFunction<Result>
   ): void;
 
   /**
@@ -2421,6 +2428,7 @@ declare namespace overwolf.games {
 
   interface RunningGameInfo {
     isInFocus: boolean;
+    gameIsInFocus: boolean;
     isRunning: boolean;
     allowsVideoCapture: boolean;
     title: string;
@@ -2479,6 +2487,7 @@ declare namespace overwolf.games {
 
   interface GetRunningGameInfoResult extends Result {
     isInFocus: boolean;
+    gameIsInFocus: boolean;
     isRunning: boolean;
     allowsVideoCapture: boolean;
     title: string;
@@ -2505,6 +2514,7 @@ declare namespace overwolf.games {
 
   interface GetRunningGameInfoResult2GameInfo {
     isInFocus: boolean;
+    gameIsInFocus: boolean;
     isRunning: boolean;
     allowsVideoCapture: boolean;
     title: string;
@@ -6372,6 +6382,11 @@ declare namespace overwolf.settings.hotkeys {
     virtualKey: number;
   }
 
+  interface UpdateHotkeyObject extends UnassignHotkeyObject {
+    customModifierKeyCode: number;
+    isPassThrough: boolean;
+  }
+
   /**
    * Update a hotkey for the current extension.
    */
@@ -6400,6 +6415,11 @@ declare namespace overwolf.settings.hotkeys {
   */
   function unassign(
     hotkey: UnassignHotkeyObject,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  function update(
+    hotkey: UpdateHotkeyObject,
     callback: CallbackFunction<Result>
   ): void;
 
