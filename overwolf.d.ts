@@ -6485,9 +6485,9 @@ declare namespace overwolf.social {
    */
   function getDisabledServices(callback: CallbackFunction<GetDisabledServicesResult<void>>): void;
 
-  function uploadVideo(uploadParams: VideoUploadParams, resultCallback: CallbackFunction<VideoUploadResult>, progressCallback: CallbackFunction<VideoUploadProgress>)
+  function uploadVideo(uploadParams: VideoUploadParams, resultCallback: CallbackFunction<VideoUploadResult>, progressCallback: CallbackFunction<VideoUploadProgress>): void;
 
-  function cancelUpload(id: string, resultCallback: CallbackFunction<Result>)
+  function cancelUpload(id: string, resultCallback: CallbackFunction<Result>): void;
 }
 
 declare namespace overwolf.social.discord {
