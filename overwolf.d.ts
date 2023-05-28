@@ -6357,6 +6357,8 @@ declare namespace overwolf.settings.hotkeys {
     gameId: number;
     description: string;
     binding: string;
+    modifierKeys: number;
+    virtualKeycode: number;
   }
 
   interface HotkeyModifiers {
