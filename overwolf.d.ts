@@ -2862,8 +2862,6 @@ declare namespace overwolf.games.events {
    * information.
    */
   const onNewEvents: Event<NewGameEvents>;
-
-  const onNewEvent2: Event<GameEvent2>;
 }
 
 declare namespace overwolf.games.events.provider {
