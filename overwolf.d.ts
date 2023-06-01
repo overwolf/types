@@ -2893,7 +2893,7 @@ declare namespace overwolf.games.inputTracking {
   interface InputActivity {
     aTime: number;
     iTime: number;
-    apm: boolean;
+    apm: number;
     mouse: { total: number; dist: number; keys: any; };
     keyboard: { total: number; keys: any; };
   }
@@ -6355,6 +6355,8 @@ declare namespace overwolf.settings.hotkeys {
     gameId: number;
     description: string;
     binding: string;
+    modifierKeys: number;
+    virtualKeycode: number;
   }
 
   interface HotkeyModifiers {
