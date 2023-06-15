@@ -6472,7 +6472,7 @@ declare namespace overwolf.social {
   }
 
   interface LoginStateChangedEvent {
-    status: "connected" | "disconnected";
+    state: "connected" | "disconnected";
   }
 
   interface GetDisabledServicesResult<T> extends Result {
