@@ -5798,7 +5798,7 @@ declare namespace overwolf.utils {
     uptimeSeconds: number;
   }
 
-  interface UploadClientLogsOptions extends Result {
+  interface UploadClientLogsOptions {
     filePrefix: string;
   }
 
