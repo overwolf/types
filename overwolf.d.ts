@@ -6861,8 +6861,6 @@ declare namespace overwolf.social.youtube {
     }
   }
 
-
-
   interface ShareParameters {
     file: string;
     id?: string;
@@ -6874,7 +6872,7 @@ declare namespace overwolf.social.youtube {
     tags?: string[];
     gameClassId?: number;
     gameTitle?: string;
-    metadata: any;
+    metadata?: any;
   }
 
   interface User {
