@@ -28,7 +28,7 @@ export declare class OwAd {
   };
   play(): boolean;
   pause(): boolean;
-  refreshAd(refreshOptions: any): boolean;
+  refreshAd(refreshOptions?: any): boolean;
   refreshCurrentWFstep(): void;
   removeAd(): boolean;
   addEventListener(
