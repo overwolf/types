@@ -1304,11 +1304,17 @@ declare namespace overwolf.windows {
     }
 
     const enum WindowStateEx {
-      CLOSED = "closed",
-      MINIMIZED = "minimized",
-      HIDDEN = "hidden",
-      NORMAL = "normal",
-      MAXIMIZED = "maximized"
+      closed = "closed",
+      hidden = "hidden",
+      maximized = "maximized",
+      minimized = "minimized",
+      normal = "normal"
+    }
+
+    const enum WindowType {
+      Desktop = "Desktop",
+      Background = "Background",
+      OffScreen = " OffScreen"
     }
   }
 
