@@ -6000,6 +6000,14 @@ declare namespace overwolf.utils {
   function getClientInfo(
     callback: CallbackFunction<ClientInfoResult>
   ): void;
+
+  /**
+   * Checks whether an Overwolf client update is available.
+   * @param callback A callback with the result.
+   */
+  function checkForClientUpdates(
+    callback: CallbackFunction<ClientUpdateResult>
+  ): void;
 }
 
 declare namespace overwolf.settings {
