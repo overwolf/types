@@ -5808,6 +5808,14 @@ declare namespace overwolf.utils {
     filePrefix: string;
   }
 
+  interface ClientUpdateResult extends Result {
+    channel: string;
+    currentVersion: string;
+    hasUpdate: boolean;
+    newVersion: string;
+    updatesDisabled: boolean;
+  }
+
   /**
    * Copies the given string to the clipboard.
    * @param data The string to be copied to the clipboard.
