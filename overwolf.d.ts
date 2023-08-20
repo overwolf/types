@@ -1495,6 +1495,16 @@ declare namespace overwolf.windows {
   ): void;
 
   /**
+   * Returns WindowResult object for a specific open window.
+   * @param windowName The name of the window that was declared in the data.windows section in the manifest
+   * @param callback Callback will be invoked with the WindowResult object.
+   */
+  function getWindow(
+    windowName: string,
+    callback: CallbackFunction<WindowResult>
+  ): void;
+
+  /**
    * Start dragging a window.
    * @param windowId The id or name of the window to drag.
    * @param callback A callback which is called when the drag is completed.
