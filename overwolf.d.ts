@@ -63,10 +63,10 @@ declare namespace overwolf.io {
     }
 
     const enum WatchEventType {
-      Registered,
-      Changed,
-      Renamed,
-      Deleted
+      Registered = "Registered",
+      Changed = "Changged",
+      Renamed = "Renamed",
+      Deleted = "Deleted"
     }
   }
 
