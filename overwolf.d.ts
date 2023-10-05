@@ -5261,15 +5261,6 @@ declare namespace overwolf.extensions {
     callback: CallbackFunction<GetManifestResult>
   ): void;
 
-    /**
-   * Repairs the schema registration, for an extension where the manifest contains
-   * url_protocol
-   * @param callback A function called with the manifest data.
-   */
-    function repairUrlProtocol(
-      callback: CallbackFunction<Result>
-    ): void;
-
   /**
    * The app will relaunch itself.
    */
@@ -5451,6 +5442,15 @@ declare namespace overwolf.extensions.current {
    * @param callback A function called with the manifest data.
    */
   function getManifest(callback: CallbackFunction<GetManifestResult>): void;
+
+  /**
+   * Repairs the schema registration, for an extension where the manifest contains
+   * url_protocol
+   * @param callback A function called with the manifest data.
+   */
+    function repairUrlProtocol(
+      callback: CallbackFunction<Result>
+    ): void;
 }
 
 declare namespace overwolf.extensions.sharedData {
