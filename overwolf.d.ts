@@ -1033,7 +1033,7 @@ declare namespace overwolf.notifications {
   }
 
   interface ToastNotificationParams {
-    header: string;
+    header?: string;
     /**
      * Mandatory. Must include 1-3 texts (lines).
      */
@@ -1041,23 +1041,23 @@ declare namespace overwolf.notifications {
     /**
      * By default, your toast will display your app's logo. However, you can override this logo with your own image.
      */
-    logoOverride: LogoOverride;
+    logoOverride?: LogoOverride;
     /**
      * Toasts can display a hero image, which is displayed prominently within the toast banner and while inside Action Center. Image dimensions must be 364x180 pixels.
      */
-    heroImage: string;
+    heroImage?: string;
     /**
      * You can provide a full-width inline-image that appears when you expand the toast.
      */
-    inlineImage: string;
+    inlineImage?: string;
     /**
      * If you need to reference the source of your content, you can use attribution text. This text is always displayed at the bottom of your notification, along with your app's identity or the notification's timestamp.
      */
-    attribution: string;
+    attribution?: string;
     /**
      * Buttons make your toast interactive, letting the user take quick actions on your toast notification without interrupting their current workflow. Buttons appear in the expanded portion of your notification.
      */
-    buttons: ToastNotificationButton[];
+    buttons?: ToastNotificationButton[];
   }
 
   interface LogoOverride {
