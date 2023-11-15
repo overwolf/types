@@ -128,7 +128,7 @@ declare namespace overwolf.io {
   }
 
   interface ReadBinaryFileResult extends Result {
-    content?: string;
+    content?: ArrayBuffer;
     length?: number;
   }
 
