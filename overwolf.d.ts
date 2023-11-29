@@ -1156,6 +1156,11 @@ declare namespace overwolf.profile {
     callback: CallbackFunction<GenerateUserSessionTokenResult>
   ): void;
 
+  function performOverwolfSessionLogin(
+    token: string,
+    callback: CallbackFunction<Result>
+  ): void
+
   /**
    * Fired when a user logged in or logged out.
    */
@@ -3940,6 +3945,12 @@ declare namespace overwolf.streaming {
      * Note: if game is minimized, BRB will be shown.
      */
     keep_game_capture_on_lost_focus?: boolean;
+
+
+    /**
+     * Disables automatic shutdown of the streaming API once the targeted game session ended.
+     */
+    disable_auto_shutdown_on_game_exit?: boolean;
   }
 
   /**
@@ -5143,6 +5154,10 @@ declare namespace overwolf.extensions {
 
   interface GetManifestResult extends Result, Manifest { }
 
+  interface GetPhasedPercentResult extends Result {
+    phasedPercent: number;
+  }
+
   interface GetInfoResult extends Result {
     info: string | { [key: string]: any };
   }
@@ -5442,6 +5457,11 @@ declare namespace overwolf.extensions.current {
    * @param callback A function called with the manifest data.
    */
   function getManifest(callback: CallbackFunction<GetManifestResult>): void;
+
+  function getPhasedPercent(
+    callback: CallbackFunction<GetPhasedPercentResult>,
+    version?: string,
+  ): void;
 
   /**
    * Repairs the schema registration, for an extension where the manifest contains
@@ -6361,6 +6381,13 @@ declare namespace overwolf.settings.hotkeys {
     binding: string;
   }
 
+  interface GetAllAssignedHotkeysResult extends Result {
+    apps: {
+      [appId: string]: Omit<GetAssignedHotkeyResult, 'success' | 'error'>;
+    },
+    platform: IHotkey[];
+  }
+
   interface GetAssignedHotkeyResult extends Result {
     globals: IHotkey[];
     games?: Record<string, IHotkey[]>;
@@ -6409,6 +6436,11 @@ declare namespace overwolf.settings.hotkeys {
    * Returns the hotkey assigned for the current extension in all the games.
    */
   function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
+
+  /**
+   * Returns the hotkeys assigned for all installed extensions + the platform, in all the games.
+   */
+  function getAllApps(callback: CallbackFunction<GetAllAssignedHotkeysResult>): void;
 
   /**
    * Assign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey.
