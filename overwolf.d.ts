@@ -5458,6 +5458,16 @@ declare namespace overwolf.extensions.current {
    */
   function getManifest(callback: CallbackFunction<GetManifestResult>): void;
 
+  function generateUserEmailHashes(email: string, callback: CallbackFunction<GetManifestResult>): void;
+
+  function setUserEmailHashes(hashes: UserEmailHashes, callback: CallbackFunction<GetManifestResult>): void;
+
+  interface UserEmailHashes {
+    SHA1: string;
+    SHA256: string;
+    MD5: string
+  }
+
   function getPhasedPercent(
     callback: CallbackFunction<GetPhasedPercentResult>,
     version?: string,
