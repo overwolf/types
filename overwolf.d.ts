@@ -5458,9 +5458,9 @@ declare namespace overwolf.extensions.current {
    */
   function getManifest(callback: CallbackFunction<GetManifestResult>): void;
 
-  function generateUserEmailHashes(email: string, callback: CallbackFunction<GetManifestResult>): void;
+  function generateUserEmailHashes(email: string, callback: CallbackFunction<Result>): void;
 
-  function setUserEmailHashes(hashes: UserEmailHashes, callback: CallbackFunction<GetManifestResult>): void;
+  function setUserEmailHashes(hashes: UserEmailHashes, callback: CallbackFunction<Result>): void;
 
   interface UserEmailHashes {
     SHA1: string;
