@@ -1119,6 +1119,7 @@ declare namespace overwolf.profile {
     installParams?: any;
     installerExtension?: any;
     displayName?: string;
+    uuid?: string;
   }
 
   interface LoginStateChangedEvent {
