@@ -4109,6 +4109,19 @@ declare namespace overwolf.streaming {
     filtered_capture: GameCaptureOptions;
   }
 
+  function getActiveRecordingApps(
+    callback: CallbackFunction<GetActiveRecordingAppsResult>
+  ): void;
+  
+  interface GetActiveRecordingAppsResult extends Result {
+    streaming: ActiveRecordingApps[];
+  }
+  
+  interface ActiveRecordingApps {
+    uuid: string;
+    displayName: string;
+  }
+
   interface GameCaptureOptions {
     enable: boolean;
     additional_process_names: string[];
@@ -6111,15 +6124,6 @@ declare namespace overwolf.settings {
     microphone_enabled: boolean;
   }
 
-  interface GetActiveRecordingAppsResult extends Result {
-    streaming: ActiveRecordingApps[];
-  }
-
-  interface ActiveRecordingApps {
-    uuid: string;
-    displayName: string;
-  }
-
   interface GetFpsSettingsResult extends Result {
     settings: FpsSettings;
   }
@@ -6245,10 +6249,6 @@ declare namespace overwolf.settings {
    */
   function getAudioCaptureSettings(
     callback: CallbackFunction<GetAudioCaptureSettingsResult>
-  ): void;
-
-  function getActiveRecordingApps(
-    callback: CallbackFunction<GetActiveRecordingAppsResult>
   ): void;
 
   /**
