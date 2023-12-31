@@ -6111,6 +6111,15 @@ declare namespace overwolf.settings {
     microphone_enabled: boolean;
   }
 
+  interface GetActiveRecordingAppsResult extends Result {
+    streaming: ActiveRecordingApps[];
+  }
+
+  interface ActiveRecordingApps {
+    uuid: string;
+    displayName: string;
+  }
+
   interface GetFpsSettingsResult extends Result {
     settings: FpsSettings;
   }
@@ -6236,6 +6245,10 @@ declare namespace overwolf.settings {
    */
   function getAudioCaptureSettings(
     callback: CallbackFunction<GetAudioCaptureSettingsResult>
+  ): void;
+
+  function getActiveRecordingApps(
+    callback: CallbackFunction<GetActiveRecordingAppsResult>
   ): void;
 
   /**
