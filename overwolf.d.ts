@@ -5188,7 +5188,7 @@ declare namespace overwolf.extensions {
 
   interface CheckForUpdateResult extends Result {
     state?: "UpToDate" | "UpdateAvailable" | "PendingRestart"; //should be changed in the future to the enum "ExtensionUpdateState"
-    updateVersion?: string;
+    updateVersion: string | null;
   }
 
   interface ServiceProvidersDataResult extends Result {
