@@ -5871,6 +5871,14 @@ declare namespace overwolf.utils {
     filePrefix: string;
   }
 
+  interface ClientUpdateResult extends Result {
+    channel: string;
+    currentVersion: string;
+    hasUpdate: boolean;
+    newVersion: string;
+    updatesDisabled: boolean;
+  }
+
   /**
    * Copies the given string to the clipboard.
    * @param data The string to be copied to the clipboard.
@@ -6054,6 +6062,14 @@ declare namespace overwolf.utils {
    */
   function getClientInfo(
     callback: CallbackFunction<ClientInfoResult>
+  ): void;
+
+  /**
+   * Checks whether an Overwolf client update is available.
+   * @param callback A callback with the result.
+   */
+  function checkForClientUpdates(
+    callback: CallbackFunction<ClientUpdateResult>
   ): void;
 }
 
