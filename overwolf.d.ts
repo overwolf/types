@@ -4118,7 +4118,7 @@ declare namespace overwolf.streaming {
   }
   
   interface ActiveRecordingApps {
-    uuid: string;
+    uid: string;
     displayName: string;
   }
 
