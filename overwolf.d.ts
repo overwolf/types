@@ -2601,7 +2601,7 @@ declare namespace overwolf.games {
    * @param callback Called with the currently running or active game info. See
    */
   function getRunningGameInfo(
-    callback: CallbackFunction<GetRunningGameInfoResult>
+    callback: CallbackFunction<GetRunningGameInfoResult | null>
   ): void;
 
   /**
