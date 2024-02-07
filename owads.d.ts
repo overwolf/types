@@ -31,6 +31,7 @@ export declare class OwAd {
   refreshAd(refreshOptions: any): boolean;
   refreshCurrentWFstep(): void;
   removeAd(): boolean;
+  shutdown(): Promise<void>;
   addEventListener(
     eventName: string,
     listener: EventDispCallback): boolean;
