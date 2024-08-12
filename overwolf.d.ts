@@ -2576,7 +2576,7 @@ declare namespace overwolf.games {
   }
 
   interface GameInfoUpdatedEvent {
-    gameInfo?: RunningGameInfo;
+    gameInfo?: RunningGameInfo | null;
     resolutionChanged: boolean;
     runningChanged: boolean;
     focusChanged: boolean;
