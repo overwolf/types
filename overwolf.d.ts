@@ -5835,6 +5835,7 @@ declare namespace overwolf.utils {
     url?: string;
     file?: string;
     urls?: string[];
+    files?: string[];
   }
 
   interface OpenFolderPickerResult extends Result {
