@@ -2741,8 +2741,11 @@ declare namespace overwolf.games.launchers {
 }
 
 declare namespace overwolf.games.launchers.events {
-  interface GetInfoResult<T = any> extends Result {
-    res: T;
+  interface GetInfoResult<T = any> {
+    success: boolean;
+    status: 'error' | 'success';
+    res?: T;
+    reason?: string;
   }
 
   interface SetRequiredFeaturesResult extends Result {
@@ -2839,13 +2842,30 @@ declare namespace overwolf.games.events {
     reason: string;
   }
 
-  interface InfoUpdate2 { }
-
-  interface InfoUpdates2Event
-    <Feature = string, Info extends InfoUpdate2 = InfoUpdate2> {
-    info: Info;
-    feature: Feature;
+  type InfoUpdates2Event = {
+    feature: 'live_client_data';
+    info: {
+      live_client_data: {
+        active_player?: string;
+        all_players?: string;
+        events?: string;
+        game_data?: string;
+        port?: number;
+      }
+    };
+  } | {
+    feature: 'matchState';
+    info: {
+      game_info: {
+        matchStarted?: 'true' | 'false';
+        matchId?: string;
+      }
+    };
+  } | {
+    feature: 'gep_internal' | 'match_info' | 'death' | 'respawn' | 'abilities' | 'kill' | 'assist' | 'gold' | 'minions' | 'summoner_info' | 'gameMode' | 'teams' | 'level' | 'announcer' | 'counters' | 'damage' | 'heal';
+    info: any;
   }
+
 
   /**
    * Sets the required features from the provider.
