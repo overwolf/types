@@ -2287,6 +2287,8 @@ declare namespace overwolf.games {
       GameResolutionChanged = "gameResolutionChanged",
       GameTerminated = "gameTerminated",
       GameWindowDataChanged = "gameWindowDataChanged",
+      GameOverlayExclusiveModeChanged = "gameOverlayExclusiveModeChanged",
+      GameOverlayCoexistenceDetectedb = "gameOverlayCoexistenceDetectedb"
     }
 
     const enum KnownOverlayCoexistenceApps {
@@ -2472,6 +2474,7 @@ declare namespace overwolf.games {
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
     processId: number;
+    oopOverlay?: boolean;
   }
 
   interface GameInfoUpdate {
