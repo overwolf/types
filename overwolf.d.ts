@@ -5322,6 +5322,14 @@ declare namespace overwolf.extensions {
     callback: CallbackFunction<ServiceProvidersDataResult>
   ): void;
 
+    /**
+   * Return service providers manifest data.
+   * @param callback
+   */
+  function getExtensions(
+    callback: CallbackFunction<any[]>
+  ): void;
+
   /**
    * Fires when the current app is launched while already running. This is
    * useful in the case where the app has custom logic for clicking its dock
