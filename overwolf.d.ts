@@ -5227,6 +5227,10 @@ declare namespace overwolf.extensions {
     removeListener(callback: UncaughtExceptionCallback): void;
   }
 
+  interface GetExtensionsResult extends Result {
+    extensions: any[];
+  }
+
   /**
    * Launch an extension by its unique id.
    * @param uid The extension unique id.
@@ -5327,7 +5331,7 @@ declare namespace overwolf.extensions {
    * @param callback
    */
   function getExtensions(
-    callback: CallbackFunction<any[]>
+    callback: CallbackFunction<GetExtensionsResult>
   ): void;
 
   /**
