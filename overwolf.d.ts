@@ -6780,6 +6780,9 @@ declare namespace overwolf.social.discord {
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
 }
 
+/**
+ * @deprecated No longer in service.
+ */
 declare namespace overwolf.social.gfycat {
   namespace enums {
     const enum ShareState {
@@ -6877,6 +6880,9 @@ declare namespace overwolf.social.gfycat {
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
 }
 
+/**
+ * @deprecated APIs moved to X
+ */
 declare namespace overwolf.social.twitter {
   namespace enums {
     const enum ShareState {
