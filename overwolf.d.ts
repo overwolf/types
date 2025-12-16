@@ -4797,6 +4797,8 @@ declare namespace overwolf.extensions {
      */
     force_browser?: string;
     /**
+     * @deprecated No longer supported
+     * 
      * Enable OSR/GPU acceleration if supported by this machine. Note: this flag
      * is still in Beta. It may not function as expected in some machines.
      */
@@ -5163,6 +5165,8 @@ declare namespace overwolf.extensions {
      */
     debug_url: string;
     /**
+     * @deprecated No longer supported.
+     * 
      * Valid only for transparent windows. Valid only if enable_osr_acceleration
      * is on.
      */
