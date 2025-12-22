@@ -17,6 +17,8 @@ export declare type OwAdOptionsSize = {
 export interface OwAdOptions {
   autoplay?: boolean;
   size?: OwAdOptionsSize | OwAdOptionsSize[];
+  testAd?: boolean;
+  enableHighImpact?: boolean;
 }
 
 export declare class OwAd {

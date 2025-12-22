@@ -2384,6 +2384,8 @@ declare namespace overwolf.games {
       GameResolutionChanged = "gameResolutionChanged",
       GameTerminated = "gameTerminated",
       GameWindowDataChanged = "gameWindowDataChanged",
+      GameOverlayExclusiveModeChanged = "gameOverlayExclusiveModeChanged",
+      GameOverlayCoexistenceDetectedb = "gameOverlayCoexistenceDetectedb"
     }
 
     const enum KnownOverlayCoexistenceApps {
@@ -2569,6 +2571,9 @@ declare namespace overwolf.games {
     windowHandle: { value: number; };
     monitorHandle: { value: number; };
     processId: number;
+    oopOverlay?: boolean;
+    isOverlayEnabled: boolean;
+    isOverlaySupported: boolean;
   }
 
   interface GameInfoUpdate {
@@ -2656,6 +2661,8 @@ declare namespace overwolf.games {
     monitorHandle: { value: number; };
     processId: number;
     overlayInfo: OverlayInfo;
+    isOverlayEnabled: boolean;
+    isOverlaySupported: boolean;
   }
 
   interface GetRunningGameInfoResult2 extends Result {
@@ -2781,6 +2788,25 @@ declare namespace overwolf.games {
 
 declare namespace overwolf.games.tracked {
   const onTerminated: Event<GameInfoUpdatedEvent>;
+
+  /**
+   * Fired when an unsupported / overlay disabled game is launched.
+   */
+  const onGameLaunched: Event<GetRunningGameInfoResult2>;
+
+  interface GetAnyRunningGamesInfoResult extends Result {
+    gameInfos: GetRunningGameInfoResult2GameInfo[];
+    success: boolean;
+  }
+
+
+  /**
+   * Returns an array of all the currently running unsupported / overlay disabled games.
+   * @param callback Called with the array of game infos.
+   */
+  function getAnyRunningGamesInfo(
+    callback: CallbackFunction<GetAnyRunningGamesInfoResult>
+  ): void;
 }
 
 declare namespace overwolf.games.launchers {
@@ -3699,9 +3725,9 @@ declare namespace overwolf.streaming {
   namespace enums {
     const enum CaptureErrorCode {
       Success = 0,
-      FolderCreation = 1, 
-      RansomwareProtection = 2 ,
-      AlreadyStreaming = 3 ,
+      FolderCreation = 1,
+      RansomwareProtection = 2,
+      AlreadyStreaming = 3,
       MissingSetting = 4,
       SettingError = 5,
       InternalOBSError = 6,
@@ -4209,11 +4235,11 @@ declare namespace overwolf.streaming {
   function getActiveRecordingApps(
     callback: CallbackFunction<GetActiveRecordingAppsResult>
   ): void;
-  
+
   interface GetActiveRecordingAppsResult extends Result {
     streaming: ActiveRecordingApps[];
   }
-  
+
   interface ActiveRecordingApps {
     uid: string;
     displayName: string;
@@ -4644,7 +4670,7 @@ declare namespace overwolf.os.tray {
     path: string,
     callback: CallbackFunction<Result>
   ): void;
-  
+
   function restoreIcon(
     callback: CallbackFunction<Result>
   ): void;
@@ -5321,6 +5347,10 @@ declare namespace overwolf.extensions {
     removeListener(callback: UncaughtExceptionCallback): void;
   }
 
+  interface GetExtensionsResult extends Result {
+    extensions: any[];
+  }
+
   /**
    * Launch an extension by its unique id.
    * @param uid The extension unique id.
@@ -5414,6 +5444,14 @@ declare namespace overwolf.extensions {
    */
   function getServiceConsumers(
     callback: CallbackFunction<ServiceProvidersDataResult>
+  ): void;
+
+  /**
+ * Return service providers manifest data.
+ * @param callback
+ */
+  function getExtensions(
+    callback: CallbackFunction<GetExtensionsResult>
   ): void;
 
   /**
@@ -5589,9 +5627,9 @@ declare namespace overwolf.extensions.current {
    * url_protocol
    * @param callback A function called with the manifest data.
    */
-    function repairUrlProtocol(
-      callback: CallbackFunction<Result>
-    ): void;
+  function repairUrlProtocol(
+    callback: CallbackFunction<Result>
+  ): void;
 }
 
 declare namespace overwolf.extensions.sharedData {
@@ -5933,6 +5971,7 @@ declare namespace overwolf.utils {
     url?: string;
     file?: string;
     urls?: string[];
+    files?: string[];
   }
 
   interface OpenFolderPickerResult extends Result {
