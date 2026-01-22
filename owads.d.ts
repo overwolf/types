@@ -1,12 +1,14 @@
 export declare type EventDispCallback = (data: any) => void;
 export declare class EventDispatcher {
-    addEventListener(
+  addEventListener(
       eventName: string,
       listener: EventDispCallback): boolean;
-    removeEventListener(
+
+  removeEventListener(
       eventName: string,
       listener: EventDispCallback): boolean;
-    fireEvent(eventName: string, eventData: any): null | undefined;
+
+  fireEvent(eventName: string, eventData: any): null | undefined;
 }
 
 export declare type OwAdOptionsSize = {
@@ -19,6 +21,7 @@ export interface OwAdOptions {
   size?: OwAdOptionsSize | OwAdOptionsSize[];
   testAd?: boolean;
   enableHighImpact?: boolean;
+  inStream?: boolean;
 }
 
 export declare class OwAd {
@@ -28,6 +31,7 @@ export declare class OwAd {
   get containerElem(): {
     id: string;
   };
+
   play(): boolean;
   pause(): boolean;
   refreshAd(refreshOptions: any): boolean;
@@ -37,6 +41,7 @@ export declare class OwAd {
   addEventListener(
     eventName: string,
     listener: EventDispCallback): boolean;
+
   removeEventListener(
     eventName: string,
     listener: EventDispCallback): boolean;
