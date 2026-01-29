@@ -22,6 +22,7 @@ export interface OwAdOptions {
   testAd?: boolean;
   enableHighImpact?: boolean;
   inStream?: boolean;
+  volume?: number;
 }
 
 export declare class OwAd {
