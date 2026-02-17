@@ -633,7 +633,7 @@ declare namespace overwolf.extensions {
   }
 
   /**
-   * The following types are related to the |onUncaughtException| event - which
+   * The following types are related to the `onUncaughtException` event - which
    * is a different than the usual events.
    */
   type UncaughtExceptionCallback = (

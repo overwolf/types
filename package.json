@@ -17,7 +17,7 @@
     "scripts": {
         "docs:clean": "node ./scripts/clean-docs.js ./docs/markdown/api",
         "docs:prepare-folders": "node ./scripts/prepare-docs-folders.js ./docs/markdown/api",
-        "docs:mdx": "npm run docs:clean && npm run docs:prepare-folders && npx typedoc --options typedoc.mdx.json && node ./scripts/organize-mdx-by-namespace.js --out docs/markdown/api && node ./scripts/fix-breadcrumb-links.js --out docs/markdown/api"
+        "docs:mdx": "npm run docs:clean && npm run docs:prepare-folders && node ./scripts/build-typedoc-options.js --in typedoc.mdx.json --out temp_typedoc/typedoc.mdx.json && npx typedoc --options temp_typedoc/typedoc.mdx.json && node ./scripts/organize-mdx-by-namespace.js --out docs/markdown/api && node ./scripts/fix-breadcrumb-links.js --out docs/markdown/api"
     },
     "devDependencies": {
         "typedoc": "^0.28.0",

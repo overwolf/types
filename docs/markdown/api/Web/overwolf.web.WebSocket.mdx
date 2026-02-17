@@ -2,20 +2,20 @@
 sidebar_label: "WebSocket"
 ---
 
-Overwolf APIs / overwolf.benchmarking / overwolf / web / WebSocket
+Overwolf APIs / overwolf / overwolf / web / WebSocket
 
 ## Properties
 
-| Property                                        | Type                                                                           | Description                                            |
-| ----------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| <a id="property-onclosed"></a> ~~`onClosed`~~   | `Event`\<`ClosedEvent`\>   | Fired when connection closed.                          |
-| <a id="property-onerror"></a> ~~`onError`~~     | `Event`\<`ErrorEvent`\>     | Fired on error.                                        |
-| <a id="property-onmessage"></a> ~~`onMessage`~~ | `Event`\<`MessageEvent`\> | Fired when the websocket receives an incoming message. |
-| <a id="property-onopen"></a> ~~`onOpen`~~       | `Event`\<\&#123; \&#125;\>                              | Fired on websocket connection Opened.                  |
+| Property                                    | Type                                                                           | Description                                            |
+| ------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| <a id="property-onclosed"></a> `onClosed`   | `Event`\<`ClosedEvent`\>   | Fired when connection closed.                          |
+| <a id="property-onerror"></a> `onError`     | `Event`\<`ErrorEvent`\>     | Fired on error.                                        |
+| <a id="property-onmessage"></a> `onMessage` | `Event`\<`MessageEvent`\> | Fired when the websocket receives an incoming message. |
+| <a id="property-onopen"></a> `onOpen`       | `Event`\<\&#123; \&#125;\>                              | Fired on websocket connection Opened.                  |
 
 ## Methods
 
-### ~~close()~~
+### close()
 
 ```ts
 close(): void;
@@ -29,7 +29,7 @@ Closes the websocket. It can be re-opened again.
 
 ---
 
-### ~~connect()~~
+### connect()
 
 ```ts
 connect(callback: CallbackFunction<Result>): void;
@@ -49,7 +49,7 @@ Listens for requests on the given port.
 
 ---
 
-### ~~send()~~
+### send()
 
 ```ts
 send(message: string, callback: CallbackFunction<Result>): void;

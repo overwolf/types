@@ -207,7 +207,7 @@ declare namespace overwolf.media {
   ): void;
 
   /**
-   * Similar to |getAppVideoCaptureFolderSize| but looks at the apps screen
+   * Similar to `getAppVideoCaptureFolderSize` but looks at the apps screen
    * capture folder.
    * @param callback A callback with the size in MB.
    */

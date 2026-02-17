@@ -287,8 +287,8 @@ declare namespace overwolf.streaming {
     include_full_size_video?: boolean;
     /**
      * Defines Sub folder for video file path destination (Optional).
-     * OverwolfVideoFolder\AppName\|sub_folder_name\|file_name| In case
-     * `folder_name` is empty: OverwolfVideoFolder\AppName\\`sub_folder_name`
+     * OverwolfVideoFolder\AppName\<sub_folder_name>\<file_name> In case
+     * `folder_name` is empty: `OverwolfVideoFolder\AppName\<sub_folder_name>`
      */
     sub_folder_name?: string;
     /**

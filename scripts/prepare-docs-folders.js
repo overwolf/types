@@ -9,8 +9,16 @@ function ensure(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
+function hasTopDeprecated(content) {
+  const trimmed = content.replace(/^\uFEFF/, '');
+  const match = trimmed.match(/^\s*\/\*\*[\s\S]*?\*\//);
+  if (!match) return false;
+  return /@deprecated\b/i.test(match[0]);
+}
+
 function extractNamespacesFromFile(file) {
   const content = fs.readFileSync(file, 'utf8');
+  if (hasTopDeprecated(content)) return [];
   const ns = new Set();
   // matches: declare namespace a.b.c or namespace a.b.c
   const re = /(?:declare\s+)?namespace\s+([a-zA-Z0-9_.]+)/g;

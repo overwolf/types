@@ -641,7 +641,7 @@ declare namespace overwolf.windows {
   ): void;
 
   /**
-   * For OSR window only (for other window the callback return |error| status.
+   * For OSR window only (for other window the callback return `error` status.
    * {
    *    "status": string (|error, success|), "reason": string (error reason),
    *    "accelerated": bool, "optimized"  : bool  (for accelerated windows only

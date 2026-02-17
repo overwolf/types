@@ -16,6 +16,41 @@ async function listFiles(dir) {
   return files;
 }
 
+function hasTopDeprecated(content) {
+  const trimmed = content.replace(/^\uFEFF/, '');
+  const match = trimmed.match(/^\s*\/\*\*[\s\S]*?\*\//);
+  if (!match) return false;
+  return /@deprecated\b/i.test(match[0]);
+}
+
+async function getDeprecatedNamespaces(modulesDir) {
+  const set = new Set();
+  try {
+    const files = await fs.readdir(modulesDir);
+    for (const f of files) {
+      if (!f.endsWith('.d.ts')) continue;
+      const full = path.join(modulesDir, f);
+      const content = await fs.readFile(full, 'utf8');
+      if (!hasTopDeprecated(content)) continue;
+      const ns = path.basename(f, '.d.ts').toLowerCase();
+      if (ns) set.add(ns);
+    }
+  } catch {
+    // ignore
+  }
+  return set;
+}
+
+function isDeprecatedNamespace(ns, deprecatedSet) {
+  if (!ns || !deprecatedSet || deprecatedSet.size === 0) return false;
+  const lower = ns.toLowerCase();
+  for (const dep of deprecatedSet) {
+    if (lower === dep) return true;
+    if (lower.startsWith(dep + '.')) return true;
+  }
+  return false;
+}
+
 function detectNamespace(content, filename, outDir) {
   // For Overview.mdx files in a namespace folder, extract from folder name
   const basename = path.basename(filename);
@@ -113,6 +148,36 @@ function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+const CATEGORY_LABEL_OVERRIDES = new Map([
+  ['campaigns/crossapp', 'CrossApp Campaigns'],
+]);
+
+function labelForSubdir(groupName, subdirName) {
+  const key = `${String(groupName || '')}/${String(subdirName || '')}`.toLowerCase();
+  return CATEGORY_LABEL_OVERRIDES.get(key) || subdirName;
+}
+
+function normalizeSubPartsForGroup(groupName, subParts) {
+  const group = String(groupName || '').toLowerCase();
+  const parts = (subParts || []).map(p => String(p));
+  if (group === 'campaigns' && parts.length === 1 && parts[0].toLowerCase() === 'crossapp') {
+    return [];
+  }
+  return parts;
+}
+
+function normalizeDisplayLabel(groupName, label) {
+  if (!label) return label;
+  const group = String(groupName || '').toLowerCase();
+  const lower = label.toLowerCase();
+  if (group === 'campaigns') {
+    const prefix = 'overwolf.campaigns.crossapp.';
+    if (lower.startsWith(prefix)) return label.slice(prefix.length);
+    if (lower.startsWith('crossapp.')) return label.slice('crossapp.'.length);
+  }
+  return label;
+}
+
 async function ensureDir(dir) {
   try { await fs.mkdir(dir, { recursive: true }); } catch (e) { }
 }
@@ -199,7 +264,11 @@ async function run() {
   const argv = require('minimist')(process.argv.slice(2));
   const out = path.resolve(process.cwd(), argv.out || argv.o || 'docs/markdown/api');
   const namespaceSummaryByFull = new Map();
+  const modulesDir = path.resolve(process.cwd(), argv.modules || argv.m || 'modules');
+  const deprecatedNamespaces = await getDeprecatedNamespaces(modulesDir);
   const all = await listFiles(out);
+  const skippedNoNamespace = [];
+  const skippedDeprecated = [];
 
   // Filter MDX files, skip only root-level overview and typedoc readme
   // Include namespace-specific Overview files so every namespace gets a folder
@@ -220,6 +289,14 @@ async function run() {
   for (const file of mdxFiles) {
     const content = await fs.readFile(file, 'utf8');
     const ns = detectNamespace(content, file, out);
+    if (!ns) {
+      skippedNoNamespace.push(path.relative(out, file));
+      continue;
+    }
+    if (isDeprecatedNamespace(ns, deprecatedNamespaces)) {
+      skippedDeprecated.push(path.relative(out, file));
+      continue;
+    }
     const master = masterNamespace(ns);
     // full namespace to use for per-namespace folders
     const fullNs = (ns || path.basename(file, path.extname(file))).toLowerCase();
@@ -242,6 +319,7 @@ async function run() {
       if (subParts.length > 0 && subParts[0].toLowerCase() === ns.toLowerCase()) {
         subParts = subParts.slice(1);
       }
+      subParts = normalizeSubPartsForGroup(ns, subParts);
       const subFolder = subParts.join('/');
       const destDir = path.join(nsDir, subFolder || '_root');
       await ensureDir(destDir);
@@ -291,7 +369,10 @@ async function run() {
           const c = await fs.readFile(filePath, 'utf8');
           desc = extractSummaryFromContent(c);
         } catch { /* ignore */ }
-        rows.push({ label: name, link: `./${n}`, description: desc });
+        const relDir = path.relative(out, dirPath);
+        const groupName = relDir.split(path.sep)[0] || '';
+        const label = normalizeDisplayLabel(groupName, name);
+        rows.push({ label, link: `./${n}`, description: desc });
       }
       const nsKey = namespaceKeyForDir(out, dirPath);
       const summary = nsKey ? namespaceSummaryByFull.get(nsKey) : '';
@@ -301,6 +382,12 @@ async function run() {
   }
 
   console.log('Organized MDX into', groups.size, 'namespaces at', out);
+  if (skippedNoNamespace.length) {
+    console.log('Skipped files with no detected namespace:', skippedNoNamespace.join(', '));
+  }
+  if (skippedDeprecated.length) {
+    console.log('Skipped files in deprecated namespaces:', skippedDeprecated.join(', '));
+  }
   // Cleanup: remove any leftover directories created by typedoc that begin with 'overwolf.'
   const rootEntries = await fs.readdir(out, { withFileTypes: true });
   for (const e of rootEntries) {
@@ -422,6 +509,29 @@ async function run() {
       const rows = [];
       for (const sd of subdirs) {
         const overviewPath = path.join(groupPath, sd.name, 'Overview.mdx');
+        // Skip empty folders (no MDX pages or only an empty Overview)
+        let hasContent = false;
+        try {
+          const subEntries = await fs.readdir(path.join(groupPath, sd.name), { withFileTypes: true });
+          const mdxFiles = subEntries.filter(e => e.isFile() && /\.mdx?$/i.test(e.name));
+          const nonOverview = mdxFiles.filter(e => e.name.toLowerCase() !== 'overview.mdx');
+          if (nonOverview.length > 0) {
+            hasContent = true;
+          } else if (mdxFiles.length > 0) {
+            const c = await fs.readFile(overviewPath, 'utf8').catch(() => '');
+            if (!/no pages generated/i.test(c)) hasContent = true;
+          }
+        } catch { /* ignore */ }
+        if (!hasContent) continue;
+
+        const label = labelForSubdir(d.name, sd.name);
+        if (label !== sd.name) {
+          const catPath = path.join(groupPath, sd.name, '_category_.json');
+          try {
+            await fs.writeFile(catPath, JSON.stringify({ label }, null, 2), 'utf8');
+          } catch { /* ignore */ }
+        }
+
         let target = `./${sd.name}`;
         try { await fs.access(overviewPath); target = `./${sd.name}/Overview`; } catch { /* ignore */ }
         const nsKey = namespaceKeyFromParts([d.name, sd.name]);
@@ -432,7 +542,7 @@ async function run() {
             desc = extractSummaryFromContent(c);
           } catch { /* ignore */ }
         }
-        rows.push({ label: sd.name, link: target, description: desc });
+        rows.push({ label, link: target, description: desc });
       }
       for (const f of files) {
         const base = f.name.replace(/(\.mdx|\.md)$/i, '');
@@ -442,7 +552,8 @@ async function run() {
           const c = await fs.readFile(filePath, 'utf8');
           desc = extractSummaryFromContent(c);
         } catch { /* ignore */ }
-        rows.push({ label: base, link: `./${base}`, description: desc });
+        const label = normalizeDisplayLabel(d.name, base);
+        rows.push({ label, link: `./${base}`, description: desc });
       }
 
       const nsKey = namespaceKeyFromParts([d.name]);

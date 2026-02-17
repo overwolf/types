@@ -75,7 +75,7 @@ declare namespace overwolf.campaigns.crossapp {
   interface CrossAppCampaign {
     /**
      * An id to identify the campaign (action/conversion).
-     * |id| should be unique per an extension (two different extensions can use
+     * `id` should be unique per an extension (two different extensions can use
      * the same id).
      */
     id: string;
@@ -131,27 +131,27 @@ declare namespace overwolf.campaigns.crossapp {
     /**
      * The UID of the app that performed the conversion (the promoted app).
      *
-     * Set by the Overwolf client when calling |consumeConversions|.
+     * Set by the Overwolf client when calling `consumeConversions`.
      */
     readonly origin_app_uid?: string;
 
     /**
      * When the conversion took place.
      *
-     * Set by the Overwolf client when calling |consumeConversions|.
+     * Set by the Overwolf client when calling `consumeConversions`.
      */
     readonly timestamp?: number;
   }
 
   /**
-   * See |overwolf.campaigns.crossapp.getAvailableActions|
+   * See `overwolf.campaigns.crossapp.getAvailableActions`
    */
   interface GetCrossAppAvailableActionsResult extends Result {
     actions: CrossAppCampaign[];
   }
 
   /**
-   * See |overwolf.campaigns.crossapp.consumeConversions|
+   * See `overwolf.campaigns.crossapp.consumeConversions`
    */
   interface GetCrossAppConversionsResult extends Result {
     conversions: CrossAppCampaignConversion[];

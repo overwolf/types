@@ -71,6 +71,11 @@ function computeSidebarLabel(file, outDir) {
   const base = path.basename(file, path.extname(file));
   if (base.toLowerCase() === 'overview') return 'Overview';
   const lower = base.toLowerCase();
+  if (group === 'campaigns') {
+    const prefix = 'overwolf.campaigns.crossapp.';
+    if (lower.startsWith(prefix)) return base.slice(prefix.length);
+    if (lower.startsWith('crossapp.')) return base.slice('crossapp.'.length);
+  }
   const prefix = `overwolf.${group}.`;
   if (lower.startsWith(prefix)) return base.slice(prefix.length);
   const altPrefix = `overwolf.${group}`;
@@ -167,6 +172,7 @@ async function fixFile(file) {
       ['toc_max_heading_level', 6],
     ]);
   }
+  // no special-case unlisted frontmatter
 
   const sidebarLabel = computeSidebarLabel(file, out);
   s = upsertSidebarLabelFrontmatter(s, sidebarLabel);
