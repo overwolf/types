@@ -1,3 +1,7 @@
+---
+sidebar_label: "copyFile"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / io / copyFile
 
 ```ts
@@ -17,11 +21,11 @@ local machine.
 
 | Parameter      | Type                                                                                                                                | Description                                                                                                                       |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `src`          | `string`                                                                                                                            | a relative (to the root of your extension's folder) file path or a full overwolf-extension: /  / URI to the source file to be copied |
+| `src`          | `string`                                                                                                                            | a relative (to the root of your extension's folder) file path or a full overwolf-extension:// URI to the source file to be copied |
 | `dst`          | `string`                                                                                                                            | The destination path (including filename) to copy to.                                                                             |
 | `overrideFile` | `boolean`                                                                                                                           | true if you want an existing file to be overwritten, false otherwise.                                                             |
 | `reserved`     | `boolean`                                                                                                                           | for future use.                                                                                                                   |
-| `callback`     | `CallbackFunction`\&lt;`Result`\&gt; | result callback.                                                                                                                  |
+| `callback`     | `CallbackFunction`\<`Result`\> | result callback.                                                                                                                  |
 
 ## Returns
 

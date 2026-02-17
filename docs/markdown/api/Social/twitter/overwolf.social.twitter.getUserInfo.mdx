@@ -1,3 +1,7 @@
+---
+sidebar_label: "twitter.getUserInfo"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / social / twitter / getUserInfo
 
 ```ts
@@ -5,7 +9,7 @@ function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
 ```
 
 If the user is currently logged into Twitter, this will return
-userinformation:&#123; avatar: "http: /  / abs.twimg.com / sticky / ...", id:
+userinformation:&#123; avatar: "http://abs.twimg.com/sticky/...", id:
 "111111111112222222" name: "full name" screenName:
 "screenname123"&#125;
 Otherwise, an error is returned.
@@ -14,7 +18,7 @@ Otherwise, an error is returned.
 
 | Parameter  | Type                                                                                                                                                                                                | Description                                                       |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `callback` | `CallbackFunction`\&lt;`GetUserInfoResult`\&lt;`User`\&gt;\&gt; | Will contain user information or error if the request has failed. |
+| `callback` | `CallbackFunction`\<`GetUserInfoResult`\<`User`\>\> | Will contain user information or error if the request has failed. |
 
 ## Returns
 

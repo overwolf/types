@@ -1,26 +1,31 @@
+---
+sidebar_label: "Overview"
+---
+
 # Overview
 
-- [enums](./enums/Overview)
-- [replays](./replays/Overview)
-- [videos](./videos/Overview)
-- [overwolf.media.CropParams](./overwolf.media.CropParams)
-- [overwolf.media.decryptForCurrentUser](./overwolf.media.decryptForCurrentUser)
-- [overwolf.media.FileResult](./overwolf.media.FileResult)
-- [overwolf.media.getAppScreenCaptureFolderSize](./overwolf.media.getAppScreenCaptureFolderSize)
-- [overwolf.media.GetAppScreenCaptureFolderSizeResult](./overwolf.media.GetAppScreenCaptureFolderSizeResult)
-- [overwolf.media.getAppVideoCaptureFolderSize](./overwolf.media.getAppVideoCaptureFolderSize)
-- [overwolf.media.GetAppVideoCaptureFolderSizeResult](./overwolf.media.GetAppVideoCaptureFolderSizeResult)
-- [overwolf.media.getScreenshotUrl](./overwolf.media.getScreenshotUrl)
-- [overwolf.media.GetWebcams](./overwolf.media.GetWebcams)
-- [overwolf.media.GetWebcamsResult](./overwolf.media.GetWebcamsResult)
-- [overwolf.media.MemoryScreenshotParams](./overwolf.media.MemoryScreenshotParams)
-- [overwolf.media.onMediaEvent](./overwolf.media.onMediaEvent)
-- [overwolf.media.Overview](./overwolf.media.Overview)
-- [overwolf.media.postMediaEvent](./overwolf.media.postMediaEvent)
-- [overwolf.media.RescaleParams](./overwolf.media.RescaleParams)
-- [overwolf.media.ScreenshotTakenEvent](./overwolf.media.ScreenshotTakenEvent)
-- [overwolf.media.shareImage](./overwolf.media.shareImage)
-- [overwolf.media.takeScreenshot](./overwolf.media.takeScreenshot)
-- [overwolf.media.takeWindowsScreenshotByHandle](./overwolf.media.takeWindowsScreenshotByHandle)
-- [overwolf.media.takeWindowsScreenshotByName](./overwolf.media.takeWindowsScreenshotByName)
-- [overwolf.media.Webcam](./overwolf.media.Webcam)
+| API | Description |
+| --- | --- |
+| [enums](./enums/Overview) | - |
+| [replays](./replays/Overview) | - |
+| [videos](./videos/Overview) | - |
+| [overwolf.media.CropParams](./overwolf.media.CropParams) | - |
+| [overwolf.media.decryptForCurrentUser](./overwolf.media.decryptForCurrentUser) | Decrypt provided ciphertext for current system user |
+| [overwolf.media.FileResult](./overwolf.media.FileResult) | - |
+| [overwolf.media.getAppScreenCaptureFolderSize](./overwolf.media.getAppScreenCaptureFolderSize) | Similar to \|getAppVideoCaptureFolderSize\| but looks at the apps screen capture folder. |
+| [overwolf.media.GetAppScreenCaptureFolderSizeResult](./overwolf.media.GetAppScreenCaptureFolderSizeResult) | - |
+| [overwolf.media.getAppVideoCaptureFolderSize](./overwolf.media.getAppVideoCaptureFolderSize) | Returns the total size of the video capture folder created by the app. This includes all video/thumbnail and other files that are under the apps video folder - which is located inside the configured Overwolf video capture folder. NOTE: this function can take a long time to return if the folder contains a large amount of files (on some computers) - therefore,try to reduce the amount of times you call it. |
+| [overwolf.media.GetAppVideoCaptureFolderSizeResult](./overwolf.media.GetAppVideoCaptureFolderSizeResult) | - |
+| [overwolf.media.getScreenshotUrl](./overwolf.media.getScreenshotUrl) | Takes a memory screenshot and calls the callback with the success status and the screenshot URL. The screenshot will only be placed in the memory and will not be saved to a file (better performance). Can only be used while in a game. |
+| [overwolf.media.GetWebcams](./overwolf.media.GetWebcams) | Get all connected Webcams. |
+| [overwolf.media.GetWebcamsResult](./overwolf.media.GetWebcamsResult) | - |
+| [overwolf.media.MemoryScreenshotParams](./overwolf.media.MemoryScreenshotParams) | - |
+| [overwolf.media.onMediaEvent](./overwolf.media.onMediaEvent) | Fired when a media event has been posted. |
+| [overwolf.media.postMediaEvent](./overwolf.media.postMediaEvent) | Posts a media event for other apps to receive. The time info should be received in UTC format. |
+| [overwolf.media.RescaleParams](./overwolf.media.RescaleParams) | - |
+| [overwolf.media.ScreenshotTakenEvent](./overwolf.media.ScreenshotTakenEvent) | - |
+| [overwolf.media.shareImage](./overwolf.media.shareImage) | Opens the social network sharing console to allow the user to share a picture. |
+| [overwolf.media.takeScreenshot](./overwolf.media.takeScreenshot) | Takes a screenshot and calls the callback with the success status and the screenshot URL. The screenshot is saved to the screenshots folder. |
+| [overwolf.media.takeWindowsScreenshotByHandle](./overwolf.media.takeWindowsScreenshotByHandle) | Takes a window screenshot and calls the callback with the success status and the screenshot URL. The screenshot is saved to the screenshots folder. |
+| [overwolf.media.takeWindowsScreenshotByName](./overwolf.media.takeWindowsScreenshotByName) | Takes a window screenshot and calls the callback with the success status and the screenshot URL. The screenshot is saved to the screenshots folder. |
+| [overwolf.media.Webcam](./overwolf.media.Webcam) | - |

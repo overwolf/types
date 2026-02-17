@@ -1,3 +1,7 @@
+---
+sidebar_label: "videos.createVideoComposition"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / media / videos / createVideoComposition
 
 ```ts
@@ -14,10 +18,10 @@ Creates a compilation video out of a source video and a list of segments.
 
 | Parameter           | Type                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sourceVideoUrl`    | `string`                                                                                                                                          | The url of the source video in an overwolf: /  / media form.                                                                                                                                                                                                                                                    |
+| `sourceVideoUrl`    | `string`                                                                                                                                          | The url of the source video in an overwolf://media form.                                                                                                                                                                                                                                                    |
 | `segments`          | \&#123; `segments`: `VideoCompositionSegment`[]; \&#125;                                                       | A JSON containing a list of segments, each segment has a start time and an end time in milliseconds. The segments must be sorted in ascending order. Example: &#123; "segments": [ &#123; "startTime": 2000, "endTime": 4000 &#125;, &#123; "startTime": 8000, "endTime": 10000 &#125;, &#123; "startTime": 14000, "endTime": 18000 &#125; ] &#125; |
 | `segments.segments` | `VideoCompositionSegment`[]                                                                          | -                                                                                                                                                                                                                                                                                                           |
-| `callback`          | `CallbackFunction`\&lt;`FileResult`\&gt; | A callback function which will be called with the status of the request and the url to the target video.                                                                                                                                                                                                    |
+| `callback`          | `CallbackFunction`\<`FileResult`\> | A callback function which will be called with the status of the request and the url to the target video.                                                                                                                                                                                                    |
 
 ## Returns
 

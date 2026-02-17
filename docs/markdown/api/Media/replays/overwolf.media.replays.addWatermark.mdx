@@ -1,3 +1,7 @@
+---
+sidebar_label: "replays.addWatermark"
+---
+
 Overwolf APIs / overwolf.media.replays / addWatermark
 
 ```ts
@@ -9,16 +13,16 @@ function addWatermark(
 ): void;
 ```
 
-Adds a video / image watermark to a video.
+Adds a video/image watermark to a video.
 
 ## Parameters
 
 | Parameter         | Type                                                                                      | Description                                                                                              |
 | ----------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `sourceVideoUrl`  | `string`                                                                                  | The url of the source video in an overwolf: /  / media form.                                                 |
-| `watermarkUrl`    | `string`                                                                                  | The url of the watermark video / image in an overwolf: /  / media form.                                        |
+| `sourceVideoUrl`  | `string`                                                                                  | The url of the source video in an overwolf://media form.                                                 |
+| `watermarkUrl`    | `string`                                                                                  | The url of the watermark video/image in an overwolf://media form.                                        |
 | `watermarkParams` | `WatermarkParams`                                                                         | Use this object to mark the watermark                                                                    |
-| `callback`        | `CallbackFunction`\&lt;`FileResult`\&gt; | A callback function which will be called with the status of the request and the url to the output video. |
+| `callback`        | `CallbackFunction`\<`FileResult`\> | A callback function which will be called with the status of the request and the url to the output video. |
 
 ## Returns
 

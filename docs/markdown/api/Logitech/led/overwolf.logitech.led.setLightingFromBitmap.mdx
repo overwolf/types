@@ -1,3 +1,7 @@
+---
+sidebar_label: "led.setLightingFromBitmap"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / logitech / led / setLightingFromBitmap
 
 ## Call Signature
@@ -9,7 +13,7 @@ function setLightingFromBitmap(
 ): void;
 ```
 
-Sets the lighting from an overwolf-extension: /  / or overwolf-media: /  / url.
+Sets the lighting from an overwolf-extension:// or overwolf-media:// url.
 The file must be 21x6.
 
 ### Parameters
@@ -17,7 +21,7 @@ The file must be 21x6.
 | Parameter   | Type                                                                                                                                            | Description                                |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `bitmapUrl` | `string`                                                                                                                                        | The Overwolf url to add.                   |
-| `callback`  | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the result of the request. |
+| `callback`  | `CallbackFunction`\<`Result`\> | A callback with the result of the request. |
 
 ### Returns
 
@@ -39,7 +43,7 @@ Sets the lighting from a bitmap byte array.
 | Parameter  | Type                                                                                                                                            | Description                                |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `bitmap`   | `ByteArray`                                                                                                    | A byte array representing a 21x6 bitmap.   |
-| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the result of the request. |
+| `callback` | `CallbackFunction`\<`Result`\> | A callback with the result of the request. |
 
 ### Returns
 

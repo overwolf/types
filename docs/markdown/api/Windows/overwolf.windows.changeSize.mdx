@@ -1,3 +1,7 @@
+---
+sidebar_label: "changeSize"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / windows / changeSize
 
 ## Call Signature
@@ -20,7 +24,7 @@ Changes the window size to the new width and height, in pixels.
 | `windowId`  | `string`                                                                                                                            | The id or name of the window for which to change the size.    |
 | `width`     | `number`                                                                                                                            | The new window width in pixels.                               |
 | `height`    | `number`                                                                                                                            | The new window height in pixels.                              |
-| `callback?` | `CallbackFunction`\&lt;`Result`\&gt; | A callback which is called when the size change is completed. |
+| `callback?` | `CallbackFunction`\<`Result`\> | A callback which is called when the size change is completed. |
 
 ### Returns
 
@@ -42,7 +46,7 @@ Changes the window size to the new width and height, in pixels, including DPI sc
 | Parameter          | Type                                                                                                                                | Description                                                   |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | `changeSizeParams` | `ChangeWindowSizeParams`                                                                | Container for the window settings.                            |
-| `callback?`        | `CallbackFunction`\&lt;`Result`\&gt; | A callback which is called when the size change is completed. |
+| `callback?`        | `CallbackFunction`\<`Result`\> | A callback which is called when the size change is completed. |
 
 ### Returns
 

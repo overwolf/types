@@ -1,3 +1,7 @@
+---
+sidebar_label: "replays.capture"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / media / replays / capture
 
 ## Call Signature
@@ -22,8 +26,8 @@ captured to a file.
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `pastDuration`            | `number`                                                                                                                                                  | The replay length, in milliseconds to include prior to the time of this call.                                                 |
 | `futureDuration`          | `number`                                                                                                                                                  | The replay lengh, in milliseconds to include after the time of this call. To ignore it, simply give it a non-positive value   |
-| `captureFinishedCallback` | `CallbackFunction`\&lt;`ReplayResult`\&gt;           | A callback function which will be called when capturing is finished, at the end of the future duration supplied to this call. |
-| `callback`                | `CallbackFunction`\&lt;`StartReplayResult`\&gt; | A callback function which will be called with the status of the request.                                                      |
+| `captureFinishedCallback` | `CallbackFunction`\<`ReplayResult`\>           | A callback function which will be called when capturing is finished, at the end of the future duration supplied to this call. |
+| `callback`                | `CallbackFunction`\<`StartReplayResult`\> | A callback function which will be called with the status of the request.                                                      |
 
 ### Returns
 
@@ -53,8 +57,8 @@ captured to a file.
 | `replayType`              | `Video`                                                             | The type of replay to capture.                                                                                                |
 | `pastDuration`            | `number`                                                                                                                                        | The replay length, in milliseconds to include prior to the time of this call.                                                 |
 | `futureDuration`          | `number`                                                                                                                                        | The replay length, in milliseconds to include after the time of this call. To ignore it, simply give it a non-positive value  |
-| `captureFinishedCallback` | `CallbackFunction`\&lt;`ReplayResult`\&gt; | A callback function which will be called when capturing is finished, at the end of the future duration supplied to this call. |
-| `callback`                | `CallbackFunction`\&lt;`Result`\&gt; | A callback function which will be called with the status of the request.                                                      |
+| `captureFinishedCallback` | `CallbackFunction`\<`ReplayResult`\> | A callback function which will be called when capturing is finished, at the end of the future duration supplied to this call. |
+| `callback`                | `CallbackFunction`\<`Result`\> | A callback function which will be called with the status of the request.                                                      |
 
 ### Returns
 

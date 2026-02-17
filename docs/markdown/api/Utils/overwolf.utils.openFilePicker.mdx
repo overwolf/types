@@ -1,3 +1,7 @@
+---
+sidebar_label: "openFilePicker"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / utils / openFilePicker
 
 ## Call Signature
@@ -17,7 +21,7 @@ will be returned.
 | Parameter  | Type                                                                                                                                                      | Description                                                                             |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `filter`   | `string`                                                                                                                                                  | A file filter. Supports wild cards (_) and seperated by commas (,). Ex. myFile_._,_.txt |
-| `callback` | `CallbackFunction`\&lt;`OpenFilePickerResult`\&gt; | Called with a url to the selected file.                                                 |
+| `callback` | `CallbackFunction`\<`OpenFilePickerResult`\> | Called with a url to the selected file.                                                 |
 
 ### Returns
 
@@ -43,7 +47,7 @@ will be returned.
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `filter`      | `string`                                                                                                                                                  | A file filter. Supports wild cards (_) and seperated by commas (,). Ex. myFile_._,_.txt |
 | `initialPath` | `string`                                                                                                                                                  | Path to start browsing from                                                             |
-| `callback`    | `CallbackFunction`\&lt;`OpenFilePickerResult`\&gt; | Called with a url(s) to the selected file(s).                                           |
+| `callback`    | `CallbackFunction`\<`OpenFilePickerResult`\> | Called with a url(s) to the selected file(s).                                           |
 | `multiSelect` | `boolean`                                                                                                                                                 | Allow selection of multiple files                                                       |
 
 ### Returns

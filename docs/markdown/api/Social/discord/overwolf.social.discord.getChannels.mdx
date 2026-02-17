@@ -1,3 +1,7 @@
+---
+sidebar_label: "discord.getChannels"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / social / discord / getChannels
 
 ```ts
@@ -9,14 +13,14 @@ function getChannels(
 
 If the user is currently logged into Discord, this will return the channels
 of the given `guildId`, for which the user has privileges to share
-images / videos to. Otherwise, an error is returned
+images/videos to. Otherwise, an error is returned
 
 ## Parameters
 
 | Parameter  | Type                                                                                                                                                      | Description                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | `guildId`  | `string`                                                                                                                                                  | The id of the guild                                                      |
-| `callback` | `CallbackFunction`\&lt;`GetChannelsResult`\&gt; | Will contain guild (server) channels or error if the request has failed. |
+| `callback` | `CallbackFunction`\<`GetChannelsResult`\> | Will contain guild (server) channels or error if the request has failed. |
 
 ## Returns
 

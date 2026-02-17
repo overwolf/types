@@ -1,33 +1,37 @@
+---
+sidebar_label: "Overview"
+---
+
 # Overview
 
-- [overwolf.media.replays.capture](./overwolf.media.replays.capture)
-- [overwolf.media.replays.getHighlightsFeatures](./overwolf.media.replays.getHighlightsFeatures)
-- [overwolf.media.replays.getState](./overwolf.media.replays.getState)
-- [overwolf.media.replays.setReplaysSubFolder](./overwolf.media.replays.setReplaysSubFolder)
-- [overwolf.media.replays.startCapture](./overwolf.media.replays.startCapture)
-- [overwolf.media.replays.stopCapture](./overwolf.media.replays.stopCapture)
-- [overwolf.media.replays.turnOff](./overwolf.media.replays.turnOff)
-- [overwolf.media.replays.turnOn](./overwolf.media.replays.turnOn)
-- [overwolf.media.replays.CaptureErrorEvent](./overwolf.media.replays.CaptureErrorEvent)
-- [overwolf.media.replays.CaptureStoppedEvent](./overwolf.media.replays.CaptureStoppedEvent)
-- [overwolf.media.replays.CaptureWarningEvent](./overwolf.media.replays.CaptureWarningEvent)
-- [overwolf.media.replays.GetHighlightsFeaturesResult](./overwolf.media.replays.GetHighlightsFeaturesResult)
-- [overwolf.media.replays.GetStateResult](./overwolf.media.replays.GetStateResult)
-- [overwolf.media.replays.HighlightsCapturedEvent](./overwolf.media.replays.HighlightsCapturedEvent)
-- [overwolf.media.replays.raw_events](./overwolf.media.replays.raw_events)
-- [overwolf.media.replays.ReplayHighlightsSetting](./overwolf.media.replays.ReplayHighlightsSetting)
-- [overwolf.media.replays.ReplayResult](./overwolf.media.replays.ReplayResult)
-- [overwolf.media.replays.ReplayServicesStartedEvent](./overwolf.media.replays.ReplayServicesStartedEvent)
-- [overwolf.media.replays.ReplaySettings](./overwolf.media.replays.ReplaySettings)
-- [overwolf.media.replays.StartReplayResult](./overwolf.media.replays.StartReplayResult)
-- [overwolf.media.replays.TurnOffResult](./overwolf.media.replays.TurnOffResult)
-- [overwolf.media.replays.TurnOnResult](./overwolf.media.replays.TurnOnResult)
-- [overwolf.media.replays.VideoSource](./overwolf.media.replays.VideoSource)
-- [overwolf.media.replays.WebCamParam](./overwolf.media.replays.WebCamParam)
-- [overwolf.media.replays.Overview](../Overview)
-- [overwolf.media.replays.onCaptureError](./overwolf.media.replays.onCaptureError)
-- [overwolf.media.replays.onCaptureStopped](./overwolf.media.replays.onCaptureStopped)
-- [overwolf.media.replays.onCaptureWarning](./overwolf.media.replays.onCaptureWarning)
-- [overwolf.media.replays.onReplayServicesStarted](./overwolf.media.replays.onReplayServicesStarted)
-- [overwolf.media.replays.addWatermark](./overwolf.media.replays.addWatermark)
-- [overwolf.media.replays.Overview](../Overview)
+| API | Description |
+| --- | --- |
+| [overwolf.media.replays.capture](./overwolf.media.replays.capture) | Starts capturing a replay to a file. A replay id will be returned in the callback which is needed to finish capturing the replay. You can only call this method if replay mode is on and no other replay is currently being captured to a file. |
+| [overwolf.media.replays.getHighlightsFeatures](./overwolf.media.replays.getHighlightsFeatures) | Get supported auto highlights features for a game |
+| [overwolf.media.replays.getState](./overwolf.media.replays.getState) | Returns whether replay capturing is turned on or off. |
+| [overwolf.media.replays.setReplaysSubFolder](./overwolf.media.replays.setReplaysSubFolder) | change target sub folder of current running replay provider |
+| [overwolf.media.replays.startCapture](./overwolf.media.replays.startCapture) | Starts capturing a replay to a file. A replay id will be returned in the callback which is needed to finish capturing the replay. You can only call this method if replay mode is on and no other replay is currently being captured to a file. |
+| [overwolf.media.replays.stopCapture](./overwolf.media.replays.stopCapture) | Finishes capturing a replay and returns a url to the created video file. You can only call this method if replay mode is on and using a valid id of a replay being captured to a file. |
+| [overwolf.media.replays.turnOff](./overwolf.media.replays.turnOff) | Turns off background replay capturing. Call this as soon as you no longer interesting in capturing, in order to free up resources. |
+| [overwolf.media.replays.turnOn](./overwolf.media.replays.turnOn) | Turns on background replay capturing. Without calling it first, you will not be able to create video replays. Notice that turning on replay capturing will consume system resources so use it wisely.buffer_length defines the amount of time in milliseconds to have captured in the memory at all times. |
+| [overwolf.media.replays.CaptureErrorEvent](./overwolf.media.replays.CaptureErrorEvent) | - |
+| [overwolf.media.replays.CaptureStoppedEvent](./overwolf.media.replays.CaptureStoppedEvent) | - |
+| [overwolf.media.replays.CaptureWarningEvent](./overwolf.media.replays.CaptureWarningEvent) | - |
+| [overwolf.media.replays.GetHighlightsFeaturesResult](./overwolf.media.replays.GetHighlightsFeaturesResult) | - |
+| [overwolf.media.replays.GetStateResult](./overwolf.media.replays.GetStateResult) | - |
+| [overwolf.media.replays.HighlightsCapturedEvent](./overwolf.media.replays.HighlightsCapturedEvent) | - |
+| [overwolf.media.replays.raw_events](./overwolf.media.replays.raw_events) | - |
+| [overwolf.media.replays.ReplayHighlightsSetting](./overwolf.media.replays.ReplayHighlightsSetting) | Auto highlights settings. |
+| [overwolf.media.replays.ReplayResult](./overwolf.media.replays.ReplayResult) | - |
+| [overwolf.media.replays.ReplayServicesStartedEvent](./overwolf.media.replays.ReplayServicesStartedEvent) | - |
+| [overwolf.media.replays.ReplaySettings](./overwolf.media.replays.ReplaySettings) | Replays settings container. |
+| [overwolf.media.replays.StartReplayResult](./overwolf.media.replays.StartReplayResult) | - |
+| [overwolf.media.replays.TurnOffResult](./overwolf.media.replays.TurnOffResult) | - |
+| [overwolf.media.replays.TurnOnResult](./overwolf.media.replays.TurnOnResult) | - |
+| [overwolf.media.replays.VideoSource](./overwolf.media.replays.VideoSource) | Defines the video source settings. |
+| [overwolf.media.replays.WebCamParam](./overwolf.media.replays.WebCamParam) | - |
+| [overwolf.media.replays.onCaptureError](./overwolf.media.replays.onCaptureError) | Fired when an error has occurred with the capturing. |
+| [overwolf.media.replays.onCaptureStopped](./overwolf.media.replays.onCaptureStopped) | Fired when replay service is stopped. |
+| [overwolf.media.replays.onCaptureWarning](./overwolf.media.replays.onCaptureWarning) | Fired on capture service warning. |
+| [overwolf.media.replays.onReplayServicesStarted](./overwolf.media.replays.onReplayServicesStarted) | Fired when the replay service is on (any other app); |
+| [overwolf.media.replays.addWatermark](./overwolf.media.replays.addWatermark) | Adds a video/image watermark to a video. |

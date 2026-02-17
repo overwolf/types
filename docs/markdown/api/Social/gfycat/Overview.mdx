@@ -1,14 +1,18 @@
+---
+sidebar_label: "Overview"
+---
+
 # Overview
 
-- [overwolf.social.gfycat.getUserInfo](./overwolf.social.gfycat.getUserInfo)
-- [overwolf.social.gfycat.performLogout](./overwolf.social.gfycat.performLogout)
-- [overwolf.social.gfycat.performUserLogin](./overwolf.social.gfycat.performUserLogin)
-- [overwolf.social.gfycat.share](./overwolf.social.gfycat.share)
-- [overwolf.social.gfycat.shareEx](./overwolf.social.gfycat.shareEx)
-- [overwolf.social.gfycat.ShareParameters](./overwolf.social.gfycat.ShareParameters)
-- [overwolf.social.gfycat.SocialShareProgress](./overwolf.social.gfycat.SocialShareProgress)
-- [overwolf.social.gfycat.SocialShareResult](./overwolf.social.gfycat.SocialShareResult)
-- [overwolf.social.gfycat.User](./overwolf.social.gfycat.User)
-- [overwolf.social.gfycat.Overview](../Overview)
-- [overwolf.social.gfycat.onLoginStateChanged](./overwolf.social.gfycat.onLoginStateChanged)
-- [overwolf.social.gfycat.Overview](../Overview)
+| API | Description |
+| --- | --- |
+| [overwolf.social.gfycat.getUserInfo](./overwolf.social.gfycat.getUserInfo) | If the user is currently logged into Gfycat, this will return userinformation: https://developers.gfycat.com/api/#getting-the-authenticated-user-s-details Otherwise, an error is returned. |
+| [overwolf.social.gfycat.performLogout](./overwolf.social.gfycat.performLogout) | Performs a "strong" sign out of Gfycat, so that even if the userperforms a login via the Overwolf Settings / Accounts page, he willbe considered signed out. |
+| [overwolf.social.gfycat.performUserLogin](./overwolf.social.gfycat.performUserLogin) | Opens the login dialog. There is no callback for this method and theonly way to know if the user signed in is via `onLoginStateChanged`. |
+| [overwolf.social.gfycat.share](./overwolf.social.gfycat.share) | Possible errors that can occur:- Disconnected (user isn't signed in)- MissingFile (trying to share a missing file)- UnsupportedFile (trying to share an unsupported format)- ExceedsMaxSize (the file is too large: > 8 MB for images, > 100 MBfor videos) |
+| [overwolf.social.gfycat.shareEx](./overwolf.social.gfycat.shareEx) | `void` |
+| [overwolf.social.gfycat.ShareParameters](./overwolf.social.gfycat.ShareParameters) | - |
+| [overwolf.social.gfycat.SocialShareProgress](./overwolf.social.gfycat.SocialShareProgress) | - |
+| [overwolf.social.gfycat.SocialShareResult](./overwolf.social.gfycat.SocialShareResult) | - |
+| [overwolf.social.gfycat.User](./overwolf.social.gfycat.User) | - |
+| [overwolf.social.gfycat.onLoginStateChanged](./overwolf.social.gfycat.onLoginStateChanged) | Fired when a media event has been posted. |

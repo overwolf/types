@@ -117,6 +117,57 @@ async function ensureDir(dir) {
   try { await fs.mkdir(dir, { recursive: true }); } catch (e) { }
 }
 
+function isNamespacedOverview(filename) {
+  return /\.overview\.(mdx|md)$/i.test(filename);
+}
+
+function stripFrontmatter(content) {
+  return content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+}
+
+function extractSummaryFromContent(content) {
+  let s = stripFrontmatter(content);
+  // Drop breadcrumb line if present
+  s = s.replace(/^\s*(?:\[[^\]]+\]\([^\)]+\)\s*(?:\/\s*)?)+[^\n]*\r?\n/, '');
+  s = s.replace(/^\s*Overwolf APIs\s*\/[^\n]*\r?\n/i, '');
+  // Remove fenced code blocks
+  s = s.replace(/```[\s\S]*?```/g, '');
+  const lines = s.split(/\r?\n/);
+  const para = [];
+  for (const line of lines) {
+    const t = line.trim();
+    if (!t) {
+      if (para.length) break;
+      continue;
+    }
+    if (/^#{1,6}\s/.test(t)) { if (para.length) break; continue; }
+    if (/^\|/.test(t)) { if (para.length) break; continue; }
+    if (/^[-*+]\s+/.test(t)) { if (para.length) break; continue; }
+    if (/^\d+\.\s+/.test(t)) { if (para.length) break; continue; }
+    if (/^>/.test(t)) { if (para.length) break; continue; }
+    if (/^<[^>]+>/.test(t)) { if (para.length) break; continue; }
+    if (/^Overwolf APIs\s*\/?/i.test(t)) { if (para.length) break; continue; }
+    para.push(t);
+  }
+  return para.join(' ').replace(/\s+/g, ' ').trim();
+}
+
+function escapeTableCell(text) {
+  return String(text || '').replace(/\|/g, '\\|');
+}
+
+function buildOverviewTable(rows) {
+  if (!rows.length) {
+    return `# Overview\n\n*No pages generated.*\n`;
+  }
+  const header = `# Overview\n\n| API | Description |\n| --- | --- |\n`;
+  const body = rows.map(r => {
+    const desc = escapeTableCell(r.description) || '-';
+    return `| [${r.label}](${r.link}) | ${desc} |`;
+  }).join('\n');
+  return `${header}${body}\n`;
+}
+
 async function run() {
   const argv = require('minimist')(process.argv.slice(2));
   const out = path.resolve(process.cwd(), argv.out || argv.o || 'docs/markdown/api');
@@ -181,19 +232,36 @@ async function run() {
       perNsMap.get(destDir).push(path.basename(dest));
     }
 
+    // Remove typedoc namespace Overview pages (e.g., overwolf.media.Overview.mdx)
+    // These are redundant with our generated Overview.mdx files
+    for (const [dirPath, filesList] of perNsMap) {
+      const kept = [];
+      for (const name of filesList) {
+        if (isNamespacedOverview(name)) {
+          await fs.rm(path.join(dirPath, name), { force: true });
+          continue;
+        }
+        kept.push(name);
+      }
+      perNsMap.set(dirPath, kept);
+    }
+
     // create Overview.mdx for each namespace folder
     for (const [dirPath, filesList] of perNsMap) {
-      const rel = path.relative(nsDir, dirPath) || '.';
       // Filter to actual member files (not overview files), create links with proper formatting
-      const memberFiles = filesList.filter(n => !/^overview(\.mdx|\.md)$/i.test(n));
-      const links = memberFiles
-        .map(n => {
-          const name = n.replace(/(\.mdx|\.md)$/i, '');
-          return `- [${name}](./${n})`;
-        })
-        .join('\n');
-      // Simple "Overview" heading instead of "Overview — xyz"
-      const overview = `# Overview\n\n${links || '*No pages generated.*'}\n`;
+      const memberFiles = filesList.filter(n => !/^overview(\.mdx|\.md)$/i.test(n) && !isNamespacedOverview(n));
+      const rows = [];
+      for (const n of memberFiles) {
+        const name = n.replace(/(\.mdx|\.md)$/i, '');
+        const filePath = path.join(dirPath, n);
+        let desc = '';
+        try {
+          const c = await fs.readFile(filePath, 'utf8');
+          desc = extractSummaryFromContent(c);
+        } catch { /* ignore */ }
+        rows.push({ label: name, link: `./${n}`, description: desc });
+      }
+      const overview = buildOverviewTable(rows);
       await fs.writeFile(path.join(dirPath, 'Overview.mdx'), overview, 'utf8');
     }
   }
@@ -322,19 +390,30 @@ async function run() {
       const subdirs = entries.filter(e => e.isDirectory());
       const files = entries.filter(e => e.isFile() && /\.mdx?$/i.test(e.name) && e.name.toLowerCase() !== 'overview.mdx');
 
-      const links = [];
+      const rows = [];
       for (const sd of subdirs) {
         const overviewPath = path.join(groupPath, sd.name, 'Overview.mdx');
         let target = `./${sd.name}`;
         try { await fs.access(overviewPath); target = `./${sd.name}/Overview`; } catch { /* ignore */ }
-        links.push(`- [${sd.name}](${target})`);
+        let desc = '';
+        try {
+          const c = await fs.readFile(overviewPath, 'utf8');
+          desc = extractSummaryFromContent(c);
+        } catch { /* ignore */ }
+        rows.push({ label: sd.name, link: target, description: desc });
       }
       for (const f of files) {
         const base = f.name.replace(/(\.mdx|\.md)$/i, '');
-        links.push(`- [${base}](./${base})`);
+        const filePath = path.join(groupPath, f.name);
+        let desc = '';
+        try {
+          const c = await fs.readFile(filePath, 'utf8');
+          desc = extractSummaryFromContent(c);
+        } catch { /* ignore */ }
+        rows.push({ label: base, link: `./${base}`, description: desc });
       }
 
-      const overview = `# Overview\n\n${links.join('\n') || '*No pages generated.*'}\n`;
+      const overview = buildOverviewTable(rows);
       await fs.writeFile(path.join(groupPath, 'Overview.mdx'), overview, 'utf8');
     }
   }

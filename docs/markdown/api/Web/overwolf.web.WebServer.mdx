@@ -1,10 +1,14 @@
+---
+sidebar_label: "WebServer"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / web / WebServer
 
 ## Properties
 
 | Property                                        | Type                                                                           | Description                                                                                                                   |
 | ----------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| &lt;a id="property-onrequest"&gt;&lt; / a&gt; ~~`onRequest`~~ | `Event`\&lt;`RequestEvent`\&gt; | Fired when the web server receives an incoming request. The event contains three strings: 'url', 'content' and 'contentType'. |
+| <a id="property-onrequest"></a> ~~`onRequest`~~ | `Event`\<`RequestEvent`\> | Fired when the web server receives an incoming request. The event contains three strings: 'url', 'content' and 'contentType'. |
 
 ## Methods
 
@@ -35,7 +39,7 @@ this instance is already listening, an error will be returned.
 
 | Parameter  | Type                                                                                           | Description                           |
 | ---------- | ---------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `callback` | `CallbackFunction`\&lt;`any`\&gt; | Fired with the status of the request. |
+| `callback` | `CallbackFunction`\<`any`\> | Fired with the status of the request. |
 
 #### Returns
 

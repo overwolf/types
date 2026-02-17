@@ -1,13 +1,17 @@
+---
+sidebar_label: "WebSocket"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / web / WebSocket
 
 ## Properties
 
 | Property                                        | Type                                                                           | Description                                            |
 | ----------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| &lt;a id="property-onclosed"&gt;&lt; / a&gt; ~~`onClosed`~~   | `Event`\&lt;`ClosedEvent`\&gt;   | Fired when connection closed.                          |
-| &lt;a id="property-onerror"&gt;&lt; / a&gt; ~~`onError`~~     | `Event`\&lt;`ErrorEvent`\&gt;     | Fired on error.                                        |
-| &lt;a id="property-onmessage"&gt;&lt; / a&gt; ~~`onMessage`~~ | `Event`\&lt;`MessageEvent`\&gt; | Fired when the websocket receives an incoming message. |
-| &lt;a id="property-onopen"&gt;&lt; / a&gt; ~~`onOpen`~~       | `Event`\&lt;\&#123; \&#125;\&gt;                              | Fired on websocket connection Opened.                  |
+| <a id="property-onclosed"></a> ~~`onClosed`~~   | `Event`\<`ClosedEvent`\>   | Fired when connection closed.                          |
+| <a id="property-onerror"></a> ~~`onError`~~     | `Event`\<`ErrorEvent`\>     | Fired on error.                                        |
+| <a id="property-onmessage"></a> ~~`onMessage`~~ | `Event`\<`MessageEvent`\> | Fired when the websocket receives an incoming message. |
+| <a id="property-onopen"></a> ~~`onOpen`~~       | `Event`\<\&#123; \&#125;\>                              | Fired on websocket connection Opened.                  |
 
 ## Methods
 
@@ -37,7 +41,7 @@ Listens for requests on the given port.
 
 | Parameter  | Type                                                                                                                                | Description |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | -           |
+| `callback` | `CallbackFunction`\<`Result`\> | -           |
 
 #### Returns
 
@@ -58,7 +62,7 @@ Send message.
 | Parameter  | Type                                                                                                                                | Description |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `message`  | `string`                                                                                                                            | -           |
-| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | -           |
+| `callback` | `CallbackFunction`\<`Result`\> | -           |
 
 #### Returns
 

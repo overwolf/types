@@ -1,3 +1,7 @@
+---
+sidebar_label: "replays.startCapture"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / media / replays / startCapture
 
 ## Call Signature
@@ -19,7 +23,7 @@ captured to a file.
 | Parameter      | Type                                                                                                                                              | Description                                                                  |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `pastDuration` | `number`                                                                                                                                          | The video length, in milliseconds to include prior to the time of this call. |
-| `callback`     | `CallbackFunction`\&lt;`FileResult`\&gt; | A callback function which will be called with the status of the request.     |
+| `callback`     | `CallbackFunction`\<`FileResult`\> | A callback function which will be called with the status of the request.     |
 
 ### Returns
 
@@ -46,7 +50,7 @@ captured to a file.
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `replayType`   | `Video`                                                               | The type of replay to capture.                                               |
 | `pastDuration` | `number`                                                                                                                                          | The video length, in milliseconds to include prior to the time of this call. |
-| `callback`     | `CallbackFunction`\&lt;`FileResult`\&gt; | A callback function which will be called with the status of the request.     |
+| `callback`     | `CallbackFunction`\<`FileResult`\> | A callback function which will be called with the status of the request.     |
 
 ### Returns
 

@@ -1,3 +1,7 @@
+---
+sidebar_label: "discord.share"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / social / discord / share
 
 ```ts
@@ -11,14 +15,14 @@ If the user is currently logged into Discord, this will perform the media
 share (image or video).Possible errors that can occur:- Disconnected (user
 isn't signed in)- MissingFile (trying to share a missing file)-
 UnsupportedFile (trying to share an unsupported format)- ExceedsMaxSize
-(the file is too large: &gt; 8 MB for images, &gt; 100 MBfor videos)
+(the file is too large: > 8 MB for images, > 100 MBfor videos)
 
 ## Parameters
 
 | Parameter            | Type                                                                                                                                            | Description                                      |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | `discordShareParams` | `ShareParameters`                                                                                          | The share parameters. See DiscordShareParameters |
-| `callback`           | `CallbackFunction`\&lt;`Result`\&gt; | Will contain the status of the request.          |
+| `callback`           | `CallbackFunction`\<`Result`\> | Will contain the status of the request.          |
 
 ## Returns
 

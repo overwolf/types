@@ -1,3 +1,7 @@
+---
+sidebar_label: "gfycat.share"
+---
+
 Overwolf APIs / overwolf.benchmarking / overwolf / social / gfycat / share
 
 ```ts
@@ -9,15 +13,15 @@ function share(
 
 Possible errors that can occur:- Disconnected (user isn't signed in)-
 MissingFile (trying to share a missing file)- UnsupportedFile (trying to
-share an unsupported format)- ExceedsMaxSize (the file is too large: &gt; 8 MB
-for images, &gt; 100 MBfor videos)
+share an unsupported format)- ExceedsMaxSize (the file is too large: > 8 MB
+for images, > 100 MBfor videos)
 
 ## Parameters
 
 | Parameter           | Type                                                                                                                                            | Description                                     |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | `gfycatShareParams` | `ShareParameters`                                                                                          | The share parameters. See GfycatShareParameters |
-| `callback`          | `CallbackFunction`\&lt;`Result`\&gt; | Will contain the status of the request.         |
+| `callback`          | `CallbackFunction`\<`Result`\> | Will contain the status of the request.         |
 
 ## Returns
 

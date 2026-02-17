@@ -3,6 +3,85 @@ const fs = require('fs').promises;
 const path = require('path');
 // no external deps — use native recursive listing
 
+function yamlQuote(value) {
+  return `"${String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+}
+
+function yamlValue(value) {
+  if (typeof value === 'string') return yamlQuote(value);
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  return yamlQuote(String(value));
+}
+
+function upsertFrontmatterKeys(content, entries) {
+  const fmRe = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
+  const m = content.match(fmRe);
+  const kv = entries.map(([k, v]) => [k, yamlValue(v)]);
+  if (m) {
+    const fmBody = m[1];
+    const lines = fmBody.split(/\r?\n/);
+    const seen = new Set();
+    const next = lines.map(line => {
+      for (const [k, v] of kv) {
+        if (new RegExp(`^\\s*${k}\\s*:`).test(line)) {
+          seen.add(k);
+          return `${k}: ${v}`;
+        }
+      }
+      return line;
+    });
+    for (const [k, v] of kv) {
+      if (!seen.has(k)) next.push(`${k}: ${v}`);
+    }
+    const newFm = `---\n${next.join('\n')}\n---\n`;
+    return newFm + content.slice(m[0].length);
+  }
+  const body = kv.map(([k, v]) => `${k}: ${v}`).join('\n');
+  return `---\n${body}\n---\n\n${content}`;
+}
+
+function upsertSidebarLabelFrontmatter(content, sidebarLabel) {
+  if (!sidebarLabel) return content;
+  const fmRe = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
+  const m = content.match(fmRe);
+  const labelLine = `sidebar_label: ${yamlQuote(sidebarLabel)}`;
+  if (m) {
+    const fmBody = m[1];
+    const lines = fmBody.split(/\r?\n/);
+    let found = false;
+    const next = lines.map(line => {
+      if (/^\s*sidebar_label\s*:/.test(line)) {
+        found = true;
+        return labelLine;
+      }
+      return line;
+    });
+    if (!found) next.push(labelLine);
+    const newFm = `---\n${next.join('\n')}\n---\n`;
+    return newFm + content.slice(m[0].length);
+  }
+  return `---\n${labelLine}\n---\n\n${content}`;
+}
+
+function computeSidebarLabel(file, outDir) {
+  const rel = path.relative(outDir, file);
+  const parts = rel.split(path.sep);
+  if (parts.length < 2) return null;
+  const group = parts[0].toLowerCase();
+  const base = path.basename(file, path.extname(file));
+  if (base.toLowerCase() === 'overview') return 'Overview';
+  const lower = base.toLowerCase();
+  const prefix = `overwolf.${group}.`;
+  if (lower.startsWith(prefix)) return base.slice(prefix.length);
+  const altPrefix = `overwolf.${group}`;
+  if (lower.startsWith(altPrefix)) {
+    let rest = base.slice(altPrefix.length);
+    if (rest.startsWith('.')) rest = rest.slice(1);
+    return rest || base;
+  }
+  return base;
+}
+
 async function fixFile(file) {
   let s = await fs.readFile(file, 'utf8');
   const orig = s;
@@ -63,16 +142,6 @@ async function fixFile(file) {
     });
   }
 
-  // Normalize leftover repeated separators, but preserve markdown links
-  // Protect markdown links first
-  const linkRe = /\[([^\]]+)\]\(([^\)]+)\)/g;
-  const links = [];
-  s = s.replace(linkRe, (m) => { links.push(m); return `__LINK_${links.length-1}__`; });
-  // Now normalize separators outside of links
-  s = s.replace(/\s*\/\s*/g, ' / ');
-  // Restore links
-  s = s.replace(/__LINK_(\d+)__/g, (_, idx) => links[Number(idx)] || '');
-
   // Additional sanitization: avoid raw HTML tags and MDX expressions breaking compilation
   // Preserve fenced code blocks and inline code while sanitizing the rest
   const codeFenceRe = /(```[\s\S]*?```)/g;
@@ -82,15 +151,26 @@ async function fixFile(file) {
   const inlineCodes = [];
   s = s.replace(inlineCodeRe, (m) => { inlineCodes.push(m); return `__INLINECODE_${inlineCodes.length-1}__`; });
 
-  // Escape angle brackets so MDX parser doesn't interpret stray HTML tags
-  s = s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
   // Escape curly braces (MDX expressions) outside code to avoid acorn parse errors
   s = s.replace(/\{/g, '&#123;').replace(/\}/g, '&#125;');
 
   // Restore inline code and code fences
   s = s.replace(/__INLINECODE_(\d+)__/g, (_, idx) => inlineCodes[Number(idx)] || '');
   s = s.replace(/__CODEFENCE_(\d+)__/g, (_, idx) => codeFences[Number(idx)] || '');
+  // Ensure root Overview frontmatter stays consistent
+  if (path.resolve(file) === path.join(out, 'Overview.mdx')) {
+    s = upsertFrontmatterKeys(s, [
+      ['sidebar_position', 1],
+      ['sidebar_label', 'Overview'],
+      ['title', 'Overview'],
+      ['unlisted', false],
+      ['toc_max_heading_level', 6],
+    ]);
+  }
+
+  const sidebarLabel = computeSidebarLabel(file, out);
+  s = upsertSidebarLabelFrontmatter(s, sidebarLabel);
+
   if (s !== orig) {
     await fs.writeFile(file, s, 'utf8');
     console.log('Fixed breadcrumb links in', file);

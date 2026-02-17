@@ -1,43 +1,48 @@
+---
+sidebar_label: "Overview"
+---
+
 # Overview
 
-- [current](./current/Overview)
-- [io](./io/Overview)
-- [shareddata](./shareddata/Overview)
-- [overwolf.extensions.AppInstallationEvent](./overwolf.extensions.AppInstallationEvent)
-- [overwolf.extensions.AppLaunchTriggeredEvent](./overwolf.extensions.AppLaunchTriggeredEvent)
-- [overwolf.extensions.checkForExtensionUpdate](./overwolf.extensions.checkForExtensionUpdate)
-- [overwolf.extensions.CheckForUpdateResult](./overwolf.extensions.CheckForUpdateResult)
-- [overwolf.extensions.ExtensionType](./overwolf.extensions.ExtensionType)
-- [overwolf.extensions.ExtensionUpdatedEvent](./overwolf.extensions.ExtensionUpdatedEvent)
-- [overwolf.extensions.ExtensionUpdateState](./overwolf.extensions.ExtensionUpdateState)
-- [overwolf.extensions.ExtensionWindowData](./overwolf.extensions.ExtensionWindowData)
-- [overwolf.extensions.getExtensions](./overwolf.extensions.getExtensions)
-- [overwolf.extensions.GetExtensionsResult](./overwolf.extensions.GetExtensionsResult)
-- [overwolf.extensions.getInfo](./overwolf.extensions.getInfo)
-- [overwolf.extensions.GetInfoResult](./overwolf.extensions.GetInfoResult)
-- [overwolf.extensions.getManifest](./overwolf.extensions.getManifest)
-- [overwolf.extensions.GetManifestResult](./overwolf.extensions.GetManifestResult)
-- [overwolf.extensions.GetPhasedPercentResult](./overwolf.extensions.GetPhasedPercentResult)
-- [overwolf.extensions.getRunningState](./overwolf.extensions.getRunningState)
-- [overwolf.extensions.GetRunningStateResult](./overwolf.extensions.GetRunningStateResult)
-- [overwolf.extensions.getServiceConsumers](./overwolf.extensions.getServiceConsumers)
-- [overwolf.extensions.launch](./overwolf.extensions.launch)
-- [overwolf.extensions.Manifest](./overwolf.extensions.Manifest)
-- [overwolf.extensions.Metadata](./overwolf.extensions.Metadata)
-- [overwolf.extensions.onAppLaunchTriggered](./overwolf.extensions.onAppLaunchTriggered)
-- [overwolf.extensions.onExtensionUpdated](./overwolf.extensions.onExtensionUpdated)
-- [overwolf.extensions.onTrayIconDoubleClicked](./overwolf.extensions.onTrayIconDoubleClicked)
-- [overwolf.extensions.Overview](./overwolf.extensions.Overview)
-- [overwolf.extensions.Permission](./overwolf.extensions.Permission)
-- [overwolf.extensions.Point](./overwolf.extensions.Point)
-- [overwolf.extensions.registerInfo](./overwolf.extensions.registerInfo)
-- [overwolf.extensions.relaunch](./overwolf.extensions.relaunch)
-- [overwolf.extensions.ServiceProvidersDataResult](./overwolf.extensions.ServiceProvidersDataResult)
-- [overwolf.extensions.setInfo](./overwolf.extensions.setInfo)
-- [overwolf.extensions.Size](./overwolf.extensions.Size)
-- [overwolf.extensions.UncaughtExceptionCallback](./overwolf.extensions.UncaughtExceptionCallback)
-- [overwolf.extensions.UncaughtExceptionEvent](./overwolf.extensions.UncaughtExceptionEvent)
-- [overwolf.extensions.unregisterInfo](./overwolf.extensions.unregisterInfo)
-- [overwolf.extensions.updateExtension](./overwolf.extensions.updateExtension)
-- [overwolf.extensions.UpdateExtensionResult](./overwolf.extensions.UpdateExtensionResult)
-- [overwolf.extensions.WebAppSettings](./overwolf.extensions.WebAppSettings)
+| API | Description |
+| --- | --- |
+| [current](./current/Overview) | - |
+| [io](./io/Overview) | - |
+| [shareddata](./shareddata/Overview) | - |
+| [overwolf.extensions.AppInstallationEvent](./overwolf.extensions.AppInstallationEvent) | - |
+| [overwolf.extensions.AppLaunchTriggeredEvent](./overwolf.extensions.AppLaunchTriggeredEvent) | - |
+| [overwolf.extensions.checkForExtensionUpdate](./overwolf.extensions.checkForExtensionUpdate) | Checks if an update is available for the calling extension. |
+| [overwolf.extensions.CheckForUpdateResult](./overwolf.extensions.CheckForUpdateResult) | - |
+| [overwolf.extensions.ExtensionType](./overwolf.extensions.ExtensionType) | - |
+| [overwolf.extensions.ExtensionUpdatedEvent](./overwolf.extensions.ExtensionUpdatedEvent) | - |
+| [overwolf.extensions.ExtensionUpdateState](./overwolf.extensions.ExtensionUpdateState) | - |
+| [overwolf.extensions.ExtensionWindowData](./overwolf.extensions.ExtensionWindowData) | - |
+| [overwolf.extensions.getExtensions](./overwolf.extensions.getExtensions) | Return service providers manifest data. |
+| [overwolf.extensions.GetExtensionsResult](./overwolf.extensions.GetExtensionsResult) | - |
+| [overwolf.extensions.getInfo](./overwolf.extensions.getInfo) | Gets an extension's info string. |
+| [overwolf.extensions.GetInfoResult](./overwolf.extensions.GetInfoResult) | - |
+| [overwolf.extensions.getManifest](./overwolf.extensions.getManifest) | Returns the requested extension's manifest object. |
+| [overwolf.extensions.GetManifestResult](./overwolf.extensions.GetManifestResult) | Representation of manifest.json |
+| [overwolf.extensions.GetPhasedPercentResult](./overwolf.extensions.GetPhasedPercentResult) | - |
+| [overwolf.extensions.getRunningState](./overwolf.extensions.getRunningState) | Gets the running state of an extension. |
+| [overwolf.extensions.GetRunningStateResult](./overwolf.extensions.GetRunningStateResult) | - |
+| [overwolf.extensions.getServiceConsumers](./overwolf.extensions.getServiceConsumers) | Return service providers manifest data. |
+| [overwolf.extensions.launch](./overwolf.extensions.launch) | Launch an extension by its unique id. |
+| [overwolf.extensions.Manifest](./overwolf.extensions.Manifest) | Representation of manifest.json |
+| [overwolf.extensions.Metadata](./overwolf.extensions.Metadata) | - |
+| [overwolf.extensions.onAppLaunchTriggered](./overwolf.extensions.onAppLaunchTriggered) | Fires when the current app is launched while already running. This is useful in the case where the app has custom logic for clicking its dock button while it is already running. The event contaisn an 'origin' string which what triggered the app launch (dock, storeapi, odk, etc...) |
+| [overwolf.extensions.onExtensionUpdated](./overwolf.extensions.onExtensionUpdated) | Fires when the current app's newest version has been installed. This most often means that an app relaunch is required in order for the update to apply. |
+| [overwolf.extensions.onTrayIconDoubleClicked](./overwolf.extensions.onTrayIconDoubleClicked) | Fired when the tray icon is double clicked. |
+| [overwolf.extensions.Permission](./overwolf.extensions.Permission) | - |
+| [overwolf.extensions.Point](./overwolf.extensions.Point) | - |
+| [overwolf.extensions.registerInfo](./overwolf.extensions.registerInfo) | Requests info updates for extension. Will also be called when the extension launches/closes. |
+| [overwolf.extensions.relaunch](./overwolf.extensions.relaunch) | The app will relaunch itself. |
+| [overwolf.extensions.ServiceProvidersDataResult](./overwolf.extensions.ServiceProvidersDataResult) | - |
+| [overwolf.extensions.setInfo](./overwolf.extensions.setInfo) | Sets a string or object for other extensions to read. |
+| [overwolf.extensions.Size](./overwolf.extensions.Size) | - |
+| [overwolf.extensions.UncaughtExceptionCallback](./overwolf.extensions.UncaughtExceptionCallback) | The following types are related to the \|onUncaughtException\| event - which is a different than the usual events. |
+| [overwolf.extensions.UncaughtExceptionEvent](./overwolf.extensions.UncaughtExceptionEvent) | `void` |
+| [overwolf.extensions.unregisterInfo](./overwolf.extensions.unregisterInfo) | Stop requesting info for extension. |
+| [overwolf.extensions.updateExtension](./overwolf.extensions.updateExtension) | This functions allows apps to check and perform an update without having to wait for Overwolf to do so. |
+| [overwolf.extensions.UpdateExtensionResult](./overwolf.extensions.UpdateExtensionResult) | - |
+| [overwolf.extensions.WebAppSettings](./overwolf.extensions.WebAppSettings) | - |
