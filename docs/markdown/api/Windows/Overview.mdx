@@ -1,73 +1,81 @@
 ---
+sidebar_position: 1
 sidebar_label: "Overview"
+title: "Overview"
+unlisted: false
+toc_max_heading_level: 6
 ---
 
 # Overview
 
 | API | Description |
 | --- | --- |
-| [enums](./enums/Overview) | - |
-| [mediaplayerelement](./mediaplayerelement/Overview) | - |
-| [overwolf.windows.AltF4BlockedEvent](./overwolf.windows.AltF4BlockedEvent) | - |
-| [overwolf.windows.bringToFront](./overwolf.windows.bringToFront) | Brings the requested window to the front. |
-| [overwolf.windows.changePosition](./overwolf.windows.changePosition) | Changes the window position in pixels from the top left corner. |
-| [overwolf.windows.changeSize](./overwolf.windows.changeSize) | Changes the window size to the new width and height, in pixels. |
-| [overwolf.windows.ChangeWindowSizeParams](./overwolf.windows.ChangeWindowSizeParams) | - |
-| [overwolf.windows.close](./overwolf.windows.close) | Closes the window. |
-| [overwolf.windows.DefaultSizeAndLocation](./overwolf.windows.DefaultSizeAndLocation) | - |
-| [overwolf.windows.displayMessageBox](./overwolf.windows.displayMessageBox) | Displays a customized popup message prompt. |
-| [overwolf.windows.dragMove](./overwolf.windows.dragMove) | Start dragging a window. |
-| [overwolf.windows.DragMovedResult](./overwolf.windows.DragMovedResult) | - |
-| [overwolf.windows.dragResize](./overwolf.windows.dragResize) | Start resizing the window from a specific edge or corner. |
-| [overwolf.windows.DragResizeResult](./overwolf.windows.DragResizeResult) | - |
-| [overwolf.windows.flash](./overwolf.windows.flash) | Flashes a window. |
-| [overwolf.windows.getCurrentWindow](./overwolf.windows.getCurrentWindow) | Calls the given callback function with the current window object as a parameter. |
-| [overwolf.windows.getMainWindow](./overwolf.windows.getMainWindow) | Returns a window object of the index page. |
-| [overwolf.windows.getOpenWindows](./overwolf.windows.getOpenWindows) | Returns an array of all open windows as objects. The objects can be manipulated like any other window. |
-| [overwolf.windows.getWindow](./overwolf.windows.getWindow) | Returns WindowResult object for a specific open window. |
-| [overwolf.windows.getWindowDPI](./overwolf.windows.getWindowDPI) | Get Window DPI. |
-| [overwolf.windows.getWindowsStates](./overwolf.windows.getWindowsStates) | Returns the state of all windows owned by the app (normal/minimized/maximized/closed). |
-| [overwolf.windows.GetWindowsStatesResult](./overwolf.windows.GetWindowsStatesResult) | - |
-| [overwolf.windows.getWindowState](./overwolf.windows.getWindowState) | Returns the state of the window (normal/minimized/maximized/closed). |
-| [overwolf.windows.GetWindowStateResult](./overwolf.windows.GetWindowStateResult) | - |
-| [overwolf.windows.hide](./overwolf.windows.hide) | Hides the window. |
-| [overwolf.windows.isAccelreatedOSR](./overwolf.windows.isAccelreatedOSR) | For OSR window only (for other window the callback return `error` status. &#123; "status": string (\|error, success\|), "reason": string (error reason), "accelerated": bool, "optimized" : bool (for accelerated windows only and only valid in Game) &#125; |
-| [overwolf.windows.IsAccelreatedOSRResult](./overwolf.windows.IsAccelreatedOSRResult) | - |
-| [overwolf.windows.isMuted](./overwolf.windows.isMuted) | Is window muted. |
-| [overwolf.windows.IsMutedResult](./overwolf.windows.IsMutedResult) | - |
-| [overwolf.windows.IsolatedIframeProcessCrashedEvent](./overwolf.windows.IsolatedIframeProcessCrashedEvent) | - |
-| [overwolf.windows.isWindowVisibleToUser](./overwolf.windows.isWindowVisibleToUser) | Is window fully visible to user (has overlap windows) |
-| [overwolf.windows.IsWindowVisibleToUserResult](./overwolf.windows.IsWindowVisibleToUserResult) | - |
-| [overwolf.windows.maximize](./overwolf.windows.maximize) | Maximizes the window. |
-| [overwolf.windows.MessageBoxParams](./overwolf.windows.MessageBoxParams) | - |
-| [overwolf.windows.MessageReceivedEvent](./overwolf.windows.MessageReceivedEvent) | - |
-| [overwolf.windows.minimize](./overwolf.windows.minimize) | Minimizes the window. |
-| [overwolf.windows.muteAll](./overwolf.windows.muteAll) | Mute all sound source include all excluded white list |
-| [overwolf.windows.obtainDeclaredWindow](./overwolf.windows.obtainDeclaredWindow) | Creates or returns a window by the window name that was declared in the manifest. |
-| [overwolf.windows.ODKRect](./overwolf.windows.ODKRect) | - |
-| [overwolf.windows.onAltF4Blocked](./overwolf.windows.onAltF4Blocked) | Fired when the user was prevented from closing a window using Alt+F4 |
-| [overwolf.windows.onIsolatedIframeProcessCrashed](./overwolf.windows.onIsolatedIframeProcessCrashed) | Fired when out of process iframe crashed. |
-| [overwolf.windows.onMainWindowRestored](./overwolf.windows.onMainWindowRestored) | Fired when the main window is restored. |
-| [overwolf.windows.onMessageReceived](./overwolf.windows.onMessageReceived) | Fired when this window received a message. |
-| [overwolf.windows.onScreenPropertyChangedEvent](./overwolf.windows.onScreenPropertyChangedEvent) | - |
-| [overwolf.windows.onStateChanged](./overwolf.windows.onStateChanged) | Fired when the state of a window is changed. |
-| [overwolf.windows.onSubscriptionChanged](./overwolf.windows.onSubscriptionChanged) | Fired when current extension subscription has changed. |
-| [overwolf.windows.openOptionsPage](./overwolf.windows.openOptionsPage) | Opens the options page specified in the manifest file. Does nothing if no such page has been specified. |
-| [overwolf.windows.removeWindowStyle](./overwolf.windows.removeWindowStyle) | Remove Window In Game Styling |
-| [overwolf.windows.restore](./overwolf.windows.restore) | Restores a minimized window. |
-| [overwolf.windows.sendMessage](./overwolf.windows.sendMessage) | Sends a message to an open window. |
-| [overwolf.windows.sendToBack](./overwolf.windows.sendToBack) | Sends the window to the back. |
-| [overwolf.windows.setDesktopOnly](./overwolf.windows.setDesktopOnly) | Sets whether the window should be injected to games or not. |
-| [overwolf.windows.setMinSize](./overwolf.windows.setMinSize) | Changes the window minimum size to the new width and height, in pixels. |
-| [overwolf.windows.setMute](./overwolf.windows.setMute) | Set current window Mute state. |
-| [overwolf.windows.setPosition](./overwolf.windows.setPosition) | Change window position (see SetWindowPositionProperties)) |
-| [overwolf.windows.setRestoreAnimationsEnabled](./overwolf.windows.setRestoreAnimationsEnabled) | Sets whether the window should have minimize/restore animations while in game. |
-| [overwolf.windows.setTopmost](./overwolf.windows.setTopmost) | Change the window's topmost status. Handle with care as topmost windows can negatively impact user experience. |
-| [overwolf.windows.SetWindowPositionProperties](./overwolf.windows.SetWindowPositionProperties) | - |
-| [overwolf.windows.setWindowStyle](./overwolf.windows.setWindowStyle) | Add Window In Game styling |
-| [overwolf.windows.setZoom](./overwolf.windows.setZoom) | Set window zoom level (0.0 for reset). |
-| [overwolf.windows.WindowIdResult](./overwolf.windows.WindowIdResult) | - |
-| [overwolf.windows.WindowInfo](./overwolf.windows.WindowInfo) | - |
-| [overwolf.windows.WindowProperties](./overwolf.windows.WindowProperties) | - |
-| [overwolf.windows.WindowResult](./overwolf.windows.WindowResult) | - |
-| [overwolf.windows.WindowStateChangedEvent](./overwolf.windows.WindowStateChangedEvent) | - |
+| [overwolf.windows.enums.FlashBehavior](./enums/overwolf.windows.enums.FlashBehavior) | - |
+| [overwolf.windows.enums.MessagePromptIcon](./enums/overwolf.windows.enums.MessagePromptIcon) | - |
+| [overwolf.windows.enums.WindowDragEdge](./enums/overwolf.windows.enums.WindowDragEdge) | - |
+| [overwolf.windows.enums.WindowStateEx](./enums/overwolf.windows.enums.WindowStateEx) | - |
+| [overwolf.windows.enums.WindowStyle](./enums/overwolf.windows.enums.WindowStyle) | - |
+| [overwolf.windows.enums.WindowType](./enums/overwolf.windows.enums.WindowType) | - |
+| [overwolf.windows.bringToFront](./Functions/overwolf.windows.bringToFront) | Brings the requested window to the front. |
+| [overwolf.windows.changePosition](./Functions/overwolf.windows.changePosition) | Changes the window position in pixels from the top left corner. |
+| [overwolf.windows.changeSize](./Functions/overwolf.windows.changeSize) | Changes the window size to the new width and height, in pixels. |
+| [overwolf.windows.close](./Functions/overwolf.windows.close) | Closes the window. |
+| [overwolf.windows.displayMessageBox](./Functions/overwolf.windows.displayMessageBox) | Displays a customized popup message prompt. |
+| [overwolf.windows.dragMove](./Functions/overwolf.windows.dragMove) | Start dragging a window. |
+| [overwolf.windows.dragResize](./Functions/overwolf.windows.dragResize) | Start resizing the window from a specific edge or corner. |
+| [overwolf.windows.flash](./Functions/overwolf.windows.flash) | Flashes a window. |
+| [overwolf.windows.getCurrentWindow](./Functions/overwolf.windows.getCurrentWindow) | Calls the given callback function with the current window object as a parameter. |
+| [overwolf.windows.getMainWindow](./Functions/overwolf.windows.getMainWindow) | Returns a window object of the index page. |
+| [overwolf.windows.getOpenWindows](./Functions/overwolf.windows.getOpenWindows) | Returns an array of all open windows as objects. The objects can be manipulated like any other window. |
+| [overwolf.windows.getWindow](./Functions/overwolf.windows.getWindow) | Returns WindowResult object for a specific open window. |
+| [overwolf.windows.getWindowDPI](./Functions/overwolf.windows.getWindowDPI) | Get Window DPI. |
+| [overwolf.windows.getWindowsStates](./Functions/overwolf.windows.getWindowsStates) | Returns the state of all windows owned by the app (normal/minimized/maximized/closed). |
+| [overwolf.windows.getWindowState](./Functions/overwolf.windows.getWindowState) | Returns the state of the window (normal/minimized/maximized/closed). |
+| [overwolf.windows.hide](./Functions/overwolf.windows.hide) | Hides the window. |
+| [overwolf.windows.isAccelreatedOSR](./Functions/overwolf.windows.isAccelreatedOSR) | For OSR window only (for other window the callback return `error` status. &#123; "status": string (\|error, success\|), "reason": string (error reason), "accelerated": bool, "optimized" : bool (for accelerated windows only and only valid in Game) &#125; |
+| [overwolf.windows.isMuted](./Functions/overwolf.windows.isMuted) | Is window muted. |
+| [overwolf.windows.isWindowVisibleToUser](./Functions/overwolf.windows.isWindowVisibleToUser) | Is window fully visible to user (has overlap windows) |
+| [overwolf.windows.maximize](./Functions/overwolf.windows.maximize) | Maximizes the window. |
+| [overwolf.windows.minimize](./Functions/overwolf.windows.minimize) | Minimizes the window. |
+| [overwolf.windows.muteAll](./Functions/overwolf.windows.muteAll) | Mute all sound source include all excluded white list |
+| [overwolf.windows.obtainDeclaredWindow](./Functions/overwolf.windows.obtainDeclaredWindow) | Creates or returns a window by the window name that was declared in the manifest. |
+| [overwolf.windows.openOptionsPage](./Functions/overwolf.windows.openOptionsPage) | Opens the options page specified in the manifest file. Does nothing if no such page has been specified. |
+| [overwolf.windows.removeWindowStyle](./Functions/overwolf.windows.removeWindowStyle) | Remove Window In Game Styling |
+| [overwolf.windows.restore](./Functions/overwolf.windows.restore) | Restores a minimized window. |
+| [overwolf.windows.sendMessage](./Functions/overwolf.windows.sendMessage) | Sends a message to an open window. |
+| [overwolf.windows.sendToBack](./Functions/overwolf.windows.sendToBack) | Sends the window to the back. |
+| [overwolf.windows.setDesktopOnly](./Functions/overwolf.windows.setDesktopOnly) | Sets whether the window should be injected to games or not. |
+| [overwolf.windows.setMinSize](./Functions/overwolf.windows.setMinSize) | Changes the window minimum size to the new width and height, in pixels. |
+| [overwolf.windows.setMute](./Functions/overwolf.windows.setMute) | Set current window Mute state. |
+| [overwolf.windows.setPosition](./Functions/overwolf.windows.setPosition) | Change window position (see SetWindowPositionProperties)) |
+| [overwolf.windows.setRestoreAnimationsEnabled](./Functions/overwolf.windows.setRestoreAnimationsEnabled) | Sets whether the window should have minimize/restore animations while in game. |
+| [overwolf.windows.setTopmost](./Functions/overwolf.windows.setTopmost) | Change the window's topmost status. Handle with care as topmost windows can negatively impact user experience. |
+| [overwolf.windows.setWindowStyle](./Functions/overwolf.windows.setWindowStyle) | Add Window In Game styling |
+| [overwolf.windows.setZoom](./Functions/overwolf.windows.setZoom) | Set window zoom level (0.0 for reset). |
+| [overwolf.windows.AltF4BlockedEvent](./Interfaces/overwolf.windows.AltF4BlockedEvent) | - |
+| [overwolf.windows.ChangeWindowSizeParams](./Interfaces/overwolf.windows.ChangeWindowSizeParams) | - |
+| [overwolf.windows.DefaultSizeAndLocation](./Interfaces/overwolf.windows.DefaultSizeAndLocation) | - |
+| [overwolf.windows.DragMovedResult](./Interfaces/overwolf.windows.DragMovedResult) | - |
+| [overwolf.windows.DragResizeResult](./Interfaces/overwolf.windows.DragResizeResult) | - |
+| [overwolf.windows.GetWindowsStatesResult](./Interfaces/overwolf.windows.GetWindowsStatesResult) | - |
+| [overwolf.windows.GetWindowStateResult](./Interfaces/overwolf.windows.GetWindowStateResult) | - |
+| [overwolf.windows.IsAccelreatedOSRResult](./Interfaces/overwolf.windows.IsAccelreatedOSRResult) | - |
+| [overwolf.windows.IsMutedResult](./Interfaces/overwolf.windows.IsMutedResult) | - |
+| [overwolf.windows.IsolatedIframeProcessCrashedEvent](./Interfaces/overwolf.windows.IsolatedIframeProcessCrashedEvent) | - |
+| [overwolf.windows.IsWindowVisibleToUserResult](./Interfaces/overwolf.windows.IsWindowVisibleToUserResult) | - |
+| [overwolf.windows.MessageBoxParams](./Interfaces/overwolf.windows.MessageBoxParams) | - |
+| [overwolf.windows.MessageReceivedEvent](./Interfaces/overwolf.windows.MessageReceivedEvent) | - |
+| [overwolf.windows.ODKRect](./Interfaces/overwolf.windows.ODKRect) | - |
+| [overwolf.windows.onScreenPropertyChangedEvent](./Interfaces/overwolf.windows.onScreenPropertyChangedEvent) | - |
+| [overwolf.windows.SetWindowPositionProperties](./Interfaces/overwolf.windows.SetWindowPositionProperties) | - |
+| [overwolf.windows.WindowIdResult](./Interfaces/overwolf.windows.WindowIdResult) | - |
+| [overwolf.windows.WindowInfo](./Interfaces/overwolf.windows.WindowInfo) | - |
+| [overwolf.windows.WindowProperties](./Interfaces/overwolf.windows.WindowProperties) | - |
+| [overwolf.windows.WindowResult](./Interfaces/overwolf.windows.WindowResult) | - |
+| [overwolf.windows.WindowStateChangedEvent](./Interfaces/overwolf.windows.WindowStateChangedEvent) | - |
+| [overwolf.windows.onAltF4Blocked](./Variables/overwolf.windows.onAltF4Blocked) | Fired when the user was prevented from closing a window using Alt+F4 |
+| [overwolf.windows.onIsolatedIframeProcessCrashed](./Variables/overwolf.windows.onIsolatedIframeProcessCrashed) | Fired when out of process iframe crashed. |
+| [overwolf.windows.onMainWindowRestored](./Variables/overwolf.windows.onMainWindowRestored) | Fired when the main window is restored. |
+| [overwolf.windows.onMessageReceived](./Variables/overwolf.windows.onMessageReceived) | Fired when this window received a message. |
+| [overwolf.windows.onStateChanged](./Variables/overwolf.windows.onStateChanged) | Fired when the state of a window is changed. |
+| [overwolf.windows.onSubscriptionChanged](./Variables/overwolf.windows.onSubscriptionChanged) | Fired when current extension subscription has changed. |

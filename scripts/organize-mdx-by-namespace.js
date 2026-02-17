@@ -2,6 +2,25 @@
 const fs = require('fs').promises;
 const path = require('path');
 
+const KIND_FOLDER_BY_SEG = new Map([
+  ['interfaces', 'Interfaces'],
+  ['classes', 'Classes'],
+  ['functions', 'Functions'],
+  ['variables', 'Variables'],
+  ['enumerations', 'Enums'],
+  ['type-aliases', 'Type-aliases'],
+  ['type_aliases', 'Type-aliases'],
+  ['typealiases', 'Type-aliases'],
+]);
+const KIND_FOLDER_NAMES = new Set(
+  Array.from(KIND_FOLDER_BY_SEG.values()).map(v => v.toLowerCase())
+);
+
+function isKindFolderName(name) {
+  if (!name) return false;
+  return KIND_FOLDER_NAMES.has(String(name).toLowerCase());
+}
+
 async function listFiles(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const files = [];
@@ -130,6 +149,16 @@ function detectNamespace(content, filename, outDir) {
   const base = path.basename(filename, path.extname(filename));
   if (base.includes('.')) return base.toLowerCase();
 
+  return null;
+}
+
+function detectKindFromPath(filename, outDir) {
+  if (!outDir) return null;
+  const rel = path.relative(outDir, filename);
+  const parts = rel.split(path.sep).map(p => p.toLowerCase());
+  for (const part of parts) {
+    if (KIND_FOLDER_BY_SEG.has(part)) return KIND_FOLDER_BY_SEG.get(part);
+  }
   return null;
 }
 
@@ -297,11 +326,12 @@ async function run() {
       skippedDeprecated.push(path.relative(out, file));
       continue;
     }
+    const kind = detectKindFromPath(file, out);
     const master = masterNamespace(ns);
     // full namespace to use for per-namespace folders
     const fullNs = (ns || path.basename(file, path.extname(file))).toLowerCase();
     if (!groups.has(master)) groups.set(master, []);
-    groups.get(master).push({ file, content, fullNs });
+    groups.get(master).push({ file, content, fullNs, kind });
   }
 
   // Move files into namespace folders
@@ -321,7 +351,8 @@ async function run() {
       }
       subParts = normalizeSubPartsForGroup(ns, subParts);
       const subFolder = subParts.join('/');
-      const destDir = path.join(nsDir, subFolder || '_root');
+      const baseDir = path.join(nsDir, subFolder || '_root');
+      const destDir = it.kind ? path.join(baseDir, it.kind) : baseDir;
       await ensureDir(destDir);
       const origBase = path.basename(it.file, path.extname(it.file));
       if (origBase.toLowerCase() === 'overview') {
@@ -358,6 +389,11 @@ async function run() {
 
     // create Overview.mdx for each namespace folder
     for (const [dirPath, filesList] of perNsMap) {
+      if (isKindFolderName(path.basename(dirPath))) {
+        const overviewPath = path.join(dirPath, 'Overview.mdx');
+        await fs.rm(overviewPath, { force: true }).catch(() => {});
+        continue;
+      }
       // Filter to actual member files (not overview files), create links with proper formatting
       const memberFiles = filesList.filter(n => !/^overview(\.mdx|\.md)$/i.test(n) && !isNamespacedOverview(n));
       const rows = [];
@@ -509,6 +545,26 @@ async function run() {
       const rows = [];
       for (const sd of subdirs) {
         const overviewPath = path.join(groupPath, sd.name, 'Overview.mdx');
+        if (isKindFolderName(sd.name)) {
+          const kindDir = path.join(groupPath, sd.name);
+          try {
+            const kindEntries = await fs.readdir(kindDir, { withFileTypes: true });
+            for (const ke of kindEntries) {
+              if (!ke.isFile() || !/\.mdx?$/i.test(ke.name)) continue;
+              if (ke.name.toLowerCase() === 'overview.mdx') continue;
+              const base = ke.name.replace(/(\.mdx|\.md)$/i, '');
+              const filePath = path.join(kindDir, ke.name);
+              let desc = '';
+              try {
+                const c = await fs.readFile(filePath, 'utf8');
+                desc = extractSummaryFromContent(c);
+              } catch { /* ignore */ }
+              const label = normalizeDisplayLabel(d.name, base);
+              rows.push({ label, link: `./${sd.name}/${base}`, description: desc });
+            }
+          } catch { /* ignore */ }
+          continue;
+        }
         // Skip empty folders (no MDX pages or only an empty Overview)
         let hasContent = false;
         try {

@@ -162,8 +162,8 @@ async function fixFile(file) {
   // Restore inline code and code fences
   s = s.replace(/__INLINECODE_(\d+)__/g, (_, idx) => inlineCodes[Number(idx)] || '');
   s = s.replace(/__CODEFENCE_(\d+)__/g, (_, idx) => codeFences[Number(idx)] || '');
-  // Ensure root Overview frontmatter stays consistent
-  if (path.resolve(file) === path.join(out, 'Overview.mdx')) {
+  // Ensure all Overview pages use the required frontmatter
+  if (path.basename(file).toLowerCase() === 'overview.mdx') {
     s = upsertFrontmatterKeys(s, [
       ['sidebar_position', 1],
       ['sidebar_label', 'Overview'],

@@ -1,44 +1,47 @@
 ---
+sidebar_position: 1
 sidebar_label: "Overview"
+title: "Overview"
+unlisted: false
+toc_max_heading_level: 6
 ---
 
 # Overview
 
 | API | Description |
 | --- | --- |
-| [enums](./enums/Overview) | - |
-| [hotkeys](./hotkeys/Overview) | - |
-| [language](./language/Overview) | - |
-| [overwolf.settings.AudioCaptureSettingsChangedEvent](./overwolf.settings.AudioCaptureSettingsChangedEvent) | - |
-| [overwolf.settings.FolderResult](./overwolf.settings.FolderResult) | - |
-| [overwolf.settings.FpsSettings](./overwolf.settings.FpsSettings) | - |
-| [overwolf.settings.FpsSettingsChangedEvent](./overwolf.settings.FpsSettingsChangedEvent) | - |
-| [overwolf.settings.GeneralExtensionSettings](./overwolf.settings.GeneralExtensionSettings) | - |
-| [overwolf.settings.getAudioCaptureSettings](./overwolf.settings.getAudioCaptureSettings) | Returns the current audio capture settings. |
-| [overwolf.settings.GetAudioCaptureSettingsResult](./overwolf.settings.GetAudioCaptureSettingsResult) | - |
-| [overwolf.settings.getClientInfo](./overwolf.settings.getClientInfo) | Retrieve information about the client - such as when it was first installed and how long is it running. |
-| [overwolf.settings.getCurrentOverwolfLanguage](./overwolf.settings.getCurrentOverwolfLanguage) | Returns the current language overwolf is set to in a two letter ISO name format. |
-| [overwolf.settings.getExtensionSettings](./overwolf.settings.getExtensionSettings) | Gets the extension settings. |
-| [overwolf.settings.GetExtensionSettingsResult](./overwolf.settings.GetExtensionSettingsResult) | - |
-| [overwolf.settings.getFpsSettings](./overwolf.settings.getFpsSettings) | Gets the status of the FPS control (on/off), its position, its offset (in pixels) and its scale [0, 1]. |
-| [overwolf.settings.GetFpsSettingsResult](./overwolf.settings.GetFpsSettingsResult) | - |
-| [overwolf.settings.getHotKey](./overwolf.settings.getHotKey) | Returns the hotkey assigned to a given feature id by calling the callback. |
-| [overwolf.settings.GetHotKeyResult](./overwolf.settings.GetHotKeyResult) | - |
-| [overwolf.settings.getOverwolfScreenshotsFolder](./overwolf.settings.getOverwolfScreenshotsFolder) | Returns the current folder overwolf uses to store screenshots. |
-| [overwolf.settings.getOverwolfVideosFolder](./overwolf.settings.getOverwolfVideosFolder) | Returns the current folder overwolf uses to store videos. |
-| [overwolf.settings.getVideoCaptureSettings](./overwolf.settings.getVideoCaptureSettings) | Returns the current video capture settings. |
-| [overwolf.settings.GetVideoCaptureSettingsResult](./overwolf.settings.GetVideoCaptureSettingsResult) | - |
-| [overwolf.settings.HotKeyChangedEvent](./overwolf.settings.HotKeyChangedEvent) | - |
-| [overwolf.settings.HotKeyResult](./overwolf.settings.HotKeyResult) | - |
-| [overwolf.settings.OnAudioCaptureSettingsChanged](./overwolf.settings.OnAudioCaptureSettingsChanged) | Fired when audio capture settings are changed. |
-| [overwolf.settings.onFpsSettingsChanged](./overwolf.settings.onFpsSettingsChanged) | Fired when fps settings are changed. |
-| [overwolf.settings.OnVideoCaptureSettingsChanged](./overwolf.settings.OnVideoCaptureSettingsChanged) | Fired when video capture settings are changed. |
-| [overwolf.settings.registerHotKey](./overwolf.settings.registerHotKey) | Registers a callback for a given hotkey action. If the registration had failed, the callback function will be called immediately with the status "error" and another property, "error", indicating the reason for the failure. Otherwise, the callback function will be called when the hotkey is pressed and the status will be "success". Note that Shift can only be combined with F keys. |
-| [overwolf.settings.setAudioCaptureSettings](./overwolf.settings.setAudioCaptureSettings) | Sets new audio capture settings. |
-| [overwolf.settings.setExtensionSettings](./overwolf.settings.setExtensionSettings) | Sets the extension settings. |
-| [overwolf.settings.SetFolderResult](./overwolf.settings.SetFolderResult) | - |
-| [overwolf.settings.setFpsSettings](./overwolf.settings.setFpsSettings) | Sets the state (on/off), position, offset (in pixels) and scale [0, 1] of the Fps control. |
-| [overwolf.settings.setOverwolfScreenshotsFolder](./overwolf.settings.setOverwolfScreenshotsFolder) | Sets the folder Overwolf uses to store screenshots. |
-| [overwolf.settings.setOverwolfVideosFolder](./overwolf.settings.setOverwolfVideosFolder) | Sets the folder Overwolf uses to store videos. |
-| [overwolf.settings.setVideoCaptureSettings](./overwolf.settings.setVideoCaptureSettings) | Sets new video capture settings. |
-| [overwolf.settings.VideoCaptureSettingsChangedEvent](./overwolf.settings.VideoCaptureSettingsChangedEvent) | - |
+| [overwolf.settings.enums.eIndicationPosition](./enums/overwolf.settings.enums.eIndicationPosition) | - |
+| [overwolf.settings.enums.ResolutionSettings](./enums/overwolf.settings.enums.ResolutionSettings) | - |
+| [overwolf.settings.getAudioCaptureSettings](./Functions/overwolf.settings.getAudioCaptureSettings) | Returns the current audio capture settings. |
+| [overwolf.settings.getClientInfo](./Functions/overwolf.settings.getClientInfo) | Retrieve information about the client - such as when it was first installed and how long is it running. |
+| [overwolf.settings.getCurrentOverwolfLanguage](./Functions/overwolf.settings.getCurrentOverwolfLanguage) | Returns the current language overwolf is set to in a two letter ISO name format. |
+| [overwolf.settings.getExtensionSettings](./Functions/overwolf.settings.getExtensionSettings) | Gets the extension settings. |
+| [overwolf.settings.getFpsSettings](./Functions/overwolf.settings.getFpsSettings) | Gets the status of the FPS control (on/off), its position, its offset (in pixels) and its scale [0, 1]. |
+| [overwolf.settings.getHotKey](./Functions/overwolf.settings.getHotKey) | Returns the hotkey assigned to a given feature id by calling the callback. |
+| [overwolf.settings.getOverwolfScreenshotsFolder](./Functions/overwolf.settings.getOverwolfScreenshotsFolder) | Returns the current folder overwolf uses to store screenshots. |
+| [overwolf.settings.getOverwolfVideosFolder](./Functions/overwolf.settings.getOverwolfVideosFolder) | Returns the current folder overwolf uses to store videos. |
+| [overwolf.settings.getVideoCaptureSettings](./Functions/overwolf.settings.getVideoCaptureSettings) | Returns the current video capture settings. |
+| [overwolf.settings.registerHotKey](./Functions/overwolf.settings.registerHotKey) | Registers a callback for a given hotkey action. If the registration had failed, the callback function will be called immediately with the status "error" and another property, "error", indicating the reason for the failure. Otherwise, the callback function will be called when the hotkey is pressed and the status will be "success". Note that Shift can only be combined with F keys. |
+| [overwolf.settings.setAudioCaptureSettings](./Functions/overwolf.settings.setAudioCaptureSettings) | Sets new audio capture settings. |
+| [overwolf.settings.setExtensionSettings](./Functions/overwolf.settings.setExtensionSettings) | Sets the extension settings. |
+| [overwolf.settings.setFpsSettings](./Functions/overwolf.settings.setFpsSettings) | Sets the state (on/off), position, offset (in pixels) and scale [0, 1] of the Fps control. |
+| [overwolf.settings.setOverwolfScreenshotsFolder](./Functions/overwolf.settings.setOverwolfScreenshotsFolder) | Sets the folder Overwolf uses to store screenshots. |
+| [overwolf.settings.setOverwolfVideosFolder](./Functions/overwolf.settings.setOverwolfVideosFolder) | Sets the folder Overwolf uses to store videos. |
+| [overwolf.settings.setVideoCaptureSettings](./Functions/overwolf.settings.setVideoCaptureSettings) | Sets new video capture settings. |
+| [overwolf.settings.AudioCaptureSettingsChangedEvent](./Interfaces/overwolf.settings.AudioCaptureSettingsChangedEvent) | - |
+| [overwolf.settings.FolderResult](./Interfaces/overwolf.settings.FolderResult) | - |
+| [overwolf.settings.FpsSettings](./Interfaces/overwolf.settings.FpsSettings) | - |
+| [overwolf.settings.FpsSettingsChangedEvent](./Interfaces/overwolf.settings.FpsSettingsChangedEvent) | - |
+| [overwolf.settings.GeneralExtensionSettings](./Interfaces/overwolf.settings.GeneralExtensionSettings) | - |
+| [overwolf.settings.GetAudioCaptureSettingsResult](./Interfaces/overwolf.settings.GetAudioCaptureSettingsResult) | - |
+| [overwolf.settings.GetExtensionSettingsResult](./Interfaces/overwolf.settings.GetExtensionSettingsResult) | - |
+| [overwolf.settings.GetFpsSettingsResult](./Interfaces/overwolf.settings.GetFpsSettingsResult) | - |
+| [overwolf.settings.GetHotKeyResult](./Interfaces/overwolf.settings.GetHotKeyResult) | - |
+| [overwolf.settings.GetVideoCaptureSettingsResult](./Interfaces/overwolf.settings.GetVideoCaptureSettingsResult) | - |
+| [overwolf.settings.HotKeyChangedEvent](./Interfaces/overwolf.settings.HotKeyChangedEvent) | - |
+| [overwolf.settings.HotKeyResult](./Interfaces/overwolf.settings.HotKeyResult) | - |
+| [overwolf.settings.SetFolderResult](./Interfaces/overwolf.settings.SetFolderResult) | - |
+| [overwolf.settings.VideoCaptureSettingsChangedEvent](./Interfaces/overwolf.settings.VideoCaptureSettingsChangedEvent) | - |
+| [overwolf.settings.OnAudioCaptureSettingsChanged](./Variables/overwolf.settings.OnAudioCaptureSettingsChanged) | Fired when audio capture settings are changed. |
+| [overwolf.settings.onFpsSettingsChanged](./Variables/overwolf.settings.onFpsSettingsChanged) | Fired when fps settings are changed. |
+| [overwolf.settings.OnVideoCaptureSettingsChanged](./Variables/overwolf.settings.OnVideoCaptureSettingsChanged) | Fired when video capture settings are changed. |

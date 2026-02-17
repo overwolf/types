@@ -1,69 +1,89 @@
 ---
+sidebar_position: 1
 sidebar_label: "Overview"
+title: "Overview"
+unlisted: false
+toc_max_heading_level: 6
 ---
 
 # Overview
 
 | API | Description |
 | --- | --- |
-| [enums](./enums/Overview) | - |
-| [overwolf.streaming.ActiveRecordingApps](./overwolf.streaming.ActiveRecordingApps) | - |
-| [overwolf.streaming.AudioDeviceData](./overwolf.streaming.AudioDeviceData) | - |
-| [overwolf.streaming.changeVolume](./overwolf.streaming.changeVolume) | Changes the volume of the stream. |
-| [overwolf.streaming.EncoderData](./overwolf.streaming.EncoderData) | - |
-| [overwolf.streaming.GameAudioDevice](./overwolf.streaming.GameAudioDevice) | Defines game volume and enablement settings. |
-| [overwolf.streaming.GameCaptureOptions](./overwolf.streaming.GameCaptureOptions) | - |
-| [overwolf.streaming.GameWindowCapture](./overwolf.streaming.GameWindowCapture) | Game window capture options. |
-| [overwolf.streaming.getActiveRecordingApps](./overwolf.streaming.getActiveRecordingApps) | `void` |
-| [overwolf.streaming.GetActiveRecordingAppsResult](./overwolf.streaming.GetActiveRecordingAppsResult) | - |
-| [overwolf.streaming.getAudioDevices](./overwolf.streaming.getAudioDevices) | Returns an array of all audio devices that can be used. |
-| [overwolf.streaming.GetAudioDevicesResult](./overwolf.streaming.GetAudioDevicesResult) | - |
-| [overwolf.streaming.getCapabilities](./overwolf.streaming.getCapabilities) | `void` |
-| [overwolf.streaming.getStreamEncoders](./overwolf.streaming.getStreamEncoders) | Returns an array of supported streaming encoders, with extra metadata for each one. |
-| [overwolf.streaming.GetStreamEncodersResult](./overwolf.streaming.GetStreamEncodersResult) | - |
-| [overwolf.streaming.getWatermarkSettings](./overwolf.streaming.getWatermarkSettings) | Gets the watermark settings. |
-| [overwolf.streaming.GetWatermarkSettingsResult](./overwolf.streaming.GetWatermarkSettingsResult) | - |
-| [overwolf.streaming.getWindowStreamingMode](./overwolf.streaming.getWindowStreamingMode) | Call the given callback function with the window's streaming mode as a parameter. |
-| [overwolf.streaming.GetWindowStreamingModeResult](./overwolf.streaming.GetWindowStreamingModeResult) | Stream settings container. |
-| [overwolf.streaming.onError](./overwolf.streaming.onError) | Triggered when an error occurs, sent with an error code. |
-| [overwolf.streaming.onStartStreaming](./overwolf.streaming.onStartStreaming) | Fired when the stream has stopped. |
-| [overwolf.streaming.onStopStreaming](./overwolf.streaming.onStopStreaming) | Fired when the stream has stopped. |
-| [overwolf.streaming.onStreamingError](./overwolf.streaming.onStreamingError) | Fired upon an error with the stream. |
-| [overwolf.streaming.onStreamingSourceImageChanged](./overwolf.streaming.onStreamingSourceImageChanged) | Fired when the stream started streaming a new image source (desktop, game). |
-| [overwolf.streaming.onStreamingWarning](./overwolf.streaming.onStreamingWarning) | Fired upon a warning with the stream. |
-| [overwolf.streaming.onVideoFileSplited](./overwolf.streaming.onVideoFileSplited) | Fired upon video file splited. |
-| [overwolf.streaming.setBRBImage](./overwolf.streaming.setBRBImage) | Set a stream's Be Right Back image. |
-| [overwolf.streaming.setWatermarkSettings](./overwolf.streaming.setWatermarkSettings) | Sets the watermark settings. |
-| [overwolf.streaming.setWindowObsStreamingMode](./overwolf.streaming.setWindowObsStreamingMode) | Sets the streaming mode for the window when using OBS. |
-| [overwolf.streaming.setWindowStreamingMode](./overwolf.streaming.setWindowStreamingMode) | Set the window's stream mode. |
-| [overwolf.streaming.split](./overwolf.streaming.split) | Request to split video now. |
-| [overwolf.streaming.SplitResult](./overwolf.streaming.SplitResult) | - |
-| [overwolf.streaming.start](./overwolf.streaming.start) | Start a new stream. |
-| [overwolf.streaming.StartCaptureResult](./overwolf.streaming.StartCaptureResult) | - |
-| [overwolf.streaming.stop](./overwolf.streaming.stop) | Stops the given stream. |
-| [overwolf.streaming.StopStreamingEvent](./overwolf.streaming.StopStreamingEvent) | - |
-| [overwolf.streaming.StopStreamingResult](./overwolf.streaming.StopStreamingResult) | - |
-| [overwolf.streaming.StreamAudioOptions](./overwolf.streaming.StreamAudioOptions) | Stream audio options. |
-| [overwolf.streaming.StreamAuthParams](./overwolf.streaming.StreamAuthParams) | Stream authorization data. |
-| [overwolf.streaming.StreamDesktopCaptureOptions](./overwolf.streaming.StreamDesktopCaptureOptions) | Stream desktop capture options. |
-| [overwolf.streaming.StreamDeviceVolume](./overwolf.streaming.StreamDeviceVolume) | Defines a device volume and enablement settings. |
-| [overwolf.streaming.StreamEvent](./overwolf.streaming.StreamEvent) | - |
-| [overwolf.streaming.StreamInfo](./overwolf.streaming.StreamInfo) | - |
-| [overwolf.streaming.StreamingCapabilities](./overwolf.streaming.StreamingCapabilities) | - |
-| [overwolf.streaming.StreamIngestServer](./overwolf.streaming.StreamIngestServer) | Information on the server that is being streamed to. |
-| [overwolf.streaming.StreamingSourceImageChangedEvent](./overwolf.streaming.StreamingSourceImageChangedEvent) | - |
-| [overwolf.streaming.StreamingVideoEncoderAMD_AMFSettings](./overwolf.streaming.StreamingVideoEncoderAMD_AMFSettings) | Defines the configuration for the AMD AMF encoder. |
-| [overwolf.streaming.StreamingVideoEncoderIntelSettings](./overwolf.streaming.StreamingVideoEncoderIntelSettings) | Defines the configuration for an Intel encoder. |
-| [overwolf.streaming.StreamingVideoEncoderNVIDIA_NVENCSettings](./overwolf.streaming.StreamingVideoEncoderNVIDIA_NVENCSettings) | Defines the configuration for the NVIDIA NVENC encoder. |
-| [overwolf.streaming.StreamingVideoEncoderSettings](./overwolf.streaming.StreamingVideoEncoderSettings) | Defines the video encoder settings. |
-| [overwolf.streaming.StreamingVideoEncoderx264Settings](./overwolf.streaming.StreamingVideoEncoderx264Settings) | Defines the configuration for an x264 encoder. |
-| [overwolf.streaming.StreamParams](./overwolf.streaming.StreamParams) | Represents the settings required to start a stream. |
-| [overwolf.streaming.StreamPeripheralsCaptureOptions](./overwolf.streaming.StreamPeripheralsCaptureOptions) | Stream capture options for peripheral devices. |
-| [overwolf.streaming.StreamQuotaParams](./overwolf.streaming.StreamQuotaParams) | Basic quota information |
-| [overwolf.streaming.StreamResult](./overwolf.streaming.StreamResult) | - |
-| [overwolf.streaming.StreamSettings](./overwolf.streaming.StreamSettings) | Stream settings container. |
-| [overwolf.streaming.StreamVideoOptions](./overwolf.streaming.StreamVideoOptions) | Stream video options. |
-| [overwolf.streaming.SupportedEncodersUpdatedEvent](./overwolf.streaming.SupportedEncodersUpdatedEvent) | - |
-| [overwolf.streaming.updateStreamingDesktopOptions](./overwolf.streaming.updateStreamingDesktopOptions) | Update stream desktop capture options. |
-| [overwolf.streaming.VideoFileSplitedEvent](./overwolf.streaming.VideoFileSplitedEvent) | - |
-| [overwolf.streaming.WatermarkSettings](./overwolf.streaming.WatermarkSettings) | A settings container for a stream Overwolf watermark settings. |
+| [overwolf.streaming.enums.CaptureErrorCode](./enums/overwolf.streaming.enums.CaptureErrorCode) | - |
+| [overwolf.streaming.enums.eVideoBaseFrameSizeSource](./enums/overwolf.streaming.enums.eVideoBaseFrameSizeSource) | - |
+| [overwolf.streaming.enums.eVideoFrameSizeCalcMethod](./enums/overwolf.streaming.enums.eVideoFrameSizeCalcMethod) | - |
+| [overwolf.streaming.enums.IndicationPosition](./enums/overwolf.streaming.enums.IndicationPosition) | - |
+| [overwolf.streaming.enums.IndicationType](./enums/overwolf.streaming.enums.IndicationType) | - |
+| [overwolf.streaming.enums.ObsStreamingMode](./enums/overwolf.streaming.enums.ObsStreamingMode) | - |
+| [overwolf.streaming.enums.StreamEncoder](./enums/overwolf.streaming.enums.StreamEncoder) | - |
+| [overwolf.streaming.enums.StreamEncoderPreset_AMD_AMF](./enums/overwolf.streaming.enums.StreamEncoderPreset_AMD_AMF) | - |
+| [overwolf.streaming.enums.StreamEncoderPreset_Intel](./enums/overwolf.streaming.enums.StreamEncoderPreset_Intel) | - |
+| [overwolf.streaming.enums.StreamEncoderPreset_NVIDIA](./enums/overwolf.streaming.enums.StreamEncoderPreset_NVIDIA) | - |
+| [overwolf.streaming.enums.StreamEncoderPreset_x264](./enums/overwolf.streaming.enums.StreamEncoderPreset_x264) | - |
+| [overwolf.streaming.enums.StreamEncoderRateControl_AMD_AMF](./enums/overwolf.streaming.enums.StreamEncoderRateControl_AMD_AMF) | - |
+| [overwolf.streaming.enums.StreamEncoderRateControl_NVIDIA](./enums/overwolf.streaming.enums.StreamEncoderRateControl_NVIDIA) | - |
+| [overwolf.streaming.enums.StreamEncoderRateControl_x264](./enums/overwolf.streaming.enums.StreamEncoderRateControl_x264) | - |
+| [overwolf.streaming.enums.StreamingMode](./enums/overwolf.streaming.enums.StreamingMode) | - |
+| [overwolf.streaming.enums.StreamingProvider](./enums/overwolf.streaming.enums.StreamingProvider) | - |
+| [overwolf.streaming.enums.StreamMouseCursor](./enums/overwolf.streaming.enums.StreamMouseCursor) | - |
+| [overwolf.streaming.changeVolume](./Functions/overwolf.streaming.changeVolume) | Changes the volume of the stream. |
+| [overwolf.streaming.getActiveRecordingApps](./Functions/overwolf.streaming.getActiveRecordingApps) | `void` |
+| [overwolf.streaming.getAudioDevices](./Functions/overwolf.streaming.getAudioDevices) | Returns an array of all audio devices that can be used. |
+| [overwolf.streaming.getCapabilities](./Functions/overwolf.streaming.getCapabilities) | `void` |
+| [overwolf.streaming.getStreamEncoders](./Functions/overwolf.streaming.getStreamEncoders) | Returns an array of supported streaming encoders, with extra metadata for each one. |
+| [overwolf.streaming.getWatermarkSettings](./Functions/overwolf.streaming.getWatermarkSettings) | Gets the watermark settings. |
+| [overwolf.streaming.getWindowStreamingMode](./Functions/overwolf.streaming.getWindowStreamingMode) | Call the given callback function with the window's streaming mode as a parameter. |
+| [overwolf.streaming.setBRBImage](./Functions/overwolf.streaming.setBRBImage) | Set a stream's Be Right Back image. |
+| [overwolf.streaming.setWatermarkSettings](./Functions/overwolf.streaming.setWatermarkSettings) | Sets the watermark settings. |
+| [overwolf.streaming.setWindowObsStreamingMode](./Functions/overwolf.streaming.setWindowObsStreamingMode) | Sets the streaming mode for the window when using OBS. |
+| [overwolf.streaming.setWindowStreamingMode](./Functions/overwolf.streaming.setWindowStreamingMode) | Set the window's stream mode. |
+| [overwolf.streaming.split](./Functions/overwolf.streaming.split) | Request to split video now. |
+| [overwolf.streaming.start](./Functions/overwolf.streaming.start) | Start a new stream. |
+| [overwolf.streaming.stop](./Functions/overwolf.streaming.stop) | Stops the given stream. |
+| [overwolf.streaming.updateStreamingDesktopOptions](./Functions/overwolf.streaming.updateStreamingDesktopOptions) | Update stream desktop capture options. |
+| [overwolf.streaming.ActiveRecordingApps](./Interfaces/overwolf.streaming.ActiveRecordingApps) | - |
+| [overwolf.streaming.AudioDeviceData](./Interfaces/overwolf.streaming.AudioDeviceData) | - |
+| [overwolf.streaming.EncoderData](./Interfaces/overwolf.streaming.EncoderData) | - |
+| [overwolf.streaming.GameAudioDevice](./Interfaces/overwolf.streaming.GameAudioDevice) | Defines game volume and enablement settings. |
+| [overwolf.streaming.GameCaptureOptions](./Interfaces/overwolf.streaming.GameCaptureOptions) | - |
+| [overwolf.streaming.GameWindowCapture](./Interfaces/overwolf.streaming.GameWindowCapture) | Game window capture options. |
+| [overwolf.streaming.GetActiveRecordingAppsResult](./Interfaces/overwolf.streaming.GetActiveRecordingAppsResult) | - |
+| [overwolf.streaming.GetAudioDevicesResult](./Interfaces/overwolf.streaming.GetAudioDevicesResult) | - |
+| [overwolf.streaming.GetStreamEncodersResult](./Interfaces/overwolf.streaming.GetStreamEncodersResult) | - |
+| [overwolf.streaming.GetWatermarkSettingsResult](./Interfaces/overwolf.streaming.GetWatermarkSettingsResult) | - |
+| [overwolf.streaming.GetWindowStreamingModeResult](./Interfaces/overwolf.streaming.GetWindowStreamingModeResult) | Stream settings container. |
+| [overwolf.streaming.SplitResult](./Interfaces/overwolf.streaming.SplitResult) | - |
+| [overwolf.streaming.StartCaptureResult](./Interfaces/overwolf.streaming.StartCaptureResult) | - |
+| [overwolf.streaming.StopStreamingEvent](./Interfaces/overwolf.streaming.StopStreamingEvent) | - |
+| [overwolf.streaming.StopStreamingResult](./Interfaces/overwolf.streaming.StopStreamingResult) | - |
+| [overwolf.streaming.StreamAudioOptions](./Interfaces/overwolf.streaming.StreamAudioOptions) | Stream audio options. |
+| [overwolf.streaming.StreamAuthParams](./Interfaces/overwolf.streaming.StreamAuthParams) | Stream authorization data. |
+| [overwolf.streaming.StreamDesktopCaptureOptions](./Interfaces/overwolf.streaming.StreamDesktopCaptureOptions) | Stream desktop capture options. |
+| [overwolf.streaming.StreamDeviceVolume](./Interfaces/overwolf.streaming.StreamDeviceVolume) | Defines a device volume and enablement settings. |
+| [overwolf.streaming.StreamEvent](./Interfaces/overwolf.streaming.StreamEvent) | - |
+| [overwolf.streaming.StreamInfo](./Interfaces/overwolf.streaming.StreamInfo) | - |
+| [overwolf.streaming.StreamingCapabilities](./Interfaces/overwolf.streaming.StreamingCapabilities) | - |
+| [overwolf.streaming.StreamIngestServer](./Interfaces/overwolf.streaming.StreamIngestServer) | Information on the server that is being streamed to. |
+| [overwolf.streaming.StreamingSourceImageChangedEvent](./Interfaces/overwolf.streaming.StreamingSourceImageChangedEvent) | - |
+| [overwolf.streaming.StreamingVideoEncoderAMD_AMFSettings](./Interfaces/overwolf.streaming.StreamingVideoEncoderAMD_AMFSettings) | Defines the configuration for the AMD AMF encoder. |
+| [overwolf.streaming.StreamingVideoEncoderIntelSettings](./Interfaces/overwolf.streaming.StreamingVideoEncoderIntelSettings) | Defines the configuration for an Intel encoder. |
+| [overwolf.streaming.StreamingVideoEncoderNVIDIA_NVENCSettings](./Interfaces/overwolf.streaming.StreamingVideoEncoderNVIDIA_NVENCSettings) | Defines the configuration for the NVIDIA NVENC encoder. |
+| [overwolf.streaming.StreamingVideoEncoderSettings](./Interfaces/overwolf.streaming.StreamingVideoEncoderSettings) | Defines the video encoder settings. |
+| [overwolf.streaming.StreamingVideoEncoderx264Settings](./Interfaces/overwolf.streaming.StreamingVideoEncoderx264Settings) | Defines the configuration for an x264 encoder. |
+| [overwolf.streaming.StreamParams](./Interfaces/overwolf.streaming.StreamParams) | Represents the settings required to start a stream. |
+| [overwolf.streaming.StreamPeripheralsCaptureOptions](./Interfaces/overwolf.streaming.StreamPeripheralsCaptureOptions) | Stream capture options for peripheral devices. |
+| [overwolf.streaming.StreamQuotaParams](./Interfaces/overwolf.streaming.StreamQuotaParams) | Basic quota information |
+| [overwolf.streaming.StreamResult](./Interfaces/overwolf.streaming.StreamResult) | - |
+| [overwolf.streaming.StreamSettings](./Interfaces/overwolf.streaming.StreamSettings) | Stream settings container. |
+| [overwolf.streaming.StreamVideoOptions](./Interfaces/overwolf.streaming.StreamVideoOptions) | Stream video options. |
+| [overwolf.streaming.SupportedEncodersUpdatedEvent](./Interfaces/overwolf.streaming.SupportedEncodersUpdatedEvent) | - |
+| [overwolf.streaming.VideoFileSplitedEvent](./Interfaces/overwolf.streaming.VideoFileSplitedEvent) | - |
+| [overwolf.streaming.WatermarkSettings](./Interfaces/overwolf.streaming.WatermarkSettings) | A settings container for a stream Overwolf watermark settings. |
+| [overwolf.streaming.onError](./Variables/overwolf.streaming.onError) | Triggered when an error occurs, sent with an error code. |
+| [overwolf.streaming.onStartStreaming](./Variables/overwolf.streaming.onStartStreaming) | Fired when the stream has stopped. |
+| [overwolf.streaming.onStopStreaming](./Variables/overwolf.streaming.onStopStreaming) | Fired when the stream has stopped. |
+| [overwolf.streaming.onStreamingError](./Variables/overwolf.streaming.onStreamingError) | Fired upon an error with the stream. |
+| [overwolf.streaming.onStreamingSourceImageChanged](./Variables/overwolf.streaming.onStreamingSourceImageChanged) | Fired when the stream started streaming a new image source (desktop, game). |
+| [overwolf.streaming.onStreamingWarning](./Variables/overwolf.streaming.onStreamingWarning) | Fired upon a warning with the stream. |
+| [overwolf.streaming.onVideoFileSplited](./Variables/overwolf.streaming.onVideoFileSplited) | Fired upon video file splited. |
