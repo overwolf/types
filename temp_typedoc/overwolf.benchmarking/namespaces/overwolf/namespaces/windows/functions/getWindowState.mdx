@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / getWindowState
+
+```ts
+function getWindowState(
+  windowId: string,
+  callback: CallbackFunction<GetWindowStateResult>,
+): void;
+```
+
+Returns the state of the window (normal/minimized/maximized/closed).
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `windowId` | `string`                                                                                                                                                  | The id or name of the window. |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetWindowStateResult`](../interfaces/GetWindowStateResult.mdx)\> | Called with the window state. |
+
+## Returns
+
+`void`

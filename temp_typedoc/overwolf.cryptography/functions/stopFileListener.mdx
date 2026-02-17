@@ -1,0 +1,19 @@
+[Overwolf APIs](../../Overview.mdx) / [overwolf.cryptography](../Overview.mdx) / stopFileListener
+
+```ts
+function stopFileListener(id: string): void;
+```
+
+Stop listening on file.
+Stop streaming a file that you previously passed when calling listenOnFile().
+There are no callbacks - as this will never fail (even if the stream doesn't exist).
+
+## Parameters
+
+| Parameter | Type     | Description |
+| --------- | -------- | ----------- |
+| `id`      | `string` | listen Id.  |
+
+## Returns
+
+`void`

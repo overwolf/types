@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [io](../Overview.mdx) / readFileContents
+
+```ts
+function readFileContents(
+  filePath: string,
+  encoding: eEncoding,
+  callback: CallbackFunction<ReadFileContentsResult>,
+): void;
+```
+
+Read the content to the target file.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                          | Description                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `filePath` | `string`                                                                                                                                                      | The full path of the file to write to.                      |
+| `encoding` | [`eEncoding`](../namespaces/enums/enumerations/eEncoding.mdx)                                                                                                 | The encoding to use, see more at                            |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`ReadFileContentsResult`](../interfaces/ReadFileContentsResult.mdx)\> | Called with the status of the request and the file content. |
+
+## Returns
+
+`void`

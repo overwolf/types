@@ -1,0 +1,34 @@
+[Overwolf APIs](../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../Overview.mdx) / [overwolf](../../../../Overview.mdx) / [games](../../Overview.mdx) / inputTracking
+
+## Interfaces
+
+| Interface                                                           | Description |
+| ------------------------------------------------------------------- | ----------- |
+| [~~GetActivityResult~~](interfaces/GetActivityResult.mdx)           | -           |
+| [~~GetMousePositionResult~~](interfaces/GetMousePositionResult.mdx) | -           |
+| [~~InputActivity~~](interfaces/InputActivity.mdx)                   | -           |
+| [~~KeyEvent~~](interfaces/KeyEvent.mdx)                             | -           |
+| [~~MouseEvent~~](interfaces/MouseEvent.mdx)                         | -           |
+| [~~MousePosition~~](interfaces/MousePosition.mdx)                   | -           |
+| [~~WheelEvent~~](interfaces/WheelEvent.mdx)                         | -           |
+
+## Variables
+
+| Variable                                     | Description                                                                                                                                                                                                                                                 |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~onKeyDown~~](variables/onKeyDown.mdx)     | Fired when a keyboard key has been pressed. Event information is similar to `onKeyUp`.                                                                                                                                                                      |
+| [~~onKeyUp~~](variables/onKeyUp.mdx)         | Fired when a keyboard key has been released. The event information includes the virtual key code (key) and a boolean stating whether the keypress was on a game or on an Overwolf widget (onGame).                                                          |
+| [~~onMouseDown~~](variables/onMouseDown.mdx) | Fired a mouse key has been pressed. Event information is similar to `onMouseUp`.                                                                                                                                                                            |
+| [~~onMouseUp~~](variables/onMouseUp.mdx)     | Fired when a mouse key has been released. The event information includes whether the left or white mouse button was clicked(button), x and y coordinates (x, y) and a boolean stating whether the keypress was on a game or on an Overwolf widget (onGame). |
+
+## Functions
+
+| Function                                                                     | Description                                                                                                                                                                                         |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~getActivityInformation~~](functions/getActivityInformation.mdx)           | Returns the input activity information. The information includes presses for keyboard/mouse, total session time, idle time and actions-per-minute. This information resets between game executions. |
+| [~~getEyeTrackingInformation~~](functions/getEyeTrackingInformation.mdx)     | Returns the eye tracking information. The information includes gaze points, fixations, user presence (screen/keyboard/other) and minimap glances. This information resets between game executions.  |
+| [~~getMatchActivityInformation~~](functions/getMatchActivityInformation.mdx) | Returns the input activity information (similar to `getActivityInformation`). However, when this is supported, it will return data only for the latestmatch of the current game                     |
+| [~~getMousePosition~~](functions/getMousePosition.mdx)                       | Returns the input last mouse position in game. the data includes the mouse position and a boolean stating whether the keypress was on a game or on an Overwolf widget (onGame).                     |
+| [~~init~~](functions/init.mdx)                                               | -                                                                                                                                                                                                   |
+| [~~pauseEyeTracking~~](functions/pauseEyeTracking.mdx)                       | Eye tracking data trakcing will pause, and stop collect Eye tracking data until resumeEyeTracking will be called.                                                                                   |
+| [~~resumeEyeTracking~~](functions/resumeEyeTracking.mdx)                     | Resume collecting Eye tracking data.                                                                                                                                                                |

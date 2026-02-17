@@ -1,0 +1,19 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / isWindowVisibleToUser
+
+```ts
+function isWindowVisibleToUser(
+  callback: CallbackFunction<IsWindowVisibleToUserResult>,
+): void;
+```
+
+Is window fully visible to user (has overlap windows)
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                    | Description                                                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------ | ---------- |
+| `callback` | `CallbackFunction`\&lt;`IsWindowVisibleToUserResult`\&gt; | Called with the result of the request:&#123;"status": "error" "reason": the reason&#125; or&#123;"status": "success" "visible": "hidden" | "full" | "partial"&#125; |
+
+## Returns
+
+`void`

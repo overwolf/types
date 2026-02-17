@@ -1,0 +1,57 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / settings
+
+## Namespaces
+
+| Namespace                                        | Description |
+| ------------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx)       | -           |
+| [~~games~~](namespaces/games/Overview.mdx)       | -           |
+| [~~hotkeys~~](namespaces/hotkeys/Overview.mdx)   | -           |
+| [~~language~~](namespaces/language/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                                               | Description |
+| --------------------------------------------------------------------------------------- | ----------- |
+| [~~AudioCaptureSettingsChangedEvent~~](interfaces/AudioCaptureSettingsChangedEvent.mdx) | -           |
+| [~~FolderResult~~](interfaces/FolderResult.mdx)                                         | -           |
+| [~~FpsSettings~~](interfaces/FpsSettings.mdx)                                           | -           |
+| [~~FpsSettingsChangedEvent~~](interfaces/FpsSettingsChangedEvent.mdx)                   | -           |
+| [~~GeneralExtensionSettings~~](interfaces/GeneralExtensionSettings.mdx)                 | -           |
+| [~~GetAudioCaptureSettingsResult~~](interfaces/GetAudioCaptureSettingsResult.mdx)       | -           |
+| [~~GetExtensionSettingsResult~~](interfaces/GetExtensionSettingsResult.mdx)             | -           |
+| [~~GetFpsSettingsResult~~](interfaces/GetFpsSettingsResult.mdx)                         | -           |
+| [~~GetHotKeyResult~~](interfaces/GetHotKeyResult.mdx)                                   | -           |
+| [~~GetVideoCaptureSettingsResult~~](interfaces/GetVideoCaptureSettingsResult.mdx)       | -           |
+| [~~HotKeyChangedEvent~~](interfaces/HotKeyChangedEvent.mdx)                             | -           |
+| [~~HotKeyResult~~](interfaces/HotKeyResult.mdx)                                         | -           |
+| [~~SetFolderResult~~](interfaces/SetFolderResult.mdx)                                   | -           |
+| [~~VideoCaptureSettingsChangedEvent~~](interfaces/VideoCaptureSettingsChangedEvent.mdx) | -           |
+
+## Variables
+
+| Variable                                                                         | Description                                    |
+| -------------------------------------------------------------------------------- | ---------------------------------------------- |
+| [~~OnAudioCaptureSettingsChanged~~](variables/OnAudioCaptureSettingsChanged.mdx) | Fired when audio capture settings are changed. |
+| [~~onFpsSettingsChanged~~](variables/onFpsSettingsChanged.mdx)                   | Fired when fps settings are changed.           |
+| [~~OnVideoCaptureSettingsChanged~~](variables/OnVideoCaptureSettingsChanged.mdx) | Fired when video capture settings are changed. |
+
+## Functions
+
+| Function                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~getAudioCaptureSettings~~](functions/getAudioCaptureSettings.mdx)           | Returns the current audio capture settings.                                                                                                                                                                                                                                                                                                                                                   |
+| [~~getCurrentOverwolfLanguage~~](functions/getCurrentOverwolfLanguage.mdx)     | Returns the current language overwolf is set to in a two letter ISO name format.                                                                                                                                                                                                                                                                                                              |
+| [~~getExtensionSettings~~](functions/getExtensionSettings.mdx)                 | Gets the extension settings.                                                                                                                                                                                                                                                                                                                                                                  |
+| [~~getFpsSettings~~](functions/getFpsSettings.mdx)                             | Gets the status of the FPS control (on/off), its position, its offset (in pixels) and its scale [0, 1].                                                                                                                                                                                                                                                                                       |
+| [~~getHotKey~~](functions/getHotKey.mdx)                                       | Returns the hotkey assigned to a given feature id by calling the callback.                                                                                                                                                                                                                                                                                                                    |
+| [~~getOverwolfScreenshotsFolder~~](functions/getOverwolfScreenshotsFolder.mdx) | Returns the current folder overwolf uses to store screenshots.                                                                                                                                                                                                                                                                                                                                |
+| [~~getOverwolfVideosFolder~~](functions/getOverwolfVideosFolder.mdx)           | Returns the current folder overwolf uses to store videos.                                                                                                                                                                                                                                                                                                                                     |
+| [~~getVideoCaptureSettings~~](functions/getVideoCaptureSettings.mdx)           | Returns the current video capture settings.                                                                                                                                                                                                                                                                                                                                                   |
+| [~~registerHotKey~~](functions/registerHotKey.mdx)                             | Registers a callback for a given hotkey action. If the registration had failed, the callback function will be called immediately with the status "error" and another property, "error", indicating the reason for the failure. Otherwise, the callback function will be called when the hotkey is pressed and the status will be "success". Note that Shift can only be combined with F keys. |
+| [~~setAudioCaptureSettings~~](functions/setAudioCaptureSettings.mdx)           | Sets new audio capture settings.                                                                                                                                                                                                                                                                                                                                                              |
+| [~~setExtensionSettings~~](functions/setExtensionSettings.mdx)                 | Sets the extension settings.                                                                                                                                                                                                                                                                                                                                                                  |
+| [~~setFpsSettings~~](functions/setFpsSettings.mdx)                             | Sets the state (on/off), position, offset (in pixels) and scale [0, 1] of the Fps control.                                                                                                                                                                                                                                                                                                    |
+| [~~setOverwolfScreenshotsFolder~~](functions/setOverwolfScreenshotsFolder.mdx) | Sets the folder Overwolf uses to store screenshots.                                                                                                                                                                                                                                                                                                                                           |
+| [~~setOverwolfVideosFolder~~](functions/setOverwolfVideosFolder.mdx)           | Sets the folder Overwolf uses to store videos.                                                                                                                                                                                                                                                                                                                                                |
+| [~~setVideoCaptureSettings~~](functions/setVideoCaptureSettings.mdx)           | Sets new video capture settings.                                                                                                                                                                                                                                                                                                                                                              |

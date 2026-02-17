@@ -1,0 +1,42 @@
+[Overwolf APIs](../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../Overview.mdx) / [overwolf](../../../../Overview.mdx) / [social](../../Overview.mdx) / discord
+
+## Namespaces
+
+| Namespace                                  | Description |
+| ------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                     | Description |
+| ------------------------------------------------------------- | ----------- |
+| [~~Channel~~](interfaces/Channel.mdx)                         | -           |
+| [~~GetChannelsResult~~](interfaces/GetChannelsResult.mdx)     | -           |
+| [~~GetGuildsResult~~](interfaces/GetGuildsResult.mdx)         | -           |
+| [~~Guild~~](interfaces/Guild.mdx)                             | -           |
+| [~~PermissionOverwrite~~](interfaces/PermissionOverwrite.mdx) | -           |
+| [~~PostParameters~~](interfaces/PostParameters.mdx)           | -           |
+| [~~Role~~](interfaces/Role.mdx)                               | -           |
+| [~~ShareParameters~~](interfaces/ShareParameters.mdx)         | -           |
+| [~~SocialShareProgress~~](interfaces/SocialShareProgress.mdx) | -           |
+| [~~SocialShareResult~~](interfaces/SocialShareResult.mdx)     | -           |
+| [~~User~~](interfaces/User.mdx)                               | -           |
+
+## Variables
+
+| Variable                                                     | Description                                |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| [~~onLoginStateChanged~~](variables/onLoginStateChanged.mdx) | Fired when the user's login state changes. |
+
+## Functions
+
+| Function                                               | Description                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~getChannels~~](functions/getChannels.mdx)           | If the user is currently logged into Discord, this will return the channels of the given `guildId`, for which the user has privileges to share images/videos to. Otherwise, an error is returned                                                                                                                                                            |
+| [~~getGuilds~~](functions/getGuilds.mdx)               | If the user is currently logged into Discord, this will return the guilds that the user is registered to. Otherwise, an error is returned                                                                                                                                                                                                                   |
+| [~~getUserInfo~~](functions/getUserInfo.mdx)           | If the user is currently logged into Discord, this will return user information. Otherwise, an error is returned.                                                                                                                                                                                                                                           |
+| [~~performLogout~~](functions/performLogout.mdx)       | Performs a "strong" sign out of Discord, so that even if the user performs a login via the Overwolf Settings / Accounts page, they will be considered signed out.                                                                                                                                                                                           |
+| [~~performUserLogin~~](functions/performUserLogin.mdx) | Opens the login dialog. There is no callback for this method and the only way to know if the user signed in is via `onLoginStateChanged`.                                                                                                                                                                                                                   |
+| [~~post~~](functions/post.mdx)                         | -                                                                                                                                                                                                                                                                                                                                                           |
+| [~~share~~](functions/share.mdx)                       | If the user is currently logged into Discord, this will perform the media share (image or video).Possible errors that can occur:- Disconnected (user isn't signed in)- MissingFile (trying to share a missing file)- UnsupportedFile (trying to share an unsupported format)- ExceedsMaxSize (the file is too large: > 8 MB for images, > 100 MBfor videos) |
+| [~~shareEx~~](functions/shareEx.mdx)                   | -                                                                                                                                                                                                                                                                                                                                                           |

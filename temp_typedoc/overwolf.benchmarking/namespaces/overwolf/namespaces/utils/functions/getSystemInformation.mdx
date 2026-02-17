@@ -1,0 +1,20 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [utils](../Overview.mdx) / getSystemInformation
+
+```ts
+function getSystemInformation(
+  callback: (result: GetSystemInformationResult) => void,
+): void;
+```
+
+Returns system information which includes information about CPU, Monitors,
+GPU, HDD, RAM and more.
+
+## Parameters
+
+| Parameter  | Type                                                                                               | Description                         |
+| ---------- | -------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `callback` | (`result`: [`GetSystemInformationResult`](../interfaces/GetSystemInformationResult.mdx)) => `void` | Called with the system information. |
+
+## Returns
+
+`void`

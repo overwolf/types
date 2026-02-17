@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [games](../../../Overview.mdx) / [inputTracking](../Overview.mdx) / getMousePosition
+
+```ts
+function getMousePosition(
+  callback: CallbackFunction<GetMousePositionResult>,
+): void;
+```
+
+Returns the input last mouse position in game. the data includes the mouse
+position and a boolean stating whether the keypress was on a game or on an
+Overwolf widget (onGame).
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                | Description                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetMousePositionResult`](../interfaces/GetMousePositionResult.mdx)\> | A callback with the mouse position information |
+
+## Returns
+
+`void`

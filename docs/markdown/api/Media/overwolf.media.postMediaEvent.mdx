@@ -1,0 +1,24 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / media / postMediaEvent
+
+```ts
+function postMediaEvent(
+  mediaType: eMediaType,
+  jsonInfo: any,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Posts a media event for other apps to receive. The time info should be
+received in UTC format.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                | Description                                  |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| `mediaType` | `eMediaType`                                                                     | The type of the event.                       |
+| `jsonInfo`  | `any`                                                                                                                               | A json with additional info about the event. |
+| `callback`  | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the status if the call.      |
+
+## Returns
+
+`void`

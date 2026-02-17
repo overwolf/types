@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [os](../../../Overview.mdx) / [tray](../Overview.mdx) / setMenu
+
+```ts
+function setMenu(
+  menu: ExtensionTrayMenu,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Create a tray icon for the calling extension with the supplied context menu object.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description             |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| `menu`     | [`ExtensionTrayMenu`](../interfaces/ExtensionTrayMenu.mdx)                                                                                      | The menu object.        |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | Called with the result. |
+
+## Returns
+
+`void`

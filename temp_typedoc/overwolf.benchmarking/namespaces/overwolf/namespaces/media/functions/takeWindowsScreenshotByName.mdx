@@ -1,0 +1,53 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [media](../Overview.mdx) / takeWindowsScreenshotByName
+
+## Call Signature
+
+```ts
+function takeWindowsScreenshotByName(
+  windowName: string,
+  postMediaEvent: boolean,
+  targetFolder: string,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Takes a window screenshot and calls the callback with the success status
+and the screenshot URL. The screenshot is saved to the screenshots folder.
+
+### Parameters
+
+| Parameter        | Type                                                                                                                                  | Description                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `windowName`     | `string`                                                                                                                              | The window Name                                   |
+| `postMediaEvent` | `boolean`                                                                                                                             | set true to post media event (onMediaEvent)       |
+| `targetFolder`   | `string`                                                                                                                              | set target folder path to screen shot             |
+| `callback`       | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`FileResult`](../interfaces/FileResult.mdx)\> | A function called after the screenshot was taken. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function takeWindowsScreenshotByName(
+  windowName: string,
+  postMediaEvent: boolean,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Takes a window screenshot and calls the callback with the success status
+and the screenshot URL. The screenshot is saved to the screenshots folder.
+
+### Parameters
+
+| Parameter        | Type                                                                                                                                  | Description                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `windowName`     | `string`                                                                                                                              | The window Name                                   |
+| `postMediaEvent` | `boolean`                                                                                                                             | set true to post media event (onMediaEvent)       |
+| `callback`       | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`FileResult`](../interfaces/FileResult.mdx)\> | A function called after the screenshot was taken. |
+
+### Returns
+
+`void`

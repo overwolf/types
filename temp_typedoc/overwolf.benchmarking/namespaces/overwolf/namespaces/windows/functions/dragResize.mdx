@@ -1,0 +1,70 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / dragResize
+
+## Call Signature
+
+```ts
+function dragResize(windowId: string, edge: WindowDragEdge): void;
+```
+
+Start resizing the window from a specific edge or corner.
+
+### Parameters
+
+| Parameter  | Type                                                                    | Description                                         |
+| ---------- | ----------------------------------------------------------------------- | --------------------------------------------------- |
+| `windowId` | `string`                                                                | The id or name of the window to resize.             |
+| `edge`     | [`WindowDragEdge`](../namespaces/enums/enumerations/WindowDragEdge.mdx) | The edge or corner from which to resize the window. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function dragResize(
+  windowId: string,
+  edge: WindowDragEdge,
+  contentRect: ODKRect,
+): void;
+```
+
+Start resizing the window from a specific edge or corner.
+
+### Parameters
+
+| Parameter     | Type                                                                    | Description                                                                  |
+| ------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `windowId`    | `string`                                                                | The id or name of the window to resize.                                      |
+| `edge`        | [`WindowDragEdge`](../namespaces/enums/enumerations/WindowDragEdge.mdx) | The edge or corner from which to resize the window.                          |
+| `contentRect` | [`ODKRect`](../interfaces/ODKRect.mdx)                                  | The real content of the window (for the in-game drawing resizing white area) |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function dragResize(
+  windowId: string,
+  edge: WindowDragEdge,
+  rect: ODKRect,
+  callback: CallbackFunction<DragResizeResult>,
+): void;
+```
+
+Start resizing the window from a specific edge or corner.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                              | Description                                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `windowId` | `string`                                                                                                                                          | The id or name of the window to resize.                |
+| `edge`     | [`WindowDragEdge`](../namespaces/enums/enumerations/WindowDragEdge.mdx)                                                                           | The edge or corner from which to resize the window.    |
+| `rect`     | [`ODKRect`](../interfaces/ODKRect.mdx)                                                                                                            | -                                                      |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`DragResizeResult`](../interfaces/DragResizeResult.mdx)\> | Will be called when the resizing process is completed. |
+
+### Returns
+
+`void`

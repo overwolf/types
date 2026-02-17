@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [settings](../../../Overview.mdx) / [games](../Overview.mdx) / getAutoLaunchEnabled
+
+```ts
+function getAutoLaunchEnabled(
+  gameClassId: number,
+  callback: CallbackFunction<AutolaunchEnabledResult>,
+): void;
+```
+
+Returns the current Auto-Launch enabled setting for the calling app in a given game (gameClassId).
+
+## Parameters
+
+| Parameter     | Type                                                                                                                                                                  | Description                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `gameClassId` | `number`                                                                                                                                                              | the game id for which the flag is retrieved for |
+| `callback`    | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`AutolaunchEnabledResult`](../interfaces/AutolaunchEnabledResult.mdx)\> | -                                               |
+
+## Returns
+
+`void`

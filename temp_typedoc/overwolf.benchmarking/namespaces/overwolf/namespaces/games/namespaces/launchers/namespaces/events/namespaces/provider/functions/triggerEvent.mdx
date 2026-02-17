@@ -1,0 +1,25 @@
+[Overwolf APIs](../../../../../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../../../../../Overview.mdx) / [overwolf](../../../../../../../../../Overview.mdx) / [games](../../../../../../../Overview.mdx) / [launchers](../../../../../Overview.mdx) / [events](../../../Overview.mdx) / [provider](../Overview.mdx) / triggerEvent
+
+```ts
+function triggerEvent(
+  launcherClassId: number,
+  feature: string,
+  name: string,
+  data?: any,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+## Parameters
+
+| Parameter         | Type                                                                                                                                                                    |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `launcherClassId` | `number`                                                                                                                                                                |
+| `feature`         | `string`                                                                                                                                                                |
+| `name`            | `string`                                                                                                                                                                |
+| `data?`           | `any`                                                                                                                                                                   |
+| `callback?`       | [`CallbackFunction`](../../../../../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../../../../../interfaces/Result.mdx)\> |
+
+## Returns
+
+`void`

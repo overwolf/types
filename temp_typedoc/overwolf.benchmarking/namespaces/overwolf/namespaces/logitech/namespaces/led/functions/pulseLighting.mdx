@@ -1,0 +1,29 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [logitech](../../../Overview.mdx) / [led](../Overview.mdx) / pulseLighting
+
+```ts
+function pulseLighting(
+  redPercentage: number,
+  greenPercentage: number,
+  bluePercentage: number,
+  milliSecondsDuration: number,
+  milliSecondsInterval: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Pulses the lighting on the device.
+
+## Parameters
+
+| Parameter              | Type                                                                                                                                            | Description                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `redPercentage`        | `number`                                                                                                                                        | Red percentage (0 - 100)                   |
+| `greenPercentage`      | `number`                                                                                                                                        | Green percentage (0 - 100)                 |
+| `bluePercentage`       | `number`                                                                                                                                        | Blue percentage (0 - 100)                  |
+| `milliSecondsDuration` | `number`                                                                                                                                        | The duration to flash in milliseconds.     |
+| `milliSecondsInterval` | `number`                                                                                                                                        | The interval for flashes in milliseconds.  |
+| `callback`             | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback with the result of the request. |
+
+## Returns
+
+`void`

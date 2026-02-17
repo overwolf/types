@@ -1,0 +1,29 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [io](../Overview.mdx) / writeFileContents
+
+```ts
+function writeFileContents(
+  filePath: string,
+  content: string,
+  encoding: eEncoding,
+  triggerUacIfRequired: boolean,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Writes the content to the target file. If the file doesn't exist, it will
+be created, along with any needed directories along the path. Otherwise,
+the file's content will be overwritten.
+
+## Parameters
+
+| Parameter              | Type                                                                                                                                | Description                                                                              |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `filePath`             | `string`                                                                                                                            | The full path of the file to write to.                                                   |
+| `content`              | `string`                                                                                                                            | The content to write.                                                                    |
+| `encoding`             | [`eEncoding`](../namespaces/enums/enumerations/eEncoding.mdx)                                                                       | The encoding to use, see more at                                                         |
+| `triggerUacIfRequired` | `boolean`                                                                                                                           | If additional permissions are required, allows the triggering of the Windows UAC dialog. |
+| `callback`             | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | Called with the status of the request.                                                   |
+
+## Returns
+
+`void`

@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [cryptography](../Overview.mdx) / encryptForCurrentUser
+
+```ts
+function encryptForCurrentUser(
+  plaintext: string,
+  callback: CallbackFunction<EncryptedDataResult>,
+): void;
+```
+
+Encrypt provided plaintext for current system user
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                                    | Description                              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| `plaintext` | `string`                                                                                                                                                | Text to encrypt                          |
+| `callback`  | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`EncryptedDataResult`](../interfaces/EncryptedDataResult.mdx)\> | Will be called with encrypted ciphertext |
+
+## Returns
+
+`void`

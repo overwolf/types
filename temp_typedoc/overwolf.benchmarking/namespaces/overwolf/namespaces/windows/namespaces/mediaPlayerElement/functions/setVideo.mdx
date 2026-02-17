@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [windows](../../../Overview.mdx) / [mediaPlayerElement](../Overview.mdx) / setVideo
+
+```ts
+function setVideo(
+  id: number,
+  videoUrl: string,
+  callback: CallbackFunction<SetVideoResult>,
+): void;
+```
+
+Sets the current video to be played.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                | Description                                                                                                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`       | `number`                                                                                                                                            | The id of the player.                                                                                                                             |
+| `videoUrl` | `string`                                                                                                                                            | An url to the video.                                                                                                                              |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`SetVideoResult`](../interfaces/SetVideoResult.mdx)\> | A callback function which will be called with the status of the request. If successful, the callback will contain the total seconds in the video. |
+
+## Returns
+
+`void`

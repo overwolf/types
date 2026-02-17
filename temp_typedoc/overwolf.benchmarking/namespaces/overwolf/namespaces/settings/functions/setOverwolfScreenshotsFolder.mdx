@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [settings](../Overview.mdx) / setOverwolfScreenshotsFolder
+
+```ts
+function setOverwolfScreenshotsFolder(
+  path: string,
+  callback: CallbackFunction<FolderResult>,
+): void;
+```
+
+Sets the folder Overwolf uses to store screenshots.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                      | Description                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `path`     | `string`                                                                                                                                  | The folder to use                  |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`FolderResult`](../interfaces/FolderResult.mdx)\> | Whether the request was successful |
+
+## Returns
+
+`void`

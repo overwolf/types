@@ -1,0 +1,42 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / web / WebServer
+
+## Properties
+
+| Property                                        | Type                                                                           | Description                                                                                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| &lt;a id="property-onrequest"&gt;&lt; / a&gt; ~~`onRequest`~~ | `Event`\&lt;`RequestEvent`\&gt; | Fired when the web server receives an incoming request. The event contains three strings: 'url', 'content' and 'contentType'. |
+
+## Methods
+
+### ~~close()~~
+
+```ts
+close(): void;
+```
+
+Closes the web server. It can be re-opened again.
+
+#### Returns
+
+`void`
+
+---
+
+### ~~listen()~~
+
+```ts
+listen(callback: CallbackFunction<any>): void;
+```
+
+Listens for requests on the given port. If the port is already in use, or
+this instance is already listening, an error will be returned.
+
+#### Parameters
+
+| Parameter  | Type                                                                                           | Description                           |
+| ---------- | ---------------------------------------------------------------------------------------------- | ------------------------------------- |
+| `callback` | `CallbackFunction`\&lt;`any`\&gt; | Fired with the status of the request. |
+
+#### Returns
+
+`void`

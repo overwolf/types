@@ -1,0 +1,55 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [replays](../Overview.mdx) / stopCapture
+
+## Call Signature
+
+```ts
+function stopCapture(
+  replayId: string,
+  callback: CallbackFunction<ReplayResult>,
+): void;
+```
+
+Finishes capturing a replay and returns a url to the created video file.
+You can only call this method if replay mode is on and using a valid id of
+a replay being captured to a file.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `replayId` | `string`                                                                                                                                        | The id of the replay you want to finish capturing.                       |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`ReplayResult`](../interfaces/ReplayResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function stopCapture(
+  replayType: Video,
+  replayId: string,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Finishes capturing a replay and returns a url to the created video file.
+You can only call this method if replay mode is on and using a valid id of
+a replay being captured to a file.
+
+### Parameters
+
+| Parameter    | Type                                                                                                                                              | Description                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `replayType` | [`Video`](../namespaces/enums/enumerations/ReplayType.mdx#enumeration-member-video)                                                               | The type of replay to stop capture.                                      |
+| `replayId`   | `string`                                                                                                                                          | The id of the replay you want to finish capturing.                       |
+| `callback`   | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`FileResult`](../../../interfaces/FileResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+### Returns
+
+`void`
+
+### Deprecated
+
+Since version 0.155.

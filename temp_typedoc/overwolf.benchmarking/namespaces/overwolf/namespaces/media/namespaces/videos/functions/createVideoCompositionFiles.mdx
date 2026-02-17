@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [videos](../Overview.mdx) / createVideoCompositionFiles
+
+```ts
+function createVideoCompositionFiles(
+  files: string[],
+  outputFile: string,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Creates a compilation video out of a source video and a list of segments.
+
+## Parameters
+
+| Parameter    | Type                                                                                                                                              | Description                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `files`      | `string`[]                                                                                                                                        | list of files to composite to output video file (overwolf://media form. or file:///)                     |
+| `outputFile` | `string`                                                                                                                                          | the file output name                                                                                     |
+| `callback`   | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`FileResult`](../../../interfaces/FileResult.mdx)\> | A callback function which will be called with the status of the request and the url to the target video. |
+
+## Returns
+
+`void`

@@ -1,0 +1,26 @@
+[Overwolf APIs](../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../Overview.mdx) / [overwolf](../../../../Overview.mdx) / [social](../../Overview.mdx) / youtube
+
+## Namespaces
+
+| Namespace                                  | Description |
+| ------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                     | Description |
+| ------------------------------------------------------------- | ----------- |
+| [~~ShareParameters~~](interfaces/ShareParameters.mdx)         | -           |
+| [~~SocialShareProgress~~](interfaces/SocialShareProgress.mdx) | -           |
+| [~~SocialShareResult~~](interfaces/SocialShareResult.mdx)     | -           |
+| [~~User~~](interfaces/User.mdx)                               | -           |
+
+## Functions
+
+| Function                                               | Description                                                                                                                                                                                                                               |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~getUserInfo~~](functions/getUserInfo.mdx)           | If the user is currently logged into YouTube, this will return user information: { avatar: "http://abs.twimg.com/sticky/...", id: "111111111112222222", name: "full name", screenName: "screenname123" } Otherwise, an error is returned. |
+| [~~performLogout~~](functions/performLogout.mdx)       | Performs a "strong" sign out of YouTube, so that even if the user performs a login via the Overwolf Settings / Accounts page, he will be considered signed out.                                                                           |
+| [~~performUserLogin~~](functions/performUserLogin.mdx) | Opens the login dialog. There is no callback for this method and the only way to know if the user signed in is via `onLoginStateChanged`.                                                                                                 |
+| [~~share~~](functions/share.mdx)                       | If the user is currently logged into YouTube, this will perform the video share.                                                                                                                                                          |
+| [~~shareEx~~](functions/shareEx.mdx)                   | -                                                                                                                                                                                                                                         |

@@ -1,0 +1,14 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / campaigns / crossapp / CrossAppCampaign
+
+Container that represent a shared data parameters.
+
+## Properties
+
+| Property                                                       | Type       | Description                                                                                                                    |
+| -------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------ | --- | --------------------------------------------------------------------------------- |
+| &lt;a id="property-action"&gt;&lt; / a&gt; ~~`action`~~                      | `string`   | The type of action this cross-app campaign supports. This is a free-text string.                                               |
+| &lt;a id="property-data"&gt;&lt; / a&gt; ~~`data`~~                          | `any`      | Information about the cross-app campaign. This is a free-form json object that gives more instructions on the required action. |
+| &lt;a id="property-expiration"&gt;&lt; / a&gt; ~~`expiration`~~              | `number`   | Expiration date expressed in milliseconds since epoch (Unix Time, UTC). e.g. Date.now() or (new Date()).getTime()              |
+| &lt;a id="property-id"&gt;&lt; / a&gt; ~~`id`~~                              | `string`   | An id to identify the campaign (action / conversion).                                                                            | id  | should be unique per an extension (two different extensions can use the same id). |
+| &lt;a id="property-owner_app_uid"&gt;&lt; / a&gt; ~~`owner_app_uid?`~~       | `string`   | The UID of the app that owns the targeted cross-app campaign.                                                                  |
+| &lt;a id="property-target_apps_uids"&gt;&lt; / a&gt; ~~`target_apps_uids?`~~ | `string`[] | An array of app UIDs this cross-app campaign targets.                                                                          |

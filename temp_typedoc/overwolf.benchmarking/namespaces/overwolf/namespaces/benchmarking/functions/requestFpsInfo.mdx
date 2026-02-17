@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [benchmarking](../Overview.mdx) / requestFpsInfo
+
+```ts
+function requestFpsInfo(
+  interval: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Requests game fps information within a given interval.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                                                       |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `interval` | `number`                                                                                                                            | The desired maximal interval (in milliseconds) in which events will be triggered. |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A callback function which will be called with the status of the request.          |
+
+## Returns
+
+`void`

@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [settings](../../../Overview.mdx) / [hotkeys](../Overview.mdx) / assign
+
+```ts
+function assign(
+  hotkey: AssignHotkeyObject,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Assign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hotkey`   | [`AssignHotkeyObject`](../interfaces/AssignHotkeyObject.mdx)                                                                                    |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> |
+
+## Returns
+
+`void`

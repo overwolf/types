@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [videos](../Overview.mdx) / deleteVideo
+
+```ts
+function deleteVideo(
+  videoUrl: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Deletes a specific video created by this app.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `videoUrl` | `string`                                                                                                                                        | The Overwolf URL of the video to delete.                                 |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

@@ -1,0 +1,50 @@
+[Overwolf APIs](../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../Overview.mdx) / [overwolf](../../../../Overview.mdx) / [media](../../Overview.mdx) / replays
+
+## Namespaces
+
+| Namespace                                  | Description |
+| ------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                                     | Description                        |
+| ----------------------------------------------------------------------------- | ---------------------------------- |
+| [~~CaptureErrorEvent~~](interfaces/CaptureErrorEvent.mdx)                     | -                                  |
+| [~~CaptureStoppedEvent~~](interfaces/CaptureStoppedEvent.mdx)                 | -                                  |
+| [~~CaptureWarningEvent~~](interfaces/CaptureWarningEvent.mdx)                 | -                                  |
+| [~~GetHighlightsFeaturesResult~~](interfaces/GetHighlightsFeaturesResult.mdx) | -                                  |
+| [~~GetStateResult~~](interfaces/GetStateResult.mdx)                           | -                                  |
+| [~~HighlightsCapturedEvent~~](interfaces/HighlightsCapturedEvent.mdx)         | -                                  |
+| [~~raw_events~~](interfaces/raw_events.mdx)                                   | -                                  |
+| [~~ReplayHighlightsSetting~~](interfaces/ReplayHighlightsSetting.mdx)         | Auto highlights settings.          |
+| [~~ReplayResult~~](interfaces/ReplayResult.mdx)                               | -                                  |
+| [~~ReplayServicesStartedEvent~~](interfaces/ReplayServicesStartedEvent.mdx)   | -                                  |
+| [~~ReplaySettings~~](interfaces/ReplaySettings.mdx)                           | Replays settings container.        |
+| [~~StartReplayResult~~](interfaces/StartReplayResult.mdx)                     | -                                  |
+| [~~TurnOffResult~~](interfaces/TurnOffResult.mdx)                             | -                                  |
+| [~~TurnOnResult~~](interfaces/TurnOnResult.mdx)                               | -                                  |
+| [~~VideoSource~~](interfaces/VideoSource.mdx)                                 | Defines the video source settings. |
+| [~~WebCamParam~~](interfaces/WebCamParam.mdx)                                 | -                                  |
+
+## Variables
+
+| Variable                                                             | Description                                          |
+| -------------------------------------------------------------------- | ---------------------------------------------------- |
+| [~~onCaptureError~~](variables/onCaptureError.mdx)                   | Fired when an error has occurred with the capturing. |
+| [~~onCaptureStopped~~](variables/onCaptureStopped.mdx)               | Fired when replay service is stopped.                |
+| [~~onCaptureWarning~~](variables/onCaptureWarning.mdx)               | Fired on capture service warning.                    |
+| [~~onReplayServicesStarted~~](variables/onReplayServicesStarted.mdx) | Fired when the replay service is on (any other app); |
+
+## Functions
+
+| Function                                                         | Description                                                                                                                                                                                                                                                                                                |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~capture~~](functions/capture.mdx)                             | Starts capturing a replay to a file. A replay id will be returned in the callback which is needed to finish capturing the replay. You can only call this method if replay mode is on and no other replay is currently being captured to a file.                                                            |
+| [~~getHighlightsFeatures~~](functions/getHighlightsFeatures.mdx) | Get supported auto highlights features for a game                                                                                                                                                                                                                                                          |
+| [~~getState~~](functions/getState.mdx)                           | Returns whether replay capturing is turned on or off.                                                                                                                                                                                                                                                      |
+| [~~setReplaysSubFolder~~](functions/setReplaysSubFolder.mdx)     | change target sub folder of current running replay provider                                                                                                                                                                                                                                                |
+| [~~startCapture~~](functions/startCapture.mdx)                   | Starts capturing a replay to a file. A replay id will be returned in the callback which is needed to finish capturing the replay. You can only call this method if replay mode is on and no other replay is currently being captured to a file.                                                            |
+| [~~stopCapture~~](functions/stopCapture.mdx)                     | Finishes capturing a replay and returns a url to the created video file. You can only call this method if replay mode is on and using a valid id of a replay being captured to a file.                                                                                                                     |
+| [~~turnOff~~](functions/turnOff.mdx)                             | Turns off background replay capturing. Call this as soon as you no longer interesting in capturing, in order to free up resources.                                                                                                                                                                         |
+| [~~turnOn~~](functions/turnOn.mdx)                               | Turns on background replay capturing. Without calling it first, you will not be able to create video replays. Notice that turning on replay capturing will consume system resources so use it wisely.buffer_length defines the amount of time in milliseconds to have captured in the memory at all times. |

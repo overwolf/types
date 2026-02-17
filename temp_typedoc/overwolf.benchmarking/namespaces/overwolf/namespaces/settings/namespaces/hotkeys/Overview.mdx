@@ -1,0 +1,33 @@
+[Overwolf APIs](../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../Overview.mdx) / [overwolf](../../../../Overview.mdx) / [settings](../../Overview.mdx) / hotkeys
+
+## Interfaces
+
+| Interface                                                                     | Description |
+| ----------------------------------------------------------------------------- | ----------- |
+| [~~AssignHotkeyObject~~](interfaces/AssignHotkeyObject.mdx)                   | -           |
+| [~~GetAllAssignedHotkeysResult~~](interfaces/GetAllAssignedHotkeysResult.mdx) | -           |
+| [~~GetAssignedHotkeyResult~~](interfaces/GetAssignedHotkeyResult.mdx)         | -           |
+| [~~HotkeyModifiers~~](interfaces/HotkeyModifiers.mdx)                         | -           |
+| [~~IHotkey~~](interfaces/IHotkey.mdx)                                         | -           |
+| [~~OnChangedEvent~~](interfaces/OnChangedEvent.mdx)                           | -           |
+| [~~OnHoldEvent~~](interfaces/OnHoldEvent.mdx)                                 | -           |
+| [~~OnPressedEvent~~](interfaces/OnPressedEvent.mdx)                           | -           |
+| [~~UnassignHotkeyObject~~](interfaces/UnassignHotkeyObject.mdx)               | -           |
+| [~~UpdateHotkeyObject~~](interfaces/UpdateHotkeyObject.mdx)                   | -           |
+
+## Variables
+
+| Variable                                 | Description                                                  |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| [~~onHold~~](variables/onHold.mdx)       | Fired only for hotkeys that are set in the manifest as hold. |
+| [~~onPressed~~](variables/onPressed.mdx) | Fired for hotkeys that are NOT set as hold hotkeys.          |
+
+## Functions
+
+| Function                                   | Description                                                                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| [~~assign~~](functions/assign.mdx)         | Assign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey.   |
+| [~~get~~](functions/get.mdx)               | Returns the hotkey assigned for the current extension in all the games.                                             |
+| [~~getAllApps~~](functions/getAllApps.mdx) | Returns the hotkeys assigned for all installed extensions + the platform, in all the games.                         |
+| [~~unassign~~](functions/unassign.mdx)     | Unassign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey. |
+| [~~update~~](functions/update.mdx)         | -                                                                                                                   |

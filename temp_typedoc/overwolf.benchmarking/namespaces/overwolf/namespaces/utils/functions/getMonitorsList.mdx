@@ -1,0 +1,20 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [utils](../Overview.mdx) / getMonitorsList
+
+```ts
+function getMonitorsList(
+  callback: CallbackFunction<getMonitorsListResult>,
+): void;
+```
+
+Returns an array with all monitors data including their display resolution,
+bounds, and names.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                        | Description                     |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`getMonitorsListResult`](../interfaces/getMonitorsListResult.mdx)\> | Called with the monitors array. |
+
+## Returns
+
+`void`

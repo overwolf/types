@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [utils](../Overview.mdx) / sendLogs
+
+```ts
+function sendLogs(
+  description: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Sends Overwolf logs to Overwolf servers for debugging.
+
+## Parameters
+
+| Parameter     | Type                                                                                                                                | Description                                |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `description` | `string`                                                                                                                            | The reason for sending the logs.           |
+| `callback`    | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A callback with the status of the request. |
+
+## Returns
+
+`void`

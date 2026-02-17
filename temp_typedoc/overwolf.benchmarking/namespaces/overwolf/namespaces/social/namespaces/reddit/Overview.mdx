@@ -1,0 +1,41 @@
+[Overwolf APIs](../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../Overview.mdx) / [overwolf](../../../../Overview.mdx) / [social](../../Overview.mdx) / reddit
+
+## Namespaces
+
+| Namespace                                  | Description |
+| ------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                           | Description |
+| ------------------------------------------------------------------- | ----------- |
+| [~~Flair~~](interfaces/Flair.mdx)                                   | -           |
+| [~~PostParameters~~](interfaces/PostParameters.mdx)                 | -           |
+| [~~RedditAllowedPostTypes~~](interfaces/RedditAllowedPostTypes.mdx) | -           |
+| [~~SearchSubredditsResult~~](interfaces/SearchSubredditsResult.mdx) | -           |
+| [~~ShareFailedEvent~~](interfaces/ShareFailedEvent.mdx)             | -           |
+| [~~ShareParameters~~](interfaces/ShareParameters.mdx)               | -           |
+| [~~SocialShareProgress~~](interfaces/SocialShareProgress.mdx)       | -           |
+| [~~SocialShareResult~~](interfaces/SocialShareResult.mdx)           | -           |
+| [~~Subreddit~~](interfaces/Subreddit.mdx)                           | -           |
+| [~~User~~](interfaces/User.mdx)                                     | -           |
+
+## Variables
+
+| Variable                                                     | Description                                |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| [~~onLoginStateChanged~~](variables/onLoginStateChanged.mdx) | Fired when the user's login state changes. |
+
+## Functions
+
+| Function                                                   | Description                                                                                                                                                                                                           |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~getSubredditFlairs~~](functions/getSubredditFlairs.mdx) | Returns a list of flairs supported by the given subreddit                                                                                                                                                             |
+| [~~getUserInfo~~](functions/getUserInfo.mdx)               | If the user is currently logged into Reddit, this will return user information: { userInfo: { avatar: "http://abs.twimg.com/sticky/...", displayName: "u/foobar", name: "foobar" } } Otherwise, an error is returned. |
+| [~~performLogout~~](functions/performLogout.mdx)           | Performs a "strong" sign out of Reddit, so that even if the user performs a login via the Overwolf Settings / Accounts page, he will be considered signed out.                                                        |
+| [~~performUserLogin~~](functions/performUserLogin.mdx)     | Opens the login dialog. There is no callback for this method and the only way to know if the user signed in is via `onLoginStateChanged`.                                                                             |
+| [~~post~~](functions/post.mdx)                             | -                                                                                                                                                                                                                     |
+| [~~searchSubreddits~~](functions/searchSubreddits.mdx)     | Search for subreddits whose names begin with a substring.                                                                                                                                                             |
+| [~~share~~](functions/share.mdx)                           | If the user is currently logged into Reddit, this will perform the video share.                                                                                                                                       |
+| [~~shareEx~~](functions/shareEx.mdx)                       | -                                                                                                                                                                                                                     |

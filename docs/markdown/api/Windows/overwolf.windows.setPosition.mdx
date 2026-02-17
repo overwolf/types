@@ -1,0 +1,47 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / setPosition
+
+## Call Signature
+
+```ts
+function setPosition(
+  windowId: string,
+  properties: SetWindowPositionProperties,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Change window position (see SetWindowPositionProperties))
+
+### Parameters
+
+| Parameter    | Type                                                                                                                                | Description                            |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId`   | `string`                                                                                                                            | The id or name of the window           |
+| `properties` | `SetWindowPositionProperties`                                                      | where to place window                  |
+| `callback`   | `CallbackFunction`\&lt;`Result`\&gt; | Called with the result of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function setPosition(
+  properties: SetWindowPositionProperties,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Change this window position (see SetWindowPositionProperties))
+
+### Parameters
+
+| Parameter    | Type                                                                                                                                | Description                            |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `properties` | `SetWindowPositionProperties`                                                      | where to place window                  |
+| `callback`   | `CallbackFunction`\&lt;`Result`\&gt; | Called with the result of the request. |
+
+### Returns
+
+`void`

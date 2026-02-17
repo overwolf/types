@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / media / replays / setReplaysSubFolder
+
+```ts
+function setReplaysSubFolder(
+  replayType: Video,
+  subFolderName: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+change target sub folder of current running replay provider
+
+## Parameters
+
+| Parameter       | Type                                                                                                                                            | Description                                                              |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `replayType`    | `Video`                                                             | The type of replay to stop capture.                                      |
+| `subFolderName` | `string`                                                                                                                                        | the new sub folder name                                                  |
+| `callback`      | `CallbackFunction`\&lt;`Result`\&gt; | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

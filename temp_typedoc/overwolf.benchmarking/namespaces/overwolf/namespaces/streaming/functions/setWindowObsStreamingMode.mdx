@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / setWindowObsStreamingMode
+
+```ts
+function setWindowObsStreamingMode(
+  windowId: string,
+  obsStreamingMode: ObsStreamingMode,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+Sets the streaming mode for the window when using OBS.
+
+## Parameters
+
+| Parameter          | Type                                                                                                                                | Description                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `windowId`         | `string`                                                                                                                            | The id of the window for which to set the streaming mode.                                        |
+| `obsStreamingMode` | [`ObsStreamingMode`](../namespaces/enums/enumerations/ObsStreamingMode.mdx)                                                         | The desired OBS streaming mode                                                                   |
+| `callback?`        | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A function called after streaming mode was set indicating success, or error in case of an error. |
+
+## Returns
+
+`void`

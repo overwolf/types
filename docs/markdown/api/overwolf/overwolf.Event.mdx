@@ -1,0 +1,28 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / Event
+
+## Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+## Methods
+
+### ~~addListener()~~
+
+```ts
+addListener(callback: (event: T) => void): void;
+```
+
+Registers a listener to an event. When the event occurs, all registered
+listeners are called.
+
+#### Parameters
+
+| Parameter  | Type                     | Description                                          |
+| ---------- | ------------------------ | ---------------------------------------------------- |
+| `callback` | (`event`: `T`) =&gt; `void` | The callback function to call when the event occurs. |
+
+#### Returns
+
+`void`

@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / maximize
+
+```ts
+function maximize(
+  windowId: string,
+  callback?: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Maximizes the window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                               |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `windowId`  | `string`                                                                                                                                      | The id or name of the window to maximize. |
+| `callback?` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | Called after the window is maximized.     |
+
+## Returns
+
+`void`

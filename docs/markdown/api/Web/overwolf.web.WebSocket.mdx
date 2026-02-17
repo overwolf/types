@@ -1,0 +1,65 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / web / WebSocket
+
+## Properties
+
+| Property                                        | Type                                                                           | Description                                            |
+| ----------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| &lt;a id="property-onclosed"&gt;&lt; / a&gt; ~~`onClosed`~~   | `Event`\&lt;`ClosedEvent`\&gt;   | Fired when connection closed.                          |
+| &lt;a id="property-onerror"&gt;&lt; / a&gt; ~~`onError`~~     | `Event`\&lt;`ErrorEvent`\&gt;     | Fired on error.                                        |
+| &lt;a id="property-onmessage"&gt;&lt; / a&gt; ~~`onMessage`~~ | `Event`\&lt;`MessageEvent`\&gt; | Fired when the websocket receives an incoming message. |
+| &lt;a id="property-onopen"&gt;&lt; / a&gt; ~~`onOpen`~~       | `Event`\&lt;\&#123; \&#125;\&gt;                              | Fired on websocket connection Opened.                  |
+
+## Methods
+
+### ~~close()~~
+
+```ts
+close(): void;
+```
+
+Closes the websocket. It can be re-opened again.
+
+#### Returns
+
+`void`
+
+---
+
+### ~~connect()~~
+
+```ts
+connect(callback: CallbackFunction<Result>): void;
+```
+
+Listens for requests on the given port.
+
+#### Parameters
+
+| Parameter  | Type                                                                                                                                | Description |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | -           |
+
+#### Returns
+
+`void`
+
+---
+
+### ~~send()~~
+
+```ts
+send(message: string, callback: CallbackFunction<Result>): void;
+```
+
+Send message.
+
+#### Parameters
+
+| Parameter  | Type                                                                                                                                | Description |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `message`  | `string`                                                                                                                            | -           |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | -           |
+
+#### Returns
+
+`void`

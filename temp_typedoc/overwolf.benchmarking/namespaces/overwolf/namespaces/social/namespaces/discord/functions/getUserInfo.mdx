@@ -1,0 +1,18 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [social](../../../Overview.mdx) / [discord](../Overview.mdx) / getUserInfo
+
+```ts
+function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
+```
+
+If the user is currently logged into Discord, this will return user
+information. Otherwise, an error is returned.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                                                | Description                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetUserInfoResult`](../../../interfaces/GetUserInfoResult.mdx)\<[`User`](../interfaces/User.mdx)\>\> | Will contain user information or error if the request has failed. |
+
+## Returns
+
+`void`

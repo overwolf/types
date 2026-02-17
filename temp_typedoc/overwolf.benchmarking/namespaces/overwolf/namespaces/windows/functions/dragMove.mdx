@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / dragMove
+
+```ts
+function dragMove(
+  windowId: string,
+  callback?: CallbackFunction<DragMovedResult>,
+): void;
+```
+
+Start dragging a window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                            | Description                                            |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `windowId`  | `string`                                                                                                                                        | The id or name of the window to drag.                  |
+| `callback?` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`DragMovedResult`](../interfaces/DragMovedResult.mdx)\> | A callback which is called when the drag is completed. |
+
+## Returns
+
+`void`

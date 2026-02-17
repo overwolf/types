@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / extensions / sharedData / set
+
+```ts
+function set(
+  appId: string,
+  value: any,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Used by the owner app to set data for the consumer app, by appId.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description           |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| `appId`    | `string`                                                                                                                                        | The requested app id. |
+| `value`    | `any`                                                                                                                                           | -                     |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | -                     |
+
+## Returns
+
+`void`

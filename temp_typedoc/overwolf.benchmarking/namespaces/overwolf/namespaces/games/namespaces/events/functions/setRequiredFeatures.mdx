@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [games](../../../Overview.mdx) / [events](../Overview.mdx) / setRequiredFeatures
+
+```ts
+function setRequiredFeatures(
+  features: string[],
+  callback: CallbackFunction<SetRequiredFeaturesResult>,
+): void;
+```
+
+Sets the required features from the provider.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                      | Description                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `features` | `string`[]                                                                                                                                                                | A string array of features to utilize. |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`SetRequiredFeaturesResult`](../interfaces/SetRequiredFeaturesResult.mdx)\> | Called with success or failure state.  |
+
+## Returns
+
+`void`

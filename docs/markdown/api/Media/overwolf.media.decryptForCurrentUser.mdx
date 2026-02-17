@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.media / decryptForCurrentUser
+
+```ts
+function decryptForCurrentUser(
+  ciphertext: string,
+  callback: CallbackFunction<DecryptedDataResult>,
+): void;
+```
+
+Decrypt provided ciphertext for current system user
+
+## Parameters
+
+| Parameter    | Type                                                                                               | Description                             |
+| ------------ | -------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `ciphertext` | `string`                                                                                           | Text to decrypt                         |
+| `callback`   | `CallbackFunction`\&lt;`DecryptedDataResult`\&gt; | Will be called with decrypted plaintext |
+
+## Returns
+
+`void`

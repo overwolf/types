@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / mediaPlayerElement / seek
+
+```ts
+function seek(
+  id: number,
+  seconds: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Seeks the current video to the given number of seconds.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `id`       | `number`                                                                                                                                        | The id of the player.                                                    |
+| `seconds`  | `number`                                                                                                                                        | The numbers of seconds to seek to.                                       |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / setRestoreAnimationsEnabled
+
+```ts
+function setRestoreAnimationsEnabled(
+  windowId: string,
+  shouldEnableAnimations: boolean,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Sets whether the window should have minimize/restore animations while in
+game.
+
+## Parameters
+
+| Parameter                | Type                                                                                                                                          | Description |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `windowId`               | `string`                                                                                                                                      | -           |
+| `shouldEnableAnimations` | `boolean`                                                                                                                                     | -           |
+| `callback`               | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | -           |
+
+## Returns
+
+`void`

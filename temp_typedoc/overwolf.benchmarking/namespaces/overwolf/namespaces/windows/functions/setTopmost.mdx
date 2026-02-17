@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / setTopmost
+
+```ts
+function setTopmost(
+  windowId: string,
+  shouldBeTopmost: boolean,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Change the window's topmost status. Handle with care as topmost windows can
+negatively impact user experience.
+
+## Parameters
+
+| Parameter         | Type                                                                                                                                          | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `windowId`        | `string`                                                                                                                                      | -           |
+| `shouldBeTopmost` | `boolean`                                                                                                                                     | -           |
+| `callback`        | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | -           |
+
+## Returns
+
+`void`

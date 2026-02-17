@@ -1,0 +1,70 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / extensions
+
+## Namespaces
+
+| Namespace                                            | Description |
+| ---------------------------------------------------- | ----------- |
+| [~~current~~](namespaces/current/Overview.mdx)       | -           |
+| [~~io~~](namespaces/io/Overview.mdx)                 | -           |
+| [~~sharedData~~](namespaces/sharedData/Overview.mdx) | -           |
+
+## Enumerations
+
+| Enumeration                                                       | Description |
+| ----------------------------------------------------------------- | ----------- |
+| [~~ExtensionType~~](enumerations/ExtensionType.mdx)               | -           |
+| [~~ExtensionUpdateState~~](enumerations/ExtensionUpdateState.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                                   | Description                     |
+| --------------------------------------------------------------------------- | ------------------------------- |
+| [~~AppInstallationEvent~~](interfaces/AppInstallationEvent.mdx)             | -                               |
+| [~~AppLaunchTriggeredEvent~~](interfaces/AppLaunchTriggeredEvent.mdx)       | -                               |
+| [~~CheckForUpdateResult~~](interfaces/CheckForUpdateResult.mdx)             | -                               |
+| [~~ExtensionUpdatedEvent~~](interfaces/ExtensionUpdatedEvent.mdx)           | -                               |
+| [~~ExtensionWindowData~~](interfaces/ExtensionWindowData.mdx)               | -                               |
+| [~~GetExtensionsResult~~](interfaces/GetExtensionsResult.mdx)               | -                               |
+| [~~GetInfoResult~~](interfaces/GetInfoResult.mdx)                           | -                               |
+| [~~GetManifestResult~~](interfaces/GetManifestResult.mdx)                   | Representation of manifest.json |
+| [~~GetPhasedPercentResult~~](interfaces/GetPhasedPercentResult.mdx)         | -                               |
+| [~~GetRunningStateResult~~](interfaces/GetRunningStateResult.mdx)           | -                               |
+| [~~Manifest~~](interfaces/Manifest.mdx)                                     | Representation of manifest.json |
+| [~~Metadata~~](interfaces/Metadata.mdx)                                     | -                               |
+| [~~Point~~](interfaces/Point.mdx)                                           | -                               |
+| [~~ServiceProvidersDataResult~~](interfaces/ServiceProvidersDataResult.mdx) | -                               |
+| [~~Size~~](interfaces/Size.mdx)                                             | -                               |
+| [~~UncaughtExceptionEvent~~](interfaces/UncaughtExceptionEvent.mdx)         | -                               |
+| [~~UpdateExtensionResult~~](interfaces/UpdateExtensionResult.mdx)           | -                               |
+| [~~WebAppSettings~~](interfaces/WebAppSettings.mdx)                         | -                               |
+
+## Type Aliases
+
+| Type Alias                                                                  | Description                            |
+| --------------------------------------------------------------------------- | -------------------------------------- | ------------------- | --------------------------------------------------- |
+| [~~Permission~~](type-aliases/Permission.mdx)                               | -                                      |
+| [~~UncaughtExceptionCallback~~](type-aliases/UncaughtExceptionCallback.mdx) | The following types are related to the | onUncaughtException | event - which is a different than the usual events. |
+
+## Variables
+
+| Variable                                                       | Description                                                                                                                                                                                                                                                                               |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~onAppLaunchTriggered~~](variables/onAppLaunchTriggered.mdx) | Fires when the current app is launched while already running. This is useful in the case where the app has custom logic for clicking its dock button while it is already running. The event contaisn an 'origin' string which what triggered the app launch (dock, storeapi, odk, etc...) |
+| [~~onExtensionUpdated~~](variables/onExtensionUpdated.mdx)     | Fires when the current app's newest version has been installed. This most often means that an app relaunch is required in order for the update to apply.                                                                                                                                  |
+
+## Functions
+
+| Function                                                             | Description                                                                                             |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [~~checkForExtensionUpdate~~](functions/checkForExtensionUpdate.mdx) | Checks if an update is available for the calling extension.                                             |
+| [~~getExtensions~~](functions/getExtensions.mdx)                     | Return service providers manifest data.                                                                 |
+| [~~getInfo~~](functions/getInfo.mdx)                                 | Gets an extension's info string.                                                                        |
+| [~~getManifest~~](functions/getManifest.mdx)                         | Returns the requested extension's manifest object.                                                      |
+| [~~getRunningState~~](functions/getRunningState.mdx)                 | Gets the running state of an extension.                                                                 |
+| [~~getServiceConsumers~~](functions/getServiceConsumers.mdx)         | Return service providers manifest data.                                                                 |
+| [~~launch~~](functions/launch.mdx)                                   | Launch an extension by its unique id.                                                                   |
+| [~~registerInfo~~](functions/registerInfo.mdx)                       | Requests info updates for extension. Will also be called when the extension launches/closes.            |
+| [~~relaunch~~](functions/relaunch.mdx)                               | The app will relaunch itself.                                                                           |
+| [~~setInfo~~](functions/setInfo.mdx)                                 | Sets a string or object for other extensions to read.                                                   |
+| [~~unregisterInfo~~](functions/unregisterInfo.mdx)                   | Stop requesting info for extension.                                                                     |
+| [~~updateExtension~~](functions/updateExtension.mdx)                 | This functions allows apps to check and perform an update without having to wait for Overwolf to do so. |

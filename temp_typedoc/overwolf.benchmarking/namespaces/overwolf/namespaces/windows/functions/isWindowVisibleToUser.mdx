@@ -1,0 +1,19 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / isWindowVisibleToUser
+
+```ts
+function isWindowVisibleToUser(
+  callback: CallbackFunction<IsWindowVisibleToUserResult>,
+): void;
+```
+
+Is window fully visible to user (has overlap windows)
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                    | Description                                                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------ | ---------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`IsWindowVisibleToUserResult`](../interfaces/IsWindowVisibleToUserResult.mdx)\> | Called with the result of the request:{"status": "error" "reason": the reason} or{"status": "success" "visible": "hidden" | "full" | "partial"} |
+
+## Returns
+
+`void`

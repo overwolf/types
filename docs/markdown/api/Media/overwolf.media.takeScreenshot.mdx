@@ -1,0 +1,43 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / media / takeScreenshot
+
+## Call Signature
+
+```ts
+function takeScreenshot(callback: CallbackFunction<FileResult>): void;
+```
+
+Takes a screenshot and calls the callback with the success status and the
+screenshot URL. The screenshot is saved to the screenshots folder.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                  | Description                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `callback` | `CallbackFunction`\&lt;`FileResult`\&gt; | A function called after the screenshot was taken. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function takeScreenshot(
+  targetFolder: string,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Takes a screenshot and calls the callback with the success status and the
+screenshot URL. The screenshot is saved to the screenshots folder.
+
+### Parameters
+
+| Parameter      | Type                                                                                                                                  | Description                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `targetFolder` | `string`                                                                                                                              | Target screen shot folder path.                   |
+| `callback`     | `CallbackFunction`\&lt;`FileResult`\&gt; | A function called after the screenshot was taken. |
+
+### Returns
+
+`void`

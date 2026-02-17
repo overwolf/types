@@ -1,0 +1,45 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / media / replays / getState
+
+## Call Signature
+
+```ts
+function getState(callback: CallbackFunction<GetStateResult>): void;
+```
+
+Returns whether replay capturing is turned on or off.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                                | Description                                                              |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `callback` | `CallbackFunction`\&lt;`GetStateResult`\&gt; | A callback function which will be called with the status of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function getState(
+  replayType: Video,
+  callback: CallbackFunction<GetStateResult>,
+): void;
+```
+
+Returns whether replay capturing is turned on or off.
+
+### Parameters
+
+| Parameter    | Type                                                                                                                                                | Description                                                              |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `replayType` | `Video`                                                                 | The type of replay to get state for.                                     |
+| `callback`   | `CallbackFunction`\&lt;`GetStateResult`\&gt; | A callback function which will be called with the status of the request. |
+
+### Returns
+
+`void`
+
+### Deprecated
+
+Since version 0.155.

@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / getWindow
+
+```ts
+function getWindow(
+  windowName: string,
+  callback: CallbackFunction<WindowResult>,
+): void;
+```
+
+Returns WindowResult object for a specific open window.
+
+## Parameters
+
+| Parameter    | Type                                                                                                                                      | Description                                                                          |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `windowName` | `string`                                                                                                                                  | The name of the window that was declared in the data.windows section in the manifest |
+| `callback`   | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowResult`](../interfaces/WindowResult.mdx)\> | Callback will be invoked with the WindowResult object.                               |
+
+## Returns
+
+`void`

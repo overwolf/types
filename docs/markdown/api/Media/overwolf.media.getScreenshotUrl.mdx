@@ -1,0 +1,24 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / media / getScreenshotUrl
+
+```ts
+function getScreenshotUrl(
+  screenshotParams: MemoryScreenshotParams,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Takes a memory screenshot and calls the callback with the success status
+and the screenshot URL. The screenshot will only be placed in the memory
+and will not be saved to a file (better performance). Can only be used
+while in a game.
+
+## Parameters
+
+| Parameter          | Type                                                                                                                                  | Description                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `screenshotParams` | `MemoryScreenshotParams`                                                                  | A JSON containing the parameters of the screenshot. |
+| `callback`         | `CallbackFunction`\&lt;`FileResult`\&gt; | A function called after the screenshot was taken.   |
+
+## Returns
+
+`void`

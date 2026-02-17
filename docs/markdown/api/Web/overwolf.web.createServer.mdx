@@ -1,0 +1,22 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / web / createServer
+
+```ts
+function createServer(
+  port: number,
+  callback: CallbackFunction<CreateServerResult>,
+): void;
+```
+
+Creates a web server. This call returns an object with two fields: A status
+string and a server object.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                  | Description      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `port`     | `number`                                                                                                                                              | The port to use. |
+| `callback` | `CallbackFunction`\&lt;`CreateServerResult`\&gt; | -                |
+
+## Returns
+
+`void`

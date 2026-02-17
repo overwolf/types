@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [extensions](../../../Overview.mdx) / [sharedData](../Overview.mdx) / get
+
+```ts
+function get(
+  param: SharedDataParams,
+  callback: CallbackFunction<GetResult>,
+): void;
+```
+
+Used by the consumer app to get data set by the owner app.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                      | Description |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `param`    | [`SharedDataParams`](../interfaces/SharedDataParams.mdx)                                                                                  | -           |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetResult`](../interfaces/GetResult.mdx)\> | -           |
+
+## Returns
+
+`void`

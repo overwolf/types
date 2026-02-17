@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [social](../../../Overview.mdx) / [gfycat](../Overview.mdx) / share
+
+```ts
+function share(
+  gfycatShareParams: ShareParameters,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Possible errors that can occur:- Disconnected (user isn't signed in)-
+MissingFile (trying to share a missing file)- UnsupportedFile (trying to
+share an unsupported format)- ExceedsMaxSize (the file is too large: > 8 MB
+for images, > 100 MBfor videos)
+
+## Parameters
+
+| Parameter           | Type                                                                                                                                            | Description                                     |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `gfycatShareParams` | [`ShareParameters`](../interfaces/ShareParameters.mdx)                                                                                          | The share parameters. See GfycatShareParameters |
+| `callback`          | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | Will contain the status of the request.         |
+
+## Returns
+
+`void`

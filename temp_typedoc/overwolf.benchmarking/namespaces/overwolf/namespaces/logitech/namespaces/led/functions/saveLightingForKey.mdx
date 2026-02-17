@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [logitech](../../../Overview.mdx) / [led](../Overview.mdx) / saveLightingForKey
+
+```ts
+function saveLightingForKey(
+  keyName: KeyboardNames,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Saves the current lighting of a specific key.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `keyName`  | [`KeyboardNames`](../namespaces/enums/enumerations/KeyboardNames.mdx)                                                                           | The key name. For a list of key names see  |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback with the result of the request. |
+
+## Returns
+
+`void`

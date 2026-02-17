@@ -1,0 +1,11 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / campaigns / crossapp / CrossAppCampaignConversion
+
+## Properties
+
+| Property                                                   | Modifier   | Type     | Description                                                                                                  |
+| ---------------------------------------------------------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------ | ------------------ | --- |
+| &lt;a id="property-data"&gt;&lt; / a&gt; ~~`data`~~                      | `public`   | `any`    | Conversion data for the specified action.                                                                    |
+| &lt;a id="property-id"&gt;&lt; / a&gt; ~~`id`~~                          | `public`   | `string` | The ID of the cross-app campaign the conversion targets.                                                     |
+| &lt;a id="property-origin_app_uid"&gt;&lt; / a&gt; ~~`origin_app_uid?`~~ | `readonly` | `string` | The UID of the app that performed the conversion (the promoted app). Set by the Overwolf client when calling | consumeConversions | .   |
+| &lt;a id="property-owner_app_uid"&gt;&lt; / a&gt; ~~`owner_app_uid`~~    | `public`   | `string` | The UID of the app that owns the targeted cross-app campaign.                                                |
+| &lt;a id="property-timestamp"&gt;&lt; / a&gt; ~~`timestamp?`~~           | `readonly` | `number` | When the conversion took place. Set by the Overwolf client when calling                                      | consumeConversions | .   |

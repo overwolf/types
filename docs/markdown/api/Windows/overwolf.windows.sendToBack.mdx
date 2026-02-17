@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / sendToBack
+
+```ts
+function sendToBack(
+  windowId: string,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Sends the window to the back.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                          | Description                            |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId` | `string`                                                                                                                                      | The id or name of the window.          |
+| `callback` | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | Called with the result of the request. |
+
+## Returns
+
+`void`

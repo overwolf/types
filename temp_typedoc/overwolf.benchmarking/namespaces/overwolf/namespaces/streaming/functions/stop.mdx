@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / stop
+
+```ts
+function stop(
+  streamId: number,
+  callback?: (result: StreamResult | StopStreamingResult) => void,
+): void;
+```
+
+Stops the given stream.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                        | Description                                                              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `streamId`  | `number`                                                                                                                                    | The id of the stream to stop.                                            |
+| `callback?` | (`result`: \| [`StreamResult`](../interfaces/StreamResult.mdx) \| [`StopStreamingResult`](../interfaces/StopStreamingResult.mdx)) => `void` | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

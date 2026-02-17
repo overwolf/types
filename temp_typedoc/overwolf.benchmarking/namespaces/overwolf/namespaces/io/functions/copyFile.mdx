@@ -1,0 +1,28 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [io](../Overview.mdx) / copyFile
+
+```ts
+function copyFile(
+  src: string,
+  dst: string,
+  overrideFile: boolean,
+  reserved: boolean,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Copy a file from the local extension directory to a destination on the
+local machine.
+
+## Parameters
+
+| Parameter      | Type                                                                                                                                | Description                                                                                                                       |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `src`          | `string`                                                                                                                            | a relative (to the root of your extension's folder) file path or a full overwolf-extension:// URI to the source file to be copied |
+| `dst`          | `string`                                                                                                                            | The destination path (including filename) to copy to.                                                                             |
+| `overrideFile` | `boolean`                                                                                                                           | true if you want an existing file to be overwritten, false otherwise.                                                             |
+| `reserved`     | `boolean`                                                                                                                           | for future use.                                                                                                                   |
+| `callback`     | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | result callback.                                                                                                                  |
+
+## Returns
+
+`void`

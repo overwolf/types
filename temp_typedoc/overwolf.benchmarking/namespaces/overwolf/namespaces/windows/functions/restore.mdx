@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / restore
+
+```ts
+function restore(
+  windowId: string,
+  callback?: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Restores a minimized window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                              |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| `windowId`  | `string`                                                                                                                                      | The id or name of the window to restore. |
+| `callback?` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | Called after the window is restored.     |
+
+## Returns
+
+`void`

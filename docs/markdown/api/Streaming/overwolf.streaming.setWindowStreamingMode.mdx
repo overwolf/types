@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / streaming / setWindowStreamingMode
+
+```ts
+function setWindowStreamingMode(
+  windowId: string,
+  streamingMode: StreamingMode,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+Set the window's stream mode.
+
+## Parameters
+
+| Parameter       | Type                                                                                                                                | Description                                                                                      |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `windowId`      | `string`                                                                                                                            | The id of the window for which to set the streaming mode.                                        |
+| `streamingMode` | `StreamingMode`                                                               | The desired streaming mode.                                                                      |
+| `callback?`     | `CallbackFunction`\&lt;`Result`\&gt; | A function called after streaming mode was set indicating success, or error in case of an error. |
+
+## Returns
+
+`void`

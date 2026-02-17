@@ -1,0 +1,25 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / sendMessage
+
+```ts
+function sendMessage(
+  windowId: string,
+  messageId: string,
+  messageContent: any,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Sends a message to an open window.
+
+## Parameters
+
+| Parameter        | Type                                                                                                                                          | Description                                          |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `windowId`       | `string`                                                                                                                                      | The id or name of the window to send the message to. |
+| `messageId`      | `string`                                                                                                                                      | A message id.                                        |
+| `messageContent` | `any`                                                                                                                                         | The content of the message.                          |
+| `callback`       | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | Called with the status of the request                |
+
+## Returns
+
+`void`

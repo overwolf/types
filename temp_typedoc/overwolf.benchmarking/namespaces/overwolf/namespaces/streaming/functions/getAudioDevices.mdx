@@ -1,0 +1,19 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / getAudioDevices
+
+```ts
+function getAudioDevices(
+  callback: CallbackFunction<GetAudioDevicesResult>,
+): void;
+```
+
+Returns an array of all audio devices that can be used.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                        | Description                                                                     |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetAudioDevicesResult`](../interfaces/GetAudioDevicesResult.mdx)\> | A callback function to call with the array of audio devices and their metadata. |
+
+## Returns
+
+`void`

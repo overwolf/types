@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / dragMove
+
+```ts
+function dragMove(
+  windowId: string,
+  callback?: CallbackFunction<DragMovedResult>,
+): void;
+```
+
+Start dragging a window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                            | Description                                            |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `windowId`  | `string`                                                                                                                                        | The id or name of the window to drag.                  |
+| `callback?` | `CallbackFunction`\&lt;`DragMovedResult`\&gt; | A callback which is called when the drag is completed. |
+
+## Returns
+
+`void`

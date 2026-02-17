@@ -1,0 +1,53 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / media / takeWindowsScreenshotByHandle
+
+## Call Signature
+
+```ts
+function takeWindowsScreenshotByHandle(
+  windowHandle: number,
+  postMediaEvent: boolean,
+  targetFolder: string,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Takes a window screenshot and calls the callback with the success status
+and the screenshot URL. The screenshot is saved to the screenshots folder.
+
+### Parameters
+
+| Parameter        | Type                                                                                                                                  | Description                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `windowHandle`   | `number`                                                                                                                              | The window Name                                   |
+| `postMediaEvent` | `boolean`                                                                                                                             | set true to post media event (onMediaEvent)       |
+| `targetFolder`   | `string`                                                                                                                              | set target folder path to screen shot             |
+| `callback`       | `CallbackFunction`\&lt;`FileResult`\&gt; | A function called after the screenshot was taken. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function takeWindowsScreenshotByHandle(
+  windowHandle: number,
+  postMediaEvent: boolean,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Takes a window screenshot and calls the callback with the success status
+and the screenshot URL. The screenshot is saved to the screenshots folder.
+
+### Parameters
+
+| Parameter        | Type                                                                                                                                  | Description                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `windowHandle`   | `number`                                                                                                                              | The window Name                                   |
+| `postMediaEvent` | `boolean`                                                                                                                             | set true to post media event (onMediaEvent)       |
+| `callback`       | `CallbackFunction`\&lt;`FileResult`\&gt; | A function called after the screenshot was taken. |
+
+### Returns
+
+`void`

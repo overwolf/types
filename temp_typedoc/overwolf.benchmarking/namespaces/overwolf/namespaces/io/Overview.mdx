@@ -1,0 +1,39 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / io
+
+## Namespaces
+
+| Namespace                                  | Description |
+| ------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx) | -           |
+| [~~paths~~](namespaces/paths/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                           | Description |
+| ------------------------------------------------------------------- | ----------- |
+| [~~DirResult~~](interfaces/DirResult.mdx)                           | -           |
+| [~~ExistsResult~~](interfaces/ExistsResult.mdx)                     | -           |
+| [~~FileExistsResult~~](interfaces/FileExistsResult.mdx)             | -           |
+| [~~FileInDir~~](interfaces/FileInDir.mdx)                           | -           |
+| [~~FileInfo~~](interfaces/FileInfo.mdx)                             | -           |
+| [~~ListenFileOptions~~](interfaces/ListenFileOptions.mdx)           | -           |
+| [~~ListenOnFileResult~~](interfaces/ListenOnFileResult.mdx)         | -           |
+| [~~ReadBinaryFileResult~~](interfaces/ReadBinaryFileResult.mdx)     | -           |
+| [~~ReadFileContentsResult~~](interfaces/ReadFileContentsResult.mdx) | -           |
+| [~~ReadFileOptions~~](interfaces/ReadFileOptions.mdx)               | -           |
+| [~~ReadTextFileResult~~](interfaces/ReadTextFileResult.mdx)         | -           |
+| [~~WatchedFileChanged~~](interfaces/WatchedFileChanged.mdx)         | -           |
+
+## Functions
+
+| Function                                                 | Description                                                                                                                                                                                |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [~~copyFile~~](functions/copyFile.mdx)                   | Copy a file from the local extension directory to a destination on the local machine.                                                                                                      |
+| [~~dir~~](functions/dir.mdx)                             | Lists all files and folder in the target path.                                                                                                                                             |
+| [~~exist~~](functions/exist.mdx)                         | Is path exist.                                                                                                                                                                             |
+| [~~fileExists~~](functions/fileExists.mdx)               | Checks for the existence of the file in the given path.                                                                                                                                    |
+| [~~listenOnFile~~](functions/listenOnFile.mdx)           | Start listening on file. Stream a file (text files only), line-by-line, from the local filesystem.                                                                                         |
+| [~~readBinaryFile~~](functions/readBinaryFile.mdx)       | Reads a file's contents and returns an array of byte values. This function is extremely slow! Use it only for small files.                                                                 |
+| [~~readFileContents~~](functions/readFileContents.mdx)   | Read the content to the target file.                                                                                                                                                       |
+| [~~readTextFile~~](functions/readTextFile.mdx)           | Reads a file's contents and returns it as text.                                                                                                                                            |
+| [~~writeFileContents~~](functions/writeFileContents.mdx) | Writes the content to the target file. If the file doesn't exist, it will be created, along with any needed directories along the path. Otherwise, the file's content will be overwritten. |

@@ -1,0 +1,81 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / streaming
+
+## Namespaces
+
+| Namespace                                  | Description |
+| ------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                                                                 | Description                                                    |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [~~ActiveRecordingApps~~](interfaces/ActiveRecordingApps.mdx)                                             | -                                                              |
+| [~~AudioDeviceData~~](interfaces/AudioDeviceData.mdx)                                                     | -                                                              |
+| [~~EncoderData~~](interfaces/EncoderData.mdx)                                                             | -                                                              |
+| [~~GameAudioDevice~~](interfaces/GameAudioDevice.mdx)                                                     | Defines game volume and enablement settings.                   |
+| [~~GameCaptureOptions~~](interfaces/GameCaptureOptions.mdx)                                               | -                                                              |
+| [~~GameWindowCapture~~](interfaces/GameWindowCapture.mdx)                                                 | Game window capture options.                                   |
+| [~~GetActiveRecordingAppsResult~~](interfaces/GetActiveRecordingAppsResult.mdx)                           | -                                                              |
+| [~~GetAudioDevicesResult~~](interfaces/GetAudioDevicesResult.mdx)                                         | -                                                              |
+| [~~GetStreamEncodersResult~~](interfaces/GetStreamEncodersResult.mdx)                                     | -                                                              |
+| [~~GetWatermarkSettingsResult~~](interfaces/GetWatermarkSettingsResult.mdx)                               | -                                                              |
+| [~~GetWindowStreamingModeResult~~](interfaces/GetWindowStreamingModeResult.mdx)                           | Stream settings container.                                     |
+| [~~SplitResult~~](interfaces/SplitResult.mdx)                                                             | -                                                              |
+| [~~StartCaptureResult~~](interfaces/StartCaptureResult.mdx)                                               | -                                                              |
+| [~~StopStreamingEvent~~](interfaces/StopStreamingEvent.mdx)                                               | -                                                              |
+| [~~StopStreamingResult~~](interfaces/StopStreamingResult.mdx)                                             | -                                                              |
+| [~~StreamAudioOptions~~](interfaces/StreamAudioOptions.mdx)                                               | Stream audio options.                                          |
+| [~~StreamAuthParams~~](interfaces/StreamAuthParams.mdx)                                                   | Stream authorization data.                                     |
+| [~~StreamDesktopCaptureOptions~~](interfaces/StreamDesktopCaptureOptions.mdx)                             | Stream desktop capture options.                                |
+| [~~StreamDeviceVolume~~](interfaces/StreamDeviceVolume.mdx)                                               | Defines a device volume and enablement settings.               |
+| [~~StreamEvent~~](interfaces/StreamEvent.mdx)                                                             | -                                                              |
+| [~~StreamInfo~~](interfaces/StreamInfo.mdx)                                                               | -                                                              |
+| [~~StreamingCapabilities~~](interfaces/StreamingCapabilities.mdx)                                         | -                                                              |
+| [~~StreamIngestServer~~](interfaces/StreamIngestServer.mdx)                                               | Information on the server that is being streamed to.           |
+| [~~StreamingSourceImageChangedEvent~~](interfaces/StreamingSourceImageChangedEvent.mdx)                   | -                                                              |
+| [~~StreamingVideoEncoderAMD_AMFSettings~~](interfaces/StreamingVideoEncoderAMD_AMFSettings.mdx)           | Defines the configuration for the AMD AMF encoder.             |
+| [~~StreamingVideoEncoderIntelSettings~~](interfaces/StreamingVideoEncoderIntelSettings.mdx)               | Defines the configuration for an Intel encoder.                |
+| [~~StreamingVideoEncoderNVIDIA_NVENCSettings~~](interfaces/StreamingVideoEncoderNVIDIA_NVENCSettings.mdx) | Defines the configuration for the NVIDIA NVENC encoder.        |
+| [~~StreamingVideoEncoderSettings~~](interfaces/StreamingVideoEncoderSettings.mdx)                         | Defines the video encoder settings.                            |
+| [~~StreamingVideoEncoderx264Settings~~](interfaces/StreamingVideoEncoderx264Settings.mdx)                 | Defines the configuration for an x264 encoder.                 |
+| [~~StreamParams~~](interfaces/StreamParams.mdx)                                                           | Represents the settings required to start a stream.            |
+| [~~StreamPeripheralsCaptureOptions~~](interfaces/StreamPeripheralsCaptureOptions.mdx)                     | Stream capture options for peripheral devices.                 |
+| [~~StreamQuotaParams~~](interfaces/StreamQuotaParams.mdx)                                                 | Basic quota information                                        |
+| [~~StreamResult~~](interfaces/StreamResult.mdx)                                                           | -                                                              |
+| [~~StreamSettings~~](interfaces/StreamSettings.mdx)                                                       | Stream settings container.                                     |
+| [~~StreamVideoOptions~~](interfaces/StreamVideoOptions.mdx)                                               | Stream video options.                                          |
+| [~~SupportedEncodersUpdatedEvent~~](interfaces/SupportedEncodersUpdatedEvent.mdx)                         | -                                                              |
+| [~~VideoFileSplitedEvent~~](interfaces/VideoFileSplitedEvent.mdx)                                         | -                                                              |
+| [~~WatermarkSettings~~](interfaces/WatermarkSettings.mdx)                                                 | A settings container for a stream Overwolf watermark settings. |
+
+## Variables
+
+| Variable                                                                         | Description                                                                 |
+| -------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [~~onStartStreaming~~](variables/onStartStreaming.mdx)                           | Fired when the stream has stopped.                                          |
+| [~~onStopStreaming~~](variables/onStopStreaming.mdx)                             | Fired when the stream has stopped.                                          |
+| [~~onStreamingError~~](variables/onStreamingError.mdx)                           | Fired upon an error with the stream.                                        |
+| [~~onStreamingSourceImageChanged~~](variables/onStreamingSourceImageChanged.mdx) | Fired when the stream started streaming a new image source (desktop, game). |
+| [~~onStreamingWarning~~](variables/onStreamingWarning.mdx)                       | Fired upon a warning with the stream.                                       |
+| [~~onVideoFileSplited~~](variables/onVideoFileSplited.mdx)                       | Fired upon video file splited.                                              |
+
+## Functions
+
+| Function                                                                         | Description                                                                         |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [~~changeVolume~~](functions/changeVolume.mdx)                                   | Changes the volume of the stream.                                                   |
+| [~~getActiveRecordingApps~~](functions/getActiveRecordingApps.mdx)               | -                                                                                   |
+| [~~getAudioDevices~~](functions/getAudioDevices.mdx)                             | Returns an array of all audio devices that can be used.                             |
+| [~~getCapabilities~~](functions/getCapabilities.mdx)                             | -                                                                                   |
+| [~~getStreamEncoders~~](functions/getStreamEncoders.mdx)                         | Returns an array of supported streaming encoders, with extra metadata for each one. |
+| [~~getWatermarkSettings~~](functions/getWatermarkSettings.mdx)                   | Gets the watermark settings.                                                        |
+| [~~getWindowStreamingMode~~](functions/getWindowStreamingMode.mdx)               | Call the given callback function with the window's streaming mode as a parameter.   |
+| [~~setBRBImage~~](functions/setBRBImage.mdx)                                     | Set a stream's Be Right Back image.                                                 |
+| [~~setWatermarkSettings~~](functions/setWatermarkSettings.mdx)                   | Sets the watermark settings.                                                        |
+| [~~setWindowObsStreamingMode~~](functions/setWindowObsStreamingMode.mdx)         | Sets the streaming mode for the window when using OBS.                              |
+| [~~setWindowStreamingMode~~](functions/setWindowStreamingMode.mdx)               | Set the window's stream mode.                                                       |
+| [~~split~~](functions/split.mdx)                                                 | Request to split video now.                                                         |
+| [~~start~~](functions/start.mdx)                                                 | Start a new stream.                                                                 |
+| [~~stop~~](functions/stop.mdx)                                                   | Stops the given stream.                                                             |
+| [~~updateStreamingDesktopOptions~~](functions/updateStreamingDesktopOptions.mdx) | Update stream desktop capture options.                                              |

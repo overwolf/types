@@ -1,0 +1,20 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / getStreamEncoders
+
+```ts
+function getStreamEncoders(
+  callback: CallbackFunction<GetStreamEncodersResult>,
+): void;
+```
+
+Returns an array of supported streaming encoders, with extra metadata for
+each one.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                            | Description                                                                |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetStreamEncodersResult`](../interfaces/GetStreamEncodersResult.mdx)\> | A callback function to call with the array of encoders and their metadata. |
+
+## Returns
+
+`void`

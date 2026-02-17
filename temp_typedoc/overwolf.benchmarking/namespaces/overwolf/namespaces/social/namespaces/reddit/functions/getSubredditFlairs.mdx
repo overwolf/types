@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [social](../../../Overview.mdx) / [reddit](../Overview.mdx) / getSubredditFlairs
+
+```ts
+function getSubredditFlairs(
+  subredditName: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Returns a list of flairs supported by the given subreddit
+
+## Parameters
+
+| Parameter       | Type                                                                                                                                            | Description                                                    |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `subredditName` | `string`                                                                                                                                        | The given subreddit                                            |
+| `callback`      | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | Will contain a list of flairs supported by the given subreddit |
+
+## Returns
+
+`void`

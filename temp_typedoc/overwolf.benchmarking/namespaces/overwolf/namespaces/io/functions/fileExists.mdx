@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [io](../Overview.mdx) / fileExists
+
+```ts
+function fileExists(
+  filePath: string,
+  callback: CallbackFunction<FileExistsResult>,
+): void;
+```
+
+Checks for the existence of the file in the given path.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                              | Description              |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| `filePath` | `string`                                                                                                                                          | The path to check for.   |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`FileExistsResult`](../interfaces/FileExistsResult.mdx)\> | Returns with the result. |
+
+## Returns
+
+`void`

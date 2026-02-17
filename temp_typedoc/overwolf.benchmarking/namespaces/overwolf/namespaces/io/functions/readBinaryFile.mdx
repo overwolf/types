@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [io](../Overview.mdx) / readBinaryFile
+
+```ts
+function readBinaryFile(
+  path: string,
+  options: ReadFileOptions,
+  callback: CallbackFunction<ReadBinaryFileResult>,
+): void;
+```
+
+Reads a file's contents and returns an array of byte values.
+This function is extremely slow! Use it only for small files.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                                     |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `path`     | `string`                                                                                                                                                  | The target path.                                |
+| `options`  | [`ReadFileOptions`](../interfaces/ReadFileOptions.mdx)                                                                                                    | Describes the different options to read a file. |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`ReadBinaryFileResult`](../interfaces/ReadBinaryFileResult.mdx)\> | result callback.                                |
+
+## Returns
+
+`void`

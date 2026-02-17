@@ -1,0 +1,22 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / games / getGameInfo
+
+```ts
+function getGameInfo(
+  gameClassId: number,
+  callback: CallbackFunction<GetGameInfoResult>,
+): void;
+```
+
+Returns information about a game with a given game id.Will only return
+information if the game is detected on the local machine (i.e. installed)
+
+## Parameters
+
+| Parameter     | Type                                                                                                                                                | Description                          |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `gameClassId` | `number`                                                                                                                                            | The class id of the game.            |
+| `callback`    | `CallbackFunction`\&lt;`GetGameInfoResult`\&gt; | Called with the info about the game. |
+
+## Returns
+
+`void`

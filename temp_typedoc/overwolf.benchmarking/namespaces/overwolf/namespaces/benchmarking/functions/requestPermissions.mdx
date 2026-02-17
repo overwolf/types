@@ -1,0 +1,19 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [benchmarking](../Overview.mdx) / requestPermissions
+
+```ts
+function requestPermissions(callback: CallbackFunction<Result>): void;
+```
+
+In case Overwolf requires administrative permissions, and after prompting
+the user of the app to request more permissions, call this function and
+then request your desired benchmarking information.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

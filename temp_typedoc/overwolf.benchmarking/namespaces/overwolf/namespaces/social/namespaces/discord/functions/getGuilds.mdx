@@ -1,0 +1,18 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [social](../../../Overview.mdx) / [discord](../Overview.mdx) / getGuilds
+
+```ts
+function getGuilds(callback: CallbackFunction<GetGuildsResult>): void;
+```
+
+If the user is currently logged into Discord, this will return the guilds
+that the user is registered to. Otherwise, an error is returned
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                  | Description                                                                 |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetGuildsResult`](../interfaces/GetGuildsResult.mdx)\> | Will contain guild (server) information or error if the request has failed. |
+
+## Returns
+
+`void`

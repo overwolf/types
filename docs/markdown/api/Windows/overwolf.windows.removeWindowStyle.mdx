@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / removeWindowStyle
+
+```ts
+function removeWindowStyle(
+  windowId: string,
+  style: WindowStyle,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Remove Window In Game Styling
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                          | Description                                          |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `windowId` | `string`                                                                                                                                      | The id or name of the window to send the message to. |
+| `style`    | `WindowStyle`                                                                             | The style to add : overwolf.windows.enum.WindowStyle |
+| `callback` | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | Called with the status of the request                |
+
+## Returns
+
+`void`

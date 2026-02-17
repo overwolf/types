@@ -1,0 +1,30 @@
+[Overwolf APIs](../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../Overview.mdx) / [overwolf](../../../../Overview.mdx) / [social](../../Overview.mdx) / twitter
+
+## Deprecated
+
+APIs moved to X
+
+## Namespaces
+
+| Namespace                                  | Description |
+| ------------------------------------------ | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                     | Description |
+| ------------------------------------------------------------- | ----------- |
+| [~~ShareParameters~~](interfaces/ShareParameters.mdx)         | -           |
+| [~~SocialShareProgress~~](interfaces/SocialShareProgress.mdx) | -           |
+| [~~SocialShareResult~~](interfaces/SocialShareResult.mdx)     | -           |
+| [~~User~~](interfaces/User.mdx)                               | -           |
+
+## Functions
+
+| Function                                               | Description                                                                                                                                                                                                                          |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [~~getUserInfo~~](functions/getUserInfo.mdx)           | If the user is currently logged into Twitter, this will return userinformation:{ avatar: "http://abs.twimg.com/sticky/...", id: "111111111112222222" name: "full name" screenName: "screenname123"} Otherwise, an error is returned. |
+| [~~performLogout~~](functions/performLogout.mdx)       | Performs a "strong" sign out of Twitter, so that even if the userperforms a login via the Overwolf Settings / Accounts page, he will be considered signed out.                                                                       |
+| [~~performUserLogin~~](functions/performUserLogin.mdx) | Opens the login dialog. There is no callback for this method and theonly way to know if the user signed in is via `onLoginStateChanged`.                                                                                             |
+| [~~share~~](functions/share.mdx)                       | If the user is currently logged into Twitter, this will perform the media share (image or video).                                                                                                                                    |
+| [~~shareEx~~](functions/shareEx.mdx)                   | -                                                                                                                                                                                                                                    |

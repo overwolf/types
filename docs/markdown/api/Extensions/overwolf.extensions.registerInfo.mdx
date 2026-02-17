@@ -1,0 +1,24 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / extensions / registerInfo
+
+```ts
+function registerInfo(
+  id: string,
+  eventsCallback: (info: object) => void,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Requests info updates for extension. Will also be called when the extension
+launches / closes.
+
+## Parameters
+
+| Parameter        | Type                                                                                                                                | Description                                 |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `id`             | `string`                                                                                                                            | The id of the extension to get updates for. |
+| `eventsCallback` | (`info`: `object`) =&gt; `void`                                                                                                        | A callback to receive info updates.         |
+| `callback`       | `CallbackFunction`\&lt;`Result`\&gt; | The status of the request.                  |
+
+## Returns
+
+`void`

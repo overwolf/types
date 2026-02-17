@@ -1,0 +1,48 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / isAccelreatedOSR
+
+## Call Signature
+
+```ts
+function isAccelreatedOSR(
+  windowId: string,
+  callback: CallbackFunction<IsAccelreatedOSRResult>,
+): void;
+```
+
+For OSR window only (for other window the callback return |error| status.
+{
+"status": string (|error, success|), "reason": string (error reason),
+"accelerated": bool, "optimized" : bool (for accelerated windows only
+and only valid in Game)
+}
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                                          | Description                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId` | `string`                                                                                                                                                      | The id or name of the window.          |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`IsAccelreatedOSRResult`](../interfaces/IsAccelreatedOSRResult.mdx)\> | Called with the result of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function isAccelreatedOSR(
+  callback: CallbackFunction<IsAccelreatedOSRResult>,
+): void;
+```
+
+Is current window accelerated
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                                          | Description                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`IsAccelreatedOSRResult`](../interfaces/IsAccelreatedOSRResult.mdx)\> | Called with the result of the request. |
+
+### Returns
+
+`void`

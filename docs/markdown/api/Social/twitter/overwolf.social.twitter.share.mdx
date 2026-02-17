@@ -1,0 +1,22 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / social / twitter / share
+
+```ts
+function share(
+  twitterShareParams: ShareParameters,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+If the user is currently logged into Twitter, this will perform the media
+share (image or video).
+
+## Parameters
+
+| Parameter            | Type                                                                                                                                            | Description                             |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `twitterShareParams` | `ShareParameters`                                                                                          | The share parameters.                   |
+| `callback`           | `CallbackFunction`\&lt;`Result`\&gt; | Will contain the status of the request. |
+
+## Returns
+
+`void`

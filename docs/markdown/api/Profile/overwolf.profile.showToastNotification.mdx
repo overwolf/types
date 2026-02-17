@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.profile / showToastNotification
+
+```ts
+function showToastNotification(
+  args: ToastNotificationParams,
+  callback: CallbackFunction<ShowToastNotificationResult>,
+): void;
+```
+
+Show Windows toast notification.
+
+## Parameters
+
+| Parameter  | Type                                                                                                       | Description                                           |
+| ---------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `args`     | `ToastNotificationParams`                                                                                  | Toast notification params                             |
+| `callback` | `CallbackFunction`\&lt;`ShowToastNotificationResult`\&gt; | A function called with the current user, or an error. |
+
+## Returns
+
+`void`

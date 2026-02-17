@@ -1,0 +1,28 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / social / reddit / share
+
+```ts
+function share(
+  redditShareParams: ShareParameters,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+If the user is currently logged into Reddit, this will perform the video
+share.
+
+Possible errors that can occur:
+
+- Disconnected (user isn't signed in)
+- MissingFile (trying to share a missing file)
+- UnsupportedFile (trying to share an unsupported format)
+
+## Parameters
+
+| Parameter           | Type                                                                                                                                            | Description                             |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `redditShareParams` | `ShareParameters`                                                                                          | The share parameters.                   |
+| `callback`          | `CallbackFunction`\&lt;`Result`\&gt; | Will contain the status of the request. |
+
+## Returns
+
+`void`

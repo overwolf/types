@@ -1,0 +1,20 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / getWindowsStates
+
+```ts
+function getWindowsStates(
+  callback: CallbackFunction<GetWindowsStatesResult>,
+): void;
+```
+
+Returns the state of all windows owned by the app
+(normal/minimized/maximized/closed).
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                          | Description                                                |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetWindowsStatesResult`](../interfaces/GetWindowsStatesResult.mdx)\> | Called with an array containing the states of the windows. |
+
+## Returns
+
+`void`

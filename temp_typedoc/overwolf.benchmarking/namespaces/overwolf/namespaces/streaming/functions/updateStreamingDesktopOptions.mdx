@@ -1,0 +1,29 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / updateStreamingDesktopOptions
+
+```ts
+function updateStreamingDesktopOptions(
+  streamId: number,
+  newOptions: StreamDesktopCaptureOptions,
+  mouseCursorStreamingMethod: StreamMouseCursor,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+Update stream desktop capture options.
+
+## Parameters
+
+| Parameter                    | Type                                                                                                                                | Description                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `streamId`                   | `number`                                                                                                                            | The id of the stream for which to set the Be Right Back image.  |
+| `newOptions`                 | [`StreamDesktopCaptureOptions`](../interfaces/StreamDesktopCaptureOptions.mdx)                                                      | The updated desktop capture streaming options.                  |
+| `mouseCursorStreamingMethod` | [`StreamMouseCursor`](../namespaces/enums/enumerations/StreamMouseCursor.mdx)                                                       | The updated value of the mouse cursor streaming method.         |
+| `callback?`                  | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A callback function to call with success or failure indication. |
+
+## Returns
+
+`void`
+
+## Deprecated
+
+Since version 0.155.

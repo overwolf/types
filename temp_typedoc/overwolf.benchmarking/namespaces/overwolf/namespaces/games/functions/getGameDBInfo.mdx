@@ -1,0 +1,27 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [games](../Overview.mdx) / getGameDBInfo
+
+```ts
+function getGameDBInfo(
+  classId: number,
+  callback: CallbackFunction<GetGameDBInfoResult>,
+): void;
+```
+
+This is the same as `getGameDBInfo`, except that it can return two different
+results: 1. if the game is detected as installed - then the
+`installedGameInfo` member of the result will be set and the `gameInfo`
+member will be null 2. if the game is NOT detected as installed, then the
+`installedGameInfo` member of the result will be set to null and the
+`gameInfo` member will be set NOTE: `installedGameInfo` contains `gameInfo`
+in it.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                    | Description                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `classId`  | `number`                                                                                                                                                | The class id of the game.            |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetGameDBInfoResult`](../interfaces/GetGameDBInfoResult.mdx)\> | Called with the info about the game. |
+
+## Returns
+
+`void`

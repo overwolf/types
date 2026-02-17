@@ -1,0 +1,65 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [web](../Overview.mdx) / WebSocket
+
+## Properties
+
+| Property                                        | Type                                                                           | Description                                            |
+| ----------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| <a id="property-onclosed"></a> ~~`onClosed`~~   | [`Event`](../../../interfaces/Event.mdx)\<[`ClosedEvent`](ClosedEvent.mdx)\>   | Fired when connection closed.                          |
+| <a id="property-onerror"></a> ~~`onError`~~     | [`Event`](../../../interfaces/Event.mdx)\<[`ErrorEvent`](ErrorEvent.mdx)\>     | Fired on error.                                        |
+| <a id="property-onmessage"></a> ~~`onMessage`~~ | [`Event`](../../../interfaces/Event.mdx)\<[`MessageEvent`](MessageEvent.mdx)\> | Fired when the websocket receives an incoming message. |
+| <a id="property-onopen"></a> ~~`onOpen`~~       | [`Event`](../../../interfaces/Event.mdx)\<\{ \}\>                              | Fired on websocket connection Opened.                  |
+
+## Methods
+
+### ~~close()~~
+
+```ts
+close(): void;
+```
+
+Closes the websocket. It can be re-opened again.
+
+#### Returns
+
+`void`
+
+---
+
+### ~~connect()~~
+
+```ts
+connect(callback: CallbackFunction<Result>): void;
+```
+
+Listens for requests on the given port.
+
+#### Parameters
+
+| Parameter  | Type                                                                                                                                | Description |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | -           |
+
+#### Returns
+
+`void`
+
+---
+
+### ~~send()~~
+
+```ts
+send(message: string, callback: CallbackFunction<Result>): void;
+```
+
+Send message.
+
+#### Parameters
+
+| Parameter  | Type                                                                                                                                | Description |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `message`  | `string`                                                                                                                            | -           |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | -           |
+
+#### Returns
+
+`void`

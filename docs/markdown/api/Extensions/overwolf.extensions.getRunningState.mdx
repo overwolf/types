@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / extensions / getRunningState
+
+```ts
+function getRunningState(
+  id: string,
+  callback: CallbackFunction<GetRunningStateResult>,
+): void;
+```
+
+Gets the running state of an extension.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                        | Description                                 |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `id`       | `string`                                                                                                                                                    | The id of the extension to get updates for. |
+| `callback` | `CallbackFunction`\&lt;`GetRunningStateResult`\&gt; | The result of the request.                  |
+
+## Returns
+
+`void`

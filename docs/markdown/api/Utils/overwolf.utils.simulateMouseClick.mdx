@@ -1,0 +1,43 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / utils / simulateMouseClick
+
+## Call Signature
+
+```ts
+function simulateMouseClick(callback: CallbackFunction<Result>): void;
+```
+
+Simulate Mouse click on current mouse Position.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the status of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function simulateMouseClick(
+  x: number,
+  y: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Simulate Mouse click on &#123;x,y&#125; mouse Position.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `x`        | `number`                                                                                                                            | The Mouse X position.                      |
+| `y`        | `number`                                                                                                                            | The Mouse Y position.                      |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the status of the request. |
+
+### Returns
+
+`void`

@@ -1,0 +1,18 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [extensions](../Overview.mdx) / unregisterInfo
+
+```ts
+function unregisterInfo(id: string, callback: CallbackFunction<Result>): void;
+```
+
+Stop requesting info for extension.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                          |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `id`       | `string`                                                                                                                            | The id of the extension to stop getting updates for. |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | The status of the request.                           |
+
+## Returns
+
+`void`

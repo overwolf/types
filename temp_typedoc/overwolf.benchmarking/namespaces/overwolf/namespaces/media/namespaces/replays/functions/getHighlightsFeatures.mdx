@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [replays](../Overview.mdx) / getHighlightsFeatures
+
+```ts
+function getHighlightsFeatures(
+  gameId: number,
+  callback: CallbackFunction<GetHighlightsFeaturesResult>,
+): void;
+```
+
+Get supported auto highlights features for a game
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                          | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `gameId`   | `number`                                                                                                                                                                      | The id of the game you want to capture it highlights.                    |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetHighlightsFeaturesResult`](../interfaces/GetHighlightsFeaturesResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

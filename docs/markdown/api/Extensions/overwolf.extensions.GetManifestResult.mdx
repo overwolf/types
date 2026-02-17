@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / extensions / GetManifestResult
+
+Representation of manifest.json
+
+## Extends
+
+- `Result`.`Manifest`
+
+## Properties
+
+| Property                                                                  | Type                                             | Description                                                                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| &lt;a id="property-data"&gt;&lt; / a&gt; ~~`data`~~                                     | `WebAppSettings`           | A list of additional meta-data on the app                                                                                |
+| &lt;a id="property-error"&gt;&lt; / a&gt; ~~`error?`~~                                  | `string`                                         | Information regarding the error (if an error occurred)                                                                   |
+| &lt;a id="property-manifest_version"&gt;&lt; / a&gt; ~~`manifest_version`~~             | `number`                                         | Targets the manifest version you are working on. Currently there is only one version, therefore this value is always "1" |
+| &lt;a id="property-max_rotation_log_files"&gt;&lt; / a&gt; ~~`max_rotation_log_files`~~ | `number`                                         | Increase the app's log file rotation (defaults to 10, max is 40).                                                        |
+| &lt;a id="property-meta"&gt;&lt; / a&gt; ~~`meta`~~                                     | `Metadata`                       | Includes app metadata                                                                                                    |
+| &lt;a id="property-permissions"&gt;&lt; / a&gt; ~~`permissions`~~                       | `Permission`[] | An array of permissions that the app requires.                                                                           |
+| &lt;a id="property-success"&gt;&lt; / a&gt; ~~`success`~~                               | `boolean`                                        | Whether the method executed successfully or not.                                                                         |
+| &lt;a id="property-type"&gt;&lt; / a&gt; ~~`type`~~                                     | `"WebApp"`                                       | Declares the type of application. Can only be "WebApp"                                                                   |
+| &lt;a id="property-uid"&gt;&lt; / a&gt; ~~`UID`~~                                       | `string`                                         | -                                                                                                                        |

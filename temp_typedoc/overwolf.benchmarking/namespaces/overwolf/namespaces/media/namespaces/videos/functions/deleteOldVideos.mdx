@@ -1,0 +1,22 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [videos](../Overview.mdx) / deleteOldVideos
+
+```ts
+function deleteOldVideos(
+  keepNewestXGbs: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Deletes all videos created by this app with an option to keep the newest X
+GBs (use with care).
+
+## Parameters
+
+| Parameter        | Type                                                                                                                                            | Description                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `keepNewestXGbs` | `number`                                                                                                                                        | Keep the newest X GBs of videos. Pass 0 to delete all videos.            |
+| `callback`       | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / settings / hotkeys / unassign
+
+```ts
+function unassign(
+  hotkey: UnassignHotkeyObject,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Unassign global hotkey for the current extension, OR, if a gameId is specified, assign / unassign a dedicated hotkey.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hotkey`   | `UnassignHotkeyObject`                                                                                |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; |
+
+## Returns
+
+`void`

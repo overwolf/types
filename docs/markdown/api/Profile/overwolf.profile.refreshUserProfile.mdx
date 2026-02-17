@@ -1,0 +1,19 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / profile / refreshUserProfile
+
+```ts
+function refreshUserProfile(
+  callback: CallbackFunction<GetCurrentUserResult>,
+): void;
+```
+
+Fetches user profile from server, then invokes the callback with the currently logged-in Overwolf user.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                                           |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `callback` | `CallbackFunction`\&lt;`GetCurrentUserResult`\&gt; | A function called with the current user, or an error. |
+
+## Returns
+
+`void`

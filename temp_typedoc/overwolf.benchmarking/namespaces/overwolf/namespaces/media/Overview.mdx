@@ -1,0 +1,43 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / media
+
+## Namespaces
+
+| Namespace                                      | Description |
+| ---------------------------------------------- | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx)     | -           |
+| [~~replays~~](namespaces/replays/Overview.mdx) | -           |
+| [~~videos~~](namespaces/videos/Overview.mdx)   | -           |
+
+## Interfaces
+
+| Interface                                                                                     | Description |
+| --------------------------------------------------------------------------------------------- | ----------- |
+| [~~CropParams~~](interfaces/CropParams.mdx)                                                   | -           |
+| [~~FileResult~~](interfaces/FileResult.mdx)                                                   | -           |
+| [~~GetAppScreenCaptureFolderSizeResult~~](interfaces/GetAppScreenCaptureFolderSizeResult.mdx) | -           |
+| [~~GetAppVideoCaptureFolderSizeResult~~](interfaces/GetAppVideoCaptureFolderSizeResult.mdx)   | -           |
+| [~~GetWebcamsResult~~](interfaces/GetWebcamsResult.mdx)                                       | -           |
+| [~~MemoryScreenshotParams~~](interfaces/MemoryScreenshotParams.mdx)                           | -           |
+| [~~RescaleParams~~](interfaces/RescaleParams.mdx)                                             | -           |
+| [~~ScreenshotTakenEvent~~](interfaces/ScreenshotTakenEvent.mdx)                               | -           |
+| [~~Webcam~~](interfaces/Webcam.mdx)                                                           | -           |
+
+## Variables
+
+| Variable                                       | Description                               |
+| ---------------------------------------------- | ----------------------------------------- |
+| [~~onMediaEvent~~](variables/onMediaEvent.mdx) | Fired when a media event has been posted. |
+
+## Functions
+
+| Function                                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                            |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------- |
+| [~~getAppScreenCaptureFolderSize~~](functions/getAppScreenCaptureFolderSize.mdx) | Similar to                                                                                                                                                                                                                                                                                                                                                                                                             | getAppVideoCaptureFolderSize | but looks at the apps screen capture folder. |
+| [~~getAppVideoCaptureFolderSize~~](functions/getAppVideoCaptureFolderSize.mdx)   | Returns the total size of the video capture folder created by the app. This includes all video/thumbnail and other files that are under the apps video folder - which is located inside the configured Overwolf video capture folder. NOTE: this function can take a long time to return if the folder contains a large amount of files (on some computers) - therefore,try to reduce the amount of times you call it. |
+| [~~getScreenshotUrl~~](functions/getScreenshotUrl.mdx)                           | Takes a memory screenshot and calls the callback with the success status and the screenshot URL. The screenshot will only be placed in the memory and will not be saved to a file (better performance). Can only be used while in a game.                                                                                                                                                                              |
+| [~~GetWebcams~~](functions/GetWebcams.mdx)                                       | Get all connected Webcams.                                                                                                                                                                                                                                                                                                                                                                                             |
+| [~~postMediaEvent~~](functions/postMediaEvent.mdx)                               | Posts a media event for other apps to receive. The time info should be received in UTC format.                                                                                                                                                                                                                                                                                                                         |
+| [~~shareImage~~](functions/shareImage.mdx)                                       | Opens the social network sharing console to allow the user to share a picture.                                                                                                                                                                                                                                                                                                                                         |
+| [~~takeScreenshot~~](functions/takeScreenshot.mdx)                               | Takes a screenshot and calls the callback with the success status and the screenshot URL. The screenshot is saved to the screenshots folder.                                                                                                                                                                                                                                                                           |
+| [~~takeWindowsScreenshotByHandle~~](functions/takeWindowsScreenshotByHandle.mdx) | Takes a window screenshot and calls the callback with the success status and the screenshot URL. The screenshot is saved to the screenshots folder.                                                                                                                                                                                                                                                                    |
+| [~~takeWindowsScreenshotByName~~](functions/takeWindowsScreenshotByName.mdx)     | Takes a window screenshot and calls the callback with the success status and the screenshot URL. The screenshot is saved to the screenshots folder.                                                                                                                                                                                                                                                                    |

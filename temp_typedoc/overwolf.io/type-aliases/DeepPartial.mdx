@@ -1,0 +1,11 @@
+[Overwolf APIs](../../Overview.mdx) / [overwolf.io](../Overview.mdx) / DeepPartial
+
+```ts
+type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]> };
+```
+
+## Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |

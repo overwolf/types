@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / start
+
+```ts
+function start(
+  settings: StreamSettings,
+  callback: CallbackFunction<StreamResult>,
+): void;
+```
+
+Start a new stream.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                      | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `settings` | [`StreamSettings`](../interfaces/StreamSettings.mdx)                                                                                      | The stream settings.                                                     |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`StreamResult`](../interfaces/StreamResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

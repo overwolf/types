@@ -1,0 +1,42 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / utils / uploadClientLogs
+
+## Call Signature
+
+```ts
+function uploadClientLogs(callback: CallbackFunction<Result>): void;
+```
+
+Upload Overwolf client logs to Overwolf servers for current calling app.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the status of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function uploadClientLogs(
+  options: UploadClientLogsOptions,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Upload Overwolf client logs to Overwolf servers for current calling app
+with options (such as file prefix)
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `options`  | `UploadClientLogsOptions`                                                              | -                                          |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the status of the request. |
+
+### Returns
+
+`void`

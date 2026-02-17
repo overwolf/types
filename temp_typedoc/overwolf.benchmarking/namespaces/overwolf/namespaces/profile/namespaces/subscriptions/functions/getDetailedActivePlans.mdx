@@ -1,0 +1,19 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [profile](../../../Overview.mdx) / [subscriptions](../Overview.mdx) / getDetailedActivePlans
+
+```ts
+function getDetailedActivePlans(
+  callback: CallbackFunction<GetDetailedActivePlansResult>,
+): void;
+```
+
+Returns more details about all the active subscriptions for the calling extension via callback.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                            | Description                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetDetailedActivePlansResult`](../interfaces/GetDetailedActivePlansResult.mdx)\> | Returns an array of active plans, or an error. |
+
+## Returns
+
+`void`

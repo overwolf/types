@@ -1,0 +1,28 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [windows](../../../Overview.mdx) / [mediaPlayerElement](../Overview.mdx) / create
+
+```ts
+function create(
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  callback: CallbackFunction<CreateResult>,
+): void;
+```
+
+Creates a media player a places it in the given location with given
+dimensions.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `x`        | `number`                                                                                                                                        | The top position of the player.                                          |
+| `y`        | `number`                                                                                                                                        | The left position of the player.                                         |
+| `width`    | `number`                                                                                                                                        | The width of the player.                                                 |
+| `height`   | `number`                                                                                                                                        | The height of the player.                                                |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`CreateResult`](../interfaces/CreateResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

@@ -1,0 +1,74 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / obtainDeclaredWindow
+
+## Call Signature
+
+```ts
+function obtainDeclaredWindow(
+  windowName: string,
+  overrideSetting: WindowProperties,
+  callback: CallbackFunction<WindowResult>,
+): void;
+```
+
+Creates or returns a window by the window name that was declared in the
+manifest.
+
+### Parameters
+
+| Parameter         | Type                                                                                                                                      | Description                                                                            |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `windowName`      | `string`                                                                                                                                  | The name of the window that was declared in the data.windows section in the manifest.  |
+| `overrideSetting` | `WindowProperties`                                                                                  | Override manifest settings                                                             |
+| `callback`        | `CallbackFunction`\&lt;`WindowResult`\&gt; | A callback function which will be called with the requested window as a parameter. See |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function obtainDeclaredWindow(
+  windowName: string,
+  callback: CallbackFunction<WindowResult>,
+): void;
+```
+
+Creates or returns a window by the window name that was declared in the
+manifest.
+
+### Parameters
+
+| Parameter    | Type                                                                                                                                      | Description                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `windowName` | `string`                                                                                                                                  | The name of the window that was declared in the data.windows section in the manifest. |
+| `callback`   | `CallbackFunction`\&lt;`WindowResult`\&gt; | A callback function which will be called with the requested window as a parameter.    |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function obtainDeclaredWindow(
+  windowName: string,
+  useDefaultSizeAndLocation: DefaultSizeAndLocation,
+  callback: CallbackFunction<WindowResult>,
+): void;
+```
+
+Creates an instance of your window (the window’s name has to be declared
+in the manifest.json) or returns a window by the window name.
+
+### Parameters
+
+| Parameter                   | Type                                                                                                                                      | Description                                                                           |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `windowName`                | `string`                                                                                                                                  | The name of the window that was declared in the data.windows section in the manifest. |
+| `useDefaultSizeAndLocation` | `DefaultSizeAndLocation`                                                                      | Enable the manifest size and position settings (default is false).                    |
+| `callback`                  | `CallbackFunction`\&lt;`WindowResult`\&gt; | A callback function which will be called with the requested window as a parameter.    |
+
+### Returns
+
+`void`

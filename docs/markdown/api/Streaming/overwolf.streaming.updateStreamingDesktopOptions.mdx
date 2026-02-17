@@ -1,0 +1,29 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / streaming / updateStreamingDesktopOptions
+
+```ts
+function updateStreamingDesktopOptions(
+  streamId: number,
+  newOptions: StreamDesktopCaptureOptions,
+  mouseCursorStreamingMethod: StreamMouseCursor,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+Update stream desktop capture options.
+
+## Parameters
+
+| Parameter                    | Type                                                                                                                                | Description                                                     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `streamId`                   | `number`                                                                                                                            | The id of the stream for which to set the Be Right Back image.  |
+| `newOptions`                 | `StreamDesktopCaptureOptions`                                                      | The updated desktop capture streaming options.                  |
+| `mouseCursorStreamingMethod` | `StreamMouseCursor`                                                       | The updated value of the mouse cursor streaming method.         |
+| `callback?`                  | `CallbackFunction`\&lt;`Result`\&gt; | A callback function to call with success or failure indication. |
+
+## Returns
+
+`void`
+
+## Deprecated
+
+Since version 0.155.

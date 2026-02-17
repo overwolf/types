@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / close
+
+```ts
+function close(
+  windowId: string,
+  callback?: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Closes the window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId`  | `string`                                                                                                                                      | The id or name of the window to close. |
+| `callback?` | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | Called after the window is closed.     |
+
+## Returns
+
+`void`

@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [games](../../../Overview.mdx) / [inputTracking](../Overview.mdx) / getActivityInformation
+
+```ts
+function getActivityInformation(
+  callback: CallbackFunction<GetActivityResult>,
+): void;
+```
+
+Returns the input activity information. The information includes presses
+for keyboard/mouse, total session time, idle time and actions-per-minute.
+This information resets between game executions.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                               |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetActivityResult`](../interfaces/GetActivityResult.mdx)\> | A callback with the activity information. |
+
+## Returns
+
+`void`

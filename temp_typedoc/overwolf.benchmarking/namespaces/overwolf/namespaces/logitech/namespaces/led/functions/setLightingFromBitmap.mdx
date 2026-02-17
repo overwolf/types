@@ -1,0 +1,46 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [logitech](../../../Overview.mdx) / [led](../Overview.mdx) / setLightingFromBitmap
+
+## Call Signature
+
+```ts
+function setLightingFromBitmap(
+  bitmapUrl: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Sets the lighting from an overwolf-extension:// or overwolf-media:// url.
+The file must be 21x6.
+
+### Parameters
+
+| Parameter   | Type                                                                                                                                            | Description                                |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `bitmapUrl` | `string`                                                                                                                                        | The Overwolf url to add.                   |
+| `callback`  | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback with the result of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function setLightingFromBitmap(
+  bitmap: ByteArray,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Sets the lighting from a bitmap byte array.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `bitmap`   | [`ByteArray`](../type-aliases/ByteArray.mdx)                                                                                                    | A byte array representing a 21x6 bitmap.   |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback with the result of the request. |
+
+### Returns
+
+`void`

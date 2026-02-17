@@ -1,0 +1,22 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / benchmarking
+
+## Deprecated
+
+Since version 0.155.
+
+## Variables
+
+| Variable                                                     | Description                                                                      |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| [~~onHardwareInfoReady~~](variables/onHardwareInfoReady.mdx) | Fired when hardware infromation is ready with a JSON containing the information. |
+| [~~onProcessInfoReady~~](variables/onProcessInfoReady.mdx)   | Fired when process infromation is ready with a JSON containing the information.  |
+
+## Functions
+
+| Function                                                     | Description                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~requestFpsInfo~~](functions/requestFpsInfo.mdx)           | Requests game fps information within a given interval.                                                                                                                                                                                                                                                                                                                                       |
+| [~~requestHardwareInfo~~](functions/requestHardwareInfo.mdx) | Requests hardware information within a given interval. Note that this call requires Overwolf to have Administrative permissions. If it does not have it, the callback will return with 'Permissions Required'. You will then have to ask the app user for permissions and according to the user's choice, call `requestPermissions`. It is then required to call `requestProcessInfo` again. |
+| [~~requestPermissions~~](functions/requestPermissions.mdx)   | In case Overwolf requires administrative permissions, and after prompting the user of the app to request more permissions, call this function and then request your desired benchmarking information.                                                                                                                                                                                        |
+| [~~requestProcessInfo~~](functions/requestProcessInfo.mdx)   | Requests process information within a given interval. See `requestPermissions` for administrative permissions instructions.                                                                                                                                                                                                                                                                  |
+| [~~stopRequesting~~](functions/stopRequesting.mdx)           | Stops receiving hardware/process events. Use this when you no longer want to receive events or when you close your app.                                                                                                                                                                                                                                                                      |

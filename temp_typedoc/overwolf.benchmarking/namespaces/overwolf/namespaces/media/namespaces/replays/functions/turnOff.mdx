@@ -1,0 +1,18 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [replays](../Overview.mdx) / turnOff
+
+```ts
+function turnOff(callback: CallbackFunction<TurnOffResult>): void;
+```
+
+Turns off background replay capturing. Call this as soon as you no longer
+interesting in capturing, in order to free up resources.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                              | Description                                                              |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`TurnOffResult`](../interfaces/TurnOffResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

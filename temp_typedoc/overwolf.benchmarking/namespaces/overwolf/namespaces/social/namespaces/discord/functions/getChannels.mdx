@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [social](../../../Overview.mdx) / [discord](../Overview.mdx) / getChannels
+
+```ts
+function getChannels(
+  guildId: string,
+  callback: CallbackFunction<GetChannelsResult>,
+): void;
+```
+
+If the user is currently logged into Discord, this will return the channels
+of the given `guildId`, for which the user has privileges to share
+images/videos to. Otherwise, an error is returned
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                                                              |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `guildId`  | `string`                                                                                                                                                  | The id of the guild                                                      |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetChannelsResult`](../interfaces/GetChannelsResult.mdx)\> | Will contain guild (server) channels or error if the request has failed. |
+
+## Returns
+
+`void`

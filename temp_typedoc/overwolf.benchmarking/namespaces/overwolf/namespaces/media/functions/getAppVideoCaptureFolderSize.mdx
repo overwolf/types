@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [media](../Overview.mdx) / getAppVideoCaptureFolderSize
+
+```ts
+function getAppVideoCaptureFolderSize(
+  callback: CallbackFunction<GetAppVideoCaptureFolderSizeResult>,
+): void;
+```
+
+Returns the total size of the video capture folder created by the app. This
+includes all video/thumbnail and other files that are under the apps video
+folder - which is located inside the configured Overwolf video capture
+folder. NOTE: this function can take a long time to return if the folder
+contains a large amount of files (on some computers) - therefore,try to
+reduce the amount of times you call it.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                                  | Description                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetAppVideoCaptureFolderSizeResult`](../interfaces/GetAppVideoCaptureFolderSizeResult.mdx)\> | A callback with the size in MB. |
+
+## Returns
+
+`void`

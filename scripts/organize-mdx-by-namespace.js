@@ -16,10 +16,76 @@ async function listFiles(dir) {
   return files;
 }
 
-function detectNamespace(content, filename) {
-  // Try explicit Namespace heading
-  const nsMatch = content.match(/Namespace[:\s`]*([a-z0-9_.]+)/i);
-  if (nsMatch) return nsMatch[1];
+function detectNamespace(content, filename, outDir) {
+  // For Overview.mdx files in a namespace folder, extract from folder name
+  const basename = path.basename(filename);
+  if (basename.toLowerCase() === 'overview.mdx') {
+    const dirname = path.basename(path.dirname(filename));
+    if (dirname.toLowerCase().startsWith('overwolf.')) {
+      return dirname.toLowerCase();
+    }
+  }
+
+  // Prefer namespace derived from the typedoc output path (namespaces/.../namespaces/...)
+  if (outDir) {
+    const rel = path.relative(outDir, filename);
+    const parts = rel.split(path.sep);
+    const nsParts = [];
+    for (let i = 0; i < parts.length; i++) {
+      if (parts[i].toLowerCase() === 'namespaces' && i + 1 < parts.length) {
+        const raw = parts[i + 1];
+        const clean = raw.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_.]/g, '').toLowerCase();
+        if (clean) nsParts.push(clean);
+      }
+    }
+    if (nsParts.length) return nsParts.join('.');
+  }
+
+  // Try explicit Namespace heading (ignore very short/garbage headers like "s")
+  const nsMatch = content.match(/Namespace[:\\s`]*([a-z0-9_.]+)/i);
+  if (nsMatch && nsMatch[1] && nsMatch[1].length > 2) return nsMatch[1];
+
+  // Try to parse breadcrumb link labels (e.g. [overwolf](...)/[media](...)/[replays](...)/name)
+  const linkLabels = [];
+  const linkRe = /\[([^\]]+)\]\([^\)]+\)/g;
+  let m;
+  // Only scan first 3KB — breadcrumbs are at the top
+  const head = content.slice(0, 3 * 1024);
+  while ((m = linkRe.exec(head))) {
+    linkLabels.push(m[1]);
+  }
+  if (linkLabels.length) {
+    // Prefer the last "overwolf" label in the breadcrumb trail (handles nested namespaces)
+    const isOw = l => /^overwolf(\.|$)/i.test(l) || /^overwolf/i.test(l);
+    const exactOw = l => /^overwolf$/i.test(l);
+    let idx = -1;
+    for (let i = linkLabels.length - 1; i >= 0; i--) {
+      const label = linkLabels[i].trim();
+      if (exactOw(label)) { idx = i; break; }
+    }
+    if (idx < 0) {
+      for (let i = linkLabels.length - 1; i >= 0; i--) {
+        const label = linkLabels[i].trim();
+        if (isOw(label)) { idx = i; break; }
+      }
+    }
+    if (idx >= 0) {
+      // take subsequent labels (excluding the final page name) to form namespace
+      // drop common labels like 'Overview' or 'Overwolf APIs'
+      const segs = [];
+      for (let i = idx; i < linkLabels.length - 1; i++) {
+        const label = linkLabels[i].trim();
+        if (/^overview$/i.test(label) || /^overwolf apis$/i.test(label)) continue;
+        // If a label includes dots (e.g. overwolf.benchmarking), split into segments
+        const rawParts = label.includes('.') ? label.split('.') : [label];
+        for (const part of rawParts) {
+          const clean = part.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_.]/g, '').toLowerCase();
+          if (clean) segs.push(clean);
+        }
+      }
+      if (segs.length) return segs.join('.');
+    }
+  }
 
   // Look for longest overwolf.x.y pattern
   const ow = content.match(/overwolf(?:\.[a-z0-9_]+){1,}/i);
@@ -35,8 +101,16 @@ function detectNamespace(content, filename) {
 function masterNamespace(ns) {
   if (!ns) return 'misc';
   const parts = ns.split('.');
+  // If it's an overwolf.* namespace, group by the second segment (profile, media, etc.)
+  if (parts[0] === 'overwolf' && parts.length >= 2) return capitalize(parts[1]);
+  // For other namespaces, keep first two segments if available
   if (parts.length >= 2) return `${parts[0]}.${parts[1]}`;
   return parts[0];
+}
+
+function capitalize(s) {
+  if (!s) return s;
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 async function ensureDir(dir) {
@@ -48,51 +122,224 @@ async function run() {
   const out = path.resolve(process.cwd(), argv.out || argv.o || 'docs/markdown/api');
   const all = await listFiles(out);
 
-  // Filter MDX files, skip typedoc overview/readme
+  // Filter MDX files, skip only root-level overview and typedoc readme
+  // Include namespace-specific Overview files so every namespace gets a folder
+  const cwd = process.cwd();
   const mdxFiles = all.filter(f => f.endsWith('.mdx') || f.endsWith('.md'))
     .filter(f => {
       const name = path.basename(f).toLowerCase();
-      return !['overview.mdx','overview.md','typedoc-readme.mdx','typedoc-readme.md'].includes(name);
+      const dir = path.dirname(f);
+      const rootOut = path.resolve(cwd, argv.out || argv.o || 'docs/markdown/api');
+      const isRootLevel = dir === rootOut;
+      const isRootOrReadme = ['typedoc-readme.mdx','typedoc-readme.md'].includes(name) ||
+                             (isRootLevel && name === 'overview.mdx');
+      return !isRootOrReadme;
     });
 
   const groups = new Map();
 
   for (const file of mdxFiles) {
     const content = await fs.readFile(file, 'utf8');
-    const ns = detectNamespace(content, file);
+    const ns = detectNamespace(content, file, out);
     const master = masterNamespace(ns);
+    // full namespace to use for per-namespace folders
+    const fullNs = (ns || path.basename(file, path.extname(file))).toLowerCase();
     if (!groups.has(master)) groups.set(master, []);
-    groups.get(master).push({ file, content });
+    groups.get(master).push({ file, content, fullNs });
   }
 
   // Move files into namespace folders
   for (const [ns, items] of groups) {
     const nsDir = path.join(out, ns);
     await ensureDir(nsDir);
+    // group into per-namespace subfolders inside the top-level nsDir
+    const perNsMap = new Map();
     for (const it of items) {
-      const dest = path.join(nsDir, path.basename(it.file));
+      // for overwolf.* namespaces, create subpath from parts after 'overwolf'
+      const parts = it.fullNs.split('.');
+      let subParts = parts;
+      if (parts[0] === 'overwolf') subParts = parts.slice(1);
+      // avoid duplicate folder like `Profile/profile` — if the first subPart equals the top-level ns, drop it
+      if (subParts.length > 0 && subParts[0].toLowerCase() === ns.toLowerCase()) {
+        subParts = subParts.slice(1);
+      }
+      const subFolder = subParts.join('/');
+      const destDir = path.join(nsDir, subFolder || '_root');
+      await ensureDir(destDir);
+      const origBase = path.basename(it.file, path.extname(it.file));
+      // create a filename that preserves the full namespace: overwolf.foo.bar.symbol
+      const safeFull = it.fullNs.replace(/[^a-zA-Z0-9_.]/g, '.');
+      const newName = `${safeFull}.${origBase}${path.extname(it.file)}`;
+      const dest = path.join(destDir, newName);
       try {
         await fs.rename(it.file, dest);
       } catch (e) {
-        // fallback to copy+unlink
         await fs.writeFile(dest, it.content, 'utf8');
         await fs.unlink(it.file).catch(()=>{});
       }
+      if (!perNsMap.has(destDir)) perNsMap.set(destDir, []);
+      perNsMap.get(destDir).push(path.basename(dest));
     }
 
-    // Create Overview.mdx for the namespace
-    const filesInNs = await fs.readdir(nsDir);
-    const links = filesInNs.filter(n => !/^overview(\.mdx|\.md)$/i.test(n)).map(n => `- [${n.replace(/(\.mdx|\.md)$/i,'')}](${n})`).join('\n');
-    const overview = `# Overview — ${ns}\n\n${links || '*No pages generated.*'}\n`;
-    await fs.writeFile(path.join(nsDir, 'Overview.mdx'), overview, 'utf8');
+    // create Overview.mdx for each namespace folder
+    for (const [dirPath, filesList] of perNsMap) {
+      const rel = path.relative(nsDir, dirPath) || '.';
+      // Filter to actual member files (not overview files), create links with proper formatting
+      const memberFiles = filesList.filter(n => !/^overview(\.mdx|\.md)$/i.test(n));
+      const links = memberFiles
+        .map(n => {
+          const name = n.replace(/(\.mdx|\.md)$/i, '');
+          return `- [${name}](./${n})`;
+        })
+        .join('\n');
+      // Simple "Overview" heading instead of "Overview — xyz"
+      const overview = `# Overview\n\n${links || '*No pages generated.*'}\n`;
+      await fs.writeFile(path.join(dirPath, 'Overview.mdx'), overview, 'utf8');
+    }
   }
 
   // Root overview with list of namespaces
-  const namespaceList = Array.from(groups.keys()).sort().map(ns => `- [${ns}](${ns}/Overview.mdx)`).join('\n');
+  const namespaceList = Array.from(groups.keys()).sort().map(ns => `- [${ns}](./${ns}/Overview)`).join('\n');
   const rootOverview = `# API Namespaces\n\n${namespaceList || '*No namespaces found.*'}\n`;
   await fs.writeFile(path.join(out, 'Overview.mdx'), rootOverview, 'utf8');
 
   console.log('Organized MDX into', groups.size, 'namespaces at', out);
+  // Cleanup: remove any leftover directories created by typedoc that begin with 'overwolf.'
+  const rootEntries = await fs.readdir(out, { withFileTypes: true });
+  for (const e of rootEntries) {
+    if (e.isDirectory() && e.name.toLowerCase().startsWith('overwolf.')) {
+      const full = path.join(out, e.name);
+      await fs.rm(full, { recursive: true, force: true });
+      console.log('Removed legacy folder', e.name);
+    }
+  }
+
+  // Create _category_.json files for each top-level folder, position ascending starting at 4
+  const topDirs = (await fs.readdir(out, { withFileTypes: true }))
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
+    .sort((a,b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+
+  let pos = 4;
+  for (const d of topDirs) {
+    const cat = {
+      label: d,
+      position: pos
+    };
+    const target = path.join(out, d, '_category_.json');
+    try {
+      await fs.writeFile(target, JSON.stringify(cat, null, 2), 'utf8');
+      console.log('Wrote', target);
+    } catch (e) {
+      console.error('Failed to write category for', d, e);
+    }
+    pos++;
+  }
+
+  // Flatten any child directory whose name equals its parent (case-insensitive)
+  async function flattenDuplicates(root) {
+    const entries = await fs.readdir(root, { withFileTypes: true });
+    for (const e of entries) {
+      if (!e.isDirectory()) continue;
+      const childPath = path.join(root, e.name);
+      const childEntries = await fs.readdir(childPath, { withFileTypes: true });
+      for (const ce of childEntries) {
+        if (!ce.isDirectory()) continue;
+        if (ce.name.toLowerCase() === e.name.toLowerCase()) {
+          // move contents up from childPath/ce.name to childPath
+          const dupPath = path.join(childPath, ce.name);
+          const dupContents = await fs.readdir(dupPath);
+          for (const item of dupContents) {
+            const src = path.join(dupPath, item);
+            const dest = path.join(childPath, item);
+            await fs.rename(src, dest).catch(async () => {
+              // fallback: if src is directory, copy recursively; otherwise copy file
+              const st = await fs.lstat(src);
+              if (st.isDirectory()) {
+                // copy recursively then remove src
+                await fs.cp(src, dest, { recursive: true });
+                await fs.rm(src, { recursive: true, force: true });
+              } else {
+                const data = await fs.readFile(src);
+                await fs.writeFile(dest, data);
+                await fs.unlink(src).catch(()=>{});
+              }
+            });
+          }
+          // remove the now-empty duplicate folder
+          await fs.rm(dupPath, { recursive: true, force: true });
+          console.log('Flattened duplicate folder', dupPath);
+        }
+      }
+      // recurse
+      await flattenDuplicates(childPath);
+    }
+  }
+
+  await flattenDuplicates(out);
+
+  // Remove any '_root' folders created for items with no sub-namespace and move their contents up
+  const topLevel = await fs.readdir(out, { withFileTypes: true });
+  for (const t of topLevel) {
+    if (!t.isDirectory()) continue;
+    const nsPath = path.join(out, t.name);
+    const rootPath = path.join(nsPath, '_root');
+    try {
+      const stat = await fs.lstat(rootPath).catch(()=>null);
+      if (!stat) continue;
+      // move contents of rootPath up to nsPath
+      const items = await fs.readdir(rootPath);
+      for (const item of items) {
+        const src = path.join(rootPath, item);
+        const dest = path.join(nsPath, item);
+        await fs.rename(src, dest).catch(async () => {
+          const sst = await fs.lstat(src);
+          if (sst.isDirectory()) {
+            await fs.cp(src, dest, { recursive: true });
+            await fs.rm(src, { recursive: true, force: true });
+          } else {
+            const data = await fs.readFile(src);
+            await fs.writeFile(dest, data);
+            await fs.unlink(src).catch(()=>{});
+          }
+        });
+      }
+      // remove empty _root
+      await fs.rm(rootPath, { recursive: true, force: true });
+      console.log('Flattened _root in', nsPath);
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  // Ensure each top-level group has an Overview.mdx that links to its subfolders/files
+  async function writeGroupOverviews(outDir) {
+    const topDirs = (await fs.readdir(outDir, { withFileTypes: true }))
+      .filter(d => d.isDirectory());
+    for (const d of topDirs) {
+      const groupPath = path.join(outDir, d.name);
+      const entries = await fs.readdir(groupPath, { withFileTypes: true });
+      const subdirs = entries.filter(e => e.isDirectory());
+      const files = entries.filter(e => e.isFile() && /\.mdx?$/i.test(e.name) && e.name.toLowerCase() !== 'overview.mdx');
+
+      const links = [];
+      for (const sd of subdirs) {
+        const overviewPath = path.join(groupPath, sd.name, 'Overview.mdx');
+        let target = `./${sd.name}`;
+        try { await fs.access(overviewPath); target = `./${sd.name}/Overview`; } catch { /* ignore */ }
+        links.push(`- [${sd.name}](${target})`);
+      }
+      for (const f of files) {
+        const base = f.name.replace(/(\.mdx|\.md)$/i, '');
+        links.push(`- [${base}](./${base})`);
+      }
+
+      const overview = `# Overview\n\n${links.join('\n') || '*No pages generated.*'}\n`;
+      await fs.writeFile(path.join(groupPath, 'Overview.mdx'), overview, 'utf8');
+    }
+  }
+
+  await writeGroupOverviews(out);
 }
 
 run().catch(err => { console.error(err); process.exit(1); });

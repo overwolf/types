@@ -1,0 +1,26 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [io](../Overview.mdx) / listenOnFile
+
+```ts
+function listenOnFile(
+  id: string,
+  path: string,
+  options: ListenFileOptions,
+  callback: CallbackFunction<ListenOnFileResult>,
+): void;
+```
+
+Start listening on file.
+Stream a file (text files only), line-by-line, from the local filesystem.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                  | Description                                          |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `id`       | `string`                                                                                                                                              | listen Id.                                           |
+| `path`     | `string`                                                                                                                                              | The target path.                                     |
+| `options`  | [`ListenFileOptions`](../interfaces/ListenFileOptions.mdx)                                                                                            | Describes the different options to listen to a file. |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`ListenOnFileResult`](../interfaces/ListenOnFileResult.mdx)\> | result callback.                                     |
+
+## Returns
+
+`void`

@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [extensions](../Overview.mdx) / UncaughtExceptionCallback
+
+```ts
+type UncaughtExceptionCallback = (
+  message: string,
+  functionName: string,
+  scriptName: string,
+) => void;
+```
+
+The following types are related to the |onUncaughtException| event - which
+is a different than the usual events.
+
+## Parameters
+
+| Parameter      | Type     |
+| -------------- | -------- |
+| `message`      | `string` |
+| `functionName` | `string` |
+| `scriptName`   | `string` |
+
+## Returns
+
+`void`

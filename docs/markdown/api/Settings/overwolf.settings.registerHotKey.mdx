@@ -1,0 +1,30 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / settings / registerHotKey
+
+```ts
+function registerHotKey(
+  actionId: string,
+  callback: CallbackFunction<HotKeyResult>,
+): void;
+```
+
+Registers a callback for a given hotkey action. If the registration had
+failed, the callback function will be called immediately with the status
+"error" and another property, "error", indicating the reason for the
+failure. Otherwise, the callback function will be called when the hotkey is
+pressed and the status will be "success". Note that Shift can only be
+combined with F keys.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                      | Description                                       |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `actionId` | `string`                                                                                                                                  | The action id for which to register the callback. |
+| `callback` | `CallbackFunction`\&lt;`HotKeyResult`\&gt; | The function to run when the hotkey is pressed.   |
+
+## Returns
+
+`void`
+
+## Deprecated
+
+Since version 0.155.

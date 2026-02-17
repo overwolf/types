@@ -1,0 +1,25 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [replays](../Overview.mdx) / turnOn
+
+```ts
+function turnOn(
+  settings: ReplaySettings,
+  callback: CallbackFunction<TurnOnResult>,
+): void;
+```
+
+Turns on background replay capturing. Without calling it first, you will
+not be able to create video replays. Notice that turning on replay
+capturing will consume system resources so use it wisely.buffer_length
+defines the amount of time in milliseconds to have captured in the memory
+at all times.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `settings` | [`ReplaySettings`](../interfaces/ReplaySettings.mdx)                                                                                            | The video capture settings.                                              |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`TurnOnResult`](../interfaces/TurnOnResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

@@ -15,11 +15,13 @@
         "url": "https://github.com/overwolf/types"
     },
     "scripts": {
-        "docs:mdx": "npx typedoc --options typedoc.mdx.json && node ./scripts/organize-mdx-by-namespace.js --out docs/markdown/api"
+        "docs:clean": "node ./scripts/clean-docs.js ./docs/markdown/api",
+        "docs:prepare-folders": "node ./scripts/prepare-docs-folders.js ./docs/markdown/api",
+        "docs:mdx": "npm run docs:clean && npm run docs:prepare-folders && npx typedoc --options typedoc.mdx.json && node ./scripts/organize-mdx-by-namespace.js --out docs/markdown/api && node ./scripts/fix-breadcrumb-links.js --out docs/markdown/api"
     },
     "devDependencies": {
-        "typedoc": "^0.24.0",
-        "typedoc-plugin-markdown": "^4.7.0",
+        "typedoc": "^0.28.0",
+        "typedoc-plugin-markdown": "^4.10.0",
         "minimist": "^1.2.8"
     }
 }

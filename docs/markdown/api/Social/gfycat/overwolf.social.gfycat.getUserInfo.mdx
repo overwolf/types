@@ -1,0 +1,20 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / social / gfycat / getUserInfo
+
+```ts
+function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
+```
+
+If the user is currently logged into Gfycat, this will return
+userinformation:
+https: /  / developers.gfycat.com / api / #getting-the-authenticated-user-s-details
+Otherwise, an error is returned.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                                                | Description                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `callback` | `CallbackFunction`\&lt;`GetUserInfoResult`\&lt;`User`\&gt;\&gt; | Will contain user information or error if the request has failed. |
+
+## Returns
+
+`void`

@@ -1,0 +1,22 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [web](../Overview.mdx) / createWebSocket
+
+```ts
+function createWebSocket(
+  connectionParams: WebSocketConnectionParams,
+  callback: CallbackFunction<CreateWebSocketResult>,
+): void;
+```
+
+Creates a WebSocket client to localhost/127.0.0.1 while by-passing a valid
+certificate verification.
+
+## Parameters
+
+| Parameter          | Type                                                                                                                                                        | Description |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `connectionParams` | [`WebSocketConnectionParams`](../interfaces/WebSocketConnectionParams.mdx)                                                                                  | -           |
+| `callback`         | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`CreateWebSocketResult`](../interfaces/CreateWebSocketResult.mdx)\> | -           |
+
+## Returns
+
+`void`

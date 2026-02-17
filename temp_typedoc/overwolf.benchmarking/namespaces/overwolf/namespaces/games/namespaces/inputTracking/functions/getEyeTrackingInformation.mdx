@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [games](../../../Overview.mdx) / [inputTracking](../Overview.mdx) / getEyeTrackingInformation
+
+```ts
+function getEyeTrackingInformation(
+  callback: CallbackFunction<GetActivityResult>,
+): void;
+```
+
+Returns the eye tracking information. The information includes gaze points,
+fixations, user presence (screen/keyboard/other) and minimap glances. This
+information resets between game executions.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetActivityResult`](../interfaces/GetActivityResult.mdx)\> | A callback with the eye tracking information |
+
+## Returns
+
+`void`

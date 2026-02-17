@@ -1,0 +1,22 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / extensions / current / getExtraObject
+
+```ts
+function getExtraObject(
+  name: string,
+  callback: CallbackFunction<GetExtraObjectResult>,
+): void;
+```
+
+Retrieves an extra object (providing external APIs) registered in the
+extension's manifest.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                            | Description                                                                                    |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `name`     | `string`                                                                                                                                                        | The name of the object as appears in the manifest.                                             |
+| `callback` | `CallbackFunction`\&lt;`GetExtraObjectResult`\&gt; | A function called with the extra object, if found, and a status indicating success or failure. |
+
+## Returns
+
+`void`

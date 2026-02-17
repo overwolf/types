@@ -1,0 +1,57 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / media / replays / startCapture
+
+## Call Signature
+
+```ts
+function startCapture(
+  pastDuration: number,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Starts capturing a replay to a file. A replay id will be returned in the
+callback which is needed to finish capturing the replay. You can only call
+this method if replay mode is on and no other replay is currently being
+captured to a file.
+
+### Parameters
+
+| Parameter      | Type                                                                                                                                              | Description                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `pastDuration` | `number`                                                                                                                                          | The video length, in milliseconds to include prior to the time of this call. |
+| `callback`     | `CallbackFunction`\&lt;`FileResult`\&gt; | A callback function which will be called with the status of the request.     |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function startCapture(
+  replayType: Video,
+  pastDuration: number,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Starts capturing a replay to a file. A replay id will be returned in the
+callback which is needed to finish capturing the replay. You can only call
+this method if replay mode is on and no other replay is currently being
+captured to a file.
+
+### Parameters
+
+| Parameter      | Type                                                                                                                                              | Description                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `replayType`   | `Video`                                                               | The type of replay to capture.                                               |
+| `pastDuration` | `number`                                                                                                                                          | The video length, in milliseconds to include prior to the time of this call. |
+| `callback`     | `CallbackFunction`\&lt;`FileResult`\&gt; | A callback function which will be called with the status of the request.     |
+
+### Returns
+
+`void`
+
+### Deprecated
+
+Since version 0.155.

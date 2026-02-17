@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / getWindowState
+
+```ts
+function getWindowState(
+  windowId: string,
+  callback: CallbackFunction<GetWindowStateResult>,
+): void;
+```
+
+Returns the state of the window (normal / minimized / maximized / closed).
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `windowId` | `string`                                                                                                                                                  | The id or name of the window. |
+| `callback` | `CallbackFunction`\&lt;`GetWindowStateResult`\&gt; | Called with the window state. |
+
+## Returns
+
+`void`

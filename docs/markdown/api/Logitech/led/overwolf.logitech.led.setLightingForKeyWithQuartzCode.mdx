@@ -1,0 +1,27 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / logitech / led / setLightingForKeyWithQuartzCode
+
+```ts
+function setLightingForKeyWithQuartzCode(
+  keyCode: number,
+  redPercentage: number,
+  greenPercentage: number,
+  bluePercentage: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Sets the lighting for a specific key by quartz code.
+
+## Parameters
+
+| Parameter         | Type                                                                                                                                            | Description                                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `keyCode`         | `number`                                                                                                                                        | The key quartz code.                       |
+| `redPercentage`   | `number`                                                                                                                                        | Red percentage (0 - 100)                   |
+| `greenPercentage` | `number`                                                                                                                                        | Green percentage (0 - 100)                 |
+| `bluePercentage`  | `number`                                                                                                                                        | Blue percentage (0 - 100)                  |
+| `callback`        | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the result of the request. |
+
+## Returns
+
+`void`

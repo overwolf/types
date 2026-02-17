@@ -1,0 +1,87 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / bringToFront
+
+## Call Signature
+
+```ts
+function bringToFront(
+  windowId: string,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Brings the requested window to the front.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                          | Description                            |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId` | `string`                                                                                                                                      | The id or name of the window.          |
+| `callback` | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | Called with the result of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function bringToFront(callback: CallbackFunction<WindowIdResult>): void;
+```
+
+Brings this window to the front.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                          | Description                            |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `callback` | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | Called with the result of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function bringToFront(
+  grabFocus: boolean,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Brings this window to the front.
+
+### Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `grabFocus` | `boolean`                                                                                                                                     | Window will take system focus.         |
+| `callback`  | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | Called with the result of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function bringToFront(
+  windowId: string,
+  grabFocus: boolean,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Brings the requested window to the front.
+
+### Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId`  | `string`                                                                                                                                      | The id or name of the window.          |
+| `grabFocus` | `boolean`                                                                                                                                     | Window will take system focus.         |
+| `callback`  | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | Called with the result of the request. |
+
+### Returns
+
+`void`

@@ -1,0 +1,25 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [logitech](../../../Overview.mdx) / [led](../Overview.mdx) / setLighting
+
+```ts
+function setLighting(
+  redPercentage: number,
+  greenPercentage: number,
+  bluePercentage: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Sets the lighting for the entire device.
+
+## Parameters
+
+| Parameter         | Type                                                                                                                                            | Description                                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `redPercentage`   | `number`                                                                                                                                        | Red percentage (0 - 100)                   |
+| `greenPercentage` | `number`                                                                                                                                        | Green percentage (0 - 100)                 |
+| `bluePercentage`  | `number`                                                                                                                                        | Blue percentage (0 - 100)                  |
+| `callback`        | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback with the result of the request. |
+
+## Returns
+
+`void`

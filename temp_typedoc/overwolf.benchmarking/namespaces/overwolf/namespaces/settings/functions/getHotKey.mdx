@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [settings](../Overview.mdx) / getHotKey
+
+```ts
+function getHotKey(
+  featureId: string,
+  callback: CallbackFunction<GetHotKeyResult>,
+): void;
+```
+
+Returns the hotkey assigned to a given feature id by calling the callback.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                            | Description                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `featureId` | `string`                                                                                                                                        | The feature id for which to get the set hotkey.                                           |
+| `callback`  | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetHotKeyResult`](../interfaces/GetHotKeyResult.mdx)\> | A function called with the result of the request which contains the hotkey if successful. |
+
+## Returns
+
+`void`

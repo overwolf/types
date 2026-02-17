@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / games / inputTracking / getMatchActivityInformation
+
+```ts
+function getMatchActivityInformation(
+  callback: CallbackFunction<GetActivityResult>,
+): void;
+```
+
+Returns the input activity information (similar to
+`getActivityInformation`). However, when this is supported, it will return
+data only for the latestmatch of the current game
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                               |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `callback` | `CallbackFunction`\&lt;`GetActivityResult`\&gt; | A callback with the activity information. |
+
+## Returns
+
+`void`

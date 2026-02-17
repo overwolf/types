@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [media](../Overview.mdx) / shareImage
+
+```ts
+function shareImage(
+  image: any,
+  description: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Opens the social network sharing console to allow the user to share a
+picture.
+
+## Parameters
+
+| Parameter     | Type                                                                                                                                | Description                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `image`       | `any`                                                                                                                               | A URL or image object to be shared.                         |
+| `description` | `string`                                                                                                                            | The description to be used when posting to social networks. |
+| `callback`    | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A function called after the image was shared.               |
+
+## Returns
+
+`void`

@@ -1,0 +1,25 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / changePosition
+
+```ts
+function changePosition(
+  windowId: string,
+  left: number,
+  top: number,
+  callback?: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Changes the window position in pixels from the top left corner.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                                                       |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `windowId`  | `string`                                                                                                                                      | The id or name of the window for which to change the position.    |
+| `left`      | `number`                                                                                                                                      | The new window position on the X axis in pixels from the left.    |
+| `top`       | `number`                                                                                                                                      | The new window position on the Y axis in pixels from the top.     |
+| `callback?` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | A callback which is called when the position change is completed. |
+
+## Returns
+
+`void`

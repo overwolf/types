@@ -1,0 +1,29 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / logitech / led / flashLighting
+
+```ts
+function flashLighting(
+  redPercentage: number,
+  greenPercentage: number,
+  bluePercentage: number,
+  milliSecondsDuration: number,
+  milliSecondsInterval: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Flashes the lighting on the device.
+
+## Parameters
+
+| Parameter              | Type                                                                                                                                            | Description                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `redPercentage`        | `number`                                                                                                                                        | Red percentage (0 - 100)                   |
+| `greenPercentage`      | `number`                                                                                                                                        | Green percentage (0 - 100)                 |
+| `bluePercentage`       | `number`                                                                                                                                        | Blue percentage (0 - 100)                  |
+| `milliSecondsDuration` | `number`                                                                                                                                        | The duration to flash in milliseconds.     |
+| `milliSecondsInterval` | `number`                                                                                                                                        | The interval for flashes in milliseconds.  |
+| `callback`             | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the result of the request. |
+
+## Returns
+
+`void`

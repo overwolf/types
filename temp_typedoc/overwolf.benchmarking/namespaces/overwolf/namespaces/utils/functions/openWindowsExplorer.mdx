@@ -1,0 +1,22 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [utils](../Overview.mdx) / openWindowsExplorer
+
+```ts
+function openWindowsExplorer(
+  url: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Opens Windows Explorer and selects a file received as an Overwolf media
+url.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                 |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `url`      | `string`                                                                                                                            | An overwolf media url (overwolf://media/\*) |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | Called with the result of the request.      |
+
+## Returns
+
+`void`

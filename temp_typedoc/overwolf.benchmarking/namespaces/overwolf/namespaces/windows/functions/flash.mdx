@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / flash
+
+```ts
+function flash(
+  windowId: string,
+  behavior: FlashBehavior,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+Flashes a window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                | Description                                                           |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `windowId`  | `string`                                                                                                                            | ID of the window to flash.                                            |
+| `behavior`  | [`FlashBehavior`](../namespaces/enums/enumerations/FlashBehavior.mdx)                                                               | Defines window flashing behavior.                                     |
+| `callback?` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A callback which is called when the minimum size change is completed. |
+
+## Returns
+
+`void`

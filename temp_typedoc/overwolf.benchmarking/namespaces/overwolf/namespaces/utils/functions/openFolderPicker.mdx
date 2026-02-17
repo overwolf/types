@@ -1,0 +1,22 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [utils](../Overview.mdx) / openFolderPicker
+
+```ts
+function openFolderPicker(
+  initialPath: string,
+  callback: CallbackFunction<OpenFolderPickerResult>,
+): void;
+```
+
+Opens a Folder picker dialog to browse for a folder. A full path to the
+selected folder will be returned.
+
+## Parameters
+
+| Parameter     | Type                                                                                                                                                          | Description                      |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `initialPath` | `string`                                                                                                                                                      | The starting folder's path       |
+| `callback`    | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`OpenFolderPickerResult`](../interfaces/OpenFolderPickerResult.mdx)\> | Called with the selected folder. |
+
+## Returns
+
+`void`

@@ -1,0 +1,22 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / games / getRecentlyPlayedGames
+
+```ts
+function getRecentlyPlayedGames(
+  maxNumOfGames: number,
+  callback: CallbackFunction<GetRecentlyPlayedResult>,
+): void;
+```
+
+Returns an array of the maxNumOfGames most recently played game IDs.An
+empty array will be returned if none have been recorded.
+
+## Parameters
+
+| Parameter       | Type                                                                                                                                                            | Description                             |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `maxNumOfGames` | `number`                                                                                                                                                        | The maximum number of games to receive. |
+| `callback`      | `CallbackFunction`\&lt;`GetRecentlyPlayedResult`\&gt; | Called with the array of game IDs.      |
+
+## Returns
+
+`void`

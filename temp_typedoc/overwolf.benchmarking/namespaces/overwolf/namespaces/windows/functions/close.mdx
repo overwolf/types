@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / close
+
+```ts
+function close(
+  windowId: string,
+  callback?: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Closes the window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId`  | `string`                                                                                                                                      | The id or name of the window to close. |
+| `callback?` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | Called after the window is closed.     |
+
+## Returns
+
+`void`

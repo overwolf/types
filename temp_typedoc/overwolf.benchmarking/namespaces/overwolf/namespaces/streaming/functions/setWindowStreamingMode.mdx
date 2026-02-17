@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / setWindowStreamingMode
+
+```ts
+function setWindowStreamingMode(
+  windowId: string,
+  streamingMode: StreamingMode,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+Set the window's stream mode.
+
+## Parameters
+
+| Parameter       | Type                                                                                                                                | Description                                                                                      |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `windowId`      | `string`                                                                                                                            | The id of the window for which to set the streaming mode.                                        |
+| `streamingMode` | [`StreamingMode`](../namespaces/enums/enumerations/StreamingMode.mdx)                                                               | The desired streaming mode.                                                                      |
+| `callback?`     | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A function called after streaming mode was set indicating success, or error in case of an error. |
+
+## Returns
+
+`void`

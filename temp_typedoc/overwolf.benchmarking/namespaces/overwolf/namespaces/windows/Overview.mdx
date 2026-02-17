@@ -1,0 +1,85 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / windows
+
+## Namespaces
+
+| Namespace                                                            | Description |
+| -------------------------------------------------------------------- | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx)                           | -           |
+| [~~mediaPlayerElement~~](namespaces/mediaPlayerElement/Overview.mdx) | -           |
+
+## Interfaces
+
+| Interface                                                                                 | Description |
+| ----------------------------------------------------------------------------------------- | ----------- |
+| [~~AltF4BlockedEvent~~](interfaces/AltF4BlockedEvent.mdx)                                 | -           |
+| [~~ChangeWindowSizeParams~~](interfaces/ChangeWindowSizeParams.mdx)                       | -           |
+| [~~DefaultSizeAndLocation~~](interfaces/DefaultSizeAndLocation.mdx)                       | -           |
+| [~~DragMovedResult~~](interfaces/DragMovedResult.mdx)                                     | -           |
+| [~~DragResizeResult~~](interfaces/DragResizeResult.mdx)                                   | -           |
+| [~~GetWindowsStatesResult~~](interfaces/GetWindowsStatesResult.mdx)                       | -           |
+| [~~GetWindowStateResult~~](interfaces/GetWindowStateResult.mdx)                           | -           |
+| [~~IsAccelreatedOSRResult~~](interfaces/IsAccelreatedOSRResult.mdx)                       | -           |
+| [~~IsMutedResult~~](interfaces/IsMutedResult.mdx)                                         | -           |
+| [~~IsolatedIframeProcessCrashedEvent~~](interfaces/IsolatedIframeProcessCrashedEvent.mdx) | -           |
+| [~~IsWindowVisibleToUserResult~~](interfaces/IsWindowVisibleToUserResult.mdx)             | -           |
+| [~~MessageBoxParams~~](interfaces/MessageBoxParams.mdx)                                   | -           |
+| [~~MessageReceivedEvent~~](interfaces/MessageReceivedEvent.mdx)                           | -           |
+| [~~ODKRect~~](interfaces/ODKRect.mdx)                                                     | -           |
+| [~~onScreenPropertyChangedEvent~~](interfaces/onScreenPropertyChangedEvent.mdx)           | -           |
+| [~~SetWindowPositionProperties~~](interfaces/SetWindowPositionProperties.mdx)             | -           |
+| [~~WindowIdResult~~](interfaces/WindowIdResult.mdx)                                       | -           |
+| [~~WindowInfo~~](interfaces/WindowInfo.mdx)                                               | -           |
+| [~~WindowProperties~~](interfaces/WindowProperties.mdx)                                   | -           |
+| [~~WindowResult~~](interfaces/WindowResult.mdx)                                           | -           |
+| [~~WindowStateChangedEvent~~](interfaces/WindowStateChangedEvent.mdx)                     | -           |
+
+## Variables
+
+| Variable                                                                           | Description                                                          |
+| ---------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [~~onAltF4Blocked~~](variables/onAltF4Blocked.mdx)                                 | Fired when the user was prevented from closing a window using Alt+F4 |
+| [~~onIsolatedIframeProcessCrashed~~](variables/onIsolatedIframeProcessCrashed.mdx) | Fired when out of process iframe crashed.                            |
+| [~~onMainWindowRestored~~](variables/onMainWindowRestored.mdx)                     | Fired when the main window is restored.                              |
+| [~~onMessageReceived~~](variables/onMessageReceived.mdx)                           | Fired when this window received a message.                           |
+| [~~onStateChanged~~](variables/onStateChanged.mdx)                                 | Fired when the state of a window is changed.                         |
+
+## Functions
+
+| Function                                                                     | Description                                                                                                    |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----- | ---------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| [~~bringToFront~~](functions/bringToFront.mdx)                               | Brings the requested window to the front.                                                                      |
+| [~~changePosition~~](functions/changePosition.mdx)                           | Changes the window position in pixels from the top left corner.                                                |
+| [~~changeSize~~](functions/changeSize.mdx)                                   | Changes the window size to the new width and height, in pixels.                                                |
+| [~~close~~](functions/close.mdx)                                             | Closes the window.                                                                                             |
+| [~~displayMessageBox~~](functions/displayMessageBox.mdx)                     | Displays a customized popup message prompt.                                                                    |
+| [~~dragMove~~](functions/dragMove.mdx)                                       | Start dragging a window.                                                                                       |
+| [~~dragResize~~](functions/dragResize.mdx)                                   | Start resizing the window from a specific edge or corner.                                                      |
+| [~~flash~~](functions/flash.mdx)                                             | Flashes a window.                                                                                              |
+| [~~getCurrentWindow~~](functions/getCurrentWindow.mdx)                       | Calls the given callback function with the current window object as a parameter.                               |
+| [~~getMainWindow~~](functions/getMainWindow.mdx)                             | Returns a window object of the index page.                                                                     |
+| [~~getOpenWindows~~](functions/getOpenWindows.mdx)                           | Returns an array of all open windows as objects. The objects can be manipulated like any other window.         |
+| [~~getWindow~~](functions/getWindow.mdx)                                     | Returns WindowResult object for a specific open window.                                                        |
+| [~~getWindowDPI~~](functions/getWindowDPI.mdx)                               | Get Window DPI.                                                                                                |
+| [~~getWindowsStates~~](functions/getWindowsStates.mdx)                       | Returns the state of all windows owned by the app (normal/minimized/maximized/closed).                         |
+| [~~getWindowState~~](functions/getWindowState.mdx)                           | Returns the state of the window (normal/minimized/maximized/closed).                                           |
+| [~~hide~~](functions/hide.mdx)                                               | Hides the window.                                                                                              |
+| [~~isAccelreatedOSR~~](functions/isAccelreatedOSR.mdx)                       | For OSR window only (for other window the callback return                                                      | error | status. { "status": string ( | error, success | ), "reason": string (error reason), "accelerated": bool, "optimized" : bool (for accelerated windows only and only valid in Game) } |
+| [~~isMuted~~](functions/isMuted.mdx)                                         | Is window muted.                                                                                               |
+| [~~isWindowVisibleToUser~~](functions/isWindowVisibleToUser.mdx)             | Is window fully visible to user (has overlap windows)                                                          |
+| [~~maximize~~](functions/maximize.mdx)                                       | Maximizes the window.                                                                                          |
+| [~~minimize~~](functions/minimize.mdx)                                       | Minimizes the window.                                                                                          |
+| [~~muteAll~~](functions/muteAll.mdx)                                         | Mute all sound source include all excluded white list                                                          |
+| [~~obtainDeclaredWindow~~](functions/obtainDeclaredWindow.mdx)               | Creates or returns a window by the window name that was declared in the manifest.                              |
+| [~~openOptionsPage~~](functions/openOptionsPage.mdx)                         | Opens the options page specified in the manifest file. Does nothing if no such page has been specified.        |
+| [~~removeWindowStyle~~](functions/removeWindowStyle.mdx)                     | Remove Window In Game Styling                                                                                  |
+| [~~restore~~](functions/restore.mdx)                                         | Restores a minimized window.                                                                                   |
+| [~~sendMessage~~](functions/sendMessage.mdx)                                 | Sends a message to an open window.                                                                             |
+| [~~sendToBack~~](functions/sendToBack.mdx)                                   | Sends the window to the back.                                                                                  |
+| [~~setDesktopOnly~~](functions/setDesktopOnly.mdx)                           | Sets whether the window should be injected to games or not.                                                    |
+| [~~setMinSize~~](functions/setMinSize.mdx)                                   | Changes the window minimum size to the new width and height, in pixels.                                        |
+| [~~setMute~~](functions/setMute.mdx)                                         | Set current window Mute state.                                                                                 |
+| [~~setPosition~~](functions/setPosition.mdx)                                 | Change window position (see SetWindowPositionProperties))                                                      |
+| [~~setRestoreAnimationsEnabled~~](functions/setRestoreAnimationsEnabled.mdx) | Sets whether the window should have minimize/restore animations while in game.                                 |
+| [~~setTopmost~~](functions/setTopmost.mdx)                                   | Change the window's topmost status. Handle with care as topmost windows can negatively impact user experience. |
+| [~~setWindowStyle~~](functions/setWindowStyle.mdx)                           | Add Window In Game styling                                                                                     |
+| [~~setZoom~~](functions/setZoom.mdx)                                         | Set window zoom level (0.0 for reset).                                                                         |

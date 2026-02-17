@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [extensions](../../../Overview.mdx) / [sharedData](../Overview.mdx) / set
+
+```ts
+function set(
+  appId: string,
+  value: any,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Used by the owner app to set data for the consumer app, by appId.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description           |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| `appId`    | `string`                                                                                                                                        | The requested app id. |
+| `value`    | `any`                                                                                                                                           | -                     |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | -                     |
+
+## Returns
+
+`void`

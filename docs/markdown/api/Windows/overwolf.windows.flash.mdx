@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / flash
+
+```ts
+function flash(
+  windowId: string,
+  behavior: FlashBehavior,
+  callback?: CallbackFunction<Result>,
+): void;
+```
+
+Flashes a window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                | Description                                                           |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `windowId`  | `string`                                                                                                                            | ID of the window to flash.                                            |
+| `behavior`  | `FlashBehavior`                                                               | Defines window flashing behavior.                                     |
+| `callback?` | `CallbackFunction`\&lt;`Result`\&gt; | A callback which is called when the minimum size change is completed. |
+
+## Returns
+
+`void`

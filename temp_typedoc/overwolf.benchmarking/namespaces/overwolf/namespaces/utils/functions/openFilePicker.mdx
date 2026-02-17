@@ -1,0 +1,51 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [utils](../Overview.mdx) / openFilePicker
+
+## Call Signature
+
+```ts
+function openFilePicker(
+  filter: string,
+  callback: CallbackFunction<OpenFilePickerResult>,
+): void;
+```
+
+Opens a file picker dialog to browse for a file. A url to the selected file
+will be returned.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                                      | Description                                                                             |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `filter`   | `string`                                                                                                                                                  | A file filter. Supports wild cards (_) and seperated by commas (,). Ex. myFile_._,_.txt |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`OpenFilePickerResult`](../interfaces/OpenFilePickerResult.mdx)\> | Called with a url to the selected file.                                                 |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function openFilePicker(
+  filter: string,
+  initialPath: string,
+  callback: CallbackFunction<OpenFilePickerResult>,
+  multiSelect: boolean,
+): void;
+```
+
+Opens a file picker dialog to browse for a file. A url to the selected file
+will be returned.
+
+### Parameters
+
+| Parameter     | Type                                                                                                                                                      | Description                                                                             |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `filter`      | `string`                                                                                                                                                  | A file filter. Supports wild cards (_) and seperated by commas (,). Ex. myFile_._,_.txt |
+| `initialPath` | `string`                                                                                                                                                  | Path to start browsing from                                                             |
+| `callback`    | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`OpenFilePickerResult`](../interfaces/OpenFilePickerResult.mdx)\> | Called with a url(s) to the selected file(s).                                           |
+| `multiSelect` | `boolean`                                                                                                                                                 | Allow selection of multiple files                                                       |
+
+### Returns
+
+`void`

@@ -1,0 +1,18 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [streaming](../Overview.mdx) / split
+
+```ts
+function split(streamId: number, callback: CallbackFunction<SplitResult>): void;
+```
+
+Request to split video now.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                    | Description                                                              |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `streamId` | `number`                                                                                                                                | The id of the stream to split.                                           |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`SplitResult`](../interfaces/SplitResult.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

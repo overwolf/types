@@ -1,0 +1,18 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / getOpenWindows
+
+```ts
+function getOpenWindows(callback: (windows: Dictionary<Window>) => void): void;
+```
+
+Returns an array of all open windows as objects. The objects can be
+manipulated like any other window.
+
+## Parameters
+
+| Parameter  | Type                                                                                                       | Description                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `callback` | (`windows`: [`Dictionary`](../../../../../../overwolf.io/interfaces/Dictionary.mdx)\<`Window`\>) => `void` | A callback function which will be called with a map object of (window-name, Window Object) items |
+
+## Returns
+
+`void`

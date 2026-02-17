@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / settings / hotkeys / assign
+
+```ts
+function assign(
+  hotkey: AssignHotkeyObject,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Assign global hotkey for the current extension, OR, if a gameId is specified, assign / unassign a dedicated hotkey.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hotkey`   | `AssignHotkeyObject`                                                                                    |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; |
+
+## Returns
+
+`void`

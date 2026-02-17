@@ -1,0 +1,22 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [social](../../../Overview.mdx) / [twitter](../Overview.mdx) / share
+
+```ts
+function share(
+  twitterShareParams: ShareParameters,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+If the user is currently logged into Twitter, this will perform the media
+share (image or video).
+
+## Parameters
+
+| Parameter            | Type                                                                                                                                            | Description                             |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `twitterShareParams` | [`ShareParameters`](../interfaces/ShareParameters.mdx)                                                                                          | The share parameters.                   |
+| `callback`           | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | Will contain the status of the request. |
+
+## Returns
+
+`void`

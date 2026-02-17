@@ -1,0 +1,20 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [media](../Overview.mdx) / getAppScreenCaptureFolderSize
+
+```ts
+function getAppScreenCaptureFolderSize(
+  callback: CallbackFunction<GetAppScreenCaptureFolderSizeResult>,
+): void;
+```
+
+Similar to |getAppVideoCaptureFolderSize| but looks at the apps screen
+capture folder.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                                    | Description                     |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetAppScreenCaptureFolderSizeResult`](../interfaces/GetAppScreenCaptureFolderSizeResult.mdx)\> | A callback with the size in MB. |
+
+## Returns
+
+`void`

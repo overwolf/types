@@ -1,0 +1,42 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [web](../Overview.mdx) / WebServer
+
+## Properties
+
+| Property                                        | Type                                                                           | Description                                                                                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| <a id="property-onrequest"></a> ~~`onRequest`~~ | [`Event`](../../../interfaces/Event.mdx)\<[`RequestEvent`](RequestEvent.mdx)\> | Fired when the web server receives an incoming request. The event contains three strings: 'url', 'content' and 'contentType'. |
+
+## Methods
+
+### ~~close()~~
+
+```ts
+close(): void;
+```
+
+Closes the web server. It can be re-opened again.
+
+#### Returns
+
+`void`
+
+---
+
+### ~~listen()~~
+
+```ts
+listen(callback: CallbackFunction<any>): void;
+```
+
+Listens for requests on the given port. If the port is already in use, or
+this instance is already listening, an error will be returned.
+
+#### Parameters
+
+| Parameter  | Type                                                                                           | Description                           |
+| ---------- | ---------------------------------------------------------------------------------------------- | ------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<`any`\> | Fired with the status of the request. |
+
+#### Returns
+
+`void`

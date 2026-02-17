@@ -1,0 +1,49 @@
+[Overwolf APIs](../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../Overview.mdx) / [overwolf](../../Overview.mdx) / games
+
+## Namespaces
+
+| Namespace                                                  | Description |
+| ---------------------------------------------------------- | ----------- |
+| [~~enums~~](namespaces/enums/Overview.mdx)                 | -           |
+| [~~events~~](namespaces/events/Overview.mdx)               | -           |
+| [~~inputTracking~~](namespaces/inputTracking/Overview.mdx) | -           |
+| [~~launchers~~](namespaces/launchers/Overview.mdx)         | -           |
+| [~~tracked~~](namespaces/tracked/Overview.mdx)             | -           |
+
+## Interfaces
+
+| Interface                                                                                 | Description |
+| ----------------------------------------------------------------------------------------- | ----------- |
+| [~~GameInfo~~](interfaces/GameInfo.mdx)                                                   | -           |
+| [~~GameInfoUpdate~~](interfaces/GameInfoUpdate.mdx)                                       | -           |
+| [~~GameInfoUpdatedEvent~~](interfaces/GameInfoUpdatedEvent.mdx)                           | -           |
+| [~~GameRendererDetectedEvent~~](interfaces/GameRendererDetectedEvent.mdx)                 | -           |
+| [~~GetGameDBInfoResult~~](interfaces/GetGameDBInfoResult.mdx)                             | -           |
+| [~~GetGameInfoResult~~](interfaces/GetGameInfoResult.mdx)                                 | -           |
+| [~~GetRecentlyPlayedResult~~](interfaces/GetRecentlyPlayedResult.mdx)                     | -           |
+| [~~GetRunningGameInfoResult~~](interfaces/GetRunningGameInfoResult.mdx)                   | -           |
+| [~~GetRunningGameInfoResult2~~](interfaces/GetRunningGameInfoResult2.mdx)                 | -           |
+| [~~GetRunningGameInfoResult2GameInfo~~](interfaces/GetRunningGameInfoResult2GameInfo.mdx) | -           |
+| [~~InstalledGameInfo~~](interfaces/InstalledGameInfo.mdx)                                 | -           |
+| [~~MajorFrameRateChangeEvent~~](interfaces/MajorFrameRateChangeEvent.mdx)                 | -           |
+| [~~OverlayInfo~~](interfaces/OverlayInfo.mdx)                                             | -           |
+| [~~RunningGameInfo~~](interfaces/RunningGameInfo.mdx)                                     | -           |
+
+## Variables
+
+| Variable                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| [~~onGameInfoUpdated~~](variables/onGameInfoUpdated.mdx)           | Fired when the game info is updated, including game name, game running, game terminated, game changing focus, etc. |
+| [~~onGameLaunched~~](variables/onGameLaunched.mdx)                 | Fired when a game is launched.                                                                                     |
+| [~~onMajorFrameRateChange~~](variables/onMajorFrameRateChange.mdx) | Fired when the rendering frame rate of the currently injected game changes dramatically.                           |
+
+## Functions
+
+| Function                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [~~getGameDBInfo~~](functions/getGameDBInfo.mdx)                   | This is the same as `getGameDBInfo`, except that it can return two different results: 1. if the game is detected as installed - then the `installedGameInfo` member of the result will be set and the `gameInfo` member will be null 2. if the game is NOT detected as installed, then the `installedGameInfo` member of the result will be set to null and the `gameInfo` member will be set NOTE: `installedGameInfo` contains `gameInfo` in it. |
+| [~~getGameInfo~~](functions/getGameInfo.mdx)                       | Returns information about a game with a given game id.Will only return information if the game is detected on the local machine (i.e. installed)                                                                                                                                                                                                                                                                                                   |
+| [~~getLastRunningGameInfo~~](functions/getLastRunningGameInfo.mdx) | Returns the last played gameinfo (when no game is currently running).                                                                                                                                                                                                                                                                                                                                                                              |
+| [~~getRecentlyPlayedGames~~](functions/getRecentlyPlayedGames.mdx) | Returns an array of the maxNumOfGames most recently played game IDs.An empty array will be returned if none have been recorded.                                                                                                                                                                                                                                                                                                                    |
+| [~~getRunningGameInfo~~](functions/getRunningGameInfo.mdx)         | Returns an object with information about the currently running game (or active games, if more than one), or null if no game is running.                                                                                                                                                                                                                                                                                                            |
+| [~~getRunningGameInfo2~~](functions/getRunningGameInfo2.mdx)       | Returns an object with information about the currently running game (or active games, if more than one), or null if no game is running.                                                                                                                                                                                                                                                                                                            |

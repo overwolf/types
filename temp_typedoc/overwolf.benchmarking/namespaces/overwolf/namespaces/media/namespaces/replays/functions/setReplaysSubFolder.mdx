@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [replays](../Overview.mdx) / setReplaysSubFolder
+
+```ts
+function setReplaysSubFolder(
+  replayType: Video,
+  subFolderName: string,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+change target sub folder of current running replay provider
+
+## Parameters
+
+| Parameter       | Type                                                                                                                                            | Description                                                              |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `replayType`    | [`Video`](../namespaces/enums/enumerations/ReplayType.mdx#enumeration-member-video)                                                             | The type of replay to stop capture.                                      |
+| `subFolderName` | `string`                                                                                                                                        | the new sub folder name                                                  |
+| `callback`      | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

@@ -1,0 +1,37 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / logitech / led / pulseSingleKey
+
+```ts
+function pulseSingleKey(
+  keyName: KeyboardNames,
+  startRedPercentage: number,
+  startGreenPercentage: number,
+  startBluePercentage: number,
+  finishRedPercentage: number,
+  finishGreenPercentage: number,
+  finishBluePercentage: number,
+  milliSecondsDuration: number,
+  isInfinite: boolean,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Pulses a single key.
+
+## Parameters
+
+| Parameter               | Type                                                                                                                                            | Description                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| `keyName`               | `KeyboardNames`                                                                           | The key name. For a list of key names see     |
+| `startRedPercentage`    | `number`                                                                                                                                        | &gt;Red start percentage (0 - 100)               |
+| `startGreenPercentage`  | `number`                                                                                                                                        | Green start percentage (0 - 100)              |
+| `startBluePercentage`   | `number`                                                                                                                                        | Blue start percentage (0 - 100)               |
+| `finishRedPercentage`   | `number`                                                                                                                                        | Red finish percentage (0 - 100)               |
+| `finishGreenPercentage` | `number`                                                                                                                                        | Green finish percentage (0 - 100)             |
+| `finishBluePercentage`  | `number`                                                                                                                                        | Blue finish percentage (0 - 100)              |
+| `milliSecondsDuration`  | `number`                                                                                                                                        | The duration to pulse in milliseconds.        |
+| `isInfinite`            | `boolean`                                                                                                                                       | States whether the effect is infinite or not. |
+| `callback`              | `CallbackFunction`\&lt;`Result`\&gt; | A callback with the result of the request.    |
+
+## Returns
+
+`void`

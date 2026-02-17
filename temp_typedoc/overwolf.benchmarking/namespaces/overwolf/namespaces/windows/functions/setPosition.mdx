@@ -1,0 +1,47 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / setPosition
+
+## Call Signature
+
+```ts
+function setPosition(
+  windowId: string,
+  properties: SetWindowPositionProperties,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Change window position (see SetWindowPositionProperties))
+
+### Parameters
+
+| Parameter    | Type                                                                                                                                | Description                            |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `windowId`   | `string`                                                                                                                            | The id or name of the window           |
+| `properties` | [`SetWindowPositionProperties`](../interfaces/SetWindowPositionProperties.mdx)                                                      | where to place window                  |
+| `callback`   | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | Called with the result of the request. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function setPosition(
+  properties: SetWindowPositionProperties,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Change this window position (see SetWindowPositionProperties))
+
+### Parameters
+
+| Parameter    | Type                                                                                                                                | Description                            |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `properties` | [`SetWindowPositionProperties`](../interfaces/SetWindowPositionProperties.mdx)                                                      | where to place window                  |
+| `callback`   | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | Called with the result of the request. |
+
+### Returns
+
+`void`

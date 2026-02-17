@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / streaming / changeVolume
+
+```ts
+function changeVolume(
+  streamId: number,
+  audioOptions: any,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Changes the volume of the stream.
+
+## Parameters
+
+| Parameter      | Type                                                                                                                                | Description                                                  |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `streamId`     | `number`                                                                                                                            | The id of the stream on which the volume is changed.         |
+| `audioOptions` | `any`                                                                                                                               | The new volumes encapsulated in an object.                   |
+| `callback`     | `CallbackFunction`\&lt;`Result`\&gt; | A function that will be called with success or error status. |
+
+## Returns
+
+`void`

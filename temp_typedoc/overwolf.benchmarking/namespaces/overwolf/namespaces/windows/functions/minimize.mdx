@@ -1,0 +1,21 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [windows](../Overview.mdx) / minimize
+
+```ts
+function minimize(
+  windowId: string,
+  callback?: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Minimizes the window.
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                          | Description                               |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `windowId`  | `string`                                                                                                                                      | The id or name of the window to minimize. |
+| `callback?` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`WindowIdResult`](../interfaces/WindowIdResult.mdx)\> | Called after the window is minimized.     |
+
+## Returns
+
+`void`

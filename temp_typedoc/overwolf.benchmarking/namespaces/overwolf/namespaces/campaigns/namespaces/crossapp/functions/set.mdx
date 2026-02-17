@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [campaigns](../../../Overview.mdx) / [crossapp](../Overview.mdx) / set
+
+```ts
+function set(
+  campaign: CrossAppCampaign,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Initiate or modify a cross-app campaign action for this extension.
+You may modify an existing action by using the same id parameter - see
+CrossAppCampaign.id
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `campaign` | [`CrossAppCampaign`](../interfaces/CrossAppCampaign.mdx)                                                                                        | -           |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | -           |
+
+## Returns
+
+`void`

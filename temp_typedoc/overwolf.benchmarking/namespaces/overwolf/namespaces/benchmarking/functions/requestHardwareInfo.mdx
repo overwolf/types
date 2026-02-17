@@ -1,0 +1,26 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [benchmarking](../Overview.mdx) / requestHardwareInfo
+
+```ts
+function requestHardwareInfo(
+  interval: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Requests hardware information within a given interval. Note that this call
+requires Overwolf to have Administrative permissions. If it does not have
+it, the callback will return with 'Permissions Required'. You will then
+have to ask the app user for permissions and according to the user's
+choice, call `requestPermissions`. It is then required to call
+`requestProcessInfo` again.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                | Description                                                                                         |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `interval` | `number`                                                                                                                            | The desired maximal interval (in milliseconds) in which events will be triggered. Minimum is 500ms. |
+| `callback` | [`CallbackFunction`](../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../interfaces/Result.mdx)\> | A callback function which will be called with the status of the request.                            |
+
+## Returns
+
+`void`

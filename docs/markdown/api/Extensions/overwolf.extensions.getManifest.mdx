@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / extensions / getManifest
+
+```ts
+function getManifest(
+  id: string,
+  callback: CallbackFunction<GetManifestResult>,
+): void;
+```
+
+Returns the requested extension's manifest object.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                | Description                                      |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `id`       | `string`                                                                                                                                            | The id of the extension to get the manifest for. |
+| `callback` | `CallbackFunction`\&lt;`GetManifestResult`\&gt; | A function called with the manifest data.        |
+
+## Returns
+
+`void`

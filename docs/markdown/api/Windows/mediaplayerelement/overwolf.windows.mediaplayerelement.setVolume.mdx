@@ -1,0 +1,23 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / mediaPlayerElement / setVolume
+
+```ts
+function setVolume(
+  id: number,
+  volume: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Sets the volume.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `id`       | `number`                                                                                                                                        | The id of the player.                                                    |
+| `volume`   | `number`                                                                                                                                        | A volume between 0 and 100 (inclusive).                                  |
+| `callback` | `CallbackFunction`\&lt;`Result`\&gt; | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

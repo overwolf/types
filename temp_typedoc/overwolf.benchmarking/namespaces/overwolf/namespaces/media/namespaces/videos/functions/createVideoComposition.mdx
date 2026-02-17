@@ -1,0 +1,24 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [media](../../../Overview.mdx) / [videos](../Overview.mdx) / createVideoComposition
+
+```ts
+function createVideoComposition(
+  sourceVideoUrl: string,
+  segments: object,
+  callback: CallbackFunction<FileResult>,
+): void;
+```
+
+Creates a compilation video out of a source video and a list of segments.
+
+## Parameters
+
+| Parameter           | Type                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceVideoUrl`    | `string`                                                                                                                                          | The url of the source video in an overwolf://media form.                                                                                                                                                                                                                                                    |
+| `segments`          | \{ `segments`: [`VideoCompositionSegment`](../interfaces/VideoCompositionSegment.mdx)[]; \}                                                       | A JSON containing a list of segments, each segment has a start time and an end time in milliseconds. The segments must be sorted in ascending order. Example: { "segments": [ { "startTime": 2000, "endTime": 4000 }, { "startTime": 8000, "endTime": 10000 }, { "startTime": 14000, "endTime": 18000 } ] } |
+| `segments.segments` | [`VideoCompositionSegment`](../interfaces/VideoCompositionSegment.mdx)[]                                                                          | -                                                                                                                                                                                                                                                                                                           |
+| `callback`          | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`FileResult`](../../../interfaces/FileResult.mdx)\> | A callback function which will be called with the status of the request and the url to the target video.                                                                                                                                                                                                    |
+
+## Returns
+
+`void`

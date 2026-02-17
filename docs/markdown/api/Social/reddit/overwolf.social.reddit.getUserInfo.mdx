@@ -1,0 +1,26 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / social / reddit / getUserInfo
+
+```ts
+function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
+```
+
+If the user is currently logged into Reddit, this will return user
+information:
+&#123;
+userInfo: &#123;
+avatar: "http: /  / abs.twimg.com / sticky / ...",
+displayName: "u / foobar",
+name: "foobar"
+&#125;
+&#125;
+Otherwise, an error is returned.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                                                | Description                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `callback` | `CallbackFunction`\&lt;`GetUserInfoResult`\&lt;`User`\&gt;\&gt; | Will contain user information or error if the request has failed. |
+
+## Returns
+
+`void`

@@ -1,0 +1,29 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [windows](../../../Overview.mdx) / [mediaPlayerElement](../Overview.mdx) / setBounds
+
+```ts
+function setBounds(
+  id: number,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Relocates the media player to a given location with given dimensions.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                            | Description                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `id`       | `number`                                                                                                                                        | The id of the player.                                                    |
+| `x`        | `number`                                                                                                                                        | The top position of the player.                                          |
+| `y`        | `number`                                                                                                                                        | The left position of the player.                                         |
+| `width`    | `number`                                                                                                                                        | The width of the player.                                                 |
+| `height`   | `number`                                                                                                                                        | The height of the player.                                                |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback function which will be called with the status of the request. |
+
+## Returns
+
+`void`

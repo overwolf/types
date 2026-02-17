@@ -1,0 +1,23 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [social](../../../Overview.mdx) / [youtube](../Overview.mdx) / getUserInfo
+
+```ts
+function getUserInfo(callback: CallbackFunction<GetUserInfoResult<User>>): void;
+```
+
+If the user is currently logged into YouTube, this will return user
+information:
+{
+avatar: "http://abs.twimg.com/sticky/...", id: "111111111112222222",
+name: "full name", screenName: "screenname123"
+}
+Otherwise, an error is returned.
+
+## Parameters
+
+| Parameter  | Type                                                                                                                                                                                                | Description                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `callback` | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`GetUserInfoResult`](../../../interfaces/GetUserInfoResult.mdx)\<[`User`](../interfaces/User.mdx)\>\> | Will contain user information or error if the request has failed. |
+
+## Returns
+
+`void`

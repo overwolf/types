@@ -1,0 +1,18 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / utils / getFromClipboard
+
+```ts
+function getFromClipboard(callback: (result: string) => void): void;
+```
+
+Gets the string currently placed on the clipboard. If no string is placed
+on the clipboard, returns null.
+
+## Parameters
+
+| Parameter  | Type                           | Description                                |
+| ---------- | ------------------------------ | ------------------------------------------ |
+| `callback` | (`result`: `string`) =&gt; `void` | Called with the string from the clipboard. |
+
+## Returns
+
+`void`

@@ -1,0 +1,70 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / dragResize
+
+## Call Signature
+
+```ts
+function dragResize(windowId: string, edge: WindowDragEdge): void;
+```
+
+Start resizing the window from a specific edge or corner.
+
+### Parameters
+
+| Parameter  | Type                                                                    | Description                                         |
+| ---------- | ----------------------------------------------------------------------- | --------------------------------------------------- |
+| `windowId` | `string`                                                                | The id or name of the window to resize.             |
+| `edge`     | `WindowDragEdge` | The edge or corner from which to resize the window. |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function dragResize(
+  windowId: string,
+  edge: WindowDragEdge,
+  contentRect: ODKRect,
+): void;
+```
+
+Start resizing the window from a specific edge or corner.
+
+### Parameters
+
+| Parameter     | Type                                                                    | Description                                                                  |
+| ------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `windowId`    | `string`                                                                | The id or name of the window to resize.                                      |
+| `edge`        | `WindowDragEdge` | The edge or corner from which to resize the window.                          |
+| `contentRect` | `ODKRect`                                  | The real content of the window (for the in-game drawing resizing white area) |
+
+### Returns
+
+`void`
+
+## Call Signature
+
+```ts
+function dragResize(
+  windowId: string,
+  edge: WindowDragEdge,
+  rect: ODKRect,
+  callback: CallbackFunction<DragResizeResult>,
+): void;
+```
+
+Start resizing the window from a specific edge or corner.
+
+### Parameters
+
+| Parameter  | Type                                                                                                                                              | Description                                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `windowId` | `string`                                                                                                                                          | The id or name of the window to resize.                |
+| `edge`     | `WindowDragEdge`                                                                           | The edge or corner from which to resize the window.    |
+| `rect`     | `ODKRect`                                                                                                            | -                                                      |
+| `callback` | `CallbackFunction`\&lt;`DragResizeResult`\&gt; | Will be called when the resizing process is completed. |
+
+### Returns
+
+`void`

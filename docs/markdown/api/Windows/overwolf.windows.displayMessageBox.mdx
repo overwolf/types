@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / displayMessageBox
+
+```ts
+function displayMessageBox(
+  messageParams: MessageBoxParams,
+  callback: (confirmed: boolean) => void,
+): void;
+```
+
+Displays a customized popup message prompt.
+
+## Parameters
+
+| Parameter       | Type                                                     | Description                                           |
+| --------------- | -------------------------------------------------------- | ----------------------------------------------------- |
+| `messageParams` | `MessageBoxParams` | The type and texts that the message prompt will have. |
+| `callback`      | (`confirmed`: `boolean`) =&gt; `void`                       | The user action.                                      |
+
+## Returns
+
+`void`

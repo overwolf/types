@@ -1,0 +1,21 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / cryptography / encryptForCurrentUser
+
+```ts
+function encryptForCurrentUser(
+  plaintext: string,
+  callback: CallbackFunction<EncryptedDataResult>,
+): void;
+```
+
+Encrypt provided plaintext for current system user
+
+## Parameters
+
+| Parameter   | Type                                                                                                                                                    | Description                              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| `plaintext` | `string`                                                                                                                                                | Text to encrypt                          |
+| `callback`  | `CallbackFunction`\&lt;`EncryptedDataResult`\&gt; | Will be called with encrypted ciphertext |
+
+## Returns
+
+`void`

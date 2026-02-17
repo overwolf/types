@@ -1,0 +1,27 @@
+[Overwolf APIs](../../../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../../../Overview.mdx) / [overwolf](../../../../../Overview.mdx) / [logitech](../../../Overview.mdx) / [led](../Overview.mdx) / setLightingForKeyWithKeyName
+
+```ts
+function setLightingForKeyWithKeyName(
+  keyName: KeyboardNames,
+  redPercentage: number,
+  greenPercentage: number,
+  bluePercentage: number,
+  callback: CallbackFunction<Result>,
+): void;
+```
+
+Sets the lighting for a specific key by key name.
+
+## Parameters
+
+| Parameter         | Type                                                                                                                                            | Description                                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `keyName`         | [`KeyboardNames`](../namespaces/enums/enumerations/KeyboardNames.mdx)                                                                           | The key name. For a list of key names see  |
+| `redPercentage`   | `number`                                                                                                                                        | Red percentage (0 - 100)                   |
+| `greenPercentage` | `number`                                                                                                                                        | Green percentage (0 - 100)                 |
+| `bluePercentage`  | `number`                                                                                                                                        | Blue percentage (0 - 100)                  |
+| `callback`        | [`CallbackFunction`](../../../../../../../../overwolf.io/type-aliases/CallbackFunction.mdx)\<[`Result`](../../../../../interfaces/Result.mdx)\> | A callback with the result of the request. |
+
+## Returns
+
+`void`

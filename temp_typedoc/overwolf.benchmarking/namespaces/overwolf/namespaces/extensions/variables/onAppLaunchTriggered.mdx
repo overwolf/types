@@ -1,0 +1,10 @@
+[Overwolf APIs](../../../../../../Overview.mdx) / [overwolf.benchmarking](../../../../../Overview.mdx) / [overwolf](../../../Overview.mdx) / [extensions](../Overview.mdx) / onAppLaunchTriggered
+
+```ts
+const onAppLaunchTriggered: Event<AppLaunchTriggeredEvent>;
+```
+
+Fires when the current app is launched while already running. This is
+useful in the case where the app has custom logic for clicking its dock
+button while it is already running. The event contaisn an 'origin'
+string which what triggered the app launch (dock, storeapi, odk, etc...)

@@ -1,0 +1,24 @@
+Overwolf APIs / overwolf.benchmarking / overwolf / windows / setTopmost
+
+```ts
+function setTopmost(
+  windowId: string,
+  shouldBeTopmost: boolean,
+  callback: CallbackFunction<WindowIdResult>,
+): void;
+```
+
+Change the window's topmost status. Handle with care as topmost windows can
+negatively impact user experience.
+
+## Parameters
+
+| Parameter         | Type                                                                                                                                          | Description |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `windowId`        | `string`                                                                                                                                      | -           |
+| `shouldBeTopmost` | `boolean`                                                                                                                                     | -           |
+| `callback`        | `CallbackFunction`\&lt;`WindowIdResult`\&gt; | -           |
+
+## Returns
+
+`void`
