@@ -1,0 +1,53 @@
+{
+  "name": "Overwolf APIs",
+  "entryPoints": ["./modules/*.d.ts"],
+  "entryPointStrategy": "expand",
+  "out": "docs/markdown/api",
+  "theme": "markdown",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "./typedoc-plugins/custom-overload-heading.js"
+  ],
+  "tsconfig": "./tsconfig.json",
+  "cleanOutputDir": true,
+
+  "fileExtension": ".mdx",
+  "entryFileName": "Overview.mdx",
+  "readme": "typedoc-readme.mdx",
+  "mergeReadme": true,
+  "outputFileStrategy": "members",
+  "hideGenerator": true,
+
+  "skipErrorChecking": true,
+  "disableSources": true,
+  "includeVersion": true,
+  "excludeExternals": false,
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeNotDocumented": false,
+
+  "hideBreadcrumbs": false,
+  "indexFormat": "table",
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "typeAliasPropertiesFormat": "table",
+  "enumMembersFormat": "table",
+  "propertyMembersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "hidePageHeader": true,
+  "expandParameters": true,
+  "formatWithPrettier": true,
+  "expandObjects": false,
+  "useCodeBlocks": true,
+  "hidePageTitle": true,
+  "tableColumnSettings": {
+    "hideDefaults": false,
+    "hideInherited": true,
+    "hideModifiers": false,
+    "hideOverrides": false,
+    "hideSources": true,
+    "hideValues": false,
+    "leftAlignHeaders": false
+  }
+}

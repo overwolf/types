@@ -1,0 +1,57 @@
+{
+  "name": "Electron APIs",
+  "entryPoints": [
+    "./modules/*.d.ts"
+  ],
+  "entryPointStrategy": "resolve",
+  "out": "docs/markdown/api",
+  "theme": "markdown",
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "tsconfig": "./tsconfig.json",
+  "cleanOutputDir": true,
+    
+  // Plugin settings
+  "fileExtension": ".mdx",
+  "entryFileName": "Overview.mdx",
+  "readme": "typedoc-readme.mdx",
+  "mergeReadme": true,
+  "outputFileStrategy": "members",
+  "hideGenerator": true,
+
+  // General settings
+  "skipErrorChecking": true,
+  "disableSources": true,
+  "includeVersion": true,
+  "excludeExternals": false,
+  "excludeInternal": false,
+  "excludePrivate": false,
+  "excludeProtected": true,
+  "excludeNotDocumented": false,
+
+  // Formatting options
+  "hideBreadcrumbs": false,
+  "indexFormat": "table",
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "typeAliasPropertiesFormat": "table",
+  "enumMembersFormat": "table",
+  "propertyMembersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "hidePageHeader": true,
+  "expandParameters": true,
+  "formatWithPrettier": true,
+  "expandObjects": false,
+  "useCodeBlocks": true,
+  "hidePageTitle": true,
+    "tableColumnSettings": {
+    "hideDefaults": false,
+    "hideInherited": true,
+    "hideModifiers": false,
+    "hideOverrides": false,
+    "hideSources": true,
+    "hideValues": false,
+    "leftAlignHeaders": false
+  }
+}
