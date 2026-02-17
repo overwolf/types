@@ -121,6 +121,24 @@ function isNamespacedOverview(filename) {
   return /\.overview\.(mdx|md)$/i.test(filename);
 }
 
+function namespaceKeyFromParts(parts) {
+  const clean = (parts || []).filter(Boolean).map(p => String(p));
+  if (!clean.length) return null;
+  const lower = clean.map(p => p.toLowerCase());
+  if (lower[0] === 'overwolf') {
+    if (lower.length === 1) return 'overwolf';
+    return ['overwolf', ...lower.slice(1)].join('.');
+  }
+  return ['overwolf', ...lower].join('.');
+}
+
+function namespaceKeyForDir(outDir, dirPath) {
+  const rel = path.relative(outDir, dirPath);
+  if (!rel || rel === '.') return null;
+  const parts = rel.split(path.sep).filter(Boolean);
+  return namespaceKeyFromParts(parts);
+}
+
 function stripFrontmatter(content) {
   return content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
 }
@@ -146,6 +164,9 @@ function extractSummaryFromContent(content) {
     if (/^\d+\.\s+/.test(t)) { if (para.length) break; continue; }
     if (/^>/.test(t)) { if (para.length) break; continue; }
     if (/^<[^>]+>/.test(t)) { if (para.length) break; continue; }
+    if (/^@/.test(t)) { if (para.length) break; continue; }
+    if (/^(deprecated|since version)\b/i.test(t)) { if (para.length) break; continue; }
+    if (/^re-exports\b/i.test(t)) { if (para.length) break; continue; }
     if (/^Overwolf APIs\s*\/?/i.test(t)) { if (para.length) break; continue; }
     para.push(t);
   }
@@ -156,14 +177,20 @@ function escapeTableCell(text) {
   return String(text || '').replace(/\|/g, '\\|');
 }
 
-function buildOverviewTable(rows) {
+function buildOverviewTable(rows, opts = {}) {
+  const heading = opts.heading || 'Overview';
+  const summary = opts.summary ? `${opts.summary}\n\n` : '';
+  const emptyPlaceholder = Object.prototype.hasOwnProperty.call(opts, 'emptyPlaceholder')
+    ? opts.emptyPlaceholder
+    : '-';
   if (!rows.length) {
-    return `# Overview\n\n*No pages generated.*\n`;
+    return `# ${heading}\n\n*No pages generated.*\n`;
   }
-  const header = `# Overview\n\n| API | Description |\n| --- | --- |\n`;
+  const header = `# ${heading}\n\n${summary}| API | Description |\n| --- | --- |\n`;
   const body = rows.map(r => {
-    const desc = escapeTableCell(r.description) || '-';
-    return `| [${r.label}](${r.link}) | ${desc} |`;
+    const desc = escapeTableCell(r.description);
+    const finalDesc = desc || emptyPlaceholder;
+    return `| [${r.label}](${r.link}) | ${finalDesc} |`;
   }).join('\n');
   return `${header}${body}\n`;
 }
@@ -171,6 +198,7 @@ function buildOverviewTable(rows) {
 async function run() {
   const argv = require('minimist')(process.argv.slice(2));
   const out = path.resolve(process.cwd(), argv.out || argv.o || 'docs/markdown/api');
+  const namespaceSummaryByFull = new Map();
   const all = await listFiles(out);
 
   // Filter MDX files, skip only root-level overview and typedoc readme
@@ -218,6 +246,10 @@ async function run() {
       const destDir = path.join(nsDir, subFolder || '_root');
       await ensureDir(destDir);
       const origBase = path.basename(it.file, path.extname(it.file));
+      if (origBase.toLowerCase() === 'overview') {
+        const summary = extractSummaryFromContent(it.content);
+        if (summary) namespaceSummaryByFull.set(it.fullNs.toLowerCase(), summary);
+      }
       // create a filename that preserves the full namespace: overwolf.foo.bar.symbol
       const safeFull = it.fullNs.replace(/[^a-zA-Z0-9_.]/g, '.');
       const newName = `${safeFull}.${origBase}${path.extname(it.file)}`;
@@ -261,15 +293,12 @@ async function run() {
         } catch { /* ignore */ }
         rows.push({ label: name, link: `./${n}`, description: desc });
       }
-      const overview = buildOverviewTable(rows);
+      const nsKey = namespaceKeyForDir(out, dirPath);
+      const summary = nsKey ? namespaceSummaryByFull.get(nsKey) : '';
+      const overview = buildOverviewTable(rows, { summary });
       await fs.writeFile(path.join(dirPath, 'Overview.mdx'), overview, 'utf8');
     }
   }
-
-  // Root overview with list of namespaces
-  const namespaceList = Array.from(groups.keys()).sort().map(ns => `- [${ns}](./${ns}/Overview)`).join('\n');
-  const rootOverview = `# API Namespaces\n\n${namespaceList || '*No namespaces found.*'}\n`;
-  await fs.writeFile(path.join(out, 'Overview.mdx'), rootOverview, 'utf8');
 
   console.log('Organized MDX into', groups.size, 'namespaces at', out);
   // Cleanup: remove any leftover directories created by typedoc that begin with 'overwolf.'
@@ -395,11 +424,14 @@ async function run() {
         const overviewPath = path.join(groupPath, sd.name, 'Overview.mdx');
         let target = `./${sd.name}`;
         try { await fs.access(overviewPath); target = `./${sd.name}/Overview`; } catch { /* ignore */ }
-        let desc = '';
-        try {
-          const c = await fs.readFile(overviewPath, 'utf8');
-          desc = extractSummaryFromContent(c);
-        } catch { /* ignore */ }
+        const nsKey = namespaceKeyFromParts([d.name, sd.name]);
+        let desc = nsKey ? namespaceSummaryByFull.get(nsKey) : '';
+        if (!desc) {
+          try {
+            const c = await fs.readFile(overviewPath, 'utf8');
+            desc = extractSummaryFromContent(c);
+          } catch { /* ignore */ }
+        }
         rows.push({ label: sd.name, link: target, description: desc });
       }
       for (const f of files) {
@@ -413,12 +445,31 @@ async function run() {
         rows.push({ label: base, link: `./${base}`, description: desc });
       }
 
-      const overview = buildOverviewTable(rows);
+      const nsKey = namespaceKeyFromParts([d.name]);
+      const summary = nsKey ? namespaceSummaryByFull.get(nsKey) : '';
+      const overview = buildOverviewTable(rows, { summary });
       await fs.writeFile(path.join(groupPath, 'Overview.mdx'), overview, 'utf8');
     }
   }
 
   await writeGroupOverviews(out);
+
+  // Root overview with list of namespaces and descriptions
+  const topDirsForRoot = (await fs.readdir(out, { withFileTypes: true }))
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
+    .sort((a,b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+
+  const namespaceRows = [];
+  for (const ns of topDirsForRoot) {
+    const nsKey = namespaceKeyFromParts([ns]);
+    const desc = nsKey ? (namespaceSummaryByFull.get(nsKey) || '') : '';
+    const label = nsKey || ns;
+    namespaceRows.push({ label, link: `./${ns}/Overview`, description: desc });
+  }
+
+  const rootOverview = buildOverviewTable(namespaceRows, { emptyPlaceholder: '' });
+  await fs.writeFile(path.join(out, 'Overview.mdx'), rootOverview, 'utf8');
 }
 
 run().catch(err => { console.error(err); process.exit(1); });
