@@ -23,6 +23,9 @@ export interface OwAdOptions {
   enableHighImpact?: boolean;
   inStream?: boolean;
   volume?: number;
+  partnerId?: number;
+  serverId?: number;
+  customTracking?: Record<string, any>;
 }
 
 export declare class OwAd {
