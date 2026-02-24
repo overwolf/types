@@ -2,7 +2,7 @@
 sidebar_label: "writeFileContents"
 ---
 
-Overwolf APIs / overwolf / overwolf / io / writeFileContents
+Overwolf APIs / overwolf.io / writeFileContents
 
 ```ts
 function writeFileContents(
@@ -20,12 +20,12 @@ the file's content will be overwritten.
 
 ## Parameters
 
-| Parameter              | Type                                                                                                                                | Description                                                                              |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `filePath`             | `string`                                                                                                                            | The full path of the file to write to.                                                   |
-| `content`              | `string`                                                                                                                            | The content to write.                                                                    |
-| `encoding`             | `eEncoding`                                                                       | The encoding to use, see more at                                                         |
-| `triggerUacIfRequired` | `boolean`                                                                                                                           | If additional permissions are required, allows the triggering of the Windows UAC dialog. |
+| Parameter              | Type                                                                   | Description                                                                              |
+| ---------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `filePath`             | `string`                                                               | The full path of the file to write to.                                                   |
+| `content`              | `string`                                                               | The content to write.                                                                    |
+| `encoding`             | `eEncoding`                                                            | The encoding to use, see more at                                                         |
+| `triggerUacIfRequired` | `boolean`                                                              | If additional permissions are required, allows the triggering of the Windows UAC dialog. |
 | `callback`             | `CallbackFunction`\<`Result`\> | Called with the status of the request.                                                   |
 
 ## Returns

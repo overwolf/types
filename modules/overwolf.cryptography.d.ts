@@ -1,4 +1,9 @@
 /**
+ * Use this API to encrypt and decrypt ciphertext and secure app data and variables. (e.g., localStorage that stores auth-tokens, etc.)
+ * @packageDocumentation
+ */
+
+/**
    * Stop listening on file.
    * Stop streaming a file that you previously passed when calling listenOnFile().
    * There are no callbacks - as this will never fail (even if the stream doesn't exist).

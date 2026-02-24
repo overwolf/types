@@ -8,19 +8,14 @@ toc_max_heading_level: 6
 
 # Overview
 
+Check whether a certain file exists and/or to write content into files.<br /><br /> For app-related I/O functionalities, use the `overwolf.extensions.io` API. <br /><br />In addition, the simple I/O plugin offers several more general I/O features that are not available through the APIs.
+
 | API | Description |
 | --- | --- |
-| [overwolf.io.enums.eEncoding](./enums/overwolf.io.enums.eEncoding) | - |
-| [overwolf.io.enums.encoding](./enums/overwolf.io.enums.encoding) | - |
-| [overwolf.io.enums.WatchEventType](./enums/overwolf.io.enums.WatchEventType) | - |
+| [overwolf.io.enums.eEncoding](./enums/overwolf.io.enums.eEncoding) | Represents the primary character encoding formats supported. |
+| [overwolf.io.enums.encoding](./enums/overwolf.io.enums.encoding) | Extended encoding options for file and stream operations. |
+| [overwolf.io.enums.WatchEventType](./enums/overwolf.io.enums.WatchEventType) | Describes the type of file system or watcher event that occurred. |
 | [overwolf.io.copyFile](./Functions/overwolf.io.copyFile) | Copy a file from the local extension directory to a destination on the local machine. |
-| [overwolf.io.dir](./Functions/overwolf.io.dir) | Lists all files and folder in the target path. |
-| [overwolf.io.exist](./Functions/overwolf.io.exist) | Is path exist. |
-| [overwolf.io.fileExists](./Functions/overwolf.io.fileExists) | Checks for the existence of the file in the given path. |
-| [overwolf.io.listenOnFile](./Functions/overwolf.io.listenOnFile) | Start listening on file. Stream a file (text files only), line-by-line, from the local filesystem. |
-| [overwolf.io.readBinaryFile](./Functions/overwolf.io.readBinaryFile) | Reads a file's contents and returns an array of byte values. This function is extremely slow! Use it only for small files. |
-| [overwolf.io.readFileContents](./Functions/overwolf.io.readFileContents) | Read the content to the target file. |
-| [overwolf.io.readTextFile](./Functions/overwolf.io.readTextFile) | Reads a file's contents and returns it as text. |
 | [overwolf.io.writeFileContents](./Functions/overwolf.io.writeFileContents) | Writes the content to the target file. If the file doesn't exist, it will be created, along with any needed directories along the path. Otherwise, the file's content will be overwritten. |
 | [overwolf.io.Dictionary](./Interfaces/overwolf.io.Dictionary) | - |
 | [overwolf.io.DirResult](./Interfaces/overwolf.io.DirResult) | - |

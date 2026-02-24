@@ -1,4 +1,11 @@
 /**
+ * Check whether a certain file exists and/or to write content into files.<br /><br />
+ * For app-related I/O functionalities, use the `overwolf.extensions.io` API. <br /><br />In addition, the simple I/O plugin offers several more general I/O features that are not available through the APIs.
+ * 
+ * @packageDocumentation
+ * /
+
+/**
      * Unregister a listener to an event.
      * @param callback The callback should be the same function that was passed
      * to addListener(). If an anonymous function was passed, it cannot be
@@ -17,30 +24,62 @@
 }
 
 declare namespace overwolf.io {
-  namespace enums {
-    const enum eEncoding {
-      UTF8 = "UTF8",
-      UTF8BOM = "UTF8BOM",
-      Unicode = "Unicode",
-      UnicodeBOM = "UnicodeBOM",
-      ASCII = "ASCII",
-    }
+  
+      /**
+     * A collection of constant enumerations used across the application
+     * for data encoding and system events.
+     */
+    namespace enums {
 
-    const enum encoding {
-      Default = "Default",
-      UTF8 = "UTF8",
-      UTF32 = "UTF32",
-      Unicode = "Unicode",
-      UTF7 = "UTF7",
-      ASCII = "ASCII",
-      BigEndianUnicode = "BigEndianUnicode",
-    }
+      /**
+       * Represents the primary character encoding formats supported.
+       */
+      export const enum eEncoding {
+        /** 8-bit UCS Transformation Format. */
+        UTF8 = "UTF8",
+        /** UTF-8 with a Byte Order Mark. */
+        UTF8BOM = "UTF8BOM",
+        /** Standard Unicode encoding (usually UTF-16). */
+        Unicode = "Unicode",
+        /** Unicode with a Byte Order Mark. */
+        UnicodeBOM = "UnicodeBOM",
+        /** 7-bit American Standard Code for Information Interchange. */
+        ASCII = "ASCII",
+      }
 
-    const enum WatchEventType {
-      Registered = "Registered",
-      Changed = "Changged",
-      Renamed = "Renamed",
-      Deleted = "Deleted"
+      /**
+       * Extended encoding options for file and stream operations.
+       */
+      export const enum encoding {
+        /** The system default encoding. */
+        Default = "Default",
+        /** 8-bit UCS Transformation Format. */
+        UTF8 = "UTF8",
+        /** 32-bit UCS Transformation Format. */
+        UTF32 = "UTF32",
+        /** Standard Unicode encoding. */
+        Unicode = "Unicode",
+        /** 7-bit UCS Transformation Format (Legacy). */
+        UTF7 = "UTF7",
+        /** 7-bit ASCII encoding. */
+        ASCII = "ASCII",
+        /** Big-endian byte order Unicode encoding. */
+        BigEndianUnicode = "BigEndianUnicode",
+      }
+
+      /**
+       * Describes the type of file system or watcher event that occurred.
+       */
+      export const enum WatchEventType {
+        /** The watcher has been successfully registered. */
+        Registered = "Registered",
+        /** The target resource has been modified. */
+        Changed = "Changed",
+        /** The target resource has been moved or renamed. */
+        Renamed = "Renamed",
+        /** The target resource has been removed. */
+        Deleted = "Deleted"
+      }
     }
   }
 
