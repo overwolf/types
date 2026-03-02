@@ -67,6 +67,8 @@
  * parameter. It will then call: overwolf.campaigns.crossapp.consumeConversions
  * to review the existing conversions (this will remove the conversions from
  * consecutive calls to consumeConversions)
+ * 
+ * @packageDocumentation
  */
 declare namespace overwolf.campaigns.crossapp {
   /**
@@ -112,6 +114,9 @@ declare namespace overwolf.campaigns.crossapp {
     data: any;
   }
 
+  /**
+   * Container that represent a cross app campaign conversions.
+   */
   interface CrossAppCampaignConversion {
     /**
      * The ID of the cross-app campaign the conversion targets.
@@ -144,14 +149,15 @@ declare namespace overwolf.campaigns.crossapp {
   }
 
   /**
-   * See `overwolf.campaigns.crossapp.getAvailableActions`
+   * Object result from `overwolf.campaigns.crossapp.getAvailableActions`
+   * 
    */
   interface GetCrossAppAvailableActionsResult extends Result {
     actions: CrossAppCampaign[];
   }
 
   /**
-   * See `overwolf.campaigns.crossapp.consumeConversions`
+   * Object result from `overwolf.campaigns.crossapp.consumeConversions`
    */
   interface GetCrossAppConversionsResult extends Result {
     conversions: CrossAppCampaignConversion[];
@@ -167,8 +173,6 @@ declare namespace overwolf.campaigns.crossapp {
 
   /**
    * Initiate or modify a cross-app campaign action for this extension.
-   * You may modify an existing action by using the same id parameter - see
-   * CrossAppCampaign.id
    *
    * @param campaign
    * @param callback
