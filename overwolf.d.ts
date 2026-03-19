@@ -5489,6 +5489,7 @@ declare namespace overwolf.extensions.current {
 
   interface GetExtraObjectResult extends Result {
     object?: any;
+    path?: string;
   }
 
 
