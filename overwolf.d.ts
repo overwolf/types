@@ -3178,6 +3178,49 @@ declare namespace overwolf.web {
     reason: string;
   }
 
+  interface WebSocketServerOpenParams {
+    port: number;
+    services: string[];
+  }
+
+  interface WebSocketServer {
+    /**
+     * Opens the WebSocket server on the given port and services.
+     * @param params The connection parameters.
+     */
+    open(params: WebSocketServerOpenParams): void;
+    /**
+     * Closes the WebSocket server.
+     */
+    close(): void;
+    /**
+     * Sends a message to connected clients.
+     * @param message The message to send.
+     */
+    send(message: string): void;
+    /**
+     * Fired when a client connects.
+     */
+    onClientConnected: Event<Record<string, never>>;
+    /**
+     * Fired when a client disconnects.
+     */
+    onClientDisconnected: Event<Record<string, never>>;
+    /**
+     * Fired when a message is received from a client.
+     */
+    onMessage: Event<MessageEvent>;
+    /**
+     * Fired when the server is closed.
+     */
+    onClosed: Event<Record<string, never>>;
+  }
+
+  /**
+   * Creates a WebSocket server.
+   */
+  function createWebSocketServer(): WebSocketServer;
+
   /**
    * Creates a web server. This call returns an object with two fields: A status
    * string and a server object.
