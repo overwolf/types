@@ -4,15 +4,17 @@ sidebar_label: "hotkeys.GetAllAssignedHotkeysResult"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / GetAllAssignedHotkeysResult
 
+Result of `getAllApps`, mapping each app's hotkeys alongside platform-level hotkeys.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                  | Type                       | Description                                            |
-| ----------------------------------------- | -------------------------- | ------------------------------------------------------ |
-| <a id="property-apps"></a> `apps`         | `object`                   | -                                                      |
-| <a id="property-error"></a> `error?`      | `string`                   | Information regarding the error (if an error occurred) |
-| <a id="property-platform"></a> `platform` | `IHotkey`[] | -                                                      |
-| <a id="property-success"></a> `success`   | `boolean`                  | Whether the method executed successfully or not.       |
+| Property                                  | Type                       | Description                                                 |
+| ----------------------------------------- | -------------------------- | ----------------------------------------------------------- |
+| <a id="property-apps"></a> `apps`         | `object`                   | A map of app IDs to their assigned hotkey results.          |
+| <a id="property-error"></a> `error?`      | `string`                   | Information regarding the error (if an error occurred)      |
+| <a id="property-platform"></a> `platform` | `IHotkey`[] | Platform-wide hotkeys not associated with any specific app. |
+| <a id="property-success"></a> `success`   | `boolean`                  | Whether the method executed successfully or not.            |

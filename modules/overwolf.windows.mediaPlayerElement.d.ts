@@ -1,23 +1,36 @@
 /**
+ * Use this API to embed and control native media player elements within Overwolf windows for video playback.
+ * @packageDocumentation
+ */
+
+/**
    * Fired when native window (or OSR on desktop) moved to other monitoror when current monitor resolution changed
    */
   const onScreenPropertyChanged: Event<onScreenPropertyChangedEvent>;
 }
 
 declare namespace overwolf.windows.mediaPlayerElement {
+  /** Result of a `create` call, containing the new player's ID. */
   interface CreateResult extends Result {
+    /** The unique ID assigned to the newly created media player. */
     id?: number;
   }
 
+  /** Result of a `setVideo` call, containing the video duration. */
   interface SetVideoResult extends Result {
+    /** The total duration of the loaded video, in seconds. */
     duration?: number;
   }
 
+  /** Result of a `getProgress` call, containing the current playback position. */
   interface GetProgressResult extends Result {
+    /** The current playback position, in seconds. */
     progress?: number;
   }
 
+  /** Event data for media player playback events. */
   interface PlaybackEvent {
+    /** The ID of the media player that triggered the event. */
     id: number;
   }
 

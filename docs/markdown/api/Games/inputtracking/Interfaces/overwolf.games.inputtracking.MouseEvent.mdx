@@ -4,11 +4,13 @@ sidebar_label: "inputtracking.MouseEvent"
 
 Overwolf APIs / overwolf / overwolf / games / inputTracking / MouseEvent
 
+Payload of the `onMouseUp` and `onMouseDown` events.
+
 ## Properties
 
-| Property                              | Type      |
-| ------------------------------------- | --------- |
-| <a id="property-button"></a> `button` | `string`  |
-| <a id="property-ongame"></a> `onGame` | `boolean` |
-| <a id="property-x"></a> `x`           | `number`  |
-| <a id="property-y"></a> `y`           | `number`  |
+| Property                              | Type      | Description                                                                         |
+| ------------------------------------- | --------- | ----------------------------------------------------------------------------------- |
+| <a id="property-button"></a> `button` | `string`  | Which mouse button was pressed or released (e.g., `"left"`, `"right"`, `"middle"`). |
+| <a id="property-ongame"></a> `onGame` | `boolean` | Whether the mouse event occurred while the game window had focus.                   |
+| <a id="property-x"></a> `x`           | `number`  | Horizontal cursor position in pixels at the time of the event.                      |
+| <a id="property-y"></a> `y`           | `number`  | Vertical cursor position in pixels at the time of the event.                        |

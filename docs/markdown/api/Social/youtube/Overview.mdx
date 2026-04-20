@@ -8,4 +8,18 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+Use this API to share videos to YouTube on behalf of the logged-in user, with support for privacy settings and upload progress tracking.
+
+| API | Description |
+| --- | --- |
+| [overwolf.social.youtube.enums.ShareState](./enums/overwolf.social.youtube.enums.ShareState) | The current stage of a video share operation. |
+| [overwolf.social.youtube.enums.YouTubePrivacy](./enums/overwolf.social.youtube.enums.YouTubePrivacy) | The visibility setting for a video uploaded to YouTube. |
+| [overwolf.social.youtube.getUserInfo](./Functions/overwolf.social.youtube.getUserInfo) | If the user is currently logged into YouTube, this will return user information: &#123; avatar: "http://abs.twimg.com/sticky/...", id: "111111111112222222", name: "full name", screenName: "screenname123" &#125; Otherwise, an error is returned. |
+| [overwolf.social.youtube.performLogout](./Functions/overwolf.social.youtube.performLogout) | Performs a "strong" sign out of YouTube, so that even if the user performs a login via the Overwolf Settings / Accounts page, he will be considered signed out. |
+| [overwolf.social.youtube.performUserLogin](./Functions/overwolf.social.youtube.performUserLogin) | Opens the login dialog. There is no callback for this method and the only way to know if the user signed in is via `onLoginStateChanged`. |
+| [overwolf.social.youtube.share](./Functions/overwolf.social.youtube.share) | If the user is currently logged into YouTube, this will perform the video share. |
+| [overwolf.social.youtube.shareEx](./Functions/overwolf.social.youtube.shareEx) | Shares a video to YouTube with separate result and progress callbacks. |
+| [overwolf.social.youtube.ShareParameters](./Interfaces/overwolf.social.youtube.ShareParameters) | Parameters for sharing a video to YouTube. |
+| [overwolf.social.youtube.SocialShareProgress](./Interfaces/overwolf.social.youtube.SocialShareProgress) | Progress update for an in-flight `shareEx` operation. |
+| [overwolf.social.youtube.SocialShareResult](./Interfaces/overwolf.social.youtube.SocialShareResult) | Result of a completed `shareEx` operation. |
+| [overwolf.social.youtube.User](./Interfaces/overwolf.social.youtube.User) | Information about the currently logged-in YouTube user. |

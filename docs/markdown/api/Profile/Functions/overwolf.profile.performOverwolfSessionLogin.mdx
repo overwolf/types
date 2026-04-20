@@ -11,12 +11,14 @@ function performOverwolfSessionLogin(
 ): void;
 ```
 
+Performs an Overwolf session login using a previously obtained token.
+
 ## Parameters
 
-| Parameter  | Type                                                                                                                                |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `token`    | `string`                                                                                                                            |
-| `callback` | `CallbackFunction`\<`Result`\> |
+| Parameter  | Type                                                                                                                                | Description                                             |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `token`    | `string`                                                                                                                            | The session token to authenticate with.                 |
+| `callback` | `CallbackFunction`\<`Result`\> | A function called with the result of the login attempt. |
 
 ## Returns
 

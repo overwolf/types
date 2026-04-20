@@ -4,14 +4,16 @@ sidebar_label: "launchers.GetRunningLaunchersInfoResult"
 
 Overwolf APIs / overwolf / overwolf / games / launchers / GetRunningLaunchersInfoResult
 
+Result of a `getRunningLaunchersInfo` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                    | Type                                 | Description                                            |
-| ------------------------------------------- | ------------------------------------ | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`        | `string`                             | Information regarding the error (if an error occurred) |
-| <a id="property-launchers"></a> `launchers` | `LauncherInfo`[] | -                                                      |
-| <a id="property-success"></a> `success`     | `boolean`                            | Whether the method executed successfully or not.       |
+| Property                                    | Type                                 | Description                                                |
+| ------------------------------------------- | ------------------------------------ | ---------------------------------------------------------- |
+| <a id="property-error"></a> `error?`        | `string`                             | Information regarding the error (if an error occurred)     |
+| <a id="property-launchers"></a> `launchers` | `LauncherInfo`[] | Array of info objects for each currently running launcher. |
+| <a id="property-success"></a> `success`     | `boolean`                            | Whether the method executed successfully or not.           |

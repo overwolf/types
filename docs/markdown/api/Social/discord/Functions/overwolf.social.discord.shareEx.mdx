@@ -12,13 +12,15 @@ function shareEx(
 ): void;
 ```
 
+Shares a media file to a Discord channel with separate result and progress callbacks.
+
 ## Parameters
 
-| Parameter            | Type                                                                                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `discordShareParams` | `ShareParameters`                                                                                                        |
-| `resultCallback`     | `CallbackFunction`\<`SocialShareResult`\>     |
-| `progressCallback`   | `CallbackFunction`\<`SocialShareProgress`\> |
+| Parameter            | Type                                                                                                                                                          | Description                                                                  |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `discordShareParams` | `ShareParameters`                                                                                                        | The share parameters.                                                        |
+| `resultCallback`     | `CallbackFunction`\<`SocialShareResult`\>     | Called with the final share result, including the URL of the shared content. |
+| `progressCallback`   | `CallbackFunction`\<`SocialShareProgress`\> | Called periodically with upload progress updates.                            |
 
 ## Returns
 

@@ -4,18 +4,20 @@ sidebar_label: "Display"
 
 Overwolf APIs / overwolf / overwolf / utils / Display
 
+Information about a single display/monitor connected to the system.
+
 ## Properties
 
-| Property                                      | Type      |
-| --------------------------------------------- | --------- |
-| <a id="property-dpix"></a> `dpiX`             | `number`  |
-| <a id="property-dpiy"></a> `dpiY`             | `number`  |
-| <a id="property-handle"></a> `handle`         | `object`  |
-| `handle.value`                                | `number`  |
-| <a id="property-height"></a> `height`         | `number`  |
-| <a id="property-id"></a> `id`                 | `string`  |
-| <a id="property-is_primary"></a> `is_primary` | `boolean` |
-| <a id="property-name"></a> `name`             | `string`  |
-| <a id="property-width"></a> `width`           | `number`  |
-| <a id="property-x"></a> `x`                   | `number`  |
-| <a id="property-y"></a> `y`                   | `number`  |
+| Property                                      | Type      | Description                                                         |
+| --------------------------------------------- | --------- | ------------------------------------------------------------------- |
+| <a id="property-dpix"></a> `dpiX`             | `number`  | Horizontal DPI of the display.                                      |
+| <a id="property-dpiy"></a> `dpiY`             | `number`  | Vertical DPI of the display.                                        |
+| <a id="property-handle"></a> `handle`         | `object`  | Native OS handle for the display.                                   |
+| `handle.value`                                | `number`  | -                                                                   |
+| <a id="property-height"></a> `height`         | `number`  | Height of the display in pixels.                                    |
+| <a id="property-id"></a> `id`                 | `string`  | Unique display identifier.                                          |
+| <a id="property-is_primary"></a> `is_primary` | `boolean` | Whether this is the primary display.                                |
+| <a id="property-name"></a> `name`             | `string`  | Display name as reported by the OS.                                 |
+| <a id="property-width"></a> `width`           | `number`  | Width of the display in pixels.                                     |
+| <a id="property-x"></a> `x`                   | `number`  | Horizontal position of the display in the virtual desktop (pixels). |
+| <a id="property-y"></a> `y`                   | `number`  | Vertical position of the display in the virtual desktop (pixels).   |

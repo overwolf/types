@@ -4,6 +4,8 @@ sidebar_label: "current.GetExtraObjectResult"
 
 Overwolf APIs / overwolf / overwolf / extensions / current / GetExtraObjectResult
 
+Result of `getExtraObject`, containing the requested extra object instance.
+
 ## Extends
 
 - `Result`
@@ -13,5 +15,5 @@ Overwolf APIs / overwolf / overwolf / extensions / current / GetExtraObjectResul
 | Property                                | Type      | Description                                            |
 | --------------------------------------- | --------- | ------------------------------------------------------ |
 | <a id="property-error"></a> `error?`    | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-object"></a> `object?`  | `any`     | -                                                      |
+| <a id="property-object"></a> `object?`  | `any`     | The extra object instance, or undefined if not found.  |
 | <a id="property-success"></a> `success` | `boolean` | Whether the method executed successfully or not.       |

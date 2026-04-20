@@ -4,13 +4,15 @@ sidebar_label: "hotkeys.OnChangedEvent"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / OnChangedEvent
 
+Payload of the `onChanged` event, describing the updated hotkey binding.
+
 ## Properties
 
-| Property                                              | Type     |
-| ----------------------------------------------------- | -------- |
-| <a id="property-binding"></a> `binding`               | `string` |
-| <a id="property-description"></a> `description`       | `string` |
-| <a id="property-gameid"></a> `gameId`                 | `number` |
-| <a id="property-modifierkeys"></a> `modifierKeys`     | `number` |
-| <a id="property-name"></a> `name`                     | `string` |
-| <a id="property-virtualkeycode"></a> `virtualKeycode` | `number` |
+| Property                                              | Type     | Description                                                    |
+| ----------------------------------------------------- | -------- | -------------------------------------------------------------- |
+| <a id="property-binding"></a> `binding`               | `string` | The new string representation of the binding.                  |
+| <a id="property-description"></a> `description`       | `string` | A human-readable description of the hotkey.                    |
+| <a id="property-gameid"></a> `gameId`                 | `number` | The game ID the changed binding applies to, or `0` for global. |
+| <a id="property-modifierkeys"></a> `modifierKeys`     | `number` | The bitmask of modifier keys in the new binding.               |
+| <a id="property-name"></a> `name`                     | `string` | The internal name of the hotkey that changed.                  |
+| <a id="property-virtualkeycode"></a> `virtualKeycode` | `number` | The virtual key code of the primary key in the new binding.    |

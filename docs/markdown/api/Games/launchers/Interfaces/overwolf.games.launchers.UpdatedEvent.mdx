@@ -4,9 +4,11 @@ sidebar_label: "launchers.UpdatedEvent"
 
 Overwolf APIs / overwolf / overwolf / games / launchers / UpdatedEvent
 
+Payload of the `onUpdated` event.
+
 ## Properties
 
-| Property                                      | Type                               |
-| --------------------------------------------- | ---------------------------------- |
-| <a id="property-changetype"></a> `changeType` | `string`[]                         |
-| <a id="property-info"></a> `info`             | `LauncherInfo` |
+| Property                                      | Type                               | Description                                         |
+| --------------------------------------------- | ---------------------------------- | --------------------------------------------------- |
+| <a id="property-changetype"></a> `changeType` | `string`[]                         | List of property names that changed in this update. |
+| <a id="property-info"></a> `info`             | `LauncherInfo` | The current state of the launcher that was updated. |

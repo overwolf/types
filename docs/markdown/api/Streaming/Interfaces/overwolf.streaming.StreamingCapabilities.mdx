@@ -4,16 +4,18 @@ sidebar_label: "StreamingCapabilities"
 
 Overwolf APIs / overwolf / overwolf / streaming / StreamingCapabilities
 
+Result of `getCapabilities`, describing what the current system supports.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                                                           | Type                                       | Description                                            |
-| ---------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
-| <a id="property-audio"></a> `audio?`                                               | `AudioDeviceData`[] | -                                                      |
-| <a id="property-audioprocesscapturesupported"></a> `audioProcessCaptureSupported?` | `boolean`                                  | -                                                      |
-| <a id="property-error"></a> `error?`                                               | `string`                                   | Information regarding the error (if an error occurred) |
-| <a id="property-success"></a> `success`                                            | `boolean`                                  | Whether the method executed successfully or not.       |
-| <a id="property-video"></a> `video?`                                               | `EncoderData`[]         | -                                                      |
+| Property                                                                           | Type                                       | Description                                                    |
+| ---------------------------------------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------- |
+| <a id="property-audio"></a> `audio?`                                               | `AudioDeviceData`[] | Available audio devices on this system.                        |
+| <a id="property-audioprocesscapturesupported"></a> `audioProcessCaptureSupported?` | `boolean`                                  | Whether per-process audio capture is supported on this system. |
+| <a id="property-error"></a> `error?`                                               | `string`                                   | Information regarding the error (if an error occurred)         |
+| <a id="property-success"></a> `success`                                            | `boolean`                                  | Whether the method executed successfully or not.               |
+| <a id="property-video"></a> `video?`                                               | `EncoderData`[]         | Available video encoders on this system.                       |

@@ -11,12 +11,15 @@ function watchFile(
 ): void;
 ```
 
+Starts watching a file for changes and fires a callback whenever the file
+is created, modified, renamed, or deleted.
+
 ## Parameters
 
-| Parameter  | Type                                                                                                                                                     |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `filePath` | `string`                                                                                                                                                 |
-| `callback` | `CallbackFunction`\<`WatchedFileChanged`\> |
+| Parameter  | Type                                                                                                                                                     | Description                                                           |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `filePath` | `string`                                                                                                                                                 | The absolute path of the file to watch.                               |
+| `callback` | `CallbackFunction`\<`WatchedFileChanged`\> | Called each time a file system event is detected on the watched file. |
 
 ## Returns
 

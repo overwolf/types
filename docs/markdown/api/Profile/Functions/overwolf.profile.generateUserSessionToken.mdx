@@ -10,11 +10,13 @@ function generateUserSessionToken(
 ): void;
 ```
 
+Generates a short-lived session token for the currently logged-in user.
+
 ## Parameters
 
-| Parameter  | Type                                                                                                                                                                          |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `callback` | `CallbackFunction`\<`GenerateUserSessionTokenResult`\> |
+| Parameter  | Type                                                                                                                                                                          | Description                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `callback` | `CallbackFunction`\<`GenerateUserSessionTokenResult`\> | A function called with the generated token, or an error. |
 
 ## Returns
 

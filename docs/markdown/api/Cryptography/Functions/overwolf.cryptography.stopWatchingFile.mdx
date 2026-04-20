@@ -11,12 +11,14 @@ function stopWatchingFile(
 ): void;
 ```
 
+Stops watching a file that was previously registered with `watchFile`.
+
 ## Parameters
 
-| Parameter  | Type                                                                                  |
-| ---------- | ------------------------------------------------------------------------------------- |
-| `path`     | `string`                                                                              |
-| `callback` | `CallbackFunction`\<`Result`\> |
+| Parameter  | Type                                                                                  | Description                                     |
+| ---------- | ------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `path`     | `string`                                                                              | The absolute path of the file to stop watching. |
+| `callback` | `CallbackFunction`\<`Result`\> | Called with the result of the operation.        |
 
 ## Returns
 

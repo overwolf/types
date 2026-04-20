@@ -8,10 +8,13 @@ toc_max_heading_level: 6
 
 # Overview
 
+Use this API to interact with Logitech Gaming Software (LGS) peripherals, including querying connected devices and their lighting capabilities.
+
 | API | Description |
 | --- | --- |
 | [overwolf.logitech.getVersion](./Functions/overwolf.logitech.getVersion) | Gets the current version of the LGS. |
 | [overwolf.logitech.sendHttpRequest](./Functions/overwolf.logitech.sendHttpRequest) | Send an https request (of different methods) to localhost/127.0.0.1 while by-passing a valid certificate verification. |
-| [overwolf.logitech.Device](./Interfaces/overwolf.logitech.Device) | - |
-| [overwolf.logitech.GetDevicesResult](./Interfaces/overwolf.logitech.GetDevicesResult) | - |
-| [overwolf.logitech.GetVersionResult](./Interfaces/overwolf.logitech.GetVersionResult) | - |
+| [overwolf.logitech.Device](./Interfaces/overwolf.logitech.Device) | Information about a connected Logitech peripheral device. |
+| [overwolf.logitech.GetDevicesResult](./Interfaces/overwolf.logitech.GetDevicesResult) | Result containing the list of connected Logitech devices. |
+| [overwolf.logitech.GetVersionResult](./Interfaces/overwolf.logitech.GetVersionResult) | Result containing the installed LGS version string. |
+| [led](./led/Overview) | Use this API to control Logitech LED peripheral lighting from your Overwolf app. Supports per-key and zone-based RGB effects on compatible Logitech keyboards, mice, and other devices. |

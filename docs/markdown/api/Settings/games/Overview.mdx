@@ -1,0 +1,24 @@
+---
+sidebar_position: 1
+sidebar_label: "Overview"
+title: "Overview"
+unlisted: false
+toc_max_heading_level: 6
+---
+
+# Overview
+
+Use this API to query and configure per-game Overwolf settings, such as overlay enablement and auto-launch behavior for apps on a per-game-class basis.
+
+| API | Description |
+| --- | --- |
+| [overwolf.settings.games.getAutoLaunchEnabled](./Functions/overwolf.settings.games.getAutoLaunchEnabled) | Returns the current Auto-Launch enabled setting for the calling app in a given game (gameClassId). |
+| [overwolf.settings.games.getOverlayEnabled](./Functions/overwolf.settings.games.getOverlayEnabled) | Returns the current Overlay setting for the given game (if any exist). |
+| [overwolf.settings.games.setAutoLaunchEnabled](./Functions/overwolf.settings.games.setAutoLaunchEnabled) | Sets the current Auto-Launch enabled setting for the calling app in a given game (gameClassId). |
+| [overwolf.settings.games.AutolaunchEnabledResult](./Interfaces/overwolf.settings.games.AutolaunchEnabledResult) | Result indicating whether auto-launch is enabled for a specific game class. |
+| [overwolf.settings.games.AutoLaunchEnablementChangedEvent](./Interfaces/overwolf.settings.games.AutoLaunchEnablementChangedEvent) | Event data describing a change in auto-launch enablement for a game. |
+| [overwolf.settings.games.GameClassResult](./Interfaces/overwolf.settings.games.GameClassResult) | Base result containing the game class ID the result relates to. |
+| [overwolf.settings.games.OverlayEnabledResult](./Interfaces/overwolf.settings.games.OverlayEnabledResult) | Result indicating whether the Overwolf overlay is enabled for a specific game class. |
+| [overwolf.settings.games.OverlayEnablementChangedEvent](./Interfaces/overwolf.settings.games.OverlayEnablementChangedEvent) | Event data describing a change in overlay enablement for a game. |
+| [overwolf.settings.games.OnHotKeyChanged](./Variables/overwolf.settings.games.OnHotKeyChanged) | Fired when a hotkey is modified. Apps will only be notified ofhotkey changes that relate to them. |
+| [overwolf.settings.games.onOverlayEnablementChanged](./Variables/overwolf.settings.games.onOverlayEnablementChanged) | Fired when the overlay is enabled or disabled for a game. |

@@ -4,15 +4,17 @@ sidebar_label: "hotkeys.AssignHotkeyObject"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / AssignHotkeyObject
 
+Identifies a hotkey to assign, including the key combination to bind.
+
 ## Extends
 
 - `UnassignHotkeyObject`
 
 ## Properties
 
-| Property                                      | Type                                     |
-| --------------------------------------------- | ---------------------------------------- |
-| <a id="property-gameid"></a> `gameId?`        | `number`                                 |
-| <a id="property-modifiers"></a> `modifiers`   | `HotkeyModifiers` |
-| <a id="property-name"></a> `name`             | `string`                                 |
-| <a id="property-virtualkey"></a> `virtualKey` | `number`                                 |
+| Property                                      | Type                                     | Description                                                              |
+| --------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| <a id="property-gameid"></a> `gameId?`        | `number`                                 | The game ID to scope the unassignment to, or omit for the global hotkey. |
+| <a id="property-modifiers"></a> `modifiers`   | `HotkeyModifiers` | The modifier keys to include in the binding.                             |
+| <a id="property-name"></a> `name`             | `string`                                 | The internal name of the hotkey as defined in the manifest.              |
+| <a id="property-virtualkey"></a> `virtualKey` | `number`                                 | The virtual key code of the primary key to bind.                         |

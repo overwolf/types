@@ -4,11 +4,13 @@ sidebar_label: "discord.PermissionOverwrite"
 
 Overwolf APIs / overwolf / overwolf / social / discord / PermissionOverwrite
 
+Represents a permission overwrite entry for a Discord channel.
+
 ## Properties
 
-| Property                            | Type     |
-| ----------------------------------- | -------- |
-| <a id="property-allow"></a> `allow` | `number` |
-| <a id="property-deny"></a> `deny`   | `number` |
-| <a id="property-id"></a> `id`       | `string` |
-| <a id="property-type"></a> `type`   | `string` |
+| Property                            | Type     | Description                                           |
+| ----------------------------------- | -------- | ----------------------------------------------------- |
+| <a id="property-allow"></a> `allow` | `number` | Bitfield of permissions that are explicitly allowed.  |
+| <a id="property-deny"></a> `deny`   | `number` | Bitfield of permissions that are explicitly denied.   |
+| <a id="property-id"></a> `id`       | `string` | The ID of the role or user this overwrite applies to. |
+| <a id="property-type"></a> `type`   | `string` | Whether this overwrite applies to a role or a member. |

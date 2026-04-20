@@ -1,4 +1,10 @@
 /**
+ * The `overwolf.log` namespace provides functions for writing messages to the Overwolf common log
+ * at various severity levels (verbose, info, warning, error, critical).
+ * @packageDocumentation
+ */
+
+/**
    * Fired upon support encoder list updated.
    */
   const onSupportedEncodersUpdated: Event<SupportedEncodersUpdatedEvent>;
@@ -30,4 +36,3 @@ declare namespace overwolf.log {
    */
   function error(msg: string): void;
 
-  

@@ -8,4 +8,23 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+| API | Description |
+| --- | --- |
+| [overwolf.games.inputtracking.getActivityInformation](./Functions/overwolf.games.inputtracking.getActivityInformation) | Returns the input activity information. The information includes presses for keyboard/mouse, total session time, idle time and actions-per-minute. This information resets between game executions. |
+| [overwolf.games.inputtracking.getEyeTrackingInformation](./Functions/overwolf.games.inputtracking.getEyeTrackingInformation) | Returns the eye tracking information. The information includes gaze points, fixations, user presence (screen/keyboard/other) and minimap glances. This information resets between game executions. |
+| [overwolf.games.inputtracking.getMatchActivityInformation](./Functions/overwolf.games.inputtracking.getMatchActivityInformation) | Returns the input activity information (similar to `getActivityInformation`). However, when this is supported, it will return data only for the latestmatch of the current game |
+| [overwolf.games.inputtracking.getMousePosition](./Functions/overwolf.games.inputtracking.getMousePosition) | Returns the input last mouse position in game. the data includes the mouse position and a boolean stating whether the keypress was on a game or on an Overwolf widget (onGame). |
+| [overwolf.games.inputtracking.init](./Functions/overwolf.games.inputtracking.init) | `void` |
+| [overwolf.games.inputtracking.pauseEyeTracking](./Functions/overwolf.games.inputtracking.pauseEyeTracking) | Eye tracking data trakcing will pause, and stop collect Eye tracking data until resumeEyeTracking will be called. |
+| [overwolf.games.inputtracking.resumeEyeTracking](./Functions/overwolf.games.inputtracking.resumeEyeTracking) | Resume collecting Eye tracking data. |
+| [overwolf.games.inputtracking.GetActivityResult](./Interfaces/overwolf.games.inputtracking.GetActivityResult) | Result of a `getActivityInformation` or `getMatchActivityInformation` call. |
+| [overwolf.games.inputtracking.GetMousePositionResult](./Interfaces/overwolf.games.inputtracking.GetMousePositionResult) | Result of a `getMousePosition` call. |
+| [overwolf.games.inputtracking.InputActivity](./Interfaces/overwolf.games.inputtracking.InputActivity) | Aggregated input activity statistics for the current game session. |
+| [overwolf.games.inputtracking.KeyEvent](./Interfaces/overwolf.games.inputtracking.KeyEvent) | Payload of the `onKeyUp` and `onKeyDown` events. |
+| [overwolf.games.inputtracking.MouseEvent](./Interfaces/overwolf.games.inputtracking.MouseEvent) | Payload of the `onMouseUp` and `onMouseDown` events. |
+| [overwolf.games.inputtracking.MousePosition](./Interfaces/overwolf.games.inputtracking.MousePosition) | The current position of the mouse cursor. |
+| [overwolf.games.inputtracking.WheelEvent](./Interfaces/overwolf.games.inputtracking.WheelEvent) | Payload of a mouse wheel scroll event. |
+| [overwolf.games.inputtracking.onKeyDown](./Variables/overwolf.games.inputtracking.onKeyDown) | Fired when a keyboard key has been pressed. Event information is similar to `onKeyUp`. |
+| [overwolf.games.inputtracking.onKeyUp](./Variables/overwolf.games.inputtracking.onKeyUp) | Fired when a keyboard key has been released. The event information includes the virtual key code (key) and a boolean stating whether the keypress was on a game or on an Overwolf widget (onGame). |
+| [overwolf.games.inputtracking.onMouseDown](./Variables/overwolf.games.inputtracking.onMouseDown) | Fired a mouse key has been pressed. Event information is similar to `onMouseUp`. |
+| [overwolf.games.inputtracking.onMouseUp](./Variables/overwolf.games.inputtracking.onMouseUp) | Fired when a mouse key has been released. The event information includes whether the left or white mouse button was clicked(button), x and y coordinates (x, y) and a boolean stating whether the keypress was on a game or on an Overwolf widget (onGame). |

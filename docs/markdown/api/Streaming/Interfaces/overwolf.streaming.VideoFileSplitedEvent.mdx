@@ -4,12 +4,14 @@ sidebar_label: "VideoFileSplitedEvent"
 
 Overwolf APIs / overwolf / overwolf / streaming / VideoFileSplitedEvent
 
+Event data fired when a video file is split due to reaching the size limit.
+
 ## Properties
 
-| Property                                    | Type     |
-| ------------------------------------------- | -------- |
-| <a id="property-count"></a> `count`         | `number` |
-| <a id="property-duration"></a> `duration`   | `number` |
-| <a id="property-file_name"></a> `file_name` | `string` |
-| <a id="property-next_file"></a> `next_file` | `string` |
-| <a id="property-stream_id"></a> `stream_id` | `number` |
+| Property                                    | Type     | Description                                                          |
+| ------------------------------------------- | -------- | -------------------------------------------------------------------- |
+| <a id="property-count"></a> `count`         | `number` | The sequential index of this file segment.                           |
+| <a id="property-duration"></a> `duration`   | `number` | The duration of the completed file segment in milliseconds.          |
+| <a id="property-file_name"></a> `file_name` | `string` | The name of the completed file segment.                              |
+| <a id="property-next_file"></a> `next_file` | `string` | The file path of the next segment that recording will continue into. |
+| <a id="property-stream_id"></a> `stream_id` | `number` | The ID of the stream whose file was split.                           |

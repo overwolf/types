@@ -10,12 +10,14 @@ Overwolf APIs / overwolf / overwolf / os / tray / changeIcon
 function changeIcon(path: string, callback: CallbackFunction<Result>): void;
 ```
 
+Changes the tray icon to the image at the given file path.
+
 ### Parameters
 
-| Parameter  | Type                                                                                                                                            |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `path`     | `string`                                                                                                                                        |
-| `callback` | `CallbackFunction`\<`Result`\> |
+| Parameter  | Type                                                                                                                                            | Description                          |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `path`     | `string`                                                                                                                                        | The path to the new icon image file. |
+| `callback` | `CallbackFunction`\<`Result`\> | Called with the result.              |
 
 ### Returns
 
@@ -31,13 +33,15 @@ function changeIcon(
 ): void;
 ```
 
+Changes the tray icon to the image at the given path within the specified storage space.
+
 ### Parameters
 
-| Parameter  | Type                                                                                                                                            |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `space`    | `StorageSpace`                                           |
-| `path`     | `string`                                                                                                                                        |
-| `callback` | `CallbackFunction`\<`Result`\> |
+| Parameter  | Type                                                                                                                                            | Description                                                   |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `space`    | `StorageSpace`                                           | The storage space where the icon file is located.             |
+| `path`     | `string`                                                                                                                                        | The path to the new icon image file within the storage space. |
+| `callback` | `CallbackFunction`\<`Result`\> | Called with the result.                                       |
 
 ### Returns
 

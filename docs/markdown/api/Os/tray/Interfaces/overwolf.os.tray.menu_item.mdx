@@ -4,11 +4,13 @@ sidebar_label: "tray.menu_item"
 
 Overwolf APIs / overwolf / overwolf / os / tray / menu_item
 
+A single item in the tray icon context menu.
+
 ## Properties
 
-| Property                                     | Type          |
-| -------------------------------------------- | ------------- |
-| <a id="property-enabled"></a> `enabled?`     | `boolean`     |
-| <a id="property-id"></a> `id?`               | `string`      |
-| <a id="property-label"></a> `label?`         | `string`      |
-| <a id="property-sub_items"></a> `sub_items?` | `menu_item`[] |
+| Property                                     | Type          | Description                                                       |
+| -------------------------------------------- | ------------- | ----------------------------------------------------------------- |
+| <a id="property-enabled"></a> `enabled?`     | `boolean`     | Whether this menu item is clickable. Defaults to `true`.          |
+| <a id="property-id"></a> `id?`               | `string`      | A unique identifier for this menu item, returned in click events. |
+| <a id="property-label"></a> `label?`         | `string`      | The visible label text for this menu item.                        |
+| <a id="property-sub_items"></a> `sub_items?` | `menu_item`[] | Nested sub-items that appear in a submenu under this item.        |

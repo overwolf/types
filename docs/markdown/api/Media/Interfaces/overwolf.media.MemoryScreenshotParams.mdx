@@ -4,10 +4,12 @@ sidebar_label: "MemoryScreenshotParams"
 
 Overwolf APIs / overwolf / overwolf / media / MemoryScreenshotParams
 
+Parameters for taking an in-memory screenshot.
+
 ## Properties
 
-| Property                                                     | Type                                 |
-| ------------------------------------------------------------ | ------------------------------------ |
-| <a id="property-crop"></a> `crop?`                           | `CropParams`       |
-| <a id="property-rescale"></a> `rescale?`                     | `RescaleParams` |
-| <a id="property-roundawayfromzero"></a> `roundAwayFromZero?` | `boolean`                            |
+| Property                                                     | Type                                 | Description                                                |
+| ------------------------------------------------------------ | ------------------------------------ | ---------------------------------------------------------- |
+| <a id="property-crop"></a> `crop?`                           | `CropParams`       | Optional crop region to apply to the screenshot.           |
+| <a id="property-rescale"></a> `rescale?`                     | `RescaleParams` | Optional rescale dimensions to apply to the screenshot.    |
+| <a id="property-roundawayfromzero"></a> `roundAwayFromZero?` | `boolean`                            | Whether to round dimensions away from zero when rescaling. |

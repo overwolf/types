@@ -4,15 +4,19 @@ sidebar_label: "GetGameDBInfoResult"
 
 Overwolf APIs / overwolf / overwolf / games / GetGameDBInfoResult
 
+Result of a `getGameDBInfo` call.
+Exactly one of `gameInfo` or `installedGameInfo` will be populated,
+depending on whether the game is installed on the local machine.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                                     | Type                                         | Description                                            |
-| ------------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`                         | `string`                                     | Information regarding the error (if an error occurred) |
-| <a id="property-gameinfo"></a> `gameInfo?`                   | `GameInfo`                   | -                                                      |
-| <a id="property-installedgameinfo"></a> `installedGameInfo?` | `InstalledGameInfo` | -                                                      |
-| <a id="property-success"></a> `success`                      | `boolean`                                    | Whether the method executed successfully or not.       |
+| Property                                                     | Type                                         | Description                                                                                                                                                                                 |
+| ------------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`                         | `string`                                     | Information regarding the error (if an error occurred)                                                                                                                                      |
+| <a id="property-gameinfo"></a> `gameInfo?`                   | `GameInfo`                   | Database metadata for the game. Populated when the game is **not** installed locally; `null` otherwise.                                                                                     |
+| <a id="property-installedgameinfo"></a> `installedGameInfo?` | `InstalledGameInfo` | Installation details combined with database metadata. Populated when the game **is** installed locally; `null` otherwise. Note: `installedGameInfo` contains a `GameInfo` object within it. |
+| <a id="property-success"></a> `success`                      | `boolean`                                    | Whether the method executed successfully or not.                                                                                                                                            |

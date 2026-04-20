@@ -4,6 +4,8 @@ sidebar_label: "GetWindowStateResult"
 
 Overwolf APIs / overwolf / overwolf / windows / GetWindowStateResult
 
+Result of `getWindowState`, describing the current state of a single window.
+
 ## Extends
 
 - `Result`
@@ -14,6 +16,6 @@ Overwolf APIs / overwolf / overwolf / windows / GetWindowStateResult
 | -------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------ |
 | <a id="property-error"></a> `error?`                     | `string`                                                              | Information regarding the error (if an error occurred) |
 | <a id="property-success"></a> `success`                  | `boolean`                                                             | Whether the method executed successfully or not.       |
-| <a id="property-window_id"></a> `window_id?`             | `string`                                                              | -                                                      |
-| <a id="property-window_state"></a> `window_state?`       | `string`                                                              | -                                                      |
-| <a id="property-window_state_ex"></a> `window_state_ex?` | `WindowStateEx` | -                                                      |
+| <a id="property-window_id"></a> `window_id?`             | `string`                                                              | The ID of the queried window.                          |
+| <a id="property-window_state"></a> `window_state?`       | `string`                                                              | The window state as a plain string (legacy).           |
+| <a id="property-window_state_ex"></a> `window_state_ex?` | `WindowStateEx` | The window state as a typed enum value.                |

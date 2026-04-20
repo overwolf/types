@@ -4,10 +4,12 @@ sidebar_label: "enums.ObsStreamingMode"
 
 Overwolf APIs / overwolf / overwolf / streaming / enums / ObsStreamingMode
 
+Controls how Overwolf windows are handled when OBS is the streaming provider.
+
 ## Enumeration Members
 
-| Enumeration Member                                                                        | Value                           |
-| ----------------------------------------------------------------------------------------- | ------------------------------- |
-| <a id="enumeration-member-obsawareness"></a> `OBSAwareness`                               | `"OBSAwareness"`                |
-| <a id="enumeration-member-obsawarenesshidefromdesktop"></a> `OBSAwarenessHideFromDeskTop` | `"OBSAwarenessHideFromDeskTop"` |
-| <a id="enumeration-member-obsnoawareness"></a> `OBSNoAwareness`                           | `"OBSNoAwareness"`              |
+| Enumeration Member                                                                        | Value                           | Description                                                            |
+| ----------------------------------------------------------------------------------------- | ------------------------------- | ---------------------------------------------------------------------- |
+| <a id="enumeration-member-obsawareness"></a> `OBSAwareness`                               | `"OBSAwareness"`                | OBS is aware of and captures Overwolf windows.                         |
+| <a id="enumeration-member-obsawarenesshidefromdesktop"></a> `OBSAwarenessHideFromDeskTop` | `"OBSAwarenessHideFromDeskTop"` | OBS is aware of Overwolf windows but hides them from the desktop view. |
+| <a id="enumeration-member-obsnoawareness"></a> `OBSNoAwareness`                           | `"OBSNoAwareness"`              | OBS has no awareness of Overwolf windows.                              |

@@ -8,14 +8,16 @@ toc_max_heading_level: 6
 
 # Overview
 
+Use this API to manage Overwolf windows — create, position, resize, show, hide, and control the lifecycle and styling of your app's UI windows.
+
 | API | Description |
 | --- | --- |
-| [overwolf.windows.enums.FlashBehavior](./enums/overwolf.windows.enums.FlashBehavior) | - |
-| [overwolf.windows.enums.MessagePromptIcon](./enums/overwolf.windows.enums.MessagePromptIcon) | - |
-| [overwolf.windows.enums.WindowDragEdge](./enums/overwolf.windows.enums.WindowDragEdge) | - |
-| [overwolf.windows.enums.WindowStateEx](./enums/overwolf.windows.enums.WindowStateEx) | - |
-| [overwolf.windows.enums.WindowStyle](./enums/overwolf.windows.enums.WindowStyle) | - |
-| [overwolf.windows.enums.WindowType](./enums/overwolf.windows.enums.WindowType) | - |
+| [overwolf.windows.enums.FlashBehavior](./enums/overwolf.windows.enums.FlashBehavior) | Controls the taskbar flash behavior for a window. |
+| [overwolf.windows.enums.MessagePromptIcon](./enums/overwolf.windows.enums.MessagePromptIcon) | The icon displayed in a message prompt dialog. |
+| [overwolf.windows.enums.WindowDragEdge](./enums/overwolf.windows.enums.WindowDragEdge) | The edge or corner from which a window drag-resize operation originates. |
+| [overwolf.windows.enums.WindowStateEx](./enums/overwolf.windows.enums.WindowStateEx) | The possible display states of an Overwolf window. |
+| [overwolf.windows.enums.WindowStyle](./enums/overwolf.windows.enums.WindowStyle) | Visual and input-handling styles that can be applied to a window. |
+| [overwolf.windows.enums.WindowType](./enums/overwolf.windows.enums.WindowType) | The rendering context type of a window. |
 | [overwolf.windows.bringToFront](./Functions/overwolf.windows.bringToFront) | Brings the requested window to the front. |
 | [overwolf.windows.changePosition](./Functions/overwolf.windows.changePosition) | Changes the window position in pixels from the top left corner. |
 | [overwolf.windows.changeSize](./Functions/overwolf.windows.changeSize) | Changes the window size to the new width and height, in pixels. |
@@ -52,27 +54,28 @@ toc_max_heading_level: 6
 | [overwolf.windows.setTopmost](./Functions/overwolf.windows.setTopmost) | Change the window's topmost status. Handle with care as topmost windows can negatively impact user experience. |
 | [overwolf.windows.setWindowStyle](./Functions/overwolf.windows.setWindowStyle) | Add Window In Game styling |
 | [overwolf.windows.setZoom](./Functions/overwolf.windows.setZoom) | Set window zoom level (0.0 for reset). |
-| [overwolf.windows.AltF4BlockedEvent](./Interfaces/overwolf.windows.AltF4BlockedEvent) | - |
-| [overwolf.windows.ChangeWindowSizeParams](./Interfaces/overwolf.windows.ChangeWindowSizeParams) | - |
-| [overwolf.windows.DefaultSizeAndLocation](./Interfaces/overwolf.windows.DefaultSizeAndLocation) | - |
-| [overwolf.windows.DragMovedResult](./Interfaces/overwolf.windows.DragMovedResult) | - |
-| [overwolf.windows.DragResizeResult](./Interfaces/overwolf.windows.DragResizeResult) | - |
-| [overwolf.windows.GetWindowsStatesResult](./Interfaces/overwolf.windows.GetWindowsStatesResult) | - |
-| [overwolf.windows.GetWindowStateResult](./Interfaces/overwolf.windows.GetWindowStateResult) | - |
-| [overwolf.windows.IsAccelreatedOSRResult](./Interfaces/overwolf.windows.IsAccelreatedOSRResult) | - |
-| [overwolf.windows.IsMutedResult](./Interfaces/overwolf.windows.IsMutedResult) | - |
-| [overwolf.windows.IsolatedIframeProcessCrashedEvent](./Interfaces/overwolf.windows.IsolatedIframeProcessCrashedEvent) | - |
-| [overwolf.windows.IsWindowVisibleToUserResult](./Interfaces/overwolf.windows.IsWindowVisibleToUserResult) | - |
-| [overwolf.windows.MessageBoxParams](./Interfaces/overwolf.windows.MessageBoxParams) | - |
-| [overwolf.windows.MessageReceivedEvent](./Interfaces/overwolf.windows.MessageReceivedEvent) | - |
-| [overwolf.windows.ODKRect](./Interfaces/overwolf.windows.ODKRect) | - |
-| [overwolf.windows.onScreenPropertyChangedEvent](./Interfaces/overwolf.windows.onScreenPropertyChangedEvent) | - |
-| [overwolf.windows.SetWindowPositionProperties](./Interfaces/overwolf.windows.SetWindowPositionProperties) | - |
-| [overwolf.windows.WindowIdResult](./Interfaces/overwolf.windows.WindowIdResult) | - |
-| [overwolf.windows.WindowInfo](./Interfaces/overwolf.windows.WindowInfo) | - |
-| [overwolf.windows.WindowProperties](./Interfaces/overwolf.windows.WindowProperties) | - |
-| [overwolf.windows.WindowResult](./Interfaces/overwolf.windows.WindowResult) | - |
-| [overwolf.windows.WindowStateChangedEvent](./Interfaces/overwolf.windows.WindowStateChangedEvent) | - |
+| [overwolf.windows.AltF4BlockedEvent](./Interfaces/overwolf.windows.AltF4BlockedEvent) | Event data fired when the user attempts to close a window with Alt+F4 and is blocked. |
+| [overwolf.windows.ChangeWindowSizeParams](./Interfaces/overwolf.windows.ChangeWindowSizeParams) | Parameters for the `changeSize` overload that supports DPI-aware resizing. |
+| [overwolf.windows.DefaultSizeAndLocation](./Interfaces/overwolf.windows.DefaultSizeAndLocation) | Instructs `obtainDeclaredWindow` to apply the manifest's default size and location. |
+| [overwolf.windows.DragMovedResult](./Interfaces/overwolf.windows.DragMovedResult) | Result of a `dragMove` operation, reporting how far the window moved. |
+| [overwolf.windows.DragResizeResult](./Interfaces/overwolf.windows.DragResizeResult) | Result of a drag-resize operation, containing the new dimensions. |
+| [overwolf.windows.GetWindowsStatesResult](./Interfaces/overwolf.windows.GetWindowsStatesResult) | Result of `getWindowsStates`, describing the state of all app windows. |
+| [overwolf.windows.GetWindowStateResult](./Interfaces/overwolf.windows.GetWindowStateResult) | Result of `getWindowState`, describing the current state of a single window. |
+| [overwolf.windows.IsAccelreatedOSRResult](./Interfaces/overwolf.windows.IsAccelreatedOSRResult) | Result of `isAccelreatedOSR`, reporting GPU acceleration status for an OSR window. |
+| [overwolf.windows.IsMutedResult](./Interfaces/overwolf.windows.IsMutedResult) | Result of `isMuted`, indicating whether the window's audio is muted. |
+| [overwolf.windows.IsolatedIframeProcessCrashedEvent](./Interfaces/overwolf.windows.IsolatedIframeProcessCrashedEvent) | Event data fired when an isolated iframe process crashes. |
+| [overwolf.windows.IsWindowVisibleToUserResult](./Interfaces/overwolf.windows.IsWindowVisibleToUserResult) | Result of `isWindowVisibleToUser`, indicating how much of the window is visible. |
+| [overwolf.windows.MessageBoxParams](./Interfaces/overwolf.windows.MessageBoxParams) | Parameters for the `displayMessageBox` prompt dialog. |
+| [overwolf.windows.MessageReceivedEvent](./Interfaces/overwolf.windows.MessageReceivedEvent) | Event data fired when a window receives a message via `sendMessage`. |
+| [overwolf.windows.ODKRect](./Interfaces/overwolf.windows.ODKRect) | A rectangle defined by its top-left origin, width, and height, all in pixels. |
+| [overwolf.windows.onScreenPropertyChangedEvent](./Interfaces/overwolf.windows.onScreenPropertyChangedEvent) | Event data fired when a window's screen or monitor properties change. |
+| [overwolf.windows.SetWindowPositionProperties](./Interfaces/overwolf.windows.SetWindowPositionProperties) | Describes a relative position for a window with respect to another process window. |
+| [overwolf.windows.WindowIdResult](./Interfaces/overwolf.windows.WindowIdResult) | Result of window operations that return only the window's ID. |
+| [overwolf.windows.WindowInfo](./Interfaces/overwolf.windows.WindowInfo) | Describes a currently known Overwolf window and its current state. |
+| [overwolf.windows.WindowProperties](./Interfaces/overwolf.windows.WindowProperties) | Optional properties used when obtaining a declared window. |
+| [overwolf.windows.WindowResult](./Interfaces/overwolf.windows.WindowResult) | Result of window operations that return a `WindowInfo` object. |
+| [overwolf.windows.WindowStateChangedEvent](./Interfaces/overwolf.windows.WindowStateChangedEvent) | Event data fired when a window's state changes. |
+| [mediaplayerelement](./mediaplayerelement/Overview) | Use this API to embed and control native media player elements within Overwolf windows for video playback. |
 | [overwolf.windows.onAltF4Blocked](./Variables/overwolf.windows.onAltF4Blocked) | Fired when the user was prevented from closing a window using Alt+F4 |
 | [overwolf.windows.onIsolatedIframeProcessCrashed](./Variables/overwolf.windows.onIsolatedIframeProcessCrashed) | Fired when out of process iframe crashed. |
 | [overwolf.windows.onMainWindowRestored](./Variables/overwolf.windows.onMainWindowRestored) | Fired when the main window is restored. |

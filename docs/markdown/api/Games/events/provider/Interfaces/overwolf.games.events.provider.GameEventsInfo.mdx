@@ -4,11 +4,14 @@ sidebar_label: "events.provider.GameEventsInfo"
 
 Overwolf APIs / overwolf / overwolf / games / events / provider / GameEventsInfo
 
+Describes a single game event or state update to be pushed into the
+Overwolf game events system via `updateInfo`.
+
 ## Properties
 
-| Property                                  | Type     |
-| ----------------------------------------- | -------- |
-| <a id="property-category"></a> `category` | `string` |
-| <a id="property-feature"></a> `feature`   | `string` |
-| <a id="property-key"></a> `key`           | `string` |
-| <a id="property-value"></a> `value`       | `string` |
+| Property                                  | Type     | Description                                                                |
+| ----------------------------------------- | -------- | -------------------------------------------------------------------------- |
+| <a id="property-category"></a> `category` | `string` | The category grouping for this event or info key.                          |
+| <a id="property-feature"></a> `feature`   | `string` | The feature this event or info key belongs to (e.g., `"kill"`, `"death"`). |
+| <a id="property-key"></a> `key`           | `string` | The specific event or info key name.                                       |
+| <a id="property-value"></a> `value`       | `string` | The value associated with this event or info key.                          |

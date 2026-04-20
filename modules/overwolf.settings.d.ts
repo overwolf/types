@@ -1,4 +1,9 @@
 /**
+ * Use this API to read and modify Overwolf client settings, including video/audio capture, FPS overlay, hotkeys, and folder paths.
+ * @packageDocumentation
+ */
+
+/**
    * Retrieve information about the client - such as when it was first installed
    * and how long is it running.
    * @param callback A callback with the result.
@@ -10,44 +15,70 @@
 
 declare namespace overwolf.settings {
   namespace enums {
+    /** The video resolution setting for capture. */
     const enum ResolutionSettings {
+      /** Capture at the original (native) resolution. */
       Original = "Original",
+      /** Capture at 1080p resolution. */
       R1080p = "R1080p",
+      /** Capture at 720p resolution. */
       R720p = "R720p",
+      /** Capture at 480p resolution. */
       R480p = "R480p",
     }
 
+    /** The screen position of an on-screen indicator (e.g. the FPS counter). */
     const enum eIndicationPosition {
+      /** No position / indicator is hidden. */
       None = -1,
+      /** Positioned in the top-left corner of the screen. */
       TopLeftCorner = 0,
+      /** Positioned in the top-right corner of the screen. */
       TopRightCorner = 1,
+      /** Positioned in the bottom-left corner of the screen. */
       BottomLeftCorner = 2,
+      /** Positioned in the bottom-right corner of the screen. */
       BottomRightCorner = 3,
     }
   }
 
+  /** Configuration for the Overwolf FPS counter overlay. */
   interface FpsSettings {
+    /** The pixel offset of the FPS indicator from its corner position. */
     offset?: { x: number; y: number; };
+    /** The scale factor for the FPS indicator (0–1). */
     scale?: number;
+    /** Whether the FPS indicator is enabled. */
     enabled?: boolean;
+    /** The screen corner where the FPS indicator is displayed. */
     position?: enums.eIndicationPosition;
   }
 
+  /** General settings for an Overwolf extension. */
   interface GeneralExtensionSettings {
+    /** Whether the extension should launch automatically when Overwolf starts. */
     auto_launch_with_overwolf?: boolean;
+    /** Whether Overwolf should exit when the extension exits. */
     exit_overwolf_on_exit?: boolean;
+    /** The update channel the extension subscribes to. */
     channel?: string;
   }
 
+  /** Result of a `getHotKey` call. */
   interface GetHotKeyResult extends Result {
+    /** The hotkey string assigned to the feature. */
     hotkey: string;
+    /** Whether the hotkey is currently enabled. */
     isEnabled: boolean;
   }
 
+  /** Result of a hotkey registration callback. */
   interface HotKeyResult extends Result {
+    /** The feature ID associated with the triggered hotkey, if available. */
     featureId?: string;
   }
 
+  /** Result containing a folder path returned by Overwolf. */
   interface FolderResult extends Result {
     path: {
       /** "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" */
@@ -59,45 +90,69 @@ declare namespace overwolf.settings {
     };
   }
 
+  /** Result of a set-folder operation, containing the newly applied path. */
   interface SetFolderResult extends Result {
+    /** The folder path that was set. */
     path: string;
   }
 
+  /** Result of a `getVideoCaptureSettings` call. */
   interface GetVideoCaptureSettingsResult extends Result {
+    /** The name of the video encoder in use. */
     encoder: string;
+    /** The encoder preset currently selected. */
     preset: string;
+    /** The configured capture frame rate (frames per second). */
     fps: number;
+    /** The configured capture resolution as a numeric value. */
     resolution: number;
   }
 
+  /** Result of a `getAudioCaptureSettings` call. */
   interface GetAudioCaptureSettingsResult extends Result {
+    /** Whether system sound capture is enabled. */
     sound_enabled: boolean;
+    /** Whether microphone capture is enabled. */
     microphone_enabled: boolean;
   }
 
+  /** Result of a `getFpsSettings` call. */
   interface GetFpsSettingsResult extends Result {
+    /** The current FPS overlay settings. */
     settings: FpsSettings;
   }
 
+  /** Result of a `getExtensionSettings` call. */
   interface GetExtensionSettingsResult extends Result {
+    /** The current general extension settings. */
     settings: GeneralExtensionSettings;
   }
 
+  /** Event data fired when a FPS overlay setting changes. */
   interface FpsSettingsChangedEvent {
+    /** The name of the FPS setting that changed. */
     setting: "OnScreenLocation" | "Enabled" | "Scale" | "Offset";
   }
 
+  /** Event data fired when a video capture setting changes. */
   interface VideoCaptureSettingsChangedEvent {
+    /** The name of the video capture setting that changed. */
     setting: "resolution" | "fps" | "unknown";
   }
 
+  /** Event data fired when an audio capture setting changes. */
   interface AudioCaptureSettingsChangedEvent {
+    /** The name of the audio capture setting that changed. */
     setting: "speakers" | "microphone" | "unknown";
   }
 
+  /** Event data fired when a hotkey binding changes. */
   interface HotKeyChangedEvent {
+    /** The source extension or feature that owns the hotkey. */
     source: string;
+    /** A human-readable description of the hotkey action. */
     description: string;
+    /** The new hotkey string. */
     hotkey: string;
   }
 
@@ -268,4 +323,3 @@ declare namespace overwolf.settings {
    */
   const OnAudioCaptureSettingsChanged: Event<AudioCaptureSettingsChangedEvent>;
 
-  

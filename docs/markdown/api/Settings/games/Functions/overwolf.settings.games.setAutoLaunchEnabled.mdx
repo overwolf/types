@@ -1,0 +1,27 @@
+---
+sidebar_label: "games.setAutoLaunchEnabled"
+---
+
+Overwolf APIs / overwolf / overwolf / settings / games / setAutoLaunchEnabled
+
+```ts
+function setAutoLaunchEnabled(
+  gameClassId: number,
+  enabled: boolean,
+  callback: CallbackFunction<AutolaunchEnabledResult>,
+): void;
+```
+
+Sets the current Auto-Launch enabled setting for the calling app in a given game (gameClassId).
+
+## Parameters
+
+| Parameter     | Type                                                                                                                                                                  | Description                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `gameClassId` | `number`                                                                                                                                                              | the game id for which the flag is retrieved for |
+| `enabled`     | `boolean`                                                                                                                                                             | whether auto-launch should be enabled           |
+| `callback`    | `CallbackFunction`\<`AutolaunchEnabledResult`\> | -                                               |
+
+## Returns
+
+`void`

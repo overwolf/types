@@ -4,6 +4,8 @@ sidebar_label: "UncaughtExceptionEvent"
 
 Overwolf APIs / overwolf / overwolf / extensions / UncaughtExceptionEvent
 
+Event interface for the `onUncaughtException` event, which uses a custom callback signature.
+
 ## Methods
 
 ### addListener()
@@ -11,6 +13,8 @@ Overwolf APIs / overwolf / overwolf / extensions / UncaughtExceptionEvent
 ```ts
 addListener(callback: UncaughtExceptionCallback): void;
 ```
+
+Register a listener for uncaught exception events.
 
 #### Parameters
 
@@ -29,6 +33,8 @@ addListener(callback: UncaughtExceptionCallback): void;
 ```ts
 removeListener(callback: UncaughtExceptionCallback): void;
 ```
+
+Remove a previously registered uncaught exception listener.
 
 #### Parameters
 

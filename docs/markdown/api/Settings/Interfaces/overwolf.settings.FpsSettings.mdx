@@ -4,13 +4,15 @@ sidebar_label: "FpsSettings"
 
 Overwolf APIs / overwolf / overwolf / settings / FpsSettings
 
+Configuration for the Overwolf FPS counter overlay.
+
 ## Properties
 
-| Property                                   | Type                                                                              |
-| ------------------------------------------ | --------------------------------------------------------------------------------- |
-| <a id="property-enabled"></a> `enabled?`   | `boolean`                                                                         |
-| <a id="property-offset"></a> `offset?`     | `object`                                                                          |
-| `offset.x`                                 | `number`                                                                          |
-| `offset.y`                                 | `number`                                                                          |
-| <a id="property-position"></a> `position?` | `eIndicationPosition` |
-| <a id="property-scale"></a> `scale?`       | `number`                                                                          |
+| Property                                   | Type                                                                              | Description                                                     |
+| ------------------------------------------ | --------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| <a id="property-enabled"></a> `enabled?`   | `boolean`                                                                         | Whether the FPS indicator is enabled.                           |
+| <a id="property-offset"></a> `offset?`     | `object`                                                                          | The pixel offset of the FPS indicator from its corner position. |
+| `offset.x`                                 | `number`                                                                          | -                                                               |
+| `offset.y`                                 | `number`                                                                          | -                                                               |
+| <a id="property-position"></a> `position?` | `eIndicationPosition` | The screen corner where the FPS indicator is displayed.         |
+| <a id="property-scale"></a> `scale?`       | `number`                                                                          | The scale factor for the FPS indicator (0–1).                   |

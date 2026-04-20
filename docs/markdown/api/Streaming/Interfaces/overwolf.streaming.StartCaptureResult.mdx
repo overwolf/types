@@ -4,6 +4,8 @@ sidebar_label: "StartCaptureResult"
 
 Overwolf APIs / overwolf / overwolf / streaming / StartCaptureResult
 
+Base result for capture start operations, including error details.
+
 ## Extends
 
 - `Result`
@@ -15,9 +17,9 @@ Overwolf APIs / overwolf / overwolf / streaming / StartCaptureResult
 
 ## Properties
 
-| Property                                                  | Type                                                                        | Description                                            |
-| --------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`                      | `string`                                                                    | Information regarding the error (if an error occurred) |
-| <a id="property-errorcode"></a> `errorCode`               | `CaptureErrorCode` | -                                                      |
-| <a id="property-errordescription"></a> `errorDescription` | `string`                                                                    | -                                                      |
-| <a id="property-success"></a> `success`                   | `boolean`                                                                   | Whether the method executed successfully or not.       |
+| Property                                                  | Type                                                                        | Description                                                         |
+| --------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`                      | `string`                                                                    | Information regarding the error (if an error occurred)              |
+| <a id="property-errorcode"></a> `errorCode`               | `CaptureErrorCode` | The error code describing the outcome of the capture start attempt. |
+| <a id="property-errordescription"></a> `errorDescription` | `string`                                                                    | A human-readable description of the error, if any.                  |
+| <a id="property-success"></a> `success`                   | `boolean`                                                                   | Whether the method executed successfully or not.                    |

@@ -4,6 +4,8 @@ sidebar_label: "GetVideoCaptureSettingsResult"
 
 Overwolf APIs / overwolf / overwolf / settings / GetVideoCaptureSettingsResult
 
+Result of a `getVideoCaptureSettings` call.
+
 ## Extends
 
 - `Result`
@@ -12,9 +14,9 @@ Overwolf APIs / overwolf / overwolf / settings / GetVideoCaptureSettingsResult
 
 | Property                                      | Type      | Description                                            |
 | --------------------------------------------- | --------- | ------------------------------------------------------ |
-| <a id="property-encoder"></a> `encoder`       | `string`  | -                                                      |
+| <a id="property-encoder"></a> `encoder`       | `string`  | The name of the video encoder in use.                  |
 | <a id="property-error"></a> `error?`          | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-fps"></a> `fps`               | `number`  | -                                                      |
-| <a id="property-preset"></a> `preset`         | `string`  | -                                                      |
-| <a id="property-resolution"></a> `resolution` | `number`  | -                                                      |
+| <a id="property-fps"></a> `fps`               | `number`  | The configured capture frame rate (frames per second). |
+| <a id="property-preset"></a> `preset`         | `string`  | The encoder preset currently selected.                 |
+| <a id="property-resolution"></a> `resolution` | `number`  | The configured capture resolution as a numeric value.  |
 | <a id="property-success"></a> `success`       | `boolean` | Whether the method executed successfully or not.       |

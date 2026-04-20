@@ -11,12 +11,14 @@ function update(
 ): void;
 ```
 
+Updates the pass-through or custom modifier settings for an existing hotkey.
+
 ## Parameters
 
-| Parameter  | Type                                                                                                                                            |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hotkey`   | `UpdateHotkeyObject`                                                                                    |
-| `callback` | `CallbackFunction`\<`Result`\> |
+| Parameter  | Type                                                                                                                                            | Description                                                          |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `hotkey`   | `UpdateHotkeyObject`                                                                                    | The hotkey to update, including the name and the settings to change. |
+| `callback` | `CallbackFunction`\<`Result`\> | Called with the result of the update request.                        |
 
 ## Returns
 

@@ -4,14 +4,16 @@ sidebar_label: "reddit.SearchSubredditsResult"
 
 Overwolf APIs / overwolf / overwolf / social / reddit / SearchSubredditsResult
 
+Result of a `searchSubreddits` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                       | Type                           | Description                                            |
-| ---------------------------------------------- | ------------------------------ | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`           | `string`                       | Information regarding the error (if an error occurred) |
-| <a id="property-subreddits"></a> `subreddits?` | `Subreddit`[] | -                                                      |
-| <a id="property-success"></a> `success`        | `boolean`                      | Whether the method executed successfully or not.       |
+| Property                                       | Type                           | Description                                                                      |
+| ---------------------------------------------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`           | `string`                       | Information regarding the error (if an error occurred)                           |
+| <a id="property-subreddits"></a> `subreddits?` | `Subreddit`[] | The list of subreddits matching the search query, if the request was successful. |
+| <a id="property-success"></a> `success`        | `boolean`                      | Whether the method executed successfully or not.                                 |

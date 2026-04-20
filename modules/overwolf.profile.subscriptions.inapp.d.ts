@@ -1,12 +1,21 @@
 /**
+ * The `overwolf.profile.subscriptions.inapp` namespace provides functions to display and dismiss
+ * an in-app subscription modal, and to listen for open/close events on that modal.
+ * @packageDocumentation
+ */
+
+/**
    * Fired when a user logged in or logged out.
    */
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
 }
 
 declare namespace overwolf.profile.subscriptions.inapp {
+  /** The color theme to apply to the in-app subscription modal. */
   const enum Theme {
+    /** Light color theme. */
     Light = "Light",
+    /** Dark color theme. */
     Dark = "Dark",
   }
   /**
@@ -33,4 +42,3 @@ declare namespace overwolf.profile.subscriptions.inapp {
    */
   const onInAppSubModalOpened: Event<any>;
 
-  

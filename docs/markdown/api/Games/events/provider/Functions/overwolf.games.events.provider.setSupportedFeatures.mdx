@@ -11,12 +11,15 @@ function setSupportedFeatures(
 ): void;
 ```
 
+Declares which game features this provider supports.
+Must be called before triggering events or updating info for those features.
+
 ## Parameters
 
-| Parameter  | Type                                                                                                                                                        |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `features` | `string`[]                                                                                                                                                  |
-| `callback` | `CallbackFunction`\<`Result`\> |
+| Parameter  | Type                                                                                                                                                        | Description                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `features` | `string`[]                                                                                                                                                  | Array of feature names this provider will emit data for. |
+| `callback` | `CallbackFunction`\<`Result`\> | Called with the result of the registration.              |
 
 ## Returns
 

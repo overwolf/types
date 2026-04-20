@@ -8,4 +8,37 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+Use this API to record, manage, and retrieve video replays and auto-highlights from game sessions. Replay capture runs in the background; call `turnOn` to start buffering and `capture` or `startCapture`/`stopCapture` to save clips.
+
+| API | Description |
+| --- | --- |
+| [overwolf.media.replays.enums.ReplayType](./enums/overwolf.media.replays.enums.ReplayType) | The type of replay media to capture. |
+| [overwolf.media.replays.addWatermark](./Functions/overwolf.media.replays.addWatermark) | Adds a video/image watermark to a video. |
+| [overwolf.media.replays.capture](./Functions/overwolf.media.replays.capture) | Starts capturing a replay to a file. A replay id will be returned in the callback which is needed to finish capturing the replay. You can only call this method if replay mode is on and no other replay is currently being captured to a file. |
+| [overwolf.media.replays.getHighlightsFeatures](./Functions/overwolf.media.replays.getHighlightsFeatures) | Get supported auto highlights features for a game |
+| [overwolf.media.replays.getState](./Functions/overwolf.media.replays.getState) | Returns whether replay capturing is turned on or off. |
+| [overwolf.media.replays.setReplaysSubFolder](./Functions/overwolf.media.replays.setReplaysSubFolder) | change target sub folder of current running replay provider |
+| [overwolf.media.replays.startCapture](./Functions/overwolf.media.replays.startCapture) | Starts capturing a replay to a file. A replay id will be returned in the callback which is needed to finish capturing the replay. You can only call this method if replay mode is on and no other replay is currently being captured to a file. |
+| [overwolf.media.replays.stopCapture](./Functions/overwolf.media.replays.stopCapture) | Finishes capturing a replay and returns a url to the created video file. You can only call this method if replay mode is on and using a valid id of a replay being captured to a file. |
+| [overwolf.media.replays.turnOff](./Functions/overwolf.media.replays.turnOff) | Turns off background replay capturing. Call this as soon as you no longer interesting in capturing, in order to free up resources. |
+| [overwolf.media.replays.turnOn](./Functions/overwolf.media.replays.turnOn) | Turns on background replay capturing. Without calling it first, you will not be able to create video replays. Notice that turning on replay capturing will consume system resources so use it wisely.buffer_length defines the amount of time in milliseconds to have captured in the memory at all times. |
+| [overwolf.media.replays.CaptureErrorEvent](./Interfaces/overwolf.media.replays.CaptureErrorEvent) | Event data for a capture error. |
+| [overwolf.media.replays.CaptureStoppedEvent](./Interfaces/overwolf.media.replays.CaptureStoppedEvent) | Event data fired when replay capture stops. |
+| [overwolf.media.replays.CaptureWarningEvent](./Interfaces/overwolf.media.replays.CaptureWarningEvent) | Event data for a capture warning. |
+| [overwolf.media.replays.GetHighlightsFeaturesResult](./Interfaces/overwolf.media.replays.GetHighlightsFeaturesResult) | Result returned when querying supported highlight features for a game. |
+| [overwolf.media.replays.GetStateResult](./Interfaces/overwolf.media.replays.GetStateResult) | Result returned when querying the current replay capture state. |
+| [overwolf.media.replays.HighlightsCapturedEvent](./Interfaces/overwolf.media.replays.HighlightsCapturedEvent) | Event data fired when an auto-highlight clip is captured. |
+| [overwolf.media.replays.raw_events](./Interfaces/overwolf.media.replays.raw_events) | A raw game event with its type and timestamp. |
+| [overwolf.media.replays.ReplayHighlightsSetting](./Interfaces/overwolf.media.replays.ReplayHighlightsSetting) | Auto highlights settings. |
+| [overwolf.media.replays.ReplayResult](./Interfaces/overwolf.media.replays.ReplayResult) | Result returned when a replay clip has been saved. |
+| [overwolf.media.replays.ReplayServicesStartedEvent](./Interfaces/overwolf.media.replays.ReplayServicesStartedEvent) | Event data fired when the replay service is started by any app. |
+| [overwolf.media.replays.ReplaySettings](./Interfaces/overwolf.media.replays.ReplaySettings) | Replays settings container. |
+| [overwolf.media.replays.StartReplayResult](./Interfaces/overwolf.media.replays.StartReplayResult) | Result returned when starting a replay capture session. |
+| [overwolf.media.replays.TurnOffResult](./Interfaces/overwolf.media.replays.TurnOffResult) | Result returned when turning off replay capture. |
+| [overwolf.media.replays.TurnOnResult](./Interfaces/overwolf.media.replays.TurnOnResult) | Result returned when turning on replay capture. |
+| [overwolf.media.replays.VideoSource](./Interfaces/overwolf.media.replays.VideoSource) | Defines the video source settings. |
+| [overwolf.media.replays.WebCamParam](./Interfaces/overwolf.media.replays.WebCamParam) | Parameters for a webcam video source. |
+| [overwolf.media.replays.onCaptureError](./Variables/overwolf.media.replays.onCaptureError) | Fired when an error has occurred with the capturing. |
+| [overwolf.media.replays.onCaptureStopped](./Variables/overwolf.media.replays.onCaptureStopped) | Fired when replay service is stopped. |
+| [overwolf.media.replays.onCaptureWarning](./Variables/overwolf.media.replays.onCaptureWarning) | Fired on capture service warning. |
+| [overwolf.media.replays.onReplayServicesStarted](./Variables/overwolf.media.replays.onReplayServicesStarted) | Fired when the replay service is on (any other app); |

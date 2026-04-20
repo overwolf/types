@@ -4,14 +4,16 @@ sidebar_label: "GetActiveRecordingAppsResult"
 
 Overwolf APIs / overwolf / overwolf / streaming / GetActiveRecordingAppsResult
 
+Result of `getActiveRecordingApps`, listing apps that are currently capturing.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                    | Type                                               | Description                                            |
-| ------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`        | `string`                                           | Information regarding the error (if an error occurred) |
-| <a id="property-streaming"></a> `streaming` | `ActiveRecordingApps`[] | -                                                      |
-| <a id="property-success"></a> `success`     | `boolean`                                          | Whether the method executed successfully or not.       |
+| Property                                    | Type                                               | Description                                                 |
+| ------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
+| <a id="property-error"></a> `error?`        | `string`                                           | Information regarding the error (if an error occurred)      |
+| <a id="property-streaming"></a> `streaming` | `ActiveRecordingApps`[] | An array of apps that are currently streaming or recording. |
+| <a id="property-success"></a> `success`     | `boolean`                                          | Whether the method executed successfully or not.            |

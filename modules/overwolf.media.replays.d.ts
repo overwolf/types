@@ -1,4 +1,10 @@
 /**
+ * Use this API to record, manage, and retrieve video replays and auto-highlights from game sessions.
+ * Replay capture runs in the background; call `turnOn` to start buffering and `capture` or `startCapture`/`stopCapture` to save clips.
+ * @packageDocumentation
+ */
+
+/**
    * Adds a video/image watermark to a video.
    * @param sourceVideoUrl The url of the source video in an overwolf://media form.
    * @param watermarkUrl The url of the watermark video/image in an overwolf://media form.
@@ -17,12 +23,16 @@
 
 declare namespace overwolf.media.replays {
   namespace enums {
+    /** The type of replay media to capture. */
     const enum ReplayType {
+      /** Video replay. */
       Video = "Video"
     }
   }
 
+  /** Parameters for a webcam video source. */
   interface WebCamParam {
+    /** The device identifier of the webcam. */
     device_id: string;
   }
 
@@ -30,12 +40,18 @@ declare namespace overwolf.media.replays {
    * Defines the video source settings.
    */
   interface VideoSource {
+    /** The type of video source. */
     source_type: overwolf.media.enums.eSourceType;
+    /** Display name of the source. */
     name: string;
     secondary_file: boolean; // Source will be saved to a secondary video file (i.e another ow-obs.exe process will be created with the same settings as the original one.
+    /** Transform applied to the video source. */
     transform: overwolf.media.enums.eVideoSourceTransform;
+    /** Source-specific parameters (e.g. webcam device info). */
     parameters: overwolf.media.replays.WebCamParam;
+    /** Position of the source in the output frame. */
     position: { x: number, y: number }
+    /** Scale factor applied to the source size. */
     size_scale: { x: number, y: number }
   }
 
@@ -64,96 +80,164 @@ declare namespace overwolf.media.replays {
     requiredHighlights: string[];
   }
 
+  /** Result returned when turning off replay capture. */
   interface TurnOffResult extends Result {
+    /** Human-readable description of the result. */
     description?: string;
+    /** Additional metadata about the operation. */
     metadata?: string;
+    /** OS version string. */
     osVersion?: string;
+    /** OS build string. */
     osBuild?: string;
   }
 
+  /** Result returned when turning on replay capture. */
   interface TurnOnResult extends Result {
+    /** Human-readable description of the result. */
     description?: string;
+    /** Additional metadata about the operation. */
     metadata?: string;
+    /** Path to the folder where media files will be saved. */
     mediaFolder?: string;
+    /** OS version string. */
     osVersion?: string;
+    /** OS build string. */
     osBuild?: string;
   }
 
+  /** Result returned when querying supported highlight features for a game. */
   interface GetHighlightsFeaturesResult extends Result {
+    /** Array of supported highlight feature identifiers for the game. */
     features?: string[];
   }
 
+  /** Result returned when querying the current replay capture state. */
   interface GetStateResult extends Result {
+    /** Whether replay capture is currently active. */
     isOn?: boolean;
   }
 
+  /** Result returned when a replay clip has been saved. */
   interface ReplayResult extends Result {
+    /** Overwolf media URL to the saved replay video. */
     url?: string;
+    /** File system path to the saved replay video. */
     path?: string;
+    /** URL-encoded file system path to the saved replay video. */
     encodedPath?: string;
+    /** Duration of the replay clip in milliseconds. */
     duration?: number;
+    /** Overwolf media URL to the replay thumbnail image. */
     thumbnail_url?: string;
+    /** File system path to the replay thumbnail image. */
     thumbnail_path?: string;
+    /** URL-encoded file system path to the replay thumbnail image. */
     thumbnail_encoded_path?: string;
+    /** Unix timestamp (ms) of when the clip starts within the recording session. */
     start_time?: number;
   }
 
+  /** Result returned when starting a replay capture session. */
   interface StartReplayResult extends streaming.StartCaptureResult {
     status: string // backwards compatibility
+    /** Human-readable description of the result. */
     description: string;
+    /** Additional metadata about the capture session. */
     metadata: string;
+    /** Path to the folder where media files are being saved. */
     mediaFolder: string;
+    /** OS version string. */
     osVersion: string;
+    /** OS build string. */
     osBuild: string;
+    /** Whether the capture is sourced from the game window directly. */
     isGameWindowCapture: boolean;
   }
 
+  /** Event data for a capture error. */
   interface CaptureErrorEvent {
+    /** Status string of the capture at the time of error. */
     status: string;
+    /** Identifier of the stream that encountered the error. */
     stream_id: number;
+    /** Error description string. */
     error: string;
   }
 
+  /** Event data fired when replay capture stops. */
   interface CaptureStoppedEvent {
+    /** Status string at the time capture stopped. */
     status: string;
+    /** Reason the capture was stopped. */
     reason: string;
+    /** Additional metadata about the stopped capture. */
     metaData: string;
+    /** OS version string. */
     osVersion: string;
+    /** OS build string. */
     osBuild: string;
   }
 
+  /** Event data for a capture warning. */
   interface CaptureWarningEvent {
+    /** Warning identifier or code. */
     warning: string;
+    /** Reason for the warning. */
     reason: string;
   }
 
+  /** Event data fired when the replay service is started by any app. */
   interface ReplayServicesStartedEvent {
+    /** Array of extension IDs that have started the replay service. */
     extensions: string[];
+    /** Whether the replay service is capturing via game window capture. */
     is_game_window_capture?: boolean;
   }
 
+  /** Event data fired when an auto-highlight clip is captured. */
   interface HighlightsCapturedEvent {
+    /** The game ID for which the highlight was captured. */
     game_id: number;
+    /** Identifier of the match. */
     match_id: string;
+    /** Internal identifier of the match. */
     match_internal_id: string;
+    /** Identifier of the current session. */
     session_id: string;
+    /** Unix timestamp (ms) when the session started. */
     session_start_time: number;
+    /** Unix timestamp (ms) when the match started. */
     match_start_time: number;
+    /** Unix timestamp (ms) when the highlight clip starts. */
     start_time: number;
+    /** Duration of the highlight clip in milliseconds. */
     duration: number;
+    /** Array of event type strings that triggered this highlight. */
     events: string[];
+    /** Array of raw event objects with type and timing. */
     raw_events: raw_events[];
+    /** Overwolf media URL to the highlight video. */
     media_url: string;
+    /** File system path to the highlight video. */
     media_path: string;
+    /** URL-encoded file system path to the highlight video. */
     media_path_encoded: string;
+    /** Overwolf media URL to the highlight thumbnail. */
     thumbnail_url: string;
+    /** File system path to the highlight thumbnail. */
     thumbnail_path: string;
+    /** URL-encoded file system path to the highlight thumbnail. */
     thumbnail_encoded_path: string;
+    /** Unix timestamp (ms) of the start of the replay video containing this highlight. */
     replay_video_start_time: number;
   }
 
+  /** A raw game event with its type and timestamp. */
   interface raw_events {
+    /** Event type identifier. */
     type: string;
+    /** Timestamp of the event in milliseconds relative to the session start. */
     time: number;
   }
 
@@ -352,4 +436,3 @@ declare namespace overwolf.media.replays {
    */
   const onReplayServicesStarted: Event<ReplayServicesStartedEvent>;
 
-  

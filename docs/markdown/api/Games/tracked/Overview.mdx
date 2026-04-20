@@ -8,4 +8,11 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+Use this API to monitor unsupported or overlay-disabled games running on the user's machine, including launch and termination events.
+
+| API | Description |
+| --- | --- |
+| [overwolf.games.tracked.GetAnyRunningGamesInfoResult](./Interfaces/overwolf.games.tracked.GetAnyRunningGamesInfoResult) | Result containing information about all currently running tracked games. |
+| [overwolf.games.tracked.onGameLaunched](./Variables/overwolf.games.tracked.onGameLaunched) | Fired when an unsupported / overlay disabled game is launched. |
+| [overwolf.games.tracked.onGameRendererDetected](./Variables/overwolf.games.tracked.onGameRendererDetected) | Fired when the rendering method of the game has been detected. |
+| [overwolf.games.tracked.onTerminated](./Variables/overwolf.games.tracked.onTerminated) | Fired when a tracked (unsupported / overlay disabled) game process is terminated. |

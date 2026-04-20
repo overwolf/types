@@ -4,10 +4,12 @@ sidebar_label: "LoginStateChangedEvent"
 
 Overwolf APIs / overwolf / overwolf / profile / LoginStateChangedEvent
 
+Event data fired when the user's login state changes.
+
 ## Properties
 
-| Property                                                | Type                                                     |
-| ------------------------------------------------------- | -------------------------------------------------------- |
-| <a id="property-connectionstate"></a> `connectionState` | `ConnectionState` |
-| <a id="property-status"></a> `status`                   | `string`                                                 |
-| <a id="property-username"></a> `username`               | `string`                                                 |
+| Property                                                | Type                                                     | Description                                      |
+| ------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------ |
+| <a id="property-connectionstate"></a> `connectionState` | `ConnectionState` | The new connection state of the Overwolf client. |
+| <a id="property-status"></a> `status`                   | `string`                                                 | The new login status string.                     |
+| <a id="property-username"></a> `username`               | `string`                                                 | The username of the user whose state changed.    |

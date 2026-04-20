@@ -8,4 +8,21 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+Use this API to perform file system operations (read, write, copy, move, delete, list) within the sandboxed storage spaces available to an extension.
+
+| API | Description |
+| --- | --- |
+| [overwolf.extensions.io.enums.FileType](./enums/overwolf.extensions.io.enums.FileType) | Whether a file system entry is a regular file or a directory. |
+| [overwolf.extensions.io.enums.StorageSpace](./enums/overwolf.extensions.io.enums.StorageSpace) | The named storage spaces available to extensions for file I/O. |
+| [overwolf.extensions.io.copy](./Functions/overwolf.extensions.io.copy) | Copies a file or directory from `source` to `destination` within the storage space. |
+| [overwolf.extensions.io.createDirectory](./Functions/overwolf.extensions.io.createDirectory) | Creates a new directory at the given path within the specified storage space. |
+| [overwolf.extensions.io.delete](./Functions/overwolf.extensions.io.delete) | Deletes the file or directory at the given path within the storage space. |
+| [overwolf.extensions.io.dir](./Functions/overwolf.extensions.io.dir) | Lists the files and subdirectories at `directoryPath` within the storage space. |
+| [overwolf.extensions.io.exist](./Functions/overwolf.extensions.io.exist) | Checks whether a file or directory exists at the given path in the storage space. |
+| [overwolf.extensions.io.getStoragePath](./Functions/overwolf.extensions.io.getStoragePath) | Returns the absolute file system path for the given storage space. |
+| [overwolf.extensions.io.move](./Functions/overwolf.extensions.io.move) | Moves a file or directory from `source` to `destination` within the storage space. |
+| [overwolf.extensions.io.readTextFile](./Functions/overwolf.extensions.io.readTextFile) | Reads the text content of the file at `filePath` within the storage space. |
+| [overwolf.extensions.io.writeTextFile](./Functions/overwolf.extensions.io.writeTextFile) | Writes text content to the file at `filePath` within the storage space, creating it if it does not exist. |
+| [overwolf.extensions.io.onAppInstalled](./Variables/overwolf.extensions.io.onAppInstalled) | - |
+| [overwolf.extensions.io.onAppUninstalled](./Variables/overwolf.extensions.io.onAppUninstalled) | Fired when an extension is uninstalled. |
+| [overwolf.extensions.io.onUncaughtException](./Variables/overwolf.extensions.io.onUncaughtException) | Called for global uncaught exceptions in a frame. |

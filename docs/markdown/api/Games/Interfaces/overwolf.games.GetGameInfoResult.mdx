@@ -4,14 +4,16 @@ sidebar_label: "GetGameInfoResult"
 
 Overwolf APIs / overwolf / overwolf / games / GetGameInfoResult
 
+Result of a `getGameInfo` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                   | Type                                         | Description                                            |
-| ------------------------------------------ | -------------------------------------------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`       | `string`                                     | Information regarding the error (if an error occurred) |
-| <a id="property-gameinfo"></a> `gameInfo?` | `InstalledGameInfo` | -                                                      |
-| <a id="property-success"></a> `success`    | `boolean`                                    | Whether the method executed successfully or not.       |
+| Property                                   | Type                                         | Description                                                             |
+| ------------------------------------------ | -------------------------------------------- | ----------------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`       | `string`                                     | Information regarding the error (if an error occurred)                  |
+| <a id="property-gameinfo"></a> `gameInfo?` | `InstalledGameInfo` | Installation details for the requested game, or undefined if not found. |
+| <a id="property-success"></a> `success`    | `boolean`                                    | Whether the method executed successfully or not.                        |

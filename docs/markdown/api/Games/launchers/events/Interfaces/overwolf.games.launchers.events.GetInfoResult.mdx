@@ -4,20 +4,22 @@ sidebar_label: "launchers.events.GetInfoResult"
 
 Overwolf APIs / overwolf / overwolf / games / launchers / events / GetInfoResult
 
+Result of a `getInfo` call.
+
 ## Extends
 
 - `Result`
 
 ## Type Parameters
 
-| Type Parameter | Default type |
-| -------------- | ------------ |
-| `T`            | `any`        |
+| Type Parameter | Default type | Description                                                |
+| -------------- | ------------ | ---------------------------------------------------------- |
+| `T`            | `any`        | The shape of the launcher info payload. Defaults to `any`. |
 
 ## Properties
 
 | Property                                | Type      | Description                                            |
 | --------------------------------------- | --------- | ------------------------------------------------------ |
 | <a id="property-error"></a> `error?`    | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-res"></a> `res`         | `T`       | -                                                      |
+| <a id="property-res"></a> `res`         | `T`       | The current launcher info payload.                     |
 | <a id="property-success"></a> `success` | `boolean` | Whether the method executed successfully or not.       |

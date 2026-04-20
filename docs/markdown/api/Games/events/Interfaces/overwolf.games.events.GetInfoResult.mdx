@@ -4,6 +4,8 @@ sidebar_label: "events.GetInfoResult"
 
 Overwolf APIs / overwolf / overwolf / games / events / GetInfoResult
 
+Result of a `getInfo` call containing the current game info state.
+
 ## Extends
 
 - `Result`
@@ -19,5 +21,5 @@ Overwolf APIs / overwolf / overwolf / games / events / GetInfoResult
 | Property                                | Type      | Description                                            |
 | --------------------------------------- | --------- | ------------------------------------------------------ |
 | <a id="property-error"></a> `error?`    | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-res"></a> `res`         | `T`       | -                                                      |
+| <a id="property-res"></a> `res`         | `T`       | The game info object returned by the provider.         |
 | <a id="property-success"></a> `success` | `boolean` | Whether the method executed successfully or not.       |

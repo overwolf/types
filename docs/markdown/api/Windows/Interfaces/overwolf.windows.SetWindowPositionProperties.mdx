@@ -4,11 +4,13 @@ sidebar_label: "SetWindowPositionProperties"
 
 Overwolf APIs / overwolf / overwolf / windows / SetWindowPositionProperties
 
+Describes a relative position for a window with respect to another process window.
+
 ## Properties
 
-| Property                                        | Type      |
-| ----------------------------------------------- | --------- |
-| <a id="property-insertabove"></a> `insertAbove` | `boolean` |
-| <a id="property-relativeto"></a> `relativeTo`   | `object`  |
-| `relativeTo.processName`                        | `string`  |
-| `relativeTo.windowTitle`                        | `string`  |
+| Property                                        | Type      | Description                                                                     |
+| ----------------------------------------------- | --------- | ------------------------------------------------------------------------------- |
+| <a id="property-insertabove"></a> `insertAbove` | `boolean` | If `true`, insert the Overwolf window above the target; otherwise insert below. |
+| <a id="property-relativeto"></a> `relativeTo`   | `object`  | The target process window to position relative to.                              |
+| `relativeTo.processName`                        | `string`  | -                                                                               |
+| `relativeTo.windowTitle`                        | `string`  | -                                                                               |

@@ -10,8 +10,8 @@ Overwolf APIs / overwolf.io / WatchedFileChanged
 
 ## Properties
 
-| Property                                     | Type             |
-| -------------------------------------------- | ---------------- |
-| <a id="property-eventtype"></a> `eventType?` | `WatchEventType` |
-| <a id="property-newpath"></a> `newPath?`     | `string`         |
-| <a id="property-path"></a> `path?`           | `string`         |
+| Property                                     | Type             | Description                                                                                   |
+| -------------------------------------------- | ---------------- | --------------------------------------------------------------------------------------------- |
+| <a id="property-eventtype"></a> `eventType?` | `WatchEventType` | The type of file system event that triggered this notification.                               |
+| <a id="property-newpath"></a> `newPath?`     | `string`         | The new absolute path of the file or directory, populated only when `eventType` is `Renamed`. |
+| <a id="property-path"></a> `path?`           | `string`         | The absolute path of the file or directory that was affected.                                 |

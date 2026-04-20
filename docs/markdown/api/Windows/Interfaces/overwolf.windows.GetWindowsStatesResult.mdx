@@ -4,15 +4,17 @@ sidebar_label: "GetWindowsStatesResult"
 
 Overwolf APIs / overwolf / overwolf / windows / GetWindowsStatesResult
 
+Result of `getWindowsStates`, describing the state of all app windows.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                  | Type                                                                                                                                             | Description                                            |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`      | `string`                                                                                                                                         | Information regarding the error (if an error occurred) |
-| <a id="property-result"></a> `result`     | `Dictionary`\<`string`\>                                                              | -                                                      |
-| <a id="property-resultv2"></a> `resultV2` | `Dictionary`\<`WindowStateEx`\> | -                                                      |
-| <a id="property-success"></a> `success`   | `boolean`                                                                                                                                        | Whether the method executed successfully or not.       |
+| Property                                  | Type                                                                                                                                             | Description                                               |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- |
+| <a id="property-error"></a> `error?`      | `string`                                                                                                                                         | Information regarding the error (if an error occurred)    |
+| <a id="property-result"></a> `result`     | `Dictionary`\<`string`\>                                                              | A map of window name to state string (legacy).            |
+| <a id="property-resultv2"></a> `resultV2` | `Dictionary`\<`WindowStateEx`\> | A map of window name to typed `WindowStateEx` enum value. |
+| <a id="property-success"></a> `success`   | `boolean`                                                                                                                                        | Whether the method executed successfully or not.          |

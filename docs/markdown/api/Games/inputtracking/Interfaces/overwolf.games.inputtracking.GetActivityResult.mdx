@@ -4,14 +4,16 @@ sidebar_label: "inputtracking.GetActivityResult"
 
 Overwolf APIs / overwolf / overwolf / games / inputTracking / GetActivityResult
 
+Result of a `getActivityInformation` or `getMatchActivityInformation` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                  | Type                                 | Description                                            |
-| ----------------------------------------- | ------------------------------------ | ------------------------------------------------------ |
-| <a id="property-activity"></a> `activity` | `InputActivity` | -                                                      |
-| <a id="property-error"></a> `error?`      | `string`                             | Information regarding the error (if an error occurred) |
-| <a id="property-success"></a> `success`   | `boolean`                            | Whether the method executed successfully or not.       |
+| Property                                  | Type                                 | Description                                                  |
+| ----------------------------------------- | ------------------------------------ | ------------------------------------------------------------ |
+| <a id="property-activity"></a> `activity` | `InputActivity` | The aggregated input activity data for the session or match. |
+| <a id="property-error"></a> `error?`      | `string`                             | Information regarding the error (if an error occurred)       |
+| <a id="property-success"></a> `success`   | `boolean`                            | Whether the method executed successfully or not.             |

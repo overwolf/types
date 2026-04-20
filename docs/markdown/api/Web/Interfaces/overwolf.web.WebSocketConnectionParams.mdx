@@ -4,13 +4,15 @@ sidebar_label: "WebSocketConnectionParams"
 
 Overwolf APIs / overwolf / overwolf / web / WebSocketConnectionParams
 
+Connection parameters used to create a `WebSocket` client.
+
 ## Properties
 
-| Property                                        | Type       |
-| ----------------------------------------------- | ---------- |
-| <a id="property-credentials"></a> `credentials` | `object`   |
-| `credentials.password`                          | `string`   |
-| `credentials.username`                          | `string`   |
-| <a id="property-port"></a> `port`               | `number`   |
-| <a id="property-protocols"></a> `protocols`     | `string`[] |
-| <a id="property-secured"></a> `secured`         | `boolean`  |
+| Property                                        | Type       | Description                                           |
+| ----------------------------------------------- | ---------- | ----------------------------------------------------- |
+| <a id="property-credentials"></a> `credentials` | `object`   | Optional credentials for basic authentication.        |
+| `credentials.password`                          | `string`   | -                                                     |
+| `credentials.username`                          | `string`   | -                                                     |
+| <a id="property-port"></a> `port`               | `number`   | The port number to connect to.                        |
+| <a id="property-protocols"></a> `protocols`     | `string`[] | A list of sub-protocols to negotiate with the server. |
+| <a id="property-secured"></a> `secured`         | `boolean`  | Whether to use a secure (`wss://`) connection.        |

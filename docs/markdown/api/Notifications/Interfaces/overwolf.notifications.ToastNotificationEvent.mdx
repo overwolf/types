@@ -4,12 +4,14 @@ sidebar_label: "ToastNotificationEvent"
 
 Overwolf APIs / overwolf / overwolf / notifications / ToastNotificationEvent
 
+Event data fired when a user interacts with a toast notification.
+
 ## Properties
 
-| Property                                    | Type                                                                      |
-| ------------------------------------------- | ------------------------------------------------------------------------- |
-| <a id="property-buttonid"></a> `buttonID`   | `string`                                                                  |
-| <a id="property-error"></a> `error`         | `string`                                                                  |
-| <a id="property-errorcode"></a> `errorCode` | `ToastEventError` |
-| <a id="property-eventtype"></a> `eventType` | `ToatsEventType`   |
-| <a id="property-id"></a> `id`               | `string`                                                                  |
+| Property                                    | Type                                                                      | Description                                                        |
+| ------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <a id="property-buttonid"></a> `buttonID`   | `string`                                                                  | The ID of the button clicked, if the event type is `buttonClick`.  |
+| <a id="property-error"></a> `error`         | `string`                                                                  | Human-readable error message, if the event type is `error`.        |
+| <a id="property-errorcode"></a> `errorCode` | `ToastEventError` | Error code, if the event type is `error`.                          |
+| <a id="property-eventtype"></a> `eventType` | `ToatsEventType`   | The type of interaction that occurred.                             |
+| <a id="property-id"></a> `id`               | `string`                                                                  | The identifier of the toast notification that was interacted with. |

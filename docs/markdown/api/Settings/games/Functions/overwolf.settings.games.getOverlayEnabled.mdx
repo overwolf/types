@@ -1,0 +1,25 @@
+---
+sidebar_label: "games.getOverlayEnabled"
+---
+
+Overwolf APIs / overwolf / overwolf / settings / games / getOverlayEnabled
+
+```ts
+function getOverlayEnabled(
+  gameClassId: number,
+  callback: CallbackFunction<OverlayEnabledResult>,
+): void;
+```
+
+Returns the current Overlay setting for the given game (if any exist).
+
+## Parameters
+
+| Parameter     | Type                                                                                                                                                            | Description                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `gameClassId` | `number`                                                                                                                                                        | the game id for which the flag is retrieved for |
+| `callback`    | `CallbackFunction`\<`OverlayEnabledResult`\> | -                                               |
+
+## Returns
+
+`void`

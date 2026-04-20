@@ -4,9 +4,11 @@ sidebar_label: "hotkeys.OnHoldEvent"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / OnHoldEvent
 
+Payload of the `onHold` event, indicating the hold state of a hotkey.
+
 ## Properties
 
-| Property                            | Type               |
-| ----------------------------------- | ------------------ |
-| <a id="property-name"></a> `name`   | `string`           |
-| <a id="property-state"></a> `state` | `"up"` \| `"down"` |
+| Property                            | Type               | Description                                                                |
+| ----------------------------------- | ------------------ | -------------------------------------------------------------------------- |
+| <a id="property-name"></a> `name`   | `string`           | The internal name of the hotkey being held.                                |
+| <a id="property-state"></a> `state` | `"up"` \| `"down"` | Whether the key is currently pressed down (`"down"`) or released (`"up"`). |

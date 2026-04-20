@@ -4,15 +4,17 @@ sidebar_label: "ClientInfoResult"
 
 Overwolf APIs / overwolf / overwolf / utils / ClientInfoResult
 
+Result returned when querying Overwolf client installation and uptime info.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                            | Type      | Description                                            |
-| --------------------------------------------------- | --------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`                | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-installtime"></a> `installTime`     | `number`  | -                                                      |
-| <a id="property-success"></a> `success`             | `boolean` | Whether the method executed successfully or not.       |
-| <a id="property-uptimeseconds"></a> `uptimeSeconds` | `number`  | -                                                      |
+| Property                                            | Type      | Description                                                               |
+| --------------------------------------------------- | --------- | ------------------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`                | `string`  | Information regarding the error (if an error occurred)                    |
+| <a id="property-installtime"></a> `installTime`     | `number`  | Unix timestamp (ms) of when the Overwolf client was installed.            |
+| <a id="property-success"></a> `success`             | `boolean` | Whether the method executed successfully or not.                          |
+| <a id="property-uptimeseconds"></a> `uptimeSeconds` | `number`  | Number of seconds the Overwolf client has been running since last launch. |

@@ -4,14 +4,16 @@ sidebar_label: "subscriptions.GetDetailedActivePlansResult"
 
 Overwolf APIs / overwolf / overwolf / profile / subscriptions / GetDetailedActivePlansResult
 
+Result of a `getDetailedActivePlans` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                | Type                 | Description                                            |
-| --------------------------------------- | -------------------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`    | `string`             | Information regarding the error (if an error occurred) |
-| <a id="property-plans"></a> `plans?`    | `Plan`[] | -                                                      |
-| <a id="property-success"></a> `success` | `boolean`            | Whether the method executed successfully or not.       |
+| Property                                | Type                 | Description                                                      |
+| --------------------------------------- | -------------------- | ---------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`    | `string`             | Information regarding the error (if an error occurred)           |
+| <a id="property-plans"></a> `plans?`    | `Plan`[] | Array of detailed active plan objects for the calling extension. |
+| <a id="property-success"></a> `success` | `boolean`            | Whether the method executed successfully or not.                 |

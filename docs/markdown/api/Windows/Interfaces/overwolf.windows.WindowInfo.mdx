@@ -4,17 +4,19 @@ sidebar_label: "WindowInfo"
 
 Overwolf APIs / overwolf / overwolf / windows / WindowInfo
 
+Describes a currently known Overwolf window and its current state.
+
 ## Properties
 
-| Property                                    | Type                                                                  |
-| ------------------------------------------- | --------------------------------------------------------------------- |
-| <a id="property-height"></a> `height`       | `number`                                                              |
-| <a id="property-id"></a> `id`               | `string`                                                              |
-| <a id="property-isvisible"></a> `isVisible` | `boolean`                                                             |
-| <a id="property-left"></a> `left`           | `number`                                                              |
-| <a id="property-monitorid"></a> `monitorId` | `string`                                                              |
-| <a id="property-name"></a> `name`           | `string`                                                              |
-| <a id="property-state"></a> `state`         | `string`                                                              |
-| <a id="property-stateex"></a> `stateEx`     | `WindowStateEx` |
-| <a id="property-top"></a> `top`             | `number`                                                              |
-| <a id="property-width"></a> `width`         | `number`                                                              |
+| Property                                    | Type                                                                  | Description                                                             |
+| ------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| <a id="property-height"></a> `height`       | `number`                                                              | The window's height in pixels.                                          |
+| <a id="property-id"></a> `id`               | `string`                                                              | The unique runtime ID of the window.                                    |
+| <a id="property-isvisible"></a> `isVisible` | `boolean`                                                             | Whether the window is currently visible to the user.                    |
+| <a id="property-left"></a> `left`           | `number`                                                              | The window's left edge position in pixels from the left of the monitor. |
+| <a id="property-monitorid"></a> `monitorId` | `string`                                                              | The ID of the monitor the window is on.                                 |
+| <a id="property-name"></a> `name`           | `string`                                                              | The name of the window as declared in the app manifest.                 |
+| <a id="property-state"></a> `state`         | `string`                                                              | The window state as a plain string (legacy).                            |
+| <a id="property-stateex"></a> `stateEx`     | `WindowStateEx` | The window state as a typed enum value.                                 |
+| <a id="property-top"></a> `top`             | `number`                                                              | The window's top edge position in pixels from the top of the monitor.   |
+| <a id="property-width"></a> `width`         | `number`                                                              | The window's width in pixels.                                           |

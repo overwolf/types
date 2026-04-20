@@ -4,22 +4,24 @@ sidebar_label: "replays.StartReplayResult"
 
 Overwolf APIs / overwolf / overwolf / media / replays / StartReplayResult
 
+Result returned when starting a replay capture session.
+
 ## Extends
 
 - `StartCaptureResult`
 
 ## Properties
 
-| Property                                                        | Type                                                                                           | Description                                            |
-| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| <a id="property-description"></a> `description`                 | `string`                                                                                       | -                                                      |
-| <a id="property-error"></a> `error?`                            | `string`                                                                                       | Information regarding the error (if an error occurred) |
-| <a id="property-errorcode"></a> `errorCode`                     | `CaptureErrorCode` | -                                                      |
-| <a id="property-errordescription"></a> `errorDescription`       | `string`                                                                                       | -                                                      |
-| <a id="property-isgamewindowcapture"></a> `isGameWindowCapture` | `boolean`                                                                                      | -                                                      |
-| <a id="property-mediafolder"></a> `mediaFolder`                 | `string`                                                                                       | -                                                      |
-| <a id="property-metadata"></a> `metadata`                       | `string`                                                                                       | -                                                      |
-| <a id="property-osbuild"></a> `osBuild`                         | `string`                                                                                       | -                                                      |
-| <a id="property-osversion"></a> `osVersion`                     | `string`                                                                                       | -                                                      |
-| <a id="property-status"></a> `status`                           | `string`                                                                                       | -                                                      |
-| <a id="property-success"></a> `success`                         | `boolean`                                                                                      | Whether the method executed successfully or not.       |
+| Property                                                        | Type                                                                                           | Description                                                         |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| <a id="property-description"></a> `description`                 | `string`                                                                                       | Human-readable description of the result.                           |
+| <a id="property-error"></a> `error?`                            | `string`                                                                                       | Information regarding the error (if an error occurred)              |
+| <a id="property-errorcode"></a> `errorCode`                     | `CaptureErrorCode` | The error code describing the outcome of the capture start attempt. |
+| <a id="property-errordescription"></a> `errorDescription`       | `string`                                                                                       | A human-readable description of the error, if any.                  |
+| <a id="property-isgamewindowcapture"></a> `isGameWindowCapture` | `boolean`                                                                                      | Whether the capture is sourced from the game window directly.       |
+| <a id="property-mediafolder"></a> `mediaFolder`                 | `string`                                                                                       | Path to the folder where media files are being saved.               |
+| <a id="property-metadata"></a> `metadata`                       | `string`                                                                                       | Additional metadata about the capture session.                      |
+| <a id="property-osbuild"></a> `osBuild`                         | `string`                                                                                       | OS build string.                                                    |
+| <a id="property-osversion"></a> `osVersion`                     | `string`                                                                                       | OS version string.                                                  |
+| <a id="property-status"></a> `status`                           | `string`                                                                                       | -                                                                   |
+| <a id="property-success"></a> `success`                         | `boolean`                                                                                      | Whether the method executed successfully or not.                    |

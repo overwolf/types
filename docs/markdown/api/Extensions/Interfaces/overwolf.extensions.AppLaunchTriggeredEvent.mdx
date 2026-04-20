@@ -4,9 +4,11 @@ sidebar_label: "AppLaunchTriggeredEvent"
 
 Overwolf APIs / overwolf / overwolf / extensions / AppLaunchTriggeredEvent
 
+Event data fired when the app is launched while already running.
+
 ## Properties
 
-| Property                                    | Type     |
-| ------------------------------------------- | -------- |
-| <a id="property-origin"></a> `origin`       | `string` |
-| <a id="property-parameter"></a> `parameter` | `string` |
+| Property                                    | Type     | Description                                                                  |
+| ------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
+| <a id="property-origin"></a> `origin`       | `string` | The origin that triggered the launch (e.g. `"dock"`, `"storeapi"`, `"odk"`). |
+| <a id="property-parameter"></a> `parameter` | `string` | An optional parameter passed to the app at launch.                           |

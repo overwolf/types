@@ -8,15 +8,17 @@ toc_max_heading_level: 6
 
 # Overview
 
+Use this API to display Windows toast notifications from your Overwolf app.
+
 | API | Description |
 | --- | --- |
-| [overwolf.notifications.enums.AppLogoCrop](./enums/overwolf.notifications.enums.AppLogoCrop) | - |
-| [overwolf.notifications.enums.ToastEventError](./enums/overwolf.notifications.enums.ToastEventError) | - |
-| [overwolf.notifications.enums.ToatsEventType](./enums/overwolf.notifications.enums.ToatsEventType) | - |
-| [overwolf.notifications.LogoOverride](./Interfaces/overwolf.notifications.LogoOverride) | - |
-| [overwolf.notifications.ShowToastNotificationResult](./Interfaces/overwolf.notifications.ShowToastNotificationResult) | - |
-| [overwolf.notifications.ToastNotificationButton](./Interfaces/overwolf.notifications.ToastNotificationButton) | - |
-| [overwolf.notifications.ToastNotificationEvent](./Interfaces/overwolf.notifications.ToastNotificationEvent) | - |
-| [overwolf.notifications.ToastNotificationParams](./Interfaces/overwolf.notifications.ToastNotificationParams) | - |
+| [overwolf.notifications.enums.AppLogoCrop](./enums/overwolf.notifications.enums.AppLogoCrop) | Controls how the app logo is cropped inside the toast notification. |
+| [overwolf.notifications.enums.ToastEventError](./enums/overwolf.notifications.enums.ToastEventError) | Error codes reported when a toast notification fails. |
+| [overwolf.notifications.enums.ToatsEventType](./enums/overwolf.notifications.enums.ToatsEventType) | The type of interaction event fired from a toast notification. |
+| [overwolf.notifications.LogoOverride](./Interfaces/overwolf.notifications.LogoOverride) | An image used to override the default app logo in a toast notification. |
+| [overwolf.notifications.ShowToastNotificationResult](./Interfaces/overwolf.notifications.ShowToastNotificationResult) | Result of a `showToastNotification` call. |
+| [overwolf.notifications.ToastNotificationButton](./Interfaces/overwolf.notifications.ToastNotificationButton) | A clickable action button displayed inside a toast notification. |
+| [overwolf.notifications.ToastNotificationEvent](./Interfaces/overwolf.notifications.ToastNotificationEvent) | Event data fired when a user interacts with a toast notification. |
+| [overwolf.notifications.ToastNotificationParams](./Interfaces/overwolf.notifications.ToastNotificationParams) | Parameters used to construct and display a toast notification. |
 | [overwolf.notifications.onHighlightsCaptured](./Variables/overwolf.notifications.onHighlightsCaptured) | Fired when a new Replay highlight recorded (when highlightsSetting is enabled). |
 | [overwolf.notifications.onToastInteraction](./Variables/overwolf.notifications.onToastInteraction) | Fired when a user tapped on the body of a toast notification or performed an action inside a toast notification. |

@@ -8,16 +8,16 @@ Defines the video source settings.
 
 ## Properties
 
-| Property                                              | Type                                                                                       |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| <a id="property-name"></a> `name`                     | `string`                                                                                   |
-| <a id="property-parameters"></a> `parameters`         | `WebCamParam`                                                           |
-| <a id="property-position"></a> `position`             | `object`                                                                                   |
-| `position.x`                                          | `number`                                                                                   |
-| `position.y`                                          | `number`                                                                                   |
-| <a id="property-secondary_file"></a> `secondary_file` | `boolean`                                                                                  |
-| <a id="property-size_scale"></a> `size_scale`         | `object`                                                                                   |
-| `size_scale.x`                                        | `number`                                                                                   |
-| `size_scale.y`                                        | `number`                                                                                   |
-| <a id="property-source_type"></a> `source_type`       | `Webcam`             |
-| <a id="property-transform"></a> `transform`           | `Stretch` |
+| Property                                              | Type                                                                                       | Description                                           |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| <a id="property-name"></a> `name`                     | `string`                                                                                   | Display name of the source.                           |
+| <a id="property-parameters"></a> `parameters`         | `WebCamParam`                                                           | Source-specific parameters (e.g. webcam device info). |
+| <a id="property-position"></a> `position`             | `object`                                                                                   | Position of the source in the output frame.           |
+| `position.x`                                          | `number`                                                                                   | -                                                     |
+| `position.y`                                          | `number`                                                                                   | -                                                     |
+| <a id="property-secondary_file"></a> `secondary_file` | `boolean`                                                                                  | -                                                     |
+| <a id="property-size_scale"></a> `size_scale`         | `object`                                                                                   | Scale factor applied to the source size.              |
+| `size_scale.x`                                        | `number`                                                                                   | -                                                     |
+| `size_scale.y`                                        | `number`                                                                                   | -                                                     |
+| <a id="property-source_type"></a> `source_type`       | `Webcam`             | The type of video source.                             |
+| <a id="property-transform"></a> `transform`           | `Stretch` | Transform applied to the video source.                |

@@ -4,9 +4,11 @@ sidebar_label: "replays.ReplayServicesStartedEvent"
 
 Overwolf APIs / overwolf / overwolf / media / replays / ReplayServicesStartedEvent
 
+Event data fired when the replay service is started by any app.
+
 ## Properties
 
-| Property                                                               | Type       |
-| ---------------------------------------------------------------------- | ---------- |
-| <a id="property-extensions"></a> `extensions`                          | `string`[] |
-| <a id="property-is_game_window_capture"></a> `is_game_window_capture?` | `boolean`  |
+| Property                                                               | Type       | Description                                                      |
+| ---------------------------------------------------------------------- | ---------- | ---------------------------------------------------------------- |
+| <a id="property-extensions"></a> `extensions`                          | `string`[] | Array of extension IDs that have started the replay service.     |
+| <a id="property-is_game_window_capture"></a> `is_game_window_capture?` | `boolean`  | Whether the replay service is capturing via game window capture. |

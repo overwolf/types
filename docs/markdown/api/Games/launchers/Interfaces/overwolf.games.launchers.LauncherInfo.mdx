@@ -4,16 +4,18 @@ sidebar_label: "launchers.LauncherInfo"
 
 Overwolf APIs / overwolf / overwolf / games / launchers / LauncherInfo
 
+Information about a currently running game launcher.
+
 ## Properties
 
-| Property                                        | Type                       |
-| ----------------------------------------------- | -------------------------- |
-| <a id="property-classid"></a> `classId`         | `number`                   |
-| <a id="property-commandline"></a> `commandLine` | `string`                   |
-| <a id="property-handle"></a> `handle`           | `number`                   |
-| <a id="property-id"></a> `id`                   | `number`                   |
-| <a id="property-isinfocus"></a> `isInFocus`     | `boolean`                  |
-| <a id="property-path"></a> `path`               | `string`                   |
-| <a id="property-position"></a> `position`       | `Position` |
-| <a id="property-processid"></a> `processId`     | `number`                   |
-| <a id="property-title"></a> `title`             | `string`                   |
+| Property                                        | Type                       | Description                                                   |
+| ----------------------------------------------- | -------------------------- | ------------------------------------------------------------- |
+| <a id="property-classid"></a> `classId`         | `number`                   | The Overwolf launcher class ID (without instance suffix).     |
+| <a id="property-commandline"></a> `commandLine` | `string`                   | The command line string used to start the launcher.           |
+| <a id="property-handle"></a> `handle`           | `number`                   | The native OS window handle for the launcher window.          |
+| <a id="property-id"></a> `id`                   | `number`                   | The full Overwolf launcher ID, including the instance suffix. |
+| <a id="property-isinfocus"></a> `isInFocus`     | `boolean`                  | Whether the launcher window currently has input focus.        |
+| <a id="property-path"></a> `path`               | `string`                   | The file system path to the launcher executable.              |
+| <a id="property-position"></a> `position`       | `Position` | The screen position and dimensions of the launcher window.    |
+| <a id="property-processid"></a> `processId`     | `number`                   | The OS process ID of the running launcher.                    |
+| <a id="property-title"></a> `title`             | `string`                   | The display title of the launcher.                            |

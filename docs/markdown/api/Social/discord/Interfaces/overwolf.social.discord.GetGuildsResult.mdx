@@ -4,14 +4,16 @@ sidebar_label: "discord.GetGuildsResult"
 
 Overwolf APIs / overwolf / overwolf / social / discord / GetGuildsResult
 
+Result of a `getGuilds` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                | Type                   | Description                                            |
-| --------------------------------------- | ---------------------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`    | `string`               | Information regarding the error (if an error occurred) |
-| <a id="property-guilds"></a> `guilds?`  | `Guild`[] | -                                                      |
-| <a id="property-success"></a> `success` | `boolean`              | Whether the method executed successfully or not.       |
+| Property                                | Type                   | Description                                                            |
+| --------------------------------------- | ---------------------- | ---------------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`    | `string`               | Information regarding the error (if an error occurred)                 |
+| <a id="property-guilds"></a> `guilds?`  | `Guild`[] | The list of guilds the user belongs to, if the request was successful. |
+| <a id="property-success"></a> `success` | `boolean`              | Whether the method executed successfully or not.                       |

@@ -4,15 +4,18 @@ sidebar_label: "GameInfoUpdatedEvent"
 
 Overwolf APIs / overwolf / overwolf / games / GameInfoUpdatedEvent
 
+Payload of the `onGameInfoUpdated` event.
+Fired whenever game state changes, such as launch, termination, focus, resolution, or overlay state.
+
 ## Properties
 
-| Property                                                             | Type                                                                                           |
-| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <a id="property-focuschanged"></a> `focusChanged`                    | `boolean`                                                                                      |
-| <a id="property-gamechanged"></a> `gameChanged`                      | `boolean`                                                                                      |
-| <a id="property-gameinfo"></a> `gameInfo?`                           | `RunningGameInfo`                                                       |
-| <a id="property-gameoverlaychanged"></a> `gameOverlayChanged`        | `boolean`                                                                                      |
-| <a id="property-overlayinputhookerror"></a> `overlayInputHookError?` | `boolean`                                                                                      |
-| <a id="property-reason"></a> `reason`                                | readonly `GameInfoChangeReason`[] |
-| <a id="property-resolutionchanged"></a> `resolutionChanged`          | `boolean`                                                                                      |
-| <a id="property-runningchanged"></a> `runningChanged`                | `boolean`                                                                                      |
+| Property                                                             | Type                                                                                           | Description                                                             |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| <a id="property-focuschanged"></a> `focusChanged`                    | `boolean`                                                                                      | Whether the game window's focus state changed.                          |
+| <a id="property-gamechanged"></a> `gameChanged`                      | `boolean`                                                                                      | Whether the active game changed to a different title.                   |
+| <a id="property-gameinfo"></a> `gameInfo?`                           | `RunningGameInfo`                                                       | The current running game info, or `null` if no game is running.         |
+| <a id="property-gameoverlaychanged"></a> `gameOverlayChanged`        | `boolean`                                                                                      | Whether the overlay state changed (e.g., exclusive mode, coexistence).  |
+| <a id="property-overlayinputhookerror"></a> `overlayInputHookError?` | `boolean`                                                                                      | Whether the overlay input hook encountered an error during this update. |
+| <a id="property-reason"></a> `reason`                                | readonly `GameInfoChangeReason`[] | One or more reasons describing what triggered this update.              |
+| <a id="property-resolutionchanged"></a> `resolutionChanged`          | `boolean`                                                                                      | Whether the game's screen resolution changed.                           |
+| <a id="property-runningchanged"></a> `runningChanged`                | `boolean`                                                                                      | Whether the game started or stopped running.                            |

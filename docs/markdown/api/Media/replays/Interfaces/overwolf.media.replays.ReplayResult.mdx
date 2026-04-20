@@ -4,21 +4,23 @@ sidebar_label: "replays.ReplayResult"
 
 Overwolf APIs / overwolf / overwolf / media / replays / ReplayResult
 
+Result returned when a replay clip has been saved.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                                               | Type      | Description                                            |
-| ---------------------------------------------------------------------- | --------- | ------------------------------------------------------ |
-| <a id="property-duration"></a> `duration?`                             | `number`  | -                                                      |
-| <a id="property-encodedpath"></a> `encodedPath?`                       | `string`  | -                                                      |
-| <a id="property-error"></a> `error?`                                   | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-path"></a> `path?`                                     | `string`  | -                                                      |
-| <a id="property-start_time"></a> `start_time?`                         | `number`  | -                                                      |
-| <a id="property-success"></a> `success`                                | `boolean` | Whether the method executed successfully or not.       |
-| <a id="property-thumbnail_encoded_path"></a> `thumbnail_encoded_path?` | `string`  | -                                                      |
-| <a id="property-thumbnail_path"></a> `thumbnail_path?`                 | `string`  | -                                                      |
-| <a id="property-thumbnail_url"></a> `thumbnail_url?`                   | `string`  | -                                                      |
-| <a id="property-url"></a> `url?`                                       | `string`  | -                                                      |
+| Property                                                               | Type      | Description                                                               |
+| ---------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------- |
+| <a id="property-duration"></a> `duration?`                             | `number`  | Duration of the replay clip in milliseconds.                              |
+| <a id="property-encodedpath"></a> `encodedPath?`                       | `string`  | URL-encoded file system path to the saved replay video.                   |
+| <a id="property-error"></a> `error?`                                   | `string`  | Information regarding the error (if an error occurred)                    |
+| <a id="property-path"></a> `path?`                                     | `string`  | File system path to the saved replay video.                               |
+| <a id="property-start_time"></a> `start_time?`                         | `number`  | Unix timestamp (ms) of when the clip starts within the recording session. |
+| <a id="property-success"></a> `success`                                | `boolean` | Whether the method executed successfully or not.                          |
+| <a id="property-thumbnail_encoded_path"></a> `thumbnail_encoded_path?` | `string`  | URL-encoded file system path to the replay thumbnail image.               |
+| <a id="property-thumbnail_path"></a> `thumbnail_path?`                 | `string`  | File system path to the replay thumbnail image.                           |
+| <a id="property-thumbnail_url"></a> `thumbnail_url?`                   | `string`  | Overwolf media URL to the replay thumbnail image.                         |
+| <a id="property-url"></a> `url?`                                       | `string`  | Overwolf media URL to the saved replay video.                             |

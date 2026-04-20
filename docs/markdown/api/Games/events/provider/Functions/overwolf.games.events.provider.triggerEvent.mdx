@@ -8,13 +8,16 @@ Overwolf APIs / overwolf / overwolf / games / events / provider / triggerEvent
 function triggerEvent(feature: string, name: string, data?: any): void;
 ```
 
+Triggers a named game event for the specified feature.
+Use this to fire discrete one-time occurrences (e.g., a kill, a death).
+
 ## Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `feature` | `string` |
-| `name`    | `string` |
-| `data?`   | `any`    |
+| Parameter | Type     | Description                                              |
+| --------- | -------- | -------------------------------------------------------- |
+| `feature` | `string` | The feature name this event belongs to (e.g., `"kill"`). |
+| `name`    | `string` | The name of the event to trigger.                        |
+| `data?`   | `any`    | Optional additional payload data for the event.          |
 
 ## Returns
 

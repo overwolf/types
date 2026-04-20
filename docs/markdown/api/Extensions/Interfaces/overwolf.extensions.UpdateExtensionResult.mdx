@@ -4,16 +4,18 @@ sidebar_label: "UpdateExtensionResult"
 
 Overwolf APIs / overwolf / overwolf / extensions / UpdateExtensionResult
 
+Result of `updateExtension`, describing the outcome of an update attempt.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                 | Type      | Description                                            |
-| ---------------------------------------- | --------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`     | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-info"></a> `info?`       | `string`  | -                                                      |
-| <a id="property-state"></a> `state?`     | `string`  | -                                                      |
-| <a id="property-success"></a> `success`  | `boolean` | Whether the method executed successfully or not.       |
-| <a id="property-version"></a> `version?` | `string`  | -                                                      |
+| Property                                 | Type      | Description                                             |
+| ---------------------------------------- | --------- | ------------------------------------------------------- |
+| <a id="property-error"></a> `error?`     | `string`  | Information regarding the error (if an error occurred)  |
+| <a id="property-info"></a> `info?`       | `string`  | Additional human-readable information about the update. |
+| <a id="property-state"></a> `state?`     | `string`  | The update state after the operation.                   |
+| <a id="property-success"></a> `success`  | `boolean` | Whether the method executed successfully or not.        |
+| <a id="property-version"></a> `version?` | `string`  | The version string of the installed or pending update.  |

@@ -4,6 +4,8 @@ sidebar_label: "hotkeys.UnassignHotkeyObject"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / UnassignHotkeyObject
 
+Identifies a hotkey to unassign by name and optional game scope.
+
 ## Extended by
 
 - `AssignHotkeyObject`
@@ -11,7 +13,7 @@ Overwolf APIs / overwolf / overwolf / settings / hotkeys / UnassignHotkeyObject
 
 ## Properties
 
-| Property                               | Type     |
-| -------------------------------------- | -------- |
-| <a id="property-gameid"></a> `gameId?` | `number` |
-| <a id="property-name"></a> `name`      | `string` |
+| Property                               | Type     | Description                                                              |
+| -------------------------------------- | -------- | ------------------------------------------------------------------------ |
+| <a id="property-gameid"></a> `gameId?` | `number` | The game ID to scope the unassignment to, or omit for the global hotkey. |
+| <a id="property-name"></a> `name`      | `string` | The internal name of the hotkey as defined in the manifest.              |

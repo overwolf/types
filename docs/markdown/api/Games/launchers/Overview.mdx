@@ -8,4 +8,15 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+Use this API to detect and monitor game launchers (e.g., Battle.net, Epic Games Launcher) running on the user's machine, including focus changes and launch events.
+
+| API | Description |
+| --- | --- |
+| [overwolf.games.launchers.getAnyRunningGamesInfo](./Functions/overwolf.games.launchers.getAnyRunningGamesInfo) | Returns an array of all the currently running unsupported / overlay disabled games. |
+| [overwolf.games.launchers.getRunningLaunchersInfo](./Functions/overwolf.games.launchers.getRunningLaunchersInfo) | Returns an object with information about the currently running launchers. |
+| [overwolf.games.launchers.GetRunningLaunchersInfoResult](./Interfaces/overwolf.games.launchers.GetRunningLaunchersInfoResult) | Result of a `getRunningLaunchersInfo` call. |
+| [overwolf.games.launchers.LauncherInfo](./Interfaces/overwolf.games.launchers.LauncherInfo) | Information about a currently running game launcher. |
+| [overwolf.games.launchers.Position](./Interfaces/overwolf.games.launchers.Position) | Screen position and dimensions of a window. |
+| [overwolf.games.launchers.UpdatedEvent](./Interfaces/overwolf.games.launchers.UpdatedEvent) | Payload of the `onUpdated` event. |
+| [overwolf.games.launchers.onLaunched](./Variables/overwolf.games.launchers.onLaunched) | Fired when a game is launched. |
+| [overwolf.games.launchers.onUpdated](./Variables/overwolf.games.launchers.onUpdated) | Fired when the launcher info is updated, including game name, game running, game terminated, game changing focus, etc. |

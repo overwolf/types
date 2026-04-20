@@ -8,4 +8,18 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+Use this API to create and manage a system tray icon for your Overwolf app, including context menus, icon changes, and click events.
+
+| API | Description |
+| --- | --- |
+| [overwolf.os.tray.changeIcon](./Functions/overwolf.os.tray.changeIcon) | Changes the tray icon to the image at the given file path. |
+| [overwolf.os.tray.destroy](./Functions/overwolf.os.tray.destroy) | Removes the tray icon for the calling extension. |
+| [overwolf.os.tray.restoreIcon](./Functions/overwolf.os.tray.restoreIcon) | Restores the tray icon to the extension's default icon. |
+| [overwolf.os.tray.setMenu](./Functions/overwolf.os.tray.setMenu) | Create a tray icon for the calling extension with the supplied context menu object. |
+| [overwolf.os.tray.ExtensionTrayMenu](./Interfaces/overwolf.os.tray.ExtensionTrayMenu) | The context menu displayed when the user right-clicks the tray icon. |
+| [overwolf.os.tray.GetRegionInfoResult](./Interfaces/overwolf.os.tray.GetRegionInfoResult) | Result containing regional formatting information for the current user. |
+| [overwolf.os.tray.menu_item](./Interfaces/overwolf.os.tray.menu_item) | A single item in the tray icon context menu. |
+| [overwolf.os.tray.onMenuItemClickedEvent](./Interfaces/overwolf.os.tray.onMenuItemClickedEvent) | Event data for a tray context menu item click. |
+| [overwolf.os.tray.RegionInfo](./Interfaces/overwolf.os.tray.RegionInfo) | Regional formatting preferences for the current user's locale. |
+| [overwolf.os.tray.onMenuItemClicked](./Variables/overwolf.os.tray.onMenuItemClicked) | Fired when an item from the tray icon's context menu is selected. |
+| [overwolf.os.tray.onTrayIconClicked](./Variables/overwolf.os.tray.onTrayIconClicked) | Fired when the tray icon is left clicked. |

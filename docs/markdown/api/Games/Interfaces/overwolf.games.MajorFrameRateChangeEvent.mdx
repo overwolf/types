@@ -4,9 +4,12 @@ sidebar_label: "MajorFrameRateChangeEvent"
 
 Overwolf APIs / overwolf / overwolf / games / MajorFrameRateChangeEvent
 
+Payload of the `onMajorFrameRateChange` event.
+Fired when the game's FPS changes significantly relative to its stable threshold.
+
 ## Properties
 
-| Property                                      | Type                                               |
-| --------------------------------------------- | -------------------------------------------------- |
-| <a id="property-fps"></a> `fps`               | `number`                                           |
-| <a id="property-fps_status"></a> `fps_status` | `"None"` \| `"Stable"` \| `"Drop"` \| `"Increase"` |
+| Property                                      | Type                                               | Description                                                                         |
+| --------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| <a id="property-fps"></a> `fps`               | `number`                                           | The current measured frames per second.                                             |
+| <a id="property-fps_status"></a> `fps_status` | `"None"` \| `"Stable"` \| `"Drop"` \| `"Increase"` | Whether the FPS is stable, has dropped, or has increased relative to the threshold. |

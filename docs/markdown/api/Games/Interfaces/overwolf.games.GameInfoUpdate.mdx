@@ -4,12 +4,18 @@ sidebar_label: "GameInfoUpdate"
 
 Overwolf APIs / overwolf / overwolf / games / GameInfoUpdate
 
+Describes what changed in a game info update.
+
+## Deprecated
+
+Use `GameInfoUpdatedEvent` instead, which includes overlay change details and change reasons.
+
 ## Properties
 
-| Property                                                    | Type                                     |
-| ----------------------------------------------------------- | ---------------------------------------- |
-| <a id="property-focuschanged"></a> `focusChanged`           | `boolean`                                |
-| <a id="property-gamechanged"></a> `gameChanged`             | `boolean`                                |
-| <a id="property-gameinfo"></a> `gameInfo`                   | `RunningGameInfo` |
-| <a id="property-resolutionchanged"></a> `resolutionChanged` | `boolean`                                |
-| <a id="property-runningchanged"></a> `runningChanged`       | `boolean`                                |
+| Property                                                        | Type                                     | Description                                          |
+| --------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------- |
+| <a id="property-focuschanged"></a> ~~`focusChanged`~~           | `boolean`                                | Whether the game window's focus state changed.       |
+| <a id="property-gamechanged"></a> ~~`gameChanged`~~             | `boolean`                                | Whether the active game changed to a different game. |
+| <a id="property-gameinfo"></a> ~~`gameInfo`~~                   | `RunningGameInfo` | The current state of the running game.               |
+| <a id="property-resolutionchanged"></a> ~~`resolutionChanged`~~ | `boolean`                                | Whether the game's screen resolution changed.        |
+| <a id="property-runningchanged"></a> ~~`runningChanged`~~       | `boolean`                                | Whether the game started or stopped running.         |

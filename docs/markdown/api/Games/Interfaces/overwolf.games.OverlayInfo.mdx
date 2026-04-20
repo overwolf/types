@@ -4,14 +4,16 @@ sidebar_label: "OverlayInfo"
 
 Overwolf APIs / overwolf / overwolf / games / OverlayInfo
 
+Describes the current state of the Overwolf overlay for a running game.
+
 ## Properties
 
-| Property                                                                                   | Type                                                                                                |
-| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| <a id="property-coexistingapps"></a> `coexistingApps?`                                     | `KnownOverlayCoexistenceApps`[] |
-| <a id="property-exclusivemodedisabled"></a> `exclusiveModeDisabled?`                       | `boolean`                                                                                           |
-| <a id="property-hadingamerender"></a> `hadInGameRender?`                                   | `boolean`                                                                                           |
-| <a id="property-inputfailure"></a> `inputFailure?`                                         | `boolean`                                                                                           |
-| <a id="property-iscursorvisible"></a> `isCursorVisible?`                                   | `boolean`                                                                                           |
-| <a id="property-isfullscreenoptimizationdisabled"></a> `isFullScreenOptimizationDisabled?` | `boolean`                                                                                           |
-| <a id="property-oopoverlay"></a> `oopOverlay?`                                             | `boolean`                                                                                           |
+| Property                                                                                   | Type                                                                                                | Description                                                                |
+| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <a id="property-coexistingapps"></a> `coexistingApps?`                                     | `KnownOverlayCoexistenceApps`[] | Third-party overlay apps detected as coexisting with the Overwolf overlay. |
+| <a id="property-exclusivemodedisabled"></a> `exclusiveModeDisabled?`                       | `boolean`                                                                                           | Whether exclusive rendering mode has been disabled for this game.          |
+| <a id="property-hadingamerender"></a> `hadInGameRender?`                                   | `boolean`                                                                                           | Whether the overlay has rendered at least one frame in-game.               |
+| <a id="property-inputfailure"></a> `inputFailure?`                                         | `boolean`                                                                                           | Whether the overlay input hook encountered a failure.                      |
+| <a id="property-iscursorvisible"></a> `isCursorVisible?`                                   | `boolean`                                                                                           | Whether the overlay cursor is currently visible.                           |
+| <a id="property-isfullscreenoptimizationdisabled"></a> `isFullScreenOptimizationDisabled?` | `boolean`                                                                                           | Whether Windows full-screen optimization is disabled for this game.        |
+| <a id="property-oopoverlay"></a> `oopOverlay?`                                             | `boolean`                                                                                           | Whether the out-of-process (OOP) overlay is active.                        |

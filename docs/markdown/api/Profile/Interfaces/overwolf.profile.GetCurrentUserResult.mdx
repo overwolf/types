@@ -4,24 +4,26 @@ sidebar_label: "GetCurrentUserResult"
 
 Overwolf APIs / overwolf / overwolf / profile / GetCurrentUserResult
 
+Result of a `getCurrentUser` or `refreshUserProfile` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                                       | Type                                                                                | Description                                            |
-| -------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| <a id="property-avatar"></a> `avatar?`                         | `string`                                                                            | -                                                      |
-| <a id="property-channel"></a> `channel?`                       | `string`                                                                            | -                                                      |
-| <a id="property-displayname"></a> `displayName?`               | `string`                                                                            | -                                                      |
-| <a id="property-error"></a> `error?`                           | `string`                                                                            | Information regarding the error (if an error occurred) |
-| <a id="property-installerextension"></a> `installerExtension?` | `any`                                                                               | -                                                      |
-| <a id="property-installparams"></a> `installParams?`           | `any`                                                                               | -                                                      |
-| <a id="property-machineid"></a> `machineId?`                   | `string`                                                                            | -                                                      |
-| <a id="property-parameters"></a> `parameters?`                 | `Dictionary`\<`string`\> | -                                                      |
-| <a id="property-partnerid"></a> `partnerId?`                   | `number`                                                                            | -                                                      |
-| <a id="property-success"></a> `success`                        | `boolean`                                                                           | Whether the method executed successfully or not.       |
-| <a id="property-userid"></a> `userId?`                         | `string`                                                                            | -                                                      |
-| <a id="property-username"></a> `username?`                     | `string`                                                                            | -                                                      |
-| <a id="property-uuid"></a> `uuid?`                             | `string`                                                                            | -                                                      |
+| Property                                                       | Type                                                                                | Description                                               |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| <a id="property-avatar"></a> `avatar?`                         | `string`                                                                            | URL of the user's avatar image.                           |
+| <a id="property-channel"></a> `channel?`                       | `string`                                                                            | The channel the user is associated with.                  |
+| <a id="property-displayname"></a> `displayName?`               | `string`                                                                            | The user's display name.                                  |
+| <a id="property-error"></a> `error?`                           | `string`                                                                            | Information regarding the error (if an error occurred)    |
+| <a id="property-installerextension"></a> `installerExtension?` | `any`                                                                               | The extension that triggered this install, if any.        |
+| <a id="property-installparams"></a> `installParams?`           | `any`                                                                               | Parameters passed at install time, if any.                |
+| <a id="property-machineid"></a> `machineId?`                   | `string`                                                                            | Unique identifier for the user's machine.                 |
+| <a id="property-parameters"></a> `parameters?`                 | `Dictionary`\<`string`\> | Additional parameters associated with the user's account. |
+| <a id="property-partnerid"></a> `partnerId?`                   | `number`                                                                            | The partner ID associated with the user's account.        |
+| <a id="property-success"></a> `success`                        | `boolean`                                                                           | Whether the method executed successfully or not.          |
+| <a id="property-userid"></a> `userId?`                         | `string`                                                                            | The user's Overwolf user ID.                              |
+| <a id="property-username"></a> `username?`                     | `string`                                                                            | The user's Overwolf username.                             |
+| <a id="property-uuid"></a> `uuid?`                             | `string`                                                                            | A universally unique identifier for this user session.    |

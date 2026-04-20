@@ -1,4 +1,9 @@
 /**
+ * Use this API to capture screenshots and videos, manage media files, and post media events from your Overwolf app.
+ * @packageDocumentation
+ */
+
+/**
    * Decrypt provided ciphertext for current system user
    * @param ciphertext Text to decrypt
    * @param callback Will be called with decrypted plaintext
@@ -19,57 +24,88 @@ declare namespace overwolf.media {
       Image = "Image",
     }
 
+    /** The source type for a video capture input. */
     const enum eSourceType {
+      /** A webcam device. */
       Webcam = "Webcam"
     }
 
+    /** The transform mode applied to a video source within the capture frame. */
     const enum eVideoSourceTransform {
+      /** Stretch the video source to fill the capture frame. */
       Stretch = "Stretch"
     }
   }
 
+  /** Parameters for rescaling an image or capture frame. */
   interface RescaleParams {
+    /** The target width in pixels. */
     width: number;
+    /** The target height in pixels. */
     height: number;
   }
 
+  /** Parameters for cropping an image or capture frame. */
   interface CropParams {
+    /** The horizontal offset of the crop region in pixels. */
     x: number;
+    /** The vertical offset of the crop region in pixels. */
     y: number;
+    /** The width of the crop region in pixels. */
     width: number;
+    /** The height of the crop region in pixels. */
     height: number;
   }
 
+  /** Parameters for taking an in-memory screenshot. */
   interface MemoryScreenshotParams {
+    /** Whether to round dimensions away from zero when rescaling. */
     roundAwayFromZero?: boolean;
+    /** Optional rescale dimensions to apply to the screenshot. */
     rescale?: RescaleParams;
+    /** Optional crop region to apply to the screenshot. */
     crop?: CropParams;
   }
 
+  /** Result of a screenshot or file operation, containing the file location. */
   interface FileResult extends Result {
+    /** The URL pointing to the captured file. */
     url?: string;
+    /** The local file system path of the captured file. */
     path?: string;
   }
 
+  /** Result of a `getAppVideoCaptureFolderSize` call. */
   interface GetAppVideoCaptureFolderSizeResult extends Result {
+    /** The total size of all video files in the app's video capture folder, in megabytes. */
     totalVideosSizeMB?: number;
   }
 
+  /** Result of a `getAppScreenCaptureFolderSize` call. */
   interface GetAppScreenCaptureFolderSizeResult extends Result {
+    /** The total size of all files in the app's screen capture folder, in megabytes. */
     screenCaptureSizeMB?: number;
   }
 
+  /** Event data for a screenshot that has been saved to disk. */
   interface ScreenshotTakenEvent {
+    /** The URL pointing to the saved screenshot file. */
     url: string;
   }
 
+  /** Represents a connected webcam device. */
   interface Webcam {
+    /** The human-readable name of the webcam device. */
     name: string;
+    /** The device path of the webcam. */
     path: string;
+    /** The unique identifier of the webcam device. */
     id: string;
   }
 
+  /** Result of a `GetWebcams` call. */
   interface GetWebcamsResult extends Result {
+    /** The list of connected webcam devices, if the request was successful. */
     webCams?: Webcam[];
   }
 
@@ -220,4 +256,4 @@ declare namespace overwolf.media {
    */
   const onMediaEvent: Event<any>;
 
-  
+

@@ -8,21 +8,23 @@ toc_max_heading_level: 6
 
 # Overview
 
+Use this API to create local web servers and WebSocket clients, and to send HTTP requests from within an Overwolf app.
+
 | API | Description |
 | --- | --- |
-| [overwolf.web.enums.HttpRequestMethods](./enums/overwolf.web.enums.HttpRequestMethods) | - |
-| [overwolf.web.enums.MessageType](./enums/overwolf.web.enums.MessageType) | - |
-| [overwolf.web.createServer](./Functions/overwolf.web.createServer) | Creates a web server. This call returns an object with two fields: A status string and a server object. |
-| [overwolf.web.createWebSocket](./Functions/overwolf.web.createWebSocket) | Creates a WebSocket client to localhost/127.0.0.1 while by-passing a valid certificate verification. |
-| [overwolf.web.ClosedEvent](./Interfaces/overwolf.web.ClosedEvent) | - |
-| [overwolf.web.CreateServerResult](./Interfaces/overwolf.web.CreateServerResult) | - |
-| [overwolf.web.CreateWebSocketResult](./Interfaces/overwolf.web.CreateWebSocketResult) | - |
-| [overwolf.web.ErrorEvent](./Interfaces/overwolf.web.ErrorEvent) | - |
-| [overwolf.web.FetchHeader](./Interfaces/overwolf.web.FetchHeader) | - |
-| [overwolf.web.MessageEvent](./Interfaces/overwolf.web.MessageEvent) | - |
-| [overwolf.web.RequestEvent](./Interfaces/overwolf.web.RequestEvent) | - |
-| [overwolf.web.SendHttpRequestResult](./Interfaces/overwolf.web.SendHttpRequestResult) | - |
-| [overwolf.web.WebServer](./Interfaces/overwolf.web.WebServer) | Closes the web server. It can be re-opened again. |
-| [overwolf.web.WebSocket](./Interfaces/overwolf.web.WebSocket) | Closes the websocket. It can be re-opened again. |
-| [overwolf.web.WebSocketConnectionParams](./Interfaces/overwolf.web.WebSocketConnectionParams) | - |
+| [overwolf.web.enums.HttpRequestMethods](./enums/overwolf.web.enums.HttpRequestMethods) | The HTTP method to use when sending a fetch request. |
+| [overwolf.web.enums.MessageType](./enums/overwolf.web.enums.MessageType) | The type of a WebSocket message. |
+| [overwolf.web.createServer](./Functions/overwolf.web.createServer) | Creates a local HTTP web server on the specified port. The returned `WebServer` instance must have its `listen` method called before it will accept connections. |
+| [overwolf.web.createWebSocket](./Functions/overwolf.web.createWebSocket) | Creates a WebSocket client connection to localhost/127.0.0.1, bypassing certificate verification. Call `connect` on the returned `WebSocket` instance to open the connection. |
+| [overwolf.web.ClosedEvent](./Interfaces/overwolf.web.ClosedEvent) | Describes the reason a WebSocket connection was closed. |
+| [overwolf.web.CreateServerResult](./Interfaces/overwolf.web.CreateServerResult) | Result of `createServer`, containing the new `WebServer` instance. |
+| [overwolf.web.CreateWebSocketResult](./Interfaces/overwolf.web.CreateWebSocketResult) | Result of `createWebSocket`, containing the new `WebSocket` client instance. |
+| [overwolf.web.ErrorEvent](./Interfaces/overwolf.web.ErrorEvent) | Describes an error that occurred on a WebSocket connection. |
+| [overwolf.web.FetchHeader](./Interfaces/overwolf.web.FetchHeader) | A single HTTP header key-value pair used in a fetch request. |
+| [overwolf.web.MessageEvent](./Interfaces/overwolf.web.MessageEvent) | Describes a message received on a WebSocket connection. |
+| [overwolf.web.RequestEvent](./Interfaces/overwolf.web.RequestEvent) | Describes an incoming HTTP request received by a `WebServer`. |
+| [overwolf.web.SendHttpRequestResult](./Interfaces/overwolf.web.SendHttpRequestResult) | Result of a `sendHttpRequest` call, containing the HTTP status code and response body. |
+| [overwolf.web.WebServer](./Interfaces/overwolf.web.WebServer) | A local HTTP web server instance returned by `createServer`. |
+| [overwolf.web.WebSocket](./Interfaces/overwolf.web.WebSocket) | A WebSocket client instance returned by `createWebSocket`. |
+| [overwolf.web.WebSocketConnectionParams](./Interfaces/overwolf.web.WebSocketConnectionParams) | Connection parameters used to create a `WebSocket` client. |
 | [overwolf.web.onMouseWheel](./Variables/overwolf.web.onMouseWheel) | Fired a mouse wheel has been used. |

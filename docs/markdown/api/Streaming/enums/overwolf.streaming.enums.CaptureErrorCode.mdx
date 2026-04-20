@@ -4,18 +4,20 @@ sidebar_label: "enums.CaptureErrorCode"
 
 Overwolf APIs / overwolf / overwolf / streaming / enums / CaptureErrorCode
 
+Error codes returned by capture and streaming operations.
+
 ## Enumeration Members
 
-| Enumeration Member                                                                                      | Value  |
-| ------------------------------------------------------------------------------------------------------- | ------ |
-| <a id="enumeration-member-alreadystreaming"></a> `AlreadyStreaming`                                     | `3`    |
-| <a id="enumeration-member-foldercreation"></a> `FolderCreation`                                         | `1`    |
-| <a id="enumeration-member-highperformancecapturenotsupported"></a> `HighPerformanceCaptureNotSupported` | `8`    |
-| <a id="enumeration-member-internalobserror"></a> `InternalOBSError`                                     | `6`    |
-| <a id="enumeration-member-missingsetting"></a> `MissingSetting`                                         | `4`    |
-| <a id="enumeration-member-notallowedingame"></a> `NotAllowedInGame`                                     | `7`    |
-| <a id="enumeration-member-notingame"></a> `NotInGame`                                                   | `9`    |
-| <a id="enumeration-member-ransomwareprotection"></a> `RansomwareProtection`                             | `2`    |
-| <a id="enumeration-member-settingerror"></a> `SettingError`                                             | `5`    |
-| <a id="enumeration-member-success"></a> `Success`                                                       | `0`    |
-| <a id="enumeration-member-unknown"></a> `Unknown`                                                       | `1000` |
+| Enumeration Member                                                                                      | Value  | Description                                                   |
+| ------------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------- |
+| <a id="enumeration-member-alreadystreaming"></a> `AlreadyStreaming`                                     | `3`    | A stream is already active.                                   |
+| <a id="enumeration-member-foldercreation"></a> `FolderCreation`                                         | `1`    | The output folder could not be created.                       |
+| <a id="enumeration-member-highperformancecapturenotsupported"></a> `HighPerformanceCaptureNotSupported` | `8`    | High-performance capture is not supported on this hardware.   |
+| <a id="enumeration-member-internalobserror"></a> `InternalOBSError`                                     | `6`    | An internal OBS error occurred.                               |
+| <a id="enumeration-member-missingsetting"></a> `MissingSetting`                                         | `4`    | A required setting was not provided.                          |
+| <a id="enumeration-member-notallowedingame"></a> `NotAllowedInGame`                                     | `7`    | Streaming is not allowed while in this game.                  |
+| <a id="enumeration-member-notingame"></a> `NotInGame`                                                   | `9`    | The operation requires an active game session.                |
+| <a id="enumeration-member-ransomwareprotection"></a> `RansomwareProtection`                             | `2`    | Ransomware protection prevented writing to the output folder. |
+| <a id="enumeration-member-settingerror"></a> `SettingError`                                             | `5`    | A setting value is invalid or misconfigured.                  |
+| <a id="enumeration-member-success"></a> `Success`                                                       | `0`    | The operation completed successfully.                         |
+| <a id="enumeration-member-unknown"></a> `Unknown`                                                       | `1000` | An unknown error occurred.                                    |

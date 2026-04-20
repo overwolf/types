@@ -8,13 +8,18 @@ toc_max_heading_level: 6
 
 # Overview
 
+Use this API to share videos and interact with social platforms (e.g., Twitch, YouTube, Discord) from within an Overwolf app, including querying user info and upload progress.
+
 | API | Description |
 | --- | --- |
-| [overwolf.social.enums.ShareState](./enums/overwolf.social.enums.ShareState) | - |
-| [overwolf.social.GetDisabledServicesResult](./Interfaces/overwolf.social.GetDisabledServicesResult) | - |
-| [overwolf.social.GetUserInfoResult](./Interfaces/overwolf.social.GetUserInfoResult) | - |
-| [overwolf.social.LoginStateChangedEvent](./Interfaces/overwolf.social.LoginStateChangedEvent) | - |
-| [overwolf.social.VideoUploadParams](./Interfaces/overwolf.social.VideoUploadParams) | - |
-| [overwolf.social.VideoUploadProgress](./Interfaces/overwolf.social.VideoUploadProgress) | - |
-| [overwolf.social.VideoUploadResult](./Interfaces/overwolf.social.VideoUploadResult) | - |
+| [discord](./discord/Overview) | Use this API to share media and messages to Discord directly from your Overwolf app. |
+| [overwolf.social.enums.ShareState](./enums/overwolf.social.enums.ShareState) | The current state of a social share operation. |
+| [overwolf.social.GetDisabledServicesResult](./Interfaces/overwolf.social.GetDisabledServicesResult) | Result containing a list of social services currently disabled for the app. |
+| [overwolf.social.GetUserInfoResult](./Interfaces/overwolf.social.GetUserInfoResult) | Result containing information about the authenticated user. |
+| [overwolf.social.LoginStateChangedEvent](./Interfaces/overwolf.social.LoginStateChangedEvent) | Event data describing a change in the user's social platform login state. |
+| [overwolf.social.VideoUploadParams](./Interfaces/overwolf.social.VideoUploadParams) | Parameters required to initiate a video upload to a social platform. |
+| [overwolf.social.VideoUploadProgress](./Interfaces/overwolf.social.VideoUploadProgress) | Progress update fired during a video upload operation. |
+| [overwolf.social.VideoUploadResult](./Interfaces/overwolf.social.VideoUploadResult) | Result returned after a successful video upload. |
+| [reddit](./reddit/Overview) | Use this API to share videos and posts to Reddit directly from your Overwolf app. |
 | [overwolf.social.onLanguageChanged](./Variables/overwolf.social.onLanguageChanged) | Fired when user changes client language. |
+| [youtube](./youtube/Overview) | Use this API to share videos to YouTube on behalf of the logged-in user, with support for privacy settings and upload progress tracking. |

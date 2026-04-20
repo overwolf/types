@@ -4,15 +4,17 @@ sidebar_label: "hotkeys.UpdateHotkeyObject"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / UpdateHotkeyObject
 
+Parameters for updating hotkey pass-through or custom modifier settings.
+
 ## Extends
 
 - `UnassignHotkeyObject`
 
 ## Properties
 
-| Property                                                             | Type      |
-| -------------------------------------------------------------------- | --------- |
-| <a id="property-custommodifierkeycode"></a> `customModifierKeyCode?` | `number`  |
-| <a id="property-gameid"></a> `gameId?`                               | `number`  |
-| <a id="property-ispassthrough"></a> `isPassThrough?`                 | `boolean` |
-| <a id="property-name"></a> `name`                                    | `string`  |
+| Property                                                             | Type      | Description                                                              |
+| -------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------ |
+| <a id="property-custommodifierkeycode"></a> `customModifierKeyCode?` | `number`  | A custom modifier key code to apply, if applicable.                      |
+| <a id="property-gameid"></a> `gameId?`                               | `number`  | The game ID to scope the unassignment to, or omit for the global hotkey. |
+| <a id="property-ispassthrough"></a> `isPassThrough?`                 | `boolean` | Whether to enable pass-through behavior for this hotkey.                 |
+| <a id="property-name"></a> `name`                                    | `string`  | The internal name of the hotkey as defined in the manifest.              |

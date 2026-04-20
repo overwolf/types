@@ -4,18 +4,20 @@ sidebar_label: "youtube.ShareParameters"
 
 Overwolf APIs / overwolf / overwolf / social / youtube / ShareParameters
 
+Parameters for sharing a video to YouTube.
+
 ## Properties
 
-| Property                                                                  | Type                                                                                                    |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| <a id="property-description"></a> `description`                           | `string`                                                                                                |
-| <a id="property-file"></a> `file`                                         | `string`                                                                                                |
-| <a id="property-gameclassid"></a> `gameClassId?`                          | `number`                                                                                                |
-| <a id="property-gametitle"></a> `gameTitle?`                              | `string`                                                                                                |
-| <a id="property-id"></a> `id?`                                            | `string`                                                                                                |
-| <a id="property-metadata"></a> `metadata?`                                | `any`                                                                                                   |
-| <a id="property-privacy"></a> `privacy`                                   | `YouTubePrivacy`                                 |
-| <a id="property-tags"></a> `tags?`                                        | `string`[]                                                                                              |
-| <a id="property-title"></a> `title`                                       | `string`                                                                                                |
-| <a id="property-trimming"></a> `trimming?`                                | `VideoCompositionSegment` |
-| <a id="property-useoverwolfnotifications"></a> `useOverwolfNotifications` | `boolean`                                                                                               |
+| Property                                                                  | Type                                                                                                    | Description                                                      |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <a id="property-description"></a> `description`                           | `string`                                                                                                | The description to assign to the uploaded YouTube video.         |
+| <a id="property-file"></a> `file`                                         | `string`                                                                                                | Path to the video file to share.                                 |
+| <a id="property-gameclassid"></a> `gameClassId?`                          | `number`                                                                                                | The Overwolf game class ID related to this share, if applicable. |
+| <a id="property-gametitle"></a> `gameTitle?`                              | `string`                                                                                                | The title of the game related to this share, if applicable.      |
+| <a id="property-id"></a> `id?`                                            | `string`                                                                                                | Optional identifier for this share operation.                    |
+| <a id="property-metadata"></a> `metadata?`                                | `any`                                                                                                   | Optional arbitrary metadata to attach to this share.             |
+| <a id="property-privacy"></a> `privacy`                                   | `YouTubePrivacy`                                 | The privacy setting for the uploaded video.                      |
+| <a id="property-tags"></a> `tags?`                                        | `string`[]                                                                                              | Optional list of tags to associate with the video.               |
+| <a id="property-title"></a> `title`                                       | `string`                                                                                                | The title to assign to the uploaded YouTube video.               |
+| <a id="property-trimming"></a> `trimming?`                                | `VideoCompositionSegment` | Optional trimming segment if sharing a video clip.               |
+| <a id="property-useoverwolfnotifications"></a> `useOverwolfNotifications` | `boolean`                                                                                               | Whether to use Overwolf's built-in share notifications.          |

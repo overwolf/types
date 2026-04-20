@@ -4,16 +4,18 @@ sidebar_label: "hotkeys.IHotkey"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / IHotkey
 
+Describes a single hotkey registered to an extension or the platform.
+
 ## Properties
 
-| Property                                              | Type      |
-| ----------------------------------------------------- | --------- |
-| <a id="property-binding"></a> `binding`               | `string`  |
-| <a id="property-extensionuid"></a> `extensionuid`     | `string`  |
-| <a id="property-hold"></a> `hold`                     | `boolean` |
-| <a id="property-ispassthrough"></a> `isPassthrough`   | `boolean` |
-| <a id="property-isunassigned"></a> `IsUnassigned`     | `boolean` |
-| <a id="property-modifierkeys"></a> `modifierKeys`     | `number`  |
-| <a id="property-name"></a> `name`                     | `string`  |
-| <a id="property-title"></a> `title`                   | `string`  |
-| <a id="property-virtualkeycode"></a> `virtualKeycode` | `number`  |
+| Property                                              | Type      | Description                                                               |
+| ----------------------------------------------------- | --------- | ------------------------------------------------------------------------- |
+| <a id="property-binding"></a> `binding`               | `string`  | The string representation of the key binding (e.g. `"Ctrl+F2"`).          |
+| <a id="property-extensionuid"></a> `extensionuid`     | `string`  | The UID of the extension that owns this hotkey.                           |
+| <a id="property-hold"></a> `hold`                     | `boolean` | Whether this hotkey is configured as a hold hotkey.                       |
+| <a id="property-ispassthrough"></a> `isPassthrough`   | `boolean` | Whether the hotkey is a pass-through key that does not consume the input. |
+| <a id="property-isunassigned"></a> `IsUnassigned`     | `boolean` | Whether the hotkey is currently unassigned.                               |
+| <a id="property-modifierkeys"></a> `modifierKeys`     | `number`  | A bitmask of the active modifier keys (Ctrl, Alt, Shift).                 |
+| <a id="property-name"></a> `name`                     | `string`  | The internal name of the hotkey as defined in the manifest.               |
+| <a id="property-title"></a> `title`                   | `string`  | The human-readable display title of the hotkey.                           |
+| <a id="property-virtualkeycode"></a> `virtualKeycode` | `number`  | The virtual key code of the primary key.                                  |

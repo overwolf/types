@@ -278,7 +278,7 @@ function buildOverviewTable(rows, opts = {}) {
     ? opts.emptyPlaceholder
     : '-';
   if (!rows.length) {
-    return `# ${heading}\n\n*No pages generated.*\n`;
+    return `# ${heading}\n\n${summary}*No pages generated.*\n`;
   }
   const header = `# ${heading}\n\n${summary}| API | Description |\n| --- | --- |\n`;
   const body = rows.map(r => {
@@ -567,18 +567,50 @@ async function run() {
         }
         // Skip empty folders (no MDX pages or only an empty Overview)
         let hasContent = false;
+        const subNsRows = [];
         try {
           const subEntries = await fs.readdir(path.join(groupPath, sd.name), { withFileTypes: true });
           const mdxFiles = subEntries.filter(e => e.isFile() && /\.mdx?$/i.test(e.name));
           const nonOverview = mdxFiles.filter(e => e.name.toLowerCase() !== 'overview.mdx');
           if (nonOverview.length > 0) {
             hasContent = true;
-          } else if (mdxFiles.length > 0) {
-            const c = await fs.readFile(overviewPath, 'utf8').catch(() => '');
-            if (!/no pages generated/i.test(c)) hasContent = true;
+          } else {
+            // Check kind subdirs (Functions/, Interfaces/, etc.) for content
+            const kindSubdirs = subEntries.filter(e => e.isDirectory() && isKindFolderName(e.name));
+            for (const ksd of kindSubdirs) {
+              const kindDir = path.join(groupPath, sd.name, ksd.name);
+              try {
+                const kindEntries = await fs.readdir(kindDir, { withFileTypes: true });
+                for (const ke of kindEntries) {
+                  if (!ke.isFile() || !/\.mdx?$/i.test(ke.name)) continue;
+                  if (ke.name.toLowerCase() === 'overview.mdx') continue;
+                  hasContent = true;
+                  const base = ke.name.replace(/(\.mdx|\.md)$/i, '');
+                  const filePath = path.join(kindDir, ke.name);
+                  let desc = '';
+                  try {
+                    const c = await fs.readFile(filePath, 'utf8');
+                    desc = extractSummaryFromContent(c);
+                  } catch { /* ignore */ }
+                  subNsRows.push({ label: base, link: `./${ksd.name}/${base}`, description: desc });
+                }
+              } catch { /* ignore */ }
+            }
+            if (!hasContent && mdxFiles.length > 0) {
+              const c = await fs.readFile(overviewPath, 'utf8').catch(() => '');
+              if (!/no pages generated/i.test(c)) hasContent = true;
+            }
           }
         } catch { /* ignore */ }
         if (!hasContent) continue;
+
+        // Write Overview for sub-namespace if its content lives in kind subdirs
+        if (subNsRows.length > 0) {
+          const subNsKey = namespaceKeyFromParts([d.name, sd.name]);
+          const subNsSummary = subNsKey ? namespaceSummaryByFull.get(subNsKey) : '';
+          const subOverview = buildOverviewTable(subNsRows, { summary: subNsSummary });
+          await fs.writeFile(overviewPath, subOverview, 'utf8');
+        }
 
         const label = labelForSubdir(d.name, sd.name);
         if (label !== sd.name) {

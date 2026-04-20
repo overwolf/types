@@ -1,10 +1,20 @@
 /**
+ * Use this API to manage Overwolf extensions (apps) — launch other extensions,
+ * query and exchange runtime info, check for updates, and react to lifecycle
+ * events such as app launch, update, and uncaught exceptions.
+ * @packageDocumentation
+ */
+
+/**
    * Fired when the tray icon is double clicked.
    */
   const onTrayIconDoubleClicked: Event<any>;
 }
 
 declare namespace overwolf.extensions {
+  /**
+   * A union of all permission strings an app may request in its manifest.
+   */
   type Permission =
     | "Camera"
     | "Microphone"
@@ -24,21 +34,35 @@ declare namespace overwolf.extensions {
     | "OwWebview"
     | "VideoCaptureSettings";
 
+  /** The type of an Overwolf extension. */
   const enum ExtensionType {
+    /** A standard web-based Overwolf app. */
     WebApp = "WebApp",
+    /** An Overwolf built-in extension. */
     BuiltIn = "BuiltIn",
+    /** A Twitch-channel (TC) app. */
     TCApp = "TCApp",
+    /** A giveaway extension. */
     Giveaway = "Giveaway",
+    /** The Overwolf Store extension. */
     Store = "Store",
+    /** A skin extension. */
     Skin = "Skin",
+    /** A TypeScript-based skin extension. */
     TSSkin = "TSSkin",
+    /** An extension that provides game events. */
     GameEventsProvider = "GameEventsProvider",
+    /** The extension type could not be determined. */
     Unknown = "Unknown",
   }
 
+  /** The update state of an extension. */
   const enum ExtensionUpdateState {
+    /** The extension is up to date. */
     UpToDate = "UpToDate",
+    /** A newer version of the extension is available for download. */
     UpdateAvailable = "UpdateAvailable",
+    /** An update has been downloaded and is waiting for an app restart. */
     PendingRestart = "PendingRestart",
   }
 
@@ -60,6 +84,7 @@ declare namespace overwolf.extensions {
      */
     meta: Metadata;
 
+    /** The unique identifier (UID) of the extension. */
     UID: string;
     /**
      * 	An array of permissions that the app requires.
@@ -75,6 +100,7 @@ declare namespace overwolf.extensions {
     max_rotation_log_files: number;
   }
 
+  /** App metadata as declared in the manifest `meta` block. */
   interface Metadata {
     /**
      * Name of your app
@@ -113,7 +139,7 @@ declare namespace overwolf.extensions {
      */
     dock_button_title: string;
     /**
-     * A relative path from the app folder to the icon’s png file. This is the
+     * A relative path from the app folder to the icon's png file. This is the
      * mouse-over (multi-colored) version of the icon that will be displayed on
      * the Overwolf dock. The icon dimensions should be 256×256 pixels, 72 PPI.
      * Overwolf will resize it to 37×37. Please make sure the png is smaller
@@ -121,7 +147,7 @@ declare namespace overwolf.extensions {
      */
     icon: string;
     /**
-     * A relative path from the app folder to the icon’s png file. This
+     * A relative path from the app folder to the icon's png file. This
      * grayscale version of the icon is for the default state that will be
      * displayed on the Overwolf dock. The icon dimensions should be 256×256
      * pixels, 72 PPI. Overwolf will resize it to 37×37. Please make sure the
@@ -129,24 +155,25 @@ declare namespace overwolf.extensions {
      */
     icon_gray: string;
     /**
-     * A relative path from the app folder to the desktop shortcut icon’s ico
-     * file. This is a colored icon for the app’s desktop shortcut.
+     * A relative path from the app folder to the desktop shortcut icon's ico
+     * file. This is a colored icon for the app's desktop shortcut.
      */
     launcher_icon: string;
     /**
-     * A relative path from the app folder to the splash image icon’s png file.
+     * A relative path from the app folder to the splash image icon's png file.
      * The image size should be 256x256px. If a this image is missing, Overwolf
-     * will use the “icon” image as a splash image
+     * will use the "icon" image as a splash image
      */
     splash_image: string;
     /**
-     * A relative path from the app folder to the icon’s png file. This is the
+     * A relative path from the app folder to the icon's png file. This is the
      * window task bar icon \ window header. The icon dimensions should be
      * 256x256 pixels.
      */
     window_icon: string;
   }
 
+  /** The `data` block of the manifest, containing all app-level settings. */
   interface WebAppSettings {
     /**
      * An app can declare itself as targeted for one game or more.
@@ -163,7 +190,7 @@ declare namespace overwolf.extensions {
       game_ids?: number[];
     };
     /**
-     * The name of the window (from the “windows” list) to initially load when
+     * The name of the window (from the "windows" list) to initially load when
      * the app starts.
      */
     start_window: string;
@@ -173,7 +200,7 @@ declare namespace overwolf.extensions {
     windows: Dictionary<ExtensionWindowData>;
     /**
      * Enable/Disable printing of ads log to the console. Default value is
-     * “false”.
+     * "false".
      */
     enable_top_isolated_sites_console?: boolean;
     /**
@@ -185,13 +212,13 @@ declare namespace overwolf.extensions {
      */
     protocol_override_domains?: Dictionary<string>;
     /**
-     * Choose whether links in the app will be opened using the user’s default
-     * browser or Overwolf’s browser. Possible values: "user" or "overwolf".
+     * Choose whether links in the app will be opened using the user's default
+     * browser or Overwolf's browser. Possible values: "user" or "overwolf".
      */
     force_browser?: string;
     /**
      * @deprecated No longer supported
-     * 
+     *
      * Enable OSR/GPU acceleration if supported by this machine. Note: this flag
      * is still in Beta. It may not function as expected in some machines.
      */
@@ -271,13 +298,13 @@ declare namespace overwolf.extensions {
          */
         game_ids: number[];
         /**
-         * The app won’t start until the game’s framerate will stabilize around
+         * The app won't start until the game's framerate will stabilize around
          * or above the stated framerate.
          */
         wait_for_stable_framerate: number[];
       };
       /**
-       * The app’s main window will start minimized.
+       * The app's main window will start minimized.
        */
       start_minimized?: boolean;
       /**
@@ -287,13 +314,13 @@ declare namespace overwolf.extensions {
     }[];
     /**
      * A custom user agent for the app to use when creating http requests. Note:
-     * using ‘navigator.userAgent’ will not return the custom user agent, but
+     * using 'navigator.userAgent' will not return the custom user agent, but
      * the default one.
      */
     user_agent?: string;
     /**
      * Disable opening of the developer tools for the app (with Ctrl+shift+I).
-     * Default value – “false”
+     * Default value – "false"
      */
     disable_dt?: boolean;
     /**
@@ -317,14 +344,14 @@ declare namespace overwolf.extensions {
        */
       reload_delay: number;
       /**
-       * Filter files which will be tracked.e.g (.js;.html. default value is “.”
-       * -> all files, but you can use several value like “.json;.html”
+       * Filter files which will be tracked.e.g (.js;.html. default value is "."
+       * -> all files, but you can use several value like ".json;.html"
        */
       filter: string;
     };
     /**
      * If set to true, app localStorage data will not be cleaned up after app uninstallation.
-     * Default value – “false”
+     * Default value – "false"
      */
     disable_cleanup?: boolean;
     /**
@@ -337,10 +364,11 @@ declare namespace overwolf.extensions {
     url_protocol?: Dictionary<string>;
   }
 
+  /** Per-window configuration declared in the manifest `data.windows` map. */
   interface ExtensionWindowData {
     /**
      * Points to a local HTML file to be loaded inside the window. If you wish
-     * to host your app in a remote web-site, you’ll have to have a local page
+     * to host your app in a remote web-site, you'll have to have a local page
      * that redirects to that remote website. In such cases, you need to make
      * sure that the block_top_window_navigation property is set to false.
      */
@@ -358,8 +386,8 @@ declare namespace overwolf.extensions {
      */
     transparent?: boolean;
     /**
-     * Indicates whether the window’s locally saved data should be overridden
-     * when the window’s size/location/opacity changes after a version update.
+     * Indicates whether the window's locally saved data should be overridden
+     * when the window's size/location/opacity changes after a version update.
      */
     override_on_update?: boolean;
     /**
@@ -407,9 +435,9 @@ declare namespace overwolf.extensions {
     in_game_only?: boolean;
     /**
      * Marks the window as available on desktop only, and not in-game. This flag
-     * should be used (set to “true”) when “use_os_windowing” or “native_window”
-     * flags are set to true. Note: using “desktop_only” and “native_window”
-     * flags for desktop windows will dramatically improve your app’s
+     * should be used (set to "true") when "use_os_windowing" or "native_window"
+     * flags are set to true. Note: using "desktop_only" and "native_window"
+     * flags for desktop windows will dramatically improve your app's
      * performance.
      */
     desktop_only?: boolean;
@@ -460,12 +488,12 @@ declare namespace overwolf.extensions {
     */
     bottommost?: boolean;
     /**
-     * Refrain from non _blank elements from “taking-over” the entire app’s
+     * Refrain from non _blank elements from "taking-over" the entire app's
      * window.
      */
     block_top_window_navigation?: boolean;
     /**
-     * Window location won’t be changed when game focus is changed.
+     * Window location won't be changed when game focus is changed.
      */
     keep_window_location?: boolean;
     /**
@@ -499,7 +527,7 @@ declare namespace overwolf.extensions {
      */
     show_maximize?: boolean;
     /**
-     * Causes the app’s window to never “lose focus”, so the window.onblur event
+     * Causes the app's window to never "lose focus", so the window.onblur event
      * is never triggered. Default value is false.
      */
     disable_blur?: boolean;
@@ -517,32 +545,32 @@ declare namespace overwolf.extensions {
     is_background_page?: boolean;
     /**
      * Allows you to control the behavior of an app window while in a
-     * “mouse-less” game state.
+     * "mouse-less" game state.
      */
     focus_game_takeover?: "ReleaseOnHidden" | "ReleaseOnLostFocus";
     /**
-     * 	Allow Overwolf to display your app’s hotkey combination on the screen
-     * 	when the user switches to “exclusive mode”. The string value should be
+     * 	Allow Overwolf to display your app's hotkey combination on the screen
+     * 	when the user switches to "exclusive mode". The string value should be
      * 	the hotkey name from the hotkeys section. Relevant only if you set
      * 	focus_game_takeover=ReleaseOnHidden.
      */
     focus_game_takeover_release_hotkey?: string;
     /**
      * 	Enable iframe isolation: runs it in a different process, so if some
-     * 	iframe is misbehaving (e.g. memory leak, etc.) it won’t crash your app
+     * 	iframe is misbehaving (e.g. memory leak, etc.) it won't crash your app
      * 	and will only crash the iframe process. useful with Overwolf ads that
      * 	run in an iframe. Note: Please contact us before adding it to your app.
      * 	Default value is true.
      */
     enable_top_isolation?: boolean;
     /**
-     * Allows access to local files that are not located in your app’s
+     * Allows access to local files that are not located in your app's
      * (extension) folder. Default value is false.
      */
     allow_local_file_access?: boolean;
     /**
      * 	Blocks the user from closing the window by using Alt+F4. You can
-     * 	register to the onAltF4Blocked event to be noticed when a “block” was
+     * 	register to the onAltF4Blocked event to be noticed when a "block" was
      * 	triggered.
      */
     is_alt_f4_blocked?: boolean;
@@ -559,7 +587,7 @@ declare namespace overwolf.extensions {
     debug_url: string;
     /**
      * @deprecated No longer supported.
-     * 
+     *
      * Valid only for transparent windows. Valid only if enable_osr_acceleration
      * is on.
      */
@@ -579,56 +607,85 @@ declare namespace overwolf.extensions {
     disable_hardware_acceleration: boolean;
   }
 
+  /** A width/height pair used to describe window dimensions. */
   interface Size {
+    /** Width in pixels. */
     width: number;
+    /** Height in pixels. */
     height: number;
   }
 
+  /** A top/left coordinate pair used to describe a window's starting position. */
   interface Point {
+    /** Distance from the top of the screen in pixels. */
     top: number;
+    /** Distance from the left of the screen in pixels. */
     left: number;
   }
 
+  /** Result of `getManifest`, combining the base `Result` with the full `Manifest` object. */
   interface GetManifestResult extends Result, Manifest { }
 
+  /** Result containing the phased rollout percentage for the calling extension. */
   interface GetPhasedPercentResult extends Result {
+    /** The percentage (0–100) of users receiving the phased update. */
     phasedPercent: number;
   }
 
+  /** Result of `getInfo`, containing the info string or object set by another extension. */
   interface GetInfoResult extends Result {
+    /** The info value posted by the target extension. */
     info: string | { [key: string]: any };
   }
 
+  /** Result of `getRunningState`, indicating whether the target extension is active. */
   interface GetRunningStateResult extends Result {
+    /** `true` if the target extension is currently running. */
     isRunning: boolean;
   }
 
+  /** Result of `updateExtension`, describing the outcome of an update attempt. */
   interface UpdateExtensionResult extends Result {
+    /** The update state after the operation. */
     state?: string;
+    /** Additional human-readable information about the update. */
     info?: string;
+    /** The version string of the installed or pending update. */
     version?: string;
   }
 
+  /** Result of `checkForExtensionUpdate`, reporting whether an update is available. */
   interface CheckForUpdateResult extends Result {
     state?: "UpToDate" | "UpdateAvailable" | "PendingRestart"; //should be changed in the future to the enum "ExtensionUpdateState"
+    /** The version string of the available update, if any. */
     updateVersion?: string;
   }
 
+  /** Result of `getServiceConsumers`, providing service-provider manifest data. */
   interface ServiceProvidersDataResult extends Result {
+    /** A dictionary mapping provider keys to their data strings. */
     data: Dictionary<string>;
   }
 
+  /** Event data fired when the app is launched while already running. */
   interface AppLaunchTriggeredEvent {
+    /** The origin that triggered the launch (e.g. `"dock"`, `"storeapi"`, `"odk"`). */
     origin: string;
+    /** An optional parameter passed to the app at launch. */
     parameter: string;
   }
 
+  /** Event data fired when the extension has been updated to a new version. */
   interface ExtensionUpdatedEvent {
+    /** The version string of the newly installed update. */
     version: string;
+    /** The current update state of the extension. */
     state: ExtensionUpdateState;
   }
 
+  /** Event data fired when an extension is installed. */
   interface AppInstallationEvent {
+    /** The unique identifier (UID) of the installed extension. */
     UID: string;
   }
 
@@ -642,12 +699,17 @@ declare namespace overwolf.extensions {
     scriptName: string
   ) => void;
 
+  /** Event interface for the `onUncaughtException` event, which uses a custom callback signature. */
   interface UncaughtExceptionEvent {
+    /** Register a listener for uncaught exception events. */
     addListener(callback: UncaughtExceptionCallback): void;
+    /** Remove a previously registered uncaught exception listener. */
     removeListener(callback: UncaughtExceptionCallback): void;
   }
 
+  /** Result of `getExtensions`, containing the list of installed extensions. */
   interface GetExtensionsResult extends Result {
+    /** An array of extension objects describing installed extensions. */
     extensions: any[];
   }
 
@@ -769,4 +831,5 @@ declare namespace overwolf.extensions {
    */
   const onExtensionUpdated: Event<ExtensionUpdatedEvent>;
 
-  
+
+}

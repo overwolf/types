@@ -4,14 +4,16 @@ sidebar_label: "events.SetRequiredFeaturesResult"
 
 Overwolf APIs / overwolf / overwolf / games / events / SetRequiredFeaturesResult
 
+Result of a `setRequiredFeatures` call, listing which features were successfully enabled.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                                     | Type       | Description                                            |
-| ------------------------------------------------------------ | ---------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`                         | `string`   | Information regarding the error (if an error occurred) |
-| <a id="property-success"></a> `success`                      | `boolean`  | Whether the method executed successfully or not.       |
-| <a id="property-supportedfeatures"></a> `supportedFeatures?` | `string`[] | -                                                      |
+| Property                                                     | Type       | Description                                                     |
+| ------------------------------------------------------------ | ---------- | --------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`                         | `string`   | Information regarding the error (if an error occurred)          |
+| <a id="property-success"></a> `success`                      | `boolean`  | Whether the method executed successfully or not.                |
+| <a id="property-supportedfeatures"></a> `supportedFeatures?` | `string`[] | The subset of requested features that are supported and active. |

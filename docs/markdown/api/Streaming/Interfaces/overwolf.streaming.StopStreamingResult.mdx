@@ -4,6 +4,8 @@ sidebar_label: "StopStreamingResult"
 
 Overwolf APIs / overwolf / overwolf / streaming / StopStreamingResult
 
+Result of `stop`, describing the completed stream session.
+
 ## Extends
 
 - `Result`
@@ -12,14 +14,14 @@ Overwolf APIs / overwolf / overwolf / streaming / StopStreamingResult
 
 | Property                                              | Type      | Description                                            |
 | ----------------------------------------------------- | --------- | ------------------------------------------------------ |
-| <a id="property-duration"></a> `duration`             | `number`  | -                                                      |
+| <a id="property-duration"></a> `duration`             | `number`  | The total duration of the stream in milliseconds.      |
 | <a id="property-error"></a> `error?`                  | `string`  | Information regarding the error (if an error occurred) |
-| <a id="property-extra"></a> `extra`                   | `string`  | -                                                      |
-| <a id="property-file_path"></a> `file_path`           | `string`  | -                                                      |
-| <a id="property-last_file_path"></a> `last_file_path` | `string`  | -                                                      |
-| <a id="property-osbuild"></a> `osBuild`               | `string`  | -                                                      |
-| <a id="property-osversion"></a> `osVersion`           | `string`  | -                                                      |
-| <a id="property-split"></a> `split`                   | `boolean` | -                                                      |
-| <a id="property-stream_id"></a> `stream_id`           | `number`  | -                                                      |
+| <a id="property-extra"></a> `extra`                   | `string`  | Extra metadata associated with the stream session.     |
+| <a id="property-file_path"></a> `file_path`           | `string`  | The path to the recorded video file.                   |
+| <a id="property-last_file_path"></a> `last_file_path` | `string`  | The path to the last video file segment written.       |
+| <a id="property-osbuild"></a> `osBuild`               | `string`  | The OS build string of the system.                     |
+| <a id="property-osversion"></a> `osVersion`           | `string`  | The OS version string of the system.                   |
+| <a id="property-split"></a> `split`                   | `boolean` | Whether the recording was split into multiple files.   |
+| <a id="property-stream_id"></a> `stream_id`           | `number`  | The ID of the stream that was stopped.                 |
 | <a id="property-success"></a> `success`               | `boolean` | Whether the method executed successfully or not.       |
-| <a id="property-url"></a> `url`                       | `string`  | -                                                      |
+| <a id="property-url"></a> `url`                       | `string`  | The URL the stream was broadcasting to, if applicable. |

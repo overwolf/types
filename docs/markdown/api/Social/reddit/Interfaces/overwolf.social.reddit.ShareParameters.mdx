@@ -4,19 +4,21 @@ sidebar_label: "reddit.ShareParameters"
 
 Overwolf APIs / overwolf / overwolf / social / reddit / ShareParameters
 
+Parameters for sharing a video to a subreddit.
+
 ## Properties
 
 | Property                                                                  | Type                                                                                                    | Description                                                                                     |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | <a id="property-description"></a> `description`                           | `string`                                                                                                | The shared video's description.                                                                 |
 | <a id="property-file"></a> `file`                                         | `string`                                                                                                | The file to share.                                                                              |
-| <a id="property-flair_id"></a> `flair_id?`                                | `Flair`                                                                                    | -                                                                                               |
+| <a id="property-flair_id"></a> `flair_id?`                                | `Flair`                                                                                    | The flair to apply to the post, if any.                                                         |
 | <a id="property-gameclassid"></a> `gameClassId?`                          | `number`                                                                                                | The associated game's class ID. Optional parameter.                                             |
 | <a id="property-gametitle"></a> `gameTitle?`                              | `string`                                                                                                | The associated game's title. Optional parameter.                                                |
 | <a id="property-id"></a> `id?`                                            | `string`                                                                                                | The subreddit to which the file will be shared.                                                 |
 | <a id="property-metadata"></a> `metadata?`                                | `any`                                                                                                   | Extra information about the game session. Optional parameter.                                   |
-| <a id="property-subreddit"></a> `subreddit`                               | `string`                                                                                                | -                                                                                               |
+| <a id="property-subreddit"></a> `subreddit`                               | `string`                                                                                                | The name of the subreddit to share to (without the `r/` prefix).                                |
 | <a id="property-tags"></a> `tags?`                                        | `string`[]                                                                                              | An array of chronological events that occurred during the capture. Optional parameter.          |
 | <a id="property-title"></a> `title`                                       | `string`                                                                                                | The shared video's title.                                                                       |
 | <a id="property-trimming"></a> `trimming?`                                | `VideoCompositionSegment` | An object containing start time and end time for the desired video segment. Optional parameter. |
-| <a id="property-useoverwolfnotifications"></a> `useOverwolfNotifications` | `boolean`                                                                                               | -                                                                                               |
+| <a id="property-useoverwolfnotifications"></a> `useOverwolfNotifications` | `boolean`                                                                                               | Whether to display Overwolf notifications during the share.                                     |

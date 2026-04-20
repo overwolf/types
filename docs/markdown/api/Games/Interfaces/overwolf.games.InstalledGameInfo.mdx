@@ -4,16 +4,19 @@ sidebar_label: "InstalledGameInfo"
 
 Overwolf APIs / overwolf / overwolf / games / InstalledGameInfo
 
+Information about a game detected as installed on the local machine,
+combining database metadata with installation-specific details.
+
 ## Properties
 
-| Property                                                                               | Type                       |
-| -------------------------------------------------------------------------------------- | -------------------------- |
-| <a id="property-gameinfo"></a> `GameInfo`                                              | `GameInfo` |
-| <a id="property-gameinfoclassid"></a> `GameInfoClassID?`                               | `number`                   |
-| <a id="property-gameinfoid"></a> `GameInfoID?`                                         | `number`                   |
-| <a id="property-lasttimeverified"></a> `LastTimeVerified?`                             | `Date`                     |
-| <a id="property-launchercommandlineparams"></a> `LauncherCommandLineParams?`           | `string`                   |
-| <a id="property-launcherpath"></a> `LauncherPath?`                                     | `string`                   |
-| <a id="property-manuallyadded"></a> `ManuallyAdded?`                                   | `boolean`                  |
-| <a id="property-processpath"></a> `ProcessPath?`                                       | `string`                   |
-| <a id="property-wasautoaddedbyprocessdetection"></a> `WasAutoAddedByProcessDetection?` | `boolean`                  |
+| Property                                                                               | Type                       | Description                                                                 |
+| -------------------------------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------------------- |
+| <a id="property-gameinfo"></a> `GameInfo`                                              | `GameInfo` | Static game metadata from the Overwolf game database.                       |
+| <a id="property-gameinfoclassid"></a> `GameInfoClassID?`                               | `number`                   | The game class ID from the database (without instance suffix).              |
+| <a id="property-gameinfoid"></a> `GameInfoID?`                                         | `number`                   | The full game ID from the database (with instance suffix).                  |
+| <a id="property-lasttimeverified"></a> `LastTimeVerified?`                             | `Date`                     | The timestamp when the installation was last verified.                      |
+| <a id="property-launchercommandlineparams"></a> `LauncherCommandLineParams?`           | `string`                   | Command line parameters used when launching via the game's launcher.        |
+| <a id="property-launcherpath"></a> `LauncherPath?`                                     | `string`                   | File system path to the game's launcher executable.                         |
+| <a id="property-manuallyadded"></a> `ManuallyAdded?`                                   | `boolean`                  | Whether the game was manually added by the user rather than auto-detected.  |
+| <a id="property-processpath"></a> `ProcessPath?`                                       | `string`                   | File system path to the game's main process executable.                     |
+| <a id="property-wasautoaddedbyprocessdetection"></a> `WasAutoAddedByProcessDetection?` | `boolean`                  | Whether the game entry was automatically created by process-name detection. |

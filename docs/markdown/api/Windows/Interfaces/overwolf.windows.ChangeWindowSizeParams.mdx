@@ -4,11 +4,13 @@ sidebar_label: "ChangeWindowSizeParams"
 
 Overwolf APIs / overwolf / overwolf / windows / ChangeWindowSizeParams
 
+Parameters for the `changeSize` overload that supports DPI-aware resizing.
+
 ## Properties
 
-| Property                                                 | Type      |
-| -------------------------------------------------------- | --------- |
-| <a id="property-auto_dpi_resize"></a> `auto_dpi_resize?` | `boolean` |
-| <a id="property-height"></a> `height`                    | `number`  |
-| <a id="property-width"></a> `width`                      | `number`  |
-| <a id="property-window_id"></a> `window_id`              | `string`  |
+| Property                                                 | Type      | Description                                                              |
+| -------------------------------------------------------- | --------- | ------------------------------------------------------------------------ |
+| <a id="property-auto_dpi_resize"></a> `auto_dpi_resize?` | `boolean` | If `true`, the size values are automatically scaled for the current DPI. |
+| <a id="property-height"></a> `height`                    | `number`  | The new height in pixels.                                                |
+| <a id="property-width"></a> `width`                      | `number`  | The new width in pixels.                                                 |
+| <a id="property-window_id"></a> `window_id`              | `string`  | The ID of the window to resize.                                          |

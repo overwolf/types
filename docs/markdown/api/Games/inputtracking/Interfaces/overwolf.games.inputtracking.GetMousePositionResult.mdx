@@ -4,14 +4,16 @@ sidebar_label: "inputtracking.GetMousePositionResult"
 
 Overwolf APIs / overwolf / overwolf / games / inputTracking / GetMousePositionResult
 
+Result of a `getMousePosition` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                             | Type                                 | Description                                            |
-| ---------------------------------------------------- | ------------------------------------ | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`                 | `string`                             | Information regarding the error (if an error occurred) |
-| <a id="property-mouseposition"></a> `mousePosition?` | `MousePosition` | -                                                      |
-| <a id="property-success"></a> `success`              | `boolean`                            | Whether the method executed successfully or not.       |
+| Property                                             | Type                                 | Description                                                |
+| ---------------------------------------------------- | ------------------------------------ | ---------------------------------------------------------- |
+| <a id="property-error"></a> `error?`                 | `string`                             | Information regarding the error (if an error occurred)     |
+| <a id="property-mouseposition"></a> `mousePosition?` | `MousePosition` | The current mouse position, or `undefined` if unavailable. |
+| <a id="property-success"></a> `success`              | `boolean`                            | Whether the method executed successfully or not.           |

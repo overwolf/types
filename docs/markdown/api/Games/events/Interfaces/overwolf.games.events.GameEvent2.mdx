@@ -4,6 +4,8 @@ sidebar_label: "events.GameEvent2"
 
 Overwolf APIs / overwolf / overwolf / games / events / GameEvent2
 
+A typed game event whose name is constrained to keys of the dictionary type `T`.
+
 ## Type Parameters
 
 | Type Parameter                                                                   | Default type |
@@ -12,7 +14,7 @@ Overwolf APIs / overwolf / overwolf / games / events / GameEvent2
 
 ## Properties
 
-| Property                          | Type      |
-| --------------------------------- | --------- |
-| <a id="property-data"></a> `data` | `any`     |
-| <a id="property-name"></a> `name` | keyof `T` |
+| Property                          | Type      | Description                                             |
+| --------------------------------- | --------- | ------------------------------------------------------- |
+| <a id="property-data"></a> `data` | `any`     | The event data payload.                                 |
+| <a id="property-name"></a> `name` | keyof `T` | The name of the event, restricted to known keys of `T`. |

@@ -4,10 +4,12 @@ sidebar_label: "enums.eVideoFrameSizeCalcMethod"
 
 Overwolf APIs / overwolf / overwolf / streaming / enums / eVideoFrameSizeCalcMethod
 
+The algorithm used to calculate the final encoded video frame size.
+
 ## Enumeration Members
 
-| Enumeration Member                                                                  | Value                        |
-| ----------------------------------------------------------------------------------- | ---------------------------- |
-| <a id="enumeration-member-exactorclosestresolution"></a> `ExactOrClosestResolution` | `"ExactOrClosestResolution"` |
-| <a id="enumeration-member-exactorkeepratio"></a> `ExactOrKeepRatio`                 | `"ExactOrKeepRatio"`         |
-| <a id="enumeration-member-original"></a> `Original`                                 | `"Original"`                 |
+| Enumeration Member                                                                  | Value                        | Description                                                                     |
+| ----------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------- |
+| <a id="enumeration-member-exactorclosestresolution"></a> `ExactOrClosestResolution` | `"ExactOrClosestResolution"` | Use the exact requested resolution, or the closest supported resolution.        |
+| <a id="enumeration-member-exactorkeepratio"></a> `ExactOrKeepRatio`                 | `"ExactOrKeepRatio"`         | Use the exact requested resolution, or keep the aspect ratio if not achievable. |
+| <a id="enumeration-member-original"></a> `Original`                                 | `"Original"`                 | Use the original game resolution without modification.                          |

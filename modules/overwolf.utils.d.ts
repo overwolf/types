@@ -1,4 +1,10 @@
 /**
+ * Use this API to access system utilities such as clipboard management, monitor information, file pickers, and hardware diagnostics.
+ * It also provides helpers for opening URLs, simulating input, and interacting with the Overwolf store.
+ * @packageDocumentation
+ */
+
+/**
    * Consume all pending conversions for this extension. Consumed conversions
    * are deleted.
    *
@@ -16,78 +22,134 @@
 
 declare namespace overwolf.utils {
   namespace enums {
+    /** Pages available in the Overwolf store that can be opened via `openStore`. */
     const enum eStorePage {
+      /** The store login page. */
       LoginPage = "LoginPage",
+      /** A specific app's page in the store. */
       OneAppPage = "OneAppPage",
+      /** The subscription page for an app. */
       SubscriptionPage = "SubscriptionPage",
+      /** The reviews page for an app. */
       ReviewsPage = "ReviewsPage",
     }
   }
 
+  /** Information about a single display/monitor connected to the system. */
   interface Display {
+    /** Display name as reported by the OS. */
     name: string;
+    /** Unique display identifier. */
     id: string;
+    /** Horizontal position of the display in the virtual desktop (pixels). */
     x: number;
+    /** Vertical position of the display in the virtual desktop (pixels). */
     y: number;
+    /** Horizontal DPI of the display. */
     dpiX: number;
+    /** Vertical DPI of the display. */
     dpiY: number;
+    /** Width of the display in pixels. */
     width: number;
+    /** Height of the display in pixels. */
     height: number;
+    /** Whether this is the primary display. */
     is_primary: boolean;
+    /** Native OS handle for the display. */
     handle: { value: number; };
   }
 
+  /** Information about a GPU installed in the system. */
   interface GPUInfo {
+    /** GPU chip type identifier. */
     ChipType: string;
+    /** GPU manufacturer name. */
     Manufacturer: string;
+    /** GPU model name. */
     Name: string;
   }
 
+  /** Information about a hard disk or storage device in the system. */
   interface HardDiskInfo {
+    /** Display name/caption of the disk. */
     Caption: string;
+    /** Whether the drive is a solid-state disk. */
     IsSsd: boolean;
+    /** Total disk size in bytes. */
     Size: number;
   }
 
+  /** Information about a connected input device (keyboard, mouse, gamepad, etc.). */
   interface InputDeviceInfo {
+    /** Numeric identifier for the input device. */
     id: number;
+    /** Type of input device (e.g. keyboard, mouse). */
     type: string;
+    /** Vendor ID of the input device. */
     vendor: number;
   }
 
+  /** Information about a monitor as reported by the system. */
   interface MonitorInfo {
+    /** Horizontal DPI of the monitor. */
     Dpix: number;
+    /** Vertical DPI of the monitor. */
     Dpiy: number;
+    /** Whether this is the main/primary monitor. */
     IsMain: boolean;
+    /** Physical or logical location identifier. */
     Location: string;
+    /** Monitor name. */
     Name: string;
+    /** Monitor resolution string (e.g. "1920x1080"). */
     Resolution: string;
   }
 
+  /** Comprehensive system hardware and software information. */
   interface SystemInfo {
+    /** Names of audio output/input devices. */
     AudioDevices?: string[];
+    /** CPU model name. */
     CPU?: string;
+    /** Array of GPU information objects. */
     GPUs?: GPUInfo[];
+    /** Array of hard disk information objects. */
     HardDisks?: HardDiskInfo[];
+    /** Array of connected input device information objects. */
     InputDevices?: InputDeviceInfo[];
+    /** Whether the system is a laptop. */
     IsLaptop?: boolean;
+    /** Number of logical CPU cores. */
     LogicalCPUCount?: number;
+    /** System or motherboard manufacturer. */
     Manufacturer?: string;
+    /** Total installed RAM as a formatted string. */
     MemorySize?: string;
+    /** System model name. */
     Model?: string;
+    /** Array of monitor information objects. */
     Monitors?: MonitorInfo[];
+    /** Motherboard model name. */
     Motherboard?: string;
+    /** Installed .NET Framework version string. */
     NetFramework?: string;
+    /** Number of connected screens. */
     NumberOfScreens?: number;
+    /** Operating system name. */
     OS?: string;
+    /** OS build number string. */
     OSBuild?: string;
+    /** OS release identifier string. */
     OSReleaseId?: string;
+    /** Number of physical CPU packages. */
     PhysicalCPUCount?: number;
+    /** Whether hardware video encoding is supported. */
     VideoEncSupport?: boolean;
     /** indicates if the current OS enabled the [Windows 10 Hardware-Accelerated GPU Scheduling](/ow-native/guides/general-tech/video-capture-best-practices#windows-10-hardware-accelerated-gpu-scheduling-notice) feature */
     HAGSEnabled?: boolean
   }
 
+  /** Parameters for opening a page in the Overwolf store. */
   interface OpenStoreParams {
     /**
      * The target app id.
@@ -99,44 +161,66 @@ declare namespace overwolf.utils {
     page: enums.eStorePage;
   }
 
+  /** Result returned from a file picker dialog. */
   interface OpenFilePickerResult extends Result {
+    /** Overwolf media URL of the selected file (single selection). */
     url?: string;
+    /** File system path of the selected file (single selection). */
     file?: string;
+    /** Overwolf media URLs of the selected files (multi-selection). */
     urls?: string[];
+    /** File system paths of the selected files (multi-selection). */
     files?: string[];
   }
 
+  /** Result returned from a folder picker dialog. */
   interface OpenFolderPickerResult extends Result {
+    /** Full file system path of the selected folder. */
     path?: string;
   }
 
+  /** Result returned from `getSystemInformation`. */
   interface GetSystemInformationResult extends Result {
+    /** The collected system information. */
     systemInfo?: SystemInfo;
   }
 
+  /** Result returned from `isTouchDevice`. */
   interface IsTouchDeviceResult extends Result {
+    /** Whether the current device has touch input capability. */
     isTouch?: boolean;
   }
 
+  /** Result returned from `getPeripherals`. */
   interface GetPeripheralsResult extends Result {
+    /** Object containing connected input devices and audio devices. */
     peripherals?: { inputDevices: InputDeviceInfo[]; audioDevices: string[]; };
   }
 
+  /** Result returned from `isMouseLeftButtonPressed`. */
   interface IsMouseLeftButtonPressedResult extends Result {
+    /** Whether the left mouse button is currently pressed. */
     pressed?: boolean;
   }
 
+  /** Result returned from `getMonitorsList`. */
   interface getMonitorsListResult extends Result {
+    /** Array of connected display information objects. */
     displays: Display[];
   }
 
+  /** Result returned when querying Overwolf client installation and uptime info. */
   interface ClientInfoResult extends Result {
     // timestamp
+    /** Unix timestamp (ms) of when the Overwolf client was installed. */
     installTime: number;
+    /** Number of seconds the Overwolf client has been running since last launch. */
     uptimeSeconds: number;
   }
 
+  /** Options for the `uploadClientLogs` function. */
   interface UploadClientLogsOptions {
+    /** Prefix string applied to the uploaded log file name. */
     filePrefix: string;
   }
 
@@ -284,7 +368,7 @@ declare namespace overwolf.utils {
   function openStoreOneAppPage(appId: string): void;
 
   /**
-   * Opens the requested app’s profile/login/subscription page in the Overwolf
+   * Opens the requested app's profile/login/subscription page in the Overwolf
    * Appstore.
    * @param param The requested store page.
    */
@@ -316,4 +400,4 @@ declare namespace overwolf.utils {
     callback: CallbackFunction<IsMouseLeftButtonPressedResult>
   ): void;
 
-  
+

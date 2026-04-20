@@ -4,11 +4,13 @@ sidebar_label: "inputtracking.WheelEvent"
 
 Overwolf APIs / overwolf / overwolf / games / inputTracking / WheelEvent
 
+Payload of a mouse wheel scroll event.
+
 ## Properties
 
-| Property                              | Type      |
-| ------------------------------------- | --------- |
-| <a id="property-delta"></a> `delta`   | `number`  |
-| <a id="property-ongame"></a> `onGame` | `boolean` |
-| <a id="property-x"></a> `x`           | `number`  |
-| <a id="property-y"></a> `y`           | `number`  |
+| Property                              | Type      | Description                                                                 |
+| ------------------------------------- | --------- | --------------------------------------------------------------------------- |
+| <a id="property-delta"></a> `delta`   | `number`  | Scroll amount and direction (positive = scroll up, negative = scroll down). |
+| <a id="property-ongame"></a> `onGame` | `boolean` | Whether the scroll event occurred while the game window had focus.          |
+| <a id="property-x"></a> `x`           | `number`  | Horizontal cursor position in pixels at the time of the event.              |
+| <a id="property-y"></a> `y`           | `number`  | Vertical cursor position in pixels at the time of the event.                |

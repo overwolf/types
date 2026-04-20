@@ -4,14 +4,16 @@ sidebar_label: "subscriptions.Plan"
 
 Overwolf APIs / overwolf / overwolf / profile / subscriptions / Plan
 
+Detailed information about a single active subscription plan.
+
 ## Properties
 
-| Property                                          | Type                                                                          |
-| ------------------------------------------------- | ----------------------------------------------------------------------------- |
-| <a id="property-description"></a> `description`   | `string`                                                                      |
-| <a id="property-expirydate"></a> `expiryDate`     | `number`                                                                      |
-| <a id="property-periodmonths"></a> `periodMonths` | `number`                                                                      |
-| <a id="property-planid"></a> `planId`             | `number`                                                                      |
-| <a id="property-price"></a> `price`               | `number`                                                                      |
-| <a id="property-state"></a> `state`               | `SubscriptionState` |
-| <a id="property-title"></a> `title`               | `string`                                                                      |
+| Property                                          | Type                                                                          | Description                                             |
+| ------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------- |
+| <a id="property-description"></a> `description`   | `string`                                                                      | A brief description of the plan.                        |
+| <a id="property-expirydate"></a> `expiryDate`     | `number`                                                                      | The Unix timestamp (in seconds) when this plan expires. |
+| <a id="property-periodmonths"></a> `periodMonths` | `number`                                                                      | The billing period length in months.                    |
+| <a id="property-planid"></a> `planId`             | `number`                                                                      | The unique plan ID.                                     |
+| <a id="property-price"></a> `price`               | `number`                                                                      | The price of the plan.                                  |
+| <a id="property-state"></a> `state`               | `SubscriptionState` | The current state of this plan.                         |
+| <a id="property-title"></a> `title`               | `string`                                                                      | The display title of the plan.                          |

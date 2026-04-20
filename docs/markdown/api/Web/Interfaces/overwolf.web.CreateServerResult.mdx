@@ -4,6 +4,8 @@ sidebar_label: "CreateServerResult"
 
 Overwolf APIs / overwolf / overwolf / web / CreateServerResult
 
+Result of `createServer`, containing the new `WebServer` instance.
+
 ## Extends
 
 - `Result`
@@ -13,5 +15,5 @@ Overwolf APIs / overwolf / overwolf / web / CreateServerResult
 | Property                                | Type                         | Description                                            |
 | --------------------------------------- | ---------------------------- | ------------------------------------------------------ |
 | <a id="property-error"></a> `error?`    | `string`                     | Information regarding the error (if an error occurred) |
-| <a id="property-server"></a> `server?`  | `WebServer` | -                                                      |
+| <a id="property-server"></a> `server?`  | `WebServer` | The created web server instance.                       |
 | <a id="property-success"></a> `success` | `boolean`                    | Whether the method executed successfully or not.       |

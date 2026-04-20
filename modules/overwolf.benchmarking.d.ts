@@ -1,4 +1,9 @@
 /**
+ * @deprecated Since version 0.155. Use alternative performance monitoring APIs instead.
+ * @packageDocumentation
+ */
+
+/**
  * @deprecated Since version 0.155.
  */
 declare namespace overwolf.benchmarking {
@@ -71,4 +76,4 @@ declare namespace overwolf.benchmarking {
    */
   const onProcessInfoReady: Event<any>;
 
-  
+}

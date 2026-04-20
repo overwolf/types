@@ -4,35 +4,38 @@ sidebar_label: "GetRunningGameInfoResult2GameInfo"
 
 Overwolf APIs / overwolf / overwolf / games / GetRunningGameInfoResult2GameInfo
 
+Extended running game info returned inside `GetRunningGameInfoResult2`.
+Identical to `GetRunningGameInfoResult` but also includes overlay enabled/supported flags.
+
 ## Properties
 
-| Property                                                      | Type                                                                |
-| ------------------------------------------------------------- | ------------------------------------------------------------------- |
-| <a id="property-allowsvideocapture"></a> `allowsVideoCapture` | `boolean`                                                           |
-| <a id="property-classid"></a> `classId`                       | `number`                                                            |
-| <a id="property-commandline"></a> `commandLine`               | `string`                                                            |
-| <a id="property-detectedrenderer"></a> `detectedRenderer`     | `string`                                                            |
-| <a id="property-displayname"></a> `displayName`               | `string`                                                            |
-| <a id="property-executionpath"></a> `executionPath`           | `string`                                                            |
-| <a id="property-gameisinfocus"></a> `gameIsInFocus`           | `boolean`                                                           |
-| <a id="property-height"></a> `height`                         | `number`                                                            |
-| <a id="property-id"></a> `id`                                 | `number`                                                            |
-| <a id="property-isinfocus"></a> `isInFocus`                   | `boolean`                                                           |
-| <a id="property-isoverlayenabled"></a> `isOverlayEnabled`     | `boolean`                                                           |
-| <a id="property-isoverlaysupported"></a> `isOverlaySupported` | `boolean`                                                           |
-| <a id="property-isrunning"></a> `isRunning`                   | `boolean`                                                           |
-| <a id="property-logicalheight"></a> `logicalHeight`           | `number`                                                            |
-| <a id="property-logicalwidth"></a> `logicalWidth`             | `number`                                                            |
-| <a id="property-monitorhandle"></a> `monitorHandle`           | `object`                                                            |
-| `monitorHandle.value`                                         | `number`                                                            |
-| <a id="property-overlayinfo"></a> `overlayInfo`               | `OverlayInfo`                                    |
-| <a id="property-processid"></a> `processId`                   | `number`                                                            |
-| <a id="property-renderers"></a> `renderers`                   | `string`[]                                                          |
-| <a id="property-sessionid"></a> `sessionId`                   | `string`                                                            |
-| <a id="property-shorttitle"></a> `shortTitle`                 | `string`                                                            |
-| <a id="property-title"></a> `title`                           | `string`                                                            |
-| <a id="property-type"></a> `type`                             | `GameInfoType` |
-| <a id="property-typeasstring"></a> `typeAsString`             | `string`                                                            |
-| <a id="property-width"></a> `width`                           | `number`                                                            |
-| <a id="property-windowhandle"></a> `windowHandle`             | `object`                                                            |
-| `windowHandle.value`                                          | `number`                                                            |
+| Property                                                      | Type                                                                | Description                                                          |
+| ------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| <a id="property-allowsvideocapture"></a> `allowsVideoCapture` | `boolean`                                                           | Whether the game allows video capture via the Overwolf API.          |
+| <a id="property-classid"></a> `classId`                       | `number`                                                            | The Overwolf game class ID (without instance suffix).                |
+| <a id="property-commandline"></a> `commandLine`               | `string`                                                            | The command line string used to launch the game.                     |
+| <a id="property-detectedrenderer"></a> `detectedRenderer`     | `string`                                                            | The primary renderer detected for the running game.                  |
+| <a id="property-displayname"></a> `displayName`               | `string`                                                            | The human-readable display name of the game.                         |
+| <a id="property-executionpath"></a> `executionPath`           | `string`                                                            | Full file system path to the game executable.                        |
+| <a id="property-gameisinfocus"></a> `gameIsInFocus`           | `boolean`                                                           | Whether the game process itself has focus.                           |
+| <a id="property-height"></a> `height`                         | `number`                                                            | The game window height in physical pixels.                           |
+| <a id="property-id"></a> `id`                                 | `number`                                                            | The full Overwolf game ID, including the instance suffix.            |
+| <a id="property-isinfocus"></a> `isInFocus`                   | `boolean`                                                           | Whether the game window currently has input focus.                   |
+| <a id="property-isoverlayenabled"></a> `isOverlayEnabled`     | `boolean`                                                           | Whether the Overwolf overlay is currently enabled for this game.     |
+| <a id="property-isoverlaysupported"></a> `isOverlaySupported` | `boolean`                                                           | Whether the Overwolf overlay is supported for this game.             |
+| <a id="property-isrunning"></a> `isRunning`                   | `boolean`                                                           | Whether the game process is currently running.                       |
+| <a id="property-logicalheight"></a> `logicalHeight`           | `number`                                                            | The game window height in logical (DPI-independent) pixels.          |
+| <a id="property-logicalwidth"></a> `logicalWidth`             | `number`                                                            | The game window width in logical (DPI-independent) pixels.           |
+| <a id="property-monitorhandle"></a> `monitorHandle`           | `object`                                                            | The native OS monitor handle for the display the game is running on. |
+| `monitorHandle.value`                                         | `number`                                                            | -                                                                    |
+| <a id="property-overlayinfo"></a> `overlayInfo`               | `OverlayInfo`                                    | Current overlay status information.                                  |
+| <a id="property-processid"></a> `processId`                   | `number`                                                            | The OS process ID of the running game.                               |
+| <a id="property-renderers"></a> `renderers`                   | `string`[]                                                          | List of renderer names used by the game.                             |
+| <a id="property-sessionid"></a> `sessionId`                   | `string`                                                            | A unique identifier for the current game session.                    |
+| <a id="property-shorttitle"></a> `shortTitle`                 | `string`                                                            | The abbreviated short title of the game.                             |
+| <a id="property-title"></a> `title`                           | `string`                                                            | The full title of the game.                                          |
+| <a id="property-type"></a> `type`                             | `GameInfoType` | Whether this entry represents a game or a launcher.                  |
+| <a id="property-typeasstring"></a> `typeAsString`             | `string`                                                            | String representation of the `type` field.                           |
+| <a id="property-width"></a> `width`                           | `number`                                                            | The game window width in physical pixels.                            |
+| <a id="property-windowhandle"></a> `windowHandle`             | `object`                                                            | The native OS window handle for the game window.                     |
+| `windowHandle.value`                                          | `number`                                                            | -                                                                    |

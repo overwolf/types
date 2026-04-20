@@ -11,15 +11,16 @@ function createWebSocket(
 ): void;
 ```
 
-Creates a WebSocket client to localhost/127.0.0.1 while by-passing a valid
-certificate verification.
+Creates a WebSocket client connection to localhost/127.0.0.1, bypassing
+certificate verification. Call `connect` on the returned `WebSocket`
+instance to open the connection.
 
 ## Parameters
 
-| Parameter          | Type                                                                                                                                                        | Description |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `connectionParams` | `WebSocketConnectionParams`                                                                                  | -           |
-| `callback`         | `CallbackFunction`\<`CreateWebSocketResult`\> | -           |
+| Parameter          | Type                                                                                                                                                        | Description                                                                       |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `connectionParams` | `WebSocketConnectionParams`                                                                                  | Connection parameters including port, protocol list, and optional credentials.    |
+| `callback`         | `CallbackFunction`\<`CreateWebSocketResult`\> | Called with the result, including the new `WebSocket` client instance on success. |
 
 ## Returns
 

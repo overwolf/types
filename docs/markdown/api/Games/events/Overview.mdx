@@ -8,4 +8,19 @@ toc_max_heading_level: 6
 
 # Overview
 
-*No pages generated.*
+| API | Description |
+| --- | --- |
+| [overwolf.games.events.getInfo](./Functions/overwolf.games.events.getInfo) | Gets the current game info. |
+| [overwolf.games.events.setRequiredFeatures](./Functions/overwolf.games.events.setRequiredFeatures) | Sets the required features from the provider. |
+| [overwolf.games.events.ErrorEvent](./Interfaces/overwolf.games.events.ErrorEvent) | Payload of the `onError` event describing a game events system error. |
+| [overwolf.games.events.GameEvent](./Interfaces/overwolf.games.events.GameEvent) | Describes a single game event emitted by the events provider. |
+| [overwolf.games.events.GameEvent2](./Interfaces/overwolf.games.events.GameEvent2) | A typed game event whose name is constrained to keys of the dictionary type `T`. |
+| [overwolf.games.events.GetInfoResult](./Interfaces/overwolf.games.events.GetInfoResult) | Result of a `getInfo` call containing the current game info state. |
+| [overwolf.games.events.InfoUpdate2](./Interfaces/overwolf.games.events.InfoUpdate2) | Base interface for typed info update objects; extend to define feature-specific shapes. |
+| [overwolf.games.events.InfoUpdates2Event](./Interfaces/overwolf.games.events.InfoUpdates2Event) | Payload of the `onInfoUpdates2` event, pairing an info update with its feature name. |
+| [overwolf.games.events.NewGameEvents](./Interfaces/overwolf.games.events.NewGameEvents) | Payload of the `onNewEvents` event, containing a batch of game events. |
+| [overwolf.games.events.SetRequiredFeaturesResult](./Interfaces/overwolf.games.events.SetRequiredFeaturesResult) | Result of a `setRequiredFeatures` call, listing which features were successfully enabled. |
+| [overwolf.games.events.GameEventDictionary2](./Type-aliases/overwolf.games.events.GameEventDictionary2) | Base type for typed game event dictionary shapes. |
+| [overwolf.games.events.onError](./Variables/overwolf.games.events.onError) | Fired when there was an error in the game events system. |
+| [overwolf.games.events.onInfoUpdates](./Variables/overwolf.games.events.onInfoUpdates) | Obsolete. Fired when there are game info updates with a JSON object of the updates. |
+| [overwolf.games.events.onInfoUpdates2](./Variables/overwolf.games.events.onInfoUpdates2) | Fired when there are game info updates with a JSON object of the updates. |

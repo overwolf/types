@@ -4,14 +4,16 @@ sidebar_label: "discord.GetChannelsResult"
 
 Overwolf APIs / overwolf / overwolf / social / discord / GetChannelsResult
 
+Result of a `getChannels` call.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                   | Type                       | Description                                            |
-| ------------------------------------------ | -------------------------- | ------------------------------------------------------ |
-| <a id="property-channels"></a> `channels?` | `Channel`[] | -                                                      |
-| <a id="property-error"></a> `error?`       | `string`                   | Information regarding the error (if an error occurred) |
-| <a id="property-success"></a> `success`    | `boolean`                  | Whether the method executed successfully or not.       |
+| Property                                   | Type                       | Description                                                                                 |
+| ------------------------------------------ | -------------------------- | ------------------------------------------------------------------------------------------- |
+| <a id="property-channels"></a> `channels?` | `Channel`[] | The list of channels in the guild that the user can post to, if the request was successful. |
+| <a id="property-error"></a> `error?`       | `string`                   | Information regarding the error (if an error occurred)                                      |
+| <a id="property-success"></a> `success`    | `boolean`                  | Whether the method executed successfully or not.                                            |

@@ -1,4 +1,10 @@
 /**
+ * Use this API to create video compositions, retrieve videos created by the
+ * current app, and manage their storage.
+ * @packageDocumentation
+ */
+
+/**
    * Fired when a screenshot was taken.
    */
   const onScreenshotTaken: Event<ScreenshotTakenEvent>;
@@ -6,20 +12,34 @@
 
 declare namespace overwolf.media.videos {
   namespace enums {
+    /** The position on screen where a watermark image is rendered. */
     const enum WatermarkLocation {
+      /** Bottom-center of the video frame. */
       BottomCenter = "BottomCenter",
+      /** Bottom-left corner of the video frame. */
       BottomLeft = "BottomLeft",
+      /** Bottom-right corner of the video frame. */
       BottomRight = "BottomRight",
+      /** Centered on the video frame. */
       Center = "Center",
+      /** Middle of the left edge of the video frame. */
       MidLeft = "MidLeft",
+      /** Middle of the right edge of the video frame. */
       MidRight = "MidRight",
+      /** Top-center of the video frame. */
       TopCenter = "TopCenter",
+      /** Top-left corner of the video frame. */
       TopLeft = "TopLeft",
+      /** Top-right corner of the video frame. */
       TopRight = "TopRight",
     }
   }
+
+  /** A time range within a video, used to specify segments for composition. */
   interface VideoCompositionSegment {
+    /** The start time of the segment in milliseconds. */
     startTime: number;
+    /** The end time of the segment in milliseconds. */
     endTime: number;
   }
 
@@ -38,11 +58,15 @@ declare namespace overwolf.media.videos {
     scaleHeight?: number;
   }
 
+  /** Result of `getVideos`, containing a list of video URLs created by this app. */
   interface GetVideosResult extends Result {
+    /** An array of `overwolf://media` URLs for each video. */
     videos?: string[];
   }
 
+  /** Result of `getVideosSize`, reporting the total disk usage of this app's videos. */
   interface GetVideosSizeResult extends Result {
+    /** The total size of all videos in gigabytes. */
     totalSizeGbs?: number;
   }
 
@@ -120,4 +144,3 @@ declare namespace overwolf.media.videos {
     callback: CallbackFunction<Result>
   ): void;
 
-  

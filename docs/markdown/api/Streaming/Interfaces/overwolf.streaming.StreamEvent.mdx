@@ -4,10 +4,12 @@ sidebar_label: "StreamEvent"
 
 Overwolf APIs / overwolf / overwolf / streaming / StreamEvent
 
+Event data for streaming lifecycle events such as start and error.
+
 ## Properties
 
-| Property                                                               | Type      |
-| ---------------------------------------------------------------------- | --------- |
-| <a id="property-is_game_window_capture"></a> `is_game_window_capture?` | `boolean` |
-| <a id="property-stream_id"></a> `stream_id?`                           | `number`  |
-| <a id="property-suberrormessage"></a> `SubErrorMessage?`               | `string`  |
+| Property                                                               | Type      | Description                                                   |
+| ---------------------------------------------------------------------- | --------- | ------------------------------------------------------------- |
+| <a id="property-is_game_window_capture"></a> `is_game_window_capture?` | `boolean` | Whether the stream is capturing the game window specifically. |
+| <a id="property-stream_id"></a> `stream_id?`                           | `number`  | The ID of the affected stream.                                |
+| <a id="property-suberrormessage"></a> `SubErrorMessage?`               | `string`  | An optional sub-error message with additional detail.         |

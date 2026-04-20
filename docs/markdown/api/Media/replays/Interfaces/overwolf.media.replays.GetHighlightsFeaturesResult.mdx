@@ -4,14 +4,16 @@ sidebar_label: "replays.GetHighlightsFeaturesResult"
 
 Overwolf APIs / overwolf / overwolf / media / replays / GetHighlightsFeaturesResult
 
+Result returned when querying supported highlight features for a game.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                   | Type       | Description                                            |
-| ------------------------------------------ | ---------- | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`       | `string`   | Information regarding the error (if an error occurred) |
-| <a id="property-features"></a> `features?` | `string`[] | -                                                      |
-| <a id="property-success"></a> `success`    | `boolean`  | Whether the method executed successfully or not.       |
+| Property                                   | Type       | Description                                                    |
+| ------------------------------------------ | ---------- | -------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`       | `string`   | Information regarding the error (if an error occurred)         |
+| <a id="property-features"></a> `features?` | `string`[] | Array of supported highlight feature identifiers for the game. |
+| <a id="property-success"></a> `success`    | `boolean`  | Whether the method executed successfully or not.               |

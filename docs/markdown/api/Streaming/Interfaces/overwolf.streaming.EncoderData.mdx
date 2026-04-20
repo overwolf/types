@@ -4,14 +4,16 @@ sidebar_label: "EncoderData"
 
 Overwolf APIs / overwolf / overwolf / streaming / EncoderData
 
+Metadata describing an available video encoder.
+
 ## Properties
 
-| Property                                                    | Type       |
-| ----------------------------------------------------------- | ---------- |
-| <a id="property-display_name"></a> `display_name`           | `string`   |
-| <a id="property-enabled"></a> `enabled`                     | `boolean`  |
-| <a id="property-error_decsription"></a> `error_decsription` | `string`   |
-| <a id="property-name"></a> `name`                           | `string`   |
-| <a id="property-presets"></a> `presets`                     | `string`[] |
-| <a id="property-valid"></a> `valid`                         | `boolean`  |
-| <a id="property-vendor_error"></a> `vendor_error`           | `string`   |
+| Property                                                    | Type       | Description                                                 |
+| ----------------------------------------------------------- | ---------- | ----------------------------------------------------------- |
+| <a id="property-display_name"></a> `display_name`           | `string`   | The human-readable display name of the encoder.             |
+| <a id="property-enabled"></a> `enabled`                     | `boolean`  | Whether this encoder is currently enabled and usable.       |
+| <a id="property-error_decsription"></a> `error_decsription` | `string`   | A human-readable description of any encoder error.          |
+| <a id="property-name"></a> `name`                           | `string`   | The internal name of the encoder.                           |
+| <a id="property-presets"></a> `presets`                     | `string`[] | The list of preset names supported by this encoder.         |
+| <a id="property-valid"></a> `valid`                         | `boolean`  | Whether the encoder passed validation and is ready for use. |
+| <a id="property-vendor_error"></a> `vendor_error`           | `string`   | A vendor-level error string, if any.                        |

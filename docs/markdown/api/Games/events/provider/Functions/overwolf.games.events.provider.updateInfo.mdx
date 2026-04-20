@@ -8,11 +8,14 @@ Overwolf APIs / overwolf / overwolf / games / events / provider / updateInfo
 function updateInfo(info: GameEventsInfo): void;
 ```
 
+Pushes a game info state update into the Overwolf events system.
+Use this to report continuous or changing state values (e.g., health, score).
+
 ## Parameters
 
-| Parameter | Type                                                 |
-| --------- | ---------------------------------------------------- |
-| `info`    | `GameEventsInfo` |
+| Parameter | Type                                                 | Description                        |
+| --------- | ---------------------------------------------------- | ---------------------------------- |
+| `info`    | `GameEventsInfo` | The info key/value pair to update. |
 
 ## Returns
 

@@ -4,10 +4,12 @@ sidebar_label: "StreamingSourceImageChangedEvent"
 
 Overwolf APIs / overwolf / overwolf / streaming / StreamingSourceImageChangedEvent
 
+Event data fired when the stream's image source changes (e.g. switches between game and desktop).
+
 ## Properties
 
-| Property                                      | Type     |
-| --------------------------------------------- | -------- |
-| <a id="property-new_source"></a> `new_source` | `string` |
-| <a id="property-old_source"></a> `old_source` | `string` |
-| <a id="property-stream_id"></a> `stream_id`   | `number` |
+| Property                                      | Type     | Description                                |
+| --------------------------------------------- | -------- | ------------------------------------------ |
+| <a id="property-new_source"></a> `new_source` | `string` | The new image source identifier.           |
+| <a id="property-old_source"></a> `old_source` | `string` | The previous image source identifier.      |
+| <a id="property-stream_id"></a> `stream_id`   | `number` | The ID of the stream whose source changed. |

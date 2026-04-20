@@ -4,15 +4,17 @@ sidebar_label: "hotkeys.GetAssignedHotkeyResult"
 
 Overwolf APIs / overwolf / overwolf / settings / hotkeys / GetAssignedHotkeyResult
 
+Result of `get`, containing global and per-game hotkeys for the current extension.
+
 ## Extends
 
 - `Result`
 
 ## Properties
 
-| Property                                | Type                                             | Description                                            |
-| --------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ |
-| <a id="property-error"></a> `error?`    | `string`                                         | Information regarding the error (if an error occurred) |
-| <a id="property-games"></a> `games?`    | `Record`\<`string`, `IHotkey`[]\> | -                                                      |
-| <a id="property-globals"></a> `globals` | `IHotkey`[]                       | -                                                      |
-| <a id="property-success"></a> `success` | `boolean`                                        | Whether the method executed successfully or not.       |
+| Property                                | Type                                             | Description                                                          |
+| --------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------- |
+| <a id="property-error"></a> `error?`    | `string`                                         | Information regarding the error (if an error occurred)               |
+| <a id="property-games"></a> `games?`    | `Record`\<`string`, `IHotkey`[]\> | A map of game IDs to their game-specific hotkey assignments, if any. |
+| <a id="property-globals"></a> `globals` | `IHotkey`[]                       | Hotkeys that apply globally across all games.                        |
+| <a id="property-success"></a> `success` | `boolean`                                        | Whether the method executed successfully or not.                     |
