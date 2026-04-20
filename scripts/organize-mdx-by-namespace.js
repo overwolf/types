@@ -42,6 +42,45 @@ function hasTopDeprecated(content) {
   return /@deprecated\b/i.test(match[0]);
 }
 
+async function extractPackageDocs(modulesDir) {
+  const result = new Map();
+  let files;
+  try { files = await fs.readdir(modulesDir); } catch { return result; }
+  for (const f of files) {
+    if (!f.endsWith('.d.ts')) continue;
+    const full = path.join(modulesDir, f);
+    let content;
+    try { content = await fs.readFile(full, 'utf8'); } catch { continue; }
+    const trimmed = content.replace(/^\uFEFF/, '');
+    const docMatch = trimmed.match(/^\s*\/\*\*([\s\S]*?)\*\//);
+    if (!docMatch) continue;
+    const lines = docMatch[1].split(/\r?\n/).map(l => l.replace(/^\s*\*\s?/, ''));
+    const paragraphs = [];
+    let currentPara = [];
+    let seenNamespaceLine = false;
+    for (const line of lines) {
+      const t = line.trim();
+      if (!seenNamespaceLine) {
+        if (!t) continue;
+        seenNamespaceLine = true;
+        if (/^overwolf(\.[a-zA-Z0-9_]+)*$/.test(t)) continue;
+      }
+      if (t.startsWith('@')) break;
+      if (/^\d+\./.test(t)) break;
+      if (t && line.length - line.trimStart().length >= 3) break;
+      if (!t) {
+        if (currentPara.length) { paragraphs.push(currentPara.join(' ')); currentPara = []; }
+        continue;
+      }
+      currentPara.push(t);
+    }
+    if (currentPara.length) paragraphs.push(currentPara.join(' '));
+    if (!paragraphs.length) continue;
+    result.set(path.basename(f, '.d.ts').toLowerCase(), paragraphs.join('\n\n'));
+  }
+  return result;
+}
+
 async function getDeprecatedNamespaces(modulesDir) {
   const set = new Set();
   try {
@@ -282,7 +321,7 @@ function buildOverviewTable(rows, opts = {}) {
   }
   const header = `# ${heading}\n\n${summary}| API | Description |\n| --- | --- |\n`;
   const body = rows.map(r => {
-    const desc = escapeTableCell(r.description);
+    const desc = escapeTableCell(String(r.description || '').replace(/\s*\n+\s*/g, ' ').replace(/<br\s*\/?>/gi, ' ').trim());
     const finalDesc = desc || emptyPlaceholder;
     return `| [${r.label}](${r.link}) | ${finalDesc} |`;
   }).join('\n');
@@ -295,6 +334,23 @@ async function run() {
   const namespaceSummaryByFull = new Map();
   const modulesDir = path.resolve(process.cwd(), argv.modules || argv.m || 'modules');
   const deprecatedNamespaces = await getDeprecatedNamespaces(modulesDir);
+
+  const packageDocs = await extractPackageDocs(modulesDir);
+  for (const [ns, desc] of packageDocs) {
+    namespaceSummaryByFull.set(ns, desc);
+  }
+  // Propagate descriptions up to parent namespaces that have no .d.ts of their own
+  // e.g. 'overwolf.campaigns' gets the description from 'overwolf.campaigns.crossapp'
+  for (const [ns, desc] of packageDocs) {
+    const parts = ns.split('.');
+    for (let i = parts.length - 1; i >= 2; i--) {
+      const parentKey = parts.slice(0, i).join('.');
+      if (!namespaceSummaryByFull.has(parentKey)) {
+        namespaceSummaryByFull.set(parentKey, desc);
+      }
+    }
+  }
+
   const all = await listFiles(out);
   const skippedNoNamespace = [];
   const skippedDeprecated = [];

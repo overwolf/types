@@ -7,6 +7,8 @@ Usage:
 1. From repo root, install dependencies: `npm install`
 2. Run: `npm run docs:mdx`
 
+RUN ONLY #2 FROM ABOVE!!!
+
 What it does:
 
 - Runs `npm run docs:clean` and `npm run docs:prepare-folders`

@@ -46,7 +46,7 @@ Use this API to manage Overwolf extensions (apps) — launch other extensions, q
 | [overwolf.extensions.UpdateExtensionResult](./Interfaces/overwolf.extensions.UpdateExtensionResult) | Result of `updateExtension`, describing the outcome of an update attempt. |
 | [overwolf.extensions.WebAppSettings](./Interfaces/overwolf.extensions.WebAppSettings) | The `data` block of the manifest, containing all app-level settings. |
 | [io](./io/Overview) | Use this API to perform file system operations (read, write, copy, move, delete, list) within the sandboxed storage spaces available to an extension. |
-| [shareddata](./shareddata/Overview) | - |
+| [shareddata](./shareddata/Overview) | Repairs the schema registration, for an extension where the manifest contains url_protocol |
 | [overwolf.extensions.Permission](./Type-aliases/overwolf.extensions.Permission) | A union of all permission strings an app may request in its manifest. |
 | [overwolf.extensions.UncaughtExceptionCallback](./Type-aliases/overwolf.extensions.UncaughtExceptionCallback) | The following types are related to the `onUncaughtException` event - which is a different than the usual events. |
 | [overwolf.extensions.onAppLaunchTriggered](./Variables/overwolf.extensions.onAppLaunchTriggered) | Fires when the current app is launched while already running. This is useful in the case where the app has custom logic for clicking its dock button while it is already running. The event contaisn an 'origin' string which what triggered the app launch (dock, storeapi, odk, etc...) |

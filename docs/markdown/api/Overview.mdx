@@ -10,18 +10,18 @@ toc_max_heading_level: 6
 
 | API | Description |
 | --- | --- |
-| [overwolf.campaigns](./Campaigns/Overview) |  |
+| [overwolf.campaigns](./Campaigns/Overview) | An API that allows crossapp-promotions: One app can promote another app and then get an indication for a successful conversion. For example - an app can promote a video capture and sharing app and receive a notification as soon as the user shares a video from the promoted app. |
 | [overwolf.cryptography](./Cryptography/Overview) | Use this API to encrypt and decrypt ciphertext and secure app data and variables. (e.g., localStorage that stores auth-tokens, etc.) |
 | [overwolf.extensions](./Extensions/Overview) | Use this API to manage Overwolf extensions (apps) — launch other extensions, query and exchange runtime info, check for updates, and react to lifecycle events such as app launch, update, and uncaught exceptions. |
 | [overwolf.games](./Games/Overview) | Use this API to retrieve information about games running on the user's machine, detect game launches and terminations, monitor focus and resolution changes, and query the Overwolf game database for installed game metadata. |
 | [overwolf.gep](./Gep/Overview) | The `overwolf.gep` namespace exposes internal Game Events Provider metadata, primarily used for diagnostics and version reporting. |
-| [overwolf.io](./Io/Overview) | Check whether a certain file exists and/or to write content into files.<br /><br /> For app-related I/O functionalities, use the `overwolf.extensions.io` API. <br /><br />In addition, the simple I/O plugin offers several more general I/O features that are not available through the APIs. |
+| [overwolf.io](./Io/Overview) | Check whether a certain file exists and/or to write content into files.   For app-related I/O functionalities, use the `overwolf.extensions.io` API.   In addition, the simple I/O plugin offers several more general I/O features that are not available through the APIs. |
 | [overwolf.log](./Log/Overview) | The `overwolf.log` namespace provides functions for writing messages to the Overwolf common log at various severity levels (verbose, info, warning, error, critical). |
 | [overwolf.logitech](./Logitech/Overview) | Use this API to interact with Logitech Gaming Software (LGS) peripherals, including querying connected devices and their lighting capabilities. |
 | [overwolf.media](./Media/Overview) | Use this API to capture screenshots and videos, manage media files, and post media events from your Overwolf app. |
 | [overwolf.notifications](./Notifications/Overview) | Use this API to display Windows toast notifications from your Overwolf app. |
 | [overwolf.os](./Os/Overview) | The `overwolf.os` namespace provides utilities for interacting with the host operating system, including regional settings and system tray integration (via `overwolf.os.tray`). |
-| [overwolf](./overwolf/Overview) |  |
+| [overwolf](./overwolf/Overview) | The root `overwolf` namespace. Provides the foundational types used throughout the entire Overwolf API, including the base `Result` shape, the generic `Event` interface, and global version information. |
 | [overwolf.paths](./paths/Overview) |  |
 | [overwolf.profile](./Profile/Overview) | Use this API to access the currently logged-in Overwolf user's profile information and monitor login state changes. |
 | [overwolf.settings](./Settings/Overview) | Use this API to read and modify Overwolf client settings, including video/audio capture, FPS overlay, hotkeys, and folder paths. |
