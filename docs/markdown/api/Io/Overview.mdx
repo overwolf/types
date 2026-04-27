@@ -10,14 +10,23 @@ toc_max_heading_level: 6
 
 Check whether a certain file exists and/or to write content into files.<br /><br /> For app-related I/O functionalities, use the `overwolf.extensions.io` API. <br /><br />In addition, the simple I/O plugin offers several more general I/O features that are not available through the APIs.
 
+## Namespaces
+
 | API | Description |
 | --- | --- |
 | [callbackfunction](./callbackfunction/Overview) | - |
-| [overwolf.io.enums.eEncoding](./enums/overwolf.io.enums.eEncoding) | Represents the primary character encoding formats supported. |
-| [overwolf.io.enums.encoding](./enums/overwolf.io.enums.encoding) | Extended encoding options for file and stream operations. |
-| [overwolf.io.enums.WatchEventType](./enums/overwolf.io.enums.WatchEventType) | Describes the type of file system or watcher event that occurred. |
+
+## Functions
+
+| API | Description |
+| --- | --- |
 | [overwolf.io.copyFile](./Functions/overwolf.io.copyFile) | Copy a file from the local extension directory to a destination on the local machine. |
 | [overwolf.io.writeFileContents](./Functions/overwolf.io.writeFileContents) | Writes the content to the target file. If the file doesn't exist, it will be created, along with any needed directories along the path. Otherwise, the file's content will be overwritten. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.io.Dictionary](./Interfaces/overwolf.io.Dictionary) | - |
 | [overwolf.io.DirResult](./Interfaces/overwolf.io.DirResult) | - |
 | [overwolf.io.ExistsResult](./Interfaces/overwolf.io.ExistsResult) | - |
@@ -31,5 +40,19 @@ Check whether a certain file exists and/or to write content into files.<br /><br
 | [overwolf.io.ReadFileOptions](./Interfaces/overwolf.io.ReadFileOptions) | - |
 | [overwolf.io.ReadTextFileResult](./Interfaces/overwolf.io.ReadTextFileResult) | - |
 | [overwolf.io.WatchedFileChanged](./Interfaces/overwolf.io.WatchedFileChanged) | - |
+
+## Type-aliases
+
+| API | Description |
+| --- | --- |
 | [overwolf.io.CallbackFunction](./Type-aliases/overwolf.io.CallbackFunction) | `void` |
 | [overwolf.io.DeepPartial](./Type-aliases/overwolf.io.DeepPartial) | - |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.io.enums.eEncoding](./enums/overwolf.io.enums.eEncoding) | Represents the primary character encoding formats supported. |
+| [overwolf.io.enums.encoding](./enums/overwolf.io.enums.encoding) | Extended encoding options for file and stream operations. |
+| [overwolf.io.enums.WatchEventType](./enums/overwolf.io.enums.WatchEventType) | Describes the type of file system or watcher event that occurred. |
+

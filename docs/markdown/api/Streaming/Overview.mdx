@@ -10,25 +10,10 @@ toc_max_heading_level: 6
 
 Use this API to start, stop, and configure Overwolf's built-in streaming and video-capture pipeline — including encoder settings, audio devices, watermarks, and per-window streaming modes.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.streaming.enums.CaptureErrorCode](./enums/overwolf.streaming.enums.CaptureErrorCode) | Error codes returned by capture and streaming operations. |
-| [overwolf.streaming.enums.eVideoBaseFrameSizeSource](./enums/overwolf.streaming.enums.eVideoBaseFrameSizeSource) | Determines the source used to establish the base video frame size. |
-| [overwolf.streaming.enums.eVideoFrameSizeCalcMethod](./enums/overwolf.streaming.enums.eVideoFrameSizeCalcMethod) | The algorithm used to calculate the final encoded video frame size. |
-| [overwolf.streaming.enums.IndicationPosition](./enums/overwolf.streaming.enums.IndicationPosition) | The screen position where the recording indicator overlay is shown. |
-| [overwolf.streaming.enums.IndicationType](./enums/overwolf.streaming.enums.IndicationType) | The visual style of the recording indicator overlay. |
-| [overwolf.streaming.enums.ObsStreamingMode](./enums/overwolf.streaming.enums.ObsStreamingMode) | Controls how Overwolf windows are handled when OBS is the streaming provider. |
-| [overwolf.streaming.enums.StreamEncoder](./enums/overwolf.streaming.enums.StreamEncoder) | The video encoder hardware/software backend to use. |
-| [overwolf.streaming.enums.StreamEncoderPreset_AMD_AMF](./enums/overwolf.streaming.enums.StreamEncoderPreset_AMD_AMF) | Quality presets for the AMD AMF encoder. |
-| [overwolf.streaming.enums.StreamEncoderPreset_Intel](./enums/overwolf.streaming.enums.StreamEncoderPreset_Intel) | Quality presets for the Intel Quick Sync encoder. |
-| [overwolf.streaming.enums.StreamEncoderPreset_NVIDIA](./enums/overwolf.streaming.enums.StreamEncoderPreset_NVIDIA) | Quality presets for NVIDIA NVENC encoder. |
-| [overwolf.streaming.enums.StreamEncoderPreset_x264](./enums/overwolf.streaming.enums.StreamEncoderPreset_x264) | Speed/quality presets for the x264 software encoder. |
-| [overwolf.streaming.enums.StreamEncoderRateControl_AMD_AMF](./enums/overwolf.streaming.enums.StreamEncoderRateControl_AMD_AMF) | Rate control modes for the AMD AMF encoder. |
-| [overwolf.streaming.enums.StreamEncoderRateControl_NVIDIA](./enums/overwolf.streaming.enums.StreamEncoderRateControl_NVIDIA) | Rate control modes for the NVIDIA NVENC encoder. |
-| [overwolf.streaming.enums.StreamEncoderRateControl_x264](./enums/overwolf.streaming.enums.StreamEncoderRateControl_x264) | Rate control modes for the x264 software encoder. |
-| [overwolf.streaming.enums.StreamingMode](./enums/overwolf.streaming.enums.StreamingMode) | Controls when an Overwolf window is included in a stream or recording. |
-| [overwolf.streaming.enums.StreamingProvider](./enums/overwolf.streaming.enums.StreamingProvider) | The streaming service or output provider to use. |
-| [overwolf.streaming.enums.StreamMouseCursor](./enums/overwolf.streaming.enums.StreamMouseCursor) | Controls when the mouse cursor is captured in a stream. |
 | [overwolf.streaming.changeVolume](./Functions/overwolf.streaming.changeVolume) | Changes the volume of the stream. |
 | [overwolf.streaming.getActiveRecordingApps](./Functions/overwolf.streaming.getActiveRecordingApps) | Returns the list of apps currently recording or streaming. |
 | [overwolf.streaming.getAudioDevices](./Functions/overwolf.streaming.getAudioDevices) | Returns an array of all audio devices that can be used. |
@@ -44,6 +29,11 @@ Use this API to start, stop, and configure Overwolf's built-in streaming and vid
 | [overwolf.streaming.start](./Functions/overwolf.streaming.start) | Start a new stream. |
 | [overwolf.streaming.stop](./Functions/overwolf.streaming.stop) | Stops the given stream. |
 | [overwolf.streaming.updateStreamingDesktopOptions](./Functions/overwolf.streaming.updateStreamingDesktopOptions) | Update stream desktop capture options. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.streaming.ActiveRecordingApps](./Interfaces/overwolf.streaming.ActiveRecordingApps) | Identifies an app that is currently recording or streaming. |
 | [overwolf.streaming.AudioDeviceData](./Interfaces/overwolf.streaming.AudioDeviceData) | Metadata describing an available audio device. |
 | [overwolf.streaming.EncoderData](./Interfaces/overwolf.streaming.EncoderData) | Metadata describing an available video encoder. |
@@ -82,6 +72,11 @@ Use this API to start, stop, and configure Overwolf's built-in streaming and vid
 | [overwolf.streaming.SupportedEncodersUpdatedEvent](./Interfaces/overwolf.streaming.SupportedEncodersUpdatedEvent) | Event data fired when the set of supported encoders changes. |
 | [overwolf.streaming.VideoFileSplitedEvent](./Interfaces/overwolf.streaming.VideoFileSplitedEvent) | Event data fired when a video file is split due to reaching the size limit. |
 | [overwolf.streaming.WatermarkSettings](./Interfaces/overwolf.streaming.WatermarkSettings) | A settings container for a stream Overwolf watermark settings. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.streaming.onError](./Variables/overwolf.streaming.onError) | Triggered when an error occurs, sent with an error code. |
 | [overwolf.streaming.onStartStreaming](./Variables/overwolf.streaming.onStartStreaming) | Fired when the stream has stopped. |
 | [overwolf.streaming.onStopStreaming](./Variables/overwolf.streaming.onStopStreaming) | Fired when the stream has stopped. |
@@ -89,3 +84,26 @@ Use this API to start, stop, and configure Overwolf's built-in streaming and vid
 | [overwolf.streaming.onStreamingSourceImageChanged](./Variables/overwolf.streaming.onStreamingSourceImageChanged) | Fired when the stream started streaming a new image source (desktop, game). |
 | [overwolf.streaming.onStreamingWarning](./Variables/overwolf.streaming.onStreamingWarning) | Fired upon a warning with the stream. |
 | [overwolf.streaming.onVideoFileSplited](./Variables/overwolf.streaming.onVideoFileSplited) | Fired upon video file splited. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.streaming.enums.CaptureErrorCode](./enums/overwolf.streaming.enums.CaptureErrorCode) | Error codes returned by capture and streaming operations. |
+| [overwolf.streaming.enums.eVideoBaseFrameSizeSource](./enums/overwolf.streaming.enums.eVideoBaseFrameSizeSource) | Determines the source used to establish the base video frame size. |
+| [overwolf.streaming.enums.eVideoFrameSizeCalcMethod](./enums/overwolf.streaming.enums.eVideoFrameSizeCalcMethod) | The algorithm used to calculate the final encoded video frame size. |
+| [overwolf.streaming.enums.IndicationPosition](./enums/overwolf.streaming.enums.IndicationPosition) | The screen position where the recording indicator overlay is shown. |
+| [overwolf.streaming.enums.IndicationType](./enums/overwolf.streaming.enums.IndicationType) | The visual style of the recording indicator overlay. |
+| [overwolf.streaming.enums.ObsStreamingMode](./enums/overwolf.streaming.enums.ObsStreamingMode) | Controls how Overwolf windows are handled when OBS is the streaming provider. |
+| [overwolf.streaming.enums.StreamEncoder](./enums/overwolf.streaming.enums.StreamEncoder) | The video encoder hardware/software backend to use. |
+| [overwolf.streaming.enums.StreamEncoderPreset_AMD_AMF](./enums/overwolf.streaming.enums.StreamEncoderPreset_AMD_AMF) | Quality presets for the AMD AMF encoder. |
+| [overwolf.streaming.enums.StreamEncoderPreset_Intel](./enums/overwolf.streaming.enums.StreamEncoderPreset_Intel) | Quality presets for the Intel Quick Sync encoder. |
+| [overwolf.streaming.enums.StreamEncoderPreset_NVIDIA](./enums/overwolf.streaming.enums.StreamEncoderPreset_NVIDIA) | Quality presets for NVIDIA NVENC encoder. |
+| [overwolf.streaming.enums.StreamEncoderPreset_x264](./enums/overwolf.streaming.enums.StreamEncoderPreset_x264) | Speed/quality presets for the x264 software encoder. |
+| [overwolf.streaming.enums.StreamEncoderRateControl_AMD_AMF](./enums/overwolf.streaming.enums.StreamEncoderRateControl_AMD_AMF) | Rate control modes for the AMD AMF encoder. |
+| [overwolf.streaming.enums.StreamEncoderRateControl_NVIDIA](./enums/overwolf.streaming.enums.StreamEncoderRateControl_NVIDIA) | Rate control modes for the NVIDIA NVENC encoder. |
+| [overwolf.streaming.enums.StreamEncoderRateControl_x264](./enums/overwolf.streaming.enums.StreamEncoderRateControl_x264) | Rate control modes for the x264 software encoder. |
+| [overwolf.streaming.enums.StreamingMode](./enums/overwolf.streaming.enums.StreamingMode) | Controls when an Overwolf window is included in a stream or recording. |
+| [overwolf.streaming.enums.StreamingProvider](./enums/overwolf.streaming.enums.StreamingProvider) | The streaming service or output provider to use. |
+| [overwolf.streaming.enums.StreamMouseCursor](./enums/overwolf.streaming.enums.StreamMouseCursor) | Controls when the mouse cursor is captured in a stream. |
+

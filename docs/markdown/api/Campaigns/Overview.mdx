@@ -12,12 +12,20 @@ An API that allows crossapp-promotions: One app can promote another app and then
 
 For example - an app can promote a video capture and sharing app and receive a notification as soon as the user shares a video from the promoted app.
 
+## Functions
+
 | API | Description |
 | --- | --- |
 | [getAvailableActions](./Functions/overwolf.campaigns.crossapp.getAvailableActions) | Receive all cross-app actions that target the currently running extension. |
 | [reportConversion](./Functions/overwolf.campaigns.crossapp.reportConversion) | Submit new conversion for a cross-app campaign. |
 | [set](./Functions/overwolf.campaigns.crossapp.set) | Initiate or modify a cross-app campaign action for this extension. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [CrossAppCampaign](./Interfaces/overwolf.campaigns.crossapp.CrossAppCampaign) | Container that represent a shared data parameters. |
 | [CrossAppCampaignConversion](./Interfaces/overwolf.campaigns.crossapp.CrossAppCampaignConversion) | Container that represent a cross app campaign conversions. |
 | [GetCrossAppAvailableActionsResult](./Interfaces/overwolf.campaigns.crossapp.GetCrossAppAvailableActionsResult) | Object result from `overwolf.campaigns.crossapp.getAvailableActions` |
 | [GetCrossAppConversionsResult](./Interfaces/overwolf.campaigns.crossapp.GetCrossAppConversionsResult) | Object result from `overwolf.campaigns.crossapp.consumeConversions` |
+

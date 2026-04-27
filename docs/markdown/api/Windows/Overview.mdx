@@ -10,14 +10,16 @@ toc_max_heading_level: 6
 
 Use this API to manage Overwolf windows — create, position, resize, show, hide, and control the lifecycle and styling of your app's UI windows.
 
+## Namespaces
+
 | API | Description |
 | --- | --- |
-| [overwolf.windows.enums.FlashBehavior](./enums/overwolf.windows.enums.FlashBehavior) | Controls the taskbar flash behavior for a window. |
-| [overwolf.windows.enums.MessagePromptIcon](./enums/overwolf.windows.enums.MessagePromptIcon) | The icon displayed in a message prompt dialog. |
-| [overwolf.windows.enums.WindowDragEdge](./enums/overwolf.windows.enums.WindowDragEdge) | The edge or corner from which a window drag-resize operation originates. |
-| [overwolf.windows.enums.WindowStateEx](./enums/overwolf.windows.enums.WindowStateEx) | The possible display states of an Overwolf window. |
-| [overwolf.windows.enums.WindowStyle](./enums/overwolf.windows.enums.WindowStyle) | Visual and input-handling styles that can be applied to a window. |
-| [overwolf.windows.enums.WindowType](./enums/overwolf.windows.enums.WindowType) | The rendering context type of a window. |
+| [mediaplayerelement](./mediaplayerelement/Overview) | Use this API to embed and control native media player elements within Overwolf windows for video playback. |
+
+## Functions
+
+| API | Description |
+| --- | --- |
 | [overwolf.windows.bringToFront](./Functions/overwolf.windows.bringToFront) | Brings the requested window to the front. |
 | [overwolf.windows.changePosition](./Functions/overwolf.windows.changePosition) | Changes the window position in pixels from the top left corner. |
 | [overwolf.windows.changeSize](./Functions/overwolf.windows.changeSize) | Changes the window size to the new width and height, in pixels. |
@@ -54,6 +56,11 @@ Use this API to manage Overwolf windows — create, position, resize, show, hide
 | [overwolf.windows.setTopmost](./Functions/overwolf.windows.setTopmost) | Change the window's topmost status. Handle with care as topmost windows can negatively impact user experience. |
 | [overwolf.windows.setWindowStyle](./Functions/overwolf.windows.setWindowStyle) | Add Window In Game styling |
 | [overwolf.windows.setZoom](./Functions/overwolf.windows.setZoom) | Set window zoom level (0.0 for reset). |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.windows.AltF4BlockedEvent](./Interfaces/overwolf.windows.AltF4BlockedEvent) | Event data fired when the user attempts to close a window with Alt+F4 and is blocked. |
 | [overwolf.windows.ChangeWindowSizeParams](./Interfaces/overwolf.windows.ChangeWindowSizeParams) | Parameters for the `changeSize` overload that supports DPI-aware resizing. |
 | [overwolf.windows.DefaultSizeAndLocation](./Interfaces/overwolf.windows.DefaultSizeAndLocation) | Instructs `obtainDeclaredWindow` to apply the manifest's default size and location. |
@@ -75,10 +82,26 @@ Use this API to manage Overwolf windows — create, position, resize, show, hide
 | [overwolf.windows.WindowProperties](./Interfaces/overwolf.windows.WindowProperties) | Optional properties used when obtaining a declared window. |
 | [overwolf.windows.WindowResult](./Interfaces/overwolf.windows.WindowResult) | Result of window operations that return a `WindowInfo` object. |
 | [overwolf.windows.WindowStateChangedEvent](./Interfaces/overwolf.windows.WindowStateChangedEvent) | Event data fired when a window's state changes. |
-| [mediaplayerelement](./mediaplayerelement/Overview) | Use this API to embed and control native media player elements within Overwolf windows for video playback. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.windows.onAltF4Blocked](./Variables/overwolf.windows.onAltF4Blocked) | Fired when the user was prevented from closing a window using Alt+F4 |
 | [overwolf.windows.onIsolatedIframeProcessCrashed](./Variables/overwolf.windows.onIsolatedIframeProcessCrashed) | Fired when out of process iframe crashed. |
 | [overwolf.windows.onMainWindowRestored](./Variables/overwolf.windows.onMainWindowRestored) | Fired when the main window is restored. |
 | [overwolf.windows.onMessageReceived](./Variables/overwolf.windows.onMessageReceived) | Fired when this window received a message. |
 | [overwolf.windows.onStateChanged](./Variables/overwolf.windows.onStateChanged) | Fired when the state of a window is changed. |
 | [overwolf.windows.onSubscriptionChanged](./Variables/overwolf.windows.onSubscriptionChanged) | Fired when current extension subscription has changed. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.windows.enums.FlashBehavior](./enums/overwolf.windows.enums.FlashBehavior) | Controls the taskbar flash behavior for a window. |
+| [overwolf.windows.enums.MessagePromptIcon](./enums/overwolf.windows.enums.MessagePromptIcon) | The icon displayed in a message prompt dialog. |
+| [overwolf.windows.enums.WindowDragEdge](./enums/overwolf.windows.enums.WindowDragEdge) | The edge or corner from which a window drag-resize operation originates. |
+| [overwolf.windows.enums.WindowStateEx](./enums/overwolf.windows.enums.WindowStateEx) | The possible display states of an Overwolf window. |
+| [overwolf.windows.enums.WindowStyle](./enums/overwolf.windows.enums.WindowStyle) | Visual and input-handling styles that can be applied to a window. |
+| [overwolf.windows.enums.WindowType](./enums/overwolf.windows.enums.WindowType) | The rendering context type of a window. |
+

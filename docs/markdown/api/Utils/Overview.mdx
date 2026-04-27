@@ -10,9 +10,10 @@ toc_max_heading_level: 6
 
 Use this API to access system utilities such as clipboard management, monitor information, file pickers, and hardware diagnostics. It also provides helpers for opening URLs, simulating input, and interacting with the Overwolf store.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.utils.enums.eStorePage](./enums/overwolf.utils.enums.eStorePage) | Pages available in the Overwolf store that can be opened via `openStore`. |
 | [overwolf.utils.consumeConversions](./Functions/overwolf.utils.consumeConversions) | Consume all pending conversions for this extension. Consumed conversions are deleted. |
 | [overwolf.utils.getFromClipboard](./Functions/overwolf.utils.getFromClipboard) | Gets the string currently placed on the clipboard. If no string is placed on the clipboard, returns null. |
 | [overwolf.utils.getMonitorsList](./Functions/overwolf.utils.getMonitorsList) | Returns an array with all monitors data including their display resolution, bounds, and names. |
@@ -32,6 +33,11 @@ Use this API to access system utilities such as clipboard management, monitor in
 | [overwolf.utils.sendLogs](./Functions/overwolf.utils.sendLogs) | Sends Overwolf logs to Overwolf servers for debugging. |
 | [overwolf.utils.simulateMouseClick](./Functions/overwolf.utils.simulateMouseClick) | Simulate Mouse click on current mouse Position. |
 | [overwolf.utils.uploadClientLogs](./Functions/overwolf.utils.uploadClientLogs) | Upload Overwolf client logs to Overwolf servers for current calling app. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.utils.ClientInfoResult](./Interfaces/overwolf.utils.ClientInfoResult) | Result returned when querying Overwolf client installation and uptime info. |
 | [overwolf.utils.Display](./Interfaces/overwolf.utils.Display) | Information about a single display/monitor connected to the system. |
 | [overwolf.utils.getMonitorsListResult](./Interfaces/overwolf.utils.getMonitorsListResult) | Result returned from `getMonitorsList`. |
@@ -48,4 +54,16 @@ Use this API to access system utilities such as clipboard management, monitor in
 | [overwolf.utils.OpenStoreParams](./Interfaces/overwolf.utils.OpenStoreParams) | Parameters for opening a page in the Overwolf store. |
 | [overwolf.utils.SystemInfo](./Interfaces/overwolf.utils.SystemInfo) | Comprehensive system hardware and software information. |
 | [overwolf.utils.UploadClientLogsOptions](./Interfaces/overwolf.utils.UploadClientLogsOptions) | Options for the `uploadClientLogs` function. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.utils.onAvailableActionUpdated](./Variables/overwolf.utils.onAvailableActionUpdated) | - |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.utils.enums.eStorePage](./enums/overwolf.utils.enums.eStorePage) | Pages available in the Overwolf store that can be opened via `openStore`. |
+

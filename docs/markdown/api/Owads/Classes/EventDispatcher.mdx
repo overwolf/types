@@ -1,0 +1,70 @@
+---
+sidebar_label: "EventDispatcher"
+---
+
+OwAds / EventDispatcher
+
+A minimal event-dispatcher utility used internally by `OwAd`.
+
+## Methods
+
+### addEventListener()
+
+```ts
+addEventListener(eventName: string, listener: EventDispCallback): boolean;
+```
+
+Registers a listener for the given event name.
+
+#### Parameters
+
+| Parameter   | Type                                                     | Description                                   |
+| ----------- | -------------------------------------------------------- | --------------------------------------------- |
+| `eventName` | `string`                                                 | The name of the event to listen for.          |
+| `listener`  | [`EventDispCallback`](../Type-aliases/EventDispCallback) | The callback to invoke when the event fires.  |
+
+#### Returns
+
+`boolean` — `true` if the listener was added successfully.
+
+---
+
+### removeEventListener()
+
+```ts
+removeEventListener(eventName: string, listener: EventDispCallback): boolean;
+```
+
+Removes a previously registered listener for the given event name.
+
+#### Parameters
+
+| Parameter   | Type                                                     | Description                  |
+| ----------- | -------------------------------------------------------- | ---------------------------- |
+| `eventName` | `string`                                                 | The name of the event.       |
+| `listener`  | [`EventDispCallback`](../Type-aliases/EventDispCallback) | The callback to remove.      |
+
+#### Returns
+
+`boolean` — `true` if the listener was removed successfully.
+
+---
+
+### fireEvent()
+
+```ts
+fireEvent(eventName: string, eventData: any): null | undefined;
+```
+
+Dispatches an event to all registered listeners.
+
+#### Parameters
+
+| Parameter   | Type     | Description                        |
+| ----------- | -------- | ---------------------------------- |
+| `eventName` | `string` | The name of the event to fire.     |
+| `eventData` | `any`    | The data to pass to each listener. |
+
+#### Returns
+
+`null` on success, `undefined` if no listeners were found.

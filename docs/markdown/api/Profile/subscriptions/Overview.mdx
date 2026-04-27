@@ -10,16 +10,34 @@ toc_max_heading_level: 6
 
 Use this API to query and monitor the active subscription plans for the calling Overwolf extension.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.profile.subscriptions.enums.SubscriptionState](./enums/overwolf.profile.subscriptions.enums.SubscriptionState) | The current state of a subscription. |
 | [overwolf.profile.subscriptions.getActivePlans](./Functions/overwolf.profile.subscriptions.getActivePlans) | Returns active subscriptions for the calling extension via callback. |
 | [overwolf.profile.subscriptions.getDetailedActivePlans](./Functions/overwolf.profile.subscriptions.getDetailedActivePlans) | Returns more details about all the active subscriptions for the calling extension via callback. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.profile.subscriptions.GetActivePlansResult](./Interfaces/overwolf.profile.subscriptions.GetActivePlansResult) | Result of a `getActivePlans` call. |
 | [overwolf.profile.subscriptions.GetDetailedActivePlansResult](./Interfaces/overwolf.profile.subscriptions.GetDetailedActivePlansResult) | Result of a `getDetailedActivePlans` call. |
 | [overwolf.profile.subscriptions.Info](./Interfaces/overwolf.profile.subscriptions.Info) | Descriptive information about a subscription plan. |
 | [overwolf.profile.subscriptions.Plan](./Interfaces/overwolf.profile.subscriptions.Plan) | Detailed information about a single active subscription plan. |
 | [overwolf.profile.subscriptions.Subscription](./Interfaces/overwolf.profile.subscriptions.Subscription) | Represents a single user subscription record. |
 | [overwolf.profile.subscriptions.SubscriptionChangedEvent](./Interfaces/overwolf.profile.subscriptions.SubscriptionChangedEvent) | Event data fired when the user's active subscriptions change. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.profile.subscriptions.onInAppSubModalClosed](./Variables/overwolf.profile.subscriptions.onInAppSubModalClosed) | Fired when a subscription in-app modal window is closed. |
 | [overwolf.profile.subscriptions.onSubscriptionChanged](./Variables/overwolf.profile.subscriptions.onSubscriptionChanged) | Fired when the subscription state for the calling extension changes (e.g. a plan is activated, cancelled, or revoked). |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.profile.subscriptions.enums.SubscriptionState](./enums/overwolf.profile.subscriptions.enums.SubscriptionState) | The current state of a subscription. |
+

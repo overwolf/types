@@ -81,7 +81,6 @@ declare namespace overwolf.io {
         Deleted = "Deleted"
       }
     }
-  }
 
   /**
    * Well-known folder paths resolved at runtime for the current Windows environment.
@@ -329,5 +328,3 @@ declare namespace overwolf.io {
     options: ListenFileOptions,
     callback: CallbackFunction<ListenOnFileResult>
   ): void;
-
-  

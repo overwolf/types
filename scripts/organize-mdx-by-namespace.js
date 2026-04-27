@@ -310,6 +310,8 @@ function escapeTableCell(text) {
   return String(text || '').replace(/\|/g, '\\|');
 }
 
+const KIND_ORDER = ['Namespaces', 'Functions', 'Interfaces', 'Enums', 'Variables', 'Type-aliases', 'Classes'];
+
 function buildOverviewTable(rows, opts = {}) {
   const heading = opts.heading || 'Overview';
   const summary = opts.summary ? `${opts.summary}\n\n` : '';
@@ -319,13 +321,37 @@ function buildOverviewTable(rows, opts = {}) {
   if (!rows.length) {
     return `# ${heading}\n\n${summary}*No pages generated.*\n`;
   }
-  const header = `# ${heading}\n\n${summary}| API | Description |\n| --- | --- |\n`;
-  const body = rows.map(r => {
+  const formatRow = r => {
     const desc = escapeTableCell(String(r.description || '').replace(/\s*\n+\s*/g, ' ').replace(/<br\s*\/?>/gi, ' ').trim());
-    const finalDesc = desc || emptyPlaceholder;
-    return `| [${r.label}](${r.link}) | ${finalDesc} |`;
-  }).join('\n');
-  return `${header}${body}\n`;
+    return `| [${r.label}](${r.link}) | ${desc || emptyPlaceholder} |`;
+  };
+  const buildTable = items =>
+    `| API | Description |\n| --- | --- |\n${items.map(formatRow).join('\n')}\n`;
+
+  const hasKinds = rows.some(r => r.kind);
+  if (!hasKinds) {
+    return `# ${heading}\n\n${summary}${buildTable(rows)}\n`;
+  }
+
+  // Group rows by kind; ungrouped rows go first in a plain table
+  const groups = new Map();
+  const ungrouped = [];
+  for (const r of rows) {
+    if (!r.kind) { ungrouped.push(r); continue; }
+    if (!groups.has(r.kind)) groups.set(r.kind, []);
+    groups.get(r.kind).push(r);
+  }
+  const orderedKinds = [
+    ...KIND_ORDER.filter(k => groups.has(k)),
+    ...Array.from(groups.keys()).filter(k => !KIND_ORDER.includes(k)),
+  ];
+
+  let out = `# ${heading}\n\n${summary}`;
+  if (ungrouped.length) out += `${buildTable(ungrouped)}\n`;
+  for (const kind of orderedKinds) {
+    out += `## ${kind}\n\n${buildTable(groups.get(kind))}\n`;
+  }
+  return out;
 }
 
 async function run() {
@@ -616,7 +642,7 @@ async function run() {
                 desc = extractSummaryFromContent(c);
               } catch { /* ignore */ }
               const label = normalizeDisplayLabel(d.name, base);
-              rows.push({ label, link: `./${sd.name}/${base}`, description: desc });
+              rows.push({ label, link: `./${sd.name}/${base}`, description: desc, kind: sd.name });
             }
           } catch { /* ignore */ }
           continue;
@@ -648,7 +674,7 @@ async function run() {
                     const c = await fs.readFile(filePath, 'utf8');
                     desc = extractSummaryFromContent(c);
                   } catch { /* ignore */ }
-                  subNsRows.push({ label: base, link: `./${ksd.name}/${base}`, description: desc });
+                  subNsRows.push({ label: base, link: `./${ksd.name}/${base}`, description: desc, kind: ksd.name });
                 }
               } catch { /* ignore */ }
             }
@@ -686,7 +712,7 @@ async function run() {
             desc = extractSummaryFromContent(c);
           } catch { /* ignore */ }
         }
-        rows.push({ label, link: target, description: desc });
+        rows.push({ label, link: target, description: desc, kind: 'Namespaces' });
       }
       for (const f of files) {
         const base = f.name.replace(/(\.mdx|\.md)$/i, '');

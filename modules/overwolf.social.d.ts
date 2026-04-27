@@ -64,5 +64,3 @@ declare namespace overwolf.social {
     /** An array of service identifiers that are currently disabled. */
     disabled_services?: string[];
   }
-
-}

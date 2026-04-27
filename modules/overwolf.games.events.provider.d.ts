@@ -208,5 +208,3 @@ declare namespace overwolf.games.inputTracking {
    * Event information is similar to `onMouseUp`.
    */
   const onMouseDown: Event<MouseEvent>;
-
-  }

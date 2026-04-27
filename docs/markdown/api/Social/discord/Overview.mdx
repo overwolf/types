@@ -10,10 +10,10 @@ toc_max_heading_level: 6
 
 Use this API to share media and messages to Discord directly from your Overwolf app.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.social.discord.enums.PostPermission](./enums/overwolf.social.discord.enums.PostPermission) | Represents the posting permissions available for a Discord channel. |
-| [overwolf.social.discord.enums.ShareState](./enums/overwolf.social.discord.enums.ShareState) | Represents the current state of a share operation. |
 | [overwolf.social.discord.cancelUpload](./Functions/overwolf.social.discord.cancelUpload) | `void` |
 | [overwolf.social.discord.getChannels](./Functions/overwolf.social.discord.getChannels) | If the user is currently logged into Discord, this will return the channels of the given `guildId`, for which the user has privileges to share images/videos to. Otherwise, an error is returned |
 | [overwolf.social.discord.getDisabledServices](./Functions/overwolf.social.discord.getDisabledServices) | Checks which of the supported sharing services are disabled or enabled. |
@@ -24,6 +24,11 @@ Use this API to share media and messages to Discord directly from your Overwolf 
 | [overwolf.social.discord.post](./Functions/overwolf.social.discord.post) | Posts a text message to a Discord channel. |
 | [overwolf.social.discord.share](./Functions/overwolf.social.discord.share) | If the user is currently logged into Discord, this will perform the media share (image or video).Possible errors that can occur:- Disconnected (user isn't signed in)- MissingFile (trying to share a missing file)- UnsupportedFile (trying to share an unsupported format)- ExceedsMaxSize (the file is too large: > 8 MB for images, > 100 MBfor videos) |
 | [overwolf.social.discord.shareEx](./Functions/overwolf.social.discord.shareEx) | Shares a media file to a Discord channel with separate result and progress callbacks. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.social.discord.Channel](./Interfaces/overwolf.social.discord.Channel) | Represents a Discord channel within a guild. |
 | [overwolf.social.discord.GetChannelsResult](./Interfaces/overwolf.social.discord.GetChannelsResult) | Result of a `getChannels` call. |
 | [overwolf.social.discord.GetGuildsResult](./Interfaces/overwolf.social.discord.GetGuildsResult) | Result of a `getGuilds` call. |
@@ -35,4 +40,17 @@ Use this API to share media and messages to Discord directly from your Overwolf 
 | [overwolf.social.discord.SocialShareProgress](./Interfaces/overwolf.social.discord.SocialShareProgress) | Reports the progress of an ongoing share operation. |
 | [overwolf.social.discord.SocialShareResult](./Interfaces/overwolf.social.discord.SocialShareResult) | Result of a successful share operation. |
 | [overwolf.social.discord.User](./Interfaces/overwolf.social.discord.User) | Represents a Discord user account. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.social.discord.onLoginStateChanged](./Variables/overwolf.social.discord.onLoginStateChanged) | Fired when the user's login state changes. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.social.discord.enums.PostPermission](./enums/overwolf.social.discord.enums.PostPermission) | Represents the posting permissions available for a Discord channel. |
+| [overwolf.social.discord.enums.ShareState](./enums/overwolf.social.discord.enums.ShareState) | Represents the current state of a share operation. |
+

@@ -10,10 +10,10 @@ toc_max_heading_level: 6
 
 Use this API to perform file system operations (read, write, copy, move, delete, list) within the sandboxed storage spaces available to an extension.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.extensions.io.enums.FileType](./enums/overwolf.extensions.io.enums.FileType) | Whether a file system entry is a regular file or a directory. |
-| [overwolf.extensions.io.enums.StorageSpace](./enums/overwolf.extensions.io.enums.StorageSpace) | The named storage spaces available to extensions for file I/O. |
 | [overwolf.extensions.io.copy](./Functions/overwolf.extensions.io.copy) | Copies a file or directory from `source` to `destination` within the storage space. |
 | [overwolf.extensions.io.createDirectory](./Functions/overwolf.extensions.io.createDirectory) | Creates a new directory at the given path within the specified storage space. |
 | [overwolf.extensions.io.delete](./Functions/overwolf.extensions.io.delete) | Deletes the file or directory at the given path within the storage space. |
@@ -23,6 +23,19 @@ Use this API to perform file system operations (read, write, copy, move, delete,
 | [overwolf.extensions.io.move](./Functions/overwolf.extensions.io.move) | Moves a file or directory from `source` to `destination` within the storage space. |
 | [overwolf.extensions.io.readTextFile](./Functions/overwolf.extensions.io.readTextFile) | Reads the text content of the file at `filePath` within the storage space. |
 | [overwolf.extensions.io.writeTextFile](./Functions/overwolf.extensions.io.writeTextFile) | Writes text content to the file at `filePath` within the storage space, creating it if it does not exist. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.extensions.io.onAppInstalled](./Variables/overwolf.extensions.io.onAppInstalled) | - |
 | [overwolf.extensions.io.onAppUninstalled](./Variables/overwolf.extensions.io.onAppUninstalled) | Fired when an extension is uninstalled. |
 | [overwolf.extensions.io.onUncaughtException](./Variables/overwolf.extensions.io.onUncaughtException) | Called for global uncaught exceptions in a frame. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.extensions.io.enums.FileType](./enums/overwolf.extensions.io.enums.FileType) | Whether a file system entry is a regular file or a directory. |
+| [overwolf.extensions.io.enums.StorageSpace](./enums/overwolf.extensions.io.enums.StorageSpace) | The named storage spaces available to extensions for file I/O. |
+

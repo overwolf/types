@@ -10,16 +10,34 @@ toc_max_heading_level: 6
 
 Use this API to access the currently logged-in Overwolf user's profile information and monitor login state changes.
 
+## Namespaces
+
 | API | Description |
 | --- | --- |
-| [overwolf.profile.ConnectionState](./Enums/overwolf.profile.ConnectionState) | Represents the current connection state of the Overwolf client to its services. |
+| [subscriptions](./subscriptions/Overview) | Use this API to query and monitor the active subscription plans for the calling Overwolf extension. |
+
+## Functions
+
+| API | Description |
+| --- | --- |
 | [overwolf.profile.generateUserSessionToken](./Functions/overwolf.profile.generateUserSessionToken) | Generates a short-lived session token for the currently logged-in user. |
 | [overwolf.profile.getCurrentUser](./Functions/overwolf.profile.getCurrentUser) | Calls the given callback with the currently logged-in Overwolf user. |
 | [overwolf.profile.openLoginDialog](./Functions/overwolf.profile.openLoginDialog) | Opens the login dialog. |
 | [overwolf.profile.performOverwolfSessionLogin](./Functions/overwolf.profile.performOverwolfSessionLogin) | Performs an Overwolf session login using a previously obtained token. |
 | [overwolf.profile.refreshUserProfile](./Functions/overwolf.profile.refreshUserProfile) | Fetches user profile from server, then invokes the callback with the currently logged-in Overwolf user. |
 | [overwolf.profile.showToastNotification](./Functions/overwolf.profile.showToastNotification) | Show Windows toast notification. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.profile.GenerateUserSessionTokenResult](./Interfaces/overwolf.profile.GenerateUserSessionTokenResult) | Result of a `generateUserSessionToken` call. |
 | [overwolf.profile.GetCurrentUserResult](./Interfaces/overwolf.profile.GetCurrentUserResult) | Result of a `getCurrentUser` or `refreshUserProfile` call. |
 | [overwolf.profile.LoginStateChangedEvent](./Interfaces/overwolf.profile.LoginStateChangedEvent) | Event data fired when the user's login state changes. |
-| [subscriptions](./subscriptions/Overview) | Use this API to query and monitor the active subscription plans for the calling Overwolf extension. |
+
+## Enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.profile.ConnectionState](./Enums/overwolf.profile.ConnectionState) | Represents the current connection state of the Overwolf client to its services. |
+

@@ -1,0 +1,194 @@
+---
+sidebar_label: "OwAd"
+---
+
+OwAds / OwAd
+
+Manages the lifecycle and display of a single Overwolf in-app ad unit.
+
+## Constructors
+
+### new OwAd()
+
+```ts
+new OwAd(container: HTMLElement, options: OwAdOptions): OwAd;
+```
+
+Creates a new ad unit inside the given container element.
+
+#### Parameters
+
+| Parameter   | Type                                      | Description                            |
+| ----------- | ----------------------------------------- | -------------------------------------- |
+| `container` | `HTMLElement`                             | The DOM element that will host the ad. |
+| `options`   | [`OwAdOptions`](../Interfaces/OwAdOptions) | Configuration options for the ad unit. |
+
+#### Returns
+
+`OwAd`
+
+---
+
+## Accessors
+
+### uid
+
+```ts
+get uid(): string | null;
+```
+
+The unique identifier assigned to this ad unit, or `null` if not yet initialized.
+
+---
+
+### version
+
+```ts
+get version(): string;
+```
+
+The version string of the Overwolf Ads SDK.
+
+---
+
+### containerElem
+
+```ts
+get containerElem(): { id: string };
+```
+
+The `id` of the container element hosting this ad.
+
+---
+
+## Methods
+
+### play()
+
+```ts
+play(): boolean;
+```
+
+Resumes playback of the ad.
+
+#### Returns
+
+`boolean` — `true` if playback started successfully.
+
+---
+
+### pause()
+
+```ts
+pause(): boolean;
+```
+
+Pauses the currently playing ad.
+
+#### Returns
+
+`boolean` — `true` if the ad was paused successfully.
+
+---
+
+### refreshAd()
+
+```ts
+refreshAd(refreshOptions: any): boolean;
+```
+
+Requests a new ad from the ad server, replacing the current one.
+
+#### Parameters
+
+| Parameter        | Type  | Description                                     |
+| ---------------- | ----- | ----------------------------------------------- |
+| `refreshOptions` | `any` | Additional options to pass to the refresh call. |
+
+#### Returns
+
+`boolean` — `true` if the refresh request was accepted.
+
+---
+
+### refreshCurrentWFstep()
+
+```ts
+refreshCurrentWFstep(): void;
+```
+
+Advances the ad to the next step in its current workflow.
+
+#### Returns
+
+`void`
+
+---
+
+### removeAd()
+
+```ts
+removeAd(): boolean;
+```
+
+Removes the ad from the DOM and releases associated resources.
+
+#### Returns
+
+`boolean` — `true` if the ad was removed successfully.
+
+---
+
+### shutdown()
+
+```ts
+shutdown(): Promise<void>;
+```
+
+Shuts down the ad unit and releases all resources. Always call this when the window hosting the ad is closing.
+
+#### Returns
+
+`Promise<void>`
+
+---
+
+### addEventListener()
+
+```ts
+addEventListener(eventName: string, listener: EventDispCallback): boolean;
+```
+
+Registers a listener for an ad lifecycle event.
+
+#### Parameters
+
+| Parameter   | Type                                                     | Description                                                  |
+| ----------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| `eventName` | `string`                                                 | The event to listen for (e.g. `"impression"`, `"complete"`). |
+| `listener`  | [`EventDispCallback`](../Type-aliases/EventDispCallback) | The callback to invoke when the event fires.                 |
+
+#### Returns
+
+`boolean` — `true` if the listener was added successfully.
+
+---
+
+### removeEventListener()
+
+```ts
+removeEventListener(eventName: string, listener: EventDispCallback): boolean;
+```
+
+Removes a previously registered event listener.
+
+#### Parameters
+
+| Parameter   | Type                                                     | Description             |
+| ----------- | -------------------------------------------------------- | ----------------------- |
+| `eventName` | `string`                                                 | The name of the event.  |
+| `listener`  | [`EventDispCallback`](../Type-aliases/EventDispCallback) | The callback to remove. |
+
+#### Returns
+
+`boolean` — `true` if the listener was removed successfully.

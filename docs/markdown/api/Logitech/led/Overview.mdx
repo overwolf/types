@@ -10,10 +10,10 @@ toc_max_heading_level: 6
 
 Use this API to control Logitech LED peripheral lighting from your Overwolf app. Supports per-key and zone-based RGB effects on compatible Logitech keyboards, mice, and other devices.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.logitech.led.enums.KeyboardNames](./enums/overwolf.logitech.led.enums.KeyboardNames) | Logical names for individual keys on a Logitech per-key RGB keyboard. |
-| [overwolf.logitech.led.enums.LogitechDeviceLightingType](./enums/overwolf.logitech.led.enums.LogitechDeviceLightingType) | Logitech device lighting type, used to target devices by their lighting capability. |
 | [overwolf.logitech.led.flashLighting](./Functions/overwolf.logitech.led.flashLighting) | Flashes the lighting on the device. |
 | [overwolf.logitech.led.flashSingleKey](./Functions/overwolf.logitech.led.flashSingleKey) | Flashes a single key. |
 | [overwolf.logitech.led.getDevices](./Functions/overwolf.logitech.led.getDevices) | Gets the currently installed Logitech devices. |
@@ -34,4 +34,17 @@ Use this API to control Logitech LED peripheral lighting from your Overwolf app.
 | [overwolf.logitech.led.shutdown](./Functions/overwolf.logitech.led.shutdown) | Shuts down the API. |
 | [overwolf.logitech.led.stopEffects](./Functions/overwolf.logitech.led.stopEffects) | Stops ongoing pulse/flash effects. |
 | [overwolf.logitech.led.stopEffectsOnKey](./Functions/overwolf.logitech.led.stopEffectsOnKey) | Stops ongoing pulse/flash effects on a specific key. |
+
+## Type-aliases
+
+| API | Description |
+| --- | --- |
 | [overwolf.logitech.led.ByteArray](./Type-aliases/overwolf.logitech.led.ByteArray) | Raw byte array type used to pass bitmap data for LED lighting. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.logitech.led.enums.KeyboardNames](./enums/overwolf.logitech.led.enums.KeyboardNames) | Logical names for individual keys on a Logitech per-key RGB keyboard. |
+| [overwolf.logitech.led.enums.LogitechDeviceLightingType](./enums/overwolf.logitech.led.enums.LogitechDeviceLightingType) | Logitech device lighting type, used to target devices by their lighting capability. |
+

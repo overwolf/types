@@ -4,10 +4,6 @@
  * @packageDocumentation
  */
 
-/**
-   * Fired when current extension subscription has changed.
-   */
-  const onSubscriptionChanged: Event<SubscriptionChangedEvent>;
 }
 
 declare namespace overwolf.windows {
@@ -814,6 +810,3 @@ declare namespace overwolf.windows {
    * Fired when the user was prevented from closing a window using Alt+F4
    */
   const onAltF4Blocked: Event<AltF4BlockedEvent>;
-
-
-}

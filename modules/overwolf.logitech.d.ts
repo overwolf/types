@@ -56,5 +56,3 @@ declare namespace overwolf.logitech {
    * @param callback Called with the version of LGS currently installed.
    */
   function getVersion(callback: CallbackFunction<GetVersionResult>): void;
-
-}

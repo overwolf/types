@@ -10,19 +10,30 @@ toc_max_heading_level: 6
 
 Use this API to retrieve information about games running on the user's machine, detect game launches and terminations, monitor focus and resolution changes, and query the Overwolf game database for installed game metadata.
 
+## Namespaces
+
 | API | Description |
 | --- | --- |
-| [overwolf.games.enums.GameInfoChangeReason](./enums/overwolf.games.enums.GameInfoChangeReason) | Describes the reason a `GameInfoUpdatedEvent` was fired. |
-| [overwolf.games.enums.GameInfoType](./enums/overwolf.games.enums.GameInfoType) | Indicates whether the game entry represents a game executable or a launcher. |
-| [overwolf.games.enums.KnownOverlayCoexistenceApps](./enums/overwolf.games.enums.KnownOverlayCoexistenceApps) | Third-party applications known to coexist with the Overwolf overlay, which may cause rendering or input conflicts. |
 | [events](./events/Overview) | Use this API to push custom game events and state updates into the Overwolf game events system, and to track raw keyboard, mouse, and eye-tracking input activity during a game session. |
+| [inputtracking](./inputtracking/Overview) | - |
+| [launchers](./launchers/Overview) | Use this API to detect and monitor game launchers (e.g., Battle.net, Epic Games Launcher) running on the user's machine, including focus changes and launch events. |
+| [tracked](./tracked/Overview) | Use this API to monitor unsupported or overlay-disabled games running on the user's machine, including launch and termination events. |
+
+## Functions
+
+| API | Description |
+| --- | --- |
 | [overwolf.games.getGameDBInfo](./Functions/overwolf.games.getGameDBInfo) | This is the same as `getGameDBInfo`, except that it can return two different results: 1. if the game is detected as installed - then the `installedGameInfo` member of the result will be set and the `gameInfo` member will be null 2. if the game is NOT detected as installed, then the `installedGameInfo` member of the result will be set to null and the `gameInfo` member will be set NOTE: `installedGameInfo` contains `gameInfo` in it. |
 | [overwolf.games.getGameInfo](./Functions/overwolf.games.getGameInfo) | Returns information about a game with a given game id.Will only return information if the game is detected on the local machine (i.e. installed) |
 | [overwolf.games.getLastRunningGameInfo](./Functions/overwolf.games.getLastRunningGameInfo) | Returns the last played gameinfo (when no game is currently running). |
 | [overwolf.games.getRecentlyPlayedGames](./Functions/overwolf.games.getRecentlyPlayedGames) | Returns an array of the maxNumOfGames most recently played game IDs.An empty array will be returned if none have been recorded. |
 | [overwolf.games.getRunningGameInfo](./Functions/overwolf.games.getRunningGameInfo) | Returns an object with information about the currently running game (or active games, if more than one), or null if no game is running. |
 | [overwolf.games.getRunningGameInfo2](./Functions/overwolf.games.getRunningGameInfo2) | Returns an object with information about the currently running game (or active games, if more than one), or null if no game is running. |
-| [inputtracking](./inputtracking/Overview) | - |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.games.GameInfo](./Interfaces/overwolf.games.GameInfo) | Raw game configuration entry from the Overwolf game database. Contains static metadata and internal overlay compatibility flags for a specific game. Most fields are low-level flags used by the Overwolf injection engine. |
 | [overwolf.games.GameInfoUpdate](./Interfaces/overwolf.games.GameInfoUpdate) | Describes what changed in a game info update. |
 | [overwolf.games.GameInfoUpdatedEvent](./Interfaces/overwolf.games.GameInfoUpdatedEvent) | Payload of the `onGameInfoUpdated` event. Fired whenever game state changes, such as launch, termination, focus, resolution, or overlay state. |
@@ -37,9 +48,21 @@ Use this API to retrieve information about games running on the user's machine, 
 | [overwolf.games.MajorFrameRateChangeEvent](./Interfaces/overwolf.games.MajorFrameRateChangeEvent) | Payload of the `onMajorFrameRateChange` event. Fired when the game's FPS changes significantly relative to its stable threshold. |
 | [overwolf.games.OverlayInfo](./Interfaces/overwolf.games.OverlayInfo) | Describes the current state of the Overwolf overlay for a running game. |
 | [overwolf.games.RunningGameInfo](./Interfaces/overwolf.games.RunningGameInfo) | Information about a game that is currently running. Returned by `getRunningGameInfo` and included in events such as `onGameLaunched`. |
-| [launchers](./launchers/Overview) | Use this API to detect and monitor game launchers (e.g., Battle.net, Epic Games Launcher) running on the user's machine, including focus changes and launch events. |
-| [tracked](./tracked/Overview) | Use this API to monitor unsupported or overlay-disabled games running on the user's machine, including launch and termination events. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.games.onFpsInfoReady](./Variables/overwolf.games.onFpsInfoReady) | Fired when fps information is ready with a JSON containing the information. |
 | [overwolf.games.onGameInfoUpdated](./Variables/overwolf.games.onGameInfoUpdated) | Fired when the game info is updated, including game name, game running, game terminated, game changing focus, etc. |
 | [overwolf.games.onGameLaunched](./Variables/overwolf.games.onGameLaunched) | Fired when a game is launched. |
 | [overwolf.games.onMajorFrameRateChange](./Variables/overwolf.games.onMajorFrameRateChange) | Fired when the rendering frame rate of the currently injected game changes dramatically. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.games.enums.GameInfoChangeReason](./enums/overwolf.games.enums.GameInfoChangeReason) | Describes the reason a `GameInfoUpdatedEvent` was fired. |
+| [overwolf.games.enums.GameInfoType](./enums/overwolf.games.enums.GameInfoType) | Indicates whether the game entry represents a game executable or a launcher. |
+| [overwolf.games.enums.KnownOverlayCoexistenceApps](./enums/overwolf.games.enums.KnownOverlayCoexistenceApps) | Third-party applications known to coexist with the Overwolf overlay, which may cause rendering or input conflicts. |
+

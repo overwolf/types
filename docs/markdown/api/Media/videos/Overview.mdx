@@ -10,17 +10,35 @@ toc_max_heading_level: 6
 
 Use this API to create video compositions, retrieve videos created by the current app, and manage their storage.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.media.videos.enums.WatermarkLocation](./enums/overwolf.media.videos.enums.WatermarkLocation) | The position on screen where a watermark image is rendered. |
 | [overwolf.media.videos.createVideoComposition](./Functions/overwolf.media.videos.createVideoComposition) | Creates a compilation video out of a source video and a list of segments. |
 | [overwolf.media.videos.createVideoCompositionFiles](./Functions/overwolf.media.videos.createVideoCompositionFiles) | Creates a compilation video out of a source video and a list of segments. |
 | [overwolf.media.videos.deleteOldVideos](./Functions/overwolf.media.videos.deleteOldVideos) | Deletes all videos created by this app with an option to keep the newest X GBs (use with care). |
 | [overwolf.media.videos.deleteVideo](./Functions/overwolf.media.videos.deleteVideo) | Deletes a specific video created by this app. |
 | [overwolf.media.videos.getVideos](./Functions/overwolf.media.videos.getVideos) | Gets a list of all of the videos created by this app. |
 | [overwolf.media.videos.getVideosSize](./Functions/overwolf.media.videos.getVideosSize) | Returns the total size of the video files created by this app in gigabytes. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.media.videos.GetVideosResult](./Interfaces/overwolf.media.videos.GetVideosResult) | Result of `getVideos`, containing a list of video URLs created by this app. |
 | [overwolf.media.videos.GetVideosSizeResult](./Interfaces/overwolf.media.videos.GetVideosSizeResult) | Result of `getVideosSize`, reporting the total disk usage of this app's videos. |
 | [overwolf.media.videos.VideoCompositionSegment](./Interfaces/overwolf.media.videos.VideoCompositionSegment) | A time range within a video, used to specify segments for composition. |
 | [overwolf.media.videos.WatermarkParams](./Interfaces/overwolf.media.videos.WatermarkParams) | A helper structure to describe watermark parameters. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.media.videos.onScreenshotTaken](./Variables/overwolf.media.videos.onScreenshotTaken) | Fired when a screenshot was taken. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.media.videos.enums.WatermarkLocation](./enums/overwolf.media.videos.enums.WatermarkLocation) | The position on screen where a watermark image is rendered. |
+

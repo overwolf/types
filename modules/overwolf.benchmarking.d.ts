@@ -75,5 +75,3 @@ declare namespace overwolf.benchmarking {
    * information.
    */
   const onProcessInfoReady: Event<any>;
-
-}

@@ -27,4 +27,11 @@ declare namespace overwolf.games.tracked {
     success: boolean;
   }
 
+  /**
+   * Returns an array of all the currently running unsupported / overlay disabled games.
+   * @param callback Called with the array of game infos.
+   */
+  function getAnyRunningGamesInfo(
+    callback: CallbackFunction<GetAnyRunningGamesInfoResult>
+  ): void;
 }

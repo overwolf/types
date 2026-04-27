@@ -1,8 +1,13 @@
+
 declare namespace overwolf {
+  /** The currently installed Overwolf client version string. */
   const version: string;
 
+  /** Possible status values returned by Overwolf API callbacks. */
   enum ResultStatusTypes {
+    /** The operation completed successfully. */
     Success = "success",
+    /** The operation failed. */
     Error = "error",
   }
 
@@ -24,7 +29,9 @@ declare namespace overwolf {
      * @param callback The callback function to call when the event occurs.
      */
     addListener(callback: (event: T) => void): void;
-    /**
+
+
+/**
      * Unregister a listener to an event.
      * @param callback The callback should be the same function that was passed
      * to addListener(). If an anonymous function was passed, it cannot be
@@ -43,114 +50,193 @@ declare namespace overwolf {
 }
 
 declare namespace overwolf.io {
-  namespace enums {
-    const enum eEncoding {
-      UTF8 = "UTF8",
-      UTF8BOM = "UTF8BOM",
-      Unicode = "Unicode",
-      UnicodeBOM = "UnicodeBOM",
-      ASCII = "ASCII",
+  
+      /**
+     * A collection of constant enumerations used across the application
+     * for data encoding and system events.
+     */
+    namespace enums {
+
+      /**
+       * Represents the primary character encoding formats supported.
+       */
+      export const enum eEncoding {
+        /** 8-bit UCS Transformation Format. */
+        UTF8 = "UTF8",
+        /** UTF-8 with a Byte Order Mark. */
+        UTF8BOM = "UTF8BOM",
+        /** Standard Unicode encoding (usually UTF-16). */
+        Unicode = "Unicode",
+        /** Unicode with a Byte Order Mark. */
+        UnicodeBOM = "UnicodeBOM",
+        /** 7-bit American Standard Code for Information Interchange. */
+        ASCII = "ASCII",
+      }
+
+      /**
+       * Extended encoding options for file and stream operations.
+       */
+      export const enum encoding {
+        /** The system default encoding. */
+        Default = "Default",
+        /** 8-bit UCS Transformation Format. */
+        UTF8 = "UTF8",
+        /** 32-bit UCS Transformation Format. */
+        UTF32 = "UTF32",
+        /** Standard Unicode encoding. */
+        Unicode = "Unicode",
+        /** 7-bit UCS Transformation Format (Legacy). */
+        UTF7 = "UTF7",
+        /** 7-bit ASCII encoding. */
+        ASCII = "ASCII",
+        /** Big-endian byte order Unicode encoding. */
+        BigEndianUnicode = "BigEndianUnicode",
+      }
+
+      /**
+       * Describes the type of file system or watcher event that occurred.
+       */
+      export const enum WatchEventType {
+        /** The watcher has been successfully registered. */
+        Registered = "Registered",
+        /** The target resource has been modified. */
+        Changed = "Changed",
+        /** The target resource has been moved or renamed. */
+        Renamed = "Renamed",
+        /** The target resource has been removed. */
+        Deleted = "Deleted"
+      }
     }
 
-    const enum encoding {
-      Default = "Default",
-      UTF8 = "UTF8",
-      UTF32 = "UTF32",
-      Unicode = "Unicode",
-      UTF7 = "UTF7",
-      ASCII = "ASCII",
-      BigEndianUnicode = "BigEndianUnicode",
-    }
-
-    const enum WatchEventType {
-      Registered = "Registered",
-      Changed = "Changged",
-      Renamed = "Renamed",
-      Deleted = "Deleted"
-    }
-  }
-
+  /**
+   * Well-known folder paths resolved at runtime for the current Windows environment.
+   */
   namespace paths {
+    /** The path to the `Program Files` directory (e.g. `C:\Program Files`). */
     const programFiles: string;
+    /** The path to the 32-bit `Program Files` directory (e.g. `C:\Program Files (x86)`). */
     const programFilesX86: string;
+    /** The path to the common program files directory. */
     const commonFiles: string;
+    /** The path to the 32-bit common program files directory. */
     const commonFilesX86: string;
+    /** The path to the common application data directory (e.g. `C:\ProgramData`). */
     const commonAppData: string;
+    /** The path to the current user's Desktop folder. */
     const desktop: string;
+    /** The path to the Windows installation directory (e.g. `C:\Windows`). */
     const windows: string;
+    /** The path to the System32 directory. */
     const system: string;
+    /** The path to the 32-bit SysWOW64 (or System32) directory. */
     const systemX86: string;
+    /** The path to the current user's Documents folder. */
     const documents: string;
+    /** The path to the current user's Videos folder. */
     const videos: string;
+    /** The path to the current user's Pictures folder. */
     const pictures: string;
+    /** The path to the current user's Music folder. */
     const music: string;
+    /** The path to the shared (all-users) Documents folder. */
     const commonDocuments: string;
+    /** The path to the current user's Favorites folder. */
     const favorites: string;
+    /** The path to the Windows Fonts directory. */
     const fonts: string;
+    /** The path to the current user's Start Menu folder. */
     const startMenu: string;
+    /** The path to the current user's local application data directory (e.g. `%LOCALAPPDATA%`). */
     const localAppData: string;
+    /** The path to the Overwolf installation directory. */
     const overwolfInstallation: string;
+    /** The path to the versioned Overwolf installation directory (includes the current version number). */
     const overwolfInstallationWithVersion: string;
+    /** The path to the OBS binary directory used by Overwolf. */
     const obsBin: string;
   }
 
   interface ReadFileOptions {
+    /** The character encoding to use when reading the file. */
     encoding: enums.eEncoding;
+    /** The maximum number of bytes to read from the file. Pass `0` to read the entire file. */
     maxBytesToRead: number;
+    /** The byte offset within the file at which to begin reading. */
     offset: number;
   }
 
   interface ListenFileOptions {
+    /** When `true`, starts reading from the end of the file, skipping any content already present. */
     skipToEnd: boolean;
+    /** The character encoding to use when reading file lines. Defaults to UTF-8 if omitted. */
     encoding?: enums.eEncoding;
   }
 
   interface FileExistsResult extends Result {
+    /** `true` if the file was found at the given path, `false` otherwise. */
     found?: boolean;
   }
 
   interface ExistsResult extends Result {
+    /** `true` if the path exists on the filesystem, `false` otherwise. */
     exist?: boolean;
   }
 
   interface ReadFileContentsResult extends Result {
+    /** `"success"` if the file was read successfully, otherwise an error status string. */
     status: string;
+    /** The full text content of the file, if the read succeeded. */
     content?: string;
   }
 
   interface DirResult extends Result {
+    /** The list of files and sub-directories found at the queried path. */
     data?: FileInDir[];
   }
 
   interface FileInDir {
+    /** The name of the file or directory entry (not a full path). */
     name: string;
+    /** Whether this entry is a directory (`"dir"`) or a file (`"file"`). */
     type: 'dir' | 'file';
   }
 
   interface ReadBinaryFileResult extends Result {
+    /** The raw binary content of the file as an `ArrayBuffer`, or `null` if the read failed. */
     content: ArrayBuffer | null;
+    /** The total number of bytes read from the file. */
     length: number;
   }
 
   interface ReadTextFileResult extends Result {
+    /** The decoded text content of the file. */
     content?: string;
+    /** Metadata about the read operation, including position and EOF status. */
     info?: FileInfo;
   }
 
   interface ListenOnFileResult extends Result {
+    /** The most recently read line of text from the file being streamed. */
     content?: string;
   }
 
   interface WatchedFileChanged extends Result {
+    /** The type of file system event that triggered this notification. */
     eventType?: enums.WatchEventType,
+    /** The absolute path of the file or directory that was affected. */
     path?: string,
+    /** The new absolute path of the file or directory, populated only when `eventType` is `Renamed`. */
     newPath?: string
   }
 
   interface FileInfo {
+    /** `true` if the end of the file has been reached. */
     eof: boolean;
+    /** The total number of bytes read so far. */
     totalRead: number;
+    /** The current byte position within the file. */
     position: number;
+    /** The total number of lines read so far. */
     totalLines: number;
   }
 
@@ -269,7 +355,8 @@ declare namespace overwolf.io {
     callback: CallbackFunction<ListenOnFileResult>
   ): void;
 
-  /**
+
+/**
    * Stop listening on file.
    * Stop streaming a file that you previously passed when calling listenOnFile().
    * There are no callbacks - as this will never fail (even if the stream doesn't exist).
@@ -277,11 +364,22 @@ declare namespace overwolf.io {
    */
   function stopFileListener(id: string): void;
 
+  /**
+   * Starts watching a file for changes and fires a callback whenever the file
+   * is created, modified, renamed, or deleted.
+   * @param filePath The absolute path of the file to watch.
+   * @param callback Called each time a file system event is detected on the watched file.
+   */
   function watchFile(
     filePath: string,
     callback: CallbackFunction<WatchedFileChanged>
   ): void;
 
+  /**
+   * Stops watching a file that was previously registered with `watchFile`.
+   * @param path The absolute path of the file to stop watching.
+   * @param callback Called with the result of the operation.
+   */
   function stopWatchingFile(
     path: string,
     callback: CallbackFunction<Result>
@@ -290,10 +388,12 @@ declare namespace overwolf.io {
 
 declare namespace overwolf.cryptography {
   interface EncryptedDataResult extends Result {
+    /** The encrypted ciphertext string produced by `encryptForCurrentUser`. */
     ciphertext: string;
   }
 
   interface DecryptedDataResult extends Result {
+    /** The decrypted plaintext string produced by `decryptForCurrentUser`. */
     plaintext: string;
   }
 
@@ -307,7 +407,8 @@ declare namespace overwolf.cryptography {
     callback: CallbackFunction<EncryptedDataResult>
   ): void;
 
-  /**
+  
+/**
    * Decrypt provided ciphertext for current system user
    * @param ciphertext Text to decrypt
    * @param callback Will be called with decrypted plaintext
@@ -328,57 +429,88 @@ declare namespace overwolf.media {
       Image = "Image",
     }
 
+    /** The source type for a video capture input. */
     const enum eSourceType {
+      /** A webcam device. */
       Webcam = "Webcam"
     }
 
+    /** The transform mode applied to a video source within the capture frame. */
     const enum eVideoSourceTransform {
+      /** Stretch the video source to fill the capture frame. */
       Stretch = "Stretch"
     }
   }
 
+  /** Parameters for rescaling an image or capture frame. */
   interface RescaleParams {
+    /** The target width in pixels. */
     width: number;
+    /** The target height in pixels. */
     height: number;
   }
 
+  /** Parameters for cropping an image or capture frame. */
   interface CropParams {
+    /** The horizontal offset of the crop region in pixels. */
     x: number;
+    /** The vertical offset of the crop region in pixels. */
     y: number;
+    /** The width of the crop region in pixels. */
     width: number;
+    /** The height of the crop region in pixels. */
     height: number;
   }
 
+  /** Parameters for taking an in-memory screenshot. */
   interface MemoryScreenshotParams {
+    /** Whether to round dimensions away from zero when rescaling. */
     roundAwayFromZero?: boolean;
+    /** Optional rescale dimensions to apply to the screenshot. */
     rescale?: RescaleParams;
+    /** Optional crop region to apply to the screenshot. */
     crop?: CropParams;
   }
 
+  /** Result of a screenshot or file operation, containing the file location. */
   interface FileResult extends Result {
+    /** The URL pointing to the captured file. */
     url?: string;
+    /** The local file system path of the captured file. */
     path?: string;
   }
 
+  /** Result of a `getAppVideoCaptureFolderSize` call. */
   interface GetAppVideoCaptureFolderSizeResult extends Result {
+    /** The total size of all video files in the app's video capture folder, in megabytes. */
     totalVideosSizeMB?: number;
   }
 
+  /** Result of a `getAppScreenCaptureFolderSize` call. */
   interface GetAppScreenCaptureFolderSizeResult extends Result {
+    /** The total size of all files in the app's screen capture folder, in megabytes. */
     screenCaptureSizeMB?: number;
   }
 
+  /** Event data for a screenshot that has been saved to disk. */
   interface ScreenshotTakenEvent {
+    /** The URL pointing to the saved screenshot file. */
     url: string;
   }
 
+  /** Represents a connected webcam device. */
   interface Webcam {
+    /** The human-readable name of the webcam device. */
     name: string;
+    /** The device path of the webcam. */
     path: string;
+    /** The unique identifier of the webcam device. */
     id: string;
   }
 
+  /** Result of a `GetWebcams` call. */
   interface GetWebcamsResult extends Result {
+    /** The list of connected webcam devices, if the request was successful. */
     webCams?: Webcam[];
   }
 
@@ -516,7 +648,7 @@ declare namespace overwolf.media {
   ): void;
 
   /**
-   * Similar to |getAppVideoCaptureFolderSize| but looks at the apps screen
+   * Similar to `getAppVideoCaptureFolderSize` but looks at the apps screen
    * capture folder.
    * @param callback A callback with the size in MB.
    */
@@ -529,7 +661,7 @@ declare namespace overwolf.media {
    */
   const onMediaEvent: Event<any>;
 
-  /**
+/**
    * Fired when a screenshot was taken.
    */
   const onScreenshotTaken: Event<ScreenshotTakenEvent>;
@@ -537,20 +669,34 @@ declare namespace overwolf.media {
 
 declare namespace overwolf.media.videos {
   namespace enums {
+    /** The position on screen where a watermark image is rendered. */
     const enum WatermarkLocation {
+      /** Bottom-center of the video frame. */
       BottomCenter = "BottomCenter",
+      /** Bottom-left corner of the video frame. */
       BottomLeft = "BottomLeft",
+      /** Bottom-right corner of the video frame. */
       BottomRight = "BottomRight",
+      /** Centered on the video frame. */
       Center = "Center",
+      /** Middle of the left edge of the video frame. */
       MidLeft = "MidLeft",
+      /** Middle of the right edge of the video frame. */
       MidRight = "MidRight",
+      /** Top-center of the video frame. */
       TopCenter = "TopCenter",
+      /** Top-left corner of the video frame. */
       TopLeft = "TopLeft",
+      /** Top-right corner of the video frame. */
       TopRight = "TopRight",
     }
   }
+
+  /** A time range within a video, used to specify segments for composition. */
   interface VideoCompositionSegment {
+    /** The start time of the segment in milliseconds. */
     startTime: number;
+    /** The end time of the segment in milliseconds. */
     endTime: number;
   }
 
@@ -569,11 +715,15 @@ declare namespace overwolf.media.videos {
     scaleHeight?: number;
   }
 
+  /** Result of `getVideos`, containing a list of video URLs created by this app. */
   interface GetVideosResult extends Result {
+    /** An array of `overwolf://media` URLs for each video. */
     videos?: string[];
   }
 
+  /** Result of `getVideosSize`, reporting the total disk usage of this app's videos. */
   interface GetVideosSizeResult extends Result {
+    /** The total size of all videos in gigabytes. */
     totalSizeGbs?: number;
   }
 
@@ -651,7 +801,7 @@ declare namespace overwolf.media.videos {
     callback: CallbackFunction<Result>
   ): void;
 
-  /**
+/**
    * Adds a video/image watermark to a video.
    * @param sourceVideoUrl The url of the source video in an overwolf://media form.
    * @param watermarkUrl The url of the watermark video/image in an overwolf://media form.
@@ -670,12 +820,16 @@ declare namespace overwolf.media.videos {
 
 declare namespace overwolf.media.replays {
   namespace enums {
+    /** The type of replay media to capture. */
     const enum ReplayType {
+      /** Video replay. */
       Video = "Video"
     }
   }
 
+  /** Parameters for a webcam video source. */
   interface WebCamParam {
+    /** The device identifier of the webcam. */
     device_id: string;
   }
 
@@ -683,12 +837,18 @@ declare namespace overwolf.media.replays {
    * Defines the video source settings.
    */
   interface VideoSource {
+    /** The type of video source. */
     source_type: overwolf.media.enums.eSourceType;
+    /** Display name of the source. */
     name: string;
     secondary_file: boolean; // Source will be saved to a secondary video file (i.e another ow-obs.exe process will be created with the same settings as the original one.
+    /** Transform applied to the video source. */
     transform: overwolf.media.enums.eVideoSourceTransform;
+    /** Source-specific parameters (e.g. webcam device info). */
     parameters: overwolf.media.replays.WebCamParam;
+    /** Position of the source in the output frame. */
     position: { x: number, y: number }
+    /** Scale factor applied to the source size. */
     size_scale: { x: number, y: number }
   }
 
@@ -717,96 +877,164 @@ declare namespace overwolf.media.replays {
     requiredHighlights: string[];
   }
 
+  /** Result returned when turning off replay capture. */
   interface TurnOffResult extends Result {
+    /** Human-readable description of the result. */
     description?: string;
+    /** Additional metadata about the operation. */
     metadata?: string;
+    /** OS version string. */
     osVersion?: string;
+    /** OS build string. */
     osBuild?: string;
   }
 
+  /** Result returned when turning on replay capture. */
   interface TurnOnResult extends Result {
+    /** Human-readable description of the result. */
     description?: string;
+    /** Additional metadata about the operation. */
     metadata?: string;
+    /** Path to the folder where media files will be saved. */
     mediaFolder?: string;
+    /** OS version string. */
     osVersion?: string;
+    /** OS build string. */
     osBuild?: string;
   }
 
+  /** Result returned when querying supported highlight features for a game. */
   interface GetHighlightsFeaturesResult extends Result {
+    /** Array of supported highlight feature identifiers for the game. */
     features?: string[];
   }
 
+  /** Result returned when querying the current replay capture state. */
   interface GetStateResult extends Result {
+    /** Whether replay capture is currently active. */
     isOn?: boolean;
   }
 
+  /** Result returned when a replay clip has been saved. */
   interface ReplayResult extends Result {
+    /** Overwolf media URL to the saved replay video. */
     url?: string;
+    /** File system path to the saved replay video. */
     path?: string;
+    /** URL-encoded file system path to the saved replay video. */
     encodedPath?: string;
+    /** Duration of the replay clip in milliseconds. */
     duration?: number;
+    /** Overwolf media URL to the replay thumbnail image. */
     thumbnail_url?: string;
+    /** File system path to the replay thumbnail image. */
     thumbnail_path?: string;
+    /** URL-encoded file system path to the replay thumbnail image. */
     thumbnail_encoded_path?: string;
+    /** Unix timestamp (ms) of when the clip starts within the recording session. */
     start_time?: number;
   }
 
+  /** Result returned when starting a replay capture session. */
   interface StartReplayResult extends streaming.StartCaptureResult {
     status: string // backwards compatibility
+    /** Human-readable description of the result. */
     description: string;
+    /** Additional metadata about the capture session. */
     metadata: string;
+    /** Path to the folder where media files are being saved. */
     mediaFolder: string;
+    /** OS version string. */
     osVersion: string;
+    /** OS build string. */
     osBuild: string;
+    /** Whether the capture is sourced from the game window directly. */
     isGameWindowCapture: boolean;
   }
 
+  /** Event data for a capture error. */
   interface CaptureErrorEvent {
+    /** Status string of the capture at the time of error. */
     status: string;
+    /** Identifier of the stream that encountered the error. */
     stream_id: number;
+    /** Error description string. */
     error: string;
   }
 
+  /** Event data fired when replay capture stops. */
   interface CaptureStoppedEvent {
+    /** Status string at the time capture stopped. */
     status: string;
+    /** Reason the capture was stopped. */
     reason: string;
+    /** Additional metadata about the stopped capture. */
     metaData: string;
+    /** OS version string. */
     osVersion: string;
+    /** OS build string. */
     osBuild: string;
   }
 
+  /** Event data for a capture warning. */
   interface CaptureWarningEvent {
+    /** Warning identifier or code. */
     warning: string;
+    /** Reason for the warning. */
     reason: string;
   }
 
+  /** Event data fired when the replay service is started by any app. */
   interface ReplayServicesStartedEvent {
+    /** Array of extension IDs that have started the replay service. */
     extensions: string[];
+    /** Whether the replay service is capturing via game window capture. */
     is_game_window_capture?: boolean;
   }
 
+  /** Event data fired when an auto-highlight clip is captured. */
   interface HighlightsCapturedEvent {
+    /** The game ID for which the highlight was captured. */
     game_id: number;
+    /** Identifier of the match. */
     match_id: string;
+    /** Internal identifier of the match. */
     match_internal_id: string;
+    /** Identifier of the current session. */
     session_id: string;
+    /** Unix timestamp (ms) when the session started. */
     session_start_time: number;
+    /** Unix timestamp (ms) when the match started. */
     match_start_time: number;
+    /** Unix timestamp (ms) when the highlight clip starts. */
     start_time: number;
+    /** Duration of the highlight clip in milliseconds. */
     duration: number;
+    /** Array of event type strings that triggered this highlight. */
     events: string[];
+    /** Array of raw event objects with type and timing. */
     raw_events: raw_events[];
+    /** Overwolf media URL to the highlight video. */
     media_url: string;
+    /** File system path to the highlight video. */
     media_path: string;
+    /** URL-encoded file system path to the highlight video. */
     media_path_encoded: string;
+    /** Overwolf media URL to the highlight thumbnail. */
     thumbnail_url: string;
+    /** File system path to the highlight thumbnail. */
     thumbnail_path: string;
+    /** URL-encoded file system path to the highlight thumbnail. */
     thumbnail_encoded_path: string;
+    /** Unix timestamp (ms) of the start of the replay video containing this highlight. */
     replay_video_start_time: number;
   }
 
+  /** A raw game event with its type and timestamp. */
   interface raw_events {
+    /** Event type identifier. */
     type: string;
+    /** Timestamp of the event in milliseconds relative to the session start. */
     time: number;
   }
 
@@ -1005,7 +1233,7 @@ declare namespace overwolf.media.replays {
    */
   const onReplayServicesStarted: Event<ReplayServicesStartedEvent>;
 
-  /**
+/**
    * Fired when a new Replay highlight recorded (when highlightsSetting is enabled).
    */
   const onHighlightsCaptured: Event<HighlightsCapturedEvent>;
@@ -1013,26 +1241,40 @@ declare namespace overwolf.media.replays {
 
 declare namespace overwolf.notifications {
   namespace enums {
+    /** Controls how the app logo is cropped inside the toast notification. */
     const enum AppLogoCrop {
+      /** Use the platform default cropping. */
       Default = "Default",
+      /** Display the logo without any cropping. */
       None = "None",
+      /** Crop the logo into a circle. */
       Circle = "Circle",
     }
 
+    /** The type of interaction event fired from a toast notification. */
     const enum ToatsEventType {
+      /** The user dismissed the toast. */
       Dismiss = "dismiss",
+      /** The user clicked one of the toast's action buttons. */
       ButtonClick = "buttonClick",
+      /** An error occurred while displaying the toast. */
       Error = "error",
     }
 
+    /** Error codes reported when a toast notification fails. */
     const enum ToastEventError {
+      /** An unspecified error occurred. */
       Unknown = "unknown",
+      /** The user or system has disabled notifications. */
       NotificationsDisabled = "notificationsDisabled ",
+      /** A general error occurred. */
       Error = "error"
     }
   }
 
+  /** Parameters used to construct and display a toast notification. */
   interface ToastNotificationParams {
+    /** Optional header text displayed at the top of the toast. */
     header?: string;
     /**
      * Mandatory. Must include 1-3 texts (lines).
@@ -1060,25 +1302,39 @@ declare namespace overwolf.notifications {
     buttons?: ToastNotificationButton[];
   }
 
+  /** An image used to override the default app logo in a toast notification. */
   interface LogoOverride {
+    /** URL of the replacement logo image. */
     url: string;
+    /** How the logo image should be cropped. */
     cropType: enums.AppLogoCrop;
   }
 
+  /** A clickable action button displayed inside a toast notification. */
   interface ToastNotificationButton {
+    /** Unique identifier for this button, returned in the interaction event. */
     id: string;
+    /** Label text displayed on the button. */
     text: string;
   }
 
+  /** Result of a `showToastNotification` call. */
   interface ShowToastNotificationResult extends Result {
+    /** The unique identifier assigned to the displayed toast notification. */
     id: string;
   }
 
+  /** Event data fired when a user interacts with a toast notification. */
   interface ToastNotificationEvent {
+    /** The identifier of the toast notification that was interacted with. */
     id: string;
+    /** The type of interaction that occurred. */
     eventType: enums.ToatsEventType;
+    /** The ID of the button clicked, if the event type is `buttonClick`. */
     buttonID: string;
+    /** Human-readable error message, if the event type is `error`. */
     error: string;
+    /** Error code, if the event type is `error`. */
     errorCode: enums.ToastEventError;
   }
 
@@ -1087,7 +1343,7 @@ declare namespace overwolf.notifications {
    */
   const onToastInteraction: Event<ToastNotificationEvent>;
 
-  /**
+/**
   * Show Windows toast notification.
   * @param args  Toast notification params
   * @param callback A function called with the current user, or an error.
@@ -1100,35 +1356,59 @@ declare namespace overwolf.notifications {
 }
 
 declare namespace overwolf.profile {
+  /** Represents the current connection state of the Overwolf client to its services. */
   const enum ConnectionState {
+    /** The connection state is not known. */
     Unknown = "Unknown",
+    /** The client is not connected. */
     Offline = "Offline",
+    /** The client is in the process of connecting. */
     Connecting = "Connecting",
+    /** The client is connected. */
     Online = "Online",
+    /** The client is in the process of disconnecting. */
     Disconnecting = "Disconnecting",
   }
 
+  /** Result of a `getCurrentUser` or `refreshUserProfile` call. */
   interface GetCurrentUserResult extends Result {
+    /** URL of the user's avatar image. */
     avatar?: string;
+    /** The channel the user is associated with. */
     channel?: string;
+    /** Unique identifier for the user's machine. */
     machineId?: string;
+    /** The partner ID associated with the user's account. */
     partnerId?: number;
+    /** The user's Overwolf user ID. */
     userId?: string;
+    /** The user's Overwolf username. */
     username?: string;
+    /** Additional parameters associated with the user's account. */
     parameters?: Dictionary<string>;
+    /** Parameters passed at install time, if any. */
     installParams?: any;
+    /** The extension that triggered this install, if any. */
     installerExtension?: any;
+    /** The user's display name. */
     displayName?: string;
+    /** A universally unique identifier for this user session. */
     uuid?: string;
   }
 
+  /** Event data fired when the user's login state changes. */
   interface LoginStateChangedEvent {
+    /** The new login status string. */
     status: string;
+    /** The new connection state of the Overwolf client. */
     connectionState: ConnectionState;
+    /** The username of the user whose state changed. */
     username: string;
   }
 
+  /** Result of a `generateUserSessionToken` call. */
   interface GenerateUserSessionTokenResult extends Result {
+    /** The generated session token string. */
     token: string;
   }
 
@@ -1153,24 +1433,34 @@ declare namespace overwolf.profile {
     callback: CallbackFunction<GetCurrentUserResult>
   ): void;
 
+  /** Generates a short-lived session token for the currently logged-in user.
+   * @param callback A function called with the generated token, or an error.
+   */
   function generateUserSessionToken(
     callback: CallbackFunction<GenerateUserSessionTokenResult>
   ): void;
 
+  /** Performs an Overwolf session login using a previously obtained token.
+   * @param token The session token to authenticate with.
+   * @param callback A function called with the result of the login attempt.
+   */
   function performOverwolfSessionLogin(
     token: string,
     callback: CallbackFunction<Result>
   ): void
 
-  /**
+/**
    * Fired when a user logged in or logged out.
    */
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
 }
 
 declare namespace overwolf.profile.subscriptions.inapp {
+  /** The color theme to apply to the in-app subscription modal. */
   const enum Theme {
+    /** Light color theme. */
     Light = "Light",
+    /** Dark color theme. */
     Dark = "Dark",
   }
   /**
@@ -1197,7 +1487,7 @@ declare namespace overwolf.profile.subscriptions.inapp {
    */
   const onInAppSubModalOpened: Event<any>;
 
-  /**
+/**
   * Fired when a subscription in-app modal window is closed.
   */
   const onInAppSubModalClosed: Event<any>;
@@ -1206,55 +1496,88 @@ declare namespace overwolf.profile.subscriptions.inapp {
 
 declare namespace overwolf.profile.subscriptions {
   namespace enums {
+    /** The current state of a subscription. */
     const enum SubscriptionState {
+      /** The subscription is active and in good standing. */
       Active = "active",
+      /** The subscription has been cancelled but may still be within its paid period. */
       Cancelled = "cancelled",
+      /** The subscription has been revoked and is no longer valid. */
       Revoked = "revoked",
     }
   }
 
+  /** Descriptive information about a subscription plan. */
   interface Info {
+    /** The display title of the plan. */
     title: string;
+    /** A brief description of what the plan includes. */
     description: string;
+    /** The billing period length in months. */
     periodMonths: number;
+    /** The price of the plan. */
     price: number;
   }
 
+  /** Represents a single user subscription record. */
   interface Subscription {
+    /** The unique subscription record ID. */
     id: number;
+    /** The plan ID associated with this subscription. */
     pid: number;
+    /** The user ID of the subscriber. */
     uid: string;
+    /** The extension ID this subscription belongs to. */
     extid: string;
+    /** The machine user ID. */
     muid: string;
+    /** The Unix timestamp (in seconds) when this subscription expires. */
     exp: number;
+    /** Grace period count for this subscription. */
     grc: number;
+    /** The current state of the subscription. */
     state: overwolf.profile.subscriptions.enums.SubscriptionState;
+    /** Detailed information about the subscribed plan. */
     planInfo: Info;
+    /** Whether the subscription has already expired. */
     expired: boolean;
   }
 
+  /** Result of a `getActivePlans` call. */
   interface GetActivePlansResult extends Result {
+    /** Array of active plan IDs for the calling extension. */
     plans?: number[];
   }
 
+  /** Result of a `getDetailedActivePlans` call. */
   interface GetDetailedActivePlansResult extends Result {
+    /** Array of detailed active plan objects for the calling extension. */
     plans?: Plan[];
   }
 
+  /** Detailed information about a single active subscription plan. */
   interface Plan {
+    /** The unique plan ID. */
     planId: number;
+    /** The current state of this plan. */
     state: overwolf.profile.subscriptions.enums.SubscriptionState;
+    /** The Unix timestamp (in seconds) when this plan expires. */
     expiryDate: number;
+    /** The display title of the plan. */
     title: string;
+    /** A brief description of the plan. */
     description: string;
+    /** The price of the plan. */
     price: number;
+    /** The billing period length in months. */
     periodMonths: number;
   }
 
+  /** Event data fired when the user's active subscriptions change. */
   interface SubscriptionChangedEvent {
+    /** The updated list of active plan IDs, if available. */
     plans?: number[];
   }
-
 
   /**
    * Returns active subscriptions for the calling extension via callback.
@@ -1273,178 +1596,291 @@ declare namespace overwolf.profile.subscriptions {
   ): void;
 
   /**
-   * Fired when current extension subscription has changed.
+   * Fired when the subscription state for the calling extension changes
+   * (e.g. a plan is activated, cancelled, or revoked).
    */
   const onSubscriptionChanged: Event<SubscriptionChangedEvent>;
+
 }
 
 declare namespace overwolf.windows {
   namespace enums {
+    /** Visual and input-handling styles that can be applied to a window. */
     const enum WindowStyle {
+      /** Mouse and keyboard input passes through the window to the game below. */
       InputPassThrough = "InputPassThrough",
+      /** The window is rendered below all other Overwolf windows. */
       BottomMost = "BottomMost"
     }
 
+    /** The edge or corner from which a window drag-resize operation originates. */
     const enum WindowDragEdge {
+      /** No edge — drag-resize is disabled. */
       None = "None",
+      /** Resize from the left edge. */
       Left = "Left",
+      /** Resize from the right edge. */
       Right = "Right",
+      /** Resize from the top edge. */
       Top = "Top",
+      /** Resize from the bottom edge. */
       Bottom = "Bottom",
+      /** Resize from the top-left corner. */
       TopLeft = "TopLeft",
+      /** Resize from the top-right corner. */
       TopRight = "TopRight",
+      /** Resize from the bottom-left corner. */
       BottomLeft = "BottomLeft",
+      /** Resize from the bottom-right corner. */
       BottomRight = "BottomRight",
     }
 
+    /** The icon displayed in a message prompt dialog. */
     const enum MessagePromptIcon {
+      /** No icon is shown. */
       None = "None",
+      /** A question mark icon is shown. */
       QuestionMark = "QuestionMark",
+      /** An exclamation mark icon is shown. */
       ExclamationMark = "ExclamationMark",
     }
 
+    /** Controls the taskbar flash behavior for a window. */
     const enum FlashBehavior {
+      /** Flash behavior is determined automatically by the system. */
       automatic = "automatic",
+      /** The window flashes continuously. */
       on = "on",
+      /** The window does not flash. */
       off = "off",
     }
 
+    /** The possible display states of an Overwolf window. */
     const enum WindowStateEx {
+      /** The window is closed and no longer exists. */
       closed = "closed",
+      /** The window exists but is not visible. */
       hidden = "hidden",
+      /** The window occupies the full screen. */
       maximized = "maximized",
+      /** The window is minimized to the taskbar. */
       minimized = "minimized",
+      /** The window is visible at its normal size. */
       normal = "normal"
     }
 
+    /** The rendering context type of a window. */
     const enum WindowType {
+      /** A standard desktop-rendered window. */
       Desktop = "Desktop",
+      /** A hidden background/controller window with no visible surface. */
       Background = "Background",
+      /** An off-screen rendered window. */
       OffScreen = " OffScreen"
     }
   }
 
-
+  /** Describes a currently known Overwolf window and its current state. */
   interface WindowInfo {
+    /** The name of the window as declared in the app manifest. */
     name: string;
+    /** The unique runtime ID of the window. */
     id: string;
+    /** The window state as a plain string (legacy). */
     state: string;
+    /** The window state as a typed enum value. */
     stateEx: enums.WindowStateEx;
+    /** Whether the window is currently visible to the user. */
     isVisible: boolean;
+    /** The window's left edge position in pixels from the left of the monitor. */
     left: number;
+    /** The window's top edge position in pixels from the top of the monitor. */
     top: number;
+    /** The window's width in pixels. */
     width: number;
+    /** The window's height in pixels. */
     height: number;
+    /** The ID of the monitor the window is on. */
     monitorId: string;
   }
 
+  /** Optional properties used when obtaining a declared window. */
   interface WindowProperties {
+    /** Whether to create the window as a native (CEF) window. */
     nativeWindow: boolean;
+    /** Whether to enable the popup blocker for this window. */
     enablePopupBlocker: boolean;
   }
 
+  /** Instructs `obtainDeclaredWindow` to apply the manifest's default size and location. */
   interface DefaultSizeAndLocation {
+    /** Set to `true` to use the manifest-defined size and position instead of any saved state. */
     useDefaultSizeAndLocation: boolean;
   }
 
+  /** A rectangle defined by its top-left origin, width, and height, all in pixels. */
   interface ODKRect {
+    /** Distance from the top of the screen in pixels. */
     top: number;
+    /** Distance from the left of the screen in pixels. */
     left: number;
+    /** Width of the rectangle in pixels. */
     width: number;
+    /** Height of the rectangle in pixels. */
     height: number;
   }
 
+  /** Describes a relative position for a window with respect to another process window. */
   interface SetWindowPositionProperties {
+    /** The target process window to position relative to. */
     relativeTo: { processName: string; windowTitle: string; };
+    /** If `true`, insert the Overwolf window above the target; otherwise insert below. */
     insertAbove: boolean;
   }
 
+  /** Parameters for the `displayMessageBox` prompt dialog. */
   interface MessageBoxParams {
+    /** The title text of the message box. */
     message_title: string;
+    /** The body text of the message box. */
     message_body: string;
+    /** The label on the confirm/OK button. */
     confirm_button_text: string;
+    /** The label on the cancel button. */
     cancel_button_text: string;
+    /** The icon to display in the message box. */
     message_box_icon: windows.enums.MessagePromptIcon;
   }
 
+  /** Result of window operations that return a `WindowInfo` object. */
   interface WindowResult extends Result {
+    /** The window that was created or retrieved. */
     window: WindowInfo;
   }
 
+  /** Result of a drag-resize operation, containing the new dimensions. */
   interface DragResizeResult extends Result {
+    /** The ID of the window that was resized. */
     id?: string;
+    /** The new width of the window in pixels. */
     width?: number;
+    /** The new height of the window in pixels. */
     height?: number;
   }
 
+  /** Result of window operations that return only the window's ID. */
   interface WindowIdResult extends Result {
+    /** The ID of the affected window. */
     window_id?: string;
   }
 
+  /** Result of a `dragMove` operation, reporting how far the window moved. */
   interface DragMovedResult extends Result {
+    /** The number of pixels the window moved horizontally. */
     HorizontalChange: number;
+    /** The number of pixels the window moved vertically. */
     VerticalChange: number;
   }
 
+  /** Result of `getWindowState`, describing the current state of a single window. */
   interface GetWindowStateResult extends Result {
+    /** The ID of the queried window. */
     window_id?: string;
+    /** The window state as a plain string (legacy). */
     window_state?: string;
+    /** The window state as a typed enum value. */
     window_state_ex?: enums.WindowStateEx;
   }
 
+  /** Result of `getWindowsStates`, describing the state of all app windows. */
   interface GetWindowsStatesResult extends Result {
+    /** A map of window name to state string (legacy). */
     result: Dictionary<string>;
+    /** A map of window name to typed `WindowStateEx` enum value. */
     resultV2: Dictionary<enums.WindowStateEx>;
   }
 
+  /** Result of `isMuted`, indicating whether the window's audio is muted. */
   interface IsMutedResult extends Result {
+    /** `true` if the window is currently muted. */
     muted: boolean;
   }
 
+  /** Result of `isWindowVisibleToUser`, indicating how much of the window is visible. */
   interface IsWindowVisibleToUserResult extends Result {
+    /** `"hidden"` if fully obscured, `"partial"` if partially visible, `"full"` if fully visible. */
     visible: "hidden" | "full" | "partial";
   }
 
+  /** Result of `isAccelreatedOSR`, reporting GPU acceleration status for an OSR window. */
   interface IsAccelreatedOSRResult extends WindowIdResult {
+    /** Whether the window is using GPU acceleration. */
     accelerated?: boolean;
+    /** Whether GPU acceleration is supported on this machine. */
     supported?: boolean;
+    /** Whether rendering is optimized (only valid in-game for accelerated windows). */
     optimized?: boolean;
   }
 
+  /** Parameters for the `changeSize` overload that supports DPI-aware resizing. */
   interface ChangeWindowSizeParams {
+    /** The ID of the window to resize. */
     window_id: string;
+    /** The new width in pixels. */
     width: number;
+    /** The new height in pixels. */
     height: number;
+    /** If `true`, the size values are automatically scaled for the current DPI. */
     auto_dpi_resize?: boolean;
   }
 
+  /** Event data fired when a window's state changes. */
   interface WindowStateChangedEvent {
+    /** The ID of the window whose state changed. */
     window_id: string;
+    /** The new state as a plain string (legacy). */
     window_state: string;
+    /** The previous state as a plain string (legacy). */
     window_previous_state: string;
+    /** The new state as a typed enum value. */
     window_state_ex: enums.WindowStateEx;
+    /** The previous state as a typed enum value. */
     window_previous_state_ex: enums.WindowStateEx;
+    /** The ID of the app that owns the window. */
     app_id: string;
+    /** The name of the window as declared in the manifest. */
     window_name: string;
   }
 
+  /** Event data fired when a window receives a message via `sendMessage`. */
   interface MessageReceivedEvent {
+    /** The ID of the window that received the message. */
     id: string;
+    /** The content of the received message. */
     content: any;
   }
 
+  /** Event data fired when an isolated iframe process crashes. */
   interface IsolatedIframeProcessCrashedEvent {
+    /** The ID of the window whose iframe process crashed. */
     id: string;
+    /** A description of the crash error. */
     error: string;
   }
 
+  /** Event data fired when the user attempts to close a window with Alt+F4 and is blocked. */
   interface AltF4BlockedEvent {
+    /** The ID of the window on which Alt+F4 was blocked. */
     id: string;
   }
 
+  /** Event data fired when a window's screen or monitor properties change. */
   interface onScreenPropertyChangedEvent {
+    /** The ID of the affected window. */
     id: string;
+    /** The name of the affected window. */
     name: string;
+    /** The updated display/monitor information. */
     monitor: utils.Display;
   }
 
@@ -1485,7 +1921,7 @@ declare namespace overwolf.windows {
   ): void;
 
   /**
-   * Creates an instance of your window (the window’s name has to be declared
+   * Creates an instance of your window (the window's name has to be declared
    * in the manifest.json) or returns a window by the window name.
    * @param windowName The name of the window that was declared in the
    * data.windows section in the manifest.
@@ -1915,7 +2351,7 @@ declare namespace overwolf.windows {
   ): void;
 
   /**
-   * For OSR window only (for other window the callback return |error| status.
+   * For OSR window only (for other window the callback return `error` status.
    * {
    *    "status": string (|error, success|), "reason": string (error reason),
    *    "accelerated": bool, "optimized"  : bool  (for accelerated windows only
@@ -1971,26 +2407,34 @@ declare namespace overwolf.windows {
    */
   const onAltF4Blocked: Event<AltF4BlockedEvent>;
 
-  /**
+/**
    * Fired when native window (or OSR on desktop) moved to other monitoror when current monitor resolution changed
    */
   const onScreenPropertyChanged: Event<onScreenPropertyChangedEvent>;
 }
 
 declare namespace overwolf.windows.mediaPlayerElement {
+  /** Result of a `create` call, containing the new player's ID. */
   interface CreateResult extends Result {
+    /** The unique ID assigned to the newly created media player. */
     id?: number;
   }
 
+  /** Result of a `setVideo` call, containing the video duration. */
   interface SetVideoResult extends Result {
+    /** The total duration of the loaded video, in seconds. */
     duration?: number;
   }
 
+  /** Result of a `getProgress` call, containing the current playback position. */
   interface GetProgressResult extends Result {
+    /** The current playback position, in seconds. */
     progress?: number;
   }
 
+  /** Event data for media player playback events. */
   interface PlaybackEvent {
+    /** The ID of the media player that triggered the event. */
     id: number;
   }
 
@@ -2261,344 +2705,681 @@ declare namespace overwolf.benchmarking {
    */
   const onProcessInfoReady: Event<any>;
 
-  /**
-   * Fired when fps infromation is ready with a JSON containing the information.
+/**
+   * Fired when fps information is ready with a JSON containing the information.
    */
   const onFpsInfoReady: Event<any>;
 }
 
 declare namespace overwolf.games {
   namespace enums {
+    /** Indicates whether the game entry represents a game executable or a launcher. */
     const enum GameInfoType {
+      /** A standard game process. */
       Game = 0,
+      /** A game launcher process. */
       Launcher = 1,
     }
 
+    /** Describes the reason a `GameInfoUpdatedEvent` was fired. */
     const enum GameInfoChangeReason {
+      /** General game state change. */
       Game = "game",
+      /** The active game changed. */
       GameChanged = "gameChanged",
+      /** The game window focus state changed. */
       GameFocusChanged = "gameFocusChanged",
+      /** A game was launched. */
       GameLaunched = "gameLaunched",
+      /** A coexisting overlay application was detected. */
       GameOverlayCoexistenceDetected = "gameOverlayCoexistenceDetected",
+      /** The overlay cursor visibility changed. */
       GameOverlayCursorVisibility = "gameOverlayCursorVisibility",
+      /** The overlay exclusive mode changed. @deprecated Use `GameOverlayExclusiveModeChanged` instead. */
       GameOverlayExlusiveModeChanged = "gameOverlayExlusiveModeChanged",
+      /** The overlay input hook encountered a failure. */
       GameOverlayInputHookFailure = "gameOverlayInputHookFailure",
+      /** The game renderer was detected. */
       GameRendererDetected = "gameRendererDetected",
+      /** The game resolution changed. */
       GameResolutionChanged = "gameResolutionChanged",
+      /** The game process was terminated. */
       GameTerminated = "gameTerminated",
+      /** The game window data changed. */
       GameWindowDataChanged = "gameWindowDataChanged",
+      /** The overlay exclusive mode changed. */
       GameOverlayExclusiveModeChanged = "gameOverlayExclusiveModeChanged",
+      /** Alternate coexisting overlay application detection flag. */
       GameOverlayCoexistenceDetectedb = "gameOverlayCoexistenceDetectedb"
     }
 
+    /**
+     * Third-party applications known to coexist with the Overwolf overlay,
+     * which may cause rendering or input conflicts.
+     */
     const enum KnownOverlayCoexistenceApps {
+      /** ASUS software (e.g., Armoury Crate). */
       Asus = "asus",
+      /** Discord overlay. */
       Discord = "discord",
+      /** MSI Afterburner overlay. */
       MSIAfterBurner = "MSIAfterBurner",
+      /** Nahimic audio software. */
       Nahimic = "nahimic",
+      /** Nahimic 2 audio software. */
       Nahimic2 = "nahimic2",
+      /** No coexisting overlay detected. */
       None = "none",
+      /** OBS Studio. */
       ObsStudio = "obsStudio",
+      /** Plays.TV overlay. */
       PlaysTV = "playsTV",
+      /** Razer Synapse. */
       RazerSynapse = "razerSynapse",
     }
   }
 
+  /**
+   * Raw game configuration entry from the Overwolf game database.
+   * Contains static metadata and internal overlay compatibility flags for a specific game.
+   * Most fields are low-level flags used by the Overwolf injection engine.
+   */
   interface GameInfo {
+    /** Bitmask of renderers actually detected during game injection. */
     ActualDetectedRenderers: number;
+    /** Whether the detected renderer supports video capture. */
     ActualGameRendererAllowsVideoCapture: boolean;
+    /** Allow color correction mixing mode. */
     AllowCCMix: boolean;
+    /** Allow cursor mixing between game and overlay. */
     AllowCursorMix: boolean;
+    /** Allow raw input mixing mode. */
     AllowRIMix: boolean;
+    /** Input control mode as reported by the game client. */
     Client_GameControlMode: number;
+    /** Command line string used to launch the game executable. */
     CommandLine?: string;
+    /** Bitmask of supported input control modes. */
     ControlModes: number;
+    /** Cursor rendering mode used by the overlay. */
     CursorMode: number;
+    /** Detection interval threshold (internal timing value). */
     DIT: number;
+    /** Single registry key used to detect the game installation directory. */
     DetectDirKey?: string;
+    /** Multiple registry keys used to detect the game installation directory. */
     DetectDirKeys?: string[];
+    /** Disable mixed action input mode. */
     DisableActionMixed: boolean;
+    /** Disable game activity information tracking. */
     DisableActivityInfo: boolean;
+    /** Disable Windows Aero when running on DirectX 11. */
     DisableAeroOnDX11: boolean;
+    /** Disable blockchain-based process detection. */
     DisableBlockChain: boolean;
+    /** Disable Direct3D 9 Extended (D3D9Ex) mode. */
     DisableD3d9Ex: boolean;
+    /** Disable DirectInput device acquisition. */
     DisableDIAquire: boolean;
+    /** Disable extended handle injection mode. */
     DisableEXHandle: boolean;
+    /** Disable eternal process enumeration. */
     DisableEternalEnum: boolean;
+    /** Disable the exclusive mode UI rendering path. */
     DisableExclusiveModeUI: boolean;
+    /** Disable TeamSpeak 3 integration feature. */
     DisableFeature_TS3: boolean;
+    /** Disable the video capture feature for this game. */
     DisableFeature_VideoCapture: boolean;
+    /** Prevent multiple overlay injections into the same process. */
     DisableMultipleInjections: boolean;
+    /** Disable Overwolf gesture recognition. */
     DisableOWGestures: boolean;
+    /** Disable AI-based render detection. */
     DisableRenderAI: boolean;
+    /** Disable input release on window resize. */
     DisableResizeRelease: boolean;
+    /** Disable smart input mix mode. */
     DisableSmartMixMode: boolean;
+    /** Human-readable display name of the game. */
     DisplayName?: string;
+    /** Enable clock gesture for overlay activation. */
     EnableClockGesture: boolean;
+    /** Give the overlay focus on any mouse click. */
     EnableFocusOnAnyClick: boolean;
+    /** Enable multi-touch cursor support. */
     EnableMTCursor: boolean;
+    /** Enable raw input processing. */
     EnableRawInput: boolean;
+    /** Enable smart DirectInput focus handling. */
     EnableSmartDIFocus: boolean;
+    /** Enable smart DirectInput focus handling (variant 2). */
     EnableSmartDIFocus2: boolean;
+    /** Enable smart focus mode for overlay switching. */
     EnableSmartFocus: boolean;
+    /** Enable texture replacement mode. */
     EnableTXR: boolean;
+    /** Whether the game has been executed more than once. */
     ExecutedMoreThan: boolean;
+    /** Internal flag for in-game video texture hook detection. */
     FIGVTH: boolean;
+    /** FPS value below which a major frame rate drop event is fired. */
     FPSIndicationThreshold: number;
+    /** Initial game window height in pixels at first launch. */
     FirstGameResolutionHeight: number;
+    /** Initial game window width in pixels at first launch. */
     FirstGameResolutionWidth: number;
+    /** Apply action focus compatibility fix. */
     FixActionFocus: boolean;
+    /** Apply color correction compatibility fix. */
     FixCC: boolean;
+    /** Apply overlay coexistence compatibility fix. */
     FixCOEx: boolean;
+    /** Apply cursor visibility compatibility fix. */
     FixCVCursor: boolean;
+    /** Apply cursor offset compatibility fix. */
     FixCursorOffset: boolean;
+    /** Apply DirectInput block compatibility fix. */
     FixDIBlock: boolean;
+    /** Apply DirectInput focus compatibility fix. */
     FixDIFocus: boolean;
+    /** Apply DirectX thread-safety compatibility fix. */
     FixDXThreadSafe: boolean;
+    /** Apply full-screen taskbar compatibility fix. */
     FixFSTB: boolean;
+    /** Apply hotkey raw input compatibility fix. */
     FixHotkeyRI: boolean;
+    /** Apply input block compatibility fix. */
     FixInputBlock: boolean;
+    /** Apply invisible cursor compatibility fix for cursor rendering. */
     FixInvisibleCursorCR: boolean;
+    /** Apply mix-mode cursor compatibility fix. */
     FixMixModeCursor: boolean;
+    /** Apply modifier key mix-mode compatibility fix. */
     FixModifierMixMode: boolean;
+    /** Apply mouse DirectInput exclusive mode compatibility fix. */
     FixMouseDIExclusive: boolean;
+    /** Apply render context exclusive mode compatibility fix. */
     FixRCEx: boolean;
+    /** Apply resolution change compatibility fix. */
     FixResolutionChange: boolean;
+    /** Apply software layer restore compatibility fix. */
     FixRestoreSWL: boolean;
+    /** Apply software layer compatibility fix. */
     FixSWL: boolean;
+    /** Apply software layer window compatibility fix. */
     FixSWLW: boolean;
+    /** Force rehook on capture device change. */
     ForceCaptureChangeRehook: boolean;
+    /** Force rehook of control input hooks. */
     ForceControlRehook: boolean;
+    /** Force game border bypass. */
     ForceGBB: boolean;
+    /** Comma-separated list of genres for this game. */
     GameGenres?: string;
+    /** URL for the game's external information page. */
     GameLinkURL?: string;
+    /** Internal developer notes about this game's configuration. */
     GameNotes?: string;
+    /** Bitmask of renderers supported by this game. */
     GameRenderers: number;
+    /** Official title of the game. */
     GameTitle?: string;
+    /** Whether the game uses a common/generic process name shared with other applications. */
     GenericProcessName: boolean;
+    /** Title of the game series or group this game belongs to. */
     GroupTitle?: string;
+    /** Unique Overwolf game ID (full ID including instance suffix). */
     ID: number;
+    /** Filename of the game's icon asset. */
     IconFile?: string;
+    /** Ignore multiple input device enumeration. */
     IgnoreMultipleDevices: boolean;
+    /** Ignore input release events. */
     IgnoreRelease: boolean;
+    /** Whether the game uses ImGui for its UI rendering. */
     ImGuiRendering: boolean;
+    /** Current overlay injection decision value. */
     InjectionDecision: number;
+    /** Input handling mode bitmask. */
     Input: number;
+    /** Hint string for locating the game installation. */
     InstallHint?: string;
+    /** Whether the game's controls conflict with Overwolf hotkeys. */
     IsConflictingWithControlHotkey: boolean;
+    /** Whether this is a newly added entry in the game database. */
     IsNew: boolean;
+    /** Whether the game is distributed via Steam. */
     IsSteamGame: boolean;
+    /** Maintain in-game overlay state when the game window loses focus. */
     KeepInGameOnLostFocus: boolean;
+    /** Internal label for the game entry. */
     Label?: string;
+    /** Previous overlay injection decision value. */
     LastInjectionDecision: number;
+    /** Last known file system path to the game executable. */
     LastKnownExecutionPath?: string;
+    /** Additional parameters appended when launching the game. */
     LaunchParams?: string;
+    /** Whether the game can be launched directly from Overwolf. */
     Launchable: boolean;
+    /** Single registry key for locating the launcher directory. */
     LauncherDirectoryRegistryKey?: string;
+    /** Multiple registry keys for locating the launcher directory. */
     LauncherDirectoryRegistryKeys?: string[];
+    /** Class ID of the associated game launcher entry. */
     LauncherGameClassId: number;
+    /** Known process names for this game's launcher. */
     LauncherNames?: string[];
+    /** Current modifier key status bitmask. */
     ModifierStatus: number;
+    /** Native platform (e.g., Steam app) ID for this game. */
     NativeID: number;
+    /** Pixel offset applied to the pass-through click bounds. */
     PassThruBoundsOffsetPixel: number;
+    /** Press-to-click-through input threshold value. */
     PressToClickThrough: number;
+    /** Full command line string used to start the game process. */
     ProcessCommandLine?: string;
+    /** OS process ID of the currently running game instance. */
     ProcessID: number;
+    /** Known executable process names for this game. */
     ProcessNames: string[];
+    /** Recreate the swap buffer on the next frame. */
     RecreateSB: boolean;
+    /** Release keyboard input to the game when the overlay has focus. */
     ReleaseKBInOverlayFocus: boolean;
+    /** Send resize notifications when the game resolution changes. */
     ResizeNotifyResolution: boolean;
+    /** Restore the back buffer after overlay rendering. */
     RestoreBB: boolean;
+    /** Restore the render target after overlay rendering. */
     RestoreRT: boolean;
+    /** Whether the game process requires elevated (administrator) privileges. */
     RunElevated: boolean;
+    /** Send hotkey events via raw input. */
     SendHotkeyRI: boolean;
+    /** Set DirectInput to exclusive mode. */
     SetDIInExclusive: boolean;
+    /** Abbreviated title of the game. */
     ShortTitle?: string;
+    /** Skip game process detection during injection. */
     SkipGameProc: boolean;
+    /** Smart keyboard release when the overlay receives focus. */
     SmartReleaseKBInOverlayFocus: boolean;
+    /** FPS value considered a stable frame rate for this game. */
     StableFPSThreshold: number;
+    /** Pixel margin used to detect the stuck-in-transparency state. */
     StuckInTrans_Margin: number;
+    /** Mouse movement gap (in pixels) for stuck-in-transparency detection. */
     StuckInTrans_MouseMoveGap?: number;
+    /** URI scheme supported for launching this game. */
     SupportedScheme?: string;
+    /** Minimum supported version string for this game. */
     SupportedVersion?: string;
+    /** Texture capture modes bitmask. */
     TCModes: number;
+    /** Whether to terminate game tracking when the main window closes. */
     TerminateOnWindowClose: boolean;
+    /** Numeric type identifier for the game entry. */
     Type: number;
+    /** String representation of the game type. */
     TypeString?: string;
+    /** URI scheme that is explicitly not supported for launching this game. */
     UnsupportedScheme?: string;
+    /** Enable cursor position tracking updates. */
     UpdateCursor: boolean;
+    /** Enable cursor position tracking in multi-threaded mode. */
     UpdateCursorMT: boolean;
+    /** Use all-safe hook mode for injection. */
     UseAllSafeHook: boolean;
+    /** Use extended hook mode. */
     UseEH?: string;
+    /** Use hardware input device for cursor input. */
     UseHardwareDevice: boolean;
+    /** Use the launcher's icon instead of the game's own icon. */
     UseLauncherIcon: boolean;
+    /** Use long hook mode for injection. */
     UseLongHook: boolean;
+    /** Use multi-context hook mode. */
     UseMCH?: string;
+    /** Use message hook for input. */
     UseMH: boolean;
+    /** URI scheme for the message hook. */
     UseMHScheme?: string;
+    /** Use mouse/keyboard low-level hook. */
     UseMKLL: boolean;
+    /** Use mouse wheel hook. */
     UseMW: boolean;
+    /** Use process replacement injection method. */
     UsePR: boolean;
+    /** Use raw input for keyboard and mouse. */
     UseRI: boolean;
+    /** Use raw input block mode. */
     UseRIB: boolean;
+    /** Use safe hook mode for injection. */
     UseSafeHook: boolean;
+    /** Use thread-safe hook mode. */
     UseTSHook: boolean;
+    /** Wait for window restore before processing input. */
     WaitRestore: boolean;
+    /** Support level for Windows 7 (0 = unsupported, higher = better support). */
     Win7Support: number;
+    /** Support level for Windows 8 (0 = unsupported, higher = better support). */
     Win8Support: number;
+    /** Support level for Windows 10 (0 = unsupported, higher = better support). */
     Win10Support: number;
+    /** Support level for Windows XP (0 = unsupported, higher = better support). */
     XPSupport: number;
   }
 
+  /**
+   * Information about a game that is currently running.
+   * Returned by `getRunningGameInfo` and included in events such as `onGameLaunched`.
+   */
   interface RunningGameInfo {
+    /** Whether the game window currently has input focus. */
     isInFocus: boolean;
+    /** Whether the game process itself has focus (may differ from window focus). */
     gameIsInFocus: boolean;
+    /** Whether the game process is currently running. */
     isRunning: boolean;
+    /** Whether the game allows video capture via the Overwolf API. */
     allowsVideoCapture: boolean;
+    /** The full title of the game. */
     title: string;
+    /** The human-readable display name of the game. */
     displayName: string;
+    /** The abbreviated short title of the game. */
     shortTitle: string;
+    /** The full Overwolf game ID, including the instance suffix. */
     id: number;
+    /** The Overwolf game class ID (without instance suffix), used to identify the game type. */
     classId: number;
+    /** The game window width in physical pixels. */
     width: number;
+    /** The game window height in physical pixels. */
     height: number;
+    /** The game window width in logical (DPI-independent) pixels. */
     logicalWidth: number;
+    /** The game window height in logical (DPI-independent) pixels. */
     logicalHeight: number;
+    /** List of renderer names used by the game. */
     renderers: string[];
+    /** The primary renderer detected for the running game. */
     detectedRenderer: string;
+    /** Full file system path to the game executable. */
     executionPath: string;
+    /** A unique identifier for the current game session. */
     sessionId: string;
+    /** The command line string used to launch the game. */
     commandLine: string;
+    /** Whether this entry represents a game or a launcher. */
     type: enums.GameInfoType;
+    /** String representation of the `type` field. */
     typeAsString: string;
+    /** The native OS window handle for the game window. */
     windowHandle: { value: number; };
+    /** The native OS monitor handle for the monitor the game is running on. */
     monitorHandle: { value: number; };
+    /** The OS process ID of the running game. */
     processId: number;
+    /** Whether the out-of-process (OOP) overlay is active. */
     oopOverlay?: boolean;
+    /** Whether the Overwolf overlay is currently enabled for this game. */
     isOverlayEnabled: boolean;
+    /** Whether the Overwolf overlay is supported for this game. */
     isOverlaySupported: boolean;
   }
 
+  /**
+   * Describes what changed in a game info update.
+   * @deprecated Use `GameInfoUpdatedEvent` instead, which includes overlay change details and change reasons.
+   */
   interface GameInfoUpdate {
+    /** The current state of the running game. */
     gameInfo: RunningGameInfo;
+    /** Whether the game's screen resolution changed. */
     resolutionChanged: boolean;
+    /** Whether the game started or stopped running. */
     runningChanged: boolean;
+    /** Whether the game window's focus state changed. */
     focusChanged: boolean;
+    /** Whether the active game changed to a different game. */
     gameChanged: boolean;
   }
 
+  /**
+   * Information about a game detected as installed on the local machine,
+   * combining database metadata with installation-specific details.
+   */
   interface InstalledGameInfo {
+    /** Static game metadata from the Overwolf game database. */
     GameInfo: GameInfo;
+    /** The game class ID from the database (without instance suffix). */
     GameInfoClassID?: number;
+    /** The full game ID from the database (with instance suffix). */
     GameInfoID?: number;
+    /** The timestamp when the installation was last verified. */
     LastTimeVerified?: Date;
+    /** Command line parameters used when launching via the game's launcher. */
     LauncherCommandLineParams?: string;
+    /** File system path to the game's launcher executable. */
     LauncherPath?: string;
+    /** Whether the game was manually added by the user rather than auto-detected. */
     ManuallyAdded?: boolean;
+    /** File system path to the game's main process executable. */
     ProcessPath?: string;
+    /** Whether the game entry was automatically created by process-name detection. */
     WasAutoAddedByProcessDetection?: boolean;
   }
 
+  /**
+   * Result of a `getGameDBInfo` call.
+   * Exactly one of `gameInfo` or `installedGameInfo` will be populated,
+   * depending on whether the game is installed on the local machine.
+   */
   interface GetGameDBInfoResult extends Result {
+    /**
+     * Database metadata for the game.
+     * Populated when the game is **not** installed locally; `null` otherwise.
+     */
     gameInfo?: GameInfo;
+    /**
+     * Installation details combined with database metadata.
+     * Populated when the game **is** installed locally; `null` otherwise.
+     * Note: `installedGameInfo` contains a `GameInfo` object within it.
+     */
     installedGameInfo?: InstalledGameInfo;
   }
 
+  /** Result of a `getRecentlyPlayedGames` call. */
   interface GetRecentlyPlayedResult extends Result {
+    /** Array of Overwolf game class IDs for recently played games, most recent first. */
     games: number[];
   }
 
+  /** Result of a `getGameInfo` call. */
   interface GetGameInfoResult extends Result {
+    /** Installation details for the requested game, or undefined if not found. */
     gameInfo?: InstalledGameInfo;
   }
 
+  /**
+   * Result of a `getRunningGameInfo` call.
+   * Contains the same fields as `RunningGameInfo` plus overlay information.
+   */
   interface GetRunningGameInfoResult extends Result {
+    /** Whether the game window currently has input focus. */
     isInFocus: boolean;
+    /** Whether the game process itself has focus. */
     gameIsInFocus: boolean;
+    /** Whether the game process is currently running. */
     isRunning: boolean;
+    /** Whether the game allows video capture via the Overwolf API. */
     allowsVideoCapture: boolean;
+    /** The full title of the game. */
     title: string;
+    /** The human-readable display name of the game. */
     displayName: string;
+    /** The abbreviated short title of the game. */
     shortTitle: string;
+    /** The full Overwolf game ID, including the instance suffix. */
     id: number;
+    /** The Overwolf game class ID (without instance suffix). */
     classId: number;
+    /** The game window width in physical pixels. */
     width: number;
+    /** The game window height in physical pixels. */
     height: number;
+    /** The game window width in logical (DPI-independent) pixels. */
     logicalWidth: number;
+    /** The game window height in logical (DPI-independent) pixels. */
     logicalHeight: number;
+    /** List of renderer names used by the game. */
     renderers: string[];
+    /** The primary renderer detected for the running game. */
     detectedRenderer: string;
+    /** Full file system path to the game executable. */
     executionPath: string;
+    /** A unique identifier for the current game session. */
     sessionId: string;
+    /** The command line string used to launch the game. */
     commandLine: string;
+    /** Whether this entry represents a game or a launcher. */
     type: enums.GameInfoType;
+    /** String representation of the `type` field. */
     typeAsString: string;
+    /** The native OS window handle for the game window. */
     windowHandle: { value: number; };
+    /** The native OS monitor handle for the display the game is running on. */
     monitorHandle: { value: number; };
+    /** The OS process ID of the running game. */
     processId: number;
+    /** Current overlay status information. */
     overlayInfo: OverlayInfo;
   }
 
+  /**
+   * Extended running game info returned inside `GetRunningGameInfoResult2`.
+   * Identical to `GetRunningGameInfoResult` but also includes overlay enabled/supported flags.
+   */
   interface GetRunningGameInfoResult2GameInfo {
+    /** Whether the game window currently has input focus. */
     isInFocus: boolean;
+    /** Whether the game process itself has focus. */
     gameIsInFocus: boolean;
+    /** Whether the game process is currently running. */
     isRunning: boolean;
+    /** Whether the game allows video capture via the Overwolf API. */
     allowsVideoCapture: boolean;
+    /** The full title of the game. */
     title: string;
+    /** The human-readable display name of the game. */
     displayName: string;
+    /** The abbreviated short title of the game. */
     shortTitle: string;
+    /** The full Overwolf game ID, including the instance suffix. */
     id: number;
+    /** The Overwolf game class ID (without instance suffix). */
     classId: number;
+    /** The game window width in physical pixels. */
     width: number;
+    /** The game window height in physical pixels. */
     height: number;
+    /** The game window width in logical (DPI-independent) pixels. */
     logicalWidth: number;
+    /** The game window height in logical (DPI-independent) pixels. */
     logicalHeight: number;
+    /** List of renderer names used by the game. */
     renderers: string[];
+    /** The primary renderer detected for the running game. */
     detectedRenderer: string;
+    /** Full file system path to the game executable. */
     executionPath: string;
+    /** A unique identifier for the current game session. */
     sessionId: string;
+    /** The command line string used to launch the game. */
     commandLine: string;
+    /** Whether this entry represents a game or a launcher. */
     type: enums.GameInfoType;
+    /** String representation of the `type` field. */
     typeAsString: string;
+    /** The native OS window handle for the game window. */
     windowHandle: { value: number; };
+    /** The native OS monitor handle for the display the game is running on. */
     monitorHandle: { value: number; };
+    /** The OS process ID of the running game. */
     processId: number;
+    /** Current overlay status information. */
     overlayInfo: OverlayInfo;
+    /** Whether the Overwolf overlay is currently enabled for this game. */
     isOverlayEnabled: boolean;
+    /** Whether the Overwolf overlay is supported for this game. */
     isOverlaySupported: boolean;
   }
 
+  /** Result of a `getRunningGameInfo2` call. */
   interface GetRunningGameInfoResult2 extends Result {
+    /** Current running game information, or `null` if no game is running. */
     gameInfo: GetRunningGameInfoResult2GameInfo | null
   }
 
+  /** Describes the current state of the Overwolf overlay for a running game. */
   interface OverlayInfo {
+    /** Third-party overlay apps detected as coexisting with the Overwolf overlay. */
     coexistingApps?: enums.KnownOverlayCoexistenceApps[];
+    /** Whether the overlay input hook encountered a failure. */
     inputFailure?: boolean;
+    /** Whether the overlay has rendered at least one frame in-game. */
     hadInGameRender?: boolean;
+    /** Whether the overlay cursor is currently visible. */
     isCursorVisible?: boolean;
+    /** Whether exclusive rendering mode has been disabled for this game. */
     exclusiveModeDisabled?: boolean;
+    /** Whether the out-of-process (OOP) overlay is active. */
     oopOverlay?: boolean;
+    /** Whether Windows full-screen optimization is disabled for this game. */
     isFullScreenOptimizationDisabled?: boolean;
   }
 
+  /**
+   * Payload of the `onGameInfoUpdated` event.
+   * Fired whenever game state changes, such as launch, termination, focus, resolution, or overlay state.
+   */
   interface GameInfoUpdatedEvent {
+    /** The current running game info, or `null` if no game is running. */
     gameInfo?: RunningGameInfo | null;
+    /** Whether the game's screen resolution changed. */
     resolutionChanged: boolean;
+    /** Whether the game started or stopped running. */
     runningChanged: boolean;
+    /** Whether the game window's focus state changed. */
     focusChanged: boolean;
+    /** Whether the active game changed to a different title. */
     gameChanged: boolean;
+    /** Whether the overlay state changed (e.g., exclusive mode, coexistence). */
     gameOverlayChanged: boolean;
+    /** Whether the overlay input hook encountered an error during this update. */
     overlayInputHookError?: boolean;
+    /** One or more reasons describing what triggered this update. */
     reason: ReadonlyArray<enums.GameInfoChangeReason>;
   }
 
+  /**
+   * Payload of the `onMajorFrameRateChange` event.
+   * Fired when the game's FPS changes significantly relative to its stable threshold.
+   */
   interface MajorFrameRateChangeEvent {
+    /** Whether the FPS is stable, has dropped, or has increased relative to the threshold. */
     fps_status: "None" | "Stable" | "Drop" | "Increase";
+    /** The current measured frames per second. */
     fps: number;
   }
 
+  /** Payload of the `onGameRendererDetected` event. */
   interface GameRendererDetectedEvent {
+    /** The name of the rendering API detected (e.g., `"D3D11"`, `"Vulkan"`). */
     detectedRenderer: string;
   }
 
@@ -2683,13 +3464,14 @@ declare namespace overwolf.games {
    */
   const onMajorFrameRateChange: Event<MajorFrameRateChangeEvent>;
 
-  /**
+/**
    * Fired when the rendering method of the game has been detected.
    */
   const onGameRendererDetected: Event<GameRendererDetectedEvent>;
 }
 
 declare namespace overwolf.games.tracked {
+  /** Fired when a tracked (unsupported / overlay disabled) game process is terminated. */
   const onTerminated: Event<GameInfoUpdatedEvent>;
 
   /**
@@ -2697,11 +3479,13 @@ declare namespace overwolf.games.tracked {
    */
   const onGameLaunched: Event<GetRunningGameInfoResult2>;
 
+  /** Result containing information about all currently running tracked games. */
   interface GetAnyRunningGamesInfoResult extends Result {
+    /** An array of info objects for each currently running tracked game. */
     gameInfos: GetRunningGameInfoResult2GameInfo[];
+    /** Whether the request succeeded. */
     success: boolean;
   }
-
 
   /**
    * Returns an array of all the currently running unsupported / overlay disabled games.
@@ -2713,31 +3497,51 @@ declare namespace overwolf.games.tracked {
 }
 
 declare namespace overwolf.games.launchers {
+  /** Information about a currently running game launcher. */
   interface LauncherInfo {
+    /** The display title of the launcher. */
     title: string;
+    /** The full Overwolf launcher ID, including the instance suffix. */
     id: number;
+    /** The Overwolf launcher class ID (without instance suffix). */
     classId: number;
+    /** Whether the launcher window currently has input focus. */
     isInFocus: boolean;
+    /** The screen position and dimensions of the launcher window. */
     position: Position;
+    /** The native OS window handle for the launcher window. */
     handle: number;
+    /** The command line string used to start the launcher. */
     commandLine: string;
+    /** The OS process ID of the running launcher. */
     processId: number;
+    /** The file system path to the launcher executable. */
     path: string;
   }
 
+  /** Screen position and dimensions of a window. */
   interface Position {
+    /** The height of the window in pixels. */
     height: number;
+    /** The distance from the left edge of the screen in pixels. */
     left: number;
+    /** The distance from the top edge of the screen in pixels. */
     top: number;
+    /** The width of the window in pixels. */
     width: number;
   }
 
+  /** Result of a `getRunningLaunchersInfo` call. */
   interface GetRunningLaunchersInfoResult extends Result {
+    /** Array of info objects for each currently running launcher. */
     launchers: LauncherInfo[];
   }
 
+  /** Payload of the `onUpdated` event. */
   interface UpdatedEvent {
+    /** The current state of the launcher that was updated. */
     info: LauncherInfo;
+    /** List of property names that changed in this update. */
     changeType: string[];
   }
 
@@ -2766,17 +3570,26 @@ declare namespace overwolf.games.launchers {
   const onTerminated: Event<LauncherInfo>;
 }
 
+
 declare namespace overwolf.games.launchers.events {
+  /**
+   * Result of a `getInfo` call.
+   * @template T The shape of the launcher info payload. Defaults to `any`.
+   */
   interface GetInfoResult<T = any> extends Result {
+    /** The current launcher info payload. */
     res: T;
   }
 
+  /** Result of a `setRequiredFeatures` call. */
   interface SetRequiredFeaturesResult extends Result {
+    /** The subset of requested features that the launcher actually supports. */
     supportedFeatures: string[];
   }
 
   /**
    * Sets the required features from the provider.
+   * @param launcherClassId The class ID of the target launcher.
    * @param features A string array of features to utilize.
    * @param callback Called with success or failure state.
    */
@@ -2788,7 +3601,8 @@ declare namespace overwolf.games.launchers.events {
 
   /**
    * Gets the current game info.
-   * @param callback
+   * @param launcherClassId The class ID of the target launcher.
+   * @param callback Called with the current launcher info.
    */
   function getInfo(
     launcherClassId: number,
@@ -2800,7 +3614,7 @@ declare namespace overwolf.games.launchers.events {
    */
   const onInfoUpdates: Event<any>;
 
-  /**
+/**
    * Fired when there are new game events with a JSON object of the events
    * information.
    */
@@ -2808,13 +3622,19 @@ declare namespace overwolf.games.launchers.events {
 }
 
 declare namespace overwolf.games.launchers.events.provider {
+  /** A single game event info update entry containing feature, category, key, and value. */
   interface GameEventsInfo {
+    /** The feature that produced this info update. */
     feature: string;
+    /** The category of the info update within the feature. */
     category: string;
+    /** The key identifying the specific info field. */
     key: string;
+    /** The new value for the info field. */
     value: string;
   }
 
+  /** Triggers a synthetic game event for the specified launcher. */
   function triggerEvent(
     launcherClassId: number,
     feature: string,
@@ -2823,12 +3643,14 @@ declare namespace overwolf.games.launchers.events.provider {
     callback?: CallbackFunction<Result>
   ): void;
 
+  /** Updates a launcher info field with the provided `GameEventsInfo` data. */
   function updateInfo(
     launcherClassId: number,
     info: GameEventsInfo,
     callback?: CallbackFunction<Result>
   ): void;
 
+  /** Declares the set of features that this launcher event provider supports. */
   function setSupportedFeatures(
     launcherClassId: number,
     features: string[],
@@ -2837,39 +3659,58 @@ declare namespace overwolf.games.launchers.events.provider {
 }
 
 declare namespace overwolf.games.events {
+  /** Result of a `setRequiredFeatures` call, listing which features were successfully enabled. */
   interface SetRequiredFeaturesResult extends Result {
+    /** The subset of requested features that are supported and active. */
     supportedFeatures?: string[];
   }
 
+  /** Result of a `getInfo` call containing the current game info state. */
   interface GetInfoResult<T = any> extends Result {
+    /** The game info object returned by the provider. */
     res: T;
   }
 
+  /** Describes a single game event emitted by the events provider. */
   interface GameEvent {
+    /** The name of the event. */
     name: string;
+    /** The serialized data payload of the event. */
     data: string;
   }
 
+  /** Base type for typed game event dictionary shapes. */
   type GameEventDictionary2 = {};
 
+  /** A typed game event whose name is constrained to keys of the dictionary type `T`. */
   interface GameEvent2<T extends GameEventDictionary2 = any> {
+    /** The name of the event, restricted to known keys of `T`. */
     name: keyof T;
+    /** The event data payload. */
     data: any;
   }
 
+  /** Payload of the `onNewEvents` event, containing a batch of game events. */
   interface NewGameEvents {
+    /** The list of game events in this batch. */
     events: GameEvent[];
   }
 
+  /** Payload of the `onError` event describing a game events system error. */
   interface ErrorEvent {
+    /** A string describing the reason for the error. */
     reason: string;
   }
 
+  /** Base interface for typed info update objects; extend to define feature-specific shapes. */
   interface InfoUpdate2 { }
 
+  /** Payload of the `onInfoUpdates2` event, pairing an info update with its feature name. */
   interface InfoUpdates2Event
     <Feature = string, Info extends InfoUpdate2 = InfoUpdate2> {
+    /** The info update data for the relevant feature. */
     info: Info;
+    /** The feature that produced this info update. */
     feature: Feature;
   }
 
@@ -2905,7 +3746,7 @@ declare namespace overwolf.games.events {
    */
   const onInfoUpdates2: Event<InfoUpdates2Event>;
 
-  /**
+/**
    * Fired when there are new game events with a JSON object of the events
    * information.
    */
@@ -2913,17 +3754,43 @@ declare namespace overwolf.games.events {
 }
 
 declare namespace overwolf.games.events.provider {
+  /**
+   * Describes a single game event or state update to be pushed into the
+   * Overwolf game events system via `updateInfo`.
+   */
   interface GameEventsInfo {
+    /** The feature this event or info key belongs to (e.g., `"kill"`, `"death"`). */
     feature: string;
+    /** The category grouping for this event or info key. */
     category: string;
+    /** The specific event or info key name. */
     key: string;
+    /** The value associated with this event or info key. */
     value: string;
   }
 
+  /**
+   * Triggers a named game event for the specified feature.
+   * Use this to fire discrete one-time occurrences (e.g., a kill, a death).
+   * @param feature The feature name this event belongs to (e.g., `"kill"`).
+   * @param name The name of the event to trigger.
+   * @param data Optional additional payload data for the event.
+   */
   function triggerEvent(feature: string, name: string, data?: any): void;
 
+  /**
+   * Pushes a game info state update into the Overwolf events system.
+   * Use this to report continuous or changing state values (e.g., health, score).
+   * @param info The info key/value pair to update.
+   */
   function updateInfo(info: GameEventsInfo): void;
 
+  /**
+   * Declares which game features this provider supports.
+   * Must be called before triggering events or updating info for those features.
+   * @param features Array of feature names this provider will emit data for.
+   * @param callback Called with the result of the registration.
+   */
   function setSupportedFeatures(
     features: string[],
     callback: CallbackFunction<Result>
@@ -2931,45 +3798,73 @@ declare namespace overwolf.games.events.provider {
 }
 
 declare namespace overwolf.games.inputTracking {
+  /** The current position of the mouse cursor. */
   interface MousePosition {
+    /** Horizontal cursor position in pixels. */
     x: number;
+    /** Vertical cursor position in pixels. */
     y: number;
+    /** Whether the cursor is positioned over the game window (as opposed to an Overwolf widget). */
     onGame: boolean;
+    /** Native OS window handle for the window under the cursor. */
     handle: { value: number; };
   }
 
+  /** Aggregated input activity statistics for the current game session. */
   interface InputActivity {
+    /** Total active (non-idle) time in milliseconds. */
     aTime: number;
+    /** Total idle time in milliseconds. */
     iTime: number;
+    /** Actions per minute across all input devices. */
     apm: number;
+    /** Mouse activity stats including total clicks, cursor distance traveled, and a per-button breakdown. */
     mouse: { total: number; dist: number; keys: any; };
+    /** Keyboard activity stats including total key presses and a per-key breakdown. */
     keyboard: { total: number; keys: any; };
   }
 
+  /** Result of a `getActivityInformation` or `getMatchActivityInformation` call. */
   interface GetActivityResult extends Result {
+    /** The aggregated input activity data for the session or match. */
     activity: InputActivity;
   }
 
+  /** Result of a `getMousePosition` call. */
   interface GetMousePositionResult extends Result {
+    /** The current mouse position, or `undefined` if unavailable. */
     mousePosition?: MousePosition;
   }
 
+  /** Payload of the `onKeyUp` and `onKeyDown` events. */
   interface KeyEvent {
+    /** The virtual key code of the key that was pressed or released. */
     key: string;
+    /** Whether the key event occurred while the game window had focus. */
     onGame: boolean;
   }
 
+  /** Payload of the `onMouseUp` and `onMouseDown` events. */
   interface MouseEvent {
+    /** Which mouse button was pressed or released (e.g., `"left"`, `"right"`, `"middle"`). */
     button: string;
+    /** Horizontal cursor position in pixels at the time of the event. */
     x: number;
+    /** Vertical cursor position in pixels at the time of the event. */
     y: number;
+    /** Whether the mouse event occurred while the game window had focus. */
     onGame: boolean;
   }
 
+  /** Payload of a mouse wheel scroll event. */
   interface WheelEvent {
+    /** Scroll amount and direction (positive = scroll up, negative = scroll down). */
     delta: number;
+    /** Horizontal cursor position in pixels at the time of the event. */
     x: number;
+    /** Vertical cursor position in pixels at the time of the event. */
     y: number;
+    /** Whether the scroll event occurred while the game window had focus. */
     onGame: boolean;
   }
 
@@ -3055,7 +3950,7 @@ declare namespace overwolf.games.inputTracking {
    */
   const onMouseDown: Event<MouseEvent>;
 
-  /**
+/**
    * Fired a mouse wheel has been used.
    */
   const onMouseWheel: Event<WheelEvent>;
@@ -3064,29 +3959,46 @@ declare namespace overwolf.games.inputTracking {
 
 declare namespace overwolf.web {
   namespace enums {
+    /** The HTTP method to use when sending a fetch request. */
     const enum HttpRequestMethods {
+      /** Retrieve a resource. */
       GET = "GET",
+      /** Retrieve only the headers for a resource. */
       HEAD = "HEAD",
+      /** Submit data to a resource. */
       POST = "POST",
+      /** Replace a resource entirely. */
       PUT = "PUT",
+      /** Remove a resource. */
       DELETE = "DELETE",
+      /** Apply a partial update to a resource. */
       PATCH = "PATCH",
     }
+    /** The type of a WebSocket message. */
     const enum MessageType {
+      /** A ping control frame. */
       Ping = "ping",
+      /** A binary data frame. */
       Binary = "binary",
+      /** A UTF-8 text data frame. */
       Text = "text",
     }
 
   }
 
+  /** Connection parameters used to create a `WebSocket` client. */
   interface WebSocketConnectionParams {
+    /** Whether to use a secure (`wss://`) connection. */
     secured: boolean;
+    /** The port number to connect to. */
     port: number;
+    /** Optional credentials for basic authentication. */
     credentials: { username: string; password: string; };
+    /** A list of sub-protocols to negotiate with the server. */
     protocols: string[];
   }
 
+  /** A local HTTP web server instance returned by `createServer`. */
   interface WebServer {
     /**
      * Listens for requests on the given port. If the port is already in use, or
@@ -3105,6 +4017,7 @@ declare namespace overwolf.web {
     onRequest: Event<RequestEvent>;
   }
 
+  /** A WebSocket client instance returned by `createWebSocket`. */
   interface WebSocket {
     /**
      * Listens for requests on the given port.
@@ -3139,93 +4052,74 @@ declare namespace overwolf.web {
     onClosed: Event<ClosedEvent>;
   }
 
+  /** A single HTTP header key-value pair used in a fetch request. */
   interface FetchHeader {
+    /** The header field name. */
     key: string;
+    /** The header field value. */
     value: string;
   }
 
+  /** Result of `createServer`, containing the new `WebServer` instance. */
   interface CreateServerResult extends Result {
+    /** The created web server instance. */
     server?: WebServer;
   }
 
+  /** Result of `createWebSocket`, containing the new `WebSocket` client instance. */
   interface CreateWebSocketResult extends Result {
+    /** The created WebSocket client instance. */
     client?: WebSocket;
   }
 
+  /** Result of a `sendHttpRequest` call, containing the HTTP status code and response body. */
   interface SendHttpRequestResult extends Result {
+    /** The HTTP status code returned by the server. */
     statusCode?: number;
+    /** The response body as a string. */
     data?: string;
   }
 
+  /** Describes an incoming HTTP request received by a `WebServer`. */
   interface RequestEvent {
+    /** The request URL path. */
     url: string;
+    /** The request body content. */
     content: string;
+    /** The MIME type of the request body. */
     contentType: string;
   }
 
+  /** Describes a message received on a WebSocket connection. */
   interface MessageEvent {
+    /** The message payload. */
     message: string;
+    /** The type of the message frame. */
     type: overwolf.web.enums.MessageType;
   }
 
+  /** Describes an error that occurred on a WebSocket connection. */
   interface ErrorEvent {
+    /** A human-readable description of the error. */
     message: string;
+    /** The underlying exception object, if available. */
     exception: any;
   }
 
+  /** Describes the reason a WebSocket connection was closed. */
   interface ClosedEvent {
+    /** The WebSocket close status code. */
     code: number;
+    /** A human-readable explanation for why the connection was closed. */
     reason: string;
   }
 
-  interface WebSocketServerOpenParams {
-    port: number;
-    services: string[];
-  }
-
-  interface WebSocketServer {
-    /**
-     * Opens the WebSocket server on the given port and services.
-     * @param params The connection parameters.
-     */
-    open(params: WebSocketServerOpenParams): void;
-    /**
-     * Closes the WebSocket server.
-     */
-    close(): void;
-    /**
-     * Sends a message to connected clients.
-     * @param message The message to send.
-     */
-    send(message: string): void;
-    /**
-     * Fired when a client connects.
-     */
-    onClientConnected: Event<Record<string, never>>;
-    /**
-     * Fired when a client disconnects.
-     */
-    onClientDisconnected: Event<Record<string, never>>;
-    /**
-     * Fired when a message is received from a client.
-     */
-    onMessage: Event<MessageEvent>;
-    /**
-     * Fired when the server is closed.
-     */
-    onClosed: Event<Record<string, never>>;
-  }
-
   /**
-   * Creates a WebSocket server.
-   */
-  function createWebSocketServer(): WebSocketServer;
-
-  /**
-   * Creates a web server. This call returns an object with two fields: A status
-   * string and a server object.
-   * @param port The port to use.
-   * @param callback
+   * Creates a local HTTP web server on the specified port. The returned
+   * `WebServer` instance must have its `listen` method called before it will
+   * accept connections.
+   * @param port The port number to bind the server to.
+   * @param callback Called with the result, including the new `WebServer` instance on success.
    */
   function createServer(
     port: number,
@@ -3233,17 +4127,18 @@ declare namespace overwolf.web {
   ): void;
 
   /**
-   * Creates a WebSocket client to localhost/127.0.0.1 while by-passing a valid
-   * certificate verification.
-   * @param connectionParams
-   * @param callback
+   * Creates a WebSocket client connection to localhost/127.0.0.1, bypassing
+   * certificate verification. Call `connect` on the returned `WebSocket`
+   * instance to open the connection.
+   * @param connectionParams Connection parameters including port, protocol list, and optional credentials.
+   * @param callback Called with the result, including the new `WebSocket` client instance on success.
    */
   function createWebSocket(
     connectionParams: WebSocketConnectionParams,
     callback: CallbackFunction<CreateWebSocketResult>
   ): void;
 
-  /**
+/**
    * Send an https request (of different methods) to localhost/127.0.0.1
    * while by-passing a valid certificate verification.
    * @param url
@@ -3262,20 +4157,31 @@ declare namespace overwolf.web {
 }
 
 declare namespace overwolf.logitech {
+  /** Information about a connected Logitech peripheral device. */
   interface Device {
+    /** The display name of the device. */
     name: string;
+    /** The USB product ID of the device. */
     pid: number;
+    /** The numeric ID of the device's lighting zone. */
     lightingId: number;
+    /** The display name of the device's lighting zone. */
     lightingName: string;
+    /** The numeric type identifier of the device. */
     typeId: number;
+    /** The display name of the device type. */
     typeName: string;
   }
 
+  /** Result containing the installed LGS version string. */
   interface GetVersionResult extends Result {
+    /** The version string of the currently installed Logitech Gaming Software. */
     version?: string;
   }
 
+  /** Result containing the list of connected Logitech devices. */
   interface GetDevicesResult extends Result {
+    /** An array of connected Logitech peripheral devices. */
     devices?: Device[];
   }
 
@@ -3285,7 +4191,7 @@ declare namespace overwolf.logitech {
    */
   function getVersion(callback: CallbackFunction<GetVersionResult>): void;
 
-  /**
+/**
    * Gets the currently installed Logitech devices.
    * @param callback Called with the current device information.
    */
@@ -3294,121 +4200,232 @@ declare namespace overwolf.logitech {
 
 declare namespace overwolf.logitech.led {
   namespace enums {
+    /** Logical names for individual keys on a Logitech per-key RGB keyboard. */
     const enum KeyboardNames {
+      /** Escape key. */
       ESC = "ESC",
+      /** F1 function key. */
       F1 = "F1",
+      /** F2 function key. */
       F2 = "F2",
+      /** F3 function key. */
       F3 = "F3",
+      /** F4 function key. */
       F4 = "F4",
+      /** F5 function key. */
       F5 = "F5",
+      /** F6 function key. */
       F6 = "F6",
+      /** F7 function key. */
       F7 = "F7",
+      /** F8 function key. */
       F8 = "F8",
+      /** F9 function key. */
       F9 = "F9",
+      /** F10 function key. */
       F10 = "F10",
+      /** F11 function key. */
       F11 = "F11",
+      /** F12 function key. */
       F12 = "F12",
+      /** Print Screen key. */
       PRINT_SCREEN = "PRINT_SCREEN",
+      /** Scroll Lock key. */
       SCROLL_LOCK = "SCROLL_LOCK",
+      /** Pause/Break key. */
       PAUSE_BREAK = "PAUSE_BREAK",
+      /** Tilde/backtick key. */
       TILDE = "TILDE",
+      /** Number 1 key. */
       ONE = "ONE",
+      /** Number 2 key. */
       TWO = "TWO",
+      /** Number 3 key. */
       THREE = "THREE",
+      /** Number 4 key. */
       FOUR = "FOUR",
+      /** Number 5 key. */
       FIVE = "FIVE",
+      /** Number 6 key. */
       SIX = "SIX",
+      /** Number 7 key. */
       SEVEN = "SEVEN",
+      /** Number 8 key. */
       EIGHT = "EIGHT",
+      /** Number 9 key. */
       NINE = "NINE",
+      /** Number 0 key. */
       ZERO = "ZERO",
+      /** Minus/hyphen key. */
       MINUS = "MINUS",
+      /** Equals key. */
       EQUALS = "EQUALS",
+      /** Backspace key. */
       BACKSPACE = "BACKSPACE",
+      /** Insert key. */
       INSERT = "INSERT",
+      /** Home key. */
       HOME = "HOME",
+      /** Page Up key. */
       PAGE_UP = "PAGE_UP",
+      /** Num Lock key. */
       NUM_LOCK = "NUM_LOCK",
+      /** Numpad slash (divide) key. */
       NUM_SLASH = "NUM_SLASH",
+      /** Numpad asterisk (multiply) key. */
       NUM_ASTERISK = "NUM_ASTERISK",
+      /** Numpad minus key. */
       NUM_MINUS = "NUM_MINUS",
+      /** Tab key. */
       TAB = "TAB",
+      /** Q key. */
       Q = "Q",
+      /** W key. */
       W = "W",
+      /** E key. */
       E = "E",
+      /** R key. */
       R = "R",
+      /** T key. */
       T = "T",
+      /** Y key. */
       Y = "Y",
+      /** U key. */
       U = "U",
+      /** I key. */
       I = "I",
+      /** O key. */
       O = "O",
+      /** P key. */
       P = "P",
+      /** Open bracket key (`[`). */
       OPEN_BRACKET = "OPEN_BRACKET",
+      /** Close bracket key (`]`). */
       CLOSE_BRACKET = "CLOSE_BRACKET",
+      /** Backslash key (`\`). */
       BACKSLASH = "BACKSLASH",
+      /** Delete key (main keyboard). */
       KEYBOARD_DELETE = "KEYBOARD_DELETE",
+      /** End key. */
       END = "END",
+      /** Page Down key. */
       PAGE_DOWN = "PAGE_DOWN",
+      /** Numpad 7 key. */
       NUM_SEVEN = "NUM_SEVEN",
+      /** Numpad 8 key. */
       NUM_EIGHT = "NUM_EIGHT",
+      /** Numpad 9 key. */
       NUM_NINE = "NUM_NINE",
+      /** Numpad plus key. */
       NUM_PLUS = "NUM_PLUS",
+      /** Caps Lock key. */
       CAPS_LOCK = "CAPS_LOCK",
+      /** A key. */
       A = "A",
+      /** S key. */
       S = "S",
+      /** D key. */
       D = "D",
+      /** F key. */
       F = "F",
+      /** G key. */
       G = "G",
+      /** H key. */
       H = "H",
+      /** J key. */
       J = "J",
+      /** K key. */
       K = "K",
+      /** L key. */
       L = "L",
+      /** Semicolon key. */
       SEMICOLON = "SEMICOLON",
+      /** Apostrophe/single-quote key. */
       APOSTROPHE = "APOSTROPHE",
+      /** Enter/Return key. */
       ENTER = "ENTER",
+      /** Numpad 4 key. */
       NUM_FOUR = "NUM_FOUR",
+      /** Numpad 5 key. */
       NUM_FIVE = "NUM_FIVE",
+      /** Numpad 6 key. */
       NUM_SIX = "NUM_SIX",
+      /** Left Shift key. */
       LEFT_SHIFT = "LEFT_SHIFT",
+      /** Z key. */
       Z = "Z",
+      /** X key. */
       X = "X",
+      /** C key. */
       C = "C",
+      /** V key. */
       V = "V",
+      /** B key. */
       B = "B",
+      /** N key. */
       N = "N",
+      /** M key. */
       M = "M",
+      /** Comma key. */
       COMMA = "COMMA",
+      /** Period key. */
       PERIOD = "PERIOD",
+      /** Forward slash key. */
       FORWARD_SLASH = "FORWARD_SLASH",
+      /** Right Shift key. */
       RIGHT_SHIFT = "RIGHT_SHIFT",
+      /** Up arrow key. */
       ARROW_UP = "ARROW_UP",
+      /** Numpad 1 key. */
       NUM_ONE = "NUM_ONE",
+      /** Numpad 2 key. */
       NUM_TWO = "NUM_TWO",
+      /** Numpad 3 key. */
       NUM_THREE = "NUM_THREE",
+      /** Numpad Enter key. */
       NUM_ENTER = "NUM_ENTER",
+      /** Left Control key. */
       LEFT_CONTROL = "LEFT_CONTROL",
+      /** Left Windows key. */
       LEFT_WINDOWS = "LEFT_WINDOWS",
+      /** Left Alt key. */
       LEFT_ALT = "LEFT_ALT",
+      /** Spacebar. */
       SPACE = "SPACE",
+      /** Right Alt key. */
       RIGHT_ALT = "RIGHT_ALT",
+      /** Right Windows key. */
       RIGHT_WINDOWS = "RIGHT_WINDOWS",
+      /** Application/context menu key. */
       APPLICATION_SELECT = "APPLICATION_SELECT",
+      /** Right Control key. */
       RIGHT_CONTROL = "RIGHT_CONTROL",
+      /** Left arrow key. */
       ARROW_LEFT = "ARROW_LEFT",
+      /** Down arrow key. */
       ARROW_DOWN = "ARROW_DOWN",
+      /** Right arrow key. */
       ARROW_RIGHT = "ARROW_RIGHT",
+      /** Numpad 0 key. */
       NUM_ZERO = "NUM_ZERO",
+      /** Numpad period/decimal key. */
       NUM_PERIOD = "NUM_PERIOD",
     }
 
+    /** Logitech device lighting type, used to target devices by their lighting capability. */
     const enum LogitechDeviceLightingType {
+      /** Single-color (monochrome) lighting. */
       Mono = "Mono",
+      /** Zone-based RGB lighting. */
       RGB = "RGB",
+      /** Per-key RGB lighting. */
       PerkeyRGB = "PerkeyRGB",
+      /** All connected Logitech lighting devices. */
       All = "All",
     }
   }
 
+  /** Raw byte array type used to pass bitmap data for LED lighting. */
   type ByteArray = Int8Array;
 
   /**
@@ -3661,7 +4678,7 @@ declare namespace overwolf.logitech.led {
    */
   function shutdown(): void;
 
-  /**
+/**
    * Triggered when an error occurs, sent with an error code.
    */
   const onError: Event<string>;
@@ -3669,140 +4686,243 @@ declare namespace overwolf.logitech.led {
 
 declare namespace overwolf.streaming {
   namespace enums {
+    /** Error codes returned by capture and streaming operations. */
     const enum CaptureErrorCode {
+      /** The operation completed successfully. */
       Success = 0,
+      /** The output folder could not be created. */
       FolderCreation = 1,
+      /** Ransomware protection prevented writing to the output folder. */
       RansomwareProtection = 2,
+      /** A stream is already active. */
       AlreadyStreaming = 3,
+      /** A required setting was not provided. */
       MissingSetting = 4,
+      /** A setting value is invalid or misconfigured. */
       SettingError = 5,
+      /** An internal OBS error occurred. */
       InternalOBSError = 6,
+      /** Streaming is not allowed while in this game. */
       NotAllowedInGame = 7,
+      /** High-performance capture is not supported on this hardware. */
       HighPerformanceCaptureNotSupported = 8,
+      /** The operation requires an active game session. */
       NotInGame = 9,
+      /** An unknown error occurred. */
       Unknown = 1000
     }
 
+    /** Controls when the mouse cursor is captured in a stream. */
     const enum StreamMouseCursor {
+      /** Capture the cursor in both game and desktop captures. */
       both = "both",
+      /** Capture the cursor only when capturing the game window. */
       gameOnly = "gameOnly",
+      /** Capture the cursor only when capturing the desktop. */
       desktopOnly = "desktopOnly",
+      /** Never capture the mouse cursor. */
       none = "none"
     }
 
+    /** Controls how Overwolf windows are handled when OBS is the streaming provider. */
     const enum ObsStreamingMode {
+      /** OBS has no awareness of Overwolf windows. */
       OBSNoAwareness = "OBSNoAwareness",
+      /** OBS is aware of and captures Overwolf windows. */
       OBSAwareness = "OBSAwareness",
+      /** OBS is aware of Overwolf windows but hides them from the desktop view. */
       OBSAwarenessHideFromDeskTop = "OBSAwarenessHideFromDeskTop",
     }
 
+    /** The streaming service or output provider to use. */
     const enum StreamingProvider {
+      /** The provider could not be determined. */
       Unknown = "Unknown",
+      /** Stream to Twitch. */
       Twitch = "Twitch",
+      /** Record to a local video file. */
       VideoRecorder = "VideoRecorder",
+      /** Stream to a custom RTMP endpoint. */
       RTMP = "RTMP",
     }
 
+    /** Controls when an Overwolf window is included in a stream or recording. */
     const enum StreamingMode {
+      /** Include the window in the stream only when it is visible. */
       WhenVisible = "WhenVisible",
+      /** Always include the window in the stream, even if hidden. */
       Always = "Always",
+      /** Never include the window in the stream. */
       Never = "Never",
     }
 
+    /** The video encoder hardware/software backend to use. */
     const enum StreamEncoder {
+      /** Intel Quick Sync Video encoder. */
       INTEL = "INTEL",
+      /** Software x264 encoder. */
       X264 = "X264",
+      /** NVIDIA NVENC encoder (legacy). */
       NVIDIA_NVENC = "NVIDIA_NVENC",
+      /** NVIDIA NVENC encoder (new/updated). */
       NVIDIA_NVENC_NEW = "NVIDIA_NVENC_NEW",
+      /** AMD Advanced Media Framework encoder. */
       AMD_AMF = "AMD_AMF",
     }
 
+    /** Quality presets for the Intel Quick Sync encoder. */
     const enum StreamEncoderPreset_Intel {
+      /** Low quality, lowest resource usage. */
       LOW = "LOW",
+      /** Balanced quality and resource usage. */
       MEDIUM = "MEDIUM",
+      /** High quality, highest resource usage. */
       HIGH = "HIGH",
     }
 
+    /** Speed/quality presets for the x264 software encoder. */
     const enum StreamEncoderPreset_x264 {
+      /** Fastest encoding, lowest quality. */
       ULTRAFAST = "ULTRAFAST",
+      /** Very fast encoding with reduced quality. */
       SUPERFAST = "SUPERFAST",
+      /** Fast encoding with moderate quality reduction. */
       VERYFAST = "VERYFAST",
+      /** Faster than medium, slightly lower quality. */
       FASTER = "FASTER",
+      /** Fast encoding preset. */
       FAST = "FAST",
+      /** Balanced speed and quality. */
       MEDIUM = "MEDIUM",
+      /** Slower encoding for better quality. */
       SLOW = "SLOW",
+      /** Slower than slow for improved quality. */
       SLOWER = "SLOWER",
+      /** Very slow encoding for near-maximum quality. */
       VERYSLOW = "VERYSLOW",
+      /** Maximum compression quality regardless of time. */
       PLACEBO = "PLACEBO",
     }
 
+    /** Quality presets for the AMD AMF encoder. */
     const enum StreamEncoderPreset_AMD_AMF {
+      /** Automatically select the best preset. */
       AUTOMATIC = "AUTOMATIC",
+      /** Balanced quality and performance. */
       BALANCED = "BALANCED",
+      /** Optimized for encoding speed. */
       SPEED = "SPEED",
+      /** Optimized for output quality. */
       QUALITY = "QUALITY",
+      /** Ultra-low latency mode. */
       ULTRA_LOW_LATENCY = "ULTRA_LOW_LATENCY",
+      /** Low latency mode. */
       LOW_LATENCY = "LOW_LATENCY",
     }
 
+    /** Rate control modes for the AMD AMF encoder. */
     const enum StreamEncoderRateControl_AMD_AMF {
+      /** Constant Bit Rate. */
       RC_CBR = "RC_CBR",
+      /** Constant Quantization Parameter. */
       RC_CQP = "RC_CQP",
+      /** Variable Bit Rate. */
       RC_VBR = "RC_VBR",
+      /** Variable Bit Rate with minimum QP constraint. */
       RC_VBR_MINQP = "RC_VBR_MINQP",
     }
 
+    /** Quality presets for NVIDIA NVENC encoder. */
     const enum StreamEncoderPreset_NVIDIA {
+      /** Automatically select the best preset. */
       AUTOMATIC = "AUTOMATIC",
+      /** The encoder's default preset. */
       DEFAULT = "DEFAULT",
+      /** Optimized for high output quality. */
       HIGH_QUALITY = "HIGH_QUALITY",
+      /** Optimized for high encoding performance. */
       HIGH_PERFORMANCE = "HIGH_PERFORMANCE",
+      /** Preset tuned for Blu-ray disc output. */
       BLURAY_DISK = "BLURAY_DISK",
+      /** Low latency encoding. */
       LOW_LATENCY = "LOW_LATENCY",
+      /** High performance combined with low latency. */
       HIGH_PERFORMANCE_LOW_LATENCY = "HIGH_PERFORMANCE_LOW_LATENCY",
+      /** High quality combined with low latency. */
       HIGH_QUALITY_LOW_LATENCY = "HIGH_QUALITY_LOW_LATENCY",
+      /** Lossless encoding. */
       LOSSLESS = "LOSSLESS",
+      /** High performance lossless encoding. */
       HIGH_PERFORMANCE_LOSSLESS = "HIGH_PERFORMANCE_LOSSLESS",
     }
 
+    /** Rate control modes for the NVIDIA NVENC encoder. */
     const enum StreamEncoderRateControl_NVIDIA {
+      /** Constant Bit Rate. */
       RC_CBR = "RC_CBR",
+      /** Constant Quantization Parameter. */
       RC_CQP = "RC_CQP",
+      /** Variable Bit Rate. */
       RC_VBR = "RC_VBR",
+      /** Variable Bit Rate with minimum QP constraint. */
       RC_VBR_MINQP = "RC_VBR_MINQP",
+      /** Two-pass VBR optimized for quality. */
       RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
+    /** Rate control modes for the x264 software encoder. */
     const enum StreamEncoderRateControl_x264 {
+      /** Constant Bit Rate. */
       RC_CBR = "RC_CBR",
+      /** Constant Quantization Parameter. */
       RC_CQP = "RC_CQP",
+      /** Variable Bit Rate. */
       RC_VBR = "RC_VBR",
+      /** Variable Bit Rate with minimum QP constraint. */
       RC_VBR_MINQP = "RC_VBR_MINQP",
+      /** Two-pass VBR optimized for quality. */
       RC_2_PASS_QUALITY = "RC_2_PASS_QUALITY",
     }
 
+    /** The screen position where the recording indicator overlay is shown. */
     const enum IndicationPosition {
+      /** No indicator is shown. */
       None = "None",
+      /** Indicator appears in the top-left corner. */
       TopLeftCorner = "TopLeftCorner",
+      /** Indicator appears in the top-right corner. */
       TopRightCorner = "TopRightCorner",
+      /** Indicator appears in the bottom-left corner. */
       BottomLeftCorner = "BottomLeftCorner",
+      /** Indicator appears in the bottom-right corner. */
       BottomRightCorner = "BottomRightCorner",
     }
 
+    /** The visual style of the recording indicator overlay. */
     const enum IndicationType {
+      /** No recording indicator is shown. */
       NoIndication = "NoIndication",
+      /** A colored dot is shown. */
       Dot = "Dot",
+      /** A colored dot with an elapsed-time timer is shown. */
       DotAndTimer = "DotAndTimer",
     }
 
+    /** Determines the source used to establish the base video frame size. */
     const enum eVideoBaseFrameSizeSource {
+      /** The base frame size is determined automatically. */
       Auto = "Auto",
+      /** The base frame size is taken from the `StreamVideoOptions` settings. */
       Setting = "Setting",
     }
 
+    /** The algorithm used to calculate the final encoded video frame size. */
     const enum eVideoFrameSizeCalcMethod {
+      /** Use the original game resolution without modification. */
       Original = "Original",
+      /** Use the exact requested resolution, or keep the aspect ratio if not achievable. */
       ExactOrKeepRatio = "ExactOrKeepRatio",
+      /** Use the exact requested resolution, or the closest supported resolution. */
       ExactOrClosestResolution = "ExactOrClosestResolution",
     }
   }
@@ -3811,6 +4931,7 @@ declare namespace overwolf.streaming {
    * Stream settings container.
    */
   interface GetWindowStreamingModeResult extends Result {
+    /** The streaming mode string for the queried window. */
     streaming_mode?: string;
   }
 
@@ -3871,6 +4992,7 @@ declare namespace overwolf.streaming {
     quota?: StreamQuotaParams;
   }
 
+  /** Basic metadata about the stream destination. */
   interface StreamInfo {
     /**
      * The URL where the stream can be watched.
@@ -3950,8 +5072,8 @@ declare namespace overwolf.streaming {
     include_full_size_video?: boolean;
     /**
      * Defines Sub folder for video file path destination (Optional).
-     * OverwolfVideoFolder\AppName\|sub_folder_name\|file_name| In case
-     * `folder_name` is empty: OverwolfVideoFolder\AppName\\`sub_folder_name`
+     * OverwolfVideoFolder\AppName\<sub_folder_name>\<file_name> In case
+     * `folder_name` is empty: `OverwolfVideoFolder\AppName\<sub_folder_name>`
      */
     sub_folder_name?: string;
     /**
@@ -3992,22 +5114,22 @@ declare namespace overwolf.streaming {
     sources?: overwolf.media.replays.VideoSource[];
 
     /**
-     *
+     * The method used to calculate the output frame size from the base frame size.
      */
     frame_size_method?: enums.eVideoFrameSizeCalcMethod;
 
     /**
-     *
+     * The source used to determine the base frame size before applying `frame_size_method`.
      */
     base_frame_size_source?: enums.eVideoBaseFrameSizeSource;
 
     /**
-     *
+     * When `true`, enables on-demand video file splitting via the `split` function.
      */
     enable_on_demand_split?: boolean;
 
     /**
-     *
+     * Options controlling game window capture behavior.
      */
     game_window_capture?: GameWindowCapture;
     /**
@@ -4015,7 +5137,6 @@ declare namespace overwolf.streaming {
      * Note: if game is minimized, BRB will be shown.
      */
     keep_game_capture_on_lost_focus?: boolean;
-
 
     /**
      * Disables automatic shutdown of the streaming API once the targeted game session ended.
@@ -4027,7 +5148,9 @@ declare namespace overwolf.streaming {
    * Game window capture options.
    */
   interface GameWindowCapture {
+    /** Enable game window capture when the game window is available. Disabled by default. */
     enable_when_available: boolean; //Disabled by default
+    /** Whether to capture Overwolf windows on top of the game. Default value is taken from the Overwolf Settings */
     capture_overwolf_windows: boolean; //Default value is taken from the Overwolf Settings
   }
 
@@ -4175,24 +5298,37 @@ declare namespace overwolf.streaming {
    * Defines game volume and enablement settings.
    */
   interface GameAudioDevice extends StreamDeviceVolume {
+    /** Options controlling which game processes have their audio captured. */
     filtered_capture: GameCaptureOptions;
   }
 
+  /**
+   * Returns the list of apps currently recording or streaming.
+   * @param callback Called with the list of active recording apps.
+   */
   function getActiveRecordingApps(
     callback: CallbackFunction<GetActiveRecordingAppsResult>
   ): void;
 
+  /** Result of `getActiveRecordingApps`, listing apps that are currently capturing. */
   interface GetActiveRecordingAppsResult extends Result {
+    /** An array of apps that are currently streaming or recording. */
     streaming: ActiveRecordingApps[];
   }
 
+  /** Identifies an app that is currently recording or streaming. */
   interface ActiveRecordingApps {
+    /** The unique ID of the recording app. */
     uid: string;
+    /** The display name of the recording app. */
     displayName: string;
   }
 
+  /** Options for filtering which game processes have their audio captured. */
   interface GameCaptureOptions {
+    /** Whether filtered game audio capture is enabled. */
     enable: boolean;
+    /** Additional process names (beyond the main game process) to include in audio capture. */
     additional_process_names: string[];
   }
 
@@ -4225,7 +5361,9 @@ declare namespace overwolf.streaming {
    * Basic quota information
    */
   interface StreamQuotaParams {
+    /** The maximum total size of media files in gigabytes before old files are pruned. */
     max_quota_gb: number;
+    /** Directories to exclude from quota calculation. */
     excluded_directories?: string[];
   }
 
@@ -4240,107 +5378,180 @@ declare namespace overwolf.streaming {
     showWatermark: boolean;
   }
 
+  /** Metadata describing an available video encoder. */
   interface EncoderData {
+    /** The internal name of the encoder. */
     name: string;
+    /** The human-readable display name of the encoder. */
     display_name: string;
+    /** Whether this encoder is currently enabled and usable. */
     enabled: boolean;
+    /** The list of preset names supported by this encoder. */
     presets: string[];
+    /** Whether the encoder passed validation and is ready for use. */
     valid: boolean;
+    /** A vendor-level error string, if any. */
     vendor_error: string;
+    /** A human-readable description of any encoder error. */
     error_decsription: string;
   }
 
+  /** Metadata describing an available audio device. */
   interface AudioDeviceData {
+    /** The human-readable display name of the audio device. */
     display_name: string;
+    /** The unique system identifier of the audio device. */
     device_id: string;
+    /** Whether the device supports audio recording (input). */
     can_record: boolean;
+    /** Whether the device supports audio playback (output). */
     can_playback: boolean;
+    /** The current state of the device (e.g. active, disabled). */
     device_state: string;
+    /** The settings identifier for this device. */
     device_setting_id: string;
   }
 
+  /** Result of `start`, containing the ID of the newly created stream. */
   interface StreamResult extends StartCaptureResult {
+    /** The ID assigned to the started stream. */
     stream_id?: number;
   }
 
+  /** Base result for capture start operations, including error details. */
   interface StartCaptureResult extends Result {
+    /** The error code describing the outcome of the capture start attempt. */
     errorCode: enums.CaptureErrorCode;
+    /** A human-readable description of the error, if any. */
     errorDescription: string;
   }
 
+  /** Event data for streaming lifecycle events such as start and error. */
   interface StreamEvent {
+    /** The ID of the affected stream. */
     stream_id?: number;
+    /** An optional sub-error message with additional detail. */
     SubErrorMessage?: string;
+    /** Whether the stream is capturing the game window specifically. */
     is_game_window_capture?: boolean;
   }
 
+  /** Result of `getWatermarkSettings`. */
   interface GetWatermarkSettingsResult extends Result {
+    /** Whether the Overwolf watermark is currently enabled on the stream. */
     showWatermark: boolean;
   }
 
+  /** Result of `getWindowStreamingMode` for a specific window. */
   interface GetWindowStreamingModeResult extends Result {
+    /** The current streaming mode string for the queried window. */
     streaming_mode?: string;
   }
 
+  /** Result of `getStreamEncoders`, listing available video encoders. */
   interface GetStreamEncodersResult extends Result {
+    /** The status string of the request. */
     status: string;
+    /** An array of available encoder descriptors. */
     encoders?: EncoderData[];
   }
 
+  /** Result of `getCapabilities`, describing what the current system supports. */
   interface StreamingCapabilities extends Result {
+    /** Available video encoders on this system. */
     video?: EncoderData[];
+    /** Available audio devices on this system. */
     audio?: AudioDeviceData[];
+    /** Whether per-process audio capture is supported on this system. */
     audioProcessCaptureSupported?: boolean;
   }
 
+  /** Result of `getAudioDevices`, listing available audio input and output devices. */
   interface GetAudioDevicesResult extends Result {
+    /** An array of available audio devices. */
     devices?: AudioDeviceData[];
+    /** The system's default recording (input) device ID. */
     default_recording_device_id?: string;
+    /** The system's default playback (output) device ID. */
     default_playback_device_id?: string;
   }
 
+  /** Result of a `split` operation. */
   interface SplitResult extends Result { }
 
+  /** Event data fired when the stream's image source changes (e.g. switches between game and desktop). */
   interface StreamingSourceImageChangedEvent {
+    /** The ID of the stream whose source changed. */
     stream_id: number;
+    /** The previous image source identifier. */
     old_source: string;
+    /** The new image source identifier. */
     new_source: string;
   }
 
+  /** Event data fired when a stream stops. */
   interface StopStreamingEvent {
+    /** The ID of the stream that stopped. */
     stream_id: number;
+    /** The URL the stream was broadcasting to, if applicable. */
     url: string;
+    /** The path to the recorded video file, if applicable. */
     file_path: string;
+    /** The total duration of the stream in milliseconds. */
     duration: number;
+    /** The path to the last video file segment written. */
     last_file_path: string;
+    /** Whether the recording was split into multiple files. */
     split: boolean;
+    /** Extra metadata associated with the stream session. */
     extra: string;
+    /** The OS version string of the system. */
     osVersion: string;
+    /** The OS build string of the system. */
     osBuild: string;
+    /** The total number of frames captured during the stream. */
     total_frames: number;
   }
 
+  /** Result of `stop`, describing the completed stream session. */
   interface StopStreamingResult extends Result {
+    /** The ID of the stream that was stopped. */
     stream_id: number;
+    /** The URL the stream was broadcasting to, if applicable. */
     url: string;
+    /** The path to the recorded video file. */
     file_path: string;
+    /** The total duration of the stream in milliseconds. */
     duration: number;
+    /** The path to the last video file segment written. */
     last_file_path: string;
+    /** Whether the recording was split into multiple files. */
     split: boolean;
+    /** Extra metadata associated with the stream session. */
     extra: string;
+    /** The OS version string of the system. */
     osVersion: string;
+    /** The OS build string of the system. */
     osBuild: string;
   }
 
+  /** Event data fired when a video file is split due to reaching the size limit. */
   interface VideoFileSplitedEvent {
+    /** The ID of the stream whose file was split. */
     stream_id: number;
+    /** The name of the completed file segment. */
     file_name: string;
+    /** The duration of the completed file segment in milliseconds. */
     duration: number;
+    /** The sequential index of this file segment. */
     count: number;
+    /** The file path of the next segment that recording will continue into. */
     next_file: string;
   }
 
+  /** Event data fired when the set of supported encoders changes. */
   interface SupportedEncodersUpdatedEvent {
+    /** The updated array of available encoder descriptors. */
     encoders?: EncoderData[];
   }
 
@@ -4502,6 +5713,10 @@ declare namespace overwolf.streaming {
     callback: CallbackFunction<GetAudioDevicesResult>
   ): void;
 
+  /**
+   * Returns the streaming capabilities of the current system.
+   * @param callback Called with the system's streaming capabilities.
+   */
   function getCapabilities(
     callback: CallbackFunction<StreamingCapabilities>
   ): void;
@@ -4536,12 +5751,11 @@ declare namespace overwolf.streaming {
    */
   const onVideoFileSplited: Event<VideoFileSplitedEvent>;
 
-  /**
+/**
    * Fired upon support encoder list updated.
    */
   const onSupportedEncodersUpdated: Event<SupportedEncodersUpdatedEvent>;
 }
-
 
 declare namespace overwolf.log {
   /**
@@ -4568,7 +5782,7 @@ declare namespace overwolf.log {
    */
   function error(msg: string): void;
 
-  /**
+/**
    * Writes error level log message to the common log.
    * @param msg The message to write to the log file.
    */
@@ -4576,21 +5790,30 @@ declare namespace overwolf.log {
 }
 
 declare namespace overwolf.os {
-  /**
+
+/**
    * Returns regional information about the user.
    * @param callback Called with the region info.
    */
   function getRegionInfo(callback: CallbackFunction<GetRegionInfoResult>): void;
 
+  /** Result containing regional formatting information for the current user. */
   interface GetRegionInfoResult extends Result {
+    /** The regional info object. */
     info: RegionInfo;
   }
 
+  /** Regional formatting preferences for the current user's locale. */
   interface RegionInfo {
+    /** The date format string used in the user's locale (e.g., `"MM/DD/YYYY"`). */
     date_format?: string;
+    /** The time format string used in the user's locale (e.g., `"HH:mm"`). */
     time_format?: string;
+    /** The currency symbol used in the user's locale (e.g., `"$"`). */
     currency_symbol?: string;
+    /** Whether the user's locale uses the metric system. */
     is_metric?: boolean;
+    /** The name of the user's locale or region. */
     name?: string;
   }
 }
@@ -4606,40 +5829,65 @@ declare namespace overwolf.os.tray {
     callback: CallbackFunction<Result>
   ): void;
 
+  /**
+   * Changes the tray icon to the image at the given file path.
+   * @param path The path to the new icon image file.
+   * @param callback Called with the result.
+   */
   function changeIcon(
     path: string,
     callback: CallbackFunction<Result>
   ): void;
 
+  /**
+   * Changes the tray icon to the image at the given path within the specified storage space.
+   * @param space The storage space where the icon file is located.
+   * @param path The path to the new icon image file within the storage space.
+   * @param callback Called with the result.
+   */
   function changeIcon(
     space: extensions.io.enums.StorageSpace,
     path: string,
     callback: CallbackFunction<Result>
   ): void;
 
+  /**
+   * Restores the tray icon to the extension's default icon.
+   * @param callback Called with the result.
+   */
   function restoreIcon(
     callback: CallbackFunction<Result>
   ): void;
 
+  /** Removes the tray icon for the calling extension. */
   function destroy(): void;
 
+  /** The context menu displayed when the user right-clicks the tray icon. */
   interface ExtensionTrayMenu {
+    /** The list of top-level menu items in the context menu. */
     menu_items: menu_item[];
   }
 
+  /** A single item in the tray icon context menu. */
   interface menu_item {
+    /** The visible label text for this menu item. */
     label?: string;
+    /** A unique identifier for this menu item, returned in click events. */
     id?: string;
+    /** Whether this menu item is clickable. Defaults to `true`. */
     enabled?: boolean;
+    /** Nested sub-items that appear in a submenu under this item. */
     sub_items?: menu_item[];
   }
 
   /**
-   * Fired when an item from the tray icon’s context menu is selected.
+   * Fired when an item from the tray icon's context menu is selected.
    */
   const onMenuItemClicked: Event<onMenuItemClickedEvent>;
 
+  /** Event data for a tray context menu item click. */
   interface onMenuItemClickedEvent {
+    /** The `id` of the menu item that was clicked. */
     item: string;
   }
 
@@ -4648,13 +5896,16 @@ declare namespace overwolf.os.tray {
    */
   const onTrayIconClicked: Event<any>;
 
-  /**
+/**
    * Fired when the tray icon is double clicked.
    */
   const onTrayIconDoubleClicked: Event<any>;
 }
 
 declare namespace overwolf.extensions {
+  /**
+   * A union of all permission strings an app may request in its manifest.
+   */
   type Permission =
     | "Camera"
     | "Microphone"
@@ -4674,21 +5925,35 @@ declare namespace overwolf.extensions {
     | "OwWebview"
     | "VideoCaptureSettings";
 
+  /** The type of an Overwolf extension. */
   const enum ExtensionType {
+    /** A standard web-based Overwolf app. */
     WebApp = "WebApp",
+    /** An Overwolf built-in extension. */
     BuiltIn = "BuiltIn",
+    /** A Twitch-channel (TC) app. */
     TCApp = "TCApp",
+    /** A giveaway extension. */
     Giveaway = "Giveaway",
+    /** The Overwolf Store extension. */
     Store = "Store",
+    /** A skin extension. */
     Skin = "Skin",
+    /** A TypeScript-based skin extension. */
     TSSkin = "TSSkin",
+    /** An extension that provides game events. */
     GameEventsProvider = "GameEventsProvider",
+    /** The extension type could not be determined. */
     Unknown = "Unknown",
   }
 
+  /** The update state of an extension. */
   const enum ExtensionUpdateState {
+    /** The extension is up to date. */
     UpToDate = "UpToDate",
+    /** A newer version of the extension is available for download. */
     UpdateAvailable = "UpdateAvailable",
+    /** An update has been downloaded and is waiting for an app restart. */
     PendingRestart = "PendingRestart",
   }
 
@@ -4710,6 +5975,7 @@ declare namespace overwolf.extensions {
      */
     meta: Metadata;
 
+    /** The unique identifier (UID) of the extension. */
     UID: string;
     /**
      * 	An array of permissions that the app requires.
@@ -4725,6 +5991,7 @@ declare namespace overwolf.extensions {
     max_rotation_log_files: number;
   }
 
+  /** App metadata as declared in the manifest `meta` block. */
   interface Metadata {
     /**
      * Name of your app
@@ -4763,7 +6030,7 @@ declare namespace overwolf.extensions {
      */
     dock_button_title: string;
     /**
-     * A relative path from the app folder to the icon’s png file. This is the
+     * A relative path from the app folder to the icon's png file. This is the
      * mouse-over (multi-colored) version of the icon that will be displayed on
      * the Overwolf dock. The icon dimensions should be 256×256 pixels, 72 PPI.
      * Overwolf will resize it to 37×37. Please make sure the png is smaller
@@ -4771,7 +6038,7 @@ declare namespace overwolf.extensions {
      */
     icon: string;
     /**
-     * A relative path from the app folder to the icon’s png file. This
+     * A relative path from the app folder to the icon's png file. This
      * grayscale version of the icon is for the default state that will be
      * displayed on the Overwolf dock. The icon dimensions should be 256×256
      * pixels, 72 PPI. Overwolf will resize it to 37×37. Please make sure the
@@ -4779,24 +6046,25 @@ declare namespace overwolf.extensions {
      */
     icon_gray: string;
     /**
-     * A relative path from the app folder to the desktop shortcut icon’s ico
-     * file. This is a colored icon for the app’s desktop shortcut.
+     * A relative path from the app folder to the desktop shortcut icon's ico
+     * file. This is a colored icon for the app's desktop shortcut.
      */
     launcher_icon: string;
     /**
-     * A relative path from the app folder to the splash image icon’s png file.
+     * A relative path from the app folder to the splash image icon's png file.
      * The image size should be 256x256px. If a this image is missing, Overwolf
-     * will use the “icon” image as a splash image
+     * will use the "icon" image as a splash image
      */
     splash_image: string;
     /**
-     * A relative path from the app folder to the icon’s png file. This is the
+     * A relative path from the app folder to the icon's png file. This is the
      * window task bar icon \ window header. The icon dimensions should be
      * 256x256 pixels.
      */
     window_icon: string;
   }
 
+  /** The `data` block of the manifest, containing all app-level settings. */
   interface WebAppSettings {
     /**
      * An app can declare itself as targeted for one game or more.
@@ -4813,7 +6081,7 @@ declare namespace overwolf.extensions {
       game_ids?: number[];
     };
     /**
-     * The name of the window (from the “windows” list) to initially load when
+     * The name of the window (from the "windows" list) to initially load when
      * the app starts.
      */
     start_window: string;
@@ -4823,7 +6091,7 @@ declare namespace overwolf.extensions {
     windows: Dictionary<ExtensionWindowData>;
     /**
      * Enable/Disable printing of ads log to the console. Default value is
-     * “false”.
+     * "false".
      */
     enable_top_isolated_sites_console?: boolean;
     /**
@@ -4835,13 +6103,13 @@ declare namespace overwolf.extensions {
      */
     protocol_override_domains?: Dictionary<string>;
     /**
-     * Choose whether links in the app will be opened using the user’s default
-     * browser or Overwolf’s browser. Possible values: "user" or "overwolf".
+     * Choose whether links in the app will be opened using the user's default
+     * browser or Overwolf's browser. Possible values: "user" or "overwolf".
      */
     force_browser?: string;
     /**
      * @deprecated No longer supported
-     * 
+     *
      * Enable OSR/GPU acceleration if supported by this machine. Note: this flag
      * is still in Beta. It may not function as expected in some machines.
      */
@@ -4921,13 +6189,13 @@ declare namespace overwolf.extensions {
          */
         game_ids: number[];
         /**
-         * The app won’t start until the game’s framerate will stabilize around
+         * The app won't start until the game's framerate will stabilize around
          * or above the stated framerate.
          */
         wait_for_stable_framerate: number[];
       };
       /**
-       * The app’s main window will start minimized.
+       * The app's main window will start minimized.
        */
       start_minimized?: boolean;
       /**
@@ -4937,13 +6205,13 @@ declare namespace overwolf.extensions {
     }[];
     /**
      * A custom user agent for the app to use when creating http requests. Note:
-     * using ‘navigator.userAgent’ will not return the custom user agent, but
+     * using 'navigator.userAgent' will not return the custom user agent, but
      * the default one.
      */
     user_agent?: string;
     /**
      * Disable opening of the developer tools for the app (with Ctrl+shift+I).
-     * Default value – “false”
+     * Default value – "false"
      */
     disable_dt?: boolean;
     /**
@@ -4967,14 +6235,14 @@ declare namespace overwolf.extensions {
        */
       reload_delay: number;
       /**
-       * Filter files which will be tracked.e.g (.js;.html. default value is “.”
-       * -> all files, but you can use several value like “.json;.html”
+       * Filter files which will be tracked.e.g (.js;.html. default value is "."
+       * -> all files, but you can use several value like ".json;.html"
        */
       filter: string;
     };
     /**
      * If set to true, app localStorage data will not be cleaned up after app uninstallation.
-     * Default value – “false”
+     * Default value – "false"
      */
     disable_cleanup?: boolean;
     /**
@@ -4987,10 +6255,11 @@ declare namespace overwolf.extensions {
     url_protocol?: Dictionary<string>;
   }
 
+  /** Per-window configuration declared in the manifest `data.windows` map. */
   interface ExtensionWindowData {
     /**
      * Points to a local HTML file to be loaded inside the window. If you wish
-     * to host your app in a remote web-site, you’ll have to have a local page
+     * to host your app in a remote web-site, you'll have to have a local page
      * that redirects to that remote website. In such cases, you need to make
      * sure that the block_top_window_navigation property is set to false.
      */
@@ -5008,8 +6277,8 @@ declare namespace overwolf.extensions {
      */
     transparent?: boolean;
     /**
-     * Indicates whether the window’s locally saved data should be overridden
-     * when the window’s size/location/opacity changes after a version update.
+     * Indicates whether the window's locally saved data should be overridden
+     * when the window's size/location/opacity changes after a version update.
      */
     override_on_update?: boolean;
     /**
@@ -5057,9 +6326,9 @@ declare namespace overwolf.extensions {
     in_game_only?: boolean;
     /**
      * Marks the window as available on desktop only, and not in-game. This flag
-     * should be used (set to “true”) when “use_os_windowing” or “native_window”
-     * flags are set to true. Note: using “desktop_only” and “native_window”
-     * flags for desktop windows will dramatically improve your app’s
+     * should be used (set to "true") when "use_os_windowing" or "native_window"
+     * flags are set to true. Note: using "desktop_only" and "native_window"
+     * flags for desktop windows will dramatically improve your app's
      * performance.
      */
     desktop_only?: boolean;
@@ -5110,12 +6379,12 @@ declare namespace overwolf.extensions {
     */
     bottommost?: boolean;
     /**
-     * Refrain from non _blank elements from “taking-over” the entire app’s
+     * Refrain from non _blank elements from "taking-over" the entire app's
      * window.
      */
     block_top_window_navigation?: boolean;
     /**
-     * Window location won’t be changed when game focus is changed.
+     * Window location won't be changed when game focus is changed.
      */
     keep_window_location?: boolean;
     /**
@@ -5149,7 +6418,7 @@ declare namespace overwolf.extensions {
      */
     show_maximize?: boolean;
     /**
-     * Causes the app’s window to never “lose focus”, so the window.onblur event
+     * Causes the app's window to never "lose focus", so the window.onblur event
      * is never triggered. Default value is false.
      */
     disable_blur?: boolean;
@@ -5167,32 +6436,32 @@ declare namespace overwolf.extensions {
     is_background_page?: boolean;
     /**
      * Allows you to control the behavior of an app window while in a
-     * “mouse-less” game state.
+     * "mouse-less" game state.
      */
     focus_game_takeover?: "ReleaseOnHidden" | "ReleaseOnLostFocus";
     /**
-     * 	Allow Overwolf to display your app’s hotkey combination on the screen
-     * 	when the user switches to “exclusive mode”. The string value should be
+     * 	Allow Overwolf to display your app's hotkey combination on the screen
+     * 	when the user switches to "exclusive mode". The string value should be
      * 	the hotkey name from the hotkeys section. Relevant only if you set
      * 	focus_game_takeover=ReleaseOnHidden.
      */
     focus_game_takeover_release_hotkey?: string;
     /**
      * 	Enable iframe isolation: runs it in a different process, so if some
-     * 	iframe is misbehaving (e.g. memory leak, etc.) it won’t crash your app
+     * 	iframe is misbehaving (e.g. memory leak, etc.) it won't crash your app
      * 	and will only crash the iframe process. useful with Overwolf ads that
      * 	run in an iframe. Note: Please contact us before adding it to your app.
      * 	Default value is true.
      */
     enable_top_isolation?: boolean;
     /**
-     * Allows access to local files that are not located in your app’s
+     * Allows access to local files that are not located in your app's
      * (extension) folder. Default value is false.
      */
     allow_local_file_access?: boolean;
     /**
      * 	Blocks the user from closing the window by using Alt+F4. You can
-     * 	register to the onAltF4Blocked event to be noticed when a “block” was
+     * 	register to the onAltF4Blocked event to be noticed when a "block" was
      * 	triggered.
      */
     is_alt_f4_blocked?: boolean;
@@ -5209,7 +6478,7 @@ declare namespace overwolf.extensions {
     debug_url: string;
     /**
      * @deprecated No longer supported.
-     * 
+     *
      * Valid only for transparent windows. Valid only if enable_osr_acceleration
      * is on.
      */
@@ -5229,61 +6498,90 @@ declare namespace overwolf.extensions {
     disable_hardware_acceleration: boolean;
   }
 
+  /** A width/height pair used to describe window dimensions. */
   interface Size {
+    /** Width in pixels. */
     width: number;
+    /** Height in pixels. */
     height: number;
   }
 
+  /** A top/left coordinate pair used to describe a window's starting position. */
   interface Point {
+    /** Distance from the top of the screen in pixels. */
     top: number;
+    /** Distance from the left of the screen in pixels. */
     left: number;
   }
 
+  /** Result of `getManifest`, combining the base `Result` with the full `Manifest` object. */
   interface GetManifestResult extends Result, Manifest { }
 
+  /** Result containing the phased rollout percentage for the calling extension. */
   interface GetPhasedPercentResult extends Result {
+    /** The percentage (0–100) of users receiving the phased update. */
     phasedPercent: number;
   }
 
+  /** Result of `getInfo`, containing the info string or object set by another extension. */
   interface GetInfoResult extends Result {
+    /** The info value posted by the target extension. */
     info: string | { [key: string]: any };
   }
 
+  /** Result of `getRunningState`, indicating whether the target extension is active. */
   interface GetRunningStateResult extends Result {
+    /** `true` if the target extension is currently running. */
     isRunning: boolean;
   }
 
+  /** Result of `updateExtension`, describing the outcome of an update attempt. */
   interface UpdateExtensionResult extends Result {
+    /** The update state after the operation. */
     state?: string;
+    /** Additional human-readable information about the update. */
     info?: string;
+    /** The version string of the installed or pending update. */
     version?: string;
   }
 
+  /** Result of `checkForExtensionUpdate`, reporting whether an update is available. */
   interface CheckForUpdateResult extends Result {
     state?: "UpToDate" | "UpdateAvailable" | "PendingRestart"; //should be changed in the future to the enum "ExtensionUpdateState"
+    /** The version string of the available update, if any. */
     updateVersion?: string;
   }
 
+  /** Result of `getServiceConsumers`, providing service-provider manifest data. */
   interface ServiceProvidersDataResult extends Result {
+    /** A dictionary mapping provider keys to their data strings. */
     data: Dictionary<string>;
   }
 
+  /** Event data fired when the app is launched while already running. */
   interface AppLaunchTriggeredEvent {
+    /** The origin that triggered the launch (e.g. `"dock"`, `"storeapi"`, `"odk"`). */
     origin: string;
+    /** An optional parameter passed to the app at launch. */
     parameter: string;
   }
 
+  /** Event data fired when the extension has been updated to a new version. */
   interface ExtensionUpdatedEvent {
+    /** The version string of the newly installed update. */
     version: string;
+    /** The current update state of the extension. */
     state: ExtensionUpdateState;
   }
 
+  /** Event data fired when an extension is installed. */
   interface AppInstallationEvent {
+    /** The unique identifier (UID) of the installed extension. */
     UID: string;
   }
 
   /**
-   * The following types are related to the |onUncaughtException| event - which
+   * The following types are related to the `onUncaughtException` event - which
    * is a different than the usual events.
    */
   type UncaughtExceptionCallback = (
@@ -5292,12 +6590,17 @@ declare namespace overwolf.extensions {
     scriptName: string
   ) => void;
 
+  /** Event interface for the `onUncaughtException` event, which uses a custom callback signature. */
   interface UncaughtExceptionEvent {
+    /** Register a listener for uncaught exception events. */
     addListener(callback: UncaughtExceptionCallback): void;
+    /** Remove a previously registered uncaught exception listener. */
     removeListener(callback: UncaughtExceptionCallback): void;
   }
 
+  /** Result of `getExtensions`, containing the list of installed extensions. */
   interface GetExtensionsResult extends Result {
+    /** An array of extension objects describing installed extensions. */
     extensions: any[];
   }
 
@@ -5419,7 +6722,7 @@ declare namespace overwolf.extensions {
    */
   const onExtensionUpdated: Event<ExtensionUpdatedEvent>;
 
-  /**
+/**
    * Called for global uncaught exceptions in a frame.
    */
   const onUncaughtException: UncaughtExceptionEvent;
@@ -5429,67 +6732,93 @@ declare namespace overwolf.extensions {
   */
   const onAppInstalled: Event<AppInstallationEvent>;
 
+  /** Fired when an extension is uninstalled. */
   const onAppUninstalled: Event<AppInstallationEvent>;
 
 }
 
 declare namespace overwolf.extensions.io {
   export namespace enums {
+    /** The named storage spaces available to extensions for file I/O. */
     const enum StorageSpace {
+      /** The user's pictures folder. */
       pictures = "pictures",
+      /** The user's videos folder. */
       videos = "videos",
+      /** The extension's private app data folder. */
       appData = "appData",
     }
 
+    /** Whether a file system entry is a regular file or a directory. */
     const enum FileType {
+      /** A regular file. */
       file = "file",
+      /** A directory. */
       directory = "directory"
     }
   }
 
+  /** Result of `getStoragePath`, containing the resolved absolute path for a storage space. */
   interface GetStoragePathResult extends Result {
+    /** The absolute file system path for the requested storage space. */
     path: string;
   }
 
+  /** Describes a single file system entry (file or directory) within a storage space. */
   interface Content {
+    /** Whether this entry is a file or a directory. */
     type: enums.FileType;
+    /** The path of the entry within the storage space. */
     path: string;
   }
 
+  /** Result of `readTextFile`, containing the file's text content. */
   interface ReadTextFileResult extends Result {
+    /** The text content of the file. */
     content: string;
   }
 
+  /** Result of `exist`, indicating whether the path exists and its type. */
   interface ExistResult extends Result {
+    /** The type of the existing entry (file or directory). */
     type: enums.FileType;
   }
 
+  /** Result of `dir`, listing the files and subdirectories at a path. */
   interface DirResult extends Result {
+    /** The names of files found in the directory. */
     files: string[];
+    /** The names of subdirectories found in the directory. */
     directories: string[];
   }
 
+  /** Result of `delete`, listing any entries that could not be deleted. */
   interface DeleteResult extends Result {
+    /** Content entries that were not successfully deleted. */
     undeleted_content: Content[];
   }
 
+  /** Creates a new directory at the given path within the specified storage space. */
   export function createDirectory(
     space: enums.StorageSpace,
     path: string,
     callback: CallbackFunction<Result>
   ): void;
 
+  /** Returns the absolute file system path for the given storage space. */
   export function getStoragePath(
     space: enums.StorageSpace,
     callback: CallbackFunction<GetStoragePathResult>
   ): void;
 
+  /** Checks whether a file or directory exists at the given path in the storage space. */
   export function exist(
     space: enums.StorageSpace,
     path: string,
     callback: CallbackFunction<ExistResult>
   ): void;
 
+  /** Moves a file or directory from `source` to `destination` within the storage space. */
   export function move(
     space: enums.StorageSpace,
     source: string,
@@ -5497,6 +6826,7 @@ declare namespace overwolf.extensions.io {
     callback: CallbackFunction<Result>
   ): void;
 
+  /** Deletes the file or directory at the given path within the storage space. */
   function _delete(
     space: enums.StorageSpace,
     path: string,
@@ -5505,6 +6835,7 @@ declare namespace overwolf.extensions.io {
 
   export { _delete as delete }
 
+  /** Copies a file or directory from `source` to `destination` within the storage space. */
   export function copy(
     space: enums.StorageSpace,
     source: string,
@@ -5512,18 +6843,21 @@ declare namespace overwolf.extensions.io {
     callback: CallbackFunction<Result>
   ): void;
 
+  /** Lists the files and subdirectories at `directoryPath` within the storage space. */
   export function dir(
     space: enums.StorageSpace,
     directoryPath: string,
     callback: CallbackFunction<DirResult>
   ): void;
 
+  /** Reads the text content of the file at `filePath` within the storage space. */
   export function readTextFile(
     space: enums.StorageSpace,
     filePath: string,
     callback: CallbackFunction<ReadTextFileResult>
   ): void;
 
+  /** Writes text content to the file at `filePath` within the storage space, creating it if it does not exist. */
   export function writeTextFile(
     space: enums.StorageSpace,
     filePath: string,
@@ -5534,11 +6868,11 @@ declare namespace overwolf.extensions.io {
 
 declare namespace overwolf.extensions.current {
 
+  /** Result of `getExtraObject`, containing the requested extra object instance. */
   interface GetExtraObjectResult extends Result {
+    /** The extra object instance, or undefined if not found. */
     object?: any;
-    path?: string;
   }
-
 
   /**
    * Retrieves an extra object (providing external APIs) registered in the
@@ -5558,22 +6892,29 @@ declare namespace overwolf.extensions.current {
    */
   function getManifest(callback: CallbackFunction<GetManifestResult>): void;
 
+  /** Generates SHA1, SHA256, and MD5 hashes from the given email address. */
   function generateUserEmailHashes(email: string, callback: CallbackFunction<Result>): void;
 
+  /** Sets pre-computed email hashes on the current user's profile. */
   function setUserEmailHashes(hashes: UserEmailHashes, callback: CallbackFunction<Result>): void;
 
+  /** A set of cryptographic hashes derived from a user's email address. */
   interface UserEmailHashes {
+    /** The SHA-1 hash of the email. */
     SHA1: string;
+    /** The SHA-256 hash of the email. */
     SHA256: string;
+    /** The MD5 hash of the email. */
     MD5: string
   }
 
+  /** Returns the phased rollout percentage for the current or specified extension version. */
   function getPhasedPercent(
     callback: CallbackFunction<GetPhasedPercentResult>,
     version?: string,
   ): void;
 
-  /**
+/**
    * Repairs the schema registration, for an extension where the manifest contains
    * url_protocol
    * @param callback A function called with the manifest data.
@@ -5583,24 +6924,29 @@ declare namespace overwolf.extensions.current {
   ): void;
 }
 
+
 declare namespace overwolf.extensions.sharedData {
   /**
    * Container that represent a shared data parameters.
    */
   interface SharedDataParams {
+    /** The app ID of the extension that set the shared data (the owner). */
     origin?: string;
+    /** The app ID of the extension that should receive the shared data (the consumer). */
     target?: string;
   }
 
+  /** Result of `get`. */
   interface GetResult extends Result {
+    /** A dictionary of shared data values keyed by owner app ID. */
     data: Dictionary<string>;
   }
 
   /**
    * Used by the owner app to set data for the consumer app, by appId.
-   * @param appId The requested app id.
-   * @param value
-   * @param callback
+   * @param appId The app ID of the consumer extension to share data with.
+   * @param value The data to share with the consumer app.
+   * @param callback Called with the result of the operation.
    */
   function set(
     appId: string,
@@ -5610,91 +6956,26 @@ declare namespace overwolf.extensions.sharedData {
 
   /**
    * Used by the consumer app to get data set by the owner app.
-   * @param param
-   * @param callback
+   * @param param Filter parameters specifying the origin and/or target app IDs.
+   * @param callback Called with the result containing the shared data.
    */
   function get(
     param: SharedDataParams,
     callback: CallbackFunction<GetResult>
   ): void;
 
+  /** Event data for when shared data is changed by the owner app. */
   interface onChangedEvent {
+    /** The app ID of the extension that set the shared data. */
     origin: string;
+    /** The app ID of the extension the data was shared with. */
     target: string;
+    /** The updated shared data value. */
     data: string;
   }
 }
 
-/**
- * overwolf.campaigns.crossapp
- *
- * An API that allows crossapp-promotions: One app can promote another app and
- * then get an indication for a successful conversion.
- *
- * For example - an app can promote a video capture and sharing app and receive
- * a notification as soon as the user shares a video from the promoted app.
- *
- * 1. Promoting app calls:
- *
- *    overwolf.campaigns.crossapp.set({
- *      id: 'lkjk23535', // An extension-specific unique campaign id
- *      action: 'social-share', // The action for conversion
- *      expiration: 1601510400000,
- *      target_apps_uids: [ 'PROMOTED-EXTENSION-ID' ], // '*' for any app
- *      data: {
- *        social_networks: [ 'twitter' ],
- *        game_ids: [9196, 5426],
- *        hashtags: [ 'got-here-from-XXX-app' ]
- *      }
- *    }, console.log);
- *
- * 2. Promoting app then redirects the user to download the promoted extension
- *
- *    e.g. overwolf.utils.openStore({
- *          uid: 'PROMOTED-EXTENSION-ID',
- *          page: overwolf.utils.enums.eStorePage.OneAppPage
- *         });
- *
- * 3. Promoted app, when an action of interest occurs, calls:
- *
- *    const getAvailCampaigns = () => {
- *      return new Promise((resolve, reject) => {
- *        overwolf.campaigns.crossapp.getAvailableActions(result => {
- *          if (!result.success) {
-  *            return reject(result);
- *          }
- *
- *          return resolve(result);
- *        });
- *      });
- *    }
- *
- *    ...
- *
- *    // It is not recommended to call an Overwolf API from within a callback -
- *    // so we use await/async.
- *    const actions = await getAvailCampaigns();
- *    actions.forEach(action => {
- *      if (conversionComplete(action)) {
- *
- *        overwolf.campaigns.crossapp.reportConversion({
- *          id: action.id,
- *          owner_app_uid: action.owner_app_uid,
- *          data: {
- *            game_id: 9196,
- *            social_network: 'twitter',
- *            share_url: '...'
- *          }
- *        });
- *
- *      }
- *    });
- *
- * 4. Promoting app will then get launched with the 'campaign-event' source url
- * parameter. It will then call: overwolf.campaigns.crossapp.consumeConversions
- * to review the existing conversions (this will remove the conversions from
- * consecutive calls to consumeConversions)
- */
+
 declare namespace overwolf.campaigns.crossapp {
   /**
    * Container that represent a shared data parameters.
@@ -5702,7 +6983,7 @@ declare namespace overwolf.campaigns.crossapp {
   interface CrossAppCampaign {
     /**
      * An id to identify the campaign (action/conversion).
-     * |id| should be unique per an extension (two different extensions can use
+     * `id` should be unique per an extension (two different extensions can use
      * the same id).
      */
     id: string;
@@ -5739,6 +7020,9 @@ declare namespace overwolf.campaigns.crossapp {
     data: any;
   }
 
+  /**
+   * Container that represent a cross app campaign conversions.
+   */
   interface CrossAppCampaignConversion {
     /**
      * The ID of the cross-app campaign the conversion targets.
@@ -5758,27 +7042,28 @@ declare namespace overwolf.campaigns.crossapp {
     /**
      * The UID of the app that performed the conversion (the promoted app).
      *
-     * Set by the Overwolf client when calling |consumeConversions|.
+     * Set by the Overwolf client when calling `consumeConversions`.
      */
     readonly origin_app_uid?: string;
 
     /**
      * When the conversion took place.
      *
-     * Set by the Overwolf client when calling |consumeConversions|.
+     * Set by the Overwolf client when calling `consumeConversions`.
      */
     readonly timestamp?: number;
   }
 
   /**
-   * See |overwolf.campaigns.crossapp.getAvailableActions|
+   * Object result from `overwolf.campaigns.crossapp.getAvailableActions`
+   * 
    */
   interface GetCrossAppAvailableActionsResult extends Result {
     actions: CrossAppCampaign[];
   }
 
   /**
-   * See |overwolf.campaigns.crossapp.consumeConversions|
+   * Object result from `overwolf.campaigns.crossapp.consumeConversions`
    */
   interface GetCrossAppConversionsResult extends Result {
     conversions: CrossAppCampaignConversion[];
@@ -5794,8 +7079,6 @@ declare namespace overwolf.campaigns.crossapp {
 
   /**
    * Initiate or modify a cross-app campaign action for this extension.
-   * You may modify an existing action by using the same id parameter - see
-   * CrossAppCampaign.id
    *
    * @param campaign
    * @param callback
@@ -5816,7 +7099,9 @@ declare namespace overwolf.campaigns.crossapp {
     callback: CallbackFunction<Result>
   ): void;
 
-  /**
+  
+
+/**
    * Consume all pending conversions for this extension. Consumed conversions
    * are deleted.
    *
@@ -5834,78 +7119,134 @@ declare namespace overwolf.campaigns.crossapp {
 
 declare namespace overwolf.utils {
   namespace enums {
+    /** Pages available in the Overwolf store that can be opened via `openStore`. */
     const enum eStorePage {
+      /** The store login page. */
       LoginPage = "LoginPage",
+      /** A specific app's page in the store. */
       OneAppPage = "OneAppPage",
+      /** The subscription page for an app. */
       SubscriptionPage = "SubscriptionPage",
+      /** The reviews page for an app. */
       ReviewsPage = "ReviewsPage",
     }
   }
 
+  /** Information about a single display/monitor connected to the system. */
   interface Display {
+    /** Display name as reported by the OS. */
     name: string;
+    /** Unique display identifier. */
     id: string;
+    /** Horizontal position of the display in the virtual desktop (pixels). */
     x: number;
+    /** Vertical position of the display in the virtual desktop (pixels). */
     y: number;
+    /** Horizontal DPI of the display. */
     dpiX: number;
+    /** Vertical DPI of the display. */
     dpiY: number;
+    /** Width of the display in pixels. */
     width: number;
+    /** Height of the display in pixels. */
     height: number;
+    /** Whether this is the primary display. */
     is_primary: boolean;
+    /** Native OS handle for the display. */
     handle: { value: number; };
   }
 
+  /** Information about a GPU installed in the system. */
   interface GPUInfo {
+    /** GPU chip type identifier. */
     ChipType: string;
+    /** GPU manufacturer name. */
     Manufacturer: string;
+    /** GPU model name. */
     Name: string;
   }
 
+  /** Information about a hard disk or storage device in the system. */
   interface HardDiskInfo {
+    /** Display name/caption of the disk. */
     Caption: string;
+    /** Whether the drive is a solid-state disk. */
     IsSsd: boolean;
+    /** Total disk size in bytes. */
     Size: number;
   }
 
+  /** Information about a connected input device (keyboard, mouse, gamepad, etc.). */
   interface InputDeviceInfo {
+    /** Numeric identifier for the input device. */
     id: number;
+    /** Type of input device (e.g. keyboard, mouse). */
     type: string;
+    /** Vendor ID of the input device. */
     vendor: number;
   }
 
+  /** Information about a monitor as reported by the system. */
   interface MonitorInfo {
+    /** Horizontal DPI of the monitor. */
     Dpix: number;
+    /** Vertical DPI of the monitor. */
     Dpiy: number;
+    /** Whether this is the main/primary monitor. */
     IsMain: boolean;
+    /** Physical or logical location identifier. */
     Location: string;
+    /** Monitor name. */
     Name: string;
+    /** Monitor resolution string (e.g. "1920x1080"). */
     Resolution: string;
   }
 
+  /** Comprehensive system hardware and software information. */
   interface SystemInfo {
+    /** Names of audio output/input devices. */
     AudioDevices?: string[];
+    /** CPU model name. */
     CPU?: string;
+    /** Array of GPU information objects. */
     GPUs?: GPUInfo[];
+    /** Array of hard disk information objects. */
     HardDisks?: HardDiskInfo[];
+    /** Array of connected input device information objects. */
     InputDevices?: InputDeviceInfo[];
+    /** Whether the system is a laptop. */
     IsLaptop?: boolean;
+    /** Number of logical CPU cores. */
     LogicalCPUCount?: number;
+    /** System or motherboard manufacturer. */
     Manufacturer?: string;
+    /** Total installed RAM as a formatted string. */
     MemorySize?: string;
+    /** System model name. */
     Model?: string;
+    /** Array of monitor information objects. */
     Monitors?: MonitorInfo[];
+    /** Motherboard model name. */
     Motherboard?: string;
+    /** Installed .NET Framework version string. */
     NetFramework?: string;
+    /** Number of connected screens. */
     NumberOfScreens?: number;
+    /** Operating system name. */
     OS?: string;
+    /** OS build number string. */
     OSBuild?: string;
+    /** OS release identifier string. */
     OSReleaseId?: string;
+    /** Number of physical CPU packages. */
     PhysicalCPUCount?: number;
+    /** Whether hardware video encoding is supported. */
     VideoEncSupport?: boolean;
     /** indicates if the current OS enabled the [Windows 10 Hardware-Accelerated GPU Scheduling](/ow-native/guides/general-tech/video-capture-best-practices#windows-10-hardware-accelerated-gpu-scheduling-notice) feature */
     HAGSEnabled?: boolean
   }
 
+  /** Parameters for opening a page in the Overwolf store. */
   interface OpenStoreParams {
     /**
      * The target app id.
@@ -5917,44 +7258,66 @@ declare namespace overwolf.utils {
     page: enums.eStorePage;
   }
 
+  /** Result returned from a file picker dialog. */
   interface OpenFilePickerResult extends Result {
+    /** Overwolf media URL of the selected file (single selection). */
     url?: string;
+    /** File system path of the selected file (single selection). */
     file?: string;
+    /** Overwolf media URLs of the selected files (multi-selection). */
     urls?: string[];
+    /** File system paths of the selected files (multi-selection). */
     files?: string[];
   }
 
+  /** Result returned from a folder picker dialog. */
   interface OpenFolderPickerResult extends Result {
+    /** Full file system path of the selected folder. */
     path?: string;
   }
 
+  /** Result returned from `getSystemInformation`. */
   interface GetSystemInformationResult extends Result {
+    /** The collected system information. */
     systemInfo?: SystemInfo;
   }
 
+  /** Result returned from `isTouchDevice`. */
   interface IsTouchDeviceResult extends Result {
+    /** Whether the current device has touch input capability. */
     isTouch?: boolean;
   }
 
+  /** Result returned from `getPeripherals`. */
   interface GetPeripheralsResult extends Result {
+    /** Object containing connected input devices and audio devices. */
     peripherals?: { inputDevices: InputDeviceInfo[]; audioDevices: string[]; };
   }
 
+  /** Result returned from `isMouseLeftButtonPressed`. */
   interface IsMouseLeftButtonPressedResult extends Result {
+    /** Whether the left mouse button is currently pressed. */
     pressed?: boolean;
   }
 
+  /** Result returned from `getMonitorsList`. */
   interface getMonitorsListResult extends Result {
+    /** Array of connected display information objects. */
     displays: Display[];
   }
 
+  /** Result returned when querying Overwolf client installation and uptime info. */
   interface ClientInfoResult extends Result {
     // timestamp
+    /** Unix timestamp (ms) of when the Overwolf client was installed. */
     installTime: number;
+    /** Number of seconds the Overwolf client has been running since last launch. */
     uptimeSeconds: number;
   }
 
+  /** Options for the `uploadClientLogs` function. */
   interface UploadClientLogsOptions {
+    /** Prefix string applied to the uploaded log file name. */
     filePrefix: string;
   }
 
@@ -6102,7 +7465,7 @@ declare namespace overwolf.utils {
   function openStoreOneAppPage(appId: string): void;
 
   /**
-   * Opens the requested app’s profile/login/subscription page in the Overwolf
+   * Opens the requested app's profile/login/subscription page in the Overwolf
    * Appstore.
    * @param param The requested store page.
    */
@@ -6134,7 +7497,7 @@ declare namespace overwolf.utils {
     callback: CallbackFunction<IsMouseLeftButtonPressedResult>
   ): void;
 
-  /**
+/**
    * Retrieve information about the client - such as when it was first installed
    * and how long is it running.
    * @param callback A callback with the result.
@@ -6146,44 +7509,70 @@ declare namespace overwolf.utils {
 
 declare namespace overwolf.settings {
   namespace enums {
+    /** The video resolution setting for capture. */
     const enum ResolutionSettings {
+      /** Capture at the original (native) resolution. */
       Original = "Original",
+      /** Capture at 1080p resolution. */
       R1080p = "R1080p",
+      /** Capture at 720p resolution. */
       R720p = "R720p",
+      /** Capture at 480p resolution. */
       R480p = "R480p",
     }
 
+    /** The screen position of an on-screen indicator (e.g. the FPS counter). */
     const enum eIndicationPosition {
+      /** No position / indicator is hidden. */
       None = -1,
+      /** Positioned in the top-left corner of the screen. */
       TopLeftCorner = 0,
+      /** Positioned in the top-right corner of the screen. */
       TopRightCorner = 1,
+      /** Positioned in the bottom-left corner of the screen. */
       BottomLeftCorner = 2,
+      /** Positioned in the bottom-right corner of the screen. */
       BottomRightCorner = 3,
     }
   }
 
+  /** Configuration for the Overwolf FPS counter overlay. */
   interface FpsSettings {
+    /** The pixel offset of the FPS indicator from its corner position. */
     offset?: { x: number; y: number; };
+    /** The scale factor for the FPS indicator (0–1). */
     scale?: number;
+    /** Whether the FPS indicator is enabled. */
     enabled?: boolean;
+    /** The screen corner where the FPS indicator is displayed. */
     position?: enums.eIndicationPosition;
   }
 
+  /** General settings for an Overwolf extension. */
   interface GeneralExtensionSettings {
+    /** Whether the extension should launch automatically when Overwolf starts. */
     auto_launch_with_overwolf?: boolean;
+    /** Whether Overwolf should exit when the extension exits. */
     exit_overwolf_on_exit?: boolean;
+    /** The update channel the extension subscribes to. */
     channel?: string;
   }
 
+  /** Result of a `getHotKey` call. */
   interface GetHotKeyResult extends Result {
+    /** The hotkey string assigned to the feature. */
     hotkey: string;
+    /** Whether the hotkey is currently enabled. */
     isEnabled: boolean;
   }
 
+  /** Result of a hotkey registration callback. */
   interface HotKeyResult extends Result {
+    /** The feature ID associated with the triggered hotkey, if available. */
     featureId?: string;
   }
 
+  /** Result containing a folder path returned by Overwolf. */
   interface FolderResult extends Result {
     path: {
       /** "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" */
@@ -6195,45 +7584,69 @@ declare namespace overwolf.settings {
     };
   }
 
+  /** Result of a set-folder operation, containing the newly applied path. */
   interface SetFolderResult extends Result {
+    /** The folder path that was set. */
     path: string;
   }
 
+  /** Result of a `getVideoCaptureSettings` call. */
   interface GetVideoCaptureSettingsResult extends Result {
+    /** The name of the video encoder in use. */
     encoder: string;
+    /** The encoder preset currently selected. */
     preset: string;
+    /** The configured capture frame rate (frames per second). */
     fps: number;
+    /** The configured capture resolution as a numeric value. */
     resolution: number;
   }
 
+  /** Result of a `getAudioCaptureSettings` call. */
   interface GetAudioCaptureSettingsResult extends Result {
+    /** Whether system sound capture is enabled. */
     sound_enabled: boolean;
+    /** Whether microphone capture is enabled. */
     microphone_enabled: boolean;
   }
 
+  /** Result of a `getFpsSettings` call. */
   interface GetFpsSettingsResult extends Result {
+    /** The current FPS overlay settings. */
     settings: FpsSettings;
   }
 
+  /** Result of a `getExtensionSettings` call. */
   interface GetExtensionSettingsResult extends Result {
+    /** The current general extension settings. */
     settings: GeneralExtensionSettings;
   }
 
+  /** Event data fired when a FPS overlay setting changes. */
   interface FpsSettingsChangedEvent {
+    /** The name of the FPS setting that changed. */
     setting: "OnScreenLocation" | "Enabled" | "Scale" | "Offset";
   }
 
+  /** Event data fired when a video capture setting changes. */
   interface VideoCaptureSettingsChangedEvent {
+    /** The name of the video capture setting that changed. */
     setting: "resolution" | "fps" | "unknown";
   }
 
+  /** Event data fired when an audio capture setting changes. */
   interface AudioCaptureSettingsChangedEvent {
+    /** The name of the audio capture setting that changed. */
     setting: "speakers" | "microphone" | "unknown";
   }
 
+  /** Event data fired when a hotkey binding changes. */
   interface HotKeyChangedEvent {
+    /** The source extension or feature that owns the hotkey. */
     source: string;
+    /** A human-readable description of the hotkey action. */
     description: string;
+    /** The new hotkey string. */
     hotkey: string;
   }
 
@@ -6404,7 +7817,7 @@ declare namespace overwolf.settings {
    */
   const OnAudioCaptureSettingsChanged: Event<AudioCaptureSettingsChangedEvent>;
 
-  /**
+/**
    * Fired when a hotkey is modified. Apps will only be notified ofhotkey
    * changes that relate to them.
    * @deprecated Since version 0.155.
@@ -6413,26 +7826,39 @@ declare namespace overwolf.settings {
 }
 
 declare namespace overwolf.settings.games {
+  /** Base result containing the game class ID the result relates to. */
   interface GameClassResult extends Result {
+    /** The game class ID this result pertains to. */
     gameClassId: number;
   }
 
+  /** Result indicating whether auto-launch is enabled for a specific game class. */
   interface AutolaunchEnabledResult extends GameClassResult {
+    /** Whether auto-launch is currently enabled for the calling app in this game. */
     autoLaunchEnabled: boolean;
   }
 
+  /** Result indicating whether the Overwolf overlay is enabled for a specific game class. */
   interface OverlayEnabledResult extends GameClassResult {
+    /** Whether the Overwolf overlay is currently enabled for this game. */
     enabled: boolean;
   }
 
+  /** Event data describing a change in overlay enablement for a game. */
   interface OverlayEnablementChangedEvent {
+    /** The ID of the game whose overlay setting changed. */
     gameId: number;
+    /** The new overlay enabled state. */
     enabled: boolean;
   }
 
+  /** Event data describing a change in auto-launch enablement for a game. */
   interface AutoLaunchEnablementChangedEvent {
+    /** The ID of the game whose auto-launch setting changed. */
     gameId: number;
+    /** The new auto-launch enabled state. */
     enabled: boolean;
+    /** The ID of the app whose auto-launch setting changed. */
     appId: string;
   }
 
@@ -6473,88 +7899,133 @@ declare namespace overwolf.settings.games {
    */
   const onOverlayEnablementChanged: Event<OverlayEnablementChangedEvent>;
 
-  /**
+/**
    * Fired when auto launch is enabled or disabled for a game.
    */
   const onAutoLaunchEnablementChanged: Event<AutoLaunchEnablementChangedEvent>;
 }
 
 declare namespace overwolf.settings.hotkeys {
+  /** Describes a single hotkey registered to an extension or the platform. */
   interface IHotkey {
+    /** The internal name of the hotkey as defined in the manifest. */
     name: string;
+    /** The human-readable display title of the hotkey. */
     title: string;
+    /** The virtual key code of the primary key. */
     virtualKeycode: number;
+    /** A bitmask of the active modifier keys (Ctrl, Alt, Shift). */
     modifierKeys: number;
+    /** The UID of the extension that owns this hotkey. */
     extensionuid: string;
+    /** Whether the hotkey is a pass-through key that does not consume the input. */
     isPassthrough: boolean;
+    /** Whether this hotkey is configured as a hold hotkey. */
     hold: boolean;
+    /** Whether the hotkey is currently unassigned. */
     IsUnassigned: boolean;
+    /** The string representation of the key binding (e.g. `"Ctrl+F2"`). */
     binding: string;
   }
 
+  /** Result of `getAllApps`, mapping each app's hotkeys alongside platform-level hotkeys. */
   interface GetAllAssignedHotkeysResult extends Result {
+    /** A map of app IDs to their assigned hotkey results. */
     apps: {
       [appId: string]: Omit<GetAssignedHotkeyResult, 'success' | 'error'>;
     },
+    /** Platform-wide hotkeys not associated with any specific app. */
     platform: IHotkey[];
   }
 
+  /** Result of `get`, containing global and per-game hotkeys for the current extension. */
   interface GetAssignedHotkeyResult extends Result {
+    /** Hotkeys that apply globally across all games. */
     globals: IHotkey[];
+    /** A map of game IDs to their game-specific hotkey assignments, if any. */
     games?: Record<string, IHotkey[]>;
   }
 
+  /** Payload of the `onHold` event, indicating the hold state of a hotkey. */
   interface OnHoldEvent {
+    /** The internal name of the hotkey being held. */
     name: string;
+    /** Whether the key is currently pressed down (`"down"`) or released (`"up"`). */
     state: "up" | "down";
   }
 
+  /** Payload of the `onPressed` event, fired when a non-hold hotkey is activated. */
   interface OnPressedEvent {
+    /** The internal name of the hotkey that was pressed. */
     name: string;
   }
 
+  /** Payload of the `onChanged` event, describing the updated hotkey binding. */
   interface OnChangedEvent {
+    /** The internal name of the hotkey that changed. */
     name: string;
+    /** The game ID the changed binding applies to, or `0` for global. */
     gameId: number;
+    /** A human-readable description of the hotkey. */
     description: string;
+    /** The new string representation of the binding. */
     binding: string;
+    /** The bitmask of modifier keys in the new binding. */
     modifierKeys: number;
+    /** The virtual key code of the primary key in the new binding. */
     virtualKeycode: number;
   }
 
+  /** Specifies which modifier keys are active in a hotkey combination. */
   interface HotkeyModifiers {
+    /** Whether the Ctrl modifier is active. */
     ctrl?: boolean;
+    /** Whether the Alt modifier is active. */
     alt?: boolean;
+    /** Whether the Shift modifier is active. */
     shift?: boolean;
   }
 
+  /** Identifies a hotkey to unassign by name and optional game scope. */
   interface UnassignHotkeyObject {
+    /** The internal name of the hotkey as defined in the manifest. */
     name: string;
+    /** The game ID to scope the unassignment to, or omit for the global hotkey. */
     gameId?: number;
   }
 
+  /** Identifies a hotkey to assign, including the key combination to bind. */
   interface AssignHotkeyObject extends UnassignHotkeyObject {
+    /** The modifier keys to include in the binding. */
     modifiers: HotkeyModifiers;
+    /** The virtual key code of the primary key to bind. */
     virtualKey: number;
   }
 
+  /** Parameters for updating hotkey pass-through or custom modifier settings. */
   interface UpdateHotkeyObject extends UnassignHotkeyObject {
+    /** A custom modifier key code to apply, if applicable. */
     customModifierKeyCode?: number;
+    /** Whether to enable pass-through behavior for this hotkey. */
     isPassThrough?: boolean;
   }
 
   /**
    * Returns the hotkey assigned for the current extension in all the games.
+   * @param callback Called with the global and per-game hotkey assignments for the calling extension.
    */
   function get(callback: CallbackFunction<GetAssignedHotkeyResult>): void;
 
   /**
    * Returns the hotkeys assigned for all installed extensions + the platform, in all the games.
+   * @param callback Called with a map of all app hotkey assignments alongside platform-level hotkeys.
    */
   function getAllApps(callback: CallbackFunction<GetAllAssignedHotkeysResult>): void;
 
   /**
    * Assign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey.
+   * @param hotkey The hotkey to assign, including the name, key binding, and optional game scope.
+   * @param callback Called with the result of the assignment request.
    */
   function assign(
     hotkey: AssignHotkeyObject,
@@ -6563,12 +8034,19 @@ declare namespace overwolf.settings.hotkeys {
 
   /**
    * Unassign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey.
+   * @param hotkey The hotkey to unassign, identified by name and optional game scope.
+   * @param callback Called with the result of the unassignment request.
    */
   function unassign(
     hotkey: UnassignHotkeyObject,
     callback: CallbackFunction<Result>
   ): void;
 
+  /**
+   * Updates the pass-through or custom modifier settings for an existing hotkey.
+   * @param hotkey The hotkey to update, including the name and the settings to change.
+   * @param callback Called with the result of the update request.
+   */
   function update(
     hotkey: UpdateHotkeyObject,
     callback: CallbackFunction<Result>
@@ -6584,29 +8062,32 @@ declare namespace overwolf.settings.hotkeys {
    */
   const onPressed: Event<OnPressedEvent>;
 
-  /**
+/**
    * Fired on hotkey setting change.
    */
   const onChanged: Event<OnChangedEvent>;
 }
 
 declare namespace overwolf.settings.language {
+  /** Result of a `get` call containing the current language code. */
   interface GetLanguageResult extends Result {
+    /** The current Overwolf UI language as a two-letter ISO 639-1 code (e.g. `"en"`). */
     language: string;
   }
 
+  /** Event data fired when the Overwolf UI language changes. */
   interface LanguageChangedEvent {
+    /** The new language as a two-letter ISO 639-1 code. */
     language: string;
   }
 
   /**
-   * Returns the current language overwolf is set to in a two letter ISO name format.
-   *
-   * @param callback
+   * Returns the current language Overwolf is set to in a two-letter ISO 639-1 format.
+   * @param callback Called with the current language code.
    */
   function get(callback: CallbackFunction<GetLanguageResult>): void;
 
-  /**
+/**
    * Fired when user changes client language.
    */
   const onLanguageChanged: Event<LanguageChangedEvent>;
@@ -6614,40 +8095,60 @@ declare namespace overwolf.settings.language {
 
 declare namespace overwolf.social {
   namespace enums {
+    /** The current state of a social share operation. */
     const enum ShareState {
+      /** The share operation has started. */
       Started,
+      /** The content is currently being uploaded. */
       Uploading,
+      /** The share operation has finished. */
       Finished
     }
   }
+
+  /** Result containing information about the authenticated user. */
   interface GetUserInfoResult<T> extends Result {
+    /** The user info object returned by the social platform. */
     userInfo?: T;
   }
 
+  /** Parameters required to initiate a video upload to a social platform. */
   interface VideoUploadParams {
+    /** A unique identifier for this upload operation. */
     id: string;
+    /** The local file system path to the video file to upload. */
     filePath: string;
   }
 
+  /** Result returned after a successful video upload. */
   interface VideoUploadResult extends Result {
+    /** The public URL of the uploaded video. */
     url: string;
   }
 
+  /** Progress update fired during a video upload operation. */
   interface VideoUploadProgress extends Result {
+    /** The current upload progress as a percentage (0–100). */
     progress: number;
+    /** The unique identifier of the upload operation. */
     id: string;
+    /** The current state of the share operation. */
     state: enums.ShareState;
   }
 
+  /** Event data describing a change in the user's social platform login state. */
   interface LoginStateChangedEvent {
+    /** Whether the user is now `"connected"` or `"disconnected"`. */
     state: "connected" | "disconnected";
   }
 
+  /** Result containing a list of social services currently disabled for the app. */
   interface GetDisabledServicesResult<T> extends Result {
+    /** An array of service identifiers that are currently disabled. */
     disabled_services?: string[];
   }
 
-  /**
+/**
    * Checks which of the supported sharing services are disabled or enabled.
    * @param callback Returns a list of disabled services
    */
@@ -6660,96 +8161,155 @@ declare namespace overwolf.social {
 
 declare namespace overwolf.social.discord {
   namespace enums {
+    /** Represents the posting permissions available for a Discord channel. */
     const enum PostPermission {
+      /** No posting permission. */
       None = 0,
+      /** Permission to post text messages. */
       Text,
+      /** Permission to post files (images or videos). */
       File,
     }
 
+    /** Represents the current state of a share operation. */
     const enum ShareState {
+      /** The share operation has started. */
       Started,
+      /** The file is currently being uploaded. */
       Uploading,
+      /** The share operation has finished. */
       Finished
     }
   }
 
+  /** Represents a Discord user account. */
   interface User {
+    /** The unique Discord user ID. */
     id: string;
+    /** The user's discriminator number (the four digits after the `#`). */
     discriminator: number;
+    /** The user's Discord username. */
     username: string;
+    /** The user's email address. */
     email: string;
+    /** The user's avatar hash, if set. */
     avatar?: string;
+    /** Whether the user's email address has been verified. */
     verified: boolean;
   }
 
+  /** Represents a Discord guild (server). */
   interface Guild {
+    /** The guild's icon hash, if set. */
     icon?: string;
+    /** The unique guild ID. */
     id: string;
+    /** The name of the guild. */
     name: string;
+    /** The ID of the guild owner, if available. */
     owner_id?: string;
+    /** The list of roles defined in the guild, if available. */
     roles?: Role[];
   }
 
+  /** Represents a Discord role within a guild. */
   interface Role {
+    /** The unique role ID. */
     id: string;
+    /** The name of the role. */
     name: string;
+    /** The permissions bitfield for this role. */
     permissions: number;
   }
 
+  /** Represents a Discord channel within a guild. */
   interface Channel {
+    /** The ID of the guild this channel belongs to. */
     guild_id: string;
+    /** The unique channel ID. */
     id: string;
+    /** The name of the channel. */
     name: string;
+    /** The ID of the parent category channel, if any. */
     parent_id?: string;
+    /** The list of permission overwrites applied to this channel. */
     permission_overwrites: PermissionOverwrite[];
+    /** The channel type as a numeric value. */
     type: number;
+    /** The current user's post permission level for this channel. */
     user_post_permission: enums.PostPermission;
   }
 
+  /** Represents a permission overwrite entry for a Discord channel. */
   interface PermissionOverwrite {
+    /** The ID of the role or user this overwrite applies to. */
     id: string;
+    /** Whether this overwrite applies to a role or a member. */
     type: string;
+    /** Bitfield of permissions that are explicitly allowed. */
     allow: number;
+    /** Bitfield of permissions that are explicitly denied. */
     deny: number;
   }
 
+  /** Parameters for sharing media to a Discord channel. */
   interface ShareParameters {
     /** The file to share.
     * Note: Since version 0.153, the "file" param is optional when calling overwolf.social.discord.share(). Instead, you can use the "message" param to include a URL of a file that you want to share.*/
     file?: string;
+    /** The ID of the Discord channel to share to. */
     channelId: string;
+    /** An optional identifier for the share operation. */
     id?: string;
+    /** Whether to display Overwolf notifications during the share. */
     useOverwolfNotifications: boolean;
+    /** The text message to accompany the shared media. */
     message: string;
     /** An object containing start time and end time for the desired VideoCompositionSegment */
     trimming?: media.videos.VideoCompositionSegment;
+    /** An array of event labels associated with the captured clip. */
     events?: string[];
+    /** The class ID of the associated game. */
     gameClassId?: number;
+    /** The title of the associated game. */
     gameTitle?: string;
     /** Extra information about the game session (How is this used?) */
     metadata?: any;
   }
 
+  /** Parameters for posting a text message to a Discord channel. */
   interface PostParameters {
+    /** The ID of the Discord channel to post to. */
     channelId: string;
+    /** The text content of the post. */
     message: string;
   }
 
+  /** Reports the progress of an ongoing share operation. */
   interface SocialShareProgress extends Result {
+    /** The upload progress as a percentage (0–100). */
     progress: number;
+    /** The identifier of the share operation. */
     id: string;
+    /** The current state of the share operation. */
     state: enums.ShareState;
   }
 
+  /** Result of a successful share operation. */
   interface SocialShareResult extends Result {
+    /** The URL of the shared content on Discord. */
     url: string;
   }
 
+  /** Result of a `getGuilds` call. */
   interface GetGuildsResult extends Result {
+    /** The list of guilds the user belongs to, if the request was successful. */
     guilds?: Guild[];
   }
 
+  /** Result of a `getChannels` call. */
   interface GetChannelsResult extends Result {
+    /** The list of channels in the guild that the user can post to, if the request was successful. */
     channels?: Channel[];
   }
 
@@ -6812,12 +8372,22 @@ declare namespace overwolf.social.discord {
     callback: CallbackFunction<Result>
   ): void;
 
+  /**
+   * Shares a media file to a Discord channel with separate result and progress callbacks.
+   * @param discordShareParams The share parameters.
+   * @param resultCallback Called with the final share result, including the URL of the shared content.
+   * @param progressCallback Called periodically with upload progress updates.
+   */
   function shareEx(
     discordShareParams: overwolf.social.discord.ShareParameters,
     resultCallback: CallbackFunction<SocialShareResult>,
     progressCallback: CallbackFunction<SocialShareProgress>
   ): void;
 
+  /**
+   * Posts a text message to a Discord channel.
+   * @param discordPostParams The post parameters, including the channel ID and message text.
+   */
   function post(
     discordPostParams: overwolf.social.discord.PostParameters
   ): void;
@@ -6833,47 +8403,80 @@ declare namespace overwolf.social.discord {
  */
 declare namespace overwolf.social.gfycat {
   namespace enums {
+    /** The current stage of a media share operation. */
     const enum ShareState {
+      /** The share operation has started. */
       Started,
+      /** The media file is being uploaded. */
       Uploading,
+      /** The share operation has completed successfully. */
       Finished
     }
   }
 
+  /** Information about the currently logged-in Gfycat user. */
   interface User {
+    /** The Gfycat user ID. */
     userid: string;
+    /** The email address associated with the user's Gfycat account. */
     email: string;
+    /** Whether the user's email address has been verified. */
     emailVerified: boolean;
+    /** URL of the user's Gfycat profile image. */
     profileImageUrl: string;
+    /** The user's Gfycat username. */
     username: string;
+    /** The canonical (normalized) form of the username. */
     canonicalUsername: string;
+    /** Total number of views across all the user's Gfycats. */
     views: number;
+    /** Number of users following this account. */
     followers: number;
+    /** Number of users this account is following. */
     following: number;
+    /** Number of publicly published Gfycats. */
     publishedGyfcats: number;
+    /** Total number of Gfycats (including private). */
     totalGyfcats: number;
+    /** The URL of the user's Gfycat profile page. */
     url: string;
   }
 
+  /** Parameters for sharing a media file to Gfycat. */
   interface ShareParameters {
+    /** Path to the media file to share. */
     file: string;
+    /** Optional identifier for this share operation. */
     id?: string;
+    /** Whether to use Overwolf's built-in share notifications. */
     useOverwolfNotifications: boolean;
+    /** Optional trimming segment if sharing a video clip. */
     trimming?: media.videos.VideoCompositionSegment;
+    /** The title to assign to the uploaded Gfycat. */
     title: string;
+    /** Whether to upload the Gfycat as private. */
     privateMode: boolean;
+    /** Optional list of tags to associate with the upload. */
     tags?: string[];
+    /** The Overwolf game class ID related to this share, if applicable. */
     gameClassId?: number;
+    /** Optional arbitrary metadata to attach to this share. */
     metadata?: any;
   }
 
+  /** Progress update for an in-flight `shareEx` operation. */
   interface SocialShareProgress extends Result {
+    /** Upload progress as a value between 0 and 100. */
     progress: number;
+    /** The identifier of the share operation. */
     id: string;
+    /** The current stage of the share operation. */
     state: enums.ShareState;
   }
 
+  /** Result of a completed `shareEx` operation. */
   interface SocialShareResult extends Result {
+    /** The URL of the published Gfycat. */
     url: string;
   }
 
@@ -6916,6 +8519,11 @@ declare namespace overwolf.social.gfycat {
     callback: CallbackFunction<Result>
   ): void;
 
+  /** Shares media to Gfycat with separate result and progress callbacks.
+   * @param discordShareParams The share parameters.
+   * @param resultCallback Called with the final share result, including the published URL.
+   * @param progressCallback Called periodically with upload progress updates.
+   */
   function shareEx(
     discordShareParams: overwolf.social.gfycat.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.gfycat.SocialShareResult>,
@@ -6933,40 +8541,66 @@ declare namespace overwolf.social.gfycat {
  */
 declare namespace overwolf.social.twitter {
   namespace enums {
+    /** The current stage of a media share operation. */
     const enum ShareState {
+      /** The share operation has started. */
       Started,
+      /** The media file is being uploaded. */
       Uploading,
+      /** The share operation has completed successfully. */
       Finished
     }
   }
 
+  /** Parameters for sharing a media file to Twitter. */
   interface ShareParameters {
+    /** Path to the media file (image or video) to share. */
     file: string;
+    /** Optional identifier for this share operation. */
     id?: string;
+    /** Whether to use Overwolf's built-in share notifications. */
     useOverwolfNotifications: boolean;
+    /** The tweet text to post alongside the media. */
     message: string;
+    /** Optional trimming segment if sharing a video clip. */
     trimming?: media.videos.VideoCompositionSegment;
+    /** Optional list of tags to associate with the post. */
     tags?: string[];
+    /** The Overwolf game class ID related to this share, if applicable. */
     gameClassId?: number;
+    /** The title of the game related to this share, if applicable. */
     gameTitle?: string;
+    /** Optional arbitrary metadata to attach to this share. */
     metadata?: any;
   }
 
+  /** Information about the currently logged-in Twitter user. */
   interface User {
+    /** The Twitter user's unique ID. */
     id: string;
+    /** The Twitter screen name (handle) of the user. */
     screenName: string;
+    /** The display name of the user. */
     name: string;
+    /** The email address associated with the user's Twitter account. */
     email: string;
+    /** URL of the user's Twitter avatar image. */
     avatar: string;
   }
 
+  /** Progress update for an in-flight `shareEx` operation. */
   interface SocialShareProgress extends Result {
+    /** Upload progress as a value between 0 and 100. */
     progress: number;
+    /** The identifier of the share operation. */
     id: string;
+    /** The current stage of the share operation. */
     state: enums.ShareState;
   }
 
+  /** Result of a completed `shareEx` operation. */
   interface SocialShareResult extends Result {
+    /** The URL of the published tweet. */
     url: string;
   }
 
@@ -7008,13 +8642,18 @@ declare namespace overwolf.social.twitter {
     callback: CallbackFunction<Result>
   ): void;
 
+  /** Shares media to Twitter with separate result and progress callbacks.
+   * @param discordShareParams The share parameters.
+   * @param resultCallback Called with the final share result, including the published URL.
+   * @param progressCallback Called periodically with upload progress updates.
+   */
   function shareEx(
     discordShareParams: overwolf.social.twitter.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.twitter.SocialShareResult>,
     progressCallback: CallbackFunction<overwolf.social.twitter.SocialShareProgress>
   ): void;
 
-  /**
+/**
    * Fired when the user's login state changes.
    */
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
@@ -7022,46 +8661,76 @@ declare namespace overwolf.social.twitter {
 
 declare namespace overwolf.social.youtube {
   namespace enums {
+    /** The visibility setting for a video uploaded to YouTube. */
     const enum YouTubePrivacy {
+      /** The video is visible to everyone. */
       Public = "Public",
+      /** The video is visible only to users who have the link. */
       Unlisted = "Unlisted",
+      /** The video is visible only to the owner. */
       Private = "Private",
     }
 
+    /** The current stage of a video share operation. */
     const enum ShareState {
+      /** The share operation has started. */
       Started,
+      /** The video file is being uploaded. */
       Uploading,
+      /** The share operation has completed successfully. */
       Finished
     }
   }
 
+  /** Parameters for sharing a video to YouTube. */
   interface ShareParameters {
+    /** Path to the video file to share. */
     file: string;
+    /** Optional identifier for this share operation. */
     id?: string;
+    /** Whether to use Overwolf's built-in share notifications. */
     useOverwolfNotifications: boolean;
+    /** The title to assign to the uploaded YouTube video. */
     title: string;
+    /** The description to assign to the uploaded YouTube video. */
     description: string;
+    /** Optional trimming segment if sharing a video clip. */
     trimming?: media.videos.VideoCompositionSegment;
+    /** The privacy setting for the uploaded video. */
     privacy: enums.YouTubePrivacy;
+    /** Optional list of tags to associate with the video. */
     tags?: string[];
+    /** The Overwolf game class ID related to this share, if applicable. */
     gameClassId?: number;
+    /** The title of the game related to this share, if applicable. */
     gameTitle?: string;
+    /** Optional arbitrary metadata to attach to this share. */
     metadata?: any;
   }
 
+  /** Information about the currently logged-in YouTube user. */
   interface User {
+    /** The display name of the YouTube account. */
     name: string;
+    /** URL of the user's YouTube channel profile picture. */
     picture: string;
+    /** The YouTube channel ID. */
     id: string;
   }
 
+  /** Progress update for an in-flight `shareEx` operation. */
   interface SocialShareProgress extends Result {
+    /** Upload progress as a value between 0 and 100. */
     progress: number;
+    /** The identifier of the share operation. */
     id: string;
+    /** The current stage of the share operation. */
     state: enums.ShareState;
   }
 
+  /** Result of a completed `shareEx` operation. */
   interface SocialShareResult extends Result {
+    /** The URL of the published YouTube video. */
     url: string;
   }
 
@@ -7110,13 +8779,18 @@ declare namespace overwolf.social.youtube {
     callback: CallbackFunction<Result>
   ): void;
 
+  /** Shares a video to YouTube with separate result and progress callbacks.
+   * @param discordShareParams The share parameters.
+   * @param resultCallback Called with the final share result, including the published URL.
+   * @param progressCallback Called periodically with upload progress updates.
+   */
   function shareEx(
     discordShareParams: overwolf.social.youtube.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.youtube.SocialShareResult>,
     progressCallback: CallbackFunction<overwolf.social.youtube.SocialShareProgress>
   ): void;
 
-  /**
+/**
    * Fired when the user's login state changes.
    */
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
@@ -7124,20 +8798,30 @@ declare namespace overwolf.social.youtube {
 
 declare namespace overwolf.social.reddit {
   namespace enums {
+    /** Represents the current state of a share operation. */
     const enum ShareState {
+      /** The share operation has started. */
       Started,
+      /** The file is currently being uploaded. */
       Uploading,
+      /** The share operation has finished. */
       Finished
     }
   }
 
+  /** Represents a Reddit post flair. */
   interface Flair {
+    /** The unique identifier of the flair. */
     id: string;
+    /** The display text of the flair. */
     text: string;
+    /** Whether this flair is restricted to moderators only. */
     mod_only: boolean;
+    /** The type of content the flair allows (e.g. `"all"`, `"link"`, `"text"`). */
     allowable_content: string;
   }
 
+  /** Parameters for sharing a video to a subreddit. */
   interface ShareParameters {
     /**
      * The file to share.
@@ -7147,7 +8831,9 @@ declare namespace overwolf.social.reddit {
      * The subreddit to which the file will be shared.
      */
     id?: string;
+    /** Whether to display Overwolf notifications during the share. */
     useOverwolfNotifications: boolean;
+    /** The name of the subreddit to share to (without the `r/` prefix). */
     subreddit: string;
     /**
      * The shared video's title.
@@ -7184,9 +8870,11 @@ declare namespace overwolf.social.reddit {
      */
     metadata?: any;
 
+    /** The flair to apply to the post, if any. */
     flair_id?: Flair;
   }
 
+  /** Parameters for creating a text post on a subreddit. */
   interface PostParameters {
     /**
      * The subreddit to which the post will be shared.
@@ -7200,48 +8888,75 @@ declare namespace overwolf.social.reddit {
      * The shared post's content.
      */
     content: string;
+    /** The flair to apply to the post, if any. */
     flair_id?: Flair;
   }
 
-
+  /** Represents a Reddit user account. */
   interface User {
+    /** The URL of the user's avatar image. */
     avatar: string;
+    /** The user's display name (e.g. `u/foobar`). */
     displayName: string;
+    /** The user's Reddit username. */
     name: string;
   }
 
+  /** Represents a Reddit subreddit. */
   interface Subreddit {
+    /** The number of subscribers the subreddit has. */
     numSubscribers: number;
+    /** The internal name of the subreddit (without the `r/` prefix). */
     name: string;
+    /** The human-readable display name of the subreddit. */
     displayName: string;
+    /** The post types allowed in this subreddit. */
     allowedPostTypes: RedditAllowedPostTypes;
+    /** The URL of the subreddit's community icon image. */
     communityIcon: string;
   }
 
+  /** Describes which post types are permitted in a subreddit. */
   interface RedditAllowedPostTypes {
+    /** Whether image posts are allowed. */
     images: boolean;
+    /** Whether text posts are allowed. */
     text: boolean;
+    /** Whether video posts are allowed. */
     videos: boolean;
+    /** Whether link posts are allowed. */
     links: boolean;
+    /** Whether spoiler-tagged posts are allowed. */
     spoilers: boolean;
   }
 
+  /** Result of a `searchSubreddits` call. */
   interface SearchSubredditsResult extends Result {
+    /** The list of subreddits matching the search query, if the request was successful. */
     subreddits?: Subreddit[];
   }
 
+  /** Event data for a failed share attempt. */
   interface ShareFailedEvent {
+    /** A string identifying the error that occurred. */
     error: string;
+    /** Additional details about the error, if available. */
     details?: string;
   }
 
+  /** Reports the progress of an ongoing share operation. */
   interface SocialShareProgress extends Result {
+    /** The upload progress as a percentage (0–100). */
     progress: number;
+    /** The identifier of the share operation. */
     id: string;
+    /** The current state of the share operation. */
     state: enums.ShareState;
   }
 
+  /** Result of a successful share operation. */
   interface SocialShareResult extends Result {
+    /** The URL of the shared post on Reddit. */
     url: string;
   }
 
@@ -7314,12 +9029,22 @@ declare namespace overwolf.social.reddit {
     callback: CallbackFunction<Result>
   ): void;
 
+  /**
+   * Shares a media file to a subreddit with separate result and progress callbacks.
+   * @param discordShareParams The share parameters.
+   * @param resultCallback Called with the final share result, including the URL of the published post.
+   * @param progressCallback Called periodically with upload progress updates.
+   */
   function shareEx(
     discordShareParams: overwolf.social.reddit.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.reddit.SocialShareResult>,
     progressCallback: CallbackFunction<overwolf.social.reddit.SocialShareProgress>
   ): void;
 
+  /**
+   * Posts a link or text post to a subreddit.
+   * @param redditShareParams The post parameters, including the subreddit, title, and content.
+   */
   function post(
     redditShareParams: overwolf.social.reddit.PostParameters
   ): void;
@@ -7329,14 +9054,16 @@ declare namespace overwolf.social.reddit {
    */
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
 
-  /**
+/**
    * Fired when an error is returned from Reddit.
    */
   const onShareFailed: Event<ShareFailedEvent>;
 }
 
 declare namespace overwolf.gep {
+  /** Internal GEP metadata, used for diagnostics. */
   type GepInternal = {
+    /** The version string of the currently running GEP instance. */
     version_info: string;
   };
 }

@@ -830,6 +830,3 @@ declare namespace overwolf.extensions {
    * update to apply.
    */
   const onExtensionUpdated: Event<ExtensionUpdatedEvent>;
-
-
-}

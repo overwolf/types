@@ -4,14 +4,7 @@
  * @packageDocumentation
  */
 
-/**
-   * Returns an array of all the currently running unsupported / overlay disabled games.
-   * @param callback Called with the array of game infos.
-   */
-  function getAnyRunningGamesInfo(
-    callback: CallbackFunction<GetAnyRunningGamesInfoResult>
-  ): void;
-}
+
 
 declare namespace overwolf.games.launchers {
   /** Information about a currently running game launcher. */
@@ -81,4 +74,8 @@ declare namespace overwolf.games.launchers {
    */
   const onLaunched: Event<LauncherInfo>;
 
-  }
+  /**
+   * Fired when a launcher is closed.
+   */
+  const onTerminated: Event<LauncherInfo>;
+}

@@ -10,10 +10,17 @@ toc_max_heading_level: 6
 
 Use this API to push custom game events and state updates into the Overwolf game events system, and to track raw keyboard, mouse, and eye-tracking input activity during a game session.
 
+## Functions
+
 | API | Description |
 | --- | --- |
 | [overwolf.games.events.getInfo](./Functions/overwolf.games.events.getInfo) | Gets the current game info. |
 | [overwolf.games.events.setRequiredFeatures](./Functions/overwolf.games.events.setRequiredFeatures) | Sets the required features from the provider. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.games.events.ErrorEvent](./Interfaces/overwolf.games.events.ErrorEvent) | Payload of the `onError` event describing a game events system error. |
 | [overwolf.games.events.GameEvent](./Interfaces/overwolf.games.events.GameEvent) | Describes a single game event emitted by the events provider. |
 | [overwolf.games.events.GameEvent2](./Interfaces/overwolf.games.events.GameEvent2) | A typed game event whose name is constrained to keys of the dictionary type `T`. |
@@ -22,7 +29,18 @@ Use this API to push custom game events and state updates into the Overwolf game
 | [overwolf.games.events.InfoUpdates2Event](./Interfaces/overwolf.games.events.InfoUpdates2Event) | Payload of the `onInfoUpdates2` event, pairing an info update with its feature name. |
 | [overwolf.games.events.NewGameEvents](./Interfaces/overwolf.games.events.NewGameEvents) | Payload of the `onNewEvents` event, containing a batch of game events. |
 | [overwolf.games.events.SetRequiredFeaturesResult](./Interfaces/overwolf.games.events.SetRequiredFeaturesResult) | Result of a `setRequiredFeatures` call, listing which features were successfully enabled. |
-| [overwolf.games.events.GameEventDictionary2](./Type-aliases/overwolf.games.events.GameEventDictionary2) | Base type for typed game event dictionary shapes. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.games.events.onError](./Variables/overwolf.games.events.onError) | Fired when there was an error in the game events system. |
 | [overwolf.games.events.onInfoUpdates](./Variables/overwolf.games.events.onInfoUpdates) | Obsolete. Fired when there are game info updates with a JSON object of the updates. |
 | [overwolf.games.events.onInfoUpdates2](./Variables/overwolf.games.events.onInfoUpdates2) | Fired when there are game info updates with a JSON object of the updates. |
+
+## Type-aliases
+
+| API | Description |
+| --- | --- |
+| [overwolf.games.events.GameEventDictionary2](./Type-aliases/overwolf.games.events.GameEventDictionary2) | Base type for typed game event dictionary shapes. |
+

@@ -10,9 +10,22 @@ toc_max_heading_level: 6
 
 The root `overwolf` namespace. Provides the foundational types used throughout the entire Overwolf API, including the base `Result` shape, the generic `Event` interface, and global version information.
 
+## Interfaces
+
+| API | Description |
+| --- | --- |
+| [overwolf.Event](./Interfaces/overwolf.Event) | Registers a listener to an event. When the event occurs, all registered listeners are called. |
+| [overwolf.Result](./Interfaces/overwolf.Result) | - |
+
+## Enums
+
 | API | Description |
 | --- | --- |
 | [overwolf.ResultStatusTypes](./Enums/overwolf.ResultStatusTypes) | Possible status values returned by Overwolf API callbacks. |
-| [overwolf.Event](./Interfaces/overwolf.Event) | Registers a listener to an event. When the event occurs, all registered listeners are called. |
-| [overwolf.Result](./Interfaces/overwolf.Result) | - |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.version](./Variables/overwolf.version) | The currently installed Overwolf client version string. |
+

@@ -10,10 +10,18 @@ toc_max_heading_level: 6
 
 Use this API to read and modify Overwolf client settings, including video/audio capture, FPS overlay, hotkeys, and folder paths.
 
+## Namespaces
+
 | API | Description |
 | --- | --- |
-| [overwolf.settings.enums.eIndicationPosition](./enums/overwolf.settings.enums.eIndicationPosition) | The screen position of an on-screen indicator (e.g. the FPS counter). |
-| [overwolf.settings.enums.ResolutionSettings](./enums/overwolf.settings.enums.ResolutionSettings) | The video resolution setting for capture. |
+| [games](./games/Overview) | Use this API to query and configure per-game Overwolf settings, such as overlay enablement and auto-launch behavior for apps on a per-game-class basis. |
+| [hotkeys](./hotkeys/Overview) | Use this API to get, assign, and unassign hotkeys for the current extension, and to listen for hotkey press, hold, and change events. |
+| [language](./language/Overview) | The `overwolf.settings.language` namespace lets you retrieve the Overwolf client's current UI language and listen for language change events. |
+
+## Functions
+
+| API | Description |
+| --- | --- |
 | [overwolf.settings.getAudioCaptureSettings](./Functions/overwolf.settings.getAudioCaptureSettings) | Returns the current audio capture settings. |
 | [overwolf.settings.getClientInfo](./Functions/overwolf.settings.getClientInfo) | Retrieve information about the client - such as when it was first installed and how long is it running. |
 | [overwolf.settings.getCurrentOverwolfLanguage](./Functions/overwolf.settings.getCurrentOverwolfLanguage) | Returns the current language overwolf is set to in a two letter ISO name format. |
@@ -30,8 +38,11 @@ Use this API to read and modify Overwolf client settings, including video/audio 
 | [overwolf.settings.setOverwolfScreenshotsFolder](./Functions/overwolf.settings.setOverwolfScreenshotsFolder) | Sets the folder Overwolf uses to store screenshots. |
 | [overwolf.settings.setOverwolfVideosFolder](./Functions/overwolf.settings.setOverwolfVideosFolder) | Sets the folder Overwolf uses to store videos. |
 | [overwolf.settings.setVideoCaptureSettings](./Functions/overwolf.settings.setVideoCaptureSettings) | Sets new video capture settings. |
-| [games](./games/Overview) | Use this API to query and configure per-game Overwolf settings, such as overlay enablement and auto-launch behavior for apps on a per-game-class basis. |
-| [hotkeys](./hotkeys/Overview) | Use this API to get, assign, and unassign hotkeys for the current extension, and to listen for hotkey press, hold, and change events. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.settings.AudioCaptureSettingsChangedEvent](./Interfaces/overwolf.settings.AudioCaptureSettingsChangedEvent) | Event data fired when an audio capture setting changes. |
 | [overwolf.settings.FolderResult](./Interfaces/overwolf.settings.FolderResult) | Result containing a folder path returned by Overwolf. |
 | [overwolf.settings.FpsSettings](./Interfaces/overwolf.settings.FpsSettings) | Configuration for the Overwolf FPS counter overlay. |
@@ -46,7 +57,19 @@ Use this API to read and modify Overwolf client settings, including video/audio 
 | [overwolf.settings.HotKeyResult](./Interfaces/overwolf.settings.HotKeyResult) | Result of a hotkey registration callback. |
 | [overwolf.settings.SetFolderResult](./Interfaces/overwolf.settings.SetFolderResult) | Result of a set-folder operation, containing the newly applied path. |
 | [overwolf.settings.VideoCaptureSettingsChangedEvent](./Interfaces/overwolf.settings.VideoCaptureSettingsChangedEvent) | Event data fired when a video capture setting changes. |
-| [language](./language/Overview) | The `overwolf.settings.language` namespace lets you retrieve the Overwolf client's current UI language and listen for language change events. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.settings.OnAudioCaptureSettingsChanged](./Variables/overwolf.settings.OnAudioCaptureSettingsChanged) | Fired when audio capture settings are changed. |
 | [overwolf.settings.onFpsSettingsChanged](./Variables/overwolf.settings.onFpsSettingsChanged) | Fired when fps settings are changed. |
 | [overwolf.settings.OnVideoCaptureSettingsChanged](./Variables/overwolf.settings.OnVideoCaptureSettingsChanged) | Fired when video capture settings are changed. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.settings.enums.eIndicationPosition](./enums/overwolf.settings.enums.eIndicationPosition) | The screen position of an on-screen indicator (e.g. the FPS counter). |
+| [overwolf.settings.enums.ResolutionSettings](./enums/overwolf.settings.enums.ResolutionSettings) | The video resolution setting for capture. |
+

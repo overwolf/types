@@ -10,6 +10,8 @@ toc_max_heading_level: 6
 
 Use this API to get, assign, and unassign hotkeys for the current extension, and to listen for hotkey press, hold, and change events.
 
+## Functions
+
 | API | Description |
 | --- | --- |
 | [overwolf.settings.hotkeys.assign](./Functions/overwolf.settings.hotkeys.assign) | Assign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey. |
@@ -17,6 +19,11 @@ Use this API to get, assign, and unassign hotkeys for the current extension, and
 | [overwolf.settings.hotkeys.getAllApps](./Functions/overwolf.settings.hotkeys.getAllApps) | Returns the hotkeys assigned for all installed extensions + the platform, in all the games. |
 | [overwolf.settings.hotkeys.unassign](./Functions/overwolf.settings.hotkeys.unassign) | Unassign global hotkey for the current extension, OR, if a gameId is specified, assign/unassign a dedicated hotkey. |
 | [overwolf.settings.hotkeys.update](./Functions/overwolf.settings.hotkeys.update) | Updates the pass-through or custom modifier settings for an existing hotkey. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.settings.hotkeys.AssignHotkeyObject](./Interfaces/overwolf.settings.hotkeys.AssignHotkeyObject) | Identifies a hotkey to assign, including the key combination to bind. |
 | [overwolf.settings.hotkeys.GetAllAssignedHotkeysResult](./Interfaces/overwolf.settings.hotkeys.GetAllAssignedHotkeysResult) | Result of `getAllApps`, mapping each app's hotkeys alongside platform-level hotkeys. |
 | [overwolf.settings.hotkeys.GetAssignedHotkeyResult](./Interfaces/overwolf.settings.hotkeys.GetAssignedHotkeyResult) | Result of `get`, containing global and per-game hotkeys for the current extension. |
@@ -27,6 +34,12 @@ Use this API to get, assign, and unassign hotkeys for the current extension, and
 | [overwolf.settings.hotkeys.OnPressedEvent](./Interfaces/overwolf.settings.hotkeys.OnPressedEvent) | Payload of the `onPressed` event, fired when a non-hold hotkey is activated. |
 | [overwolf.settings.hotkeys.UnassignHotkeyObject](./Interfaces/overwolf.settings.hotkeys.UnassignHotkeyObject) | Identifies a hotkey to unassign by name and optional game scope. |
 | [overwolf.settings.hotkeys.UpdateHotkeyObject](./Interfaces/overwolf.settings.hotkeys.UpdateHotkeyObject) | Parameters for updating hotkey pass-through or custom modifier settings. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.settings.hotkeys.onAutoLaunchEnablementChanged](./Variables/overwolf.settings.hotkeys.onAutoLaunchEnablementChanged) | Fired when auto launch is enabled or disabled for a game. |
 | [overwolf.settings.hotkeys.onHold](./Variables/overwolf.settings.hotkeys.onHold) | Fired only for hotkeys that are set in the manifest as hold. |
 | [overwolf.settings.hotkeys.onPressed](./Variables/overwolf.settings.hotkeys.onPressed) | Fired for hotkeys that are NOT set as hold hotkeys. |
+

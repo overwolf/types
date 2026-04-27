@@ -763,5 +763,3 @@ declare namespace overwolf.games {
    * dramatically.
    */
   const onMajorFrameRateChange: Event<MajorFrameRateChangeEvent>;
-
-  }

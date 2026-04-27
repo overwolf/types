@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Skill(update-config)",
-      "Skill(update-config:*)"
+      "Skill(update-config:*)",
+      "Bash(node scripts/recombine-ts.js)",
+      "Bash(node scripts/recombine-ts.js --verify)",
+      "Bash(node -e ' *)"
     ]
   }
 }

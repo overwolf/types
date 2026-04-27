@@ -10,12 +10,17 @@ toc_max_heading_level: 6
 
 Use this API to create local web servers and WebSocket clients, and to send HTTP requests from within an Overwolf app.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.web.enums.HttpRequestMethods](./enums/overwolf.web.enums.HttpRequestMethods) | The HTTP method to use when sending a fetch request. |
-| [overwolf.web.enums.MessageType](./enums/overwolf.web.enums.MessageType) | The type of a WebSocket message. |
 | [overwolf.web.createServer](./Functions/overwolf.web.createServer) | Creates a local HTTP web server on the specified port. The returned `WebServer` instance must have its `listen` method called before it will accept connections. |
 | [overwolf.web.createWebSocket](./Functions/overwolf.web.createWebSocket) | Creates a WebSocket client connection to localhost/127.0.0.1, bypassing certificate verification. Call `connect` on the returned `WebSocket` instance to open the connection. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.web.ClosedEvent](./Interfaces/overwolf.web.ClosedEvent) | Describes the reason a WebSocket connection was closed. |
 | [overwolf.web.CreateServerResult](./Interfaces/overwolf.web.CreateServerResult) | Result of `createServer`, containing the new `WebServer` instance. |
 | [overwolf.web.CreateWebSocketResult](./Interfaces/overwolf.web.CreateWebSocketResult) | Result of `createWebSocket`, containing the new `WebSocket` client instance. |
@@ -27,4 +32,17 @@ Use this API to create local web servers and WebSocket clients, and to send HTTP
 | [overwolf.web.WebServer](./Interfaces/overwolf.web.WebServer) | A local HTTP web server instance returned by `createServer`. |
 | [overwolf.web.WebSocket](./Interfaces/overwolf.web.WebSocket) | A WebSocket client instance returned by `createWebSocket`. |
 | [overwolf.web.WebSocketConnectionParams](./Interfaces/overwolf.web.WebSocketConnectionParams) | Connection parameters used to create a `WebSocket` client. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.web.onMouseWheel](./Variables/overwolf.web.onMouseWheel) | Fired a mouse wheel has been used. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.web.enums.HttpRequestMethods](./enums/overwolf.web.enums.HttpRequestMethods) | The HTTP method to use when sending a fetch request. |
+| [overwolf.web.enums.MessageType](./enums/overwolf.web.enums.MessageType) | The type of a WebSocket message. |
+

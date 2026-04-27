@@ -85,5 +85,3 @@ declare namespace overwolf.settings.games {
    * Fired when the overlay is enabled or disabled for a game.
    */
   const onOverlayEnablementChanged: Event<OverlayEnablementChangedEvent>;
-
-}

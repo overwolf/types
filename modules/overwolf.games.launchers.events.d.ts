@@ -4,10 +4,6 @@
  * @packageDocumentation
  */
 
-/**
-   * Fired when a launcher is closed.
-   */
-  const onTerminated: Event<LauncherInfo>;
 }
 
 declare namespace overwolf.games.launchers.events {
@@ -52,5 +48,3 @@ declare namespace overwolf.games.launchers.events {
    * Fired when there are game info updates with a JSON object of the updates.
    */
   const onInfoUpdates: Event<any>;
-
-  }

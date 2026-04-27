@@ -108,5 +108,3 @@ declare namespace overwolf.os.tray {
    * Fired when the tray icon is left clicked.
    */
   const onTrayIconClicked: Event<any>;
-
-}

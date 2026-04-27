@@ -10,9 +10,10 @@ toc_max_heading_level: 6
 
 Use this API to share videos and posts to Reddit directly from your Overwolf app.
 
+## Functions
+
 | API | Description |
 | --- | --- |
-| [overwolf.social.reddit.enums.ShareState](./enums/overwolf.social.reddit.enums.ShareState) | Represents the current state of a share operation. |
 | [overwolf.social.reddit.getSubredditFlairs](./Functions/overwolf.social.reddit.getSubredditFlairs) | Returns a list of flairs supported by the given subreddit |
 | [overwolf.social.reddit.getUserInfo](./Functions/overwolf.social.reddit.getUserInfo) | If the user is currently logged into Reddit, this will return user information: &#123; userInfo: &#123; avatar: "http://abs.twimg.com/sticky/...", displayName: "u/foobar", name: "foobar" &#125; &#125; Otherwise, an error is returned. |
 | [overwolf.social.reddit.performLogout](./Functions/overwolf.social.reddit.performLogout) | Performs a "strong" sign out of Reddit, so that even if the user performs a login via the Overwolf Settings / Accounts page, he will be considered signed out. |
@@ -21,6 +22,11 @@ Use this API to share videos and posts to Reddit directly from your Overwolf app
 | [overwolf.social.reddit.searchSubreddits](./Functions/overwolf.social.reddit.searchSubreddits) | Search for subreddits whose names begin with a substring. |
 | [overwolf.social.reddit.share](./Functions/overwolf.social.reddit.share) | If the user is currently logged into Reddit, this will perform the video share. |
 | [overwolf.social.reddit.shareEx](./Functions/overwolf.social.reddit.shareEx) | Shares a media file to a subreddit with separate result and progress callbacks. |
+
+## Interfaces
+
+| API | Description |
+| --- | --- |
 | [overwolf.social.reddit.Flair](./Interfaces/overwolf.social.reddit.Flair) | Represents a Reddit post flair. |
 | [overwolf.social.reddit.PostParameters](./Interfaces/overwolf.social.reddit.PostParameters) | Parameters for creating a text post on a subreddit. |
 | [overwolf.social.reddit.RedditAllowedPostTypes](./Interfaces/overwolf.social.reddit.RedditAllowedPostTypes) | Describes which post types are permitted in a subreddit. |
@@ -31,4 +37,16 @@ Use this API to share videos and posts to Reddit directly from your Overwolf app
 | [overwolf.social.reddit.SocialShareResult](./Interfaces/overwolf.social.reddit.SocialShareResult) | Result of a successful share operation. |
 | [overwolf.social.reddit.Subreddit](./Interfaces/overwolf.social.reddit.Subreddit) | Represents a Reddit subreddit. |
 | [overwolf.social.reddit.User](./Interfaces/overwolf.social.reddit.User) | Represents a Reddit user account. |
+
+## Variables
+
+| API | Description |
+| --- | --- |
 | [overwolf.social.reddit.onLoginStateChanged](./Variables/overwolf.social.reddit.onLoginStateChanged) | Fired when the user's login state changes. |
+
+## enums
+
+| API | Description |
+| --- | --- |
+| [overwolf.social.reddit.enums.ShareState](./enums/overwolf.social.reddit.enums.ShareState) | Represents the current state of a share operation. |
+
