@@ -4534,7 +4534,7 @@ declare namespace overwolf.streaming {
   /**
    * Fired upon video file splited.
    */
-  const onVideoFileSplited: Event<VideoFileSplitedEvent>;
+  const onVideoFileSplit: Event<VideoFileSplitedEvent>;
 
   /**
    * Fired upon support encoder list updated.
