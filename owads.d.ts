@@ -22,6 +22,8 @@ export interface OwAdOptions {
   testAd?: boolean;
   enableHighImpact?: boolean;
   inStream?: boolean;
+  rewarded?: boolean;
+  containerId?: string;
   volume?: number;
   partnerId?: number;
   serverId?: number;
@@ -38,6 +40,7 @@ export declare class OwAd {
 
   play(): boolean;
   pause(): boolean;
+  skipVideo(): void;
   refreshAd(refreshOptions: any): boolean;
   refreshCurrentWFstep(): void;
   removeAd(): boolean;
