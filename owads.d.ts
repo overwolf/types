@@ -28,6 +28,7 @@ export interface OwAdOptions {
   partnerId?: number;
   serverId?: number;
   customTracking?: Record<string, any>;
+  rewardId?: string;
 }
 
 export declare class OwAd {
