@@ -2188,9 +2188,6 @@ declare namespace overwolf.windows.mediaPlayerElement {
   const onPlaybackError: Event<PlaybackEvent>;
 }
 
-/**
- * @deprecated Since version 0.155.
- */
 declare namespace overwolf.benchmarking {
   /**
    * Requests hardware information within a given interval. Note that this call
@@ -2199,6 +2196,7 @@ declare namespace overwolf.benchmarking {
    * have to ask the app user for permissions and according to the user's
    * choice, call `requestPermissions`. It is then required to call
    * `requestProcessInfo` again.
+   * @deprecated Since version 0.155.
    * @param interval The desired maximal interval (in milliseconds) in which
    * events will be triggered. Minimum is 500ms.
    * @param callback A callback function which will be called with the status of
@@ -2212,6 +2210,7 @@ declare namespace overwolf.benchmarking {
   /**
    * Requests process information within a given interval. See
    * `requestPermissions` for administrative permissions instructions.
+   * @deprecated Since version 0.155.
    * @param interval The desired maximal interval (in milliseconds) in which
    * events will be triggered. Minimum is 500ms.
    * @param callback A callback function which will be called with the status of
@@ -2224,6 +2223,7 @@ declare namespace overwolf.benchmarking {
 
   /**
    * Requests game fps information within a given interval.
+   * @deprecated Since version 0.155.
    * @param interval The desired maximal interval (in milliseconds) in which
    * events will be triggered.
    * @param callback A callback function which will be called with the status of
@@ -2237,6 +2237,7 @@ declare namespace overwolf.benchmarking {
   /**
    * Stops receiving hardware/process events. Use this when you no longer want
    * to receive events or when you close your app.
+   * @deprecated Since version 0.155.
    */
   function stopRequesting(): void;
 
@@ -2244,6 +2245,7 @@ declare namespace overwolf.benchmarking {
    * In case Overwolf requires administrative permissions, and after prompting
    * the user of the app to request more permissions, call this function and
    * then request your desired benchmarking information.
+   * @deprecated Since version 0.155.
    * @param callback A callback function which will be called with the status of
    * the request.
    */
@@ -2252,17 +2254,20 @@ declare namespace overwolf.benchmarking {
   /**
    * Fired when hardware infromation is ready with a JSON containing the
    * information.
+   * @deprecated Since version 0.155.
    */
   const onHardwareInfoReady: Event<any>;
 
   /**
    * Fired when process infromation is ready with a JSON containing the
    * information.
+   * @deprecated Since version 0.155.
    */
   const onProcessInfoReady: Event<any>;
 
   /**
    * Fired when fps infromation is ready with a JSON containing the information.
+   * @deprecated Since version 0.155.
    */
   const onFpsInfoReady: Event<any>;
 }
