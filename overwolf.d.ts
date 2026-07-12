@@ -382,6 +382,12 @@ declare namespace overwolf.media {
     webCams?: Webcam[];
   }
 
+  interface XboxDVRStatusResult extends Result {
+    enabled?: boolean;
+    appCaptureEnabled?: boolean;
+    gameDVREnabled?: boolean;
+  }
+
   /**
    * Takes a screenshot and calls the callback with the success status and the
    * screenshot URL. The screenshot is saved to the screenshots folder.
@@ -533,6 +539,25 @@ declare namespace overwolf.media {
    * Fired when a screenshot was taken.
    */
   const onScreenshotTaken: Event<ScreenshotTakenEvent>;
+
+  /**
+   * Returns whether Xbox Game DVR is enabled, by checking both the
+   * GameDVR_Enabled and AppCaptureEnabled registry values.
+   * Minimum supported Overwolf client version: 0.305.0.7
+   * @param callback A callback with the DVR status.
+   */
+  function isXboxDVREnabled(
+    callback: CallbackFunction<XboxDVRStatusResult>
+  ): void;
+
+  /**
+   * Disables Xbox Game DVR by setting the AppCaptureEnabled and
+   * GameDVR_Enabled registry values to 0 for the current user (no elevation
+   * required).
+   * Minimum supported Overwolf client version: 0.305.0.7
+   * @param callback A callback with the status of the request.
+   */
+  function disableXboxDVR(callback: CallbackFunction<Result>): void;
 }
 
 declare namespace overwolf.media.videos {
