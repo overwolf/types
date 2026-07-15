@@ -540,20 +540,17 @@ declare namespace overwolf.media {
    */
   const onScreenshotTaken: Event<ScreenshotTakenEvent>;
 
-  /**
-   * Returns whether Xbox Game DVR is enabled, by checking both the
-   * GameDVR_Enabled and AppCaptureEnabled registry values.
-   * Minimum supported Overwolf client version: 0.305.0.7
-   * @param callback A callback with the DVR status.
-   */
+/**
+ * Returns whether Xbox Game DVR is enabled.
+ * Minimum supported Overwolf client version: 0.305.0.7
+ * @param callback A callback with the DVR status.
+ */
   function isXboxDVREnabled(
     callback: CallbackFunction<XboxDVRStatusResult>
   ): void;
 
   /**
-   * Disables Xbox Game DVR by setting the AppCaptureEnabled and
-   * GameDVR_Enabled registry values to 0 for the current user (no elevation
-   * required).
+   * Disables Xbox Game DVR for the current user.
    * Minimum supported Overwolf client version: 0.305.0.7
    * @param callback A callback with the status of the request.
    */
