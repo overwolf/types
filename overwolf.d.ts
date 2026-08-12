@@ -171,7 +171,7 @@ declare namespace overwolf.io {
    * the file's content will be overwritten.
    * @param filePath The full path of the file to write to.
    * @param content The content to write.
-   * @param encoding The encoding to use, see more at
+   * @param encoding The encoding to use, see more at {@link overwolf.io.enums.eEncoding}.
    * @param triggerUacIfRequired If additional permissions are required, allows
    * the triggering of the Windows UAC dialog.
    * @param callback Called with the status of the request.
@@ -185,9 +185,9 @@ declare namespace overwolf.io {
   ): void;
 
   /**
-   * Read the content to the target file.
-   * @param filePath The full path of the file to write to.
-   * @param encoding The encoding to use, see more at
+   * Reads the content of the target file.
+   * @param filePath The full path of the file to read from.
+   * @param encoding The encoding to use, see more at {@link overwolf.io.enums.eEncoding}.
    * @param callback Called with the status of the request and the file content.
    */
   function readFileContents(
@@ -216,7 +216,7 @@ declare namespace overwolf.io {
   ): void;
 
   /**
-   * Lists all files and folder in the target path.
+   * Lists all files and folders in the target path.
    * @param path The target path
    * @param callback result callback.
    */
@@ -248,7 +248,7 @@ declare namespace overwolf.io {
   ): void;
 
   /**
-   * Is path exist.
+   * Checks whether the given path exists.
    * @param path The target path.
    * @param callback result callback.
    */
@@ -349,6 +349,15 @@ declare namespace overwolf.media {
     height: number;
   }
 
+  const enum ImageFormat {
+    Jpeg = "Jpeg",
+    Bmp = "Bmp",
+  }
+
+  interface ScreenshotOptions {
+    imageFormat?: ImageFormat;
+  }
+
   interface MemoryScreenshotParams {
     roundAwayFromZero?: boolean;
     rescale?: RescaleParams;
@@ -397,6 +406,14 @@ declare namespace overwolf.media {
 
   /**
    * Get all connected Webcams.
+   * @param callback A callback function which will be called with the status of the request.
+   */
+  function getWebcams(callback: CallbackFunction<GetWebcamsResult>): void;
+
+  /**
+   * Get all connected Webcams.
+   * @deprecated Misspelled binding. The runtime API is `getWebcams` (lowercase
+   * `g`); this name never resolved at runtime. Use {@link getWebcams}.
    * @param callback A callback function which will be called with the status of the request.
    */
   function GetWebcams(callback: CallbackFunction<GetWebcamsResult>): void;
@@ -555,6 +572,19 @@ declare namespace overwolf.media {
    * @param callback A callback with the status of the request.
    */
   function disableXboxDVR(callback: CallbackFunction<Result>): void;
+
+  /**
+   * Takes a screenshot and calls the callback with the success status and the
+   * screenshot URL. The screenshot is saved to the screenshots folder.
+   * @param targetFolder Target screenshot folder path.
+   * @param options Options for taking a screenshot.
+   * @param callback A function called after the screenshot was taken.
+   */
+  function takeScreenshotEx(
+    targetFolder: string,
+    options?: ScreenshotOptions,
+    callback?: CallbackFunction<FileResult>
+  ): void;
 }
 
 declare namespace overwolf.media.videos {
@@ -834,7 +864,7 @@ declare namespace overwolf.media.replays {
 
   /**
    * Turns off background replay capturing. Call this as soon as you no longer
-   * interesting in capturing, in order to free up resources.
+   * interested in capturing, in order to free up resources.
    * @param callback A callback function which will be called with the status of
    * the request.
    */
@@ -843,7 +873,7 @@ declare namespace overwolf.media.replays {
   /**
    * Turns on background replay capturing. Without calling it first, you will
    * not be able to create video replays. Notice that turning on replay
-   * capturing will consume system resources so use it wisely.buffer_length
+   * capturing will consume system resources so use it wisely. buffer_length
    * defines the amount of time in milliseconds to have captured in the memory
    * at all times.
    * @param settings The video capture settings.
@@ -881,7 +911,7 @@ declare namespace overwolf.media.replays {
    * captured to a file.
    * @param pastDuration The replay length, in milliseconds to include prior to
    * the time of this call.
-   * @param futureDuration The replay lengh, in milliseconds to include after
+   * @param futureDuration The replay length, in milliseconds to include after
    * the time of this call. To ignore it, simply give it a non-positive value
    * @param captureFinishedCallback A callback function which will be called
    * when capturing is finished, at the end of the future duration supplied to
@@ -998,7 +1028,7 @@ declare namespace overwolf.media.replays {
 
   /**
    * Get supported auto highlights features for a game
-   * @param gameId The id of the game you want to capture it highlights.
+   * @param gameId The id of the game you want to capture its highlights.
    * @param callback A callback function which will be called with the status of
    * the request.
    */
@@ -1023,7 +1053,7 @@ declare namespace overwolf.media.replays {
   const onCaptureWarning: Event<CaptureWarningEvent>;
 
   /**
-   * Fired when the replay service is on (any other app);
+   * Fired when the replay service is on (in any other app).
    */
   const onReplayServicesStarted: Event<ReplayServicesStartedEvent>;
 
@@ -1198,7 +1228,7 @@ declare namespace overwolf.profile.subscriptions.inapp {
   /**
    * Shows the in-app subscription page as a modal window on top of the current window.
    * @param planId  The plan Id to display.
-   * @param theme Optional. "Dark" or "Light. If not defined, the default is light.
+   * @param theme Optional. "Dark" or "Light". If not defined, the default is light.
    * @param callback A callback function which will be called with the status of the request.
    */
   function show(
@@ -1467,14 +1497,14 @@ declare namespace overwolf.windows {
   interface onScreenPropertyChangedEvent {
     id: string;
     name: string;
-    monitor: utils.Display;
+    monitor: overwolf.utils.Display;
   }
 
   /**
    * Calls the given callback function with the current window object as a
    * parameter.
    * @param callback A callback function which will be called with the current
-   * window object as a parameter. See
+   * window object as a parameter. See {@link overwolf.windows.WindowInfo}.
    */
   function getCurrentWindow(callback: CallbackFunction<WindowResult>): void;
 
@@ -1485,7 +1515,7 @@ declare namespace overwolf.windows {
    * data.windows section in the manifest.
    * @param overrideSetting Override manifest settings
    * @param callback A callback function which will be called with the requested
-   * window as a parameter. See
+   * window as a parameter. See {@link overwolf.windows.WindowInfo}.
    */
   function obtainDeclaredWindow(
     windowName: string,
@@ -1624,8 +1654,7 @@ declare namespace overwolf.windows {
    * Flashes a window.
    * @param windowId ID of the window to flash.
    * @param behavior Defines window flashing behavior.
-   * @param callback A callback which is called when the minimum size change is
-   * completed.
+   * @param callback A callback which is called with the status of the request.
    */
   function flash(
     windowId: string,
@@ -1635,11 +1664,11 @@ declare namespace overwolf.windows {
 
   /**
    * Set window zoom level (0.0 for reset).
-   * @param winzoomFactorowId The zoome factor.
+   * @param zoomFactor The zoom factor.
    * @param windowId The window id, empty for current window.
    */
   function setZoom(
-    winzoomFactorowId: number,
+    zoomFactor: number,
     windowId: string
   ): void;
 
@@ -1915,7 +1944,7 @@ declare namespace overwolf.windows {
   function setMute(mute: boolean, callback: CallbackFunction<Result>): void;
 
   /**
-   * Mute all sound source include all excluded white list
+   * Mutes all sound sources, including all sources on the mute exclusion list.
    * @param callback Called with the result of the request.
    */
   function muteAll(callback: CallbackFunction<Result>): void;
@@ -1994,9 +2023,27 @@ declare namespace overwolf.windows {
   const onAltF4Blocked: Event<AltF4BlockedEvent>;
 
   /**
-   * Fired when native window (or OSR on desktop) moved to other monitoror when current monitor resolution changed
+   * Fired when a native window (or OSR on desktop) moved to another monitor, or when the current monitor's resolution changed.
    */
   const onScreenPropertyChanged: Event<onScreenPropertyChangedEvent>;
+
+  /**
+   * Requests focus for an in-game overlay (OSR) window. The request fails if
+   * the window is not an in-game (OSR) window, if it is minimized or hidden, or
+   * if the game is not in focus.
+   * @param windowId The id or name of the window.
+   * @param callback Called with the result of the request.
+   */
+  function requestOverlayFocus(
+    windowId: string,
+    callback: CallbackFunction<Result>
+  ): void;
+
+  /**
+   * Requests focus for the current in-game overlay (OSR) window.
+   * @param callback Called with the result of the request.
+   */
+  function requestOverlayFocus(callback: CallbackFunction<Result>): void;
 }
 
 declare namespace overwolf.windows.mediaPlayerElement {
@@ -2017,10 +2064,10 @@ declare namespace overwolf.windows.mediaPlayerElement {
   }
 
   /**
-   * Creates a media player a places it in the given location with given
+   * Creates a media player and places it in the given location with given
    * dimensions.
-   * @param x The top position of the player.
-   * @param y The left position of the player.
+   * @param x The left position of the player.
+   * @param y The top position of the player.
    * @param width The width of the player.
    * @param height The height of the player.
    * @param callback A callback function which will be called with the status of
@@ -2042,8 +2089,8 @@ declare namespace overwolf.windows.mediaPlayerElement {
   /**
    * Relocates the media player to a given location with given dimensions.
    * @param id The id of the player.
-   * @param x The top position of the player.
-   * @param y The left position of the player.
+   * @param x The left position of the player.
+   * @param y The top position of the player.
    * @param width The width of the player.
    * @param height The height of the player.
    * @param callback A callback function which will be called with the status of
@@ -2174,7 +2221,8 @@ declare namespace overwolf.windows.mediaPlayerElement {
   /**
    * Sets the stretch mode of the player.
    * @param id The id of the media player.
-   * @param stretchMode The desired stretch mode, see
+   * @param stretchMode The desired stretch mode. One of "None", "Fill",
+   * "Uniform" or "UniformToFill".
    * @param callback A callback function which will be called with the status of
    * the request.
    */
@@ -2272,19 +2320,19 @@ declare namespace overwolf.benchmarking {
   function requestPermissions(callback: CallbackFunction<Result>): void;
 
   /**
-   * Fired when hardware infromation is ready with a JSON containing the
+   * Fired when hardware information is ready with a JSON containing the
    * information.
    */
   const onHardwareInfoReady: Event<any>;
 
   /**
-   * Fired when process infromation is ready with a JSON containing the
+   * Fired when process information is ready with a JSON containing the
    * information.
    */
   const onProcessInfoReady: Event<any>;
 
   /**
-   * Fired when fps infromation is ready with a JSON containing the information.
+   * Fired when fps information is ready with a JSON containing the information.
    */
   const onFpsInfoReady: Event<any>;
 }
@@ -2628,6 +2676,7 @@ declare namespace overwolf.games {
    * Returns an object with information about the currently running game (or
    * active games, if more than one), or null if no game is running.
    * @param callback Called with the currently running or active game info. See
+   * {@link overwolf.games.GetRunningGameInfoResult}.
    */
   function getRunningGameInfo(
     callback: CallbackFunction<GetRunningGameInfoResult>
@@ -2637,13 +2686,14 @@ declare namespace overwolf.games {
    * Returns an object with information about the currently running game (or
    * active games, if more than one), or null if no game is running.
    * @param callback Called with the currently running or active game info. See
+   * {@link overwolf.games.GetRunningGameInfoResult2}.
    */
   function getRunningGameInfo2(
     callback: CallbackFunction<GetRunningGameInfoResult2>
   ): void;
 
   /**
-   * Returns information about a game with a given game id.Will only return
+   * Returns information about a game with a given game id. Will only return
    * information if the game is detected on the local machine (i.e. installed)
    * @param gameClassId The class id of the game.
    * @param callback Called with the info about the game.
@@ -2670,7 +2720,7 @@ declare namespace overwolf.games {
   ): void;
 
   /**
-   * Returns an array of the maxNumOfGames most recently played game IDs.An
+   * Returns an array of the maxNumOfGames most recently played game IDs. An
    * empty array will be returned if none have been recorded.
    * @param maxNumOfGames The maximum number of games to receive.
    * @param callback Called with the array of game IDs.
@@ -2712,18 +2762,10 @@ declare namespace overwolf.games {
 }
 
 declare namespace overwolf.games.tracked {
-  const onTerminated: Event<GameInfoUpdatedEvent>;
-
-  /**
-   * Fired when an unsupported / overlay disabled game is launched.
-   */
-  const onGameLaunched: Event<GetRunningGameInfoResult2>;
-
   interface GetAnyRunningGamesInfoResult extends Result {
     gameInfos: GetRunningGameInfoResult2GameInfo[];
     success: boolean;
   }
-
 
   /**
    * Returns an array of all the currently running unsupported / overlay disabled games.
@@ -2732,6 +2774,18 @@ declare namespace overwolf.games.tracked {
   function getAnyRunningGamesInfo(
     callback: CallbackFunction<GetAnyRunningGamesInfoResult>
   ): void;
+
+  const onTerminated: Event<GameInfoUpdatedEvent>;
+
+  /**
+   * Fired when an unsupported / overlay disabled game is launched.
+   */
+  const onGameLaunched: Event<GetRunningGameInfoResult2>;
+
+  /**
+   * Fired when an unsupported / overlay disabled game is executed.
+   */
+  const onUnsupportedExecuted: Event<GetRunningGameInfoResult2>;
 }
 
 declare namespace overwolf.games.launchers {
@@ -3012,7 +3066,7 @@ declare namespace overwolf.games.inputTracking {
   /**
    * Returns the input activity information (similar to
    * `getActivityInformation`). However, when this is supported, it will return
-   * data only for the latestmatch of the current game
+   * data only for the latest match of the current game.
    * @param callback A callback with the activity information.
    */
   function getMatchActivityInformation(
@@ -3030,7 +3084,7 @@ declare namespace overwolf.games.inputTracking {
   ): void;
 
   /**
-   * Returns the input last mouse position in game. the data includes the mouse
+   * Returns the last mouse position in game. The data includes the mouse
    * position and a boolean stating whether the keypress was on a game or on an
    * Overwolf widget (onGame).
    * @param callback A callback with the mouse position information
@@ -3040,13 +3094,13 @@ declare namespace overwolf.games.inputTracking {
   ): void;
 
   /**
-   * Eye tracking data trakcing will pause, and stop collect Eye tracking data
-   * until resumeEyeTracking will be called.
+   * Pauses eye tracking. No eye tracking data will be collected until
+   * resumeEyeTracking is called.
    */
   function pauseEyeTracking(): void;
 
   /**
-   * Resume collecting Eye tracking data.
+   * Resumes collecting eye tracking data.
    */
   function resumeEyeTracking(): void;
 
@@ -3065,20 +3119,20 @@ declare namespace overwolf.games.inputTracking {
 
   /**
    * Fired when a mouse key has been released. The event information includes
-   * whether the left or white mouse button was clicked(button), x and y
+   * whether the left or right mouse button was clicked (button), x and y
    * coordinates (x, y) and a boolean stating whether the keypress was on a game
    * or on an Overwolf widget (onGame).
    */
   const onMouseUp: Event<MouseEvent>;
 
   /**
-   * Fired a mouse key has been pressed.
+   * Fired when a mouse key has been pressed.
    * Event information is similar to `onMouseUp`.
    */
   const onMouseDown: Event<MouseEvent>;
 
   /**
-   * Fired a mouse wheel has been used.
+   * Fired when the mouse wheel has been used.
    */
   const onMouseWheel: Event<WheelEvent>;
 
@@ -3152,11 +3206,11 @@ declare namespace overwolf.web {
      */
     onError: Event<ErrorEvent>;
     /**
-     * Fired on websocket connection Opened.
+     * Fired when the websocket connection is opened.
      */
     onOpen: Event<{}>;
     /**
-     * Fired when connection closed.
+     * Fired when the connection is closed.
      */
     onClosed: Event<ClosedEvent>;
   }
@@ -3442,6 +3496,7 @@ declare namespace overwolf.logitech.led {
   /**
    * Sets the target devices to use.
    * @param targetDevices An array of
+   * {@link overwolf.logitech.led.enums.LogitechDeviceLightingType}.
    * @param callback A callback with the result of the request.
    */
   function setTargetDevice(
@@ -3470,7 +3525,7 @@ declare namespace overwolf.logitech.led {
   ): void;
 
   /**
-   * Restores the lightning to the last previously saved state.
+   * Restores the lighting to the last previously saved state.
    * @param callback A callback with the result of the request.
    */
   function restoreLighting(callback: CallbackFunction<Result>): void;
@@ -3589,6 +3644,7 @@ declare namespace overwolf.logitech.led {
   /**
    * Sets the lighting for a specific key by key name.
    * @param keyName The key name. For a list of key names see
+   * {@link overwolf.logitech.led.enums.KeyboardNames}.
    * @param redPercentage Red percentage (0 - 100)
    * @param greenPercentage Green percentage (0 - 100)
    * @param bluePercentage Blue percentage (0 - 100)
@@ -3605,6 +3661,7 @@ declare namespace overwolf.logitech.led {
   /**
    * Saves the current lighting of a specific key.
    * @param keyName The key name. For a list of key names see
+   * {@link overwolf.logitech.led.enums.KeyboardNames}.
    * @param callback A callback with the result of the request.
    */
   function saveLightingForKey(
@@ -3615,6 +3672,7 @@ declare namespace overwolf.logitech.led {
   /**
    * Restores a previously saved lighting for a specific key.
    * @param keyName The key name. For a list of key names see
+   * {@link overwolf.logitech.led.enums.KeyboardNames}.
    * @param callback A callback with the result of the request.
    */
   function restoreLightingForKey(
@@ -3625,6 +3683,7 @@ declare namespace overwolf.logitech.led {
   /**
    * Flashes a single key.
    * @param keyName The key name. For a list of key names see
+   * {@link overwolf.logitech.led.enums.KeyboardNames}.
    * @param redPercentage Red percentage (0 - 100)
    * @param greenPercentage Green percentage (0 - 100)
    * @param bluePercentage Blue percentage (0 - 100)
@@ -3645,7 +3704,8 @@ declare namespace overwolf.logitech.led {
   /**
    * Pulses a single key.
    * @param keyName The key name. For a list of key names see
-   * @param startRedPercentage >Red start percentage (0 - 100)
+   * {@link overwolf.logitech.led.enums.KeyboardNames}.
+   * @param startRedPercentage Red start percentage (0 - 100)
    * @param startGreenPercentage Green start percentage (0 - 100)
    * @param startBluePercentage Blue start percentage (0 - 100)
    * @param finishRedPercentage Red finish percentage (0 - 100)
@@ -3671,6 +3731,7 @@ declare namespace overwolf.logitech.led {
   /**
    * Stops ongoing pulse/flash effects on a specific key.
    * @param keyName The key name. For a list of key names see
+   * {@link overwolf.logitech.led.enums.KeyboardNames}.
    * @param callback A callback with the result of the request.
    */
   function stopEffectsOnKey(
@@ -3946,7 +4007,7 @@ declare namespace overwolf.streaming {
      */
     max_kbps?: number;
     /**
-     * Defines the length of the buffer to be recorded in millisenconds (max 40
+     * Defines the length of the buffer to be recorded in milliseconds (max 40
      * seconds)
      */
     buffer_length?: number;
@@ -3960,14 +4021,14 @@ declare namespace overwolf.streaming {
      */
     notify_dropped_frames_ratio?: number;
     /**
-     * Defines file maximum size. when video reach `max_file_size_bytes`, the
-     * recorder will flash the video file and stat a new video file.
-     * `onFileSpilt` event will be fired.
+     * Defines the maximum file size. When the video reaches
+     * `max_file_size_bytes`, the recorder will flush the video file and start a
+     * new video file. The `onVideoFileSplit` event will be fired.
      */
     max_file_size_bytes?: number;
     /**
      * In case `max_file_size_bytes` is on, full video will be recorded to disk,
-     * parallel to splits videos.
+     * parallel to the split videos.
      */
     include_full_size_video?: boolean;
     /**
@@ -3985,8 +4046,8 @@ declare namespace overwolf.streaming {
      */
     capture_desktop?: StreamDesktopCaptureOptions;
     /**
-     * Do not use Overwolf capture setting. In case True you must provider all
-     * video setting (encoder..)
+     * Do not use Overwolf capture settings. If true, you must provide all
+     * video settings (encoder, etc.).
      */
     override_overwolf_setting?: boolean;
     /**
@@ -4004,7 +4065,7 @@ declare namespace overwolf.streaming {
     indication_type?: enums.IndicationType;
 
     /**
-     *  use the app "short name" as the folder name, instead of using the app name from the manifest.
+     * Use the app "short name" as the folder name, instead of using the app name from the manifest.
      */
     use_app_display_name?: boolean;
 
@@ -4033,7 +4094,7 @@ declare namespace overwolf.streaming {
      */
     game_window_capture?: GameWindowCapture;
     /**
-     * Keep capturing the game when the game loses focus (i.e do not show "Be Right Back").
+     * Keep capturing the game when the game loses focus (i.e. do not show "Be Right Back").
      * Note: if game is minimized, BRB will be shown.
      */
     keep_game_capture_on_lost_focus?: boolean;
@@ -4539,7 +4600,7 @@ declare namespace overwolf.streaming {
   const onStopStreaming: Event<StopStreamingEvent>;
 
   /**
-   * Fired when the stream has stopped.
+   * Fired when the stream has started.
    */
   const onStartStreaming: Event<StreamEvent>;
 
@@ -4554,12 +4615,12 @@ declare namespace overwolf.streaming {
   const onStreamingWarning: Event<StreamEvent>;
 
   /**
-   * Fired upon video file splited.
+   * Fired upon video file split.
    */
   const onVideoFileSplit: Event<VideoFileSplitedEvent>;
 
   /**
-   * Fired upon support encoder list updated.
+   * Fired upon supported encoder list updated.
    */
   const onSupportedEncodersUpdated: Event<SupportedEncodersUpdatedEvent>;
 }
@@ -4591,7 +4652,7 @@ declare namespace overwolf.log {
   function error(msg: string): void;
 
   /**
-   * Writes error level log message to the common log.
+   * Writes critical level log message to the common log.
    * @param msg The message to write to the log file.
    */
   function critical(msg: string): void;
@@ -4807,8 +4868,8 @@ declare namespace overwolf.extensions {
     launcher_icon: string;
     /**
      * A relative path from the app folder to the splash image icon’s png file.
-     * The image size should be 256x256px. If a this image is missing, Overwolf
-     * will use the “icon” image as a splash image
+     * The image size should be 256x256px. If this image is missing, Overwolf
+     * will use the “icon” image as a splash image.
      */
     splash_image: string;
     /**
@@ -4825,7 +4886,7 @@ declare namespace overwolf.extensions {
      */
     game_targeting?: {
       /**
-       * "all" – All games (e.g voice communication apps). "dedicated" –
+       * "all" – All games (e.g. voice communication apps). "dedicated" –
        * Dedicated to a game or several games. "none" – No games.
        */
       type: "all" | "dedicated" | "none";
@@ -4987,8 +5048,8 @@ declare namespace overwolf.extensions {
        */
       reload_delay: number;
       /**
-       * Filter files which will be tracked.e.g (.js;.html. default value is “.”
-       * -> all files, but you can use several value like “.json;.html”
+       * Filter files which will be tracked, e.g. “.js;.html”. Default value is
+       * “.” -> all files, but you can use several values like “.json;.html”.
        */
       filter: string;
     };
@@ -5048,7 +5109,7 @@ declare namespace overwolf.extensions {
      */
     clickthrough?: boolean;
     /**
-     * Indicates whether the   Mouse and keyboard input will pass to the window AND to the game (no input blocking). To change this property at
+     * Indicates whether the mouse and keyboard input will pass to the window AND to the game (no input blocking). To change this property at
      * runtime, use setWindowStyle().
      */
     style?: overwolf.windows.enums.WindowStyle;
@@ -5302,7 +5363,7 @@ declare namespace overwolf.extensions {
 
   /**
    * The following types are related to the |onUncaughtException| event - which
-   * is a different than the usual events.
+   * is different from the usual events.
    */
   type UncaughtExceptionCallback = (
     message: string,
@@ -5425,8 +5486,8 @@ declare namespace overwolf.extensions {
   /**
    * Fires when the current app is launched while already running. This is
    * useful in the case where the app has custom logic for clicking its dock
-   * button while it is already running. The event contaisn an 'origin'
-   * string which what triggered the app launch (dock, storeapi, odk, etc...)
+   * button while it is already running. The event contains an 'origin'
+   * string indicating what triggered the app launch (dock, storeapi, odk, etc...)
    */
   const onAppLaunchTriggered: Event<AppLaunchTriggeredEvent>;
 
@@ -5599,11 +5660,17 @@ declare namespace overwolf.extensions.current {
   function repairUrlProtocol(
     callback: CallbackFunction<Result>
   ): void;
+
+  /**
+   * Returns the current extension's data.
+   * @param callback A function called with the extension data.
+   */
+  function getExtensionData(callback: CallbackFunction<Result>): void;
 }
 
 declare namespace overwolf.extensions.sharedData {
   /**
-   * Container that represent a shared data parameters.
+   * Container that represents shared data parameters.
    */
   interface SharedDataParams {
     origin?: string;
@@ -5715,7 +5782,7 @@ declare namespace overwolf.extensions.sharedData {
  */
 declare namespace overwolf.campaigns.crossapp {
   /**
-   * Container that represent a shared data parameters.
+   * Container that represents shared data parameters.
    */
   interface CrossAppCampaign {
     /**
@@ -6007,7 +6074,7 @@ declare namespace overwolf.utils {
   /**
    * Opens a file picker dialog to browse for a file. A url to the selected file
    * will be returned.
-   * @param filter A file filter. Supports wild cards (*) and seperated by
+   * @param filter A file filter. Supports wild cards (*) and separated by
    * commas (,). Ex. myFile*.*,*.txt
    * @param callback Called with a url to the selected file.
    */
@@ -6019,7 +6086,7 @@ declare namespace overwolf.utils {
   /**
    * Opens a file picker dialog to browse for a file. A url to the selected file
    * will be returned.
-   * @param filter A file filter. Supports wild cards (*) and seperated by
+   * @param filter A file filter. Supports wild cards (*) and separated by
    * commas (,). Ex. myFile*.*,*.txt
    * @param initialPath Path to start browsing from
    * @param callback Called with a url(s) to the selected file(s).
@@ -6115,7 +6182,7 @@ declare namespace overwolf.utils {
 
   /**
    * Open Overwolf store one app page.
-   * @param appId The requesterd app id.
+   * @param appId The requested app id.
    */
   function openStoreOneAppPage(appId: string): void;
 
@@ -6154,11 +6221,75 @@ declare namespace overwolf.utils {
 
   /**
    * Retrieve information about the client - such as when it was first installed
-   * and how long is it running.
+   * and how long it has been running.
    * @param callback A callback with the result.
    */
   function getClientInfo(
     callback: CallbackFunction<ClientInfoResult>
+  ): void;
+
+  interface CreateLogsZipResult extends Result {
+    zipPath?: string;
+  }
+
+  /**
+   * Creates a zip of the app's log files.
+   * @param callback A callback with the path to the created zip.
+   */
+  function createLogsZip(
+    callback: CallbackFunction<CreateLogsZipResult>
+  ): void;
+
+  /**
+   * Opens the native OS file picker dialog.
+   * @param filter A file filter. Supports wild cards (*) and separated by
+   * commas (,). Ex. myFile*.*,*.txt
+   * @param callback Called with a url(s) to the selected file(s).
+   */
+  function openNativeFilePicker(
+    filter: string,
+    callback: CallbackFunction<OpenFilePickerResult>
+  ): void;
+
+  /**
+   * Opens the native OS file picker dialog.
+   * @param filter A file filter. Supports wild cards (*) and separated by
+   * commas (,). Ex. myFile*.*,*.txt
+   * @param multipleSelect Allow selection of multiple files.
+   * @param callback Called with a url(s) to the selected file(s).
+   */
+  function openNativeFilePicker(
+    filter: string,
+    multipleSelect: boolean,
+    callback: CallbackFunction<OpenFilePickerResult>
+  ): void;
+
+  /**
+   * Opens the native OS file picker dialog.
+   * @param filter A file filter. Supports wild cards (*) and separated by
+   * commas (,). Ex. myFile*.*,*.txt
+   * @param initialPath Path to start browsing from.
+   * @param callback Called with a url(s) to the selected file(s).
+   */
+  function openNativeFilePicker(
+    filter: string,
+    initialPath: string,
+    callback: CallbackFunction<OpenFilePickerResult>
+  ): void;
+
+  /**
+   * Opens the native OS file picker dialog.
+   * @param filter A file filter. Supports wild cards (*) and separated by
+   * commas (,). Ex. myFile*.*,*.txt
+   * @param initialPath Path to start browsing from.
+   * @param multipleSelect Allow selection of multiple files.
+   * @param callback Called with a url(s) to the selected file(s).
+   */
+  function openNativeFilePicker(
+    filter: string,
+    initialPath: string,
+    multipleSelect: boolean,
+    callback: CallbackFunction<OpenFilePickerResult>
   ): void;
 }
 
@@ -6259,7 +6390,7 @@ declare namespace overwolf.settings {
    * Returns the hotkey assigned to a given feature id by calling the callback.
    * @param featureId The feature id for which to get the set hotkey.
    * @param callback A function called with the result of the request which
-     contains the hotkey if successful.
+   * contains the hotkey if successful.
    */
   function getHotKey(
     featureId: string,
@@ -6283,7 +6414,7 @@ declare namespace overwolf.settings {
   ): void;
 
   /**
-   * Returns the current language overwolf is set to in a two letter ISO name
+   * Returns the current language Overwolf is set to, in two-letter ISO name
    * format.
    * @deprecated Since version 0.155.
    * @param callback
@@ -6293,7 +6424,7 @@ declare namespace overwolf.settings {
   ): void;
 
   /**
-   * Returns the current folder overwolf uses to store screenshots.
+   * Returns the current folder Overwolf uses to store screenshots.
    * @param callback
    */
   function getOverwolfScreenshotsFolder(
@@ -6311,7 +6442,7 @@ declare namespace overwolf.settings {
   ): void;
 
   /**
-   * Returns the current folder overwolf uses to store videos.
+   * Returns the current folder Overwolf uses to store videos.
    * @param callback
    */
   function getOverwolfVideosFolder(
@@ -6423,7 +6554,7 @@ declare namespace overwolf.settings {
   const OnAudioCaptureSettingsChanged: Event<AudioCaptureSettingsChangedEvent>;
 
   /**
-   * Fired when a hotkey is modified. Apps will only be notified ofhotkey
+   * Fired when a hotkey is modified. Apps will only be notified of hotkey
    * changes that relate to them.
    * @deprecated Since version 0.155.
    */
@@ -6456,7 +6587,7 @@ declare namespace overwolf.settings.games {
 
   /**
    * Returns the current Overlay setting for the given game (if any exist).
-   * @param gameClassId the game id for which the flag is retrieved for
+   * @param gameClassId the game id for which the flag is retrieved
    * @param callback
    */
   function getOverlayEnabled(
@@ -6466,7 +6597,7 @@ declare namespace overwolf.settings.games {
 
   /**
    * Returns the current Auto-Launch enabled setting for the calling app in a given game (gameClassId).
-   * @param gameClassId the game id for which the flag is retrieved for
+   * @param gameClassId the game id for which the flag is retrieved
    * @param callback
    */
   function getAutoLaunchEnabled(
@@ -6476,7 +6607,7 @@ declare namespace overwolf.settings.games {
 
   /**
    * Sets the current Auto-Launch enabled setting for the calling app in a given game (gameClassId).
-   * @param gameClassId the game id for which the flag is retrieved for
+   * @param gameClassId the game id for which the flag is retrieved
    * @param enabled whether auto-launch should be enabled
    * @param callback
    */
@@ -6618,7 +6749,7 @@ declare namespace overwolf.settings.language {
   }
 
   /**
-   * Returns the current language overwolf is set to in a two letter ISO name format.
+   * Returns the current language Overwolf is set to, in two-letter ISO name format.
    *
    * @param callback
    */
@@ -6818,10 +6949,14 @@ declare namespace overwolf.social.discord {
 
   /**
    * If the user is currently logged into Discord, this will perform the media
-   * share (image or video).Possible errors that can occur:- Disconnected (user
-   * isn't signed in)- MissingFile (trying to share a missing file)-
-   * UnsupportedFile (trying to share an unsupported format)- ExceedsMaxSize
-   * (the file is too large: > 8 MB for images, > 100 MBfor videos)
+   * share (image or video).
+   *
+   * Possible errors that can occur:
+   * - Disconnected (user isn't signed in)
+   * - MissingFile (trying to share a missing file)
+   * - UnsupportedFile (trying to share an unsupported format)
+   * - ExceedsMaxSize (the file is too large: > 8 MB for images, > 100 MB for
+   *   videos)
    * @param discordShareParams The share parameters. See DiscordShareParameters
    * @param callback Will contain the status of the request.
    */
@@ -6893,22 +7028,22 @@ declare namespace overwolf.social.gfycat {
   }
 
   /**
-   * Opens the login dialog. There is no callback for this method and theonly
+   * Opens the login dialog. There is no callback for this method and the only
    * way to know if the user signed in is via `onLoginStateChanged`.
    */
   function performUserLogin(): void;
 
   /**
-   * Performs a "strong" sign out of Gfycat, so that even if the userperforms a
-   * login via the Overwolf Settings / Accounts page, he willbe considered
+   * Performs a "strong" sign out of Gfycat, so that even if the user performs a
+   * login via the Overwolf Settings / Accounts page, they will be considered
    * signed out.
    * @param callback
    */
   function performLogout(callback: CallbackFunction<Result>): void;
 
   /**
-   * If the user is currently logged into Gfycat, this will return
-   * userinformation:
+   * If the user is currently logged into Gfycat, this will return user
+   * information:
    * https://developers.gfycat.com/api/#getting-the-authenticated-user-s-details
    * Otherwise, an error is returned.
    * @param callback Will contain user information or error if the request has
@@ -6919,10 +7054,12 @@ declare namespace overwolf.social.gfycat {
   ): void;
 
   /**
-   * Possible errors that can occur:- Disconnected (user isn't signed in)-
-   * MissingFile (trying to share a missing file)- UnsupportedFile (trying to
-   * share an unsupported format)- ExceedsMaxSize (the file is too large: > 8 MB
-   * for images, > 100 MBfor videos)
+   * Possible errors that can occur:
+   * - Disconnected (user isn't signed in)
+   * - MissingFile (trying to share a missing file)
+   * - UnsupportedFile (trying to share an unsupported format)
+   * - ExceedsMaxSize (the file is too large: > 8 MB for images, > 100 MB for
+   *   videos)
    * @param gfycatShareParams The share parameters. See GfycatShareParameters
    * @param callback Will contain the status of the request.
    */
@@ -6932,13 +7069,13 @@ declare namespace overwolf.social.gfycat {
   ): void;
 
   function shareEx(
-    discordShareParams: overwolf.social.gfycat.ShareParameters,
+    gfycatShareParams: overwolf.social.gfycat.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.gfycat.SocialShareResult>,
     progressCallback: CallbackFunction<SocialShareProgress>
   ): void;
 
   /**
-   * Fired when a media event has been posted.
+   * Fired when the user's login state changes.
    */
   const onLoginStateChanged: Event<LoginStateChangedEvent>;
 }
@@ -6983,24 +7120,26 @@ declare namespace overwolf.social.twitter {
   }
 
   /**
-   * Opens the login dialog. There is no callback for this method and theonly
+   * Opens the login dialog. There is no callback for this method and the only
    * way to know if the user signed in is via `onLoginStateChanged`.
    */
   function performUserLogin(): void;
 
   /**
-   * Performs a "strong" sign out of Twitter, so that even if the userperforms a
-   * login via the Overwolf Settings / Accounts page, he will be considered
+   * Performs a "strong" sign out of Twitter, so that even if the user performs a
+   * login via the Overwolf Settings / Accounts page, they will be considered
    * signed out.
    * @param callback
    */
   function performLogout(callback: CallbackFunction<Result>): void;
 
   /**
-   * If the user is currently logged into Twitter, this will return
-   * userinformation:{ avatar: "http://abs.twimg.com/sticky/...", id:
-   * "111111111112222222" name: "full name" screenName:
-   * "screenname123"}
+   * If the user is currently logged into Twitter, this will return user
+   * information:
+   * {
+   *   avatar: "http://abs.twimg.com/sticky/...", id: "111111111112222222",
+   *   name: "full name", screenName: "screenname123"
+   * }
    * Otherwise, an error is returned.
    * @param callback Will contain user information or error if the request has
    * failed.
@@ -7021,7 +7160,7 @@ declare namespace overwolf.social.twitter {
   ): void;
 
   function shareEx(
-    discordShareParams: overwolf.social.twitter.ShareParameters,
+    twitterShareParams: overwolf.social.twitter.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.twitter.SocialShareResult>,
     progressCallback: CallbackFunction<overwolf.social.twitter.SocialShareProgress>
   ): void;
@@ -7085,7 +7224,7 @@ declare namespace overwolf.social.youtube {
 
   /**
    * Performs a "strong" sign out of YouTube, so that even if the user performs
-   * a login via the Overwolf Settings / Accounts page, he will be considered
+   * a login via the Overwolf Settings / Accounts page, they will be considered
    * signed out.
    * @param callback
    */
@@ -7123,7 +7262,7 @@ declare namespace overwolf.social.youtube {
   ): void;
 
   function shareEx(
-    discordShareParams: overwolf.social.youtube.ShareParameters,
+    youTubeShareParams: overwolf.social.youtube.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.youtube.SocialShareResult>,
     progressCallback: CallbackFunction<overwolf.social.youtube.SocialShareProgress>
   ): void;
@@ -7260,7 +7399,7 @@ declare namespace overwolf.social.reddit {
   /**
    * Returns a list of flairs supported by the given subreddit
    * @param subredditName The given subreddit
-   * @param callback Will contain  a list of flairs supported by the given subreddit
+   * @param callback Will contain a list of flairs supported by the given subreddit
    */
   function getSubredditFlairs(
     subredditName: string,
@@ -7275,7 +7414,7 @@ declare namespace overwolf.social.reddit {
 
   /**
    * Performs a "strong" sign out of Reddit, so that even if the user performs
-   * a login via the Overwolf Settings / Accounts page, he will be considered
+   * a login via the Overwolf Settings / Accounts page, they will be considered
    * signed out.
    * @param callback
    */
@@ -7327,7 +7466,7 @@ declare namespace overwolf.social.reddit {
   ): void;
 
   function shareEx(
-    discordShareParams: overwolf.social.reddit.ShareParameters,
+    redditShareParams: overwolf.social.reddit.ShareParameters,
     resultCallback: CallbackFunction<overwolf.social.reddit.SocialShareResult>,
     progressCallback: CallbackFunction<overwolf.social.reddit.SocialShareProgress>
   ): void;

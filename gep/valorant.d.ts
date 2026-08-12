@@ -8,7 +8,7 @@ overwolf.games.events.onInfoUpdates2.addListener(
       const info = event.info as ValorantMatchInfo;
 
       if (info.game_mode === overwolf.gep.Valorant.ValorantGameModes.SpikeRush) {
-        // do something special if we're palying spike rush
+        // do something special if we're playing spike rush
       }
     }
   }

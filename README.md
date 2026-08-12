@@ -14,7 +14,7 @@ $ npm i --save-dev @overwolf/types
 
 ## Usage
 
-To use it in your Typescript project, you should include this line on the top of each file that use the types.
+To use it in your TypeScript project, you should include this line at the top of each file that uses the types.
 
 ```
 import "@overwolf/types";
@@ -29,7 +29,7 @@ This dependency was not found:
 
 To install it, you can run: npm install --save @overwolf/types
 ```
-What works here is adding it as types to your tsconfig.json, **INSTEAD OF IMPPORTING IT**
+What works here is adding it as types to your tsconfig.json, **INSTEAD OF IMPORTING IT**
 ```
 {
   "compilerOptions":{
