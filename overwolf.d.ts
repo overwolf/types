@@ -1152,6 +1152,18 @@ declare namespace overwolf.notifications {
 }
 
 declare namespace overwolf.profile {
+  namespace enums {
+    /**
+     * The external payment providers Overwolf knows about.
+     */
+    const enum ExternalPaymentProvider {
+      /**
+       * Tebex - https://www.tebex.io
+       */
+      tebex = "tebex",
+    }
+  }
+
   const enum ConnectionState {
     Unknown = "Unknown",
     Offline = "Offline",
@@ -1185,6 +1197,26 @@ declare namespace overwolf.profile {
   }
 
   /**
+   * The current user's identity at an external payment provider.
+   */
+  interface SetExternalPaymentUserIdParams {
+    /**
+     * The name of the external payment provider. See
+     * {@link overwolf.profile.enums.ExternalPaymentProvider}.
+     */
+    providerName: string;
+    /**
+     * The user's id at the external payment provider.
+     */
+    userId: string;
+    /**
+     * Optional. The plan the user subscribed to at the external payment
+     * provider.
+     */
+    planId?: string;
+  }
+
+  /**
    * Calls the given callback with the currently logged-in Overwolf user.
    * @param callback A function called with the current user, or an error.
    */
@@ -1213,6 +1245,21 @@ declare namespace overwolf.profile {
     token: string,
     callback: CallbackFunction<Result>
   ): void
+  
+  /**
+   * Reports the current user's identity at an external payment provider to
+   * Overwolf.
+   *
+   * Should be called on app launch.
+   * @param parameters The external payment provider, the user's id at it, and
+   * optionally the plan. See
+   * {@link overwolf.profile.SetExternalPaymentUserIdParams}.
+   * @param callback A function called with the result of the operation.
+   */
+  function setExternalPaymentUserId(
+    parameters: SetExternalPaymentUserIdParams,
+    callback?: CallbackFunction<Result>
+  ): void;
 
   /**
    * Fired when a user logged in or logged out.
@@ -6042,6 +6089,47 @@ declare namespace overwolf.utils {
   interface UploadClientLogsOptions {
     filePrefix: string;
   }
+  
+  interface CreateLogsZipResult extends Result {
+    zipPath?: string;
+  }
+
+  interface CheckForUpdateClientResult extends Result {
+    hasUpdate?: boolean;
+    newVersion?: string;
+    currentVersion?: string;
+    channel?: string;
+    updatesDisabled?: boolean;
+  }
+
+  interface IdleTimeResult extends Result {
+    idleTime: number;
+  }
+
+  interface OpenUrlOptions {
+    /**
+     * Do not display the pop-up warning for the user if in-game.
+     */
+    skip_in_game_notification?: boolean;
+    maximize?: boolean;
+    position?: { x: number; y: number };
+    size?: { width: number; height: number };
+    /**
+     * Move the default browser window to a monitor. Position or maximize will
+     * be relative to this monitor id.
+     */
+    monitor?: string;
+    new_window?: boolean;
+    open_as_app?: boolean;
+    new_window_detection_hints?: string[];
+  }
+
+  interface OpenUrlInBrowserInfoResult extends Result {
+    browserName?: string;
+    processName?: string;
+    supportOpenAsApp?: boolean;
+    windowHandle?: number;
+  }
 
   /**
    * Copies the given string to the clipboard.
@@ -6228,9 +6316,59 @@ declare namespace overwolf.utils {
     callback: CallbackFunction<ClientInfoResult>
   ): void;
 
-  interface CreateLogsZipResult extends Result {
-    zipPath?: string;
-  }
+  /**
+   * Checks if an update is available for the Overwolf client.
+   * @param callback The result of the client updates info. See
+   * {@link overwolf.utils.CheckForUpdateClientResult}.
+   */
+  function checkForClientUpdates(
+    callback: CallbackFunction<CheckForUpdateClientResult>
+  ): void;
+
+  /**
+   * Opens the url in the user's default browser, with options.
+   * @param url A url to open.
+   * @param options Options controlling how the browser window is opened. See
+   * {@link overwolf.utils.OpenUrlOptions}.
+   * @param callback Called with the browser info and window handle.
+   */
+  function openUrlInDefaultBrowserEx(
+    url: string,
+    options: OpenUrlOptions,
+    callback: CallbackFunction<OpenUrlInBrowserInfoResult>
+  ): void;
+
+  /**
+   * Opens a folder picker dialog to browse for a folder, using the native
+   * Windows UI. A full path to the selected folder will be returned.
+   * @param initialPath The starting folder's path.
+   * @param callback Called with the selected folder.
+   */
+  function openNativeFolderPicker(
+    initialPath: string,
+    callback: CallbackFunction<OpenFolderPickerResult>
+  ): void;
+
+  /**
+   * Returns the time passed since the last user input (mouse/keyboard), in
+   * seconds.
+   * @param callback Called with the idle time.
+   */
+  function getIdleTimeInSeconds(
+    callback: CallbackFunction<IdleTimeResult>
+  ): void;
+
+  /**
+   * Looks for the given protocol in the registry and returns a response based
+   * on the findings (true/false).
+   * @param urlProtocol The url protocol to look for.
+   * @param callback Called with the result of the request.
+   */
+  function verifyURLProtocol(
+    urlProtocol: string,
+    callback: CallbackFunction<Result>
+  ): void;
+
 
   /**
    * Creates a zip of the app's log files.
@@ -6593,6 +6731,16 @@ declare namespace overwolf.settings.games {
   function getOverlayEnabled(
     gameClassId: number,
     callback: CallbackFunction<OverlayEnabledResult>
+  ): void;
+
+  /**
+   * Enables the overlay for the given game. Must be called from a user gesture.
+   * @param gameClassId The game id for which the flag is set.
+   * @param callback Called with the status of the request.
+   */
+  function enableOverlay(
+    gameClassId: number,
+    callback: CallbackFunction<Result>
   ): void;
 
   /**
