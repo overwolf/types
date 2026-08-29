@@ -1110,6 +1110,8 @@ declare namespace overwolf.notifications {
      * Buttons make your toast interactive, letting the user take quick actions on your toast notification without interrupting their current workflow. Buttons appear in the expanded portion of your notification.
      */
     buttons?: ToastNotificationButton[];
+    launch?: string;
+    activationType?: 'protocol' | 'foreground' | 'background';
   }
 
   interface LogoOverride {
@@ -1120,6 +1122,8 @@ declare namespace overwolf.notifications {
   interface ToastNotificationButton {
     id: string;
     text: string;
+    launch?: string;
+    activationType?: 'protocol' | 'foreground' | 'background';
   }
 
   interface ShowToastNotificationResult extends Result {
