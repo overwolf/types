@@ -95,9 +95,9 @@ declare namespace overwolf.io {
   }
 
   interface ReadFileOptions {
-    encoding: enums.eEncoding;
-    maxBytesToRead: number;
-    offset: number;
+    encoding?: enums.eEncoding;
+    maxBytesToRead?: number;
+    offset?: number;
   }
 
   interface ListenFileOptions {
