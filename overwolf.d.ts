@@ -4400,8 +4400,33 @@ declare namespace overwolf.streaming {
 
   interface StreamEvent {
     stream_id?: number;
+    success?: boolean;
+    status?: string;
+    /** The error (onStreamingError) or warning (onStreamingWarning) id. */
+    error?: string;
+    /**
+     * More detail on the error, when there is any. Can be null (e.g. on
+     * HELPER_DISCONNECTED, when the recording process died), so check it
+     * before using it.
+     */
     SubErrorMessage?: string;
     is_game_window_capture?: boolean;
+  }
+
+  interface StreamingErrorEvent extends StreamEvent {
+    /**
+     * Set when the error stopped a recording that wrote a file (e.g.
+     * Encoder_Error): the file the output finalized, playable up to the
+     * error. With splits, this is the last segment (the final
+     * onVideoFileSplit, with an empty next_file, names the same file).
+     * Not set when there is no file (e.g. the recording never started).
+     */
+    last_file_path?: string;
+    /**
+     * The length of last_file_path, in milliseconds. 0 means the error came
+     * before the first frame and the file is empty.
+     */
+    last_file_duration?: number;
   }
 
   interface GetWatermarkSettingsResult extends Result {
@@ -4438,16 +4463,28 @@ declare namespace overwolf.streaming {
   }
 
   interface StopStreamingEvent {
+    success?: boolean;
     stream_id: number;
     url: string;
     file_path: string;
     duration: number;
     last_file_path: string;
     split: boolean;
+    splitCount?: number;
     extra: string;
     osVersion: string;
     osBuild: string;
+    /**
+     * @deprecated Not sent - always undefined. Read total_frames from the
+     * extra JSON string, next to drawn, dropped and lagged.
+     */
     total_frames: number;
+    /**
+     * Why the stream stopped, when it was not a plain stop. E.g.
+     * HELPER_DISCONNECTED: the recording process died, the file was not
+     * finalized and duration is 0.
+     */
+    error?: string;
   }
 
   interface StopStreamingResult extends Result {
@@ -4464,9 +4501,17 @@ declare namespace overwolf.streaming {
 
   interface VideoFileSplitedEvent {
     stream_id: number;
+    /** The file that was closed. */
     file_name: string;
+    /** Length of file_name, in milliseconds. */
     duration: number;
+    /** Recording length from its start to this split, in milliseconds. */
+    videoDuration?: number;
     count: number;
+    /**
+     * The file recording continues into. Empty on the final split, sent when
+     * the recording stops (or stops on an error), which names the last file.
+     */
     next_file: string;
   }
 
@@ -4652,9 +4697,10 @@ declare namespace overwolf.streaming {
   const onStartStreaming: Event<StreamEvent>;
 
   /**
-   * Fired upon an error with the stream.
+   * Fired upon an error with the stream. An error that stops a recording
+   * replaces onStopStreaming (no onStopStreaming follows it).
    */
-  const onStreamingError: Event<StreamEvent>;
+  const onStreamingError: Event<StreamingErrorEvent>;
 
   /**
    * Fired upon a warning with the stream.
